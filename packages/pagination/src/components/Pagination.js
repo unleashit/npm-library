@@ -1,181 +1,180 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import throttle from 'lodash/throttle';
-import style from './scss/pagination.scss';
-import ChevronLeft from './icons/chevron-left.svg';
-import ChevronRight from './icons/chevron-right.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import throttle from "lodash/throttle";
+import style from "./scss/pagination.scss";
+import ChevronLeft from "./icons/chevron-left.svg";
+import ChevronRight from "./icons/chevron-right.svg";
 
-export const isClient = typeof window !== 'undefined';
+const isClient = typeof window !== "undefined";
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      windowWidth: 500,
+      containerWidth: 0
     };
 
-    this.boundSetWindowWidth = throttle(this.setWindowWidth.bind(this), 500);
+    this.containerRef = React.createRef();
+    this.boundSetContainerWidth = throttle(
+      this.setContainerWidth.bind(this),
+      500
+    );
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.boundSetWindowWidth);
-    this.setWindowWidth();
+    this.setContainerWidth();
+    window.addEventListener("resize", this.boundSetContainerWidth);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.boundSetWindowWidth);
+    window.removeEventListener("resize", this.boundSetContainerWidth);
   }
 
-  setWindowWidth() {
-    this.setState({ windowWidth: window.innerWidth });
+  setContainerWidth() {
+    this.setState({ containerWidth: this.containerRef.current.offsetWidth });
   }
 
   clickHandler(type, pageNumber = 1) {
-    const { currentOffset, currentPage, total, perPage, paginationHandler } = this.props;
+    const { currentOffset, total, perPage, paginationHandler } = this.props;
     let newOffset;
-    let newPage;
 
     switch (type) {
-      case 'next':
+      case "next":
         newOffset = currentOffset + perPage;
-        newPage = currentPage + 1;
-
         if (newOffset > total) return false;
-
-        // setSessionStorage('offset', newOffset);
-        paginationHandler({ currentOffset: newOffset, currentPage: newPage });
+        paginationHandler(newOffset);
         break;
-      case 'prev':
+      case "prev":
         newOffset = currentOffset - perPage;
-        newPage = currentPage - 1;
-
-        if (newPage < 0) return false;
-
-        // setSessionStorage('offset', newOffset);
-        paginationHandler({ currentOffset: newOffset, currentPage: newPage });
+        if (newOffset < 0) return false;
+        paginationHandler(newOffset);
         break;
-      case 'page':
+      case "page":
         newOffset = (pageNumber - 1) * perPage;
-        newPage = pageNumber;
-
-        if (newOffset > total) return false;
-
-        // setSessionStorage('offset', newOffset);
-        paginationHandler({
-          currentOffset: newOffset,
-          currentPage: newPage,
-        });
+        if (newOffset === currentOffset || newOffset > total || newOffset < 0)
+          return false;
+        paginationHandler(newOffset);
         break;
       default:
         return undefined;
     }
 
-    return new TypeError('Must supply pagination an argument of "prev", "next", or "page"');
+    return new TypeError(
+      'Must supply pagination an argument of "prev", "next", or "page"'
+    );
   }
 
   prev() {
-    const { currentOffset } = this.props;
+    const { currentOffset, perPage } = this.props;
 
-    return currentOffset > 0
-      ? <div className={style.prev} onClick={() => this.clickHandler('prev')}>
+    return currentOffset - perPage >= 0 ? (
+      <div className={style.prev} onClick={() => this.clickHandler("prev")}>
         <ChevronLeft className={style.chevronLeft} /> previous
       </div>
-      : null;
+    ) : null;
   }
 
   next() {
     const { currentOffset, perPage, total } = this.props;
 
-    return currentOffset + perPage < total
-      ? <div className={style.next} onClick={() => this.clickHandler('next')} ref={'nextPag'}>
+    return currentOffset + perPage < total ? (
+      <div className={style.next} onClick={() => this.clickHandler("next")}>
         next <ChevronRight className={style.chevronRight} />
       </div>
-      : null;
+    ) : null;
   }
 
   numbers() {
-    const { total, perPage, currentPage } = this.props;
+    const { total, perPage, currentOffset } = this.props;
+    const { containerWidth } = this.state;
+    console.log(containerWidth);
 
     const pages = Math.ceil(total / perPage);
-    const maxPages = [[450, 2], [550, 3], [650, 4], [850, 8], [1000, 10], [99999, 10]].find(
-      group => this.state.windowWidth < group[0],
-    )[1];
+    const currentPage = Math.floor(currentOffset / perPage) + 1;
 
-    let pageAry = new Array(pages).fill(undefined).map((val, i) => i + 1);
+    let maxPages;
+    if (containerWidth <= 1000) {
+      maxPages = [[450, 2], [550, 3], [650, 4], [850, 8], [1000, 10]].find(
+        group => containerWidth < group[0]
+      )[1];
+    } else {
+      maxPages = containerWidth / 80;
+    }
+
+    console.log("max pages: ", maxPages);
+    let pageAry = new Array(pages).fill(undefined).map((_, i) => i + 1);
 
     if (pages > maxPages) {
       if (currentPage > 1 && currentPage < pages) {
-        pageAry = pageAry.slice(currentPage - 1, currentPage - 1 + (maxPages - 1));
+        pageAry = pageAry.slice(
+          currentPage - 1,
+          currentPage - 1 + (maxPages - 1)
+        );
         if (pageAry[pageAry.length - 1] === pages) pageAry.pop();
-        pageAry.unshift(1, '...');
-        pageAry.push('...', pages);
+        pageAry.unshift(1, "...");
+        pageAry.push("...", pages);
       } else if (currentPage === 1) {
         pageAry = pageAry.slice(0, maxPages);
-        pageAry.push('...', pages);
+        pageAry.push("...", pages);
       } else if (currentPage === pages) {
         pageAry = pageAry.slice(-maxPages);
-        pageAry.unshift(1, '...');
+        pageAry.unshift(1, "...");
       }
     }
 
     return pages > 1
       ? pageAry.map(
-        (n, i) =>
-          (n === '...'
-            ? <span key={`${i}-pag`} className={style.ellipsis}>...</span>
-            : <span
-              key={`${i}-pag`}
-              className={classnames(style.number, { active: n === currentPage })}
-              onClick={() => this.clickHandler('page', n)}
-            >
-                {n}
-              </span>),
-      )
+          (page, i) =>
+            page === "..." ? (
+              <span key={`${i}-ellipsis`} className={style.ellipsis}>
+                ...
+              </span>
+            ) : (
+              <span
+                key={`${page}-pagination`}
+                className={classnames(style.number, {
+                  active: page === currentPage
+                })}
+                onClick={() => this.clickHandler("page", page)}
+              >
+                {page}
+              </span>
+            )
+        )
       : null;
   }
 
   render() {
     const { total, perPage } = this.props;
 
-    return total > perPage
-      ? <div className={classnames(style.paginationContainer)}>
-        <div className="container-fluid">
-          <div className="row">
-            <div
-              ref={(el) => {
-                this.containerRef = el;
-              }}
-              className={`col-md-12 ${style.pagination}`}
-            >
-              {this.prev()}
-              {this.numbers()}
-              {this.next()}
-            </div>
-          </div>
+    return total > perPage ? (
+      <div
+        className={classnames(style.paginationContainer)}
+        ref={this.containerRef}
+      >
+        <div className={style.pagination}>
+          {this.prev()}
+          {this.numbers()}
+          {this.next()}
         </div>
       </div>
-      : null;
+    ) : null;
   }
 }
 
-// Pagination.propTypes = {
-//   currentOffset: PropTypes.number.isRequired,
-//   currentPage: PropTypes.number.isRequired,
-//   total: PropTypes.number.isRequired,
-//   perPage: PropTypes.number,
-//   selectedCategory: PropTypes.string,
-//   // categoryTotal: PropTypes.number,
-// };
+Pagination.propTypes = {
+  currentOffset: PropTypes.number.isRequired,
+  perPage: PropTypes.number,
+  paginationHandler: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired
+};
 
 Pagination.defaultProps = {
   currentOffset: 0,
-  currentPage: 1,
-  total: 0,
   perPage: 10,
-  selectedCategory: 'all',
-  // categoryTotal: null,
+  total: 0
 };
 
 export default Pagination;

@@ -14,7 +14,6 @@
   "dependencies": {
     "classnames": "^2.2.6"
   },
-  "private": true,
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",

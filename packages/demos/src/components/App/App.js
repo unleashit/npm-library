@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./Home";
+import Home from "../Home/Home";
 import Navigation from "./Navigation";
-import Pagination from "./components/pagination";
-import ApiService from "./utils/api";
+import Pagination from "../pagination";
+import ApiService from "../../utils/api";
 import "./App.scss";
 
 const store = new ApiService();

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Pagination from "@unleashit/pagination";
 import List from "./List";
-import { StateConsumer } from "../../App";
+import { StateConsumer } from "../App/App";
 import "./pagination.scss";
 
 export class PaginationDemo extends Component {
@@ -12,22 +12,22 @@ export class PaginationDemo extends Component {
       offset: 0
     };
     this.perPage = 3;
-    console.log(props);
+
+    this.paginationHandler = this.paginationHandler.bind(this);
   }
 
   async componentDidMount() {
-    console.log(this.props.state);
-    await this.props.store.generateFakeBlog(50);
+    await this.props.store.generateFakeBlog(100);
   }
 
   currentOffset() {
     const { offset } = this.state;
     const data = this.props.state.fakeBlog;
-    return data.slice(offset, this.perPage);
+    return data.slice(offset, offset + this.perPage);
   }
 
   paginationHandler(newOffset) {
-    this.setState({ currentOffset: newOffset });
+    this.setState({ offset: newOffset });
   }
 
   render() {
