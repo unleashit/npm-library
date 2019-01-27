@@ -6,4 +6,5 @@ dist
 build
 coverage
 .env*
+lerna-debug.log
 
