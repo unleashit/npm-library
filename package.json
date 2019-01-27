@@ -1,0 +1,58 @@
+{
+  "name": "npm-library",
+  "description": "Lerna/Yarn Workspaces monorepo of my NPM packages, React and UI components",
+  "private": true,
+  "author": "unleashit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "babel-loader": "^8.0.5",
+    "lerna": "^3.10.1"
+  },
+  "scripts": {
+    "start": "lerna run --parallel start",
+    "build": "lerna --stream --concurrency 1 run build",
+    "build:pagination": "lerna run build --scope=@unleashit/pagination",
+    "test": "lerna run --stream test",
+    "test:watch": "lerna run --stream --concurrency 1 test:watch",
+    "test:coverage": "lerna run --stream --concurrency 1 test:coverage",
+    "publish": "lerna publish",
+    "storybook": "start-storybook -p 9009",
+    "build-storybook": "build-storybook"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "jest": {
+    "globalSetup": "./testSetup.js",
+    "testURL": "http://localhost/",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "dependencies": {
+    "@svgr/webpack": "^4.1.0",
+    "css-loader": "^2.1.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.3"
+  }
+}

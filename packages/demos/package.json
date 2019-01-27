@@ -1,0 +1,37 @@
+{
+  "name": "@unleashit/demos",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@unleashit/mock-data": "^0.5.5",
+    "@unleashit/pagination": "^0.0.3",
+    "dummy-json": "^2.0.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.3"
+  },
+  "scripts": {
+    "start": "BROWSER='Chrome' react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:watch": "react-scripts test --watch",
+    "test:coverage": "react-scripts test --coverage",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "babel-loader": "8.0.5"
+  }
+}

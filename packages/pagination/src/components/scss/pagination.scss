@@ -1,0 +1,83 @@
+@import 'vars';
+
+.paginationContainer {
+  background-color: $tatteasy-navy;
+  padding: 30px 0;
+  color: $white;
+}
+
+.paginationContainer:global(.hidden) {
+  display: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.next, .prev {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.next {
+  margin-left: auto;
+}
+
+.prev {
+  margin-right: 1rem;
+}
+
+.number {
+  background-color: $tatteasy-maroon;
+  //padding: .7rem;
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-right: .5rem;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 2.6rem;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:active, &:global(.active) {
+    background-color: $tatteasy-ltgray;
+    color: $black;
+  }
+}
+
+.ellipsis {
+  background-color: inherit;
+  display: inline-block;
+  margin-right: .5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2.6rem;
+}
+
+.chevronLeft, .chevronRight {
+  fill: $white;
+  height: 1.1rem;
+  margin-top: 2px;
+}
+
+.chevronLeft {
+  margin-right: .5rem;
+}
+
+.chevronRight {
+  margin-left: .5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .number {
+
+  }
+}

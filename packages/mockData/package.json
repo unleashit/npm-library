@@ -1,0 +1,69 @@
+{
+  "name": "@unleashit/mock-data",
+  "version": "0.5.5",
+  "description": "Wrapper for mocker-data-generater providing a set of templates and arguments. Can optionally write to a file (node)",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "tsc --watch",
+    "build": "rm -rf ./dist && NODE_ENV=production tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "mock",
+    "data",
+    "generator",
+    "json",
+    "mocker-data-generator",
+    "faker",
+    "chance",
+    "casual",
+    "randexp",
+    "templates",
+    "schema"
+  ],
+  "author": "unleashit",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unleashit/npm-library.git"
+  },
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/mockData",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@types/jest": "^23.3.12",
+    "@types/node": "^10.12.18",
+    "jest": "^23.6.0",
+    "mocker-data-generator": "^2.6.6",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "ts-node": "^7.0.1"
+  },
+  "jest": {
+    "globalSetup": "./jest.config.js",
+    "testURL": "http://localhost/",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
+  },
+  "moduleDirectories": [
+    "node_modules"
+  ]
+}
