@@ -1,0 +1,176 @@
+0 silly argv { _: [ 'publish' ],
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '3.10.5',
+0 silly argv   '$0': 'node_modules/.bin/lerna' }
+1 notice cli v3.10.5
+2 verbose rootPath /c/Users/Count Cornucopia/Nextcloud/www/npm-library
+3 info versioning independent
+4 verbose session 9ad34530843884e5
+5 verbose user-agent lerna/3.10.5/node@v11.4.0+x64 (linux)
+6 warn Yarn's registry proxy is broken, replacing with public npm registry
+7 warn If you don't have an npm token, you should exit and run `npm login`
+8 verbose git-describe undefined => "fc9b921"
+9 silly git-describe parsed => {"refCount":"3","sha":"fc9b921","isDirty":false}
+10 silly argv { _: [ 'publish' ], composed: 'publish', lernaVersion: '3.10.5' }
+11 verbose rootPath /c/Users/Count Cornucopia/Nextcloud/www/npm-library
+12 silly isAnythingCommitted
+13 verbose isAnythingCommitted 1
+14 silly currentBranch
+15 verbose currentBranch master
+16 silly remoteBranchExists
+17 silly isBehindUpstream
+18 silly isBehindUpstream master is behind origin/master by 0 commit(s) and ahead by 1
+19 silly hasTags
+20 verbose hasTags false
+21 info Looking for changed packages since initial commit.
+22 verbose updated @unleashit/demos
+23 verbose updated @unleashit/mock-data
+24 verbose updated @unleashit/pagination
+25 verbose git-describe undefined => "fc9b921"
+26 silly git-describe parsed => {"refCount":"3","sha":"fc9b921","isDirty":false}
+27 silly batched [ PackageGraphNode {
+27 silly batched     name: '@unleashit/mock-data',
+27 silly batched     externalDependencies:
+27 silly batched      Map {
+27 silly batched        '@types/jest' => [Object],
+27 silly batched        'ts-node' => [Object],
+27 silly batched        '@types/node' => [Object],
+27 silly batched        'jest' => [Object],
+27 silly batched        'mocker-data-generator' => [Object],
+27 silly batched        'ts-jest' => [Object],
+27 silly batched        'typescript' => [Object] },
+27 silly batched     localDependencies: Map {},
+27 silly batched     localDependents: Map { '@unleashit/demos' => [PackageGraphNode] } },
+27 silly batched   PackageGraphNode {
+27 silly batched     name: '@unleashit/pagination',
+27 silly batched     externalDependencies:
+27 silly batched      Map {
+27 silly batched        '@babel/cli' => [Object],
+27 silly batched        '@babel/core' => [Object],
+27 silly batched        '@babel/preset-env' => [Object],
+27 silly batched        '@babel/preset-react' => [Object],
+27 silly batched        '@svgr/webpack' => [Object],
+27 silly batched        'babel-loader' => [Object],
+27 silly batched        'css-loader' => [Object],
+27 silly batched        'file-loader' => [Object],
+27 silly batched        'mini-css-extract-plugin' => [Object],
+27 silly batched        'node-sass' => [Object],
+27 silly batched        'optimize-css-assets-webpack-plugin' => [Object],
+27 silly batched        'react' => [Object],
+27 silly batched        'react-dom' => [Object],
+27 silly batched        'sass-loader' => [Object],
+27 silly batched        'style-loader' => [Object],
+27 silly batched        'uglifyjs-webpack-plugin' => [Object],
+27 silly batched        'webpack' => [Object],
+27 silly batched        'webpack-cli' => [Object],
+27 silly batched        'webpack-dev-server' => [Object],
+27 silly batched        'classnames' => [Object] },
+27 silly batched     localDependencies: Map {},
+27 silly batched     localDependents: Map { '@unleashit/demos' => [PackageGraphNode] } } ]
+28 silly batched [ PackageGraphNode {
+28 silly batched     name: '@unleashit/demos',
+28 silly batched     externalDependencies:
+28 silly batched      Map {
+28 silly batched        '@babel/core' => [Object],
+28 silly batched        'babel-loader' => [Object],
+28 silly batched        'dummy-json' => [Object],
+28 silly batched        'node-sass' => [Object],
+28 silly batched        'react' => [Object],
+28 silly batched        'react-dom' => [Object],
+28 silly batched        'react-router' => [Object],
+28 silly batched        'react-router-dom' => [Object],
+28 silly batched        'react-scripts' => [Object] },
+28 silly batched     localDependencies: Map {},
+28 silly batched     localDependents: Map {} } ]
+29 silly lifecycle No script for "preversion" in "npm-library", continuing
+30 silly lifecycle No script for "preversion" in "@unleashit/mock-data", continuing
+31 silly lifecycle No script for "preversion" in "@unleashit/pagination", continuing
+32 silly lifecycle No script for "version" in "@unleashit/pagination", continuing
+33 silly lifecycle No script for "version" in "@unleashit/mock-data", continuing
+34 silly lifecycle No script for "preversion" in "@unleashit/demos", continuing
+35 silly lifecycle No script for "version" in "@unleashit/demos", continuing
+36 silly lifecycle No script for "version" in "npm-library", continuing
+37 silly gitAdd [ '/c/Users/Count Cornucopia/Nextcloud/www/npm-library/packages/pagination/package.json',
+37 silly gitAdd   '/c/Users/Count Cornucopia/Nextcloud/www/npm-library/packages/mockData/package.json',
+37 silly gitAdd   '/c/Users/Count Cornucopia/Nextcloud/www/npm-library/packages/demos/package.json' ]
+38 silly gitCommit Publish
+38 silly gitCommit
+38 silly gitCommit  - @unleashit/demos@0.0.2
+38 silly gitCommit  - @unleashit/mock-data@0.5.6
+38 silly gitCommit  - @unleashit/pagination@0.0.2
+39 verbose git [ 'commit',
+39 verbose git   '-F',
+39 verbose git   '/tmp/5a3688f6-c421-47f3-8a80-c38ebadb75de/lerna-commit.txt' ]
+40 silly gitTag @unleashit/demos@0.0.2
+41 verbose git [ 'tag',
+41 verbose git   '@unleashit/demos@0.0.2',
+41 verbose git   '-m',
+41 verbose git   '@unleashit/demos@0.0.2' ]
+42 silly gitTag @unleashit/mock-data@0.5.6
+43 verbose git [ 'tag',
+43 verbose git   '@unleashit/mock-data@0.5.6',
+43 verbose git   '-m',
+43 verbose git   '@unleashit/mock-data@0.5.6' ]
+44 silly gitTag @unleashit/pagination@0.0.2
+45 verbose git [ 'tag',
+45 verbose git   '@unleashit/pagination@0.0.2',
+45 verbose git   '-m',
+45 verbose git   '@unleashit/pagination@0.0.2' ]
+46 silly lifecycle No script for "postversion" in "@unleashit/demos", continuing
+47 silly lifecycle No script for "postversion" in "@unleashit/mock-data", continuing
+48 silly lifecycle No script for "postversion" in "@unleashit/pagination", continuing
+49 silly lifecycle No script for "postversion" in "npm-library", continuing
+50 info git Pushing tags...
+51 silly gitPush origin master
+52 silly batched [ PackageGraphNode {
+52 silly batched     name: '@unleashit/mock-data',
+52 silly batched     externalDependencies:
+52 silly batched      Map {
+52 silly batched        '@types/jest' => [Object],
+52 silly batched        '@types/node' => [Object],
+52 silly batched        'jest' => [Object],
+52 silly batched        'mocker-data-generator' => [Object],
+52 silly batched        'ts-jest' => [Object],
+52 silly batched        'typescript' => [Object] },
+52 silly batched     localDependencies: Map {},
+52 silly batched     localDependents: Map {} },
+52 silly batched   PackageGraphNode {
+52 silly batched     name: '@unleashit/pagination',
+52 silly batched     externalDependencies: Map { 'classnames' => [Object] },
+52 silly batched     localDependencies: Map {},
+52 silly batched     localDependents: Map {} } ]
+53 info publish Publishing packages to npm...
+54 info Verifying npm credentials
+55 verbose Retrieving npm user profile
+56 http fetch GET 200 https://registry.npmjs.org/-/npm/v1/user 975ms
+57 silly npm profile get received {"tfa":false,"name":"unleashit","email":"unleashit@protonmail.com","email_verified":true,"created":"2016-10-03T21:43:15.217Z","updated":"2019-01-24T05:43:34.657Z","cidr_whitelist":null,"fullname":"unleashit","homepage":"https://jasongallagher.org","freenode":"","twitter":"","github":"https://github.com/unleashit"}
+58 silly npm whoami received {"username":"unleashit"}
+59 silly verifyNpmPackageAccess
+60 http fetch GET 200 https://registry.npmjs.org/-/org/unleashit/package?format=cli 117ms
+61 warn ENOLICENSE Packages @unleashit/mock-data, @unleashit/pagination are missing a license
+62 silly getCurrentSHA
+63 verbose getCurrentSHA af2f3b787aed55691b0141675f8f3d9a1aabac9c
+64 warn lifecycle Skipping root "prepublish" because it has already been called
+65 silly lifecycle No script for "prepare" in "npm-library", continuing
+66 silly lifecycle No script for "prepublishOnly" in "npm-library", continuing
+67 silly lifecycle No script for "prepack" in "npm-library", continuing
+68 verbose pack-directory packages/mockData
+69 verbose pack-directory packages/pagination
+70 silly lifecycle No script for "prepublish" in "@unleashit/mock-data", continuing
+71 silly lifecycle No script for "prepublish" in "@unleashit/pagination", continuing
+72 silly lifecycle No script for "prepare" in "@unleashit/mock-data", continuing
+73 silly lifecycle No script for "prepare" in "@unleashit/pagination", continuing
+74 silly lifecycle No script for "prepublishOnly" in "@unleashit/pagination", continuing
+75 silly lifecycle No script for "prepublishOnly" in "@unleashit/mock-data", continuing
+76 silly lifecycle No script for "prepack" in "@unleashit/pagination", continuing
+77 silly lifecycle No script for "prepack" in "@unleashit/mock-data", continuing
+78 silly lifecycle No script for "postpack" in "@unleashit/pagination", continuing
+79 verbose packed @unleashit/pagination packages/pagination
+80 silly lifecycle No script for "postpack" in "@unleashit/mock-data", continuing
+81 verbose packed @unleashit/mock-data packages/mockData
+82 silly lifecycle No script for "postpack" in "npm-library", continuing
+83 verbose publish @unleashit/mock-data
+84 verbose publish @unleashit/pagination
+85 http fetch PUT 402 https://registry.npmjs.org/@unleashit%2fpagination 317ms
+86 error Error: 402 Payment Required - PUT https://registry.npmjs.org/@unleashit%2fpagination - You must sign up for private packages
+86 error     at res.buffer.catch.then.body (/c/Users/Count Cornucopia/Nextcloud/www/npm-library/node_modules/npm-registry-fetch/check-response.js:104:15)

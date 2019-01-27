@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/mock-data",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Wrapper for mocker-data-generater providing a set of templates and arguments. Can optionally write to a file (node)",
   "main": "dist/index.js",
   "scripts": {
@@ -65,5 +65,6 @@
   },
   "moduleDirectories": [
     "node_modules"
-  ]
+  ],
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

@@ -1,12 +1,25 @@
 {
   "name": "@unleashit/pagination",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
+  "description": "Responsive pagination component for React.",
   "scripts": {
     "start:old": "NODE_ENV=development webpack-dev-server",
     "start": "rm -rf ./dist && NODE_ENV=development yarn build:src --watch --source-maps",
     "build": "rm -rf ./dist && NODE_ENV=production yarn build:src",
     "build:src": "webpack"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unleashit/npm-library.git"
+  },
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/mockData",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^16.7.0"
@@ -34,5 +47,6 @@
     "webpack": "4.19.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
-  }
+  },
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }
