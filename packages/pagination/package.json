@@ -7,7 +7,8 @@
     "start:old": "NODE_ENV=development webpack-dev-server",
     "start": "rm -rf ./dist && NODE_ENV=development yarn build:src --watch --source-maps",
     "build": "rm -rf ./dist && NODE_ENV=production yarn build:src",
-    "build:src": "webpack"
+    "build:src": "webpack",
+    "test": "NODE_ENV=test jest"
   },
   "license": "MIT",
   "repository": {
@@ -35,6 +36,9 @@
     "@svgr/webpack": "^4.1.0",
     "babel-loader": "8.0.4",
     "css-loader": "^2.1.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "enzyme-to-json": "^3.3.5",
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
@@ -47,6 +51,28 @@
     "webpack": "4.19.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "<rootDir>/../../jestSetupReact.js",
+    "testURL": "http://localhost/",
+    "transform": {
+      "\\.tsx?$": "ts-jest",
+      "\\.jsx?$": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx, ts, tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/(config|dist|node_modules)/"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/../../__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/../../__mocks__/styleMock.js"
+    }
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

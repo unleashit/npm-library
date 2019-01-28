@@ -98,6 +98,7 @@ describe("mockData", () => {
   });
 
   it("throws the right errors", async () => {
+    console.error = jest.fn();
     try {
       await mockData({});
     } catch (err) {
