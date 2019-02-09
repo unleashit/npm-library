@@ -21,7 +21,8 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
-    "lerna": "^3.10.1"
+    "lerna": "^3.10.1",
+    "enzyme-adapter-react-16": "^1.9.1"
   },
   "scripts": {
     "start": "lerna run --parallel start",

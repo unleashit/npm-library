@@ -5,6 +5,7 @@ Wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-gene
 So far the templates currently available are `user`, `article`, `order` and `product`. More will be added over time.
 
 ### Install
+
 ```
 npm install @unleashit/mock-data
 ```
@@ -15,23 +16,24 @@ For a single schema, call the library with a config object. Possible properties 
 
 If `path` is provided and the envirnment is Node, a JSON file will be written.
 
-```
-import mockData from '@unleashit/mock-data';
-
-// returns a promise
+```javascript
+import mockData from "@unleashit/mock-data";
 
 async function generateMockData() {
-    return await mockData({
-        template: "product",
-        total: 20,
-        args: {
-            minPrice: 500;
-            maxPrice 10000;
-            maxDescription: 10;
-        },
-        hiddenFields: ['createdAt'];
-    });
+  // returns a promise
+  return await mockData({
+    template: "product",
+    total: 20,
+    args: {
+      minPrice: 500,
+      maxPrice: 10000,
+      maxDescription: 10
+    },
+    hiddenFields: ["createdAt"]
+  });
 }
+
+generateMockData();
 
 // { product: [ ... ] }
 ```
@@ -40,22 +42,22 @@ async function generateMockData() {
 
 For multiple schemas, add as an array on the `templates` property. Each template can have any of the same fields (except `path` and `templates`) as a single template.
 
-```
+```javascript
 const data = await mockData({
-    templates: [
-        {
-            template: 'user',
-            total: 10,
-            name: 'authors'
-        },
-        {
-            template: 'article',
-            total: 20,
-            name: 'blogs
-        }
-    ],
-    name: 'mockData'
-    path: '/home/myUser'
+  templates: [
+    {
+      template: "user",
+      total: 10,
+      name: "authors"
+    },
+    {
+      template: "article",
+      total: 20,
+      name: "blogs"
+    }
+  ],
+  name: "mockData",
+  path: "/home/myUser"
 });
 
 // data is returned and saved as /home/myUser/mockData.json
@@ -70,11 +72,11 @@ const data = await mockData({
 
 Templates are in the same format as mock-data-generator except must be supplied as a function. Supply any arguments to the args property as an object.
 
-```
+```javascript
 const args = {
   min: 18,
   max: 110,
-  setProperty: 'anything'
+  setProperty: "anything"
 };
 
 const template = () => ({
@@ -90,10 +92,10 @@ const template = () => ({
 });
 
 const data = await mockData({
-    template: template,
-    total: 20,
-    args,
-    name: 'myData'
+  template: template,
+  total: 20,
+  args,
+  name: "myData"
 });
 
 // { myData: [...] }

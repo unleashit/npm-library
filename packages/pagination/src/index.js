@@ -63,27 +63,27 @@ class Pagination extends React.Component {
   }
 
   prev() {
-    const { currentOffset, perPage } = this.props;
+    const { currentOffset, perPage, prevLabel } = this.props;
 
     return currentOffset - perPage >= 0 ? (
       <div
         className={`pagination__prev ${style.prev}`}
         onClick={() => this.clickHandler("prev")}
       >
-        <ChevronLeft className={style.chevronLeft} /> previous
+        <ChevronLeft className={style.chevronLeft} /> {prevLabel}
       </div>
     ) : null;
   }
 
   next() {
-    const { currentOffset, perPage, total } = this.props;
+    const { currentOffset, perPage, total, nextLabel } = this.props;
 
     return currentOffset + perPage < total ? (
       <div
         className={`pagination__next ${style.next}`}
         onClick={() => this.clickHandler("next")}
       >
-        next <ChevronRight className={style.chevronRight} />
+        {nextLabel} <ChevronRight className={style.chevronRight} />
       </div>
     ) : null;
   }
@@ -170,13 +170,17 @@ Pagination.propTypes = {
   currentOffset: PropTypes.number.isRequired,
   perPage: PropTypes.number,
   paginationHandler: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  prevLabel: PropTypes.string,
+  nextLabel: PropTypes.string
 };
 
 Pagination.defaultProps = {
   currentOffset: 0,
   perPage: 10,
-  total: 0
+  total: 0,
+  prevLabel: 'prev',
+  nextLabel: 'next'
 };
 
 export default Pagination;

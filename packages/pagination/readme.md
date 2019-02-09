@@ -9,7 +9,7 @@ npm install @unleashit/pagination
 
 ### Example
 
-```
+```javascript
 import React from 'react';
 import Pagination from '@unleashit/pagination';
 import { getData } from 'dataService';
@@ -60,4 +60,15 @@ export class PaginationDemo extends React.Component {
   }
 }
 ```
+
+### Props
+
+| Name      | Type |  Description | default |
+| ----------- | ----------- | ---------| ------- |
+| perPage      | Number       | Number of items per page | 10 |
+| currentOfset   | Number        | Current offset of the list | 0 (required) |
+| total | Number | Total number of items | 0 (required) |
+| paginationHandler | Function | The method to call when a page or prev/next button is clicked. Provides the next offset as an argument. | required
+| prevLabel | String | Label for previous button | 'prev' |
+| nextLabel | String | Label for next button | 'next' |
 
