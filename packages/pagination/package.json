@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/pagination",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "description": "Responsive pagination component for React.",
   "scripts": {
@@ -23,14 +23,13 @@
   "peerDependencies": {
     "react": ">=15.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@unleashit/mock-data": "^0.5.7",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@svgr/webpack": "^4.1.0",
+    "@unleashit/mock-data": "^0.5.8",
     "babel-loader": "8.0.4",
     "css-loader": "^2.1.0",
     "enzyme": "^3.8.0",
