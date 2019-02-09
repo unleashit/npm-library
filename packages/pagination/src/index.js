@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import throttle from "lodash/throttle";
 import style from "./scss/pagination.scss";
 import ChevronLeft from "./icons/chevron-left.svg";
@@ -57,12 +56,10 @@ class Pagination extends React.Component {
         paginationHandler(newOffset);
         break;
       default:
-        return undefined;
+        throw new TypeError(
+          'Must supply pagination an argument of "prev", "next", or "page"'
+        );
     }
-
-    return new TypeError(
-      'Must supply pagination an argument of "prev", "next", or "page"'
-    );
   }
 
   prev() {
@@ -140,9 +137,8 @@ class Pagination extends React.Component {
             ) : (
               <span
                 key={`${page}-pagination`}
-                className={classnames("pagination__number", style.number, {
-                  active: page === currentPage
-                })}
+                className={`pagination__number ${style.number}${page ===
+                  currentPage ? ' active' : ''}`}
                 onClick={() => this.clickHandler("page", page)}
               >
                 {page}
@@ -157,10 +153,7 @@ class Pagination extends React.Component {
 
     return total > perPage ? (
       <div
-        className={classnames(
-          "pagination__container",
-          style.paginationContainer
-        )}
+        className={`pagination__container ${style.paginationContainer}`}
         ref={this.containerRef}
       >
         <div className={`pagination__inner ${style.pagination}`}>

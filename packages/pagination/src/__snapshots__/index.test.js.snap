@@ -2,41 +2,41 @@
 
 exports[`<Pagination /> renders without crashing 1`] = `
 <div
-  className="pagination__container"
+  className="pagination__container undefined"
 >
   <div
     className="pagination__inner undefined"
   >
     <span
-      className="pagination__number active"
+      className="pagination__number undefined active"
       key="1-pagination"
       onClick={[Function]}
     >
       1
     </span>
     <span
-      className="pagination__number"
+      className="pagination__number undefined"
       key="2-pagination"
       onClick={[Function]}
     >
       2
     </span>
     <span
-      className="pagination__number"
+      className="pagination__number undefined"
       key="3-pagination"
       onClick={[Function]}
     >
       3
     </span>
     <span
-      className="pagination__number"
+      className="pagination__number undefined"
       key="4-pagination"
       onClick={[Function]}
     >
       4
     </span>
     <span
-      className="pagination__number"
+      className="pagination__number undefined"
       key="5-pagination"
       onClick={[Function]}
     >

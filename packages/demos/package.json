@@ -5,10 +5,9 @@
   "dependencies": {
     "@unleashit/mock-data": "^0.5.7",
     "@unleashit/pagination": "^0.0.4",
-    "dummy-json": "^2.0.0",
     "node-sass": "^4.11.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"

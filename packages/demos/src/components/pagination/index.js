@@ -3,6 +3,7 @@ import Pagination from "@unleashit/pagination";
 import List from "./List";
 import { StateConsumer } from "../App/App";
 import "./pagination.scss";
+import "@unleashit/pagination/dist/style.css";
 
 export class PaginationDemo extends Component {
   constructor(props) {

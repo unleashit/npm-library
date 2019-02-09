@@ -5,6 +5,7 @@
   padding: 30px;
   color: $white;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .paginationContainer:global(.hidden) {

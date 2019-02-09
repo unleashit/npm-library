@@ -44,6 +44,9 @@ module.exports = (baseConfig, env, defaultConfig) => {
     },
   );
   defaultConfig.resolve.extensions.push(".ts", ".tsx", "svg");
+  defaultConfig.node = {
+    fs: "empty"
+  }
 
   return defaultConfig;
 };

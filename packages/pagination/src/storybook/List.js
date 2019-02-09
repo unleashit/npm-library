@@ -11,13 +11,13 @@ const Row = ({row: {title, content, author}}) => {
 };
 
 const List = ({ data }) => {
-  return (
+  return data.length ? (
     <ul className="pagination__list">
       {data.map((row, i) => (
         <Row row={row} key={`row-${i}`}/>
       ))}
     </ul>
-  );
+  ) : null;
 };
 
 export default List;
