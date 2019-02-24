@@ -1,9 +1,9 @@
-import { template, removeHidden } from "./templateHelper";
+import { template, removeHidden } from './templateHelper';
 
 // TODO: currently the "items" property is repeat data
 //  since mocker-data-generator can't handle arrays of objects
 
-interface productArgs {
+interface ProductArgs {
   minItems?: number;
   maxItems?: number;
   minPrice?: number;
@@ -18,51 +18,51 @@ export const order: template = ({
   maxDescription = 3,
   minPrice = 1,
   maxPrice = 1000,
-  hiddenFields = []
-}: productArgs = {}): any =>
+  hiddenFields = [],
+}: ProductArgs = {}): any =>
   removeHidden(hiddenFields, {
-    id: { chance: "guid" },
+    id: { chance: 'guid' },
     userId: {
-      chance: "guid"
+      chance: 'guid',
     },
     _item: {
-      id: { chance: "guid" },
-      name: { faker: "commerce.productName" },
+      id: { chance: 'guid' },
+      name: { faker: 'commerce.productName' },
       description: {
-        function: function() {
+        function() {
           return this.faker.lorem.paragraphs(
-            Math.floor(Math.random() * maxDescription + 1)
+            Math.floor(Math.random() * maxDescription + 1),
           );
-        }
+        },
       } as any,
       price: {
-        chance: `floating({"fixed": 2, "min": ${minPrice}, "max": ${maxPrice}})`
+        chance: `floating({"fixed": 2, "min": ${minPrice}, "max": ${maxPrice}})`,
       },
       qty: {
-        function: function() {
+        function() {
           return Math.floor(Math.random() * minItems + maxItems);
-        }
+        },
       },
       createdAt: {
-        faker: "date.past"
-      }
+        faker: 'date.past',
+      },
     },
     items: [
       {
-        function: function() {
+        function() {
           return this.object._item;
         },
-        length: 3
-      } as any
+        length: 3,
+      } as any,
     ],
     total: {
       function() {
         return this.object.items
           .reduce((a: number, b: any) => b.price * b.qty + a, 0)
           .toFixed(2);
-      }
+      },
     } as any,
     createdAt: {
-      faker: "date.past"
-    }
+      faker: 'date.past',
+    },
   });

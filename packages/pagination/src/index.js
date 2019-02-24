@@ -1,33 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
-import throttle from "lodash/throttle";
-import style from "./scss/pagination.scss";
-import ChevronLeft from "./icons/chevron-left.svg";
-import ChevronRight from "./icons/chevron-right.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import throttle from 'lodash/throttle';
+import style from './scss/pagination.scss';
+import ChevronLeft from './icons/chevron-left.svg';
+import ChevronRight from './icons/chevron-right.svg';
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      containerWidth: 0
+      containerWidth: 0,
     };
 
-    this.boundSetContainerWidth = throttle(
-      this.setContainerWidth.bind(this),
-      500
-    );
+    this.boundSetContainerWidth = throttle(this.setContainerWidth.bind(this), 500);
 
     this.containerRef = React.createRef();
   }
 
   componentDidMount() {
     this.setContainerWidth();
-    window.addEventListener("resize", this.boundSetContainerWidth);
+    window.addEventListener('resize', this.boundSetContainerWidth);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.boundSetContainerWidth);
+    window.removeEventListener('resize', this.boundSetContainerWidth);
   }
 
   setContainerWidth() {
@@ -39,17 +36,17 @@ class Pagination extends React.Component {
     let newOffset;
 
     switch (type) {
-      case "next":
+      case 'next':
         newOffset = currentOffset + perPage;
         if (newOffset > total) return false;
         paginationHandler(newOffset);
         break;
-      case "prev":
+      case 'prev':
         newOffset = currentOffset - perPage;
         if (newOffset < 0) return false;
         paginationHandler(newOffset);
         break;
-      case "page":
+      case 'page':
         newOffset = (pageNumber - 1) * perPage;
         if (newOffset === currentOffset || newOffset > total || newOffset < 0)
           return false;
@@ -57,21 +54,24 @@ class Pagination extends React.Component {
         break;
       default:
         throw new TypeError(
-          'Must supply pagination an argument of "prev", "next", or "page"'
+          'Must supply pagination an argument of "prev", "next", or "page"',
         );
     }
+
+    return false;
   }
 
   prev() {
     const { currentOffset, perPage, prevLabel } = this.props;
 
     return currentOffset - perPage >= 0 ? (
-      <div
+      <button
+        type="button"
         className={`pagination__prev ${style.prev}`}
-        onClick={() => this.clickHandler("prev")}
+        onClick={() => this.clickHandler('prev')}
       >
         <ChevronLeft className={style.chevronLeft} /> {prevLabel}
-      </div>
+      </button>
     ) : null;
   }
 
@@ -79,12 +79,13 @@ class Pagination extends React.Component {
     const { currentOffset, perPage, total, nextLabel } = this.props;
 
     return currentOffset + perPage < total ? (
-      <div
+      <button
+        type="button"
         className={`pagination__next ${style.next}`}
-        onClick={() => this.clickHandler("next")}
+        onClick={() => this.clickHandler('next')}
       >
         {nextLabel} <ChevronRight className={style.chevronRight} />
-      </div>
+      </button>
     ) : null;
   }
 
@@ -97,9 +98,14 @@ class Pagination extends React.Component {
 
     let maxPages;
     if (containerWidth <= 1000) {
-      maxPages = [[450, 2], [550, 3], [650, 4], [850, 8], [1000, 10]].find(
-        group => containerWidth < group[0]
-      )[1];
+      const [_, breakPointPages] = [
+        [450, 2],
+        [550, 3],
+        [650, 4],
+        [850, 8],
+        [1000, 10],
+      ].find(group => containerWidth < group[0]);
+      maxPages = breakPointPages;
     } else {
       maxPages = Math.ceil(containerWidth / 80);
     }
@@ -108,42 +114,40 @@ class Pagination extends React.Component {
 
     if (pages > maxPages) {
       if (currentPage > 1 && currentPage < pages) {
-        pageAry = pageAry.slice(
-          currentPage - 1,
-          currentPage - 1 + (maxPages - 1)
-        );
+        pageAry = pageAry.slice(currentPage - 1, currentPage - 1 + (maxPages - 1));
         if (pageAry[pageAry.length - 1] === pages) pageAry.pop();
-        pageAry.unshift(1, "...");
-        pageAry.push("...", pages);
+        pageAry.unshift(1, '...');
+        pageAry.push('...', pages);
       } else if (currentPage === 1) {
         pageAry = pageAry.slice(0, maxPages);
-        pageAry.push("...", pages);
+        pageAry.push('...', pages);
       } else if (currentPage === pages) {
         pageAry = pageAry.slice(-maxPages);
-        pageAry.unshift(1, "...");
+        pageAry.unshift(1, '...');
       }
     }
 
     return pages > 1
-      ? pageAry.map(
-          (page, i) =>
-            page === "..." ? (
-              <span
-                key={`${i}-ellipsis`}
-                className={`pagination__ellipsis ${style.ellipsis}`}
-              >
-                ...
-              </span>
-            ) : (
-              <span
-                key={`${page}-pagination`}
-                className={`pagination__number ${style.number}${page ===
-                  currentPage ? ' active' : ''}`}
-                onClick={() => this.clickHandler("page", page)}
-              >
-                {page}
-              </span>
-            )
+      ? pageAry.map((page, i) =>
+          page === '...' ? (
+            <span
+              key={`${i}-ellipsis`}
+              className={`pagination__ellipsis ${style.ellipsis}`}
+            >
+              ...
+            </span>
+          ) : (
+            <button
+              type="button"
+              key={`${page}-pagination`}
+              className={`pagination__number ${style.number}${
+                page === currentPage ? ' active' : ''
+              }`}
+              onClick={() => this.clickHandler('page', page)}
+            >
+              {page}
+            </button>
+          ),
         )
       : null;
   }
@@ -172,15 +176,13 @@ Pagination.propTypes = {
   paginationHandler: PropTypes.func.isRequired,
   total: PropTypes.number.isRequired,
   prevLabel: PropTypes.string,
-  nextLabel: PropTypes.string
+  nextLabel: PropTypes.string,
 };
 
 Pagination.defaultProps = {
-  currentOffset: 0,
   perPage: 10,
-  total: 0,
   prevLabel: 'prev',
-  nextLabel: 'next'
+  nextLabel: 'next',
 };
 
 export default Pagination;

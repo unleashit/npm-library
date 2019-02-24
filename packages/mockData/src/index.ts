@@ -1,17 +1,12 @@
-import mocker from "mocker-data-generator";
-import * as tplImports from "./templates";
-import saveToFile from "./saveToFile";
+import mocker from 'mocker-data-generator';
+import * as tplImports from './templates';
+import saveToFile from './saveToFile';
 
-type ImportTypes = {
+interface ImportTypes {
   [key: string]: (args?: any) => any;
-};
+}
 
-type TemplateTypes =
-  "product"
-  | "article"
-  | "user"
-  | "order"
-  | ((args?: {}) => any);
+type TemplateTypes = 'product' | 'article' | 'user' | 'order' | ((args?: {}) => any);
 
 interface MultiTemplateTypes {
   template: TemplateTypes;
@@ -23,81 +18,69 @@ interface MultiTemplateTypes {
 }
 
 interface MockDataArguments {
-  template?: TemplateTypes;
-  templates?: MultiTemplateTypes[];
+  template?: TemplateTypes | null;
+  templates?: MultiTemplateTypes[] | null;
   total?: number;
-  name?: string;
+  name?: string | null;
   args?: any;
-  path?: string;
+  path?: string | null;
   hiddenFields?: string[];
 }
 
-type MockDataType = ({  }: MockDataArguments) => Promise<any>;
-
 const tpl: ImportTypes = tplImports;
 
-const processTemplate = (templateType: TemplateTypes, args: any) => {
-  return typeof templateType === "function"
+const processTemplate = (templateType: TemplateTypes, args: any): string => {
+  return typeof templateType === 'function'
     ? templateType(args)
     : tpl[templateType](args);
 };
 
-const mockData: MockDataType = async ({
+const mockData = async ({
   template = null,
   templates = null,
   total = 10,
   name = null,
   args = {},
   path = null,
-  hiddenFields = []
-}) => {
+  hiddenFields = [],
+}: MockDataArguments): Promise<any> => {
+  /* eslint-disable no-param-reassign */
   const m = mocker();
 
   try {
     if (template) {
       // single schema
-      if (
-        typeof template !== "function" &&
-        Object.keys(tpl).indexOf(template) === -1
-      ) {
-        throw new Error("That template does not exist");
+      if (typeof template !== 'function' && Object.keys(tpl).indexOf(template) === -1) {
+        throw new Error('That template does not exist');
       }
 
       if (hiddenFields.length) args.hiddenFields = hiddenFields;
-      const modelName =
-        name || (typeof template === "string" && template) || "data";
+      const modelName = name || (typeof template === 'string' && template) || 'data';
       const processedTemplate = processTemplate(template, args);
 
       m.schema(modelName, processedTemplate, total);
     } else if (templates) {
       // multiple schemas
-      templates.forEach((tpl: any, i: number) => {
+      templates.forEach((tmpl: any, i: number) => {
         const modelName =
-          tpl.name ||
-          (typeof tpl.template === "string" && tpl.template) ||
-          i.toString();
-        tpl.args = tpl.args || {};
+          tmpl.name || (typeof tmpl.template === 'string' && tmpl.template) || i.toString();
+        tmpl.args = tmpl.args || {};
 
-        if (tpl.hiddenFields) tpl.args.hiddenFields = tpl.hiddenFields;
+        if (tmpl.hiddenFields) tmpl.args.hiddenFields = tmpl.hiddenFields;
 
-        const processedTemplate = processTemplate(tpl.template, tpl.args);
+        const processedTemplate = processTemplate(tmpl.template, tmpl.args);
 
-        m.schema(modelName, processedTemplate, tpl.total || 10);
+        m.schema(modelName, processedTemplate, tmpl.total || 10);
       });
     } else {
-      throw new Error(
-        "You must provide either a template or templates argument"
-      );
+      throw new Error('You must provide either a template or templates argument');
     }
 
     const fakeData = await m.build();
 
     if (path) {
-      const fileName: string = name
-        ? name
-        : typeof template === "string"
-          ? template
-          : "mockData";
+      const fileName: string =
+        name || (typeof template === 'string' ? template : 'mockData');
       saveToFile(fakeData, path, fileName);
     }
 

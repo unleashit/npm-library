@@ -22,8 +22,12 @@
   display: flex;
   height: 100%;
   align-items: center;
+  background: none;
+  border: none;
+  color: $white;
   font-size: 1rem;
   cursor: pointer;
+  outline: none;
 }
 
 .next {
@@ -36,16 +40,20 @@
 
 .number {
   background-color: $maroon;
-  //padding: .7rem;
+  border: none;
+  color: $white;
+  padding: 0;
   display: inline-block;
   width: 2.6rem;
   height: 2.6rem;
   margin-right: .5rem;
   text-align: center;
   border-radius: 50%;
+  font-family: inherit;
   font-size: 1rem;
   line-height: 2.6rem;
   cursor: pointer;
+  outline: none;
   &:last-child {
     margin-right: 0;
   }
@@ -67,7 +75,6 @@
 .chevronLeft, .chevronRight {
   fill: $white;
   height: 1.1rem;
-  margin-top: 6px;
 }
 
 .chevronLeft {

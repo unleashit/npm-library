@@ -7,48 +7,55 @@ exports[`<Pagination /> renders without crashing 1`] = `
   <div
     className="pagination__inner undefined"
   >
-    <span
+    <button
       className="pagination__number undefined active"
       key="1-pagination"
       onClick={[Function]}
+      type="button"
     >
       1
-    </span>
-    <span
+    </button>
+    <button
       className="pagination__number undefined"
       key="2-pagination"
       onClick={[Function]}
+      type="button"
     >
       2
-    </span>
-    <span
+    </button>
+    <button
       className="pagination__number undefined"
       key="3-pagination"
       onClick={[Function]}
+      type="button"
     >
       3
-    </span>
-    <span
+    </button>
+    <button
       className="pagination__number undefined"
       key="4-pagination"
       onClick={[Function]}
+      type="button"
     >
       4
-    </span>
-    <span
+    </button>
+    <button
       className="pagination__number undefined"
       key="5-pagination"
       onClick={[Function]}
+      type="button"
     >
       5
-    </span>
-    <div
+    </button>
+    <button
       className="pagination__next undefined"
       onClick={[Function]}
+      type="button"
     >
-      next 
+      next
+       
       <test-file-stub />
-    </div>
+    </button>
   </div>
 </div>
 `;
