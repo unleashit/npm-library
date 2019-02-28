@@ -1,14 +1,18 @@
-import React from 'react';
-import Pagination from '.';
+import * as React from 'react';
+/* eslint-disable-next-line import/no-extraneous-dependencies */
+import { shallow } from 'enzyme';
+import Pagination from './index';
+
+// declare const shallow: any;
 
 describe('<Pagination />', () => {
-  let wrapper;
-  let props = {};
+  let wrapper: any;
+  let props: any = {};
 
   jest
     .spyOn(Pagination.prototype, 'setContainerWidth')
-    .mockImplementation(function setContainerWidth(newOffset = 100000) {
-      this.setState({ containerWidth: newOffset });
+    .mockImplementation(function setContainerWidth() {
+      this.setState({ containerWidth: 1200 });
     });
 
   beforeEach(() => {
@@ -24,6 +28,8 @@ describe('<Pagination />', () => {
 
   it('renders without crashing', () => {
     expect(wrapper.find('.pagination__container')).toHaveLength(1);
+    const {containerWidth} = wrapper.state();
+    expect(containerWidth).toEqual(1200);
     expect(wrapper).toMatchSnapshot();
   });
 

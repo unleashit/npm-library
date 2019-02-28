@@ -14,7 +14,7 @@ const config = {
     libraryTarget: 'umd',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
   },
   node: {
     fs: 'empty',

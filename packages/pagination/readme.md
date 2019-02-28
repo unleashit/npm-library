@@ -1,6 +1,6 @@
 ## Pagination
 
-Responsive pagination component for React.
+Responsive pagination component for React in Typescript.
 
 ### Install
 ```

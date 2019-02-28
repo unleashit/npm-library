@@ -4,8 +4,7 @@
     "module": "commonjs",
     "lib": ["dom", "es2015", "es2017"],
     "sourceMap": true,
-    "outDir": "./dist",
-    // "moduleResolution": "node",
+    "moduleResolution": "node",
     "declaration": true,
     "strict": true,
     "removeComments": true,
@@ -13,14 +12,13 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["./src", "./src/**/*.test.ts"],
   "exclude": ["node_modules"]
 }

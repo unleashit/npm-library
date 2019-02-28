@@ -1,6 +1,5 @@
-"use strict";
-
 const path = require("path");
+
 const devMode = process.env.NODE_ENV !== "production";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -9,11 +8,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = {
   mode: "development",
   devtool: "source-map",
-  entry: __dirname + "/src/",
+  entry: `${__dirname  }/src/`,
   output: {
-    path: __dirname + "/dist/",
+    path: `${__dirname  }/dist/`,
     filename: "index.js",
     libraryTarget: "umd"
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
   },
   node: {
     fs: "empty"
@@ -31,6 +33,12 @@ const config = {
         test: /\.js?$/,
         loader: "babel-loader",
         include: path.join(__dirname, "src")
+      },
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
       },
       // {test: /\.js$/, use: "eslint-loader", exclude: /node_modules/},
       {

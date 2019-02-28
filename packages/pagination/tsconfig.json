@@ -1,26 +1,9 @@
 {
+  "extends": "../../tsconfig",
+  "include": ["./src", "./src/**/*.test.ts", "./src/**/*.d.ts"],
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "lib": ["dom", "es2015", "es2017"],
-    "sourceMap": true,
+    "jsx": "react",
     "outDir": "./dist",
-    // "moduleResolution": "node",
-    "declaration": true,
-    "strict": true,
-    "removeComments": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-  },
-  "include": ["./src", "./src/**/*.test.ts"],
-  "exclude": ["node_modules"]
+    "noImplicitThis": false
+  }
 }

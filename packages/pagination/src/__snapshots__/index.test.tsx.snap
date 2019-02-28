@@ -54,7 +54,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
     >
       next
        
-      <test-file-stub />
+      <svgrLoader />
     </button>
   </div>
 </div>

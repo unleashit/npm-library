@@ -1,55 +1,71 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import throttle from 'lodash/throttle';
-import style from './scss/pagination.scss';
-import ChevronLeft from './icons/chevron-left.svg';
+import * as React from 'react';
+import { throttle } from 'lodash';
 import ChevronRight from './icons/chevron-right.svg';
+import ChevronLeft from './icons/chevron-left.svg';
+import * as style from './scss/pagination.scss';
 
-class Pagination extends React.Component {
-  constructor(props) {
-    super(props);
+interface Props {
+  currentOffset: number;
+  perPage: number;
+  paginationHandler: (newOffset: number) => any;
+  total: number;
+  prevLabel: string;
+  nextLabel: string;
+}
 
-    this.state = {
-      containerWidth: 0,
-    };
+interface State {
+  containerWidth: number;
+}
 
-    this.boundSetContainerWidth = throttle(this.setContainerWidth.bind(this), 500);
+class Pagination extends React.Component<Props, State> {
+  static defaultProps = {
+    perPage: 10,
+    prevLabel: 'prev',
+    nextLabel: 'next',
+  };
 
-    this.containerRef = React.createRef();
-  }
+  private containerRef = React.createRef<HTMLDivElement>();
 
-  componentDidMount() {
+  boundSetContainerWidth = throttle(this.setContainerWidth.bind(this), 500);
+
+  state = {
+    containerWidth: 0,
+  };
+
+  componentDidMount(): void {
     this.setContainerWidth();
     window.addEventListener('resize', this.boundSetContainerWidth);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     window.removeEventListener('resize', this.boundSetContainerWidth);
   }
 
-  setContainerWidth() {
-    this.setState({ containerWidth: this.containerRef.current.offsetWidth });
+  setContainerWidth(): void {
+    const containerWidth = this.containerRef.current
+      ? this.containerRef.current.offsetWidth
+      : 0;
+    this.setState({ containerWidth });
   }
 
-  clickHandler(type, pageNumber = 1) {
+  clickHandler(type: string, pageNumber: number = 1): void | undefined {
     const { currentOffset, total, perPage, paginationHandler } = this.props;
     let newOffset;
 
     switch (type) {
       case 'next':
         newOffset = currentOffset + perPage;
-        if (newOffset > total) return false;
+        if (newOffset > total) return;
         paginationHandler(newOffset);
         break;
       case 'prev':
         newOffset = currentOffset - perPage;
-        if (newOffset < 0) return false;
+        if (newOffset < 0) return;
         paginationHandler(newOffset);
         break;
       case 'page':
         newOffset = (pageNumber - 1) * perPage;
-        if (newOffset === currentOffset || newOffset > total || newOffset < 0)
-          return false;
+        if (newOffset === currentOffset || newOffset > total || newOffset < 0) return;
         paginationHandler(newOffset);
         break;
       default:
@@ -57,11 +73,9 @@ class Pagination extends React.Component {
           'Must supply pagination an argument of "prev", "next", or "page"',
         );
     }
-
-    return false;
   }
 
-  prev() {
+  prev(): JSX.Element | null {
     const { currentOffset, perPage, prevLabel } = this.props;
 
     return currentOffset - perPage >= 0 ? (
@@ -75,7 +89,7 @@ class Pagination extends React.Component {
     ) : null;
   }
 
-  next() {
+  next(): JSX.Element | null {
     const { currentOffset, perPage, total, nextLabel } = this.props;
 
     return currentOffset + perPage < total ? (
@@ -89,7 +103,7 @@ class Pagination extends React.Component {
     ) : null;
   }
 
-  numbers() {
+  numbers(): JSX.Element[] | null {
     const { total, perPage, currentOffset } = this.props;
     const { containerWidth } = this.state;
 
@@ -98,7 +112,7 @@ class Pagination extends React.Component {
 
     let maxPages;
     if (containerWidth <= 1000) {
-      const [_, breakPointPages] = [
+      const [_, breakPointPages]: any = [
         [450, 2],
         [550, 3],
         [650, 4],
@@ -110,28 +124,30 @@ class Pagination extends React.Component {
       maxPages = Math.ceil(containerWidth / 80);
     }
 
-    let pageAry = new Array(pages).fill(undefined).map((_, i) => i + 1);
+    let pageAry: (number | null)[] = new Array(pages)
+      .fill(undefined)
+      .map((_, i) => i + 1);
 
     if (pages > maxPages) {
       if (currentPage > 1 && currentPage < pages) {
         pageAry = pageAry.slice(currentPage - 1, currentPage - 1 + (maxPages - 1));
         if (pageAry[pageAry.length - 1] === pages) pageAry.pop();
-        pageAry.unshift(1, '...');
-        pageAry.push('...', pages);
+        pageAry.unshift(1, null);
+        pageAry.push(null, pages);
       } else if (currentPage === 1) {
         pageAry = pageAry.slice(0, maxPages);
-        pageAry.push('...', pages);
+        pageAry.push(null, pages);
       } else if (currentPage === pages) {
         pageAry = pageAry.slice(-maxPages);
-        pageAry.unshift(1, '...');
+        pageAry.unshift(1, null);
       }
     }
 
     return pages > 1
-      ? pageAry.map((page, i) =>
-          page === '...' ? (
+      ? pageAry.map((page) =>
+          !page ? (
             <span
-              key={`${i}-ellipsis`}
+              key={`${page}-ellipsis`}
               className={`pagination__ellipsis ${style.ellipsis}`}
             >
               ...
@@ -152,7 +168,7 @@ class Pagination extends React.Component {
       : null;
   }
 
-  render() {
+  render(): JSX.Element | null {
     const { total, perPage } = this.props;
 
     return total > perPage ? (
@@ -169,20 +185,5 @@ class Pagination extends React.Component {
     ) : null;
   }
 }
-
-Pagination.propTypes = {
-  currentOffset: PropTypes.number.isRequired,
-  perPage: PropTypes.number,
-  paginationHandler: PropTypes.func.isRequired,
-  total: PropTypes.number.isRequired,
-  prevLabel: PropTypes.string,
-  nextLabel: PropTypes.string,
-};
-
-Pagination.defaultProps = {
-  perPage: 10,
-  prevLabel: 'prev',
-  nextLabel: 'next',
-};
 
 export default Pagination;

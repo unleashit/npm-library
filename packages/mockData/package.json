@@ -42,7 +42,6 @@
     "mocker-data-generator": "^2.6.6"
   },
   "devDependencies": {
-    "@unleashit/mock-data": "^0.5.8",
     "@types/jest": "^24.0.5",
     "@types/node": "^11.9.4",
     "eslint": "5.12.0",
