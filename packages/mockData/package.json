@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/mock-data",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "Wrapper for mocker-data-generater providing a set of templates and arguments. Can optionally write to a file (node)",
   "main": "dist/index.js",
   "scripts": {
@@ -44,6 +44,8 @@
   "devDependencies": {
     "@types/jest": "^24.0.5",
     "@types/node": "^11.9.4",
+    "@typescript-eslint/eslint-plugin": "^1.3.0",
+    "@typescript-eslint/parser": "^1.3.0",
     "eslint": "5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.0.0",
@@ -51,8 +53,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "@typescript-eslint/eslint-plugin": "^1.3.0",
-    "@typescript-eslint/parser": "^1.3.0",
     "jest": "23.6.0",
     "prettier": "^1.16.4",
     "ts-jest": "^23.10.5",
