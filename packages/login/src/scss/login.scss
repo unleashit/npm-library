@@ -1,0 +1,68 @@
+$gray: #e8e8e8;
+$red: #e74444;
+
+.loginContainer {
+  width: 100%;
+
+  h2 {
+    font-weight: normal;
+    margin-bottom: .8rem;
+  }
+}
+
+.loginForm {
+  margin-top: 2.5rem;
+}
+
+.loginFormGroup {
+  margin-bottom: .8rem;
+}
+
+.loginInput {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .7rem .5rem;
+}
+
+.loginInputError {
+  border-color: $red;
+}
+
+.loginLabel {
+  display: block;
+  margin-bottom: .4rem;
+}
+
+.loginButton {
+  display: block;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: .7rem .5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: $gray;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.errorMessage {
+  color: $red;
+}
+
+.serverAuthError {
+  margin: 1rem 0;
+  padding: .7rem .5rem;
+  background-color: $gray;
+  border-radius: 5px;
+  text-align: center;
+}
+
+// default components
+
+.loginLoader {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}

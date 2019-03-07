@@ -11,7 +11,7 @@ describe('<Pagination />', () => {
 
   jest
     .spyOn(Pagination.prototype, 'setContainerWidth')
-    .mockImplementation(function setContainerWidth() {
+    .mockImplementation(function setContainerWidth(this: { setState: any }) {
       this.setState({ containerWidth: 1200 });
     });
 
@@ -28,7 +28,7 @@ describe('<Pagination />', () => {
 
   it('renders without crashing', () => {
     expect(wrapper.find('.pagination__container')).toHaveLength(1);
-    const {containerWidth} = wrapper.state();
+    const { containerWidth } = wrapper.state();
     expect(containerWidth).toEqual(1200);
     expect(wrapper).toMatchSnapshot();
   });

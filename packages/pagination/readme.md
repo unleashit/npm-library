@@ -66,7 +66,7 @@ export class PaginationDemo extends React.Component {
 | Name      | Type |  Description | default |
 | ----------- | ----------- | ---------| ------- |
 | perPage      | Number       | Number of items per page | 10 |
-| currentOfset   | Number        | Current offset of the list | 0 (required) |
+| currentOffset   | Number        | Current offset of the list | 0 (required) |
 | total | Number | Total number of items | 0 (required) |
 | paginationHandler | Function | The method to call when a page or prev/next button is clicked. Provides the next offset as an argument. | required
 | prevLabel | String | Label for previous button | 'prev' |

@@ -10,6 +10,9 @@ const Navigation = () => (
       <li>
         <Link to={"/pagination"} className="main-navigation__link">Pagination</Link>
       </li>
+      <li>
+        <Link to={"/login"} className="main-navigation__link">Login</Link>
+      </li>
     </ul>
   </nav>
 );

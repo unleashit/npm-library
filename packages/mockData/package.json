@@ -39,7 +39,8 @@
     "access": "public"
   },
   "dependencies": {
-    "mocker-data-generator": "^2.6.6"
+    "mocker-data-generator": "^2.6.6",
+    "uglifyjs-webpack-plugin": "^2.1.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.5",

@@ -3,8 +3,6 @@ const React = require('react');
 const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
-// const { shallow, render, mount } = Enzyme;
-
 // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
 // React 16 Enzyme adapter

@@ -24,7 +24,15 @@ module.exports =  {
     'react/no-array-index-key': 0,
     'react/jsx-one-expression-per-line': 0,
     'no-underscore-dangle': 0,
-    'import/prefer-default-export': 0
+    'import/prefer-default-export': 0,
+    'react/prop-types': 0,
+    "jsx-a11y/label-has-for": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+        "some": [ "nesting", "id" ]
+      },
+      "allowChildren": false
+    }]
   },
   "env": {
     "browser": true,

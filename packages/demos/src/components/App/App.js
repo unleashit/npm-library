@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "../Home/Home";
 import Navigation from "./Navigation";
 import Pagination from "../pagination";
+import Login from '../login';
 import ApiService from "../../utils/api";
 import "./App.scss";
 
@@ -41,6 +42,7 @@ class App extends React.Component {
             <Switch>
               <Route path={"/"} exact component={Home} />
               <Route path={"/pagination"} exact component={Pagination} />
+              <Route path={"/login"} exact component={Login} />
             </Switch>
           </div>
         </Router>

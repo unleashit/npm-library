@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { throttle } from 'lodash';
-import ChevronRight from './icons/chevron-right.svg';
-import ChevronLeft from './icons/chevron-left.svg';
-import * as style from './scss/pagination.scss';
+import ChevronRight from './assets/icons/chevron-right.svg';
+import ChevronLeft from './assets/icons/chevron-left.svg';
+import * as style from './assets/scss/pagination.scss';
 
 interface Props {
   currentOffset: number;
@@ -24,7 +24,7 @@ class Pagination extends React.Component<Props, State> {
     nextLabel: 'next',
   };
 
-  private containerRef = React.createRef<HTMLDivElement>();
+  containerRef = React.createRef<HTMLDivElement>();
 
   boundSetContainerWidth = throttle(this.setContainerWidth.bind(this), 500);
 

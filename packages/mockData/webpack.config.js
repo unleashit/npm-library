@@ -21,11 +21,12 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.js?$/,
-      //   loader: "babel-loader",
-      //   include: path.join(__dirname, "src")
-      // },
+      {
+        test: /\.js?$/,
+        loader: "babel-loader",
+        include: path.join(__dirname, "src"),
+        exclude: /node_modules/
+      },
       // {test: /\.js$/, use: "eslint-loader", exclude: /node_modules/},
       {
         test: /\.tsx?$/,
@@ -33,10 +34,10 @@ const config = {
         include: path.join(__dirname, 'src'),
         exclude: /node_modules/,
       },
-      // {
-      //   test: /\.(jpe?g|png|gif|md)$/i,
-      //   use: ["file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]"]
-      // },
+      {
+        test: /\.(jpe?g|png|gif|md|svg)$/i,
+        use: ["file-loader?hash=sha512&digest=hex&name=assets/[name]-[hash].[ext]"]
+      },
     ],
   },
 };
@@ -49,7 +50,7 @@ const config = {
 //           parallel: true,
 //           sourceMap: true
 //         }),
-//         new OptimizeCSSAssetsPlugin({})
+//         // new OptimizeCSSAssetsPlugin({})
 //       ]
 //     }
 //   : undefined;
