@@ -52,7 +52,7 @@ interface LoginHandlerResponse {
 
 ```
 ### CSS
-Basic css can be imported if desired: `import '@unleashit/pagination/dist/style.css';` . Class names use a CSS modules hash to avoid name collisions.
+Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';` . Class names use a CSS modules hash to avoid name collisions.
 
 ### Props
 

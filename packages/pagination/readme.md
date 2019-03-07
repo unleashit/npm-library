@@ -1,6 +1,6 @@
 ## Pagination
 
-Responsive pagination component for React in Typescript.
+Responsive pagination component for React in Typescript. Just give it a total, current offset and handler and it returns the new offset as needed
 
 ### Install
 ```
@@ -60,6 +60,9 @@ export class PaginationDemo extends React.Component {
   }
 }
 ```
+### CSS
+
+Basic css can be imported if desired: import '@unleashit/pagination/dist/style.css'; . Class names use a CSS modules hash to avoid name collisions.
 
 ### Props
 
