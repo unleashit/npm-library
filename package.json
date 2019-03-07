@@ -39,7 +39,8 @@
     "test:coverage": "lerna run --stream --concurrency 1 test:coverage",
     "publish": "lerna publish",
     "storybook": "start-storybook -p 9009",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "clean": "lerna clean"
   },
   "workspaces": {
     "packages": [

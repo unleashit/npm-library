@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import { LoginLoader, LoginHeader, LoginHeaderProps } from './defaults/components';
 import { CustomInput } from './defaults/fields';
@@ -12,12 +13,13 @@ interface FormValues {
 }
 
 interface Props {
-  onSuccess: () => any;
-  loginHandler: (values: any, args?: any) => Promise<any>;
+  onSuccess: (resp: any) => any;
+  loginHandler: (values: any) => Promise<any>;
   layout: string;
   header: React.FC<LoginHeaderProps>;
   signupUrl: string;
   loader: React.FC<{}>;
+  schema: Schema<any>;
 }
 
 export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
@@ -53,23 +55,21 @@ Login.defaultProps = {
 
 export default withFormik<Props, FormValues>({
   mapPropsToValues: () => ({ email: '', password: '', serverAuth: '' }),
-  validationSchema: schema,
+  validationSchema: (props: any) => props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
     { props, resetForm, setFieldValue, setSubmitting, setErrors },
   ) => {
     const resp = await props.loginHandler(values);
     const errors = resp.errors || {};
-    setSubmitting(false);
 
-    if (Object.keys(errors).length) {
+    if (resp.success) {
+      props.onSuccess(resp);
+    } else {
       resetForm();
       setFieldValue('email', values.email || '', false);
       setErrors(errors);
-    }
-
-    if (resp.success) {
-      props.onSuccess();
+      setSubmitting(false);
     }
   },
 })(Login);

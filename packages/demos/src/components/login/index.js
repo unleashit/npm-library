@@ -19,11 +19,18 @@ class LoginDemo extends Component {
   }
 
   onSuccess() {
-    window.location.reload();
+    window.location.href = '/';
   }
 
   render() {
-    return <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />;
+    return (
+      <div style={{ width: '100%' }}>
+        <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
+          Valid test login: test@test.com/12345678
+        </p>
+        <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />
+      </div>
+    );
   }
 }
 
