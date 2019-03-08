@@ -15,8 +15,8 @@ interface FormValues {
 interface LoginHandlerResponse {
   success: boolean;
   errors?: {
-    serverAuth?: string; // error msg to print in browser when auth fails
-    [key: string]: any; // optionally validate anything else on server
+    serverAuth: string; // error msg to print in browser when auth fails
+    [key: string]: string; // optionally validate anything else on server
   };
 }
 

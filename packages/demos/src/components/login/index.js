@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '@unleashit/login';
 
 import './login.scss';
-import '@unleashit/pagination/dist/style.css';
+import '@unleashit/login/dist/style.css';
 
 class LoginDemo extends Component {
   async loginHandler(values) {
