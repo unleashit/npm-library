@@ -12,9 +12,17 @@ interface FormValues {
   serverAuth: string;
 }
 
+interface LoginHandlerResponse {
+  success: boolean;
+  errors?: {
+    serverAuth?: string; // error msg to print in browser when auth fails
+    [key: string]: any; // optionally validate anything else on server
+  };
+}
+
 interface Props {
   onSuccess: (resp: any) => any;
-  loginHandler: (values: any) => Promise<any>;
+  loginHandler: (values: any) => Promise<LoginHandlerResponse>;
   layout: string;
   header: React.FC<LoginHeaderProps>;
   signupUrl: string;
@@ -58,16 +66,15 @@ export default withFormik<Props, FormValues>({
   validationSchema: (props: any) => props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
-    { props, resetForm, setFieldValue, setSubmitting, setErrors },
+    { props, setFieldValue, setSubmitting, setErrors },
   ) => {
-    const resp = await props.loginHandler(values);
+    const resp: LoginHandlerResponse = await props.loginHandler(values);
     const errors = resp.errors || {};
 
-    if (resp.success) {
+    if (resp.success === true) {
       props.onSuccess(resp);
     } else {
-      resetForm();
-      setFieldValue('email', values.email || '', false);
+      setFieldValue('password', '', false);
       setErrors(errors);
       setSubmitting(false);
     }
