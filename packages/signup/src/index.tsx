@@ -125,16 +125,21 @@ export default withFormik<Props, FormValues | any>({
   },
   validationSchema: (props: any) => (props.schema ? props.schema : schema),
   handleSubmit: async (values, { props, setFieldValue, setSubmitting, setErrors }) => {
-    const resp: SignupHandlerResponse = await props.signupHandler(values);
-    const errors = resp.errors || {};
+    try {
+      const resp: SignupHandlerResponse = await props.signupHandler(values);
 
-    if (resp.success === true) {
-      props.onSuccess(resp);
-    } else {
-      setFieldValue('password', '', false);
-      setFieldValue('passwordConfirm', '', false);
-      setErrors(errors);
-      setSubmitting(false);
+      const errors = resp.errors || {};
+
+      if (resp.success === true) {
+        props.onSuccess(resp);
+      } else {
+        setFieldValue('password', '', false);
+        setFieldValue('passwordConfirm', '', false);
+        setErrors(errors);
+        setSubmitting(false);
+      }
+    } catch (err) {
+      throw err;
     }
   },
 })(Signup);

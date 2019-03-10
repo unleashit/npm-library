@@ -68,15 +68,19 @@ export default withFormik<Props, FormValues>({
     values,
     { props, setFieldValue, setSubmitting, setErrors },
   ) => {
-    const resp: LoginHandlerResponse = await props.loginHandler(values);
-    const errors = resp.errors || {};
+    try {
+      const resp: LoginHandlerResponse = await props.loginHandler(values);
+      const errors = resp.errors || {};
 
-    if (resp.success === true) {
-      props.onSuccess(resp);
-    } else {
-      setFieldValue('password', '', false);
-      setErrors(errors);
-      setSubmitting(false);
+      if (resp.success === true) {
+        props.onSuccess(resp);
+      } else {
+        setFieldValue('password', '', false);
+        setErrors(errors);
+        setSubmitting(false);
+      }
+    } catch(err) {
+    	throw err;
     }
   },
 })(Login);
