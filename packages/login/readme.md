@@ -58,9 +58,9 @@ Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';
 
 | Name      | Type |  Description | default |
 | ----------- | ----------- | ---------| ------- |
-| loginHandler      | (values: {}) => Promise<LoginHandlerResponse>       | Called on submission and after validation. Use to check auth. Should return the above interface | required |
+| loginHandler      | (values: {}) => Promise\<LoginHandlerResponse>       | Called on submission and after validation. Use to check auth. Should return the above interface | required |
 | onSuccess      | (resp: LoginHandlerResponse) => any       | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required |
-| schema      | yup.Schema<LoginSchema>     | Yup schema to override the default | standard validation |
+| schema      | yup.Schema\<LoginSchema>     | Yup schema to override the default | standard validation |
 | header      | React.FC     | React component to override default header | basic header |
 | loader      | React.FC     | React component to override default loader | Logging in... |
 | signupUrl      | string     | Url for signup page. Use only if using default header | /signup |

@@ -4,6 +4,7 @@ import Home from "../Home/Home";
 import Navigation from "./Navigation";
 import Pagination from "../pagination";
 import Login from '../login';
+import Signup from '../signup';
 import ApiService from "../../utils/api";
 import "./App.scss";
 
@@ -43,6 +44,7 @@ class App extends React.Component {
               <Route path={"/"} exact component={Home} />
               <Route path={"/pagination"} exact component={Pagination} />
               <Route path={"/login"} exact component={Login} />
+              <Route path={"/signup"} exact component={Signup} />
             </Switch>
           </div>
         </Router>

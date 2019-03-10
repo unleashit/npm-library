@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginContainer /> renders without crashing 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialValues": Object {
+        "email": "",
+        "password": "",
+        "serverAuth": "",
+      },
+      "isSubmitting": false,
+      "isValid": false,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setError": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "status": undefined,
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validate": undefined,
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validationSchema": [Function],
+      "values": Object {
+        "email": "",
+        "password": "",
+        "serverAuth": "",
+      },
+    }
+  }
+>
+  <Login
+    dirty={false}
+    errors={Object {}}
+    handleBlur={[Function]}
+    handleChange={[Function]}
+    handleReset={[Function]}
+    handleSubmit={[Function]}
+    header={[Function]}
+    initialValues={
+      Object {
+        "email": "",
+        "password": "",
+        "serverAuth": "",
+      }
+    }
+    isSubmitting={false}
+    isValid={false}
+    isValidating={false}
+    layout="page"
+    loader={[Function]}
+    registerField={[Function]}
+    resetForm={[Function]}
+    setError={[Function]}
+    setErrors={[Function]}
+    setFieldError={[Function]}
+    setFieldTouched={[Function]}
+    setFieldValue={[Function]}
+    setFormikState={[Function]}
+    setStatus={[Function]}
+    setSubmitting={[Function]}
+    setTouched={[Function]}
+    setValues={[Function]}
+    signupUrl="/signup"
+    submitCount={0}
+    submitForm={[Function]}
+    touched={Object {}}
+    unregisterField={[Function]}
+    validateField={[Function]}
+    validateForm={[Function]}
+    validateOnBlur={true}
+    validateOnChange={true}
+    values={
+      Object {
+        "email": "",
+        "password": "",
+        "serverAuth": "",
+      }
+    }
+  />
+</ContextProvider>
+`;

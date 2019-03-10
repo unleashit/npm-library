@@ -13,6 +13,9 @@ const Navigation = () => (
       <li>
         <Link to={"/login"} className="main-navigation__link">Login</Link>
       </li>
+      <li>
+        <Link to={"/signup"} className="main-navigation__link">Signup</Link>
+      </li>
     </ul>
   </nav>
 );
