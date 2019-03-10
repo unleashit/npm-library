@@ -80,6 +80,7 @@ export default withFormik<Props, FormValues>({
         setSubmitting(false);
       }
     } catch(err) {
+      setSubmitting(false);
     	throw err;
     }
   },
