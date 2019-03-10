@@ -14,7 +14,8 @@ interface CustomField {
 interface PassedFormikProps {
   handleChange: any;
   handleBlur: any;
-  value: any;
+  values?: any;
+  value?: any; // added for simplicity, not passed down from parent
   errors: any;
   touched: any;
 }
@@ -110,13 +111,8 @@ function CustomFields({
   errors,
   touched,
 }: {
-  fields: CustomField[];
-  handleChange: any;
-  handleBlur: any;
-  values: any;
-  errors: any;
-  touched: any;
-}): JSX.Element {
+  fields: CustomField[]
+} & PassedFormikProps): JSX.Element {
   return (
     <div>
       {fields.map(field => (
