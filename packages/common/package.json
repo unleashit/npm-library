@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@unleashit/common",
   "version": "0.1.0",
   "main": "dist/index.js",
@@ -22,14 +21,13 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">=15.0.0"
-  },
-  "dependencies": {
-    "@types/yup": "^0.26.11",
+    "react": ">=15.0.0",
     "formik": "^1.5.1",
     "yup": "^0.26.10"
   },
+  "dependencies": {},
   "devDependencies": {
+    "@types/yup": "^0.26.11",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
@@ -67,6 +65,7 @@
     "prettier": "^1.16.4",
     "react": "16.8.2",
     "react-dom": "16.8.2",
+    "formik": "^1.5.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "ts-jest": "^23.10.5",

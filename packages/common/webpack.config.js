@@ -53,7 +53,7 @@ const config = {
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        use: ['file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]'],
+        use: ['file-loader?hash=sha512&digest=hex&name=assets/[name]-[hash].[ext]'],
       },
       {
         test: /\.svg$/,
@@ -68,7 +68,7 @@ const config = {
       },
       {
         test: /\.(eot|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-        use: ['file-loader?name=fonts/[name].[ext]'],
+        use: ['file-loader?name=assets/fonts/[name].[ext]'],
       },
     ],
   },

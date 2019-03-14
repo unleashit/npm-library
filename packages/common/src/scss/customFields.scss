@@ -1,0 +1,52 @@
+$gray: #e8e8e8;
+$red: #e74444;
+
+.signupFormGroup {
+  margin-bottom: .8rem;
+}
+
+.signupInput, .signupTextarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .7rem .5rem;
+}
+
+.signupTextarea {
+  height: 8rem;
+}
+
+.signupSelect {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .7rem .5rem;
+}
+
+.signupInputError {
+  border-color: $red;
+}
+
+.signupLabel {
+  display: block;
+  margin-bottom: .4rem;
+}
+
+.signupButton {
+  display: block;
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: .7rem .5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: $gray;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.errorMessage {
+  color: $red;
+}
