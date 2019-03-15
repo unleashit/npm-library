@@ -4,7 +4,7 @@
   "description": "Wrapper for mocker-data-generater providing a set of templates and arguments. Can optionally write to a file (node)",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc --watch",
+    "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
     "build:old": "rm -rf ./dist && NODE_ENV=production tsc",
     "test": "jest",

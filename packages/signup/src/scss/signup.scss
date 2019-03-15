@@ -18,12 +18,16 @@ $red: #e74444;
   margin-bottom: .8rem;
 }
 
-.signupInput {
+.signupInput, .signupTextarea {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: .7rem .5rem;
+}
+
+.signupTextarea {
+  height: 8rem;
 }
 
 .signupSelect {

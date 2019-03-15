@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as style from '../scss/customFields.scss';
+// import * as style from '../scss/customFields.scss';
 
 export interface CustomField {
   element: 'input' | 'select' | 'textarea';
@@ -11,24 +11,25 @@ export interface CustomField {
   custAttrs?: { [key: string]: string };
 }
 
-export interface PassedFormikProps {
+export interface PassedProps {
   handleChange: any;
   handleBlur: any;
   values?: any;
-  value?: any; // added for simplicity, not passed down from parent
+  value?: any;
+  style?: any;
   errors: any;
   touched: any;
 }
 
 const ce = React.createElement;
 
-const getOptions = (options: string[][]): any => {
+const getOptions = (options: string[][]): React.ReactElement[] => {
   return options.map(option => {
     return ce('option', { key: option[0], value: option[0] }, option[1]);
   });
 };
 
-const Field = (props: CustomField & PassedFormikProps): JSX.Element | null => {
+function Field(props: CustomField & PassedProps): JSX.Element | null {
   const {
     element,
     type,
@@ -41,7 +42,8 @@ const Field = (props: CustomField & PassedFormikProps): JSX.Element | null => {
     value,
     errors,
     touched,
-    defaultChecked
+    defaultChecked,
+    style
   } = props;
   let Element;
 
@@ -123,9 +125,10 @@ export function CustomFields({
   values,
   errors,
   touched,
+  style
 }: {
   fields: CustomField[]
-} & PassedFormikProps): JSX.Element {
+} & PassedProps): JSX.Element {
   return (
     <div>
       {fields.map(field => (
@@ -141,6 +144,7 @@ export function CustomFields({
             handleChange={handleChange}
             handleBlur={handleBlur}
             value={values[field.name]}
+            style={style}
             {...field}
           />
         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Signup from '@unleashit/signup';
-// import schema from './validations';
+import schema from './validations';
 
 import './signup.scss';
 import '@unleashit/signup/dist/style.css';
@@ -32,46 +32,52 @@ class SignupDemo extends Component {
         <Signup
           signupHandler={this.signupHandler}
           onSuccess={this.onSuccess}
-          // schema={schema}
-          // customFields={[
-          //   {
-          //     elementType: 'input',
-          //     type: 'text',
-          //     name: 'email',
-          //     label: 'Email'
-          //   },
-          //   {
-          //     elementType: 'input',
-          //     type: 'password',
-          //     name: 'password',
-          //     label: 'Password',
-          //   },
-          //   {
-          //     elementType: 'input',
-          //     type: 'password',
-          //     name: 'passwordConfirm',
-          //     label: 'Type password again',
-          //   },
-          //   {
-          //     elementType: 'select',
-          //     name: 'color',
-          //     label: 'Choose a color',
-          //     options: [
-          //       ['', '- select -'],
-          //       ['red', 'red'],
-          //       ['green', 'green'],
-          //       ['blue', 'blue'],
-          //       ['yellow', 'yellow'],
-          //     ],
-          //   },
-          //   {
-          //     elementType: 'checkbox',
-          //     name: 'newsletterOptIn',
-          //     label: 'Subscribe to our newsletter?',
-          //     defaultChecked: true,
-          //     defaultValue: true
-          //   }
-          // ]}
+          schema={schema}
+          customFields={[
+            {
+              element: 'input',
+              type: 'text',
+              name: 'email',
+              label: 'Email'
+            },
+            {
+              element: 'input',
+              type: 'password',
+              name: 'password',
+              label: 'Password',
+            },
+            {
+              element: 'input',
+              type: 'password',
+              name: 'passwordConfirm',
+              label: 'Type password again',
+            },
+            {
+              element: 'select',
+              name: 'color',
+              label: 'Choose a color',
+              options: [
+                ['', '- select -'],
+                ['red', 'red'],
+                ['green', 'green'],
+                ['blue', 'blue'],
+                ['yellow', 'yellow'],
+              ],
+            },
+            {
+              element: 'textarea',
+              name: 'comments',
+              label: 'Give us your feedback'
+            },
+            {
+              element: 'input',
+              type: 'checkbox',
+              name: 'newsletterOptIn',
+              label: 'Subscribe to our newsletter?',
+              defaultChecked: true,
+              defaultValue: true
+            },
+          ]}
         />
       </div>
     );

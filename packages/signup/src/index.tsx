@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
+import { CustomFields, CustomField } from '@unleashit/common';
 import { SignupLoader, SignupHeader, SignupHeaderProps } from './defaults/components';
 import { CustomInput } from './defaults/fields';
-import CustomFields from './CustomFields';
 import schema from './defaults/validations';
 import * as style from './scss/signup.scss';
 
@@ -20,15 +20,6 @@ interface SignupHandlerResponse {
     serverAuth: string; // error msg to print in browser when auth fails
     [key: string]: string; // optionally validate anything else on server
   };
-}
-
-interface CustomField {
-  elementType: 'input' | 'select' | 'checkbox' | 'radio';
-  type: string;
-  name: string;
-  label: string;
-  options?: string[][];
-  custAttrs?: { [key: string]: string };
 }
 
 interface Props {
@@ -75,6 +66,7 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
+              style={style}
             />
           ) : (
             <React.Fragment>
@@ -97,7 +89,6 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
 }
 
 Signup.defaultProps = {
-  layout: 'page',
   header: SignupHeader,
   loginUrl: '/login',
   loader: SignupLoader,

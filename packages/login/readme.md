@@ -47,8 +47,11 @@ export default LoginDemo;
 interface LoginHandlerResponse {
   success: boolean;
   errors?: {
-    serverAuth: string; // error msg to print in browser when auth fails
-    [key: string]: string; // optionally validate anything else on server
+    // error msg to print in browser when auth fails
+    serverAuth: string;
+    // optionally validate anything else on server
+    // key is the field's name attr, value is error msg to display
+    [key: string]: string; 
   };
 }
 
@@ -60,7 +63,7 @@ Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';
 
 | Name      | Type |  Description | default |
 | ----------- | ----------- | ---------| ------- |
-| loginHandler      | (values: {}) => Promise\<LoginHandlerResponse>       | Called on submission and after validation. Use to check auth. Should return the above interface | required |
+| loginHandler      | (values: any) => Promise\<LoginHandlerResponse>       | Called on submission and after validation. Use to check auth. Should return the above interface | required |
 | onSuccess      | (resp: LoginHandlerResponse) => any       | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required |
 | schema      | yup.Schema\<LoginSchema>     | Yup schema to override the default | standard validation |
 | header      | React.FC     | React component to override default header | basic header |

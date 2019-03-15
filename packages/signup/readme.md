@@ -120,22 +120,28 @@ const schema = yup.object().shape({
 interface SignupHandlerResponse {
   success: boolean;
   errors?: {
-    serverAuth: string; // error msg to print in browser when auth fails
-    [key: string]: string; // optionally validate anything else on server
+    // error msg to print in browser when signup fails
+    // (typically because the user/email was already registered)
+    serverAuth: string;
+    // optionally validate anything else on server
+    // key is the field's name attr, value is error msg to display
+    [key: string]: string;
   };
 }
 
-// customFields prop should use an array of objects in this shape:
+// customFields prop should be an array of objects in this shape:
 interface CustomField {
-  elementType: 'input' | 'select' | 'checkbox'; // more will be added
+  element: 'input' | 'select' | 'textarea';
   type: string;
   name: string;
   label: string;
-  options?: string[][];
+  options?: string[][]; // for select element
+  defaultChecked?: boolean;
   custAttrs?: { [key: string]: string };
 }
 
 ```
+Note: currently tested custom fields are input, select, textarea and checkbox. Support for radio and others will be added.
 
 ### CSS
 
@@ -145,7 +151,7 @@ Basic css can be imported if desired: `import '@unleashit/signup/dist/style.css'
 
 | Name          | Type                                            | Description                                                                                                                       | default             |
 | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| signupHandler | (values: {}) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required            |
+| signupHandler | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required            |
 | onSuccess     | (resp: SignupHandlerResponse) => any            | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required            |
 | schema        | yup.Schema\<SignupSchema>                       | Yup schema to override the default                                                                                                | standard validation |
 | header        | React.FC                                        | React component to override default header                                                                                        | basic header        |

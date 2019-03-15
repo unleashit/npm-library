@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "description": "Shared library for @unleashit components.",
   "scripts": {
-    "start": "npm run build && NODE_ENV=development yarn webpack --watch --source-maps --mode development",
+    "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
     "test": "NODE_ENV=test jest --config ./jest.config.js"
   },

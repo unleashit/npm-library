@@ -8,7 +8,8 @@ Just getting going, so far we have...
 2. [React pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component for React in Typescript. Just give it a total, current offset and handler and it returns the new offset as needed.
 3. [React login component](https://github.com/unleashit/npm-library/tree/master/packages/login) - React login component in Typescript, Formik and Yup for validation. It accepts props including submit handlers, custom fields, custom Yup schema, custom header and more. Basic CSS is available.
 4. [React sign-up/registration component](https://github.com/unleashit/npm-library/tree/master/packages/signup) - React signup component in Typescript, Formik and Yup for validation. It accepts props including submit handlers, custom fields, custom Yup schema, custom header and more. Basic CSS is available.
-5. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
+5. [React forgot password component](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - coming soon.
+6. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos) is available for previewing the components. Will probably soon be removed in favor of Storybook.
 
@@ -22,6 +23,6 @@ A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos
 
 Run all tests: `yarn test`
 
-Run Storybook (WIP): `yarn storybook`
+Run Storybook (WIP): `yarn run storybook`
 
 Other scripts are available to build, publish to NPM, clean, etc.
