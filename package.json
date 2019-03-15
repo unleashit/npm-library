@@ -59,8 +59,13 @@
       "type-enum": [
         2,
         "always",
-        ["build", "chore", "ci", "docs", "feature", "fix", "perf", "refactor", "rever", "style", "test", "misc"]
+        ["build", "configs", "docs", "feature", "fix", "perf", "refactor", "revert", "style", "test", "misc"]
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
