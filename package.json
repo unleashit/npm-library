@@ -54,26 +54,7 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "build",
-          "configs",
-          "docs",
-          "feature",
-          "fix",
-          "perf",
-          "refactor",
-          "revert",
-          "style",
-          "test",
-          "misc"
-        ]
-      ]
-    }
+    ]
   },
   "husky": {
     "hooks": {
