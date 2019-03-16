@@ -15,7 +15,7 @@
     "test": "lerna run --stream --concurrency 1 test",
     "test:watch": "lerna run --stream test:watch",
     "test:coverage": "lerna run --stream test:coverage",
-    "publish": "lerna publish",
+    "publish": "HUSKY_BYPASS=true lerna publish",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
     "clean": "lerna clean && rm -rf node_modules"
@@ -75,6 +75,12 @@
           "misc"
         ]
       ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
