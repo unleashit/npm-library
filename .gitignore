@@ -7,4 +7,5 @@ build
 coverage
 .env*
 lerna-debug.log
+.secrets
 
