@@ -8,7 +8,12 @@
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "github-release": true,
+      "githubRelease": true,
+      "message": "chore(release): publish"
+    },
+    "version": {
+      "conventionalCommits": true,
+      "githubRelease": true,
       "message": "chore(release): publish"
     }
   }
