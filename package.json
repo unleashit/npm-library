@@ -77,7 +77,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "if [ -n $HUSKY_NO_VERIFY ]; then echo \"skipping hook\"; else lerna run --stream --concurrency 1 test; fi",
+      "pre-commit": "if [ -n $HUSKY_NO_VERIFY ]; then lerna run --stream --concurrency 1 test; fi",
       "commit-msg": "[ -n $HUSKY_BYPASS ] || commitlint -E HUSKY_GIT_PARAMS"
     }
   },
