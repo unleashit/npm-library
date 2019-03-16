@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import Pagination from './index';
 
 // declare const shallow: any;
-// temp comment
 
 describe('<Pagination />', () => {
   let wrapper: any;
