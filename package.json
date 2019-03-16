@@ -20,9 +20,7 @@
     "build-storybook": "build-storybook",
     "clean": "lerna clean && rm -rf node_modules"
   },
-  "dependencies": {
-    "weak": "^1.0.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.3.3",
     "@commitlint/cli": "^7.5.2",
@@ -79,8 +77,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "[[ -n $HUSKY_BYPASS ]] || yarn test",
-      "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "[ -n $HUSKY_BYPASS ] || lerna run --stream --concurrency 1 test",
+      "commit-msg": "[ -n $HUSKY_BYPASS ] || commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
