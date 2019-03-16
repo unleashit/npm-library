@@ -77,12 +77,6 @@
       ]
     }
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "jest": {
     "globalSetup": "./testSetup.js",
     "testURL": "http://localhost/",
