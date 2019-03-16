@@ -7,7 +7,13 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "githubRelease": true,
+      "message": "chore(release): publish"
+    },
+    "version": {
+      "conventionalCommits": true,
+      "githubRelease": true
     }
   }
 }

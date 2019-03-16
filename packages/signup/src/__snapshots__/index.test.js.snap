@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoginContainer /> renders without crashing 1`] = `
+exports[`<SignupContainer /> renders without crashing 1`] = `
 <ContextProvider
   value={
     Object {
@@ -13,6 +13,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       "initialValues": Object {
         "email": "",
         "password": "",
+        "passwordConfirm": "",
         "serverAuth": "",
       },
       "isSubmitting": false,
@@ -44,12 +45,13 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       "values": Object {
         "email": "",
         "password": "",
+        "passwordConfirm": "",
         "serverAuth": "",
       },
     }
   }
 >
-  <Login
+  <Signup
     dirty={false}
     errors={Object {}}
     handleBlur={[Function]}
@@ -61,14 +63,15 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       Object {
         "email": "",
         "password": "",
+        "passwordConfirm": "",
         "serverAuth": "",
       }
     }
     isSubmitting={false}
     isValid={false}
     isValidating={false}
-    layout="page"
     loader={[Function]}
+    loginUrl="/login"
     registerField={[Function]}
     resetForm={[Function]}
     setError={[Function]}
@@ -81,7 +84,6 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
     setSubmitting={[Function]}
     setTouched={[Function]}
     setValues={[Function]}
-    signupUrl="/signup"
     submitCount={0}
     submitForm={[Function]}
     touched={Object {}}
@@ -94,6 +96,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       Object {
         "email": "",
         "password": "",
+        "passwordConfirm": "",
         "serverAuth": "",
       }
     }
