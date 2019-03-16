@@ -2,6 +2,8 @@ import * as React from 'react';
 import { shallow, mount } from 'enzyme';
 import SignupContainer, { Signup } from '.';
 
+// test comment #2
+
 const nextTick = () => {
   return new Promise(resolve => {
     setTimeout(() => {
