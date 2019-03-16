@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/pagination",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "description": "Responsive pagination component for React.",
   "scripts": {
