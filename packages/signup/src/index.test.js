@@ -1,3 +1,7 @@
+it('is a test', () => {
+  expect(true).toBe(true);
+});
+
 // import * as React from 'react';
 // import { shallow, mount } from 'enzyme';
 // import LoginContainer, { Login } from '.';
