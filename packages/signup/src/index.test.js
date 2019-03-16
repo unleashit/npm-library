@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow, mount } from 'enzyme';
-import SignupContainer, { Signup} from '.';
+import SignupContainer, { Signup } from '.';
 
 const nextTick = () => {
   return new Promise(resolve => {
@@ -33,7 +33,7 @@ describe('<SignupContainer />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  describe.skip('validation', () => {
+  describe('validation', () => {
     beforeEach(() => {
       props = {
         loginHandler: () => jest.fn({ errors: {} }),
@@ -42,6 +42,7 @@ describe('<SignupContainer />', () => {
 
       wrapper = mount(<SignupContainer {...props} />);
     });
+
 
     it('fields can be updated and validated', () => {
       wrapper
