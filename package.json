@@ -79,8 +79,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "[[ -n $HUSKY_BYPASS ]] || yarn test",
+      "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "jest": {
