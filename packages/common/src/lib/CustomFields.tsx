@@ -19,9 +19,10 @@ export interface PassedProps {
   handleBlur: any;
   values?: any;
   value?: any;
-  style: Style;
+  cssModuleStyles: Style;
   errors: any;
   touched: any;
+  componentName?: string;
 }
 
 const ce = React.createElement;
@@ -46,7 +47,8 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     errors,
     touched,
     defaultChecked,
-    style
+    cssModuleStyles: style,
+    componentName,
   } = props;
   let Element;
 
@@ -54,8 +56,12 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     Element = ce('input', {
       type,
       name,
-      id: `signup-form-${name}`,
-      className: `${style.input} unl-signup__input`,
+      id: `${componentName}-form-${name}`,
+      className: `${style.input} unl-${componentName}__input ${
+        touched[name] && errors[name]
+          ? `${style.inputError} unl-${componentName}__input-error`
+          : ''
+      }`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultValue: value,
@@ -63,14 +69,19 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     });
   }
   if (element === 'select') {
-    if (!options) throw new Error('Must provide and options prop for a select element field');
+    if (!options)
+      throw new Error('Must provide and options prop for a select element field');
 
     Element = ce(
       'select',
       {
         name,
-        id: `signup-form-${name}`,
-        className: `${style.input} unl-signup__input`,
+        id: `${componentName}-form-${name}`,
+        className: `${style.input} unl-${componentName}__input ${
+          touched[name] && errors[name]
+            ? `${style.inputError} unl-${componentName}__input-error`
+            : ''
+        }`,
         onChange: handleChange,
         onBlur: handleBlur,
         defaultValue: value,
@@ -83,8 +94,12 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     Element = ce('input', {
       type: 'checkbox',
       name,
-      id: `signup-form-${name}`,
-      className: `${style.checkbox} unl-signup__checkbox`,
+      id: `${componentName}-form-${name}`,
+      className: `${style.checkbox} unl-${componentName}__checkbox ${
+        touched[name] && errors[name]
+          ? `${style.inputError} unl-${componentName}__input-error`
+          : ''
+      }`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultChecked,
@@ -95,8 +110,12 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
   if (element === 'textarea') {
     Element = ce('textarea', {
       name,
-      id: `signup-form-${name}`,
-      className: `${style.textarea} unl-signup__textarea`,
+      id: `${componentName}-form-${name}`,
+      className: `${style.textarea} unl-${componentName}__textarea ${
+        touched[name] && errors[name]
+          ? `${style.inputError} unl-${componentName}__input-error`
+          : ''
+      }`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultValue: value,
@@ -104,22 +123,23 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     });
   }
 
-  const htmlFor = custAttrs && 'id' in custAttrs ? custAttrs.id : `signup-form-${name}`;
+  const htmlFor =
+    custAttrs && 'id' in custAttrs ? custAttrs.id : `${componentName}-form-${name}`;
 
   return (
     <React.Fragment>
-      <label htmlFor={htmlFor} className={`${style.label} unl-signup__label`}>
+      <label htmlFor={htmlFor} className={`${style.label} unl-${componentName}__label`}>
         {label}
       </label>
       {Element}
       {touched[name] && errors[name] && (
-        <div className={`${style.errorMessage} unl-signup__error-message`}>
+        <div className={`${style.errorMessage} unl-${componentName}__error-message`}>
           <small>{errors[name]}</small>
         </div>
       )}
     </React.Fragment>
   );
-};
+}
 
 export function CustomFields({
   fields,
@@ -128,9 +148,10 @@ export function CustomFields({
   values,
   errors,
   touched,
-  style
+  cssModuleStyles,
+  componentName = 'unknown',
 }: {
-  fields: CustomField[]
+  fields: CustomField[];
 } & PassedProps): JSX.Element {
   return (
     <div>
@@ -139,7 +160,7 @@ export function CustomFields({
           key={field.name}
           onChange={handleChange}
           onBlur={handleBlur}
-          className={`${style.formGroup} unl-signup__form-group`}
+          className={`${cssModuleStyles.formGroup} unl-${componentName}__form-group`}
         >
           <Field
             errors={errors}
@@ -147,7 +168,8 @@ export function CustomFields({
             handleChange={handleChange}
             handleBlur={handleBlur}
             value={values[field.name]}
-            style={style}
+            cssModuleStyles={cssModuleStyles}
+            componentName={componentName}
             {...field}
           />
         </div>

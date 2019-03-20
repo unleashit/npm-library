@@ -2,7 +2,12 @@ import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import { CustomFields, CustomField } from '@unleashit/common';
-import { SignupLoader, SignupHeader, SignupHeaderProps, SignupLoaderProps } from './defaults/components';
+import {
+  SignupLoader,
+  SignupHeader,
+  SignupHeaderProps,
+  SignupLoaderProps,
+} from './defaults/components';
 import { CustomInput } from './defaults/fields';
 import schema from './defaults/validations';
 import * as defaultStyle from './scss/signup.scss';
@@ -46,7 +51,7 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
     values,
     touched,
     customFields,
-    cssModuleStyles
+    cssModuleStyles,
   } = props;
 
   const style = cssModuleStyles || defaultStyle;
@@ -55,7 +60,9 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
     <div className={`${style.signupContainer} unl-signup__container`}>
       <Header loginUrl={loginUrl} style={style} />
       {errors.serverAuth && (
-        <div className={`${style.serverAuthError} unl-signup__server-auth-error`}>{errors.serverAuth}</div>
+        <div className={`${style.serverAuthError} unl-signup__server-auth-error`}>
+          {errors.serverAuth}
+        </div>
       )}
 
       {isSubmitting ? (
@@ -70,16 +77,23 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              style={style}
+              cssModuleStyles={style}
+              componentName="signup"
             />
           ) : (
             <React.Fragment>
-              <Field type="text" name="email" component={CustomInput} />
-              <Field type="password" name="password" component={CustomInput} />
+              <Field type="text" name="email" component={CustomInput} cssModuleStyles={style} />
+              <Field
+                type="password"
+                name="password"
+                component={CustomInput}
+                cssModuleStyles={style}
+              />
               <Field
                 type="passwordConfirm"
                 name="passwordConfirm"
                 component={CustomInput}
+                cssModuleStyles={style}
               />
             </React.Fragment>
           )}

@@ -1,24 +1,26 @@
 $gray: #e8e8e8;
 $red: #e74444;
 
-.loginContainer {
+.container {
   width: 100%;
+}
 
+.header {
   h2 {
     font-weight: normal;
     margin-bottom: .8rem;
   }
 }
 
-.loginForm {
+.form {
   margin-top: 2.5rem;
 }
 
-.loginFormGroup {
+.formGroup {
   margin-bottom: .8rem;
 }
 
-.loginInput {
+.input {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
@@ -26,16 +28,16 @@ $red: #e74444;
   padding: .7rem .5rem;
 }
 
-.loginInputError {
+.inputError {
   border-color: $red;
 }
 
-.loginLabel {
+.label {
   display: block;
   margin-bottom: .4rem;
 }
 
-.loginButton {
+.button {
   display: block;
   width: 100%;
   margin-top: 1.2rem;
@@ -62,7 +64,7 @@ $red: #e74444;
 
 // default components
 
-.loginLoader {
+.loader {
   display: flex;
   justify-content: center;
   margin-top: 4rem;

@@ -67,7 +67,6 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
     isSubmitting={false}
     isValid={false}
     isValidating={false}
-    layout="page"
     loader={[Function]}
     registerField={[Function]}
     resetForm={[Function]}

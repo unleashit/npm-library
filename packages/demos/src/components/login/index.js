@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
 import Login from '@unleashit/login';
 
-import './login.scss';
 import '@unleashit/login/dist/style.css';
 
 class LoginDemo extends Component {
   async loginHandler(values) {
-    return await fetch(
-      'https://unleashit-login.now.sh',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
+    return await fetch('https://unleashit-login.now.sh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    ).then(resp => resp.json());
+      body: JSON.stringify(values),
+    }).then(resp => resp.json());
   }
 
   onSuccess() {

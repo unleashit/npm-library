@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Signup from '@unleashit/signup';
 import schema from './validations';
 
-// import '@unleashit/signup/dist/style.css';
+import '@unleashit/signup/dist/style.css';
 
 class SignupDemo extends Component {
   async signupHandler(values) {
