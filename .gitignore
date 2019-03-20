@@ -8,4 +8,5 @@ coverage
 .env*
 lerna-debug.log
 .secrets
+TODO.md
 

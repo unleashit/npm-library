@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import * as style from '../scss/customFields.scss';
 
 export interface CustomField {
   element: 'input' | 'select' | 'textarea';
@@ -11,12 +10,16 @@ export interface CustomField {
   custAttrs?: { [key: string]: string };
 }
 
+interface Style {
+  [key: string]: string;
+}
+
 export interface PassedProps {
   handleChange: any;
   handleBlur: any;
   values?: any;
   value?: any;
-  style?: any;
+  style: Style;
   errors: any;
   touched: any;
 }
@@ -52,7 +55,7 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       type,
       name,
       id: `signup-form-${name}`,
-      className: `${style.signupInput}`,
+      className: `${style.input} unl-signup__input`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultValue: value,
@@ -67,7 +70,7 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       {
         name,
         id: `signup-form-${name}`,
-        className: `${style.signupInput}`,
+        className: `${style.input} unl-signup__input`,
         onChange: handleChange,
         onBlur: handleBlur,
         defaultValue: value,
@@ -81,7 +84,7 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       type: 'checkbox',
       name,
       id: `signup-form-${name}`,
-      className: `${style.signupCheckbox}`,
+      className: `${style.checkbox} unl-signup__checkbox`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultChecked,
@@ -93,7 +96,7 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     Element = ce('textarea', {
       name,
       id: `signup-form-${name}`,
-      className: `${style.signupTextarea}`,
+      className: `${style.textarea} unl-signup__textarea`,
       onChange: handleChange,
       onBlur: handleBlur,
       defaultValue: value,
@@ -105,12 +108,12 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <label htmlFor={htmlFor} className={style.signupLabel}>
+      <label htmlFor={htmlFor} className={`${style.label} unl-signup__label`}>
         {label}
       </label>
       {Element}
       {touched[name] && errors[name] && (
-        <div className={style.errorMessage}>
+        <div className={`${style.errorMessage} unl-signup__error-message`}>
           <small>{errors[name]}</small>
         </div>
       )}
@@ -136,7 +139,7 @@ export function CustomFields({
           key={field.name}
           onChange={handleChange}
           onBlur={handleBlur}
-          className={style.signupFormGroup}
+          className={`${style.formGroup} unl-signup__form-group`}
         >
           <Field
             errors={errors}

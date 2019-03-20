@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import { CustomFields, CustomField } from '@unleashit/common';
-import { SignupLoader, SignupHeader, SignupHeaderProps } from './defaults/components';
+import { SignupLoader, SignupHeader, SignupHeaderProps, SignupLoaderProps } from './defaults/components';
 import { CustomInput } from './defaults/fields';
 import schema from './defaults/validations';
-import * as style from './scss/signup.scss';
+import * as defaultStyle from './scss/signup.scss';
 
 interface FormValues {
   email: string;
@@ -28,9 +28,10 @@ interface Props {
   layout: string;
   header: React.FC<SignupHeaderProps>;
   loginUrl: string;
-  loader: React.FC<{}>;
+  loader: React.FC<SignupLoaderProps>;
   schema: Schema<any>;
   customFields?: CustomField[];
+  cssModuleStyle?: { [key: string]: string };
 }
 
 export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
@@ -45,19 +46,22 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
     values,
     touched,
     customFields,
+    cssModuleStyle
   } = props;
 
+  const style = cssModuleStyle || defaultStyle;
+
   return (
-    <div className={style.signupContainer}>
-      <Header loginUrl={loginUrl} />
+    <div className={`${style.signupContainer} unl-signup__container`}>
+      <Header loginUrl={loginUrl} style={style} />
       {errors.serverAuth && (
-        <div className={style.serverAuthError}>{errors.serverAuth}</div>
+        <div className={`${style.serverAuthError} unl-signup__server-auth-error`}>{errors.serverAuth}</div>
       )}
 
       {isSubmitting ? (
-        <Loader />
+        <Loader style={style} />
       ) : (
-        <Form className={style.signupForm}>
+        <Form className={`${style.form} unl-signup__form`}>
           {customFields ? (
             <CustomFields
               fields={customFields}
@@ -79,7 +83,7 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
               />
             </React.Fragment>
           )}
-          <button type="submit" className={style.signupButton}>
+          <button type="submit" className={`${style.button} unl-signup__button`}>
             Signup
           </button>
         </Form>

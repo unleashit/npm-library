@@ -14,8 +14,8 @@ export const CustomInput: React.FC<FieldProps<any>> = ({
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
   ...props
 }): JSX.Element => (
-  <div className={style.signupFormGroup}>
-    <label htmlFor={`signup-form-${field.name}`} className={style.signupLabel}>
+  <div className={`${style.formGroup} unl-signup__form-group`}>
+    <label htmlFor={`signup-form-${field.name}`} className={`${style.label} unl-signup__label`}>
       {sentenceCase(field.name)}
     </label>
     <input
@@ -23,12 +23,12 @@ export const CustomInput: React.FC<FieldProps<any>> = ({
       {...field}
       {...props}
       id={`signup-form-${field.name}`}
-      className={`${style.signupInput} ${
-        touched[field.name] && errors[field.name] ? style.signupInputError : ''
+      className={`${style.input} unl-signup__input ${
+        touched[field.name] && errors[field.name] ? `${style.inputError} unl-signup__input-error` : ''
         }`}
     />
     {touched[field.name] && errors[field.name] && (
-      <div className={style.errorMessage}>
+      <div className={`${style.errorMessage} unl-signup__error-message`}>
         <small>{errors[field.name]}</small>
       </div>
     )}

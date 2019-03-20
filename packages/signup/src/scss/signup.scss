@@ -3,22 +3,24 @@ $red: #e74444;
 
 .signupContainer {
   width: 100%;
+}
 
+.header {
   h2 {
     font-weight: normal;
     margin-bottom: .8rem;
   }
 }
 
-.signupForm {
+.form {
   margin-top: 2.5rem;
 }
 
-.signupFormGroup {
+.formGroup {
   margin-bottom: .8rem;
 }
 
-.signupInput, .signupTextarea {
+.input, .textarea {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
@@ -26,11 +28,11 @@ $red: #e74444;
   padding: .7rem .5rem;
 }
 
-.signupTextarea {
+.textarea {
   height: 8rem;
 }
 
-.signupSelect {
+.select {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
@@ -38,16 +40,16 @@ $red: #e74444;
   padding: .7rem .5rem;
 }
 
-.signupInputError {
+.inputError {
   border-color: $red;
 }
 
-.signupLabel {
+.label {
   display: block;
   margin-bottom: .4rem;
 }
 
-.signupButton {
+.button {
   display: block;
   width: 100%;
   margin-top: 1.2rem;
@@ -74,7 +76,7 @@ $red: #e74444;
 
 // default components
 
-.signupLoader {
+.loader {
   display: flex;
   justify-content: center;
   margin-top: 4rem;
