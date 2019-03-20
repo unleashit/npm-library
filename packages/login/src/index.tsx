@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
+import { CustomInput } from '@unleashit/common';
 import {
   LoginLoader,
   LoginHeader,
   LoginHeaderProps,
   LoginLoaderProps,
 } from './defaults/components';
-import { CustomInput } from './defaults/fields';
 import schema from './defaults/validations';
 import * as defaultStyle from './scss/login.scss';
 
@@ -63,13 +63,15 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
             type="text"
             name="email"
             component={CustomInput}
-            cssModuleStyle={style}
+            cssModuleStyles={style}
+            componentName="login"
           />
           <Field
             type="password"
             name="password"
             component={CustomInput}
-            cssModuleStyle={style}
+            cssModuleStyles={style}
+            componentName="login"
           />
           <button type="submit" className={`${style.button} unl-login__button`}>
             Login

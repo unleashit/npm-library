@@ -25,6 +25,9 @@
     "react": ">=15.0.0",
     "yup": "^0.26.10"
   },
+  "dependencies": {
+    "@unleashit/common": "^0.2.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField } from '@unleashit/common';
+import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
 import {
   SignupLoader,
   SignupHeader,
   SignupHeaderProps,
   SignupLoaderProps,
 } from './defaults/components';
-import { CustomInput } from './defaults/fields';
 import schema from './defaults/validations';
 import * as defaultStyle from './scss/signup.scss';
 
@@ -82,18 +81,26 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
             />
           ) : (
             <React.Fragment>
-              <Field type="text" name="email" component={CustomInput} cssModuleStyles={style} />
+              <Field
+                type="text"
+                name="email"
+                component={CustomInput}
+                cssModuleStyles={style}
+                componentName="signup"
+              />
               <Field
                 type="password"
                 name="password"
                 component={CustomInput}
                 cssModuleStyles={style}
+                componentName="signup"
               />
               <Field
                 type="passwordConfirm"
                 name="passwordConfirm"
                 component={CustomInput}
                 cssModuleStyles={style}
+                componentName="signup"
               />
             </React.Fragment>
           )}
