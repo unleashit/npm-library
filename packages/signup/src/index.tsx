@@ -31,7 +31,7 @@ interface Props {
   loader: React.FC<SignupLoaderProps>;
   schema: Schema<any>;
   customFields?: CustomField[];
-  cssModuleStyle?: { [key: string]: string };
+  cssModuleStyles?: { [key: string]: string };
 }
 
 export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
@@ -46,10 +46,10 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
     values,
     touched,
     customFields,
-    cssModuleStyle
+    cssModuleStyles
   } = props;
 
-  const style = cssModuleStyle || defaultStyle;
+  const style = cssModuleStyles || defaultStyle;
 
   return (
     <div className={`${style.signupContainer} unl-signup__container`}>

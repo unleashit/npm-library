@@ -57,7 +57,7 @@ interface LoginHandlerResponse {
 
 ```
 ### CSS
-Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';` . Class names use a CSS modules hash to avoid name collisions.
+Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';` but please see CSS in the main readme of the repo for more info.
 
 ### Props
 
@@ -69,4 +69,4 @@ Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';
 | header      | React.FC     | React component to override default header | basic header |
 | loader      | React.FC     | React component to override default loader | Logging in... |
 | signupUrl      | string     | Url for signup page. Use only if using default header | /signup |
-
+| cssModuleStyles  | { [key: string]: string }                     | CSS Module object that optionally replaces default. Class names need to match default names. | n/a |

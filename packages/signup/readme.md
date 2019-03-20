@@ -145,7 +145,7 @@ Note: currently tested custom fields are input, select, textarea and checkbox. S
 
 ### CSS
 
-Basic css can be imported if desired: `import '@unleashit/signup/dist/style.css';` . Class names use a CSS modules hash to avoid name collisions.
+Basic css can be imported: `import '@unleashit/signup/dist/style.css';` but please see CSS in the main readme of the repo for more info.
 
 ### Props
 
@@ -158,3 +158,4 @@ Basic css can be imported if desired: `import '@unleashit/signup/dist/style.css'
 | loader        | React.FC                                        | React component to override default loader                                                                                        | Signing up...       |
 | loginUrl      | string                                          | Url for login page. Use only if using default header                                                                              | /login              |
 | customFields  | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                 |
+| cssModuleStyles  | { [key: string]: string }                    | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS module                 |

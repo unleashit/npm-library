@@ -26,3 +26,11 @@ Run all tests: `yarn test`
 Run Storybook (WIP): `yarn run storybook`
 
 Other scripts are available to build, publish to NPM, clean, etc.
+
+### CSS
+
+By default, components come with basic css styling generated with CSS Modules. If you want to use it, either copy it from node_modules/[package-name]/dist/style.css or if using webpack, import it like `import '@unleashit/[package-name]/dist/style.css'`;
+
+Important: since the class names can change with package updates, if you write you own styles or want to modify/override the default style, you should only use the class names provided in BEM format (i.e. `unl-signup__input`). These will always stay the same. Do not use the css module generated names containing a hash, unless you replace with your own as described below.
+
+Since I'm a big fan of CSS modules over CSS-in-JS, a special workflow is provided. All React UI components accept an optional `cssModuleStyles` prop that will take your custom CSS module and override the default. You can target all of the components' internal classnames this way, as long as you name the styles correctly. For now until I have time for a better solution, I recommend looking in the source files or scss folder for the component on Github (the names are stripped from the compiled version). If anyone has any opinions or ideas to improve this, please let me know!
