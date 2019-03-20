@@ -7,7 +7,7 @@ import '@unleashit/login/dist/style.css';
 class LoginDemo extends Component {
   async loginHandler(values) {
     return await fetch(
-      'https://wt-b65e9ca991b9178e9657d8a3b97818b1-0.sandbox.auth0-extend.com/login',
+      'https://unleashit-login.now.sh',
       {
         method: 'POST',
         headers: {
