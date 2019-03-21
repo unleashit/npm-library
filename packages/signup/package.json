@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "main": "dist/index.js",
   "description": "Responsive signup component for React.",
   "scripts": {
