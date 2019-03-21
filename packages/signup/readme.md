@@ -1,6 +1,6 @@
 ## Signup
 
-React signup component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more. Basic CSS is available.
+React signup component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more.
 
 ![signup component](signup.png)
 
@@ -40,11 +40,11 @@ export default SignupDemo;
 
 ### Custom Fields
 
-It's possible to replace the default fields with custom fields and attributes by adding a `customFields` prop. The signupHandler will be called with the values.
+It's possible to replace the default fields with custom fields and attributes by adding a `customFields` prop. The signupHandler will be called with their values after passing validation.
 
 This array of fields will replace the defaults, so don't forget to add email/username, password and password confirmation if you need them. If you create a Yup schema with matching name attributes, it will properly validate.
 
-Currently input, select and checkbox fields are supported.
+Currently input, select, checkbox and textarea fields are supported.
 
 ```javascript
 <Signup
@@ -136,7 +136,7 @@ interface CustomField {
   name: string;
   label: string;
   options?: string[][]; // for select element
-  defaultChecked?: boolean;
+  defaultChecked?: boolean; // for checkbox
   custAttrs?: { [key: string]: string };
 }
 
@@ -145,7 +145,7 @@ Note: currently tested custom fields are input, select, textarea and checkbox. S
 
 ### CSS
 
-Basic css can be imported: `import '@unleashit/signup/dist/style.css';` but please see CSS in the main readme of the repo for more info.
+Basic css can be imported: `import '@unleashit/signup/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
 
 ### Props
 
@@ -158,4 +158,4 @@ Basic css can be imported: `import '@unleashit/signup/dist/style.css';` but plea
 | loader        | React.FC                                        | React component to override default loader                                                                                        | Signing up...       |
 | loginUrl      | string                                          | Url for login page. Use only if using default header                                                                              | /login              |
 | customFields  | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                 |
-| cssModuleStyles  | { [key: string]: string }                    | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS module                 |
+| cssModuleStyles  | { [key: string]: string }                    | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS                 |

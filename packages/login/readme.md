@@ -1,12 +1,12 @@
 ## Login
 
-React login component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields (coming soon), custom Yup schema, custom header and more. Basic CSS is available.
+React login component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more.
 
 ![login component](login.png)
 
 ### Install
 ```
-npm install @unleashit/signup
+npm install @unleashit/login
 ```
 
 ### Example
@@ -40,6 +40,56 @@ class LoginDemo extends React.Component {
 export default LoginDemo;
 
 ```
+### Custom Fields
+
+It's possible to replace the default fields with custom fields and attributes by adding a `customFields` prop. The loginHandler will be called with their values after passing validation.
+
+This array of fields will replace the defaults, so don't forget to add email/username and password if you need them. If you create a Yup schema with matching name attributes, it will properly validate.
+
+Currently input, select, checkbox and textarea fields are supported.
+
+```javascript
+<Login
+  loginHandler={this.loginHandler}
+  onSuccess={this.onSuccess}
+  schema={schema}
+  customFields={[
+    {
+      elementType: 'input',
+      type: 'text',
+      name: 'username',
+      label: 'Username'
+    },
+    {
+      elementType: 'input',
+      type: 'password',
+      name: 'password',
+      label: 'Password'
+    },
+    {
+      elementType: 'checkbox',
+      name: 'persistLogin',
+      label: 'Remember me?',
+      defaultChecked: true,
+      defaultValue: true
+    },
+  ]}
+/>
+
+// yup schema
+const schema = yup.object().shape({
+  username: yup
+    .string()
+    .matches(/^[a-zA-Z0-9\._-]+$/, 'Enter a valid username')
+    .max(56)
+    .required(),
+  password: yup
+    .string()
+    .min(8)
+    .max(512)
+    .required()
+});
+```
 
 ```typescript
 // loginHandler() should return this shape:
@@ -55,9 +105,21 @@ interface LoginHandlerResponse {
   };
 }
 
+// customFields prop should be an array of objects in this shape:
+interface CustomField {
+  element: 'input' | 'select' | 'textarea';
+  type: string;
+  name: string;
+  label: string;
+  options?: string[][]; // for select element
+  defaultChecked?: boolean; // for checkbox
+  custAttrs?: { [key: string]: string };
+}
+
 ```
 ### CSS
-Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';` but please see CSS in the main readme of the repo for more info.
+
+Basic css can be imported: `import '@unleashit/login/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
 
 ### Props
 
@@ -69,4 +131,5 @@ Basic css can be imported if desired: `import '@unleashit/login/dist/style.css';
 | header      | React.FC     | React component to override default header | basic header |
 | loader      | React.FC     | React component to override default loader | Logging in... |
 | signupUrl      | string     | Url for signup page. Use only if using default header | /signup |
-| cssModuleStyles  | { [key: string]: string }                     | CSS Module object that optionally replaces default. Class names need to match default names. | n/a |
+| customFields  | CustomField[]  | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.  | n/a   |
+| cssModuleStyles  | { [key: string]: string }  | CSS Module object that optionally replaces default. Class names need to match default names. | default CSS |
