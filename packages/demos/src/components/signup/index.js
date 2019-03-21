@@ -18,7 +18,8 @@ class SignupDemo extends Component {
     ).then(resp => resp.json());
   }
 
-  onSuccess() {
+  onSuccess(resp) {
+    console.log(resp);
     window.location.href = '/';
   }
 
