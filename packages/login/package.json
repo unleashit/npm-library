@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "0.2.0",
+  "version": "0.6.0",
   "main": "dist/index.js",
   "description": "Responsive login component for React.",
   "scripts": {
