@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomInput } from '@unleashit/common';
+import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
 import {
   LoginLoader,
   LoginHeader,
@@ -32,6 +32,7 @@ interface Props {
   signupUrl: string;
   loader: React.FC<LoginLoaderProps>;
   schema: Schema<any>;
+  customFields?: CustomField[];
   cssModuleStyles?: { [key: string]: string };
 }
 
@@ -42,13 +43,18 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
     header: Header,
     loader: Loader,
     isSubmitting,
+    handleChange,
+    handleBlur,
+    values,
+    touched,
+    customFields,
     cssModuleStyles,
   } = props;
 
   const style = cssModuleStyles || defaultStyle;
 
   return (
-    <div className={`${style.container} unl-login__container`}>
+    <div className={`${style.loginContainer} unl-login__container`}>
       <Header signupUrl={signupUrl} style={style} />
       {errors.serverAuth && (
         <div className={`${style.serverAuthError} unl-login__server-auth-error`}>
@@ -59,20 +65,35 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
         <Loader style={style} />
       ) : (
         <Form className={`${style.form} unl-login__form`}>
-          <Field
-            type="text"
-            name="email"
-            component={CustomInput}
-            cssModuleStyles={style}
-            componentName="login"
-          />
-          <Field
-            type="password"
-            name="password"
-            component={CustomInput}
-            cssModuleStyles={style}
-            componentName="login"
-          />
+          {customFields ? (
+            <CustomFields
+              fields={customFields}
+              values={values}
+              errors={errors}
+              touched={touched}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              cssModuleStyles={style}
+              componentName="login"
+            />
+          ) : (
+            <React.Fragment>
+              <Field
+                type="text"
+                name="email"
+                component={CustomInput}
+                cssModuleStyles={style}
+                componentName="login"
+              />
+              <Field
+                type="password"
+                name="password"
+                component={CustomInput}
+                cssModuleStyles={style}
+                componentName="login"
+              />
+            </React.Fragment>
+          )}
           <button type="submit" className={`${style.button} unl-login__button`}>
             Login
           </button>

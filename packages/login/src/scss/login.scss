@@ -1,7 +1,7 @@
 $gray: #e8e8e8;
 $red: #e74444;
 
-.container {
+.loginContainer {
   width: 100%;
 }
 
@@ -20,7 +20,19 @@ $red: #e74444;
   margin-bottom: .8rem;
 }
 
-.input {
+.input, .textarea {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: .7rem .5rem;
+}
+
+.textarea {
+  height: 8rem;
+}
+
+.select {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
