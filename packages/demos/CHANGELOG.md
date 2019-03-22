@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.7.0...@unleashit/demos@0.8.0) (2019-03-22)
+
+
+### Features
+
+* **demos:** add forgot password demo ([8afa2aa](https://github.com/unleashit/npm-library/commit/8afa2aa))
+* **forgotpassword:** add forgot password package ([f1e7178](https://github.com/unleashit/npm-library/commit/f1e7178))
+
+
+
+
+
 # [0.7.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.1.0...@unleashit/demos@0.7.0) (2019-03-21)
 
 

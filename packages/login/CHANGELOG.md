@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.7.0...@unleashit/login@0.8.0) (2019-03-22)
+
+
+### Features
+
+* **login:** custom fields support ([edc7df7](https://github.com/unleashit/npm-library/commit/edc7df7))
+
+
+
+
+
 # [0.7.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.2.0...@unleashit/login@0.7.0) (2019-03-21)
 
 
