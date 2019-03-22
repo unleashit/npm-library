@@ -21,9 +21,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "formik": "^1.5.1",
+    "formik": ">=1.5.0",
     "react": ">=15.0.0",
-    "yup": "^0.26.10"
+    "yup": ">=0.26.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

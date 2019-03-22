@@ -46,8 +46,7 @@
     "access": "public"
   },
   "dependencies": {
-    "mocker-data-generator": "^2.6.6",
-    "uglifyjs-webpack-plugin": "^2.1.2"
+    "mocker-data-generator": "^2.6.6"
   },
   "devDependencies": {
     "@types/jest": "^24.0.5",
@@ -61,6 +60,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "jest": "23.6.0",
     "prettier": "^1.16.4",
     "ts-jest": "^23.10.5",
