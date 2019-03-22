@@ -6,16 +6,13 @@ import '@unleashit/signup/dist/style.css';
 
 class SignupDemo extends Component {
   async signupHandler(values) {
-    return await fetch(
-      'https://unleashit-signup.now.sh',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
+    return await fetch('https://unleashit-signup.now.sh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    ).then(resp => resp.json());
+      body: JSON.stringify(values),
+    }).then(resp => resp.json());
   }
 
   onSuccess(resp) {
@@ -38,7 +35,7 @@ class SignupDemo extends Component {
               element: 'input',
               type: 'text',
               name: 'email',
-              label: 'Email'
+              label: 'Email',
             },
             {
               element: 'input',
@@ -67,7 +64,7 @@ class SignupDemo extends Component {
             {
               element: 'textarea',
               name: 'comments',
-              label: 'Give us your feedback'
+              label: 'Give us your feedback',
             },
             {
               element: 'input',
@@ -75,7 +72,7 @@ class SignupDemo extends Component {
               name: 'newsletterOptIn',
               label: 'Subscribe to our newsletter?',
               defaultChecked: true,
-              defaultValue: true
+              defaultValue: true,
             },
           ]}
         />

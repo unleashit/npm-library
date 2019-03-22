@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Row = ({row: {title, content, author}}) => {
+const Row = ({ row: { title, content, author } }) => {
   return (
     <li className="pagination__row">
       <h3 className="pagination__title">{title}</h3>
@@ -14,7 +14,7 @@ const List = ({ data }) => {
   return (
     <ul className="pagination__list">
       {data.map((row, i) => (
-        <Row row={row} key={`row-${i}`}/>
+        <Row row={row} key={`row-${i}`} />
       ))}
     </ul>
   );

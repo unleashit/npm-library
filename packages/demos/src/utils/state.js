@@ -16,14 +16,12 @@ class AppState {
   //   return this._state;
   // }
 
-  getState()  {
+  getState() {
     return this._state;
-  };
+  }
 
   getKey(key = null) {
-    return key
-      ? this._state[key]
-      : this._state;
+    return key ? this._state[key] : this._state;
   }
 
   keyExists(key) {
@@ -31,30 +29,29 @@ class AppState {
   }
 
   mergeWithState(stateChange) {
-    if (stateChange.toString() !== "[object Object]")
-      throw new TypeError("Setting appState requires an object literal as an argument.");
+    if (stateChange.toString() !== '[object Object]')
+      throw new TypeError('Setting appState requires an object literal as an argument.');
 
     this._state = {
       ...this._state,
       ...stateChange,
     };
     this.notifySubscribers();
-  };
+  }
 
   subscribe(cb) {
     this.lastSubscriptionId++;
     this.subscriptions[this.lastSubscriptionId] = cb;
     return this.lastSubscriptionId;
-  };
+  }
 
   unsubscribe(subscriptionId) {
     delete this.subscriptions[subscriptionId];
-  };
+  }
 
   notifySubscribers() {
     Object.values(this.subscriptions).forEach(cb => cb());
-  };
-
+  }
 }
 
 export default AppState;

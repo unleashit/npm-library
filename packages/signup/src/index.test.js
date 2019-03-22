@@ -43,7 +43,6 @@ describe('<SignupContainer />', () => {
       wrapper = mount(<SignupContainer {...props} />);
     });
 
-
     it('fields can be updated and validated', () => {
       wrapper
         .find('input[name="email"]')

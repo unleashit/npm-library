@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import Pagination from "@unleashit/pagination";
-import List from "./List";
-import { StateConsumer } from "../App/App";
-import "./pagination.scss";
-import "@unleashit/pagination/dist/style.css";
+import React, { Component } from 'react';
+import Pagination from '@unleashit/pagination';
+import List from './List';
+import { StateConsumer } from '../App/App';
+import './pagination.scss';
+import '@unleashit/pagination/dist/style.css';
 
 export class PaginationDemo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      offset: 0
+      offset: 0,
     };
     this.perPage = 3;
 
@@ -33,7 +33,7 @@ export class PaginationDemo extends Component {
 
   render() {
     const {
-      state: { fakeBlog }
+      state: { fakeBlog },
     } = this.props;
     if (!fakeBlog || fakeBlog.length === 0) return <div>Loading...</div>;
 

@@ -63,7 +63,9 @@ const mockData = async ({
       // multiple schemas
       templates.forEach((tmpl: any, i: number) => {
         const modelName =
-          tmpl.name || (typeof tmpl.template === 'string' && tmpl.template) || i.toString();
+          tmpl.name ||
+          (typeof tmpl.template === 'string' && tmpl.template) ||
+          i.toString();
         tmpl.args = tmpl.args || {};
 
         if (tmpl.hiddenFields) tmpl.args.hiddenFields = tmpl.hiddenFields;

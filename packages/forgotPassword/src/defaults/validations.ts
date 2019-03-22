@@ -9,7 +9,7 @@ const schema: yup.Schema<LoginSchema> = yup.object().shape({
     .string()
     .email()
     .max(56)
-    .required()
+    .required(),
 });
 
 export default schema;

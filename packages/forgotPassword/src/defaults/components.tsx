@@ -28,8 +28,8 @@ export const ForgotPasswordHeader: React.FC<ForgotPasswordHeaderProps> = ({
   <div className={`${style.header} unl-forgot-password__header`}>
     <h2>Forgot Password</h2>
     <p>
-      Enter the email address for your account. We{"'"}ll send an email with
-      a link to reset your password.
+      Enter the email address for your account. We{"'"}ll send an email with a link to
+      reset your password.
     </p>
   </div>
 );
@@ -39,6 +39,9 @@ export const ForgotPasswordSuccessMessage: React.FC<{ style: Style }> = ({
 }): JSX.Element => (
   <div className={`${style.confirmation} unl-forgot-password__confirmation`}>
     <h2>Verification Email Sent</h2>
-    <p>Please check your inbox and click on the provided link. You will then be able to reset your password and login.</p>
+    <p>
+      Please check your inbox and click on the provided link. You will then be able to
+      reset your password and login.
+    </p>
   </div>
 );

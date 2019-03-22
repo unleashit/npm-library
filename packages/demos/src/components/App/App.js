@@ -1,13 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "../Home/Home";
-import Navigation from "./Navigation";
-import Pagination from "../pagination";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from '../Home/Home';
+import Navigation from './Navigation';
+import Pagination from '../pagination';
 import Login from '../login';
 import Signup from '../signup';
-import ForgotPassword from "../forgotPassword";
-import ApiService from "../../utils/api";
-import "./App.scss";
+import ForgotPassword from '../forgotPassword';
+import ApiService from '../../utils/api';
+import './App.scss';
 
 const store = new ApiService();
 export const Context = React.createContext();
@@ -22,7 +22,7 @@ class App extends React.Component {
 
   onStoreChange() {
     this.setState(store.getState());
-  };
+  }
 
   componentDidMount() {
     this.subscriptionId = store.subscribe(this.onStoreChange);
@@ -34,19 +34,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <Context.Provider value={{
-        state: this.state,
-        store
-      }}>
+      <Context.Provider
+        value={{
+          state: this.state,
+          store,
+        }}
+      >
         <Router>
           <div className="app-container">
             <Navigation />
             <Switch>
-              <Route path={"/"} exact component={Home} />
-              <Route path={"/pagination"} exact component={Pagination} />
-              <Route path={"/login"} exact component={Login} />
-              <Route path={"/signup"} exact component={Signup} />
-              <Route path={"/forgot-password"} exact component={ForgotPassword} />
+              <Route path={'/'} exact component={Home} />
+              <Route path={'/pagination'} exact component={Pagination} />
+              <Route path={'/login'} exact component={Login} />
+              <Route path={'/signup'} exact component={Signup} />
+              <Route path={'/forgot-password'} exact component={ForgotPassword} />
             </Switch>
           </div>
         </Router>
