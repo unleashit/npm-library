@@ -9,6 +9,8 @@ React forgot password component in Typescript, Formik and Yup for validation. It
 npm install @unleashit/forgot-password
 ```
 
+**Required peer dependencies:** react, formik and yup
+
 ### Example
 
 ```javascript

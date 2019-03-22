@@ -9,6 +9,8 @@ Responsive pagination component for React in Typescript. Just give it a total, c
 npm install @unleashit/pagination
 ```
 
+**Required peer dependency:** react
+
 ### Example
 
 ```javascript

@@ -9,6 +9,8 @@ React login component in Typescript, Formik and Yup for validation. It accepts p
 npm install @unleashit/login
 ```
 
+**Required peer dependencies:** react, formik and yup
+
 ### Example
 
 ```javascript

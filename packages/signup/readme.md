@@ -10,6 +10,8 @@ React signup component in Typescript, Formik and Yup for validation. It accepts 
 npm install @unleashit/signup
 ```
 
+**Required peer dependencies:** react, formik and yup
+
 ### Example
 
 ```javascript
