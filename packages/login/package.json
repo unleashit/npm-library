@@ -26,7 +26,7 @@
     "yup": "^0.26.10"
   },
   "dependencies": {
-    "@unleashit/common": "^0.2.0"
+    "@unleashit/common": "*"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
