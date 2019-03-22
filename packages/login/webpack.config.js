@@ -8,9 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
   mode: 'development',
   devtool: 'source-map',
-  entry: [
-    `${__dirname}/src/`
-  ],
+  entry: [`${__dirname}/src/`],
   output: {
     path: `${__dirname}/dist/`,
     filename: 'index.js',
@@ -74,11 +72,24 @@ const config = {
   },
 };
 
-// config.externals = !devMode
-//   ? {
-//       react: "react"
-//     }
-//   : undefined;
+config.externals = !devMode
+  ? {
+      react: {
+        commonjs: 'react',
+        commonjs2: 'react',
+        amd: 'React',
+        root: 'React',
+      },
+      'react-dom': {
+        commonjs: 'react-dom',
+        commonjs2: 'react-dom',
+        amd: 'ReactDOM',
+        root: 'ReactDOM',
+      },
+      formik: 'formik',
+      yup: 'yup',
+    }
+  : undefined;
 
 // config.optimization = !devMode
 //   ? {
@@ -92,7 +103,10 @@ const config = {
 //     }
 //   : undefined;
 
-module.exports = Object.keys(config).reduce((a, b) => {
-  if (b !== undefined) a[b] = config[b];
-  return a;
-}, {});
+const removeUndefined = c =>
+  Object.keys(c).reduce((a, b) => {
+    if (b !== undefined) a[b] = config[b];
+    return a;
+  }, {});
+
+module.exports = removeUndefined(config);
