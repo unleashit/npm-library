@@ -55,19 +55,20 @@ Currently input, select, checkbox and textarea fields are supported.
   schema={schema}
   customFields={[
     {
-      elementType: 'input',
+      element: 'input',
       type: 'text',
       name: 'username',
       label: 'Username'
     },
     {
-      elementType: 'input',
+      element: 'input',
       type: 'password',
       name: 'password',
       label: 'Password'
     },
     {
-      elementType: 'checkbox',
+      element: 'text',
+      type: 'checkbox',
       name: 'persistLogin',
       label: 'Remember me?',
       defaultChecked: true,

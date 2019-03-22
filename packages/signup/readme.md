@@ -53,25 +53,25 @@ Currently input, select, checkbox and textarea fields are supported.
   schema={schema}
   customFields={[
     {
-      elementType: 'input',
+      element: 'input',
       type: 'text',
       name: 'email',
       label: 'Email'
     },
     {
-      elementType: 'input',
+      element: 'input',
       type: 'password',
       name: 'password',
       label: 'Password'
     },
     {
-      elementType: 'input',
+      element: 'input',
       type: 'password',
       name: 'passwordConfirm',
       label: 'Type password again'
     },
     {
-      elementType: 'select',
+      element: 'select',
       name: 'color',
       label: 'Choose a color',
       options: [
@@ -83,7 +83,8 @@ Currently input, select, checkbox and textarea fields are supported.
       ],
     },
     {
-      elementType: 'checkbox',
+      element: 'input',
+      type: 'checkbox',
       name: 'newsletterOptIn',
       label: 'Subscribe to our newsletter?',
       defaultChecked: true,

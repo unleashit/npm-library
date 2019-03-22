@@ -61,19 +61,19 @@ Currently input, select, checkbox and textarea fields are supported.
   schema={schema}
   customFields={[
     {
-      elementType: 'input',
+      element: 'input',
       type: 'text',
       name: 'email',
       label: 'Email'
     },
     {
-      elementType: 'input',
+      element: 'input',
       type: 'text',
       name: 'secretQuestion1',
       label: 'What is your mother\'s maiden name?'
     },
     {
-      elementType: 'input',
+      element: 'input',
       type: 'text',
       name: 'secretQuestion2',
       label: 'What was the name of your first pet?'
