@@ -1,6 +1,6 @@
-## Fogot Password
+## Forgot Password
 
-React forgot password component in Typescript, Formik and Yup for validation. It accepts props including submit and sucess handlers, custom fields, custom Yup schema, choice of default or custom success component, header and more.
+React forgot password component in Typescript, Formik and Yup for validation. It accepts props including submit and success handlers, custom fields, custom Yup schema, choice of default or custom success component, header and more.
 
 ![forgot password component](forgotPassword.png)
 
