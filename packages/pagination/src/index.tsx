@@ -144,10 +144,10 @@ class Pagination extends React.Component<Props, State> {
     }
 
     return pages > 1
-      ? pageAry.map((page) =>
+      ? pageAry.map((page, i) =>
           !page ? (
             <span
-              key={`${page}-ellipsis`}
+              key={`${i}-ellipsis`}
               className={`pagination__ellipsis ${style.ellipsis}`}
             >
               ...
