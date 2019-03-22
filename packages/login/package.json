@@ -2,13 +2,28 @@
   "name": "@unleashit/login",
   "version": "0.8.0",
   "main": "dist/index.js",
-  "description": "Responsive login component for React.",
+  "description": "Responsive login component for React with custom fields.",
   "scripts": {
     "start": "NODE_ENV=development webpack --watch --hot --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
     "test": "NODE_ENV=test jest --config ./jest.config.js"
   },
   "license": "MIT",
+  "keywords": [
+    "login",
+    "react login",
+    "responsive",
+    "custom fields",
+    "react",
+    "react components",
+    "npm packages",
+    "npm components",
+    "ui components",
+    "ui library",
+    "monorepo",
+    "lerna",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unleashit/npm-library.git"

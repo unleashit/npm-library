@@ -4,6 +4,19 @@
   "private": true,
   "author": "unleashit",
   "license": "MIT",
+  "keywords": [
+    "monorepo",
+    "lerna",
+    "react",
+    "node",
+    "nodejs",
+    "components",
+    "npm packages",
+    "npm components",
+    "react components",
+    "ui components",
+    "ui library"
+  ],
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },

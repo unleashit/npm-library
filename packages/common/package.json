@@ -2,7 +2,7 @@
   "name": "@unleashit/common",
   "version": "0.7.1",
   "main": "dist/index.js",
-  "description": "Shared library for @unleashit components.",
+  "description": "Shared library for @unleashit components. Probabaly not otherwise useful.",
   "scripts": {
     "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",

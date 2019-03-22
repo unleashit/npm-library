@@ -9,6 +9,20 @@
     "test": "NODE_ENV=test jest --config ./jest.config.js"
   },
   "license": "MIT",
+  "keywords": [
+    "pagination",
+    "react pagination",
+    "responsive",
+    "react",
+    "react components",
+    "npm packages",
+    "npm components",
+    "ui components",
+    "ui library",
+    "monorepo",
+    "lerna",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/unleashit/npm-library.git"
