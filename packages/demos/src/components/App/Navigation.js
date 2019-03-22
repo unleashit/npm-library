@@ -16,6 +16,9 @@ const Navigation = () => (
       <li>
         <Link to={"/signup"} className="main-navigation__link">Signup</Link>
       </li>
+      <li>
+        <Link to={"/forgot-password"} className="main-navigation__link">Forgot Password</Link>
+      </li>
     </ul>
   </nav>
 );
