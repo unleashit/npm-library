@@ -2,7 +2,7 @@
 
 React login component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more.
 
-![login component](login.png)
+![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
 
 ### Install
 ```

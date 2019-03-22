@@ -2,7 +2,7 @@
 
 Responsive pagination component for React in Typescript. Just give it a total, current offset and handler and it returns the new offset as needed
 
-![pagination component](pagination.png)
+![pagination component](https://github.com/unleashit/npm-library/raw/master/packages/pagination/pagination.png)
 
 ### Install
 ```

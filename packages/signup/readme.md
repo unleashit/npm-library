@@ -2,7 +2,7 @@
 
 React signup component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more.
 
-![signup component](signup.png)
+![signup component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/signup/signup.png)
 
 ### Install
 
