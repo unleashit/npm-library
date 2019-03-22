@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Login from '@unleashit/login';
 
 import '@unleashit/login/dist/style.css';
-import Signup from '../signup';
 
 class LoginDemo extends Component {
   async loginHandler(values) {
