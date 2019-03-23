@@ -23,7 +23,7 @@
   "scripts": {
     "start": "lerna run --parallel start",
     "start:build": "yarn run build && yarn start",
-    "build": "lerna run --stream --concurrency 1 build",
+    "build": "NODE_ENV=production lerna run --stream --concurrency 1 build",
     "build:pagination": "lerna run build --scope=@unleashit/pagination",
     "test": "lerna run --stream --concurrency 1 test",
     "test:watch": "lerna run --stream test:watch",
