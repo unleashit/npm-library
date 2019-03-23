@@ -118,18 +118,15 @@ export default withFormik<Props, FormValues>({
   validationSchema: (props: any) => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
-    { props, setFieldValue, setSubmitting, setErrors, resetForm, setStatus },
+    { props, setFieldValue, setSubmitting, setErrors, setStatus },
   ) => {
     try {
       const resp: ForgotPasswordHandlerResponse = await props.forgotPasswordHandler(
         values,
       );
       const errors = resp.errors || {};
-      setSubmitting(false);
 
       if (resp.success) {
-        resetForm();
-
         const isComponent = props.onSuccess && React.isValidElement(props.onSuccess);
 
         if (props.onSuccess && !isComponent) {
@@ -137,13 +134,16 @@ export default withFormik<Props, FormValues>({
         }
         if (isComponent || props.showDefaultConfirmation) {
           setStatus({ success: true });
+          setSubmitting(false);
         }
       } else {
         setFieldValue('email', '', false);
         setErrors(errors);
+        setSubmitting(false);
       }
     } catch (err) {
-      throw err;
+      setSubmitting(false);
+      console.error(err);
     }
   },
 })(ForgotPassword);

@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "description": "Forgot password component for React with custom fields.",
   "scripts": {
-    "start": "NODE_ENV=development webpack --watch --hot --source-maps --mode development",
+    "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
     "test": "NODE_ENV=test jest --config ./jest.config.js"
   },

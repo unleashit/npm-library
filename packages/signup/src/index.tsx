@@ -119,15 +119,6 @@ Signup.defaultProps = {
   loader: SignupLoader,
 };
 
-// export const mapDefaultValues = (
-//   fields: { [key: string]: string }[],
-// ): { [key: string]: string } => {
-//   return fields.reduce((a, b) => {
-//     a[b.name] = b.defaultValue || '';
-//     return a;
-//   }, {});
-// };
-
 export const mapDefaultValues = (
   fields: { [key: string]: string }[],
 ): { [key: string]: string } => {
@@ -154,10 +145,9 @@ export default withFormik<Props, FormValues | any>({
   handleSubmit: async (values, { props, setFieldValue, setSubmitting, setErrors }) => {
     try {
       const resp: SignupHandlerResponse = await props.signupHandler(values);
-
       const errors = resp.errors || {};
 
-      if (resp.success === true) {
+      if (resp.success) {
         props.onSuccess(resp);
       } else {
         setFieldValue('password', '', false);
@@ -167,7 +157,7 @@ export default withFormik<Props, FormValues | any>({
       }
     } catch (err) {
       setSubmitting(false);
-      throw err;
+      console.error(err);
     }
   },
 })(Signup);
