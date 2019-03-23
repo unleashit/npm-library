@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/mock-data",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Wrapper for mocker-data-generator providing a set of templates and arguments. Can optionally write to a file (node)",
   "main": "dist/index.js",
   "scripts": {
@@ -60,13 +60,13 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "uglifyjs-webpack-plugin": "^2.1.2",
     "jest": "23.6.0",
     "prettier": "^1.16.4",
     "ts-jest": "^23.10.5",
     "ts-loader": "^5.3.3",
     "ts-node": "^8.0.2",
-    "typescript": "3.2.1"
+    "typescript": "3.2.1",
+    "uglifyjs-webpack-plugin": "^2.1.2"
   },
   "jest": {
     "globalSetup": "./jest.config.js",

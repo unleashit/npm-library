@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.6.1...@unleashit/pagination@0.7.0) (2019-03-23)
+
+
+### Bug Fixes
+
+* **pagination:** fix duplicate react key warning for ellipsis ([acab887](https://github.com/unleashit/npm-library/commit/acab887))
+
+
+### Features
+
+* **all:** make builds significantly smaller ([163d456](https://github.com/unleashit/npm-library/commit/163d456))
+
+
+
+
+
 ## [0.6.1](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.1.0...@unleashit/pagination@0.6.1) (2019-03-21)
 
 **Note:** Version bump only for package @unleashit/pagination

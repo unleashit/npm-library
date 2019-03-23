@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.6.0...@unleashit/mock-data@0.6.1) (2019-03-23)
+
+
+### Bug Fixes
+
+* **all:** optimize peer dep versions in package.json ([6e05c13](https://github.com/unleashit/npm-library/commit/6e05c13))
+
+
+
+
+
 # [0.6.0](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.5.10...@unleashit/mock-data@0.6.0) (2019-03-16)
 
 
