@@ -119,12 +119,23 @@ Signup.defaultProps = {
   loader: SignupLoader,
 };
 
-const mapDefaultValues = (
+// export const mapDefaultValues = (
+//   fields: { [key: string]: string }[],
+// ): { [key: string]: string } => {
+//   return fields.reduce((a, b) => {
+//     a[b.name] = b.defaultValue || '';
+//     return a;
+//   }, {});
+// };
+
+export const mapDefaultValues = (
   fields: { [key: string]: string }[],
 ): { [key: string]: string } => {
   return fields.reduce((a, b) => {
-    a[b.name] = b.defaultValue || '';
-    return a;
+    return {
+      ...a,
+      [b.name]: b.defaultValue || '',
+    };
   }, {});
 };
 

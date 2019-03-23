@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow, mount } from 'enzyme';
-import LoginContainer, { Login } from '.';
+import LoginContainer from '.';
 
 const nextTick = () => {
   return new Promise(resolve => {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow, mount } from 'enzyme';
-import SignupContainer, { Signup } from '.';
+import SignupContainer, { mapDefaultValues } from '.';
 
 const nextTick = () => {
   return new Promise(resolve => {
@@ -102,4 +102,29 @@ describe('<SignupContainer />', () => {
       expect(passwordError.text()).toEqual('password must be at least 8 characters');
     });
   });
+
+  describe('helper functions', () => {
+    it('mapDefaultValues() returns the right object', () => {
+      const fields = [
+        {
+          element: 'input',
+          type: 'text',
+          name: 'email',
+          label: 'Email',
+          defaultValue: 'something'
+        },
+        {
+          element: 'input',
+          type: 'password',
+          name: 'password',
+          label: 'Password',
+        },
+      ];
+
+      const { email, password } = mapDefaultValues(fields);
+
+      expect(email).toEqual('something');
+      expect(password).toEqual('');
+    });
+  })
 });
