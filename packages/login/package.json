@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "main": "dist/index.js",
   "description": "Responsive login component for React with custom fields.",
   "scripts": {
@@ -41,7 +41,7 @@
     "yup": ">=0.26.10"
   },
   "dependencies": {
-    "@unleashit/common": "^0.8.0"
+    "@unleashit/common": "^0.8.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
