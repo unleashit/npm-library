@@ -58,19 +58,19 @@ Currently input, select, checkbox and textarea fields are supported.
       element: 'input',
       type: 'text',
       name: 'email',
-      label: 'Email'
+      label: 'Email',
     },
     {
       element: 'input',
       type: 'password',
       name: 'password',
-      label: 'Password'
+      label: 'Password',
     },
     {
       element: 'input',
       type: 'password',
       name: 'passwordConfirm',
-      label: 'Type password again'
+      label: 'Type password again',
     },
     {
       element: 'select',
@@ -81,7 +81,7 @@ Currently input, select, checkbox and textarea fields are supported.
         ['red', 'red'],
         ['green', 'green'],
         ['blue', 'blue'],
-        ['yellow', 'yellow']
+        ['yellow', 'yellow'],
       ],
     },
     {
@@ -89,11 +89,11 @@ Currently input, select, checkbox and textarea fields are supported.
       type: 'checkbox',
       name: 'newsletterOptIn',
       label: 'Subscribe to our newsletter?',
-      defaultChecked: true,
-      defaultValue: true
+      value: 'yes',
+      defaultValue: true,
     },
   ]}
-/>
+/>;
 
 // yup schema
 const schema = yup.object().shape({
@@ -142,8 +142,8 @@ interface CustomField {
   defaultChecked?: boolean; // for checkbox
   custAttrs?: { [key: string]: string };
 }
-
 ```
+
 Note: currently tested custom fields are input, select, textarea and checkbox. Support for radio and others will be added.
 
 ### CSS
@@ -152,13 +152,13 @@ Basic css can be imported: `import '@unleashit/signup/dist/style.css';`, or you 
 
 ### Props
 
-| Name          | Type                                            | Description                                                                                                                       | default             |
-| ------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| signupHandler | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required            |
-| onSuccess     | (resp: SignupHandlerResponse) => any            | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required            |
-| schema        | yup.Schema\<SignupSchema>                       | Yup schema to override the default                                                                                                | standard validation |
-| header        | React.FC                                        | React component to override default header                                                                                        | basic header        |
-| loader        | React.FC                                        | React component to override default loader                                                                                        | Signing up...       |
-| loginUrl      | string                                          | Url for login page. Use only if using default header                                                                              | /login              |
-| customFields  | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                 |
-| cssModuleStyles  | { [key: string]: string }                    | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS                 |
+| Name            | Type                                             | Description                                                                                                                       | default             |
+| --------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| signupHandler   | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required            |
+| onSuccess       | (resp: SignupHandlerResponse) => any             | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required            |
+| schema          | yup.Schema\<SignupSchema>                        | Yup schema to override the default                                                                                                | standard validation |
+| header          | React.FC                                         | React component to override default header                                                                                        | basic header        |
+| loader          | React.FC                                         | React component to override default loader                                                                                        | Signing up...       |
+| loginUrl        | string                                           | Url for login page. Use only if using default header                                                                              | /login              |
+| customFields    | CustomField[]                                    | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                 |
+| cssModuleStyles | { [key: string]: string }                        | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS         |
