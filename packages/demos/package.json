@@ -3,14 +3,14 @@
   "version": "0.8.3",
   "private": true,
   "dependencies": {
-    "@unleashit/mock-data": "^0.6.3",
+    "@unleashit/mock-data": "*",
     "formik": "^1.5.1",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
-    "yup": "^0.26.10"
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "BROWSER='Chrome' react-scripts start",
@@ -30,7 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@babel/core": "^7.3.3",
+    "@babel/core": "^7.4.0",
     "babel-loader": "8.0.5",
     "node-sass": "^4.11.0"
   }
