@@ -75,7 +75,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "if [ -z \"$HUSKY_BYPASS\" ]; then commitlint -E HUSKY_GIT_PARAMS; fi",
-      "pre-commit": "if [ -z \"$HUSKY_BYPASS\" ]; then yarn run lint && yarn run test; fi"
+      "pre-commit": "if [ -z \"$HUSKY_BYPASS\" ]; then lerna exec -- eslint src/**/*.{ts,tsx,js,jsx,json} && yarn run test; fi"
     }
   },
   "jest": {
