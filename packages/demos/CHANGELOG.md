@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.8.3...@unleashit/demos@0.8.4) (2019-03-25)
+
+
+### Bug Fixes
+
+* **common:** checkbox bug ([#2](https://github.com/unleashit/npm-library/issues/2)) ([86641b1](https://github.com/unleashit/npm-library/commit/86641b1))
+
+
+
+
+
 ## [0.8.3](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.8.1...@unleashit/demos@0.8.3) (2019-03-23)
 
 **Note:** Version bump only for package @unleashit/demos

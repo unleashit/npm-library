@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.9.2...@unleashit/login@0.9.3) (2019-03-25)
+
+
+### Bug Fixes
+
+* handle errors better in react components ([#1](https://github.com/unleashit/npm-library/issues/1)) ([0b2eb64](https://github.com/unleashit/npm-library/commit/0b2eb64))
+
+
+
+
+
 ## [0.9.2](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.9.0...@unleashit/login@0.9.2) (2019-03-23)
 
 **Note:** Version bump only for package @unleashit/login
