@@ -71,8 +71,8 @@ class SignupDemo extends Component {
               type: 'checkbox',
               name: 'newsletterOptIn',
               label: 'Subscribe to our newsletter?',
-              defaultChecked: true,
-              defaultValue: true,
+              value: 'yes',
+              defaultValue: true
             },
           ]}
         />

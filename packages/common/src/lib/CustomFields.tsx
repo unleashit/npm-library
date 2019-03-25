@@ -44,9 +44,9 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     handleChange,
     handleBlur,
     value,
+    values,
     errors,
     touched,
-    defaultChecked,
     cssModuleStyles: style,
     componentName,
   } = props;
@@ -102,8 +102,8 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       }`,
       onChange: handleChange,
       onBlur: handleBlur,
-      defaultChecked,
-      defaultValue: value,
+      defaultChecked: values[name],
+      value,
       ...custAttrs,
     });
   }
@@ -168,6 +168,7 @@ export function CustomFields({
             handleChange={handleChange}
             handleBlur={handleBlur}
             value={values[field.name]}
+            values={values}
             cssModuleStyles={cssModuleStyles}
             componentName={componentName}
             {...field}
