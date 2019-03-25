@@ -5,6 +5,7 @@ tsconfig.json
 webpack.config.js
 src
 node_modules
+login.png
 coverage
 .idea
 .vscode
