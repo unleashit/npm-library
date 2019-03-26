@@ -10,6 +10,7 @@
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-social-login-buttons": "^2.3.1",
     "yup": "^0.27.0"
   },
   "scripts": {

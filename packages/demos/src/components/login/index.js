@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import Login from '@unleashit/login';
+import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 
 import '@unleashit/login/dist/style.css';
+
+const btnStyle = {
+  margin: '10px 0',
+  boxShadow: 'none',
+};
 
 class LoginDemo extends Component {
   async loginHandler(values) {
@@ -25,7 +31,10 @@ class LoginDemo extends Component {
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid test login: test@test.com/12345678
         </p>
-        <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />
+        <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess}>
+          <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
+          <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
+        </Login>
       </div>
     );
   }

@@ -12262,6 +12262,13 @@ react-scripts@2.1.8:
   optionalDependencies:
     fsevents "1.2.4"
 
+react-social-login-buttons@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-social-login-buttons/-/react-social-login-buttons-2.3.1.tgz#f3f3d42ae4d747422885bebd95011505319968a6"
+  integrity sha512-UXY1z6i/mxpGEE7g3ay91Z5RQMNT4gvOQDeZM2FjGwshuuCrcX/4OOvMIXqV1skXP2oo5dgYMXKKj2KApPXkvw==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-split-pane@^0.1.84:
   version "0.1.87"
   resolved "https://registry.yarnpkg.com/react-split-pane/-/react-split-pane-0.1.87.tgz#a7027ae554abfacca35f5f780288b07fe4ec4cbd"
