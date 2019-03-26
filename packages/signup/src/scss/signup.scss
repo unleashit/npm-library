@@ -81,3 +81,32 @@ $red: #e74444;
   justify-content: center;
   margin-top: 4rem;
 }
+
+.socialSignup {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.orLine {
+  position: relative;
+  margin: 1.4rem 0;
+  font-size: .85rem;
+  line-height: normal;
+  text-transform: uppercase;
+  color: #444;
+  span::before,
+  span::after {
+    content: '';
+    position: absolute;
+    width: calc(50% - 32px);
+    height: 1px;
+    background-color: #ccc;
+    top: 8px;
+  }
+  span::before {
+    left: 0;
+  }
+  span::after {
+    right: 0;
+  }
+}

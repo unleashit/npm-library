@@ -36,23 +36,24 @@ interface Props {
   schema: Schema<any>;
   customFields?: CustomField[];
   cssModuleStyles?: { [key: string]: string };
+  orLine: boolean;
 }
 
-export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
-  const {
-    errors,
-    loginUrl,
-    header: Header,
-    loader: Loader,
-    isSubmitting,
-    handleChange,
-    handleBlur,
-    values,
-    touched,
-    customFields,
-    cssModuleStyles,
-  } = props;
-
+export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
+  errors,
+  loginUrl,
+  header: Header,
+  loader: Loader,
+  isSubmitting,
+  handleChange,
+  handleBlur,
+  values,
+  touched,
+  customFields,
+  cssModuleStyles,
+  orLine,
+  children,
+}): React.ReactElement => {
   const style = cssModuleStyles || defaultStyle;
 
   return (
@@ -105,18 +106,29 @@ export function Signup(props: FormikProps<FormValues> & Props): JSX.Element {
             </React.Fragment>
           )}
           <button type="submit" className={`${style.button} unl-signup__button`}>
-            Signup
+            Sign Up
           </button>
+          {children && (
+            <div className={`${style.socialSignup} unl-signup__social-logins`}>
+              {orLine && (
+                <div className={`${style.orLine} unl-signup__or-line`}>
+                  <span>or</span>
+                </div>
+              )}
+              {children}
+            </div>
+          )}
         </Form>
       )}
     </div>
   );
-}
+};
 
 Signup.defaultProps = {
   header: SignupHeader,
   loginUrl: '/login',
   loader: SignupLoader,
+  orLine: true,
 };
 
 export const mapDefaultValues = (

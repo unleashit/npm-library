@@ -1,64 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SignupContainer /> renders without crashing 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "dirty": false,
-      "errors": Object {},
-      "handleBlur": [Function],
-      "handleChange": [Function],
-      "handleReset": [Function],
-      "handleSubmit": [Function],
-      "initialValues": Object {
-        "email": "",
-        "password": "",
-        "passwordConfirm": "",
-        "serverAuth": "",
-      },
-      "isSubmitting": false,
-      "isValid": false,
-      "isValidating": false,
-      "registerField": [Function],
-      "resetForm": [Function],
-      "setError": [Function],
-      "setErrors": [Function],
-      "setFieldError": [Function],
-      "setFieldTouched": [Function],
-      "setFieldValue": [Function],
-      "setFormikState": [Function],
-      "setStatus": [Function],
-      "setSubmitting": [Function],
-      "setTouched": [Function],
-      "setValues": [Function],
-      "status": undefined,
-      "submitCount": 0,
-      "submitForm": [Function],
-      "touched": Object {},
-      "unregisterField": [Function],
-      "validate": undefined,
-      "validateField": [Function],
-      "validateForm": [Function],
-      "validateOnBlur": true,
-      "validateOnChange": true,
-      "validationSchema": [Function],
-      "values": Object {
-        "email": "",
-        "password": "",
-        "passwordConfirm": "",
-        "serverAuth": "",
-      },
-    }
-  }
+<WithFormik(Function)
+  loginHandler={[Function]}
+  onSuccess={[Function]}
 >
-  <Signup
-    dirty={false}
-    errors={Object {}}
-    handleBlur={[Function]}
-    handleChange={[Function]}
-    handleReset={[Function]}
+  <Formik
+    enableReinitialize={false}
     handleSubmit={[Function]}
-    header={[Function]}
     initialValues={
       Object {
         "email": "",
@@ -67,39 +16,590 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
         "serverAuth": "",
       }
     }
-    isSubmitting={false}
-    isValid={false}
-    isValidating={false}
-    loader={[Function]}
-    loginUrl="/login"
-    registerField={[Function]}
-    resetForm={[Function]}
-    setError={[Function]}
-    setErrors={[Function]}
-    setFieldError={[Function]}
-    setFieldTouched={[Function]}
-    setFieldValue={[Function]}
-    setFormikState={[Function]}
-    setStatus={[Function]}
-    setSubmitting={[Function]}
-    setTouched={[Function]}
-    setValues={[Function]}
-    submitCount={0}
-    submitForm={[Function]}
-    touched={Object {}}
-    unregisterField={[Function]}
-    validateField={[Function]}
-    validateForm={[Function]}
+    isInitialValid={false}
+    loginHandler={[Function]}
+    onSubmit={[Function]}
+    onSuccess={[Function]}
+    render={[Function]}
     validateOnBlur={true}
     validateOnChange={true}
-    values={
-      Object {
-        "email": "",
-        "password": "",
-        "passwordConfirm": "",
-        "serverAuth": "",
+    validationSchema={[Function]}
+  >
+    <Component
+      dirty={false}
+      errors={Object {}}
+      handleBlur={[Function]}
+      handleChange={[Function]}
+      handleReset={[Function]}
+      handleSubmit={[Function]}
+      header={[Function]}
+      initialValues={
+        Object {
+          "email": "",
+          "password": "",
+          "passwordConfirm": "",
+          "serverAuth": "",
+        }
       }
-    }
-  />
-</ContextProvider>
+      isSubmitting={false}
+      isValid={false}
+      isValidating={false}
+      loader={[Function]}
+      loginHandler={[Function]}
+      loginUrl="/login"
+      onSuccess={[Function]}
+      orLine={true}
+      registerField={[Function]}
+      resetForm={[Function]}
+      setError={[Function]}
+      setErrors={[Function]}
+      setFieldError={[Function]}
+      setFieldTouched={[Function]}
+      setFieldValue={[Function]}
+      setFormikState={[Function]}
+      setStatus={[Function]}
+      setSubmitting={[Function]}
+      setTouched={[Function]}
+      setValues={[Function]}
+      submitCount={0}
+      submitForm={[Function]}
+      touched={Object {}}
+      unregisterField={[Function]}
+      validateField={[Function]}
+      validateForm={[Function]}
+      validateOnBlur={true}
+      validateOnChange={true}
+      values={
+        Object {
+          "email": "",
+          "password": "",
+          "passwordConfirm": "",
+          "serverAuth": "",
+        }
+      }
+    >
+      <div
+        className="signupContainer unl-signup__container"
+      >
+        <Component
+          loginUrl="/login"
+          style={null}
+        >
+          <div
+            className="header unl-signup__header"
+          >
+            <h2>
+              Sign Up
+            </h2>
+            <p>
+              Already have an account? 
+              <a
+                href="/login"
+              >
+                Login
+              </a>
+            </p>
+          </div>
+        </Component>
+        <Form
+          className="form unl-signup__form"
+        >
+          <Component
+            className="form unl-signup__form"
+            formik={
+              Object {
+                "dirty": false,
+                "errors": Object {},
+                "handleBlur": [Function],
+                "handleChange": [Function],
+                "handleReset": [Function],
+                "handleSubmit": [Function],
+                "initialValues": Object {
+                  "email": "",
+                  "password": "",
+                  "passwordConfirm": "",
+                  "serverAuth": "",
+                },
+                "isSubmitting": false,
+                "isValid": false,
+                "isValidating": false,
+                "registerField": [Function],
+                "resetForm": [Function],
+                "setError": [Function],
+                "setErrors": [Function],
+                "setFieldError": [Function],
+                "setFieldTouched": [Function],
+                "setFieldValue": [Function],
+                "setFormikState": [Function],
+                "setStatus": [Function],
+                "setSubmitting": [Function],
+                "setTouched": [Function],
+                "setValues": [Function],
+                "status": undefined,
+                "submitCount": 0,
+                "submitForm": [Function],
+                "touched": Object {},
+                "unregisterField": [Function],
+                "validate": undefined,
+                "validateField": [Function],
+                "validateForm": [Function],
+                "validateOnBlur": true,
+                "validateOnChange": true,
+                "validationSchema": [Function],
+                "values": Object {
+                  "email": "",
+                  "password": "",
+                  "passwordConfirm": "",
+                  "serverAuth": "",
+                },
+              }
+            }
+          >
+            <form
+              className="form unl-signup__form"
+              onReset={[Function]}
+              onSubmit={[Function]}
+            >
+              <FormikConnect(FieldInner)
+                component={[Function]}
+                componentName="signup"
+                cssModuleStyles={null}
+                name="email"
+                type="text"
+              >
+                <FieldInner
+                  component={[Function]}
+                  componentName="signup"
+                  cssModuleStyles={null}
+                  formik={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialValues": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": false,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setError": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validate": undefined,
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validationSchema": [Function],
+                      "values": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                    }
+                  }
+                  name="email"
+                  type="text"
+                >
+                  <Component
+                    componentName="signup"
+                    cssModuleStyles={null}
+                    field={
+                      Object {
+                        "name": "email",
+                        "onBlur": [Function],
+                        "onChange": [Function],
+                        "value": "",
+                      }
+                    }
+                    form={
+                      Object {
+                        "dirty": false,
+                        "errors": Object {},
+                        "handleBlur": [Function],
+                        "handleChange": [Function],
+                        "handleReset": [Function],
+                        "handleSubmit": [Function],
+                        "initialValues": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                        "isSubmitting": false,
+                        "isValid": false,
+                        "isValidating": false,
+                        "registerField": [Function],
+                        "resetForm": [Function],
+                        "setError": [Function],
+                        "setErrors": [Function],
+                        "setFieldError": [Function],
+                        "setFieldTouched": [Function],
+                        "setFieldValue": [Function],
+                        "setFormikState": [Function],
+                        "setStatus": [Function],
+                        "setSubmitting": [Function],
+                        "setTouched": [Function],
+                        "setValues": [Function],
+                        "status": undefined,
+                        "submitCount": 0,
+                        "submitForm": [Function],
+                        "touched": Object {},
+                        "unregisterField": [Function],
+                        "validateField": [Function],
+                        "validateForm": [Function],
+                        "validateOnBlur": true,
+                        "validateOnChange": true,
+                        "values": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                      }
+                    }
+                    type="text"
+                  >
+                    <div
+                      className="formGroup unl-signup__form-group"
+                    >
+                      <label
+                        className="label unl-signup__label"
+                        htmlFor="signup-form-email"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className="input unl-signup__input "
+                        id="signup-form-email"
+                        name="email"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </Component>
+                </FieldInner>
+              </FormikConnect(FieldInner)>
+              <FormikConnect(FieldInner)
+                component={[Function]}
+                componentName="signup"
+                cssModuleStyles={null}
+                name="password"
+                type="password"
+              >
+                <FieldInner
+                  component={[Function]}
+                  componentName="signup"
+                  cssModuleStyles={null}
+                  formik={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialValues": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": false,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setError": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validate": undefined,
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validationSchema": [Function],
+                      "values": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                    }
+                  }
+                  name="password"
+                  type="password"
+                >
+                  <Component
+                    componentName="signup"
+                    cssModuleStyles={null}
+                    field={
+                      Object {
+                        "name": "password",
+                        "onBlur": [Function],
+                        "onChange": [Function],
+                        "value": "",
+                      }
+                    }
+                    form={
+                      Object {
+                        "dirty": false,
+                        "errors": Object {},
+                        "handleBlur": [Function],
+                        "handleChange": [Function],
+                        "handleReset": [Function],
+                        "handleSubmit": [Function],
+                        "initialValues": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                        "isSubmitting": false,
+                        "isValid": false,
+                        "isValidating": false,
+                        "registerField": [Function],
+                        "resetForm": [Function],
+                        "setError": [Function],
+                        "setErrors": [Function],
+                        "setFieldError": [Function],
+                        "setFieldTouched": [Function],
+                        "setFieldValue": [Function],
+                        "setFormikState": [Function],
+                        "setStatus": [Function],
+                        "setSubmitting": [Function],
+                        "setTouched": [Function],
+                        "setValues": [Function],
+                        "status": undefined,
+                        "submitCount": 0,
+                        "submitForm": [Function],
+                        "touched": Object {},
+                        "unregisterField": [Function],
+                        "validateField": [Function],
+                        "validateForm": [Function],
+                        "validateOnBlur": true,
+                        "validateOnChange": true,
+                        "values": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                      }
+                    }
+                    type="password"
+                  >
+                    <div
+                      className="formGroup unl-signup__form-group"
+                    >
+                      <label
+                        className="label unl-signup__label"
+                        htmlFor="signup-form-password"
+                      >
+                        Password
+                      </label>
+                      <input
+                        className="input unl-signup__input "
+                        id="signup-form-password"
+                        name="password"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        type="password"
+                        value=""
+                      />
+                    </div>
+                  </Component>
+                </FieldInner>
+              </FormikConnect(FieldInner)>
+              <FormikConnect(FieldInner)
+                component={[Function]}
+                componentName="signup"
+                cssModuleStyles={null}
+                name="passwordConfirm"
+                type="passwordConfirm"
+              >
+                <FieldInner
+                  component={[Function]}
+                  componentName="signup"
+                  cssModuleStyles={null}
+                  formik={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialValues": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": false,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setError": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validate": undefined,
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validationSchema": [Function],
+                      "values": Object {
+                        "email": "",
+                        "password": "",
+                        "passwordConfirm": "",
+                        "serverAuth": "",
+                      },
+                    }
+                  }
+                  name="passwordConfirm"
+                  type="passwordConfirm"
+                >
+                  <Component
+                    componentName="signup"
+                    cssModuleStyles={null}
+                    field={
+                      Object {
+                        "name": "passwordConfirm",
+                        "onBlur": [Function],
+                        "onChange": [Function],
+                        "value": "",
+                      }
+                    }
+                    form={
+                      Object {
+                        "dirty": false,
+                        "errors": Object {},
+                        "handleBlur": [Function],
+                        "handleChange": [Function],
+                        "handleReset": [Function],
+                        "handleSubmit": [Function],
+                        "initialValues": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                        "isSubmitting": false,
+                        "isValid": false,
+                        "isValidating": false,
+                        "registerField": [Function],
+                        "resetForm": [Function],
+                        "setError": [Function],
+                        "setErrors": [Function],
+                        "setFieldError": [Function],
+                        "setFieldTouched": [Function],
+                        "setFieldValue": [Function],
+                        "setFormikState": [Function],
+                        "setStatus": [Function],
+                        "setSubmitting": [Function],
+                        "setTouched": [Function],
+                        "setValues": [Function],
+                        "status": undefined,
+                        "submitCount": 0,
+                        "submitForm": [Function],
+                        "touched": Object {},
+                        "unregisterField": [Function],
+                        "validateField": [Function],
+                        "validateForm": [Function],
+                        "validateOnBlur": true,
+                        "validateOnChange": true,
+                        "values": Object {
+                          "email": "",
+                          "password": "",
+                          "passwordConfirm": "",
+                          "serverAuth": "",
+                        },
+                      }
+                    }
+                    type="passwordConfirm"
+                  >
+                    <div
+                      className="formGroup unl-signup__form-group"
+                    >
+                      <label
+                        className="label unl-signup__label"
+                        htmlFor="signup-form-passwordConfirm"
+                      >
+                        Password Confirm
+                      </label>
+                      <input
+                        className="input unl-signup__input "
+                        id="signup-form-passwordConfirm"
+                        name="passwordConfirm"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        type="passwordConfirm"
+                        value=""
+                      />
+                    </div>
+                  </Component>
+                </FieldInner>
+              </FormikConnect(FieldInner)>
+              <button
+                className="button unl-signup__button"
+                type="submit"
+              >
+                Sign Up
+              </button>
+            </form>
+          </Component>
+        </Form>
+      </div>
+    </Component>
+  </Formik>
+</WithFormik(Function)>
 `;

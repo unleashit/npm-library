@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import SignupContainer, { mapDefaultValues } from '.';
 
 const nextTick = () => {
@@ -25,24 +25,20 @@ describe('<SignupContainer />', () => {
   let props = {};
 
   beforeEach(() => {
-    wrapper = shallow(<SignupContainer />).dive();
+    props = {
+      loginHandler: () => jest.fn({ errors: {} }),
+      onSuccess: () => jest.fn(),
+    };
+
+    wrapper = mount(<SignupContainer {...props} />);
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.find('Signup')).toHaveLength(1);
+    expect(wrapper.find('.signupContainer')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('validation', () => {
-    beforeEach(() => {
-      props = {
-        loginHandler: () => jest.fn({ errors: {} }),
-        onSuccess: () => jest.fn(),
-      };
-
-      wrapper = mount(<SignupContainer {...props} />);
-    });
-
     it('fields can be updated and validated', () => {
       wrapper
         .find('input[name="email"]')

@@ -24,7 +24,7 @@ export const SignupHeader: React.FC<SignupHeaderProps> = ({
   style,
 }): JSX.Element => (
   <div className={`${style.header} unl-signup__header`}>
-    <h2>Signup</h2>
+    <h2>Sign Up</h2>
     <p>
       Already have an account? <a href={loginUrl}>Login</a>
     </p>
