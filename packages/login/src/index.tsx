@@ -34,6 +34,9 @@ interface Props {
   schema: Schema<any>;
   customFields?: CustomField[];
   cssModuleStyles?: { [key: string]: string };
+  forgotPassword: boolean;
+  forgotPasswordLink: string;
+  forgotPasswordText: string;
 }
 
 export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
@@ -49,6 +52,9 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
     touched,
     customFields,
     cssModuleStyles,
+    forgotPassword,
+    forgotPasswordLink,
+    forgotPasswordText
   } = props;
 
   const style = cssModuleStyles || defaultStyle;
@@ -97,6 +103,11 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
           <button type="submit" className={`${style.button} unl-login__button`}>
             Login
           </button>
+          {forgotPassword ? (
+            <div className={`${style.forgotPasswordLink} unl-login__forgot-password-link`}>
+              <a href={forgotPasswordLink}>{forgotPasswordText}</a>
+            </div>
+          ) : null}
         </Form>
       )}
     </div>
@@ -107,15 +118,15 @@ Login.defaultProps = {
   header: LoginHeader,
   signupUrl: '/signup',
   loader: LoginLoader,
+  forgotPassword: true,
+  forgotPasswordLink: '/forgot-password',
+  forgotPasswordText: 'Forgot your password?'
 };
 
 export default withFormik<Props, FormValues>({
   mapPropsToValues: () => ({ email: '', password: '', serverAuth: '' }),
   validationSchema: (props: any) => (props.schema ? props.schema : schema),
-  handleSubmit: async (
-    values,
-    { props, setFieldValue, setSubmitting, setErrors },
-  ) => {
+  handleSubmit: async (values, { props, setFieldValue, setSubmitting, setErrors }) => {
     try {
       const resp: LoginHandlerResponse = await props.loginHandler(values);
       const errors = resp.errors || {};

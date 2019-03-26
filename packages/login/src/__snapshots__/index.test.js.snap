@@ -52,6 +52,9 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
   <Login
     dirty={false}
     errors={Object {}}
+    forgotPassword={true}
+    forgotPasswordLink="/forgot-password"
+    forgotPasswordText="Forgot your password?"
     handleBlur={[Function]}
     handleChange={[Function]}
     handleReset={[Function]}
