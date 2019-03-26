@@ -37,9 +37,12 @@ interface Props {
   forgotPassword: boolean;
   forgotPasswordLink: string;
   forgotPasswordText: string;
+  orLine: boolean;
 }
 
-export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
+export const Login: React.FC<FormikProps<FormValues> & Props> = (
+  props,
+): React.ReactElement => {
   const {
     errors,
     signupUrl,
@@ -54,7 +57,9 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
     cssModuleStyles,
     forgotPassword,
     forgotPasswordLink,
-    forgotPasswordText
+    forgotPasswordText,
+    orLine,
+    children,
   } = props;
 
   const style = cssModuleStyles || defaultStyle;
@@ -103,8 +108,20 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
           <button type="submit" className={`${style.button} unl-login__button`}>
             Login
           </button>
+          {children && (
+            <div className={`${style.socialLogins} unl-login__social-logins`}>
+              {orLine && (
+                <div className={`${style.orLine} unl-login__or-line`}>
+                  <span>or</span>
+                </div>
+              )}
+              {children}
+            </div>
+          )}
           {forgotPassword ? (
-            <div className={`${style.forgotPasswordLink} unl-login__forgot-password-link`}>
+            <div
+              className={`${style.forgotPasswordLink} unl-login__forgot-password-link`}
+            >
               <a href={forgotPasswordLink}>{forgotPasswordText}</a>
             </div>
           ) : null}
@@ -112,7 +129,7 @@ export function Login(props: FormikProps<FormValues> & Props): JSX.Element {
       )}
     </div>
   );
-}
+};
 
 Login.defaultProps = {
   header: LoginHeader,
@@ -120,7 +137,8 @@ Login.defaultProps = {
   loader: LoginLoader,
   forgotPassword: true,
   forgotPasswordLink: '/forgot-password',
-  forgotPasswordText: 'Forgot your password?'
+  forgotPasswordText: 'Forgot your password?',
+  orLine: true
 };
 
 export default withFormik<Props, FormValues>({

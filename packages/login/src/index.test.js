@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import LoginContainer from '.';
 
 const nextTick = () => {
@@ -22,27 +22,21 @@ const changeVal = (name, value) => {
 
 describe('<LoginContainer />', () => {
   let wrapper;
-  let props = {};
+  const props = {
+    loginHandler: () => jest.fn({ errors: {} }),
+    onSuccess: () => jest.fn(),
+  };
 
   beforeEach(() => {
-    wrapper = shallow(<LoginContainer />).dive();
+    wrapper = mount(<LoginContainer {...props} />);
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.find('Login')).toHaveLength(1);
+    expect(wrapper.find('.loginContainer')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
   describe('validation', () => {
-    beforeEach(() => {
-      props = {
-        loginHandler: () => jest.fn({ errors: {} }),
-        onSuccess: () => jest.fn(),
-      };
-
-      wrapper = mount(<LoginContainer {...props} />);
-    });
-
     it('fields can be updated and validated', () => {
       wrapper
         .find('input[name="email"]')

@@ -8,7 +8,7 @@ $red: #e74444;
 .header {
   h2 {
     font-weight: normal;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -17,15 +17,16 @@ $red: #e74444;
 }
 
 .formGroup {
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
 }
 
-.input, .textarea {
+.input,
+.textarea {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
 }
 
 .textarea {
@@ -37,7 +38,7 @@ $red: #e74444;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
 }
 
 .inputError {
@@ -46,14 +47,14 @@ $red: #e74444;
 
 .label {
   display: block;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
 
 .button {
   display: block;
   width: 100%;
   margin-top: 1.2rem;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
   border: none;
   border-radius: 5px;
   background-color: $gray;
@@ -68,7 +69,7 @@ $red: #e74444;
 
 .serverAuthError {
   margin: 1rem 0;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
   background-color: $gray;
   border-radius: 5px;
   text-align: center;
@@ -84,4 +85,33 @@ $red: #e74444;
   display: flex;
   justify-content: center;
   margin-top: 4rem;
+}
+
+.socialLogins {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.orLine {
+  position: relative;
+  margin: 1.4rem 0;
+  font-size: .85rem;
+  line-height: normal;
+  text-transform: uppercase;
+  color: #444;
+  span::before,
+  span::after {
+    content: '';
+    position: absolute;
+    width: calc(50% - 32px);
+    height: 1px;
+    background-color: #ccc;
+    top: 8px;
+  }
+  span::before {
+    left: 0;
+  }
+  span::after {
+    right: 0;
+  }
 }
