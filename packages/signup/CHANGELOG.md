@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.8.3...@unleashit/signup@0.9.0) (2019-03-27)
+
+
+### Features
+
+* **signup:** add social signup btns template ([dc6548c](https://github.com/unleashit/npm-library/commit/dc6548c))
+
+
+
+
+
 ## [0.8.3](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.8.2...@unleashit/signup@0.8.3) (2019-03-25)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.9.3...@unleashit/forgot-password@0.10.0) (2019-03-27)
+
+
+### Features
+
+* **forgotpassword:** display children as footer ([8a8e6c3](https://github.com/unleashit/npm-library/commit/8a8e6c3))
+
+
+
+
+
 ## [0.9.3](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.9.2...@unleashit/forgot-password@0.9.3) (2019-03-25)
 
 

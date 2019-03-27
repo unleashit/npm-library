@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.9.3...@unleashit/login@0.10.0) (2019-03-27)
+
+
+### Features
+
+* **login:** add forgot password link + props ([d15ee4e](https://github.com/unleashit/npm-library/commit/d15ee4e))
+* **login:** add social login btns template ([d2d432d](https://github.com/unleashit/npm-library/commit/d2d432d))
+
+
+
+
+
 ## [0.9.3](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.9.2...@unleashit/login@0.9.3) (2019-03-25)
 
 

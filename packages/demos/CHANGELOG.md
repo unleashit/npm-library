@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.8.4...@unleashit/demos@0.9.0) (2019-03-27)
+
+
+### Features
+
+* **demos:** add social login btns to demo ([9c25897](https://github.com/unleashit/npm-library/commit/9c25897))
+* **demos:** add social signup btns to demo ([e6afd99](https://github.com/unleashit/npm-library/commit/e6afd99))
+
+
+
+
+
 ## [0.8.4](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.8.3...@unleashit/demos@0.8.4) (2019-03-25)
 
 
