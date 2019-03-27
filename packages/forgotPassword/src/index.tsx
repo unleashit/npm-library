@@ -36,7 +36,9 @@ interface Props {
   showDefaultConfirmation: boolean;
 }
 
-export function ForgotPassword(props: FormikProps<FormValues> & Props): JSX.Element {
+export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
+  props,
+): React.ReactElement => {
   const {
     errors,
     header: Header,
@@ -50,6 +52,7 @@ export function ForgotPassword(props: FormikProps<FormValues> & Props): JSX.Elem
     cssModuleStyles,
     onSuccess,
     status,
+    children,
   } = props;
 
   const style = cssModuleStyles || defaultStyle;
@@ -101,11 +104,16 @@ export function ForgotPassword(props: FormikProps<FormValues> & Props): JSX.Elem
           <button type="submit" className={`${style.button} unl-forgot-password__button`}>
             Send
           </button>
+          {children && (
+            <div className={`${style.footer} unl-forgot-password__footer`}>
+              {children}
+            </div>
+          )}
         </Form>
       )}
     </div>
   );
-}
+};
 
 ForgotPassword.defaultProps = {
   header: ForgotPasswordHeader,

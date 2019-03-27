@@ -1,62 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "dirty": false,
-      "errors": Object {},
-      "handleBlur": [Function],
-      "handleChange": [Function],
-      "handleReset": [Function],
-      "handleSubmit": [Function],
-      "initialValues": Object {
-        "email": "",
-        "password": "",
-        "serverMessage": "",
-      },
-      "isSubmitting": false,
-      "isValid": false,
-      "isValidating": false,
-      "registerField": [Function],
-      "resetForm": [Function],
-      "setError": [Function],
-      "setErrors": [Function],
-      "setFieldError": [Function],
-      "setFieldTouched": [Function],
-      "setFieldValue": [Function],
-      "setFormikState": [Function],
-      "setStatus": [Function],
-      "setSubmitting": [Function],
-      "setTouched": [Function],
-      "setValues": [Function],
-      "status": undefined,
-      "submitCount": 0,
-      "submitForm": [Function],
-      "touched": Object {},
-      "unregisterField": [Function],
-      "validate": undefined,
-      "validateField": [Function],
-      "validateForm": [Function],
-      "validateOnBlur": true,
-      "validateOnChange": true,
-      "validationSchema": [Function],
-      "values": Object {
-        "email": "",
-        "password": "",
-        "serverMessage": "",
-      },
-    }
-  }
->
-  <ForgotPassword
-    dirty={false}
-    errors={Object {}}
-    handleBlur={[Function]}
-    handleChange={[Function]}
-    handleReset={[Function]}
+<WithFormik(Function)>
+  <Formik
+    enableReinitialize={false}
     handleSubmit={[Function]}
-    header={[Function]}
     initialValues={
       Object {
         "email": "",
@@ -64,38 +12,287 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
         "serverMessage": "",
       }
     }
-    isSubmitting={false}
-    isValid={false}
-    isValidating={false}
-    loader={[Function]}
-    registerField={[Function]}
-    resetForm={[Function]}
-    setError={[Function]}
-    setErrors={[Function]}
-    setFieldError={[Function]}
-    setFieldTouched={[Function]}
-    setFieldValue={[Function]}
-    setFormikState={[Function]}
-    setStatus={[Function]}
-    setSubmitting={[Function]}
-    setTouched={[Function]}
-    setValues={[Function]}
-    showDefaultConfirmation={false}
-    submitCount={0}
-    submitForm={[Function]}
-    touched={Object {}}
-    unregisterField={[Function]}
-    validateField={[Function]}
-    validateForm={[Function]}
+    isInitialValid={false}
+    onSubmit={[Function]}
+    render={[Function]}
     validateOnBlur={true}
     validateOnChange={true}
-    values={
-      Object {
-        "email": "",
-        "password": "",
-        "serverMessage": "",
+    validationSchema={[Function]}
+  >
+    <Component
+      dirty={false}
+      errors={Object {}}
+      handleBlur={[Function]}
+      handleChange={[Function]}
+      handleReset={[Function]}
+      handleSubmit={[Function]}
+      header={[Function]}
+      initialValues={
+        Object {
+          "email": "",
+          "password": "",
+          "serverMessage": "",
+        }
       }
-    }
-  />
-</ContextProvider>
+      isSubmitting={false}
+      isValid={false}
+      isValidating={false}
+      loader={[Function]}
+      registerField={[Function]}
+      resetForm={[Function]}
+      setError={[Function]}
+      setErrors={[Function]}
+      setFieldError={[Function]}
+      setFieldTouched={[Function]}
+      setFieldValue={[Function]}
+      setFormikState={[Function]}
+      setStatus={[Function]}
+      setSubmitting={[Function]}
+      setTouched={[Function]}
+      setValues={[Function]}
+      showDefaultConfirmation={false}
+      submitCount={0}
+      submitForm={[Function]}
+      touched={Object {}}
+      unregisterField={[Function]}
+      validateField={[Function]}
+      validateForm={[Function]}
+      validateOnBlur={true}
+      validateOnChange={true}
+      values={
+        Object {
+          "email": "",
+          "password": "",
+          "serverMessage": "",
+        }
+      }
+    >
+      <div
+        className="container unl-forgot-password__container"
+      >
+        <Component
+          style={null}
+        >
+          <div
+            className="header unl-forgot-password__header"
+          >
+            <h2>
+              Forgot Password
+            </h2>
+            <p>
+              Enter the email address for your account. We
+              '
+              ll send an email with a link to reset your password.
+            </p>
+          </div>
+        </Component>
+        <Form
+          className="form unl-forgot-password__form"
+        >
+          <Component
+            className="form unl-forgot-password__form"
+            formik={
+              Object {
+                "dirty": false,
+                "errors": Object {},
+                "handleBlur": [Function],
+                "handleChange": [Function],
+                "handleReset": [Function],
+                "handleSubmit": [Function],
+                "initialValues": Object {
+                  "email": "",
+                  "password": "",
+                  "serverMessage": "",
+                },
+                "isSubmitting": false,
+                "isValid": false,
+                "isValidating": false,
+                "registerField": [Function],
+                "resetForm": [Function],
+                "setError": [Function],
+                "setErrors": [Function],
+                "setFieldError": [Function],
+                "setFieldTouched": [Function],
+                "setFieldValue": [Function],
+                "setFormikState": [Function],
+                "setStatus": [Function],
+                "setSubmitting": [Function],
+                "setTouched": [Function],
+                "setValues": [Function],
+                "status": undefined,
+                "submitCount": 0,
+                "submitForm": [Function],
+                "touched": Object {},
+                "unregisterField": [Function],
+                "validate": undefined,
+                "validateField": [Function],
+                "validateForm": [Function],
+                "validateOnBlur": true,
+                "validateOnChange": true,
+                "validationSchema": [Function],
+                "values": Object {
+                  "email": "",
+                  "password": "",
+                  "serverMessage": "",
+                },
+              }
+            }
+          >
+            <form
+              className="form unl-forgot-password__form"
+              onReset={[Function]}
+              onSubmit={[Function]}
+            >
+              <FormikConnect(FieldInner)
+                component={[Function]}
+                componentName="forgot-password"
+                cssModuleStyles={null}
+                name="email"
+                type="text"
+              >
+                <FieldInner
+                  component={[Function]}
+                  componentName="forgot-password"
+                  cssModuleStyles={null}
+                  formik={
+                    Object {
+                      "dirty": false,
+                      "errors": Object {},
+                      "handleBlur": [Function],
+                      "handleChange": [Function],
+                      "handleReset": [Function],
+                      "handleSubmit": [Function],
+                      "initialValues": Object {
+                        "email": "",
+                        "password": "",
+                        "serverMessage": "",
+                      },
+                      "isSubmitting": false,
+                      "isValid": false,
+                      "isValidating": false,
+                      "registerField": [Function],
+                      "resetForm": [Function],
+                      "setError": [Function],
+                      "setErrors": [Function],
+                      "setFieldError": [Function],
+                      "setFieldTouched": [Function],
+                      "setFieldValue": [Function],
+                      "setFormikState": [Function],
+                      "setStatus": [Function],
+                      "setSubmitting": [Function],
+                      "setTouched": [Function],
+                      "setValues": [Function],
+                      "status": undefined,
+                      "submitCount": 0,
+                      "submitForm": [Function],
+                      "touched": Object {},
+                      "unregisterField": [Function],
+                      "validate": undefined,
+                      "validateField": [Function],
+                      "validateForm": [Function],
+                      "validateOnBlur": true,
+                      "validateOnChange": true,
+                      "validationSchema": [Function],
+                      "values": Object {
+                        "email": "",
+                        "password": "",
+                        "serverMessage": "",
+                      },
+                    }
+                  }
+                  name="email"
+                  type="text"
+                >
+                  <Component
+                    componentName="forgot-password"
+                    cssModuleStyles={null}
+                    field={
+                      Object {
+                        "name": "email",
+                        "onBlur": [Function],
+                        "onChange": [Function],
+                        "value": "",
+                      }
+                    }
+                    form={
+                      Object {
+                        "dirty": false,
+                        "errors": Object {},
+                        "handleBlur": [Function],
+                        "handleChange": [Function],
+                        "handleReset": [Function],
+                        "handleSubmit": [Function],
+                        "initialValues": Object {
+                          "email": "",
+                          "password": "",
+                          "serverMessage": "",
+                        },
+                        "isSubmitting": false,
+                        "isValid": false,
+                        "isValidating": false,
+                        "registerField": [Function],
+                        "resetForm": [Function],
+                        "setError": [Function],
+                        "setErrors": [Function],
+                        "setFieldError": [Function],
+                        "setFieldTouched": [Function],
+                        "setFieldValue": [Function],
+                        "setFormikState": [Function],
+                        "setStatus": [Function],
+                        "setSubmitting": [Function],
+                        "setTouched": [Function],
+                        "setValues": [Function],
+                        "status": undefined,
+                        "submitCount": 0,
+                        "submitForm": [Function],
+                        "touched": Object {},
+                        "unregisterField": [Function],
+                        "validateField": [Function],
+                        "validateForm": [Function],
+                        "validateOnBlur": true,
+                        "validateOnChange": true,
+                        "values": Object {
+                          "email": "",
+                          "password": "",
+                          "serverMessage": "",
+                        },
+                      }
+                    }
+                    type="text"
+                  >
+                    <div
+                      className="formGroup unl-forgot-password__form-group"
+                    >
+                      <label
+                        className="label unl-forgot-password__label"
+                        htmlFor="forgot-password-form-email"
+                      >
+                        Email
+                      </label>
+                      <input
+                        className="input unl-forgot-password__input "
+                        id="forgot-password-form-email"
+                        name="email"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </Component>
+                </FieldInner>
+              </FormikConnect(FieldInner)>
+              <button
+                className="button unl-forgot-password__button"
+                type="submit"
+              >
+                Send
+              </button>
+            </form>
+          </Component>
+        </Form>
+      </div>
+    </Component>
+  </Formik>
+</WithFormik(Function)>
 `;

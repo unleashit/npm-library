@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import ForgotPasswordContainer from '.';
 
 // const nextTick = () => {
@@ -25,11 +25,11 @@ describe('<ForgotPasswordContainer />', () => {
   // let props = {};
 
   beforeEach(() => {
-    wrapper = shallow(<ForgotPasswordContainer />).dive();
+    wrapper = mount(<ForgotPasswordContainer />);
   });
 
   it.only('renders without crashing', () => {
-    expect(wrapper.find('ForgotPassword')).toHaveLength(1);
+    expect(wrapper.find('.unl-forgot-password__container')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
