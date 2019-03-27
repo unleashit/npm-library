@@ -5,10 +5,10 @@ Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Writt
 Just getting going, so far we have...
 
 ### React Components
-1. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset as needed.
-2. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - login component in Typescript, Formik and Yup for validation. It accepts props including submit and sucess handlers, custom fields, custom Yup schema, choice of default or custom header and more.
-3. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - signup component in Typescript, Formik and Yup for validation. It accepts props including submit and sucess handlers, custom fields, custom Yup schema, choice of default or custom header and more.
-4. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - forgot password component in Typescript, Formik and Yup for validation. It accepts props including submit and sucess handlers, custom fields, custom Yup schema, choice of default or custom success component, header and more.
+1. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset when the user interacts. Assumes a peer dependency of React.
+2. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, Formik and Yup. 
+3. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
+4. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable forgot password component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields and header/footer. Assumes Peer depenencies of React, Formik and Yup.
 5. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 ### Other

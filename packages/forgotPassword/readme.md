@@ -1,10 +1,11 @@
 ## Forgot Password
 
-React forgot password component in Typescript, Formik and Yup for validation. It accepts props including submit and success handlers, custom fields, custom Yup schema, choice of default or custom success component, header and more.
+Customizable React forgot password component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields and header/footer.
 
 ![forgot password component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/forgotPassword/forgotPassword.png)
 
 ### Install
+
 ```
 npm install @unleashit/forgot-password
 ```
@@ -17,16 +18,13 @@ npm install @unleashit/forgot-password
 class ForgotPasswordDemo extends React.Component {
   async forgotPasswordHandler(values) {
     // should return a Promise in the shape of LoginHandlerResponse below
-    return await fetch(
-      'https://api.example.com/auth/reset',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
+    return await fetch('https://api.example.com/auth/reset', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    ).then(resp => resp.json());
+      body: JSON.stringify(values),
+    }).then(resp => resp.json());
   }
 
   onSuccess(serverResponse) {
@@ -35,18 +33,24 @@ class ForgotPasswordDemo extends React.Component {
   }
 
   render() {
-    return <ForgotPassword
-      forgotPasswordHandler={this.forgotPasswordHandler}
-      onSuccess={this.onSuccess}
-      showDefaultConfirmation={true}
-    />;
+    return (
+      <ForgotPassword
+        forgotPasswordHandler={this.forgotPasswordHandler}
+        onSuccess={this.onSuccess}
+        showDefaultConfirmation={true}
+      />
+    );
   }
 }
 
 export default ForgotPasswordDemo;
-
 ```
+
 Notes: a `showDefaultConfirmation` prop set to true will show a default confirmation message. `onSuccess` is optional and can take either a function or a React component instance. If you pass in a function, it will be called with the server's reponse. If you instead pass a component, it will render it.
+
+### CSS
+
+Basic css can be imported: `import '@unleashit/forgot-password/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
 
 ### Custom Fields
 
@@ -66,22 +70,22 @@ Currently input, select, checkbox and textarea fields are supported.
       element: 'input',
       type: 'text',
       name: 'email',
-      label: 'Email'
+      label: 'Email',
     },
     {
       element: 'input',
       type: 'text',
       name: 'secretQuestion1',
-      label: 'What is your mother\'s maiden name?'
+      label: "What is your mother's maiden name?",
     },
     {
       element: 'input',
       type: 'text',
       name: 'secretQuestion2',
-      label: 'What was the name of your first pet?'
-    }
+      label: 'What was the name of your first pet?',
+    },
   ]}
-/>
+/>;
 
 // yup schema
 const schema = yup.object().shape({
@@ -97,9 +101,11 @@ const schema = yup.object().shape({
   secretQuestion2: yup
     .string()
     .max(512)
-    .required()
+    .required(),
 });
 ```
+
+### API
 
 ```typescript
 // forgotPasswordHandler() should return this shape:
@@ -111,7 +117,7 @@ interface ForgotPasswordHandlerResponse {
     serverMessage: string;
     // optionally validate anything else on server
     // key is the field's name attr, value is error msg to display
-    [key: string]: string; 
+    [key: string]: string;
   };
 }
 
@@ -125,21 +131,18 @@ interface CustomField {
   defaultChecked?: boolean; // for checkbox
   custAttrs?: { [key: string]: string };
 }
-
 ```
-### CSS
-
-Basic css can be imported: `import '@unleashit/forgot-password/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
 
 ### Props
 
-| Name      | Type |  Description | default |
-| ----------- | ----------- | ---------| ------- |
-| forgotPasswordHandler      | (values: any) => Promise\<ForgotPasswordHandlerResponse>       | Called on submission and after validation. Use to check auth. Should return the above interface | required |
-| onSuccess      | (resp: LoginHandlerResponse) => any &#124; React.Element | Called if forgotPasswordHandler returns success. Provides the server response from forgotPasswordHandler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a |
-| showDefaultConfirmation    | boolean                | If set to true, show a default confirmation message | false |
-| schema      | yup.Schema\<ForgotPasswordSchema>     | Yup schema to override the default | standard validation |
-| header      | React.FC     | React component to override default header | basic header |
-| loader      | React.FC     | React component to override default loader | Sending... |
-| customFields  | CustomField[]  | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.  | n/a   |
-| cssModuleStyles  | { [key: string]: string }  | CSS Module object that optionally replaces default. Class names need to match default names. | default CSS |
+| Name                    | Type                                                     | Description                                                                                                                                                                                                 | default             |
+| ----------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| forgotPasswordHandler   | (values: any) => Promise\<ForgotPasswordHandlerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                                             | required            |
+| onSuccess               | (resp: LoginHandlerResponse) => any &#124; React.Element | Called if forgotPasswordHandler returns success. Provides the server response from forgotPasswordHandler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                 |
+| showDefaultConfirmation | boolean                                                  | If set to true, show a default confirmation message                                                                                                                                                         | false               |
+| schema                  | yup.Schema\<ForgotPasswordSchema>                        | Yup schema to override the default                                                                                                                                                                          | standard validation |
+| header                  | React.FC                                                 | React component to override default header                                                                                                                                                                  | basic header        |
+| loader                  | React.FC                                                 | React component to override default loader                                                                                                                                                                  | Sending...          |
+| customFields            | CustomField[]                                            | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                                                       | n/a                 |
+| cssModuleStyles         | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match default names.                                                                                                                | default CSS         |
+| children                | React Children                                           | Optional footer                                                                                                                                                                                             | n/a                 |

@@ -1,6 +1,6 @@
 ## Signup
 
-React signup component in Typescript, Formik and Yup for validation. It accepts props including handlers, custom fields, custom Yup schema, custom header and more.
+Customizable React signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons.
 
 ![signup component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/signup/signup.png)
 
@@ -10,7 +10,7 @@ React signup component in Typescript, Formik and Yup for validation. It accepts 
 npm install @unleashit/signup
 ```
 
-**Required peer dependencies:** react, formik and yup
+Required peer dependencies: react, formik and yup.
 
 ### Example
 
@@ -38,6 +38,35 @@ class SignupDemo extends React.Component {
 }
 
 export default SignupDemo;
+```
+
+### Social Sign up
+
+Adding social sign up buttons is easy. Simply include them as children and they will display under the main login with a nice separator. You must supply the buttons themselves, but for something fast and nice I recommend `react-social-login-buttons`.
+
+```javascript
+import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
+
+const btnStyle = {
+  margin: '10px 0',
+  boxShadow: 'none',
+};
+
+render() {
+  return (
+    <Signup
+      signupHandler={() => Promise.resolve({ success: true })}
+      onSuccess={(resp) => alert(JSON.stringify(resp, null, 2))}
+    >
+      <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle}>
+        Sign up with Twitter
+      </TwitterLoginButton>
+      <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle}>
+        Sign up with Github
+      </GithubLoginButton>
+    </Signup>
+  );
+}
 ```
 
 ### Custom Fields
@@ -118,6 +147,12 @@ const schema = yup.object().shape({
 });
 ```
 
+### CSS
+
+Basic css can be imported: `import '@unleashit/signup/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
+
+### API
+
 ```typescript
 // signupHandler() should return this shape:
 interface SignupHandlerResponse {
@@ -144,12 +179,6 @@ interface CustomField {
 }
 ```
 
-Note: currently tested custom fields are input, select, textarea and checkbox. Support for radio and others will be added.
-
-### CSS
-
-Basic css can be imported: `import '@unleashit/signup/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
-
 ### Props
 
 | Name            | Type                                             | Description                                                                                                                       | default             |
@@ -157,8 +186,10 @@ Basic css can be imported: `import '@unleashit/signup/dist/style.css';`, or you 
 | signupHandler   | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required            |
 | onSuccess       | (resp: SignupHandlerResponse) => any             | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required            |
 | schema          | yup.Schema\<SignupSchema>                        | Yup schema to override the default                                                                                                | standard validation |
-| header          | React.FC                                         | React component to override default header                                                                                        | basic header        |
-| loader          | React.FC                                         | React component to override default loader                                                                                        | Signing up...       |
+| header          | React Component                                         | React component to override default header                                                                                        | basic header        |
+| loader          | React Component                                         | React component to override default loader                                                                                        | Signing up...       |
 | loginUrl        | string                                           | Url for login page. Use only if using default header                                                                              | /login              |
 | customFields    | CustomField[]                                    | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                 |
 | cssModuleStyles | { [key: string]: string }                        | CSS Module object that optionally replaces default. Class names need to match default names.                                      | default CSS         |
+| children           | React Children                                  | Use for Social signup buttons or anything else (displays as footer)                                                              | n/a                            |
+| orLine             | boolean                                         | Display a "nice" line rule above social signup buttons                                                                           | true (note: requires children) |
