@@ -30,6 +30,7 @@
     "test:coverage": "lerna run --stream test:coverage",
     "lint": "lerna exec -- eslint --fix src/**/*.{ts,tsx,js,jsx,json}",
     "prettier": "lerna exec -- prettier --config ../../.prettierrc.js --write src/**/*.{ts,tsx,js,jsx,json}",
+    "prepublish": "yarn run build",
     "publish": "HUSKY_BYPASS=true lerna publish",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
