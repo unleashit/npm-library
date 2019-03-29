@@ -9,7 +9,8 @@ Just getting going, so far we have...
 2. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, Formik and Yup. 
 3. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
 4. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable forgot password component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields and header/footer. Assumes Peer depenencies of React, Formik and Yup.
-5. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
+5. [async-handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
+6. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 ### Other
 1. [mock-data](https://github.com/unleashit/npm-library/tree/master/packages/mockData) - Typescript wrapper for [mock-data-generator](https://github.com/danibram/mocker-data-generator) to easily generate random data from a selection of templates or full custom schemas. Returns a JS object and/or a file in JSON format.
