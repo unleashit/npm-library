@@ -94,7 +94,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <p>
               Don
               '
-              t an account yet? 
+              t have an account yet? 
               <a
                 href="/signup"
               >
