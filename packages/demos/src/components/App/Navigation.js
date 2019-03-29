@@ -29,6 +29,11 @@ const Navigation = () => (
           Forgot Password
         </Link>
       </li>
+      <li>
+        <Link to={'/async-handler'} className="main-navigation__link">
+          Async Handler
+        </Link>
+      </li>
     </ul>
   </nav>
 );
