@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.10.0...@unleashit/demos@0.10.2) (2019-03-29)
+
+**Note:** Version bump only for package @unleashit/demos
+
+
+
+
+
 # [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.9.0...@unleashit/demos@0.10.0) (2019-03-29)
 
 
