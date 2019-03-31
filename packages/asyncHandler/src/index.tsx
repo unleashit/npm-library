@@ -1,19 +1,21 @@
 import * as React from 'react';
 import {
   DefaultLoader,
-  DefaultComponentProps,
   DefaultNoResults,
+  DefaultError,
+  DefaultComponentProps,
 } from './defaults/components';
-import { isEmpty } from './utils';
+import { isEmpty, returnComponentFormat } from './utils';
 import * as defaultStyle from './scss/asyncHandler.scss';
 
+type DefaultComponent = (props?: DefaultComponentProps) => React.ReactNode;
 interface Props {
-  request: (args?: any) => Promise<any>;
-  cache: () => object | any[] | boolean | null;
-  loader: React.FC<DefaultComponentProps>;
+  request: () => Promise<any>;
+  cache: () => object | any[] | false | null;
+  loaderComponent: DefaultComponent;
+  noResultsComponent: DefaultComponent;
+  errorComponent: DefaultComponent;
   cssModuleStyles?: { [key: string]: string };
-  noResultsComponent?: () => any;
-  errorComponent?: (error?: any) => any;
   children: (props: any) => any;
 }
 interface State {
@@ -22,11 +24,13 @@ interface State {
   error: any;
 }
 
-export class AsyncHandler extends React.Component<Props, State> {
+export default class AsyncHandler extends React.Component<Props, State> {
   state: State = { data: null, loading: true, error: null };
 
   static defaultProps = {
-    loader: DefaultLoader,
+    loaderComponent: DefaultLoader,
+    noResultsComponent: DefaultNoResults,
+    errorComponent: DefaultError,
     cache: () => null,
   };
 
@@ -54,41 +58,32 @@ export class AsyncHandler extends React.Component<Props, State> {
     }
   }
 
-  render(): React.ReactElement {
+  render(): React.ReactNode {
     const { data, error, loading } = this.state;
     const {
-      loader: Loader,
-      noResultsComponent,
-      errorComponent,
+      loaderComponent: LoaderComponent,
+      noResultsComponent: NoResultsComponent,
+      errorComponent: ErrorComponent,
       cssModuleStyles,
       children,
     } = this.props;
     const style = cssModuleStyles || defaultStyle;
 
     if (error) {
-      return errorComponent ? (
-        errorComponent(error)
-      ) : (
-        <div className={`${style.errorMessage} unl-async-handler__error-message`}>
-          <p>Sorry, we have encountered a problem.</p>
-          {error ? <p>{error.message ? error.message : error}</p> : ''}
-        </div>
-      );
+      return returnComponentFormat(ErrorComponent, { cssModuleStyle: style, error });
     }
-    if (loading) return <Loader cssModuleStyle={style} />;
+    if (loading) {
+      return returnComponentFormat(LoaderComponent, { cssModuleStyle: style });
+    }
     if (isEmpty(data)) {
-      return noResultsComponent ? (
-        noResultsComponent()
-      ) : (
-        <DefaultNoResults cssModuleStyle={style} />
-      );
+      return returnComponentFormat(NoResultsComponent, { cssModuleStyle: style });
     }
     return children(data);
   }
 }
 
-export const withAsyncHandler = (props: Props) => (
+export const withAsyncHandler = (props: Props): Function => (
   Component: React.FC<{ data: any }>,
-) => (): React.ReactElement => (
+) => (): React.ReactNode => (
   <AsyncHandler {...props}>{data => <Component data={data} />}</AsyncHandler>
 );
