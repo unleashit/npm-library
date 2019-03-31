@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/async-handler",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "dist/index.js",
   "description": "Simple HOC that handles loading, error and no result states of data fetching.",
   "scripts": {
