@@ -37,9 +37,9 @@ class ColorList extends React.Component {
 export default ColorList;
 ```
 
-`request` is the only required prop. Default messages for loading, error or no results\* will be displayed as needed.
+This will display default messages for loading, error or no results\* as needed. Note that `request` should return a promise with just the data part of the response so AsyncHandler can know when to display the no results component.
 
-\* no results meaning if an object with no keys or a zero length array is returned.
+\* no results meaning when an object with no keys or a zero length array is returned.
 
 ### HOC example using cache and optional components
 
@@ -91,7 +91,7 @@ export default withAsyncHandler({
       ? userCache.users
       : null;
   },
-  loaderComponent: <div>Spinner is spinning...</div>,
+  loaderComponent: <MySpinner foo={'bar'} />,
   noResultsComponent: <div>No user{"'"}s found.</div>,
   errorComponent: ({ error }) => (
     <div>Oops, there was a problem: {JSON.stringify(error)}</div>
@@ -107,7 +107,7 @@ Basic css can be imported: `import '@unleashit/async-handler/dist/style.css';`, 
 
 ```typescript
 interface DefaultComponentProps {
-  cssModuleStyle: {
+  cssModuleStyle?: {
     [key: string]: string;
   };
   error?: any;
