@@ -1,6 +1,5 @@
 import React from 'react';
-// import AsyncHandler from '@unleashit/async-handler';
-import { withAsyncHandler } from '@unleashit/async-handler';
+import AsyncHandler, { withAsyncHandler } from '@unleashit/async-handler';
 
 const users = [
   {
@@ -31,7 +30,7 @@ const UserList = ({ data }) => {
 
 export default withAsyncHandler({
   request: () => {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         userCache = { users, cacheDate: new Date() };
         resolve(users);
@@ -39,31 +38,40 @@ export default withAsyncHandler({
     });
   },
   cache: () => {
-    return userCache && new Date() - userCache.cacheDate <= 30 * 60 * 1000
+    return userCache && new Date() - userCache.cacheDate <= 5 * 1000
       ? userCache.users
       : null;
   },
-  noResultsComponent: () => <div>No user's found.</div>,
-  errorComponent: (error) => <div>Oops, there was a problem: {error}</div>
+  loaderComponent: <div>Spinner is spinning...</div>,
+  noResultsComponent: <div>No user{"'"}s found.</div>,
+  errorComponent: ({ error }) => (
+    <div>Oops, there was a problem: {JSON.stringify(error)}</div>
+  ),
 })(UserList);
 
+// left in to test render prop version
+export class AsyncHandlderDemo extends React.Component {
+  request() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        userCache = { users, cacheDate: new Date() };
+        resolve(users);
+      }, 1500);
+    });
+  }
 
-// class LoginDemo extends React.Component {
-//   request() {
-//     return new Promise(resolve => {
-//       setTimeout(() => {
-//         resolve(users);
-//       }, 1500);
-//     });
-//   }
-//
-//   render() {
-//     return (
-//       <AsyncHandler request={this.request} noResultsMessage="No users found.">
-//         {data => <UserList data={data} />}
-//       </AsyncHandler>
-//     );
-//   }
-// }
+  cache() {
+    return userCache && new Date() - userCache.cacheDate <= 5 * 1000
+      ? userCache.users
+      : null;
+  }
 
-// export default LoginDemo;
+  render() {
+    return (
+      <AsyncHandler request={this.request} cache={this.cache}>
+        {data => <UserList data={data} />}
+      </AsyncHandler>
+    );
+  }
+}
+
