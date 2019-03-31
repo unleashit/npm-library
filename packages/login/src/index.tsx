@@ -138,7 +138,7 @@ Login.defaultProps = {
   forgotPassword: true,
   forgotPasswordLink: '/forgot-password',
   forgotPasswordText: 'Forgot your password?',
-  orLine: true
+  orLine: true,
 };
 
 export default withFormik<Props, FormValues>({

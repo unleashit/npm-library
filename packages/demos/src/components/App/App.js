@@ -6,7 +6,7 @@ import Pagination from '../pagination';
 import Login from '../login';
 import Signup from '../signup';
 import ForgotPassword from '../forgotPassword';
-import AsyncHandler from "../asyncHandler";
+import AsyncHandler from '../asyncHandler';
 import ApiService from '../../utils/api';
 import './App.scss';
 

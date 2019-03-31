@@ -107,7 +107,7 @@ describe('<SignupContainer />', () => {
           type: 'text',
           name: 'email',
           label: 'Email',
-          defaultValue: 'something'
+          defaultValue: 'something',
         },
         {
           element: 'input',
@@ -122,5 +122,5 @@ describe('<SignupContainer />', () => {
       expect(email).toEqual('something');
       expect(password).toEqual('');
     });
-  })
+  });
 });
