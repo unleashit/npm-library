@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/unleashit/npm-library.git"
   },
-  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/login",
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler",
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },

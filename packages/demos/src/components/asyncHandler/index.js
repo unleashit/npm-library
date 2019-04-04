@@ -18,13 +18,13 @@ let userCache = null;
 
 const UserList = ({ data }) => {
   return (
-    <div>
+    <React.Fragment>
       {data.map(item => (
         <div key={item.id}>
           {item.name} is {item.age} years old.
         </div>
       ))}
-    </div>
+    </React.Fragment>
   );
 };
 

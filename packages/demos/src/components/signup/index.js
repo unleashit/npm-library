@@ -28,7 +28,7 @@ class SignupDemo extends Component {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>
+      <React.Fragment>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Test account (already registered): test@test.com
         </p>
@@ -89,7 +89,7 @@ class SignupDemo extends Component {
             Sign up with Github
           </GithubLoginButton>
         </Signup>
-      </div>
+      </React.Fragment>
     );
   }
 }

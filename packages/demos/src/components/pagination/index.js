@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Pagination from '@unleashit/pagination';
+import AsyncHandler from '@unleashit/async-handler';
 import List from './List';
-import { StateConsumer } from '../App/App';
+import { AppContext } from '../../utils/context';
 import './pagination.scss';
 import '@unleashit/pagination/dist/style.css';
 
@@ -17,13 +18,11 @@ export class PaginationDemo extends Component {
     this.paginationHandler = this.paginationHandler.bind(this);
   }
 
-  async componentDidMount() {
-    await this.props.store.generateFakeBlog(100);
-  }
+  static contextType = AppContext;
 
   currentOffset() {
     const { offset } = this.state;
-    const data = this.props.state.fakeBlog;
+    const { data } = this.context.globalState.fakeBlog;
     return data.slice(offset, offset + this.perPage);
   }
 
@@ -32,31 +31,22 @@ export class PaginationDemo extends Component {
   }
 
   render() {
-    const {
-      state: { fakeBlog },
-    } = this.props;
-    if (!fakeBlog || fakeBlog.length === 0) return <div>Loading...</div>;
-
     return (
-      <div className="pagination">
-        <List data={this.currentOffset()} />
-        <Pagination
-          currentOffset={this.state.offset}
-          perPage={this.perPage}
-          paginationHandler={this.paginationHandler}
-          total={fakeBlog.length}
-        />
-      </div>
+      <AsyncHandler request={() => this.context.store.generateFakeBlog({ total: 500 })}>
+        {fakeBlog => (
+          <div className="pagination">
+            <List data={this.currentOffset()} />
+            <Pagination
+              currentOffset={this.state.offset}
+              perPage={this.perPage}
+              paginationHandler={this.paginationHandler}
+              total={fakeBlog.length}
+            />
+          </div>
+        )}
+      </AsyncHandler>
     );
   }
 }
 
-const withProvider = Component => () => (
-  <StateConsumer>
-    {({ state, store }) => {
-      return <Component state={state} store={store} />;
-    }}
-  </StateConsumer>
-);
-
-export default withProvider(PaginationDemo);
+export default PaginationDemo;

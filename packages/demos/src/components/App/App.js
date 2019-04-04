@@ -7,11 +7,12 @@ import Login from '../login';
 import Signup from '../signup';
 import ForgotPassword from '../forgotPassword';
 import AsyncHandler from '../asyncHandler';
+import RecursiveDataLister from '../recursiveDataLister';
 import ApiService from '../../utils/api';
+import { AppContext } from '../../utils/context';
 import './App.scss';
 
 const store = new ApiService();
-export const Context = React.createContext();
 
 class App extends React.Component {
   constructor(props) {
@@ -35,30 +36,35 @@ class App extends React.Component {
 
   render() {
     return (
-      <Context.Provider
+      <AppContext.Provider
         value={{
-          state: this.state,
+          globalState: this.state,
           store,
         }}
       >
         <Router>
           <div className="app-container">
             <Navigation />
-            <Switch>
-              <Route path={'/'} exact component={Home} />
-              <Route path={'/pagination'} exact component={Pagination} />
-              <Route path={'/login'} exact component={Login} />
-              <Route path={'/signup'} exact component={Signup} />
-              <Route path={'/forgot-password'} exact component={ForgotPassword} />
-              <Route path={'/async-handler'} exact component={AsyncHandler} />
-            </Switch>
+            <div className="component-container">
+              <Switch>
+                <Route path={'/'} exact component={Home} />
+                <Route path={'/pagination'} exact component={Pagination} />
+                <Route path={'/login'} exact component={Login} />
+                <Route path={'/signup'} exact component={Signup} />
+                <Route path={'/forgot-password'} exact component={ForgotPassword} />
+                <Route path={'/async-handler'} exact component={AsyncHandler} />
+                <Route
+                  path={'/recursive-data-lister'}
+                  exact
+                  component={RecursiveDataLister}
+                />
+              </Switch>
+            </div>
           </div>
         </Router>
-      </Context.Provider>
+      </AppContext.Provider>
     );
   }
 }
 
 export default App;
-
-export const StateConsumer = Context.Consumer;

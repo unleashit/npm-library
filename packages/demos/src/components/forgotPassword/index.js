@@ -20,7 +20,7 @@ class ForgotPasswordDemo extends Component {
 
   render() {
     return (
-      <div style={{ width: '100%' }}>
+      <React.Fragment>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid user: test@test.com
         </p>
@@ -29,7 +29,7 @@ class ForgotPasswordDemo extends Component {
           onSuccess={this.onSuccess}
           showDefaultConfirmation={true}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

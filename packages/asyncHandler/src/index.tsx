@@ -82,8 +82,10 @@ export default class AsyncHandler extends React.Component<Props, State> {
   }
 }
 
-export const withAsyncHandler = (props: Props): Function => (
+export const withAsyncHandler = (config: Props): Function => (
   Component: React.FC<{ data: any }>,
-) => (): React.ReactNode => (
-  <AsyncHandler {...props}>{data => <Component data={data} />}</AsyncHandler>
+) => (...rest: any): React.ReactNode => (
+  <AsyncHandler {...config}>
+    {data => <Component data={data} {...rest} />}
+  </AsyncHandler>
 );
