@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.10.3...@unleashit/demos@0.11.0) (2019-04-04)
+
+
+### Features
+
+* add recursiveDataLister demo ([5ea7489](https://github.com/unleashit/npm-library/commit/5ea7489))
+* refactor state class, context, add better cache control ([91f2421](https://github.com/unleashit/npm-library/commit/91f2421))
+
+
+
+
+
 ## [0.10.3](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.10.2...@unleashit/demos@0.10.3) (2019-03-31)
 
 **Note:** Version bump only for package @unleashit/demos

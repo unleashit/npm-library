@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@0.3.0...@unleashit/async-handler@0.4.0) (2019-04-04)
+
+
+### Features
+
+* refactor state class, context, add better cache control ([91f2421](https://github.com/unleashit/npm-library/commit/91f2421))
+
+
+
+
+
 # [0.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@0.2.2...@unleashit/async-handler@0.3.0) (2019-03-31)
 
 

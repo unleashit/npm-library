@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2019-04-04)
+
+
+### Features
+
+* add recursive data lister package ([1451adb](https://github.com/unleashit/npm-library/commit/1451adb))
+
+
+
+
+
 # [0.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@0.2.2...@unleashit/async-handler@0.3.0) (2019-03-31)
 
 
