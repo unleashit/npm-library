@@ -10,7 +10,7 @@ Just getting going, so far we have...
 3. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
 4. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable forgot password component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields and header/footer. Assumes Peer depenencies of React, Formik and Yup.
 5. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
-6. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
+6. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
 7. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 ### Other
