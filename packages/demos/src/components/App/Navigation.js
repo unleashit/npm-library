@@ -34,6 +34,11 @@ const Navigation = () => (
           Async Handler
         </Link>
       </li>
+      <li>
+        <Link to={'/recursive-data-lister'} className="main-navigation__link">
+          Recursive Data Lister
+        </Link>
+      </li>
     </ul>
   </nav>
 );
