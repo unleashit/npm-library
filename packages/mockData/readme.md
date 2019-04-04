@@ -70,7 +70,7 @@ const data = await mockData({
 
 ### Custom template(s)
 
-Templates are in the same format as mock-data-generator except must be supplied as a function. Supply any arguments to the args property as an object.
+Templates are in the same format as mocker-data-generator except must be supplied as a function. Supply any arguments to the args property as an object.
 
 ```javascript
 const args = {
