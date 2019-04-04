@@ -1,0 +1,50 @@
+.topLevelParent {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  &:last-child {
+    border: none;
+    margin-bottom: 0;
+  }
+}
+
+ul.topLevelParent {
+  padding-left: 30px;
+  ul {
+    padding-left: 30px;
+  }
+  li li li li {
+    list-style: circle;
+  }
+  li li li li li {
+    list-style: square;
+  }
+  li li li li li li {
+    list-style: circle;
+  }
+  li li li li li li li {
+    list-style: sqaure;
+  }
+}
+
+.label, .leafLabel {
+  font-weight: bold;
+}
+
+.objectLeaf > .leafLabel {
+  font-weight: normal;
+}
+
+div.childItem:first-child {}
+
+div.childItem:last-child {
+  margin-bottom: 12px;
+}
+
+div.objectLeaf .label {
+  font-weight: normal;
+}
+
+div.objectLeaf > .leafLabel {
+  display: none;
+}
