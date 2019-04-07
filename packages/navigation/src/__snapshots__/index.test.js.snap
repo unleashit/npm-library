@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> renders without crashing 1`] = `
+<Navigation
+  direction="horizontal"
+  links={
+    Array [
+      Object {
+        "text": "Home",
+        "url": "/home",
+      },
+      Object {
+        "text": "Products",
+        "url": "/products",
+      },
+      Object {
+        "text": "Services",
+        "url": "/services",
+      },
+      Object {
+        "attrs": Object {
+          "rel": "noopener noreferrer",
+          "target": "_blank",
+        },
+        "text": "About",
+        "url": "/about",
+      },
+    ]
+  }
+  template="clean"
+>
+  <nav
+    className="container unl-navigation__container clean unl-navigation__container--clean"
+  >
+    <NavLinks
+      cssModuleStyle={null}
+      links={
+        Array [
+          Object {
+            "text": "Home",
+            "url": "/home",
+          },
+          Object {
+            "text": "Products",
+            "url": "/products",
+          },
+          Object {
+            "text": "Services",
+            "url": "/services",
+          },
+          Object {
+            "attrs": Object {
+              "rel": "noopener noreferrer",
+              "target": "_blank",
+            },
+            "text": "About",
+            "url": "/about",
+          },
+        ]
+      }
+    >
+      <ul
+        className="navList unl-navigation__nav-list"
+      >
+        <NavLink
+          cssModuleStyle={null}
+          key="Home"
+          text="Home"
+          url="/home"
+        >
+          <li
+            className="linkItem  unl-navigation__link-item "
+          >
+            <a
+              className="link unl-navigation__link"
+              href="/home"
+            >
+              Home
+            </a>
+          </li>
+        </NavLink>
+        <NavLink
+          cssModuleStyle={null}
+          key="Products"
+          text="Products"
+          url="/products"
+        >
+          <li
+            className="linkItem  unl-navigation__link-item "
+          >
+            <a
+              className="link unl-navigation__link"
+              href="/products"
+            >
+              Products
+            </a>
+          </li>
+        </NavLink>
+        <NavLink
+          cssModuleStyle={null}
+          key="Services"
+          text="Services"
+          url="/services"
+        >
+          <li
+            className="linkItem  unl-navigation__link-item "
+          >
+            <a
+              className="link unl-navigation__link"
+              href="/services"
+            >
+              Services
+            </a>
+          </li>
+        </NavLink>
+        <NavLink
+          attrs={
+            Object {
+              "rel": "noopener noreferrer",
+              "target": "_blank",
+            }
+          }
+          cssModuleStyle={null}
+          key="About"
+          text="About"
+          url="/about"
+        >
+          <li
+            className="linkItem  unl-navigation__link-item "
+          >
+            <a
+              className="link unl-navigation__link"
+              href="/about"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              About
+            </a>
+          </li>
+        </NavLink>
+      </ul>
+    </NavLinks>
+  </nav>
+</Navigation>
+`;

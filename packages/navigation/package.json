@@ -1,0 +1,89 @@
+{
+  "name": "@unleashit/navigation",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "description": "Basic navigation component for React with configurable links and login/logout",
+  "scripts": {
+    "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
+    "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
+    "test": "NODE_ENV=test jest --config ./jest.config.js"
+  },
+  "license": "MIT",
+  "keywords": [
+    "navigation",
+    "navigation bar",
+    "nav bar",
+    "react",
+    "react components",
+    "ui components",
+    "ui library",
+    "responsive",
+    "monorepo",
+    "lerna",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unleashit/npm-library.git"
+  },
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/navigation",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=15.0.0"
+  },
+  "dependencies": {
+    "@unleashit/common": "^0.8.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-knobs": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "@svgr/webpack": "^4.1.0",
+    "@types/enzyme": "^3.9.1",
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.123",
+    "@types/react": "^16.8.8",
+    "@typescript-eslint/eslint-plugin": "^1.5.0",
+    "@typescript-eslint/parser": "^1.5.0",
+    "babel-loader": "8.0.5",
+    "css-loader": "^2.1.1",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
+    "enzyme-to-json": "^3.3.5",
+    "eslint": "5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "file-loader": "^3.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "23.6.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "prettier": "^1.16.4",
+    "react": "16.8.5",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.3",
+    "typescript": "3.3.4000",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack": "4.28.3",
+    "webpack-cli": "^3.3.0"
+  },
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
+}
