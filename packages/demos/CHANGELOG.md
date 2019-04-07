@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.11.0...@unleashit/demos@0.12.0) (2019-04-07)
+
+
+### Features
+
+* add navigation demo ([8933c2d](https://github.com/unleashit/npm-library/commit/8933c2d))
+
+
+
+
+
 # [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.10.3...@unleashit/demos@0.11.0) (2019-04-04)
 
 
