@@ -8,6 +8,7 @@ import Signup from '../signup';
 import ForgotPassword from '../forgotPassword';
 import AsyncHandler from '../asyncHandler';
 import RecursiveDataLister from '../recursiveDataLister';
+import NavigationDemo from '../navigation';
 import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
 import './App.scss';
@@ -49,6 +50,7 @@ class App extends React.Component {
               <Switch>
                 <Route path={'/'} exact component={Home} />
                 <Route path={'/pagination'} exact component={Pagination} />
+                <Route path={'/navigation'} exact component={NavigationDemo} />
                 <Route path={'/login'} exact component={Login} />
                 <Route path={'/signup'} exact component={Signup} />
                 <Route path={'/forgot-password'} exact component={ForgotPassword} />

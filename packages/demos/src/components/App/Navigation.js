@@ -15,6 +15,11 @@ const Navigation = () => (
         </Link>
       </li>
       <li>
+        <Link to={'/navigation'} className="main-navigation__link">
+          Navigation
+        </Link>
+      </li>
+      <li>
         <Link to={'/login'} className="main-navigation__link">
           Login
         </Link>
