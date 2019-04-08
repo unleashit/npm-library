@@ -6,7 +6,9 @@
   "scripts": {
     "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
     "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
-    "test": "NODE_ENV=test jest --config ./jest.config.js"
+    "test": "NODE_ENV=test jest --config ./jest.config.js",
+    "test:watch": "NODE_ENV=test jest --config ./jest.config.js --watch",
+    "test:coverage": "NODE_ENV=test jest --config ./jest.config.js --coverage"
   },
   "license": "MIT",
   "keywords": [
@@ -36,9 +38,7 @@
   "peerDependencies": {
     "react": ">=15.0.0"
   },
-  "dependencies": {
-    "@unleashit/common": "^0.8.5"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",

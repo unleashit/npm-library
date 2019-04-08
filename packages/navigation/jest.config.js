@@ -13,7 +13,7 @@ module.exports = {
     "enzyme-to-json/serializer"
   ],
   collectCoverageFrom: [
-    "<rootDir>/src/**/*.{js,jsx, ts, tsx}"
+    "<rootDir>/src/**/*.{ts,tsx,js,jsx}"
   ],
   transformIgnorePatterns: [
     "<rootDir>/(config|dist|node_modules)/"
