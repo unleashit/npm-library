@@ -20,11 +20,13 @@ export const complexJsonTemplate = () => ({
           id: this.chance.guid(),
           title: this.faker.lorem.words(),
           author: `${this.faker.name.firstName()} ${this.faker.name.lastName()}`,
-          revisions: Array(rRange(1, 3)).fill(undefined).map(() => ({
-            id: this.chance.guid(),
-            date: this.chance.date({year: rRange(1940, 2018), string: true}),
-            description: this.faker.lorem.sentence()
-          })),
+          revisions: Array(rRange(1, 3))
+            .fill(undefined)
+            .map(() => ({
+              id: this.chance.guid(),
+              date: this.chance.date({ year: rRange(1940, 2018), string: true }),
+              description: this.faker.lorem.sentence(),
+            })),
         };
       },
       length: rRange(1, 5),
@@ -32,7 +34,7 @@ export const complexJsonTemplate = () => ({
   ],
   createdAt: {
     function() {
-      return this.faker.date.past().getTime()
-    }
+      return this.faker.date.past().getTime();
+    },
   },
 });

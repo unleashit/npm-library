@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { removeHidden } from './templateHelper';
 
 describe('template helper', () => {

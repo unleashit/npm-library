@@ -16,7 +16,7 @@ export interface Link {
   icon?: any;
   iconPosition?: 'left' | 'right';
   display?: boolean;
-  attrs?: React.HTMLAttributes<any>;
+  attrs?: React.AllHTMLAttributes<any>;
 }
 export interface AuthLinkTypes {
   login?: Link;
@@ -65,14 +65,11 @@ const Navigation: React.FC<Props> = (props): React.ReactElement => {
   const { links, direction, template, isAuth, authLinks, cssModuleStyles } = props;
   const style = cssModuleStyles || defaultStyle;
 
-  // show default authLinks if isAuth is provided.
-  // if user provides authLinks, isAuth is ignored and they should manage the display property.
-  // Don't show authLinks if both authLinks and isAuth are omitted.
+  // * show default authLinks if isAuth is provided.
+  // * if user provides authLinks, they will override the default on a property by property basis
+  // * don't show authLinks if both authLinks and isAuth are omitted.
   const newAuthLinks =
     isAuth !== undefined ? buildAuthLinks(isAuth, authLinks) : authLinks || null;
-
-  // const newAuthLinks =
-  //   authLinks || (isAuth === undefined ? null : buildAuthLinks(isAuth));
 
   return (
     <nav

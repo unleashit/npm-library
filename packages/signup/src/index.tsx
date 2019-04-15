@@ -134,7 +134,7 @@ Signup.defaultProps = {
 export const mapDefaultValues = (
   fields: { [key: string]: string }[],
 ): { [key: string]: string } => {
-  return fields.reduce((a, b) => {
+  return fields.reduce((a, b): object => {
     return {
       ...a,
       [b.name]: b.defaultValue || '',
@@ -143,7 +143,7 @@ export const mapDefaultValues = (
 };
 
 export default withFormik<Props, FormValues | any>({
-  mapPropsToValues: (props: any) => {
+  mapPropsToValues: (props: any): object => {
     return props.customFields
       ? mapDefaultValues(props.customFields)
       : {
@@ -153,8 +153,11 @@ export default withFormik<Props, FormValues | any>({
           serverAuth: '',
         };
   },
-  validationSchema: (props: any) => (props.schema ? props.schema : schema),
-  handleSubmit: async (values, { props, setFieldValue, setSubmitting, setErrors }) => {
+  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+  handleSubmit: async (
+    values,
+    { props, setFieldValue, setSubmitting, setErrors },
+  ): Promise<any> => {
     try {
       const resp: SignupHandlerResponse = await props.signupHandler(values);
       const errors = resp.errors || {};

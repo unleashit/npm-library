@@ -122,12 +122,12 @@ ForgotPassword.defaultProps = {
 };
 
 export default withFormik<Props, FormValues>({
-  mapPropsToValues: () => ({ email: '', password: '', serverMessage: '' }),
-  validationSchema: (props: any) => (props.schema ? props.schema : schema),
+  mapPropsToValues: (): any => ({ email: '', password: '', serverMessage: '' }),
+  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors, setStatus },
-  ) => {
+  ): Promise<any> => {
     try {
       const resp: ForgotPasswordHandlerResponse = await props.forgotPasswordHandler(
         values,

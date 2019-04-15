@@ -10,7 +10,7 @@ export type templateArgs = {
   null;
 
 export const removeHidden = (fields: string[], obj: any): {} => {
-  return Object.keys(obj).reduce((a: any, key: string) => {
+  return Object.keys(obj).reduce((a: any, key: string): object => {
     return fields.indexOf(key) > -1 ? a : { ...a, [key]: obj[key] };
   }, {});
 };

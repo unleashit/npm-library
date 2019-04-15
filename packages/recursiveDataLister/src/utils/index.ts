@@ -5,7 +5,4 @@ const getChild = (tag: string): string => {
 
 const isObject = (elem: object | any[]): boolean => elem.toString() === '[object Object]';
 
-export {
-  getChild,
-  isObject
-}
+export { getChild, isObject };

@@ -82,7 +82,7 @@ class Pagination extends React.Component<Props, State> {
       <button
         type="button"
         className={`pagination__prev ${style.prev}`}
-        onClick={() => this.clickHandler('prev')}
+        onClick={(): void => this.clickHandler('prev')}
       >
         <ChevronLeft className={style.chevronLeft} /> {prevLabel}
       </button>
@@ -96,7 +96,7 @@ class Pagination extends React.Component<Props, State> {
       <button
         type="button"
         className={`pagination__next ${style.next}`}
-        onClick={() => this.clickHandler('next')}
+        onClick={(): void => this.clickHandler('next')}
       >
         {nextLabel} <ChevronRight className={style.chevronRight} />
       </button>
@@ -118,7 +118,7 @@ class Pagination extends React.Component<Props, State> {
         [650, 4],
         [850, 8],
         [1000, 10],
-      ].find(group => containerWidth < group[0]);
+      ].find((group): boolean => containerWidth < group[0]);
       maxPages = breakPointPages;
     } else {
       maxPages = Math.ceil(containerWidth / 80);
@@ -126,7 +126,7 @@ class Pagination extends React.Component<Props, State> {
 
     let pageAry: (number | null)[] = new Array(pages)
       .fill(undefined)
-      .map((_, i) => i + 1);
+      .map((_, i): number => i + 1);
 
     if (pages > maxPages) {
       if (currentPage > 1 && currentPage < pages) {
@@ -144,26 +144,27 @@ class Pagination extends React.Component<Props, State> {
     }
 
     return pages > 1
-      ? pageAry.map((page, i) =>
-          !page ? (
-            <span
-              key={`${i}-ellipsis`}
-              className={`pagination__ellipsis ${style.ellipsis}`}
-            >
-              ...
-            </span>
-          ) : (
-            <button
-              type="button"
-              key={`${page}-pagination`}
-              className={`pagination__number ${style.number}${
-                page === currentPage ? ' active' : ''
-              }`}
-              onClick={() => this.clickHandler('page', page)}
-            >
-              {page}
-            </button>
-          ),
+      ? pageAry.map(
+          (page, i): React.ReactElement =>
+            !page ? (
+              <span
+                key={`${i}-ellipsis`}
+                className={`pagination__ellipsis ${style.ellipsis}`}
+              >
+                ...
+              </span>
+            ) : (
+              <button
+                type="button"
+                key={`${page}-pagination`}
+                className={`pagination__number ${style.number}${
+                  page === currentPage ? ' active' : ''
+                }`}
+                onClick={(): void => this.clickHandler('page', page)}
+              >
+                {page}
+              </button>
+            ),
         )
       : null;
   }

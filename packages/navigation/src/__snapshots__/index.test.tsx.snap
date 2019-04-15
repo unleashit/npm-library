@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> renders without crashing 1`] = `
+<nav
+  className="container unl-navigation__container clean unl-navigation__container--clean"
+>
+  <NavLinks
+    cssModuleStyle={null}
+    links={
+      Array [
+        Object {
+          "text": "Home",
+          "url": "/home",
+        },
+        Object {
+          "text": "Products",
+          "url": "/products",
+        },
+        Object {
+          "text": "Services",
+          "url": "/services",
+        },
+        Object {
+          "attrs": Object {
+            "rel": "noopener noreferrer",
+            "target": "_blank",
+          },
+          "text": "About",
+          "url": "/about",
+        },
+      ]
+    }
+  />
+</nav>
+`;

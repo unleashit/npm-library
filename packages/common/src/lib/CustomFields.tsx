@@ -28,9 +28,11 @@ export interface PassedProps {
 const ce = React.createElement;
 
 const getOptions = (options: string[][]): React.ReactElement[] => {
-  return options.map(option => {
-    return ce('option', { key: option[0], value: option[0] }, option[1]);
-  });
+  return options.map(
+    (option): React.ReactElement => {
+      return ce('option', { key: option[0], value: option[0] }, option[1]);
+    },
+  );
 };
 
 function Field(props: CustomField & PassedProps): JSX.Element | null {
@@ -155,26 +157,28 @@ export function CustomFields({
 } & PassedProps): JSX.Element {
   return (
     <div>
-      {fields.map(field => (
-        <div
-          key={field.name}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={`${cssModuleStyles.formGroup} unl-${componentName}__form-group`}
-        >
-          <Field
-            errors={errors}
-            touched={touched}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            value={values[field.name]}
-            values={values}
-            cssModuleStyles={cssModuleStyles}
-            componentName={componentName}
-            {...field}
-          />
-        </div>
-      ))}
+      {fields.map(
+        (field): React.ReactElement => (
+          <div
+            key={field.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={`${cssModuleStyles.formGroup} unl-${componentName}__form-group`}
+          >
+            <Field
+              errors={errors}
+              touched={touched}
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              value={values[field.name]}
+              values={values}
+              cssModuleStyles={cssModuleStyles}
+              componentName={componentName}
+              {...field}
+            />
+          </div>
+        ),
+      )}
     </div>
   );
 }

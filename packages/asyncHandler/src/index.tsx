@@ -31,7 +31,7 @@ export default class AsyncHandler extends React.Component<Props, State> {
     loaderComponent: DefaultLoader,
     noResultsComponent: DefaultNoResults,
     errorComponent: DefaultError,
-    cache: () => null,
+    cache: (): null => null,
   };
 
   async componentDidMount(): Promise<void> {
@@ -84,8 +84,8 @@ export default class AsyncHandler extends React.Component<Props, State> {
 
 export const withAsyncHandler = (config: Props): Function => (
   Component: React.FC<{ data: any }>,
-) => (...rest: any): React.ReactNode => (
+): Function => (...rest: any): React.ReactNode => (
   <AsyncHandler {...config}>
-    {data => <Component data={data} {...rest} />}
+    {(data): React.ReactNode => <Component data={data} {...rest} />}
   </AsyncHandler>
 );

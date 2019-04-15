@@ -12,9 +12,11 @@ const NavLinks: React.FC<NavLinksProps> = ({
   cssModuleStyle: style,
 }): React.ReactElement => (
   <ul className={`${style.navList} unl-navigation__nav-list`}>
-    {links.map(link => (
-      <NavLink cssModuleStyle={style} {...link} key={link.text} />
-    ))}
+    {links.map(
+      (link): React.ReactNode => (
+        <NavLink cssModuleStyle={style} {...link} key={link.text} />
+      ),
+    )}
   </ul>
 );
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { template, removeHidden } from './templateHelper';
 
 // TODO: currently the "items" property is repeat data

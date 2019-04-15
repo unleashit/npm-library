@@ -28,49 +28,53 @@ const Row: React.FC<RowProps> = ({
           : `${style.parent} unl-r-data-lister__child-parent`
       }`}
     >
-      {Object.keys(row).map(field => {
-        if (typeof row[field] === 'object') {
-          return (
+      {Object.keys(row).map(
+        (field): React.ReactElement | null => {
+          if (typeof row[field] === 'object') {
+            return (
+              <Child
+                key={field}
+                className={`${style.leaf} unl-r-data-lister__leaf ${
+                  isObject(row[field])
+                    ? `${style.objectLeaf} unl-r-data-lister__object-leaf`
+                    : ''
+                }`}
+              >
+                {
+                  <span className={`${style.leafLabel} unl-r-data-lister__leaf-label`}>
+                    {isObject(row[field]) && leafProp && row[field][leafProp]
+                      ? row[field][leafProp]
+                      : field}
+                  </span>
+                }
+                <Row
+                  row={row[field]}
+                  parentTag={Parent}
+                  cssModuleStyle={style}
+                  leafProp={leafProp}
+                  repeatLeafProp={repeatLeafProp}
+                  nested
+                />
+              </Child>
+            );
+          }
+          return leafProp && field === leafProp && !repeatLeafProp ? null : (
             <Child
               key={field}
-              className={`${style.leaf} unl-r-data-lister__leaf ${
-                isObject(row[field])
-                  ? `${style.objectLeaf} unl-r-data-lister__object-leaf`
-                  : ''
-              }`}
+              className={`${style.childItem} unl-r-data-lister__child-item`}
             >
-              {
-                <span className={`${style.leafLabel} unl-r-data-lister__leaf-label`}>
-                  {isObject(row[field]) && leafProp && row[field][leafProp]
-                    ? row[field][leafProp]
-                    : field}
+              {!Array.isArray(row) && (
+                <span className={`${style.label} unl-r-data-lister__label`}>
+                  {field}:{' '}
                 </span>
-              }
-              <Row
-                row={row[field]}
-                parentTag={Parent}
-                cssModuleStyle={style}
-                leafProp={leafProp}
-                repeatLeafProp={repeatLeafProp}
-                nested
-              />
+              )}
+              <span className={`${style.value} unl-r-data-lister__value`}>
+                {row[field]}
+              </span>
             </Child>
           );
-        }
-        return leafProp && field === leafProp && !repeatLeafProp ? null : (
-          <Child
-            key={field}
-            className={`${style.childItem} unl-r-data-lister__child-item`}
-          >
-            {!Array.isArray(row) && (
-              <span className={`${style.label} unl-r-data-lister__label`}>{field}: </span>
-            )}
-            <span className={`${style.value} unl-r-data-lister__value`}>
-              {row[field]}
-            </span>
-          </Child>
-        );
-      })}
+        },
+      )}
     </Parent>
   );
 };

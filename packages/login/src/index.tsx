@@ -142,9 +142,12 @@ Login.defaultProps = {
 };
 
 export default withFormik<Props, FormValues>({
-  mapPropsToValues: () => ({ email: '', password: '', serverAuth: '' }),
-  validationSchema: (props: any) => (props.schema ? props.schema : schema),
-  handleSubmit: async (values, { props, setFieldValue, setSubmitting, setErrors }) => {
+  mapPropsToValues: (): any => ({ email: '', password: '', serverAuth: '' }),
+  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+  handleSubmit: async (
+    values,
+    { props, setFieldValue, setSubmitting, setErrors },
+  ): Promise<any> => {
     try {
       const resp: LoginHandlerResponse = await props.loginHandler(values);
       const errors = resp.errors || {};

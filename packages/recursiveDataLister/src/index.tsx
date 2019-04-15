@@ -27,7 +27,7 @@ const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
 
   const style = cssModuleStyle || defaultStyle;
   const key = (): string => Math.random().toString();
-  const renderRow = <T extends {}>(rowData: T): React.ReactNode => (
+  const renderRow = <T extends {}>(rowData: T): React.ReactElement => (
     <Row
       key={key()}
       row={rowData}
@@ -39,9 +39,11 @@ const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
   );
 
   return displayAsList
-    ? data.map((row: any[]) => {
-        return renderRow<any[]>(row);
-      })
+    ? data.map(
+        (row: any[]): React.ReactElement => {
+          return renderRow<any[]>(row);
+        },
+      )
     : renderRow<object>(data);
 };
 
