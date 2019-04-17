@@ -19,17 +19,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.10.0...@unleashit/login@0.11.0) (2019-03-29)
-
-
-### Features
-
-* **asynchandler:** add asyncHandler package ([9c8093b](https://github.com/unleashit/npm-library/commit/9c8093b))
-
-
-
-
-
 # [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.9.3...@unleashit/login@0.10.0) (2019-03-27)
 
 

@@ -8,7 +8,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* refactor state class, context, add better cache control ([91f2421](https://github.com/unleashit/npm-library/commit/91f2421))
+* demos: refactor state class, context, add better cache control ([91f2421](https://github.com/unleashit/npm-library/commit/91f2421))
 
 
 
