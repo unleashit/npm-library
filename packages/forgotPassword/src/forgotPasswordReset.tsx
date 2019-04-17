@@ -1,23 +1,24 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
+import { CustomInput } from '@unleashit/common';
 import {
   ForgotPasswordLoader,
-  ForgotPasswordHeader,
+  ForgotPasswordResetHeader,
   ForgotPasswordHeaderProps,
   ForgotPasswordLoaderProps,
-  ForgotPasswordSuccessMessage,
+  ForgotPasswordResetSuccessMessage,
 } from './defaults/components';
-import schema from './defaults/validations';
+import schema from './defaults/validationsReset';
 import * as defaultStyle from './scss/forgotPassword.scss';
 
 interface FormValues {
-  email: string;
+  newPassword: string;
+  newPasswordConfirm: string;
   serverMessage: string;
 }
 
-interface ForgotPasswordHandlerResponse {
+interface ForgotPasswordHandlerResetResponse {
   success: boolean;
   errors?: {
     serverMessage: string; // error msg to print in browser when auth fails
@@ -27,16 +28,18 @@ interface ForgotPasswordHandlerResponse {
 
 interface Props {
   onSuccess?: (resp: any) => any;
-  forgotPasswordHandler: (values: any) => Promise<ForgotPasswordHandlerResponse>;
+  forgotPasswordResetHandler: (
+    values: any,
+  ) => Promise<ForgotPasswordHandlerResetResponse>;
   header: React.FC<ForgotPasswordHeaderProps>;
   loader: React.FC<ForgotPasswordLoaderProps>;
   schema: Schema<any>;
-  customFields?: CustomField[];
-  cssModuleStyles?: { [key: string]: string };
   showDefaultConfirmation: boolean;
+  tokenParamName: string;
+  cssModuleStyles?: { [key: string]: string };
 }
 
-export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
+const ForgotPasswordResetRaw: React.FC<FormikProps<FormValues> & Props> = (
   props,
 ): React.ReactElement => {
   const {
@@ -44,11 +47,6 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
     header: Header,
     loader: Loader,
     isSubmitting,
-    handleChange,
-    handleBlur,
-    values,
-    touched,
-    customFields,
     cssModuleStyles,
     onSuccess,
     status,
@@ -61,7 +59,7 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
     return React.isValidElement(onSuccess) ? (
       onSuccess
     ) : (
-      <ForgotPasswordSuccessMessage style={style} />
+      <ForgotPasswordResetSuccessMessage style={style} />
     );
   }
 
@@ -79,28 +77,20 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
         <Loader style={style} />
       ) : (
         <Form className={`${style.form} unl-forgot-password__form`}>
-          {customFields ? (
-            <CustomFields
-              fields={customFields}
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              cssModuleStyles={style}
-              componentName="forgot-password"
-            />
-          ) : (
-            <React.Fragment>
-              <Field
-                type="text"
-                name="email"
-                component={CustomInput}
-                cssModuleStyles={style}
-                componentName="forgot-password"
-              />
-            </React.Fragment>
-          )}
+          <Field
+            type="password"
+            name="newPassword"
+            component={CustomInput}
+            cssModuleStyles={style}
+            componentName="Password"
+          />
+          <Field
+            type="password"
+            name="newPasswordConfirm"
+            component={CustomInput}
+            cssModuleStyles={style}
+            componentName="Confirm Password"
+          />
           <button type="submit" className={`${style.button} unl-forgot-password__button`}>
             Send
           </button>
@@ -115,22 +105,30 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
   );
 };
 
-ForgotPassword.defaultProps = {
-  header: ForgotPasswordHeader,
+ForgotPasswordResetRaw.defaultProps = {
+  header: ForgotPasswordResetHeader,
   loader: ForgotPasswordLoader,
+  tokenParamName: 'token',
   showDefaultConfirmation: false,
 };
 
-export default withFormik<Props, FormValues>({
-  mapPropsToValues: (): any => ({ email: '', password: '', serverMessage: '' }),
+export const ForgotPasswordReset = withFormik<Props, FormValues>({
+  mapPropsToValues: (): any => ({
+    newPassword: '',
+    newPasswordConfirm: '',
+    serverMessage: '',
+  }),
   validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
-    { props, setFieldValue, setSubmitting, setErrors, setStatus },
+    { props, setSubmitting, setErrors, setStatus },
   ): Promise<any> => {
+    // const url = new URL(window.location.href);
+    // const token = url.searchParams.get(props.tokenParamName);
+
     try {
-      const resp: ForgotPasswordHandlerResponse = await props.forgotPasswordHandler(
-        values,
+      const resp: ForgotPasswordHandlerResetResponse = await props.forgotPasswordResetHandler(
+        { ...values },
       );
       const errors = resp.errors || {};
 
@@ -145,7 +143,8 @@ export default withFormik<Props, FormValues>({
           setSubmitting(false);
         }
       } else {
-        setFieldValue('email', '', false);
+        // setFieldValue('newPassword', '', false);
+        // setFieldValue('newPasswordConfirm', '', false);
         setErrors(errors);
         setSubmitting(false);
       }
@@ -154,6 +153,4 @@ export default withFormik<Props, FormValues>({
       console.error(err);
     }
   },
-})(ForgotPassword);
-
-export * from './forgotPasswordReset';
+})(ForgotPasswordResetRaw);

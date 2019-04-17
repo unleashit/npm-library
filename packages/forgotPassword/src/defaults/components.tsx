@@ -34,6 +34,15 @@ export const ForgotPasswordHeader: React.FC<ForgotPasswordHeaderProps> = ({
   </div>
 );
 
+export const ForgotPasswordResetHeader: React.FC<ForgotPasswordHeaderProps> = ({
+  style,
+}): JSX.Element => (
+  <div className={`${style.resetHeader} unl-forgot-password__reset-header`}>
+    <h2>Reset Password</h2>
+    <p>Please enter a new password and confirm.</p>
+  </div>
+);
+
 export const ForgotPasswordSuccessMessage: React.FC<{ style: Style }> = ({
   style,
 }): JSX.Element => (
@@ -43,5 +52,14 @@ export const ForgotPasswordSuccessMessage: React.FC<{ style: Style }> = ({
       Please check your inbox and click on the provided link. You will then be able to
       reset your password and login.
     </p>
+  </div>
+);
+
+export const ForgotPasswordResetSuccessMessage: React.FC<{ style: Style }> = ({
+  style,
+}): JSX.Element => (
+  <div className={`${style.resetConfirmation} unl-forgot-password__reset-confirmation`}>
+    <h2>Thank you.</h2>
+    <p>Your password has been updated. You may now login with the new password.</p>
   </div>
 );

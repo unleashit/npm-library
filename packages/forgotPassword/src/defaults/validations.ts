@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 
-interface LoginSchema {
+interface PasswordResetSchema {
   email: string;
 }
 
-const schema: yup.Schema<LoginSchema> = yup.object().shape({
+const schema: yup.Schema<PasswordResetSchema> = yup.object().shape({
   email: yup
     .string()
     .email()
