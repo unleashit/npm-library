@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.12.0...@unleashit/demos@0.13.0) (2019-04-17)
+
+
+### Features
+
+* add forgot password reset view demo ([649d492](https://github.com/unleashit/npm-library/commit/649d492))
+
+
+
+
+
 # [0.12.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.11.0...@unleashit/demos@0.12.0) (2019-04-07)
 
 

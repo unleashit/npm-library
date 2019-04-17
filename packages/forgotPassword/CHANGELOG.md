@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.10.4...@unleashit/forgot-password@0.11.0) (2019-04-17)
+
+
+### Features
+
+* **forgotpassword:** add reset password view ([574d1de](https://github.com/unleashit/npm-library/commit/574d1de))
+
+
+
+
+
 ## [0.10.4](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.10.2...@unleashit/forgot-password@0.10.4) (2019-03-29)
 
 **Note:** Version bump only for package @unleashit/forgot-password

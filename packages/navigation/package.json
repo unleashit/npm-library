@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/navigation",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/index.js",
   "description": "Basic navigation component for React with configurable links and login/logout",
   "scripts": {
@@ -38,7 +38,6 @@
   "peerDependencies": {
     "react": ">=15.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.4.0",

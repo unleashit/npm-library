@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "main": "dist/index.js",
   "description": "Responsive signup component for React with custom fields.",
   "scripts": {
@@ -43,7 +43,7 @@
     "yup": ">=0.26.10"
   },
   "dependencies": {
-    "@unleashit/common": "^0.8.5"
+    "@unleashit/common": "^0.8.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
