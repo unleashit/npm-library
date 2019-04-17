@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React from 'react';
 import { ForgotPasswordReset } from '@unleashit/forgot-password';
 
 import '@unleashit/forgot-password/dist/style.css';
 
-class ForgotPasswordResetDemo extends Component {
+class ForgotPasswordResetDemo extends React.Component {
   async forgotPasswordResetHandler(values) {
     const [token, userid] = new URL(window.location.href)
       .pathname
@@ -41,4 +40,4 @@ class ForgotPasswordResetDemo extends Component {
   }
 }
 
-export default withRouter(ForgotPasswordResetDemo);
+export default ForgotPasswordResetDemo;
