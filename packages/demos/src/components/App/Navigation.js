@@ -35,6 +35,11 @@ const Navigation = () => (
         </Link>
       </li>
       <li>
+        <Link to={'/forgot-password/reset/1/1234567890'} className="main-navigation__link">
+          Forgot Password Reset
+        </Link>
+      </li>
+      <li>
         <Link to={'/async-handler'} className="main-navigation__link">
           Async Handler
         </Link>

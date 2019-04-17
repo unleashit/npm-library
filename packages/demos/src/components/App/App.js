@@ -6,6 +6,7 @@ import Pagination from '../pagination';
 import Login from '../login';
 import Signup from '../signup';
 import ForgotPassword from '../forgotPassword';
+import ForgotPasswordReset from '../forgotPasswordReset';
 import AsyncHandler from '../asyncHandler';
 import RecursiveDataLister from '../recursiveDataLister';
 import NavigationDemo from '../navigation';
@@ -54,6 +55,7 @@ class App extends React.Component {
                 <Route path={'/login'} exact component={Login} />
                 <Route path={'/signup'} exact component={Signup} />
                 <Route path={'/forgot-password'} exact component={ForgotPassword} />
+                <Route path={'/forgot-password/reset/:userid/:token'} exact component={ForgotPasswordReset} />
                 <Route path={'/async-handler'} exact component={AsyncHandler} />
                 <Route
                   path={'/recursive-data-lister'}
