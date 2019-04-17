@@ -26,7 +26,7 @@ interface ForgotPasswordHandlerResetResponse {
   };
 }
 
-interface Props {
+interface ForgotPasswordResetProps {
   onSuccess?: (resp: any) => any;
   forgotPasswordResetHandler: (
     values: any,
@@ -35,11 +35,10 @@ interface Props {
   loader: React.FC<ForgotPasswordLoaderProps>;
   schema: Schema<any>;
   showDefaultConfirmation: boolean;
-  tokenParamName: string;
   cssModuleStyles?: { [key: string]: string };
 }
 
-const ForgotPasswordResetRaw: React.FC<FormikProps<FormValues> & Props> = (
+const ForgotPasswordResetRaw: React.FC<FormikProps<FormValues> & ForgotPasswordResetProps> = (
   props,
 ): React.ReactElement => {
   const {
@@ -108,11 +107,10 @@ const ForgotPasswordResetRaw: React.FC<FormikProps<FormValues> & Props> = (
 ForgotPasswordResetRaw.defaultProps = {
   header: ForgotPasswordResetHeader,
   loader: ForgotPasswordLoader,
-  tokenParamName: 'token',
   showDefaultConfirmation: false,
 };
 
-export const ForgotPasswordReset = withFormik<Props, FormValues>({
+export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValues>({
   mapPropsToValues: (): any => ({
     newPassword: '',
     newPasswordConfirm: '',
@@ -123,9 +121,6 @@ export const ForgotPasswordReset = withFormik<Props, FormValues>({
     values,
     { props, setSubmitting, setErrors, setStatus },
   ): Promise<any> => {
-    // const url = new URL(window.location.href);
-    // const token = url.searchParams.get(props.tokenParamName);
-
     try {
       const resp: ForgotPasswordHandlerResetResponse = await props.forgotPasswordResetHandler(
         { ...values },
