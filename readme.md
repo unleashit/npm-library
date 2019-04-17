@@ -5,11 +5,11 @@ Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Writt
 Just getting going, so far we have...
 
 ### React Components
-1. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset when the user interacts. Assumes a peer dependency of React.
-2. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, Formik and Yup. 
-3. [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable auth aware navigation component in Typescript with optional sidecar component for login/login/signup.  
-4. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
-5. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable forgot password component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields and header/footer. Assumes Peer depenencies of React, Formik and Yup.
+1. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, Formik and Yup. 
+2. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
+3. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable set of forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both  reset request and actual reset views. Assumes Peer depenencies of React, Formik and Yup.
+4. [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable auth aware navigation component in Typescript with optional sidecar component for login/login/signup. 
+5. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset when the user interacts. Assumes a peer dependency of React. 
 6. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
 7. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
 8. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
@@ -19,11 +19,11 @@ Just getting going, so far we have...
 
 A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos) is available for previewing the components. Will probably soon be removed in favor of Storybook.
 
-### Use
+### How to Use
 
-1. Install individual components via NPM: see component.
+- Install individual components via NPM. See individual component.
 
-2. Run the demo app (demos all components): `yarn start`
+- Run the demo app (demos all components): `yarn start`
 
 **Other commands**
 
@@ -31,7 +31,10 @@ Run all tests: `yarn test`
 
 Run Storybook (WIP): `yarn run storybook`
 
-Other scripts are available to build, publish to NPM, clean, etc.
+Other scripts are available to build, publish to NPM, clean, etc. Hooks are in place on the following commands:
+
+- pre-commit: test, lint, and commit lint
+- pre-publish: build
 
 ### CSS
 
