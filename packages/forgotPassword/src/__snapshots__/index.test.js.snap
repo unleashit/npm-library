@@ -8,7 +8,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
     initialValues={
       Object {
         "email": "",
-        "password": "",
         "serverMessage": "",
       }
     }
@@ -30,7 +29,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
       initialValues={
         Object {
           "email": "",
-          "password": "",
           "serverMessage": "",
         }
       }
@@ -62,7 +60,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
       values={
         Object {
           "email": "",
-          "password": "",
           "serverMessage": "",
         }
       }
@@ -101,7 +98,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                 "handleSubmit": [Function],
                 "initialValues": Object {
                   "email": "",
-                  "password": "",
                   "serverMessage": "",
                 },
                 "isSubmitting": false,
@@ -132,7 +128,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                 "validationSchema": [Function],
                 "values": Object {
                   "email": "",
-                  "password": "",
                   "serverMessage": "",
                 },
               }
@@ -164,7 +159,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                       "handleSubmit": [Function],
                       "initialValues": Object {
                         "email": "",
-                        "password": "",
                         "serverMessage": "",
                       },
                       "isSubmitting": false,
@@ -195,7 +189,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                       "validationSchema": [Function],
                       "values": Object {
                         "email": "",
-                        "password": "",
                         "serverMessage": "",
                       },
                     }
@@ -224,7 +217,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                         "handleSubmit": [Function],
                         "initialValues": Object {
                           "email": "",
-                          "password": "",
                           "serverMessage": "",
                         },
                         "isSubmitting": false,
@@ -253,7 +245,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
                         "validateOnChange": true,
                         "values": Object {
                           "email": "",
-                          "password": "",
                           "serverMessage": "",
                         },
                       }
