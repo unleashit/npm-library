@@ -1,38 +1,38 @@
-const path = require("path");
+const path = require('path');
 
-const devMode = process.env.NODE_ENV !== "production";
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const devMode = process.env.NODE_ENV !== 'production';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const config = {
-  mode: "development",
-  devtool: "source-map",
-  entry: `${__dirname  }/src/`,
+  mode: 'development',
+  devtool: 'source-map',
+  entry: `${__dirname}/src/`,
   output: {
-    path: `${__dirname  }/dist/`,
-    filename: "index.js",
-    libraryTarget: "umd"
+    path: `${__dirname}/dist/`,
+    filename: 'index.js',
+    libraryTarget: 'umd',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
   },
   node: {
-    fs: "empty"
+    fs: 'empty',
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.css",
-      chunkFilename: devMode ? "[id].css" : "[id].[contenthash].css"
-    })
+      filename: 'style.css',
+      chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css',
+    }),
     // new webpack.HotModuleReplacementPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.js?$/,
-        loader: "babel-loader",
-        include: path.join(__dirname, "src")
+        loader: 'babel-loader',
+        include: path.join(__dirname, 'src'),
       },
       {
         test: /\.tsx?$/,
@@ -44,51 +44,60 @@ const config = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-          "css-loader?sourceMap&modules=true&importLoaders=true&localIdentName=[name]-[hash:base64:5]",
-          "sass-loader"
-        ]
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]-[hash:base64:5]',
+                hashPrefix: 'unl',
+              },
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        use: ["file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]"]
+        use: ['file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]'],
       },
       {
         test: /\.svg$/,
         use: [
           {
-            loader: "@svgr/webpack",
+            loader: '@svgr/webpack',
             options: {
-              native: false
-            }
-          }
-        ]
+              native: false,
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-        use: ["file-loader?name=fonts/[name].[ext]"]
-      }
-    ]
-  }
+        use: ['file-loader?name=fonts/[name].[ext]'],
+      },
+    ],
+  },
 };
 
 config.externals = !devMode
   ? {
-    react: {
-      commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'React',
-      root: 'React',
-    },
-    'react-dom': {
-      commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'ReactDOM',
-      root: 'ReactDOM',
+      react: {
+        commonjs: 'react',
+        commonjs2: 'react',
+        amd: 'React',
+        root: 'React',
+      },
+      'react-dom': {
+        commonjs: 'react-dom',
+        commonjs2: 'react-dom',
+        amd: 'ReactDOM',
+        root: 'ReactDOM',
+      },
     }
-  }
   : undefined;
-
 
 // config.optimization = !devMode
 //   ? {

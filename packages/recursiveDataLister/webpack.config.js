@@ -45,7 +45,17 @@ const config = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader?sourceMap&modules=true&importLoaders=true&localIdentName=[name]-[hash:base64:5]',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]-[hash:base64:5]',
+                hashPrefix: 'unl',
+              },
+            },
+          },
           'sass-loader',
         ],
       },

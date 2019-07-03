@@ -12,7 +12,7 @@ const config = {
   output: {
     path: `${__dirname}/dist/`,
     filename: 'index.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', 'jsx'],
@@ -45,7 +45,17 @@ const config = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader?sourceMap&modules=true&importLoaders=true&localIdentName=[name]-[hash:base64:5]',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]-[hash:base64:5]',
+                hashPrefix: 'unl',
+              },
+            },
+          },
           'sass-loader',
         ],
       },
@@ -74,18 +84,21 @@ const config = {
 
 config.externals = !devMode
   ? {
-      react: {
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'React',
-        root: 'React',
-      },
-      'react-dom': {
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'ReactDOM',
-        root: 'ReactDOM',
-      },
+      // react: {
+      //   commonjs: 'react',
+      //   commonjs2: 'react',
+      //   amd: 'React',
+      //   root: 'React',
+      // },
+      // 'react-dom': {
+      //   commonjs: 'react-dom',
+      //   commonjs2: 'react-dom',
+      //   amd: 'ReactDOM',
+      //   root: 'ReactDOM',
+      // },
+      react: 'react', // Case matters here
+      'react-dom': 'reactDOM',
+      'prop-types': 'propTypes',
       formik: 'formik',
       yup: 'yup',
     }
