@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '@unleashit/login';
 import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 
-import '@unleashit/login/dist/style.css';
+import style from '@unleashit/login/dist/login.module.css';
 
 const btnStyle = {
   margin: '10px 0',
@@ -31,7 +31,11 @@ class LoginDemo extends Component {
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid test login: test@test.com/12345678
         </p>
-        <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess}>
+        <Login
+          loginHandler={this.loginHandler}
+          onSuccess={this.onSuccess}
+          cssModuleStyles={style}
+        >
           <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
           <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
         </Login>
