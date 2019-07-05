@@ -32,7 +32,14 @@ module.exports =  {
         "some": [ "nesting", "id" ]
       },
       "allowChildren": false
-    }]
+    }],
+    "class-methods-use-this": 0,
+    "no-alert": 0,
+    "react/prefer-stateless-function": 1,
+    "react/destructuring-assignment": 0,
+    "no-plusplus": 0,
+    "react/sort-comp": 0, // temp
+    "no-return-await": 0 // temp
   },
   "env": {
     "browser": true,

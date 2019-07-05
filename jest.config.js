@@ -19,6 +19,7 @@ module.exports = {
   transformIgnorePatterns: [
     "<rootDir>/(config|dist|node_modules)/"
   ],
+  setupFiles: [`${__dirname}/node_modules/regenerator-runtime/runtime`],
   moduleFileExtensions: [
     "ts",
     "tsx",
