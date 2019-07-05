@@ -1,12 +1,12 @@
 {
   "name": "@unleashit/demos",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "private": true,
   "dependencies": {
     "@unleashit/async-handler": "^0.4.2",
     "@unleashit/common": "^0.9.0",
     "@unleashit/forgot-password": "^0.11.1",
-    "@unleashit/login": "^0.12.0",
+    "@unleashit/login": "^0.12.2",
     "@unleashit/mock-data": "^0.6.9",
     "@unleashit/navigation": "^0.2.2",
     "@unleashit/pagination": "^0.7.8",
