@@ -1,11 +1,15 @@
-interface CSSModule {
-  [key: string]: string;
-}
-
-const isCSSModule = (theme: CSSModule | undefined, prop: string, fallback: string): string => {
-  return (theme && theme[prop]) ? `${theme[prop]}` : fallback;
+const isCSSModule = (themeProp: string | undefined, fallback: string): string => {
+  return themeProp || fallback;
 };
 
-export {
-  isCSSModule
-}
+const sentenceCase = (str: string): string => {
+  return (
+    str.charAt(0).toUpperCase() +
+    str
+      .slice(1)
+      .split(/(?=[A-Z])/)
+      .join(' ')
+  );
+};
+
+export { isCSSModule, sentenceCase };

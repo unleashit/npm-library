@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isCSSModule } from './utils';
 
 export interface CustomField {
   element: 'input' | 'select' | 'textarea';
@@ -19,10 +20,15 @@ export interface PassedProps {
   handleBlur: any;
   values?: any;
   value?: any;
-  cssModuleStyles: Style;
+  cssModuleStyles: Style
   errors: any;
   touched: any;
   componentName?: string;
+  fields: CustomField[];
+}
+
+type FieldProps = Omit<PassedProps, 'cssModuleStyles' | 'fields'> & {
+  theme: Style;
 }
 
 const ce = React.createElement;
@@ -35,7 +41,7 @@ const getOptions = (options: string[][]): React.ReactElement[] => {
   );
 };
 
-function Field(props: CustomField & PassedProps): JSX.Element | null {
+function Field(props: CustomField & FieldProps): JSX.Element | null {
   const {
     element,
     type,
@@ -49,7 +55,7 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     values,
     errors,
     touched,
-    cssModuleStyles: style,
+    theme,
     componentName,
   } = props;
   let Element;
@@ -59,9 +65,9 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       type,
       name,
       id: `${componentName}-form-${name}`,
-      className: `${style.input} unl-${componentName}__input ${
+      className: `${isCSSModule(theme.input, `unl-${componentName}__input`)} ${
         touched[name] && errors[name]
-          ? `${style.inputError} unl-${componentName}__input-error`
+          ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
           : ''
       }`,
       onChange: handleChange,
@@ -79,9 +85,9 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       {
         name,
         id: `${componentName}-form-${name}`,
-        className: `${style.input} unl-${componentName}__input ${
+        className: `${isCSSModule(theme.input, `unl-${componentName}__input`)} ${
           touched[name] && errors[name]
-            ? `${style.inputError} unl-${componentName}__input-error`
+            ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
             : ''
         }`,
         onChange: handleChange,
@@ -97,9 +103,9 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
       type: 'checkbox',
       name,
       id: `${componentName}-form-${name}`,
-      className: `${style.checkbox} unl-${componentName}__checkbox ${
+      className: `${isCSSModule(theme.checkbox, `unl-${componentName}__checkbox`)} ${
         touched[name] && errors[name]
-          ? `${style.inputError} unl-${componentName}__input-error`
+          ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
           : ''
       }`,
       onChange: handleChange,
@@ -113,9 +119,9 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
     Element = ce('textarea', {
       name,
       id: `${componentName}-form-${name}`,
-      className: `${style.textarea} unl-${componentName}__textarea ${
+      className: `${isCSSModule(theme.textarea, `unl-${componentName}__textarea`)} ${
         touched[name] && errors[name]
-          ? `${style.inputError} unl-${componentName}__input-error`
+          ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
           : ''
       }`,
       onChange: handleChange,
@@ -130,12 +136,17 @@ function Field(props: CustomField & PassedProps): JSX.Element | null {
 
   return (
     <React.Fragment>
-      <label htmlFor={htmlFor} className={`${style.label} unl-${componentName}__label`}>
+      <label htmlFor={htmlFor} className={`${theme.label} unl-${componentName}__label`}>
         {label}
       </label>
       {Element}
       {touched[name] && errors[name] && (
-        <div className={`${style.errorMessage} unl-${componentName}__error-message`}>
+        <div
+          className={isCSSModule(
+            theme.errorMessage,
+            `unl-${componentName}__error-message`,
+          )}
+        >
           <small>{errors[name]}</small>
         </div>
       )}
@@ -150,11 +161,9 @@ export function CustomFields({
   values,
   errors,
   touched,
-  cssModuleStyles,
+  cssModuleStyles: theme,
   componentName = 'unknown',
-}: {
-  fields: CustomField[];
-} & PassedProps): JSX.Element {
+}: PassedProps): JSX.Element {
   return (
     <div>
       {fields.map(
@@ -163,7 +172,7 @@ export function CustomFields({
             key={field.name}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`${cssModuleStyles.formGroup} unl-${componentName}__form-group`}
+            className={isCSSModule(theme.formGroup, `unl-${componentName}__form-group`)}
           >
             <Field
               errors={errors}
@@ -172,7 +181,7 @@ export function CustomFields({
               handleBlur={handleBlur}
               value={values[field.name]}
               values={values}
-              cssModuleStyles={cssModuleStyles}
+              theme={theme}
               componentName={componentName}
               {...field}
             />
