@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
+import { CustomFields, CustomField, CustomInput, isCSSModule } from '@unleashit/common';
 import {
   LoginLoader,
   LoginHeader,
@@ -9,7 +9,6 @@ import {
   LoginLoaderProps,
 } from './defaults/components';
 import schema from './defaults/validations';
-import * as defaultStyle from './scss/login.scss';
 
 interface FormValues {
   email: string;
@@ -54,7 +53,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
     values,
     touched,
     customFields,
-    cssModuleStyles,
+    cssModuleStyles: theme,
     forgotPassword,
     forgotPasswordLink,
     forgotPasswordText,
@@ -62,20 +61,24 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
     children,
   } = props;
 
-  const style = cssModuleStyles || defaultStyle;
-
   return (
-    <div className={`${style.loginContainer} unl-login__container`}>
-      <Header signupUrl={signupUrl} style={style} />
+    <div className={isCSSModule(theme, 'loginContainer', 'unl-login__container')}>
+      <Header signupUrl={signupUrl} theme={theme} />
       {errors.serverAuth && (
-        <div className={`${style.serverAuthError} unl-login__server-auth-error`}>
+        <div
+          className={isCSSModule(
+            theme,
+            'serverAuthError',
+            'unl-login__server-auth-error',
+          )}
+        >
           {errors.serverAuth}
         </div>
       )}
       {isSubmitting ? (
-        <Loader style={style} />
+        <Loader theme={theme} />
       ) : (
-        <Form className={`${style.form} unl-login__form`}>
+        <Form className={isCSSModule(theme, 'form', 'unl-login__form')}>
           {customFields ? (
             <CustomFields
               fields={customFields}
@@ -84,7 +87,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              cssModuleStyles={style}
+              cssModuleStyles={theme || {}}
               componentName="login"
             />
           ) : (
@@ -93,25 +96,30 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
                 type="text"
                 name="email"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme || {}}
                 componentName="login"
               />
               <Field
                 type="password"
                 name="password"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme || {}}
                 componentName="login"
               />
             </React.Fragment>
           )}
-          <button type="submit" className={`${style.button} unl-login__button`}>
+          <button
+            type="submit"
+            className={isCSSModule(theme, 'button', 'unl-login__button')}
+          >
             Login
           </button>
           {children && (
-            <div className={`${style.socialLogins} unl-login__social-logins`}>
+            <div
+              className={isCSSModule(theme, 'socialLogins', 'unl-login__social-logins')}
+            >
               {orLine && (
-                <div className={`${style.orLine} unl-login__or-line`}>
+                <div className={isCSSModule(theme, 'orLine', 'unl-login__or-line')}>
                   <span>or</span>
                 </div>
               )}
@@ -120,7 +128,11 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
           )}
           {forgotPassword ? (
             <div
-              className={`${style.forgotPasswordLink} unl-login__forgot-password-link`}
+              className={isCSSModule(
+                theme,
+                'forgotPasswordLink',
+                'unl-login__forgot-password-link',
+              )}
             >
               <a href={forgotPasswordLink}>{forgotPasswordText}</a>
             </div>

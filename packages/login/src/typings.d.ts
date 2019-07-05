@@ -7,14 +7,14 @@ declare module '*.scss' {
   interface ClassNames {
     [className: string]: string;
   }
-  const classNames: ClassNames;
-  export = classNames;
+  const scssClassNames: ClassNames;
+  export = scssClassNames;
 }
 
 declare module '*.css' {
-  interface ClassNames {
+  interface CSSClassNames {
     [className: string]: string;
   }
-  const classNames: ClassNames;
-  export = classNames;
+  const cssClassNames: CSSClassNames;
+  export = cssClassNames;
 }

@@ -79,14 +79,13 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       }
     >
       <div
-        className="loginContainer unl-login__container"
+        className="unl-login__container"
       >
         <Component
           signupUrl="/signup"
-          style={null}
         >
           <div
-            className="header unl-login__header"
+            className="unl-login__header"
           >
             <h2>
               Login
@@ -104,10 +103,10 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
           </div>
         </Component>
         <Form
-          className="form unl-login__form"
+          className="unl-login__form"
         >
           <Component
-            className="form unl-login__form"
+            className="unl-login__form"
             formik={
               Object {
                 "dirty": false,
@@ -156,21 +155,21 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             }
           >
             <form
-              className="form unl-login__form"
+              className="unl-login__form"
               onReset={[Function]}
               onSubmit={[Function]}
             >
               <FormikConnect(FieldInner)
                 component={[Function]}
                 componentName="login"
-                cssModuleStyles={null}
+                cssModuleStyles={Object {}}
                 name="email"
                 type="text"
               >
                 <FieldInner
                   component={[Function]}
                   componentName="login"
-                  cssModuleStyles={null}
+                  cssModuleStyles={Object {}}
                   formik={
                     Object {
                       "dirty": false,
@@ -222,7 +221,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                 >
                   <Component
                     componentName="login"
-                    cssModuleStyles={null}
+                    cssModuleStyles={Object {}}
                     field={
                       Object {
                         "name": "email",
@@ -278,16 +277,16 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     type="text"
                   >
                     <div
-                      className="formGroup unl-login__form-group"
+                      className="undefined unl-login__form-group"
                     >
                       <label
-                        className="label unl-login__label"
+                        className="undefined unl-login__label"
                         htmlFor="login-form-email"
                       >
                         Email
                       </label>
                       <input
-                        className="input unl-login__input "
+                        className="undefined unl-login__input "
                         id="login-form-email"
                         name="email"
                         onBlur={[Function]}
@@ -302,14 +301,14 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
               <FormikConnect(FieldInner)
                 component={[Function]}
                 componentName="login"
-                cssModuleStyles={null}
+                cssModuleStyles={Object {}}
                 name="password"
                 type="password"
               >
                 <FieldInner
                   component={[Function]}
                   componentName="login"
-                  cssModuleStyles={null}
+                  cssModuleStyles={Object {}}
                   formik={
                     Object {
                       "dirty": false,
@@ -361,7 +360,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                 >
                   <Component
                     componentName="login"
-                    cssModuleStyles={null}
+                    cssModuleStyles={Object {}}
                     field={
                       Object {
                         "name": "password",
@@ -417,16 +416,16 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     type="password"
                   >
                     <div
-                      className="formGroup unl-login__form-group"
+                      className="undefined unl-login__form-group"
                     >
                       <label
-                        className="label unl-login__label"
+                        className="undefined unl-login__label"
                         htmlFor="login-form-password"
                       >
                         Password
                       </label>
                       <input
-                        className="input unl-login__input "
+                        className="undefined unl-login__input "
                         id="login-form-password"
                         name="password"
                         onBlur={[Function]}
@@ -439,13 +438,13 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <button
-                className="button unl-login__button"
+                className="unl-login__button"
                 type="submit"
               >
                 Login
               </button>
               <div
-                className="forgotPasswordLink unl-login__forgot-password-link"
+                className="unl-login__forgot-password-link"
               >
                 <a
                   href="/forgot-password"

@@ -32,7 +32,7 @@ describe('<LoginContainer />', () => {
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.find('.loginContainer')).toHaveLength(1);
+    expect(wrapper.find('.unl-login__container')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -46,7 +46,7 @@ describe('<LoginContainer />', () => {
         .simulate('change', changeVal('password', '12345678'));
 
       expect(wrapper.find('input[name="email"]').props().value).toEqual('test@test.com');
-      const errors = wrapper.find('.errorMessage');
+      const errors = wrapper.find('.unl-login__error-message');
       expect(errors).toHaveLength(0);
     });
 
@@ -60,7 +60,7 @@ describe('<LoginContainer />', () => {
       form.simulate('submit', { preventDefault: () => {} });
       await nextTick();
       wrapper.update();
-      let emailError = wrapper.find('.errorMessage').at(0);
+      let emailError = wrapper.find('.unl-login__error-message').at(0);
       expect(emailError.text()).toEqual('email is a required field');
 
       // email must be a valid email
@@ -69,7 +69,7 @@ describe('<LoginContainer />', () => {
       form.simulate('submit', { preventDefault: () => {} });
       await nextTick();
       wrapper.update();
-      emailError = wrapper.find('.errorMessage').at(0);
+      emailError = wrapper.find('.unl-login__error-message').at(0);
       expect(emailError.text()).toEqual('email must be a valid email');
     });
 
@@ -83,7 +83,7 @@ describe('<LoginContainer />', () => {
       form.simulate('submit', { preventDefault: () => {} });
       await nextTick();
       wrapper.update();
-      let passwordError = wrapper.find('.errorMessage').at(0);
+      let passwordError = wrapper.find('.unl-login__error-message').at(0);
       expect(passwordError.text()).toEqual('password is a required field');
 
       // password must be at least 8 chars
@@ -92,7 +92,7 @@ describe('<LoginContainer />', () => {
       form.simulate('submit', { preventDefault: () => {} });
       await nextTick();
       wrapper.update();
-      passwordError = wrapper.find('.errorMessage').at(0);
+      passwordError = wrapper.find('.unl-login__error-message').at(0);
       expect(passwordError.text()).toEqual('password must be at least 8 characters');
     });
   });
