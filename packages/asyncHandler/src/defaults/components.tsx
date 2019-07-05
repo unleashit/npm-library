@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isCSSModule } from '@unleashit/common';
 
 interface Style {
   [key: string]: string;
@@ -10,13 +11,11 @@ export interface DefaultComponentProps {
 }
 
 export const DefaultLoader: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: style,
+  cssModuleStyle: theme,
 }): JSX.Element => (
-  <div className={`${style.loader} unl-async-handler__loader`}>
+  <div className={isCSSModule(theme.loader, `unl-async-handler__loader`)}>
     <div
-      className={`${
-        style.loaderChild ? style.loaderChild : ''
-      } unl-async-handler__loader-child`}
+      className={isCSSModule(theme.loaderChild, `unl-async-handler__loader-child`)}
     >
       Loading...
     </div>
@@ -24,18 +23,18 @@ export const DefaultLoader: React.FC<DefaultComponentProps> = ({
 );
 
 export const DefaultNoResults: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: style,
+  cssModuleStyle: theme,
 }): JSX.Element => (
-  <div className={`${style.nothingFound} unl-async-handler__nothing-found`}>
+  <div className={isCSSModule(theme.nothingFound, `unl-async-handler__nothing-found`)}>
     Nothing found.
   </div>
 );
 
 export const DefaultError: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: style,
+  cssModuleStyle: theme,
   error,
 }): JSX.Element => (
-  <div className={`${style.errorMessage} unl-async-handler__error-message`}>
+  <div className={isCSSModule(theme.errorMessage, `unl-async-handler__error-message`)}>
     <p>Sorry, we have encountered a problem.</p>
     {error ? <p>{error.message ? error.message : error}</p> : ''}
   </div>

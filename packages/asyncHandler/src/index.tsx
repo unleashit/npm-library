@@ -6,7 +6,6 @@ import {
   DefaultComponentProps,
 } from './defaults/components';
 import { isEmpty, returnComponentFormat } from './utils';
-import * as defaultStyle from './scss/asyncHandler.scss';
 
 type DefaultComponent = (props?: DefaultComponentProps) => React.ReactNode;
 interface Props {
@@ -64,19 +63,18 @@ export default class AsyncHandler extends React.Component<Props, State> {
       loaderComponent: LoaderComponent,
       noResultsComponent: NoResultsComponent,
       errorComponent: ErrorComponent,
-      cssModuleStyles,
+      cssModuleStyles: theme = {},
       children,
     } = this.props;
-    const style = cssModuleStyles || defaultStyle;
 
     if (error) {
-      return returnComponentFormat(ErrorComponent, { cssModuleStyle: style, error });
+      return returnComponentFormat(ErrorComponent, { cssModuleStyle: theme, error });
     }
     if (loading) {
-      return returnComponentFormat(LoaderComponent, { cssModuleStyle: style });
+      return returnComponentFormat(LoaderComponent, { cssModuleStyle: theme });
     }
     if (isEmpty(data)) {
-      return returnComponentFormat(NoResultsComponent, { cssModuleStyle: style });
+      return returnComponentFormat(NoResultsComponent, { cssModuleStyle: theme });
     }
     return children(data);
   }
