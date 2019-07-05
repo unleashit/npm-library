@@ -16,7 +16,7 @@ const schema: yup.Schema<PasswordReset2Schema> = yup.object().shape({
     .required('Password is a required field'),
   newPasswordConfirm: yup
     .string()
-    .oneOf([yup.ref('newPassword'), null], 'Passwords must match')
+    .oneOf([yup.ref('newPassword'), ''], 'Passwords must match')
     .required('Password confirm is a required field'),
 });
 

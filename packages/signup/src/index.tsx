@@ -97,7 +97,7 @@ export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
                 componentName="signup"
               />
               <Field
-                type="passwordConfirm"
+                type="password"
                 name="passwordConfirm"
                 component={CustomInput}
                 cssModuleStyles={style}

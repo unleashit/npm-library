@@ -451,7 +451,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                 componentName="signup"
                 cssModuleStyles={null}
                 name="passwordConfirm"
-                type="passwordConfirm"
+                type="password"
               >
                 <FieldInner
                   component={[Function]}
@@ -506,7 +506,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     }
                   }
                   name="passwordConfirm"
-                  type="passwordConfirm"
+                  type="password"
                 >
                   <Component
                     componentName="signup"
@@ -565,7 +565,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                         },
                       }
                     }
-                    type="passwordConfirm"
+                    type="password"
                   >
                     <div
                       className="formGroup unl-signup__form-group"
@@ -582,7 +582,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                         name="passwordConfirm"
                         onBlur={[Function]}
                         onChange={[Function]}
-                        type="passwordConfirm"
+                        type="password"
                         value=""
                       />
                     </div>
