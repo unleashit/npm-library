@@ -120,7 +120,7 @@ const schema = yup.object().shape({
 
 ### CSS
 
-Basic css can be imported: `import '@unleashit/login/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
+Basic css can be imported: `import '@unleashit/login/dist/login.css'`. If you use CSS Modules you can either `import '@unleashit/login/dist/login.module.css'` or your custom module and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API
 
