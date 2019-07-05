@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.8.6...@unleashit/common@0.9.0) (2019-07-05)
+
+
+### Features
+
+* add cssmodules util method ([19b05ee](https://github.com/unleashit/npm-library/commit/19b05ee))
+
+
+
+
+
 ## [0.8.6](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.8.5...@unleashit/common@0.8.6) (2019-04-17)
 
 **Note:** Version bump only for package @unleashit/common

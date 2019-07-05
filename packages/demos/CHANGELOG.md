@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.13.0...@unleashit/demos@0.13.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* rename css import in login demo ([e19ba78](https://github.com/unleashit/npm-library/commit/e19ba78))
+
+
+
+
+
 # [0.13.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.12.0...@unleashit/demos@0.13.0) (2019-04-17)
 
 

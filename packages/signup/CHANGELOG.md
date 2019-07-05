@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.9.4...@unleashit/signup@0.9.5) (2019-07-05)
+
+
+### Bug Fixes
+
+* yup api change fixed for matching fields ([2af7916](https://github.com/unleashit/npm-library/commit/2af7916))
+
+
+
+
+
 ## [0.9.4](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.9.3...@unleashit/signup@0.9.4) (2019-04-17)
 
 **Note:** Version bump only for package @unleashit/signup

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.11.0...@unleashit/forgot-password@0.11.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* clean up formik default values ([f5e0c16](https://github.com/unleashit/npm-library/commit/f5e0c16))
+* yup api change fixed for matching fields ([2af7916](https://github.com/unleashit/npm-library/commit/2af7916))
+
+
+
+
+
 # [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.10.4...@unleashit/forgot-password@0.11.0) (2019-04-17)
 
 
