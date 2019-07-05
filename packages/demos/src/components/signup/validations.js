@@ -13,7 +13,7 @@ const schema = yup.object().shape({
     .required(),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .oneOf([yup.ref('password'), ''], 'Passwords must match')
     .required(),
   color: yup
     .string()

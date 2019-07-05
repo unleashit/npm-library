@@ -6,8 +6,8 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 // import { linkTo } from '@storybook/addon-links';
 
-import Pagination from '..';
 import mockData from '@unleashit/mock-data';
+import Pagination from '..';
 import List from './List';
 import AsyncLoader from '../../../../.storybook/AsyncLoader';
 

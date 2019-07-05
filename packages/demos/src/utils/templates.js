@@ -15,7 +15,7 @@ export const complexJsonTemplate = () => ({
   },
   booksRead: [
     {
-      function: function() {
+      function() {
         return {
           id: this.chance.guid(),
           title: this.faker.lorem.words(),

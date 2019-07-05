@@ -27,7 +27,7 @@ class ForgotPasswordDemo extends Component {
         <ForgotPassword
           forgotPasswordHandler={this.forgotPasswordHandler}
           onSuccess={this.onSuccess}
-          showDefaultConfirmation={true}
+          showDefaultConfirmation
         />
       </React.Fragment>
     );

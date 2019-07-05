@@ -49,16 +49,16 @@ class App extends React.Component {
             <Navigation />
             <div className="component-container">
               <Switch>
-                <Route path={'/'} exact component={Home} />
-                <Route path={'/pagination'} exact component={Pagination} />
-                <Route path={'/navigation'} exact component={NavigationDemo} />
-                <Route path={'/login'} exact component={Login} />
-                <Route path={'/signup'} exact component={Signup} />
-                <Route path={'/forgot-password'} exact component={ForgotPassword} />
-                <Route path={'/forgot-password/reset/:userid/:token'} exact component={ForgotPasswordReset} />
-                <Route path={'/async-handler'} exact component={AsyncHandler} />
+                <Route path="/" exact component={Home} />
+                <Route path="/pagination" exact component={Pagination} />
+                <Route path="/navigation" exact component={NavigationDemo} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/signup" exact component={Signup} />
+                <Route path="/forgot-password" exact component={ForgotPassword} />
+                <Route path="/forgot-password/reset/:userid/:token" exact component={ForgotPasswordReset} />
+                <Route path="/async-handler" exact component={AsyncHandler} />
                 <Route
-                  path={'/recursive-data-lister'}
+                  path="/recursive-data-lister"
                   exact
                   component={RecursiveDataLister}
                 />

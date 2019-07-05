@@ -61,6 +61,7 @@ class AppState {
     if (this.keyExists(key) && !this.checkStale(key, cacheTime)) {
       return this.getKey(key);
     }
+    return undefined;
   }
 }
 

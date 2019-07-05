@@ -1,7 +1,7 @@
 import React from 'react';
 import RecursiveDataLister from '@unleashit/recursive-data-lister';
-import withAppContext from '../../utils/withAppContext';
 import AsyncHandler from '@unleashit/async-handler';
+import withAppContext from '../../utils/withAppContext';
 import '@unleashit/recursive-data-lister/dist/style.css';
 
 // const users = [
@@ -40,8 +40,8 @@ export function RecursiveDataListerDemo(props) {
       {data => (
         <RecursiveDataLister
           data={data}
-          displayAsList={true}
-          arrayLeafPropName={'id'}
+          displayAsList
+          arrayLeafPropName="id"
           repeatLeafPropName={false}
         />
       )}

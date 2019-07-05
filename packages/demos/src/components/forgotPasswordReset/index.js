@@ -30,11 +30,11 @@ class ForgotPasswordResetDemo extends React.Component {
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           User ID = 1, token = 1234567890, taken from url in this example
         </p>
-      <ForgotPasswordReset
-        forgotPasswordResetHandler={this.forgotPasswordResetHandler}
-        onSuccess={this.onSuccess}
-        showDefaultConfirmation={true}
-      />
+        <ForgotPasswordReset
+          forgotPasswordResetHandler={this.forgotPasswordResetHandler}
+          onSuccess={this.onSuccess}
+          showDefaultConfirmation
+        />
       </React.Fragment>
     );
   }
