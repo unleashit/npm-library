@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Responsive login component for React with custom fields.",
