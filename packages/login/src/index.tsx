@@ -53,7 +53,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
     values,
     touched,
     customFields,
-    cssModuleStyles: theme,
+    cssModuleStyles: theme = {},
     forgotPassword,
     forgotPasswordLink,
     forgotPasswordText,
@@ -62,15 +62,11 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
   } = props;
 
   return (
-    <div className={isCSSModule(theme, 'loginContainer', 'unl-login__container')}>
+    <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
       <Header signupUrl={signupUrl} theme={theme} />
       {errors.serverAuth && (
         <div
-          className={isCSSModule(
-            theme,
-            'serverAuthError',
-            'unl-login__server-auth-error',
-          )}
+          className={isCSSModule(theme.serverAuthError, 'unl-login__server-auth-error')}
         >
           {errors.serverAuth}
         </div>
@@ -78,7 +74,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
       {isSubmitting ? (
         <Loader theme={theme} />
       ) : (
-        <Form className={isCSSModule(theme, 'form', 'unl-login__form')}>
+        <Form className={isCSSModule(theme.form, 'unl-login__form')}>
           {customFields ? (
             <CustomFields
               fields={customFields}
@@ -87,7 +83,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              cssModuleStyles={theme || {}}
+              cssModuleStyles={theme}
               componentName="login"
             />
           ) : (
@@ -96,30 +92,28 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
                 type="text"
                 name="email"
                 component={CustomInput}
-                cssModuleStyles={theme || {}}
+                cssModuleStyles={theme}
                 componentName="login"
               />
               <Field
                 type="password"
                 name="password"
                 component={CustomInput}
-                cssModuleStyles={theme || {}}
+                cssModuleStyles={theme}
                 componentName="login"
               />
             </React.Fragment>
           )}
           <button
             type="submit"
-            className={isCSSModule(theme, 'button', 'unl-login__button')}
+            className={isCSSModule(theme.button, 'unl-login__button')}
           >
             Login
           </button>
           {children && (
-            <div
-              className={isCSSModule(theme, 'socialLogins', 'unl-login__social-logins')}
-            >
+            <div className={isCSSModule(theme.socialLogins, 'unl-login__social-logins')}>
               {orLine && (
-                <div className={isCSSModule(theme, 'orLine', 'unl-login__or-line')}>
+                <div className={isCSSModule(theme.orLine, 'unl-login__or-line')}>
                   <span>or</span>
                 </div>
               )}
@@ -129,8 +123,7 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
           {forgotPassword ? (
             <div
               className={isCSSModule(
-                theme,
-                'forgotPasswordLink',
+                theme.forgotPasswordLink,
                 'unl-login__forgot-password-link',
               )}
             >

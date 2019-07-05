@@ -83,6 +83,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       >
         <Component
           signupUrl="/signup"
+          theme={Object {}}
         >
           <div
             className="unl-login__header"
@@ -277,16 +278,16 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     type="text"
                   >
                     <div
-                      className="undefined unl-login__form-group"
+                      className="unl-login__form-group"
                     >
                       <label
-                        className="undefined unl-login__label"
+                        className="unl-login__label"
                         htmlFor="login-form-email"
                       >
                         Email
                       </label>
                       <input
-                        className="undefined unl-login__input "
+                        className="unl-login__input "
                         id="login-form-email"
                         name="email"
                         onBlur={[Function]}
@@ -416,16 +417,16 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     type="password"
                   >
                     <div
-                      className="undefined unl-login__form-group"
+                      className="unl-login__form-group"
                     >
                       <label
-                        className="undefined unl-login__label"
+                        className="unl-login__label"
                         htmlFor="login-form-password"
                       >
                         Password
                       </label>
                       <input
-                        className="undefined unl-login__input "
+                        className="unl-login__input "
                         id="login-form-password"
                         name="password"
                         onBlur={[Function]}
