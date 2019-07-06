@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
+import { CustomFields, CustomField, CustomInput, isCSSModule } from '@unleashit/common';
 import {
   ForgotPasswordLoader,
   ForgotPasswordHeader,
@@ -10,7 +10,6 @@ import {
   ForgotPasswordSuccessMessage,
 } from './defaults/components';
 import schema from './defaults/validations';
-import * as defaultStyle from './scss/forgotPassword.scss';
 
 interface FormValues {
   email: string;
@@ -49,36 +48,37 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
     values,
     touched,
     customFields,
-    cssModuleStyles,
+    cssModuleStyles: theme = {},
     onSuccess,
     status,
     children,
   } = props;
 
-  const style = cssModuleStyles || defaultStyle;
-
   if (status) {
     return React.isValidElement(onSuccess) ? (
       onSuccess
     ) : (
-      <ForgotPasswordSuccessMessage style={style} />
+      <ForgotPasswordSuccessMessage theme={theme} />
     );
   }
 
   return (
-    <div className={`${style.container} unl-forgot-password__container`}>
-      <Header style={style} />
+    <div className={isCSSModule(theme.container, `unl-forgot-password__container`)}>
+      <Header theme={theme} />
       {errors.serverMessage && (
         <div
-          className={`${style.serverMessageError} unl-forgot-password__server-auth-error`}
+          className={isCSSModule(
+            theme.serverAuthError,
+            `unl-forgot-password__server-auth-error`,
+          )}
         >
           {errors.serverMessage}
         </div>
       )}
       {isSubmitting ? (
-        <Loader style={style} />
+        <Loader theme={theme} />
       ) : (
-        <Form className={`${style.form} unl-forgot-password__form`}>
+        <Form className={isCSSModule(theme.form, `unl-forgot-password__form`)}>
           {customFields ? (
             <CustomFields
               fields={customFields}
@@ -87,7 +87,7 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              cssModuleStyles={style}
+              cssModuleStyles={theme}
               componentName="forgot-password"
             />
           ) : (
@@ -96,16 +96,19 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
                 type="text"
                 name="email"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme}
                 componentName="forgot-password"
               />
             </React.Fragment>
           )}
-          <button type="submit" className={`${style.button} unl-forgot-password__button`}>
+          <button
+            type="submit"
+            className={isCSSModule(theme.button, `unl-forgot-password__button`)}
+          >
             Send
           </button>
           {children && (
-            <div className={`${style.footer} unl-forgot-password__footer`}>
+            <div className={isCSSModule(theme.footer, `unl-forgot-password__footer`)}>
               {children}
             </div>
           )}
