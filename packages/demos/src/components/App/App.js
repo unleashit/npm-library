@@ -55,7 +55,11 @@ class App extends React.Component {
                 <Route path="/login" exact component={Login} />
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/forgot-password" exact component={ForgotPassword} />
-                <Route path="/forgot-password/reset/:userid/:token" exact component={ForgotPasswordReset} />
+                <Route
+                  path="/forgot-password/reset/:userid/:token"
+                  exact
+                  component={ForgotPasswordReset}
+                />
                 <Route path="/async-handler" exact component={AsyncHandler} />
                 <Route
                   path="/recursive-data-lister"

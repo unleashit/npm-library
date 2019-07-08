@@ -1,6 +1,8 @@
 import React from 'react';
 import AsyncHandler, { withAsyncHandler } from '@unleashit/async-handler';
 
+import '@unleashit/async-handler/dist/async-handler.css';
+
 const users = [
   {
     id: 1,
@@ -42,8 +44,8 @@ export default withAsyncHandler({
       ? userCache.users
       : null;
   },
-  loaderComponent: <div>Spinner is spinning...</div>,
-  noResultsComponent: <div>No user{"'"}s found.</div>,
+  // loaderComponent: <div>Spinner is spinning...</div>,
+  // noResultsComponent: <div>No user{"'"}s found.</div>,
   errorComponent: ({ error }) => (
     <div>Oops, there was a problem: {JSON.stringify(error)}</div>
   ),

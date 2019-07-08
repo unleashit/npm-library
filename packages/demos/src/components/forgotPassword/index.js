@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ForgotPassword from '@unleashit/forgot-password';
 
-import '@unleashit/forgot-password/dist/style.css';
+import '@unleashit/forgot-password/dist/forgot-password.css';
 
 class ForgotPasswordDemo extends Component {
   async forgotPasswordHandler(values) {

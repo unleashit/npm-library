@@ -2,7 +2,7 @@ import React from 'react';
 import RecursiveDataLister from '@unleashit/recursive-data-lister';
 import AsyncHandler from '@unleashit/async-handler';
 import withAppContext from '../../utils/withAppContext';
-import '@unleashit/recursive-data-lister/dist/style.css';
+import '@unleashit/recursive-data-lister/dist/recursive-data-lister.css';
 
 // const users = [
 //   {

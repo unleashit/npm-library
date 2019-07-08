@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from '@unleashit/navigation';
-import '@unleashit/navigation/dist/style.css';
+
+import '@unleashit/navigation/dist/navigation.css';
 
 const links = [
   {
@@ -35,6 +36,9 @@ class NavigationDemo extends Component {
           links={links}
           // setting the isAuth prop enables default login/logout/signup btns
           isAuth={false}
+          // direction={'vertical'}
+          template="light-buttons"
+          // cssModuleStyles={style}
         />
       </div>
     );

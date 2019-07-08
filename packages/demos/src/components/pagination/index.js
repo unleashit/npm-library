@@ -4,7 +4,7 @@ import AsyncHandler from '@unleashit/async-handler';
 import List from './List';
 import { AppContext } from '../../utils/context';
 import './pagination.scss';
-import '@unleashit/pagination/dist/style.css';
+import '@unleashit/pagination/dist/pagination.css';
 
 export class PaginationDemo extends Component {
   constructor(props) {
@@ -41,6 +41,7 @@ export class PaginationDemo extends Component {
               perPage={this.perPage}
               paginationHandler={this.paginationHandler}
               total={fakeBlog.length}
+              // cssModuleStyles={style}
             />
           </div>
         )}

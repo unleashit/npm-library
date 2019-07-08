@@ -3,7 +3,7 @@ import Signup from '@unleashit/signup';
 import { TwitterLoginButton, GithubLoginButton } from 'react-social-login-buttons';
 // import schema from './validations';
 
-import '@unleashit/signup/dist/style.css';
+import '@unleashit/signup/dist/signup.css';
 
 const btnStyle = {
   margin: '10px 0',
