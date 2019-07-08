@@ -14,9 +14,7 @@ export const DefaultLoader: React.FC<DefaultComponentProps> = ({
   cssModuleStyle: theme,
 }): JSX.Element => (
   <div className={isCSSModule(theme.loader, `unl-async-handler__loader`)}>
-    <div
-      className={isCSSModule(theme.loaderChild, `unl-async-handler__loader-child`)}
-    >
+    <div className={isCSSModule(theme.loaderChild, `unl-async-handler__loader-child`)}>
       Loading...
     </div>
   </div>
