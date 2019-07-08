@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@0.4.2...@unleashit/async-handler@0.5.0) (2019-07-08)
+
+
+### Features
+
+* **async-handler:** migrate to babel and multi module build ([2df2f9a](https://github.com/unleashit/npm-library/commit/2df2f9a))
+
+
+
+
+
 ## [0.4.2](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@0.4.1...@unleashit/async-handler@0.4.2) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/async-handler

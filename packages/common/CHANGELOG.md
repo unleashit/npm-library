@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.9.2...@unleashit/common@0.10.0) (2019-07-08)
+
+
+### Features
+
+* **common:** finish new CSS Module api ([6457d10](https://github.com/unleashit/npm-library/commit/6457d10))
+* **common:** migrate from webpack to babel and refactoring ([8669b7c](https://github.com/unleashit/npm-library/commit/8669b7c))
+
+
+
+
+
 ## [0.9.2](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.9.0...@unleashit/common@0.9.2) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/common

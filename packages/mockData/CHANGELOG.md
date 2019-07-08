@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.6.9...@unleashit/mock-data@0.7.0) (2019-07-08)
+
+
+### Features
+
+* **mock-data:** migrate from webpack to babel and refactoring ([56bbd05](https://github.com/unleashit/npm-library/commit/56bbd05))
+
+
+
+
+
 ## [0.6.9](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.6.8...@unleashit/mock-data@0.6.9) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/mock-data

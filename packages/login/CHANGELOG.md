@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.12.3...@unleashit/login@0.13.0) (2019-07-08)
+
+
+### Bug Fixes
+
+* **login:** fixes for new css module api ([c814706](https://github.com/unleashit/npm-library/commit/c814706))
+
+
+### Features
+
+* **login:** migrate from webpack to babel and refactoring ([f5a3c6b](https://github.com/unleashit/npm-library/commit/f5a3c6b))
+
+
+
+
+
 ## [0.12.3](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.12.0...@unleashit/login@0.12.3) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/login

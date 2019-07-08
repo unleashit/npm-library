@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.9.6...@unleashit/signup@0.10.0) (2019-07-08)
+
+
+### Features
+
+* **signup:** migrate from webpack to babel and refactoring ([6e67091](https://github.com/unleashit/npm-library/commit/6e67091))
+
+
+
+
+
 ## [0.9.6](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.9.5...@unleashit/signup@0.9.6) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/signup

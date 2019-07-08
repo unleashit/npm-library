@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.7.8...@unleashit/pagination@0.8.0) (2019-07-08)
+
+
+### Features
+
+* **pagination:** fixes for new css modules api ([83bbcf4](https://github.com/unleashit/npm-library/commit/83bbcf4))
+
+
+
+
+
 ## [0.7.8](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.7.7...@unleashit/pagination@0.7.8) (2019-07-05)
 
 **Note:** Version bump only for package @unleashit/pagination
