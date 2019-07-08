@@ -30,24 +30,19 @@
     "test:coverage": "lerna run --stream test:coverage",
     "lint": "lerna exec -- eslint --fix src/**/*.{ts,tsx,js,jsx,json}",
     "prettier": "lerna exec -- prettier --config ../../.prettierrc.js --write src/**/*.{ts,tsx,js,jsx,json}",
-    "prepublish": "yarn run build",
+    "prepublishOnly": "yarn run build",
     "publish": "HUSKY_BYPASS=true lerna publish",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
-    "clean": "lerna clean && rm -rf node_modules"
+    "clean": "npm run clean:build && lerna clean && rm -rf node_modules",
+    "clean:build": "lerna exec -- rm -rf dist build"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.4.5",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.0.0",
-    "@svgr/webpack": "^4.3.1",
-    "@types/enzyme": "^3.10.1",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
-    "babel-loader": "8.0.5",
-    "css-loader": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
@@ -56,11 +51,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "husky": "^3.0.0",
-    "lerna": "^3.15.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "typescript": "3.5.2"
+    "lerna": "^3.15.0"
   },
   "workspaces": {
     "packages": [
@@ -77,20 +68,5 @@
       "commit-msg": "if [ -z \"$HUSKY_BYPASS\" ]; then commitlint -E HUSKY_GIT_PARAMS; fi",
       "pre-commit": "if [ -z \"$HUSKY_BYPASS\" ]; then lerna exec -- eslint src/**/*.{ts,tsx,js,jsx,json} && yarn run test; fi"
     }
-  },
-  "jest": {
-    "globalSetup": "./testSetup.js",
-    "testURL": "http://localhost/",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json"
-    ]
   }
 }

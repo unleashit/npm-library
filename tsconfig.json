@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "commonjs",
-    "lib": ["dom", "es2015", "es2017"],
-    "sourceMap": true,
     "moduleResolution": "node",
+    // "allowJs": true,
+    // "noEmit": true,
+    // Disallow features that require cross-file information for emit.,
+    // "isolatedModules": true,
+    // Import non-ES modules as default imports.,
+    "esModuleInterop": true,
+    //    "lib": ["dom", "es2015", "es2017"],
     "declaration": true,
     "strict": true,
     "strictFunctionTypes": true,
@@ -12,9 +17,6 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "removeComments": true
   },
   "exclude": ["node_modules"]
