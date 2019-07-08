@@ -79,14 +79,14 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       }
     >
       <div
-        className="signupContainer unl-signup__container"
+        className="unl-signup__container"
       >
         <Component
           loginUrl="/login"
-          style={null}
+          theme={Object {}}
         >
           <div
-            className="header unl-signup__header"
+            className="unl-signup__header"
           >
             <h2>
               Sign Up
@@ -102,10 +102,10 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
           </div>
         </Component>
         <Form
-          className="form unl-signup__form"
+          className="unl-signup__form"
         >
           <Component
-            className="form unl-signup__form"
+            className="unl-signup__form"
             formik={
               Object {
                 "dirty": false,
@@ -156,21 +156,21 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             }
           >
             <form
-              className="form unl-signup__form"
+              className="unl-signup__form"
               onReset={[Function]}
               onSubmit={[Function]}
             >
               <FormikConnect(FieldInner)
                 component={[Function]}
                 componentName="signup"
-                cssModuleStyles={null}
+                cssModuleStyles={Object {}}
                 name="email"
                 type="text"
               >
                 <FieldInner
                   component={[Function]}
                   componentName="signup"
-                  cssModuleStyles={null}
+                  cssModuleStyles={Object {}}
                   formik={
                     Object {
                       "dirty": false,
@@ -222,9 +222,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   name="email"
                   type="text"
                 >
-                  <Component
+                  <CustomInput
                     componentName="signup"
-                    cssModuleStyles={null}
+                    cssModuleStyles={Object {}}
                     field={
                       Object {
                         "name": "email",
@@ -282,16 +282,16 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     type="text"
                   >
                     <div
-                      className="formGroup unl-signup__form-group"
+                      className="unl-signup__form-group"
                     >
                       <label
-                        className="label unl-signup__label"
+                        className="unl-signup__label"
                         htmlFor="signup-form-email"
                       >
                         Email
                       </label>
                       <input
-                        className="input unl-signup__input "
+                        className="unl-signup__input "
                         id="signup-form-email"
                         name="email"
                         onBlur={[Function]}
@@ -300,20 +300,20 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                         value=""
                       />
                     </div>
-                  </Component>
+                  </CustomInput>
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <FormikConnect(FieldInner)
                 component={[Function]}
                 componentName="signup"
-                cssModuleStyles={null}
+                cssModuleStyles={Object {}}
                 name="password"
                 type="password"
               >
                 <FieldInner
                   component={[Function]}
                   componentName="signup"
-                  cssModuleStyles={null}
+                  cssModuleStyles={Object {}}
                   formik={
                     Object {
                       "dirty": false,
@@ -365,9 +365,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   name="password"
                   type="password"
                 >
-                  <Component
+                  <CustomInput
                     componentName="signup"
-                    cssModuleStyles={null}
+                    cssModuleStyles={Object {}}
                     field={
                       Object {
                         "name": "password",
@@ -425,16 +425,16 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     type="password"
                   >
                     <div
-                      className="formGroup unl-signup__form-group"
+                      className="unl-signup__form-group"
                     >
                       <label
-                        className="label unl-signup__label"
+                        className="unl-signup__label"
                         htmlFor="signup-form-password"
                       >
                         Password
                       </label>
                       <input
-                        className="input unl-signup__input "
+                        className="unl-signup__input "
                         id="signup-form-password"
                         name="password"
                         onBlur={[Function]}
@@ -443,20 +443,20 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                         value=""
                       />
                     </div>
-                  </Component>
+                  </CustomInput>
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <FormikConnect(FieldInner)
                 component={[Function]}
                 componentName="signup"
-                cssModuleStyles={null}
+                cssModuleStyles={Object {}}
                 name="passwordConfirm"
                 type="password"
               >
                 <FieldInner
                   component={[Function]}
                   componentName="signup"
-                  cssModuleStyles={null}
+                  cssModuleStyles={Object {}}
                   formik={
                     Object {
                       "dirty": false,
@@ -508,9 +508,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   name="passwordConfirm"
                   type="password"
                 >
-                  <Component
+                  <CustomInput
                     componentName="signup"
-                    cssModuleStyles={null}
+                    cssModuleStyles={Object {}}
                     field={
                       Object {
                         "name": "passwordConfirm",
@@ -568,16 +568,16 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     type="password"
                   >
                     <div
-                      className="formGroup unl-signup__form-group"
+                      className="unl-signup__form-group"
                     >
                       <label
-                        className="label unl-signup__label"
+                        className="unl-signup__label"
                         htmlFor="signup-form-passwordConfirm"
                       >
                         Password Confirm
                       </label>
                       <input
-                        className="input unl-signup__input "
+                        className="unl-signup__input "
                         id="signup-form-passwordConfirm"
                         name="passwordConfirm"
                         onBlur={[Function]}
@@ -586,11 +586,11 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                         value=""
                       />
                     </div>
-                  </Component>
+                  </CustomInput>
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <button
-                className="button unl-signup__button"
+                className="unl-signup__button"
                 type="submit"
               >
                 Sign Up

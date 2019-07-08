@@ -1,26 +1,26 @@
 $gray: #e8e8e8;
 $red: #e74444;
 
-.unl-signup__signup-container {
+.signupContainer {
   width: 100%;
 }
 
-.unl-signup__header {
+.header {
   h2 {
     font-weight: normal;
     margin-bottom: .8rem;
   }
 }
 
-.unl-signup__form {
+.form {
   margin-top: 2.5rem;
 }
 
-.unl-signup__form-group {
+.formGroup {
   margin-bottom: .8rem;
 }
 
-.unl-signup__input, .unl-signup__textarea {
+.input, .textarea {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
@@ -28,11 +28,11 @@ $red: #e74444;
   padding: .7rem .5rem;
 }
 
-.unl-signup__textarea {
+.textarea {
   height: 8rem;
 }
 
-.unl-signup__select {
+.select {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
@@ -40,16 +40,16 @@ $red: #e74444;
   padding: .7rem .5rem;
 }
 
-.unl-signup__input-error {
+.inputError {
   border-color: $red;
 }
 
-.unl-signup__label {
+.label {
   display: block;
   margin-bottom: .4rem;
 }
 
-.unl-signup__button {
+.button {
   display: block;
   width: 100%;
   margin-top: 1.2rem;
@@ -62,11 +62,11 @@ $red: #e74444;
   outline: none;
 }
 
-.unl-signup__error-message {
+.errorMessage {
   color: $red;
 }
 
-.unl-signup__server-auth-error {
+.serverAuthError {
   margin: 1rem 0;
   padding: .7rem .5rem;
   background-color: $gray;
@@ -76,18 +76,18 @@ $red: #e74444;
 
 // default components
 
-.unl-signup__loader {
+.loader {
   display: flex;
   justify-content: center;
   margin-top: 4rem;
 }
 
-.unl-signup__social-signup {
+.socialSignup {
   margin: 2rem 0;
   text-align: center;
 }
 
-.unl-signup__or-line {
+.orLine {
   position: relative;
   margin: 1.4rem 0;
   font-size: .85rem;

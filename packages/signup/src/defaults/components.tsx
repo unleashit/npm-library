@@ -1,29 +1,32 @@
 import * as React from 'react';
+import { isCSSModule } from '@unleashit/common';
 
 interface Style {
   [key: string]: string;
 }
 
 export interface SignupLoaderProps {
-  style: Style;
+  theme: Style;
 }
 
 export interface SignupHeaderProps {
   loginUrl: string;
-  style: Style;
+  theme: Style;
 }
 
-export const SignupLoader: React.FC<SignupLoaderProps> = ({ style }): JSX.Element => (
-  <div className={`${style.loader} unl-signup__loader`}>
-    <div className={`${style.loaderChild} unl-signup__loader-child`}>Signing up...</div>
+export const SignupLoader: React.FC<SignupLoaderProps> = ({ theme }): JSX.Element => (
+  <div className={isCSSModule(theme.loader, `unl-signup__loader`)}>
+    <div className={isCSSModule(theme.loaderChild, `unl-signup__loader-child`)}>
+      Signing up...
+    </div>
   </div>
 );
 
 export const SignupHeader: React.FC<SignupHeaderProps> = ({
   loginUrl,
-  style,
+  theme,
 }): JSX.Element => (
-  <div className={`${style.header} unl-signup__header`}>
+  <div className={isCSSModule(theme.header, `unl-signup__header`)}>
     <h2>Sign Up</h2>
     <p>
       Already have an account? <a href={loginUrl}>Login</a>

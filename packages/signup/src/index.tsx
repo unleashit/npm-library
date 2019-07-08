@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Schema } from 'yup';
 import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput } from '@unleashit/common';
+import { CustomFields, CustomField, CustomInput, isCSSModule } from '@unleashit/common';
 import {
   SignupLoader,
   SignupHeader,
@@ -9,7 +9,6 @@ import {
   SignupLoaderProps,
 } from './defaults/components';
 import schema from './defaults/validations';
-import * as defaultStyle from './scss/signup.scss';
 
 interface FormValues {
   email: string;
@@ -50,25 +49,25 @@ export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
   values,
   touched,
   customFields,
-  cssModuleStyles,
+  cssModuleStyles: theme = {},
   orLine,
   children,
 }): React.ReactElement => {
-  const style = cssModuleStyles || defaultStyle;
-
   return (
-    <div className={`${style.signupContainer} unl-signup__container`}>
-      <Header loginUrl={loginUrl} style={style} />
+    <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
+      <Header loginUrl={loginUrl} theme={theme} />
       {errors.serverAuth && (
-        <div className={`${style.serverAuthError} unl-signup__server-auth-error`}>
+        <div
+          className={isCSSModule(theme.serverAuthError, `unl-signup__server-auth-error`)}
+        >
           {errors.serverAuth}
         </div>
       )}
 
       {isSubmitting ? (
-        <Loader style={style} />
+        <Loader theme={theme} />
       ) : (
-        <Form className={`${style.form} unl-signup__form`}>
+        <Form className={isCSSModule(theme.form, `unl-signup__form`)}>
           {customFields ? (
             <CustomFields
               fields={customFields}
@@ -77,7 +76,7 @@ export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              cssModuleStyles={style}
+              cssModuleStyles={theme}
               componentName="signup"
             />
           ) : (
@@ -86,32 +85,35 @@ export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
                 type="text"
                 name="email"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme}
                 componentName="signup"
               />
               <Field
                 type="password"
                 name="password"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme}
                 componentName="signup"
               />
               <Field
                 type="password"
                 name="passwordConfirm"
                 component={CustomInput}
-                cssModuleStyles={style}
+                cssModuleStyles={theme}
                 componentName="signup"
               />
             </React.Fragment>
           )}
-          <button type="submit" className={`${style.button} unl-signup__button`}>
+          <button
+            type="submit"
+            className={isCSSModule(theme.button, `unl-signup__button`)}
+          >
             Sign Up
           </button>
           {children && (
-            <div className={`${style.socialSignup} unl-signup__social-logins`}>
+            <div className={isCSSModule(theme.socialSignup, `unl-signup__social-signup`)}>
               {orLine && (
-                <div className={`${style.orLine} unl-signup__or-line`}>
+                <div className={isCSSModule(theme.orLine, `unl-signup__or-line`)}>
                   <span>or</span>
                 </div>
               )}
