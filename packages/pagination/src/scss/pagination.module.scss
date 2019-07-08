@@ -1,0 +1,92 @@
+@import 'vars';
+
+.paginationContainer {
+  background-color: #314262;
+  padding: 30px;
+  color: $white;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.paginationContainer:global(.hidden) {
+  display: none;
+}
+
+.paginationInner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.next, .prev {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  background: none;
+  border: none;
+  color: $white;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.next {
+  margin-left: auto;
+}
+
+.prev {
+  margin-right: 1rem;
+}
+
+.number {
+  background-color: $maroon;
+  border: none;
+  color: $white;
+  padding: 0;
+  display: inline-block;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-right: .5rem;
+  text-align: center;
+  border-radius: 50%;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 2.6rem;
+  cursor: pointer;
+  outline: none;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:active, &:global(.active) {
+    background-color: $ltgray;
+    color: $black;
+  }
+}
+
+.ellipsis {
+  background-color: inherit;
+  display: inline-block;
+  margin-right: .5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2.6rem;
+}
+
+.chevronLeft, .chevronRight {
+  fill: $white;
+  height: 1.1rem;
+}
+
+.chevronLeft {
+  margin-right: .5rem;
+}
+
+.chevronRight {
+  margin-left: .5rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .number {
+
+  }
+}

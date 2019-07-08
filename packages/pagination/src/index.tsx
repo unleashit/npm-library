@@ -1,8 +1,7 @@
 import * as React from 'react';
+import { isCSSModule } from '@unleashit/common';
 import { throttle } from 'lodash';
-import ChevronRight from './assets/icons/chevron-right.svg';
-import ChevronLeft from './assets/icons/chevron-left.svg';
-import * as style from './assets/scss/pagination.scss';
+import { ChevronLeft, ChevronRight } from './Icons';
 
 interface Props {
   currentOffset: number;
@@ -11,6 +10,7 @@ interface Props {
   total: number;
   prevLabel: string;
   nextLabel: string;
+  cssModuleStyles?: { [key: string]: string };
 }
 
 interface State {
@@ -76,35 +76,47 @@ class Pagination extends React.Component<Props, State> {
   }
 
   prev(): JSX.Element | null {
-    const { currentOffset, perPage, prevLabel } = this.props;
+    const { currentOffset, perPage, prevLabel, cssModuleStyles: theme = {} } = this.props;
 
     return currentOffset - perPage >= 0 ? (
       <button
         type="button"
-        className={`pagination__prev ${style.prev}`}
+        className={isCSSModule(theme.prev, `unl-pagination__prev`)}
         onClick={(): void => this.clickHandler('prev')}
       >
-        <ChevronLeft className={style.chevronLeft} /> {prevLabel}
+        <ChevronLeft
+          className={isCSSModule(theme.chevronLeft, 'unl-pagination__chevron-left')}
+        />{' '}
+        {prevLabel}
       </button>
     ) : null;
   }
 
   next(): JSX.Element | null {
-    const { currentOffset, perPage, total, nextLabel } = this.props;
+    const {
+      currentOffset,
+      perPage,
+      total,
+      nextLabel,
+      cssModuleStyles: theme = {},
+    } = this.props;
 
     return currentOffset + perPage < total ? (
       <button
         type="button"
-        className={`pagination__next ${style.next}`}
+        className={isCSSModule(theme.next, 'unl-pagination__next')}
         onClick={(): void => this.clickHandler('next')}
       >
-        {nextLabel} <ChevronRight className={style.chevronRight} />
+        {nextLabel}{' '}
+        <ChevronRight
+          className={isCSSModule(theme.chevronRight, 'unl-pagination__chevron-right')}
+        />
       </button>
     ) : null;
   }
 
   numbers(): JSX.Element[] | null {
-    const { total, perPage, currentOffset } = this.props;
+    const { total, perPage, currentOffset, cssModuleStyles: theme = {} } = this.props;
     const { containerWidth } = this.state;
 
     const pages = Math.ceil(total / perPage);
@@ -149,7 +161,7 @@ class Pagination extends React.Component<Props, State> {
             !page ? (
               <span
                 key={`${i}-ellipsis`}
-                className={`pagination__ellipsis ${style.ellipsis}`}
+                className={isCSSModule(theme.ellipsis, `unl-pagination__ellipsis`)}
               >
                 ...
               </span>
@@ -157,8 +169,8 @@ class Pagination extends React.Component<Props, State> {
               <button
                 type="button"
                 key={`${page}-pagination`}
-                className={`pagination__number ${style.number}${
-                  page === currentPage ? ' active' : ''
+                className={`${isCSSModule(theme.number, 'unl-pagination__number')}${
+                  page === currentPage ? ' unl-pagination__number--active' : ''
                 }`}
                 onClick={(): void => this.clickHandler('page', page)}
               >
@@ -170,14 +182,14 @@ class Pagination extends React.Component<Props, State> {
   }
 
   render(): JSX.Element | null {
-    const { total, perPage } = this.props;
+    const { total, perPage, cssModuleStyles: theme = {} } = this.props;
 
     return total > perPage ? (
       <div
-        className={`pagination__container ${style.paginationContainer}`}
+        className={isCSSModule(theme.paginationContainer, `unl-pagination__container`)}
         ref={this.containerRef}
       >
-        <div className={`pagination__inner ${style.pagination}`}>
+        <div className={isCSSModule(theme.paginationInner, `unl-pagination__inner`)}>
           {this.prev()}
           {this.numbers()}
           {this.next()}

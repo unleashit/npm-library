@@ -2,13 +2,13 @@
 
 exports[`<Pagination /> renders without crashing 1`] = `
 <div
-  className="pagination__container paginationContainer"
+  className="unl-pagination__container"
 >
   <div
-    className="pagination__inner pagination"
+    className="unl-pagination__inner"
   >
     <button
-      className="pagination__number number active"
+      className="unl-pagination__number unl-pagination__number--active"
       key="1-pagination"
       onClick={[Function]}
       type="button"
@@ -16,7 +16,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
       1
     </button>
     <button
-      className="pagination__number number"
+      className="unl-pagination__number"
       key="2-pagination"
       onClick={[Function]}
       type="button"
@@ -24,7 +24,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
       2
     </button>
     <button
-      className="pagination__number number"
+      className="unl-pagination__number"
       key="3-pagination"
       onClick={[Function]}
       type="button"
@@ -32,7 +32,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
       3
     </button>
     <button
-      className="pagination__number number"
+      className="unl-pagination__number"
       key="4-pagination"
       onClick={[Function]}
       type="button"
@@ -40,7 +40,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
       4
     </button>
     <button
-      className="pagination__number number"
+      className="unl-pagination__number"
       key="5-pagination"
       onClick={[Function]}
       type="button"
@@ -48,14 +48,14 @@ exports[`<Pagination /> renders without crashing 1`] = `
       5
     </button>
     <button
-      className="pagination__next next"
+      className="unl-pagination__next"
       onClick={[Function]}
       type="button"
     >
       next
        
-      <svgrLoader
-        className="chevronRight"
+      <Component
+        className="unl-pagination__chevron-right"
       />
     </button>
   </div>

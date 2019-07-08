@@ -5,7 +5,10 @@
   "description": "Responsive pagination component for React.",
   "scripts": {
     "start": "NODE_ENV=development webpack --watch --source-maps --mode development",
-    "build": "rm -rf ./dist && NODE_ENV=production webpack --mode production",
+    "build": "rm -rf ./dist && npm run sass:build && NODE_ENV=production webpack --mode production",
+    "sass": "npm run sass:build && npm run sass:watch",
+    "sass:build": "node-sass -r src/scss -o dist --source-map true",
+    "sass:watch": "node-sass -wr src/scss -o dist --source-map true",
     "test": "NODE_ENV=test jest --config ./jest.config.js"
   },
   "license": "MIT",
@@ -38,6 +41,7 @@
     "react": ">=15.0.0"
   },
   "dependencies": {
+    "@unleashit/common": "^0.9.2",
     "lodash": "^4.17.11"
   },
   "devDependencies": {
@@ -45,11 +49,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "@storybook/addon-actions": "^5.1.9",
-    "@storybook/addon-knobs": "^5.1.9",
-    "@storybook/addon-links": "^5.1.9",
-    "@storybook/addons": "^5.1.9",
-    "@storybook/react": "^5.1.9",
+    "@svgr/cli": "^4.3.1",
     "@svgr/webpack": "^4.3.1",
     "@types/enzyme": "^3.10.1",
     "@types/jest": "^24.0.15",

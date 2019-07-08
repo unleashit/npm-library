@@ -1,6 +1,6 @@
 @import 'vars';
 
-.paginationContainer {
+.unl-pagination__container {
   background-color: #314262;
   padding: 30px;
   color: $white;
@@ -8,17 +8,18 @@
   user-select: none;
 }
 
-.paginationContainer:global(.hidden) {
+.unl-pagination__container .unl-pagination__hidden {
   display: none;
 }
 
-.pagination {
+.unl-pagination__inner {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
 }
-.next, .prev {
+.unl-pagination__next,
+.unl-pagination__prev {
   display: flex;
   height: 100%;
   align-items: center;
@@ -30,15 +31,15 @@
   outline: none;
 }
 
-.next {
+.unl-pagination__next {
   margin-left: auto;
 }
 
-.prev {
+.unl-pagination__prev {
   margin-right: 1rem;
 }
 
-.number {
+.unl-pagination__number {
   background-color: $maroon;
   border: none;
   color: $white;
@@ -46,7 +47,7 @@
   display: inline-block;
   width: 2.6rem;
   height: 2.6rem;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   text-align: center;
   border-radius: 50%;
   font-family: inherit;
@@ -57,36 +58,37 @@
   &:last-child {
     margin-right: 0;
   }
-  &:active, &:global(.active) {
+  &:active,
+  &--active {
     background-color: $ltgray;
     color: $black;
   }
 }
 
-.ellipsis {
+.unl-pagination__ellipsis {
   background-color: inherit;
   display: inline-block;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   text-align: center;
   font-size: 1rem;
   line-height: 2.6rem;
 }
 
-.chevronLeft, .chevronRight {
+.unl-pagination__chevron-left,
+.unl-pagination__chevron-right {
   fill: $white;
   height: 1.1rem;
 }
 
-.chevronLeft {
-  margin-right: .5rem;
+.unl-pagination__chevron-left {
+  margin-right: 0.5rem;
 }
 
-.chevronRight {
-  margin-left: .5rem;
+.unl-pagination__chevron-right {
+  margin-left: 0.5rem;
 }
 
 @media screen and (max-width: 1000px) {
-  .number {
-
+  .unl-pagination__number {
   }
 }

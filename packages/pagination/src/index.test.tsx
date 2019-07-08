@@ -28,31 +28,31 @@ describe('<Pagination />', () => {
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.find('.pagination__container')).toHaveLength(1);
+    expect(wrapper.find('.unl-pagination__container')).toHaveLength(1);
     const { containerWidth } = wrapper.state();
     expect(containerWidth).toEqual(1200);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('renders next button correctly', () => {
-    expect(wrapper.find('.pagination__inner').text()).toContain('next');
-    expect(wrapper.find('.pagination__inner').text()).not.toContain('prev');
+    expect(wrapper.find('.unl-pagination__inner').text()).toContain('next');
+    expect(wrapper.find('.unl-pagination__inner').text()).not.toContain('prev');
   });
 
   it('renders prev button correctly', () => {
     props.currentOffset = 50;
     wrapper = shallow(<Pagination {...props} />);
 
-    expect(wrapper.find('.pagination__inner').text()).toContain('prev');
-    expect(wrapper.find('.pagination__inner').text()).not.toContain('next');
+    expect(wrapper.find('.unl-pagination__inner').text()).toContain('prev');
+    expect(wrapper.find('.unl-pagination__inner').text()).not.toContain('next');
   });
 
   it('renders both prev and next btns correctly', () => {
     props.currentOffset = 25;
     wrapper = shallow(<Pagination {...props} />);
 
-    expect(wrapper.find('.pagination__inner').text()).toContain('prev');
-    expect(wrapper.find('.pagination__inner').text()).toContain('next');
+    expect(wrapper.find('.unl-pagination__inner').text()).toContain('prev');
+    expect(wrapper.find('.unl-pagination__inner').text()).toContain('next');
   });
 
   it('renders the right amount of pages', () => {
@@ -71,20 +71,20 @@ describe('<Pagination />', () => {
       props.total = total;
       wrapper = shallow(<Pagination {...props} />);
 
-      expect(wrapper.find('.pagination__inner > .pagination__number')).toHaveLength(ex);
+      expect(wrapper.find('.unl-pagination__inner > .unl-pagination__number')).toHaveLength(ex);
     });
   });
 
   describe('click events', () => {
     it('#next btn calls the pagination handler with the right offset', () => {
-      let nextBtn = wrapper.find('.pagination__next');
+      let nextBtn = wrapper.find('.unl-pagination__next');
       nextBtn.simulate('click');
       expect(props.paginationHandler).toHaveBeenLastCalledWith(10);
 
       props.currentOffset = 20;
       props.perPage = 5;
       wrapper = shallow(<Pagination {...props} />);
-      nextBtn = wrapper.find('.pagination__next');
+      nextBtn = wrapper.find('.unl-pagination__next');
       nextBtn.simulate('click');
       expect(props.paginationHandler).toHaveBeenLastCalledWith(25);
     });
@@ -93,7 +93,7 @@ describe('<Pagination />', () => {
       props.currentOffset = 30;
       props.perPage = 10;
       wrapper = shallow(<Pagination {...props} />);
-      const prevBtn = wrapper.find('.pagination__prev');
+      const prevBtn = wrapper.find('.unl-pagination__prev');
       prevBtn.simulate('click');
       expect(props.paginationHandler).toHaveBeenLastCalledWith(20);
     });
@@ -115,7 +115,7 @@ describe('<Pagination />', () => {
         props.paginationHandler.mockClear();
 
         wrapper = shallow(<Pagination {...props} />);
-        const firstPageBtn = wrapper.find('.pagination__number').at(pageClicked - 1);
+        const firstPageBtn = wrapper.find('.unl-pagination__number').at(pageClicked - 1);
 
         firstPageBtn.simulate('click');
 
