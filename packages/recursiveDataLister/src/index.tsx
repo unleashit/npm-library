@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as defaultStyle from './scss/recursiveDataLister.scss';
 import Row from './Row';
 
 export interface RecursiveDataListerProps {
@@ -17,7 +16,7 @@ const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
   displayAsList = false,
   arrayLeafPropName = null,
   repeatLeafPropName = true,
-  cssModuleStyle,
+  cssModuleStyle: theme = {},
 }): React.ReactElement => {
   if (displayAsList && data.toString() === '[object Object]') {
     throw new Error(
@@ -25,14 +24,13 @@ const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
     );
   }
 
-  const style = cssModuleStyle || defaultStyle;
   const key = (): string => Math.random().toString();
   const renderRow = <T extends {}>(rowData: T): React.ReactElement => (
     <Row
       key={key()}
       row={rowData}
       parentTag={tag}
-      cssModuleStyle={style}
+      theme={theme}
       leafProp={arrayLeafPropName}
       repeatLeafProp={repeatLeafPropName}
     />
