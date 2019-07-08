@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as defaultStyle from './scss/navigation.scss';
+import { isCSSModule } from '@unleashit/common';
 import NavLinks from './NavLinks';
 import AuthLinks from './AuthLinks';
 import { addTemplateClasses } from './utils/templateClasses';
@@ -62,8 +62,14 @@ const buildAuthLinks = (
 };
 
 const Navigation: React.FC<Props> = (props): React.ReactElement => {
-  const { links, direction, template, isAuth, authLinks, cssModuleStyles } = props;
-  const style = cssModuleStyles || defaultStyle;
+  const {
+    links,
+    direction,
+    template,
+    isAuth,
+    authLinks,
+    cssModuleStyles: theme = {},
+  } = props;
 
   // * show default authLinks if isAuth is provided.
   // * if user provides authLinks, they will override the default on a property by property basis
@@ -73,14 +79,13 @@ const Navigation: React.FC<Props> = (props): React.ReactElement => {
 
   return (
     <nav
-      className={`${style.container} unl-navigation__container${addTemplateClasses(
-        template,
-        direction,
-        style,
-      )}`}
+      className={`${isCSSModule(
+        theme.container,
+        `unl-navigation__container`,
+      )}${addTemplateClasses(template, direction, theme)}`}
     >
-      <NavLinks links={links} cssModuleStyle={style} />
-      {newAuthLinks && <AuthLinks links={newAuthLinks} cssModuleStyle={style} />}
+      <NavLinks links={links} theme={theme} />
+      {newAuthLinks && <AuthLinks links={newAuthLinks} theme={theme} />}
     </nav>
   );
 };

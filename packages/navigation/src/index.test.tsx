@@ -80,7 +80,8 @@ describe('<Navigation />', () => {
 
   it('displays template class', () => {
     // default template class
-    expect(wrapper.find('nav.clean')).toHaveLength(1);
+    console.log(wrapper.debug());
+    expect(wrapper.find('nav.unl-navigation__container--clean')).toHaveLength(1);
 
     // the other options
     let newProps: Props = {
@@ -89,20 +90,20 @@ describe('<Navigation />', () => {
     };
 
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.plain')).toHaveLength(1);
+    expect(wrapper.find('nav.unl-navigation__container--plain')).toHaveLength(1);
 
     newProps = {
       ...props,
       template: 'dark-buttons',
     };
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.darkButtons')).toHaveLength(1);
+    expect(wrapper.find('nav.unl-navigation__container--dark-btns')).toHaveLength(1);
 
     newProps = {
       ...props,
       template: 'light-buttons',
     };
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.lightButtons')).toHaveLength(1);
+    expect(wrapper.find('nav.unl-navigation__container--light-btns')).toHaveLength(1);
   });
 });

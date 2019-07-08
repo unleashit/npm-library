@@ -2,10 +2,9 @@
 
 exports[`<Navigation /> renders without crashing 1`] = `
 <nav
-  className="container unl-navigation__container clean unl-navigation__container--clean"
+  className="unl-navigation__container unl-navigation__container--clean"
 >
   <NavLinks
-    cssModuleStyle={null}
     links={
       Array [
         Object {
@@ -30,6 +29,7 @@ exports[`<Navigation /> renders without crashing 1`] = `
         },
       ]
     }
+    theme={Object {}}
   />
 </nav>
 `;

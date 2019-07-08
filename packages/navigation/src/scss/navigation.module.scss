@@ -1,15 +1,15 @@
 $lightColor: #f1efef;
 $darkColor: #555;
 
-.unl-navigation__container:not(.unl-navigation__container--plain) {
+.container:not(.plain) {
   width: 100%;
   display: flex;
   font-size: 1.1rem;
   text-transform: uppercase;
 }
 
-.unl-navigation__container:not(.unl-navigation__container--plain) {
-  .unl-navigation__nav-list {
+.container:not(.plain) {
+  .navList {
     display: flex;
     align-items: center;
     flex: 1;
@@ -17,87 +17,86 @@ $darkColor: #555;
     margin: 0;
     padding: 0;
   }
-  .unl-navigation__link-item {
+  .linkItem {
     display: flex;
     flex: 1;
     align-items: center;
     text-align: center;
   }
-  .unl-navigation__link {
+  .link {
     flex: 1;
     color: #000;
     line-height: 1.2rem;
     text-decoration: none;
     cursor: pointer;
   }
-  .unl-navigation__link-item:last-child .unl-navigation__link {
+  .linkItem:last-child .link {
     border: none;
   }
-  &.unl-navigation__container--vertical {
+  &.vertical {
     flex-direction: column;
-    .unl-navigation__nav-list {
+    .navList {
       flex-direction: column;
       align-items: normal;
     }
-    .unl-navigation__link {
-      padding: 0.5rem 0;
+    .link {
+      padding: .5rem 0;
     }
   }
 }
 
 // clean template
-.unl-navigation__container:not(.unl-navigation__container--plain).unl-navigation__container--clean {
-  .unl-navigation__nav-list {
+.container:not(.plain).clean {
+  .navList {
     justify-content: space-between;
   }
-  .unl-navigation__link-item {
+  .linkItem {
     flex: auto;
     text-align: left;
   }
-  .unl-navigation__auth-links {
+  .authLinks {
     margin-left: 15px;
   }
-  &.unl-navigation__container--vertical {
-    .unl-navigation__link-item {
+  &.vertical {
+    .linkItem {
       text-align: left;
     }
   }
 }
 
 // dark-buttons template
-.unl-navigation__container:not(.unl-navigation__container--plain).unl-navigation__container--dark-btns {
-  .unl-navigation__link-item {
+.container:not(.plain).darkButtons {
+  .linkItem {
     text-align: center;
-    &:last-child .unl-navigation__link {
+    &:last-child .link {
       border: none;
     }
   }
-  .unl-navigation__link {
+  .link {
     padding: 10px 20px;
     background-color: $darkColor;
     color: #fff;
     border-right: 1px solid lighten($darkColor, 15%);
     &:hover {
-      background-color: lighten($darkColor, 10%);
+      background-color: lighten($darkColor,  10%);
     }
   }
-  &--active .unl-navigation__link {
+  .active .link {
     background-color: $lightColor;
     color: #000;
   }
-  &.unl-navigation__container--vertical {
-    .unl-navigation__link {
+  &.vertical {
+    .link {
       border-right: none;
       border-bottom: 1px solid lighten($darkColor, 15%);
     }
   }
-  .unl-navigation__auth-links {
-    .unl-navigation__link {
+  .authLinks {
+    .link {
       background-color: transparent;
       border: none;
     }
-    .unl-navigation__signup-link,
-    .unl-navigation__logout-link {
+    .signupLink, .logoutLink {
       background-color: $lightColor;
       border-radius: 0;
       &:hover {
@@ -108,14 +107,14 @@ $darkColor: #555;
 }
 
 // light-buttons template
-.unl-navigation__container:not(.unl-navigation__container--plain).unl-navigation__container--light-btns {
-  .unl-navigation__link-item {
+.container:not(.plain).lightButtons {
+  .linkItem {
     text-align: center;
-    &:last-child .unl-navigation__link {
+    &:last-child .link {
       border: none;
     }
   }
-  .unl-navigation__link {
+  .link {
     padding: 10px 20px;
     background-color: $lightColor;
     color: #000;
@@ -124,23 +123,22 @@ $darkColor: #555;
       background-color: darken($lightColor, 5%);
     }
   }
-  &--active .unl-navigation__link {
+  .active .link {
     background-color: $darkColor;
     color: #fff;
   }
-  &.unl-navigation__container--vertical {
-    .unl-navigation__link {
+  &.vertical {
+    .link {
       border-right: none;
       border-bottom: 1px solid darken($lightColor, 15%);
     }
   }
-  .unl-navigation__auth-links {
-    .unl-navigation__link {
+  .authLinks {
+    .link {
       border: none;
       background-color: transparent;
     }
-    .unl-navigation__signup-link,
-    .unl-navigation__logout-link {
+    .signupLink, .logoutLink {
       background-color: $darkColor;
       border-radius: 0;
       color: #fff;
@@ -152,52 +150,52 @@ $darkColor: #555;
 }
 
 // auth links
-.unl-navigation__container:not(.unl-navigation__container--plain) {
-  .unl-navigation__auth-links {
+.container:not(.plain) {
+  .authLinks {
     display: flex;
     align-items: center;
     margin: 0 0 0 60px;
     padding: 0;
-    .unl-navigation__link {
+    .link {
       padding: 0 20px;
       background-color: transparent;
       color: inherit;
       border: none;
     }
-    .unl-navigation__signup-link,
-    .unl-navigation__logout-link {
+    .signupLink, .logoutLink {
       padding: 10px 20px;
       background-color: $lightColor;
       border-radius: 5px;
     }
-    .unl-navigation__icon-span--left + .unl-navigation__login-link {
+    .iconSpanLeft + .loginLink {
       padding-left: 0;
     }
   }
-  &.unl-navigation__container--vertical {
-    .unl-navigation__auth-links {
+  &.vertical {
+    .authLinks {
       flex-direction: column;
       margin: 20px 0 0;
       align-items: normal;
     }
-    .unl-navigation__link {
-      padding: 0.5rem 0;
+    .link {
+      padding: .5rem 0;
       border: none;
     }
   }
 }
 
 // icons
-.unl-navigation__icon-span--left {
+.iconSpanLeft {
   padding-right: 6px;
 }
-.unl-navigation__icon-span--right {
+.iconSpanRight {
   padding-left: 6px;
   flex: 100;
 }
 
-.unl-navigation__icon {
+.icon {
   max-width: 25px;
   max-height: 25px;
   vertical-align: bottom;
 }
+

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { isCSSModule } from '@unleashit/common';
 import { Link, Style } from './index';
 import { getAuthClasses } from './utils/templateClasses';
 
 export interface NavLinkExtraProps {
-  cssModuleStyle: Style;
+  theme: Style;
   authLink?: 'login' | 'logout' | 'signup' | null;
 }
 
@@ -21,34 +22,50 @@ const NavLink: React.FC<Link & NavLinkExtraProps> = ({
   icon,
   iconPosition = 'left',
   authLink = null,
-  cssModuleStyle: style,
+  theme,
 }): React.ReactElement | null => {
   if (display) {
     return (
       <li
-        className={`${style.linkItem} ${getUserClasses(
-          classes,
-        )} unl-navigation__link-item ${
-          active ? `${style.active} unl-navigation__link-item--active` : ''
+        className={`${isCSSModule(
+          theme.linkItem,
+          'unl-navigation__link-item',
+        )} ${getUserClasses(classes)} ${
+          active ? isCSSModule(theme.active, `unl-navigation__link-item--active`) : ''
         }`}
       >
         {icon && iconPosition === 'left' && (
-          <span className={`${style.iconSpanLeft} unl-navigation__icon-span--left`}>
-            <img src={icon} alt="" className={`${style.icon} unl-navigation__icon`} />
+          <span
+            className={isCSSModule(theme.iconSpanLeft, `unl-navigation__icon-span--left`)}
+          >
+            <img
+              src={icon}
+              alt=""
+              className={isCSSModule(theme.icon, `unl-navigation__icon`)}
+            />
           </span>
         )}
         <a
           href={url}
-          className={`${style.link} unl-navigation__link${
-            authLink ? getAuthClasses(authLink, style) : ''
+          className={`${isCSSModule(theme.link, `unl-navigation__link`)}${
+            authLink ? getAuthClasses(authLink, theme) : ''
           }`}
           {...attrs}
         >
           {text}
         </a>
         {icon && iconPosition === 'right' && (
-          <span className={`${style.iconSpanRight} unl-navigation__icon-span--right`}>
-            <img src={icon} alt="" className={`${style.icon} unl-navigation__icon`} />
+          <span
+            className={isCSSModule(
+              theme.iconSpanRight,
+              `unl-navigation__icon-span--right`,
+            )}
+          >
+            <img
+              src={icon}
+              alt=""
+              className={isCSSModule(theme.icon, `unl-navigation__icon`)}
+            />
           </span>
         )}
       </li>
