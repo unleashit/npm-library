@@ -1,5 +1,6 @@
-import { CustomFields, CustomField } from './lib/CustomFields';
 import { CustomInput } from './lib/CustomInput';
 import { isCSSModule } from './lib/utils';
 
-export { CustomField, CustomFields, CustomInput, isCSSModule };
+// Solution for Babel unable to handle multiple ts interface exports
+export * from './lib/CustomFields';
+export { CustomInput, isCSSModule };

@@ -20,7 +20,7 @@ export interface PassedProps {
   handleBlur: any;
   values?: any;
   value?: any;
-  cssModuleStyles: Style
+  cssModuleStyles: Style;
   errors: any;
   touched: any;
   componentName?: string;
@@ -29,7 +29,7 @@ export interface PassedProps {
 
 type FieldProps = Omit<PassedProps, 'cssModuleStyles' | 'fields'> & {
   theme: Style;
-}
+};
 
 const ce = React.createElement;
 
