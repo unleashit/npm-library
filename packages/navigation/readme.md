@@ -41,7 +41,7 @@ const links = [
 const NavigationDemo = () => (
   <Navigation
     links={links}
-    // setting the isAuth prop enables
+    // setting the isAuth prop displays
     // default login/logout/signup btns
     isAuth={false}
   />
@@ -52,7 +52,7 @@ export default NavigationDemo;
 
 ### Authenticated Links
 
-You can manually manage the display state for each link with by adding a display property. This will override any managed link state the component does.
+You can manually manage the display state for each link with by adding a display property. Setting a display property will always override any managed link state the component does.
 
 ```javascript
 links = [
@@ -66,18 +66,15 @@ links = [
 
 ### Login/Logout/Signup Sidecar
 
-If you set the `isAuth` prop, the component will add authentication/signup links as appropriate. If isAuth is set to false, both login and signup will show up. If true, logout instead.
+If you set an `isAuth` and/or `authLinks` prop, the component will add a sub-component for authentication and signup links as appropriate. If `isAuth` is set to `false`, both login and signup will show up. If true, logout instead.
 
-If you import/use the component's CSS it will make
-
-If you need to customize the titles, urls or anything about the auth links (chances are you do), add an `authLinks` prop. `authLinks` should be an object with `login`, `logout` and `signup` properties:
+If you need to customize the titles, urls or anything about the auth links (chances are you do), add an `authLinks` prop. `authLinks` should be an object with `login`, `logout` and `signup` properties (see `AuthLinkTypes` below):
 
 ```javascript
 const authLinks = {
   login: {
     text: 'Sign In',
     url: '/login',
-    icon: '/images/login-icon.svg',
   },
   logout: {
     text: 'Logout',
@@ -86,6 +83,8 @@ const authLinks = {
   signup: {
     text: 'Register',
     url: '/signup',
+    icon: '/images/login-icon.svg',
+    iconPosition: 'right', // left is default
   },
 };
 
@@ -97,13 +96,13 @@ const authLinks = {
 />;
 ```
 
-If you add `authlinks` manually, including `isAuth` is optional as long as you manage the individual display properties yourself like:
+If you add `authlinks`, including `isAuth` is optional as long as you manage the individual display properties yourself like:
 
 ```javascript
 const authLinks = {
   login: {
     display: !isLoggedIn,
-    // you can leave props out you don't need to modify
+    // you can leave any props if you like the defaults
   },
   logout: {
     display: isLoggedIn,
@@ -116,7 +115,7 @@ const authLinks = {
 
 ### CSS
 
-Basic css can be imported: `import '@unleashit/navigation/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/navigation/dist/navigation.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/navigation/dist/navigation.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
 
 ### Themes
 
@@ -141,7 +140,7 @@ export interface Link {
   active?: boolean;
   classes?: string[];
   style?: React.CSSProperties;
-  icon?: string; // path to image 
+  icon?: string; // path to image
   iconPosition?: 'left' | 'right';
   display?: boolean;
   // a key/val object with any extra html attributes
@@ -163,11 +162,11 @@ export interface Props {
 }
 ```
 
-| Name            | Type                      | Description                                                                                  | default     |
-| --------------- | ------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
-| links           | Link[]                    | array of objects (links) each with a minimum of url and name props                           | required    |
-| direction       | horizontal or vertical    | adds css classes to nav container for horz and vert                                          | horizontal  |
-| template        | string                    | choice of theme if using the default CSS                                                     | clean       |
-| isAuth          | boolean                   | if set, component will set appropriate state to login/logout/signup links                    | undefined   |
+| Name            | Type                      | Description                                                                                                                | default     |
+| --------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| links           | Link[]                    | array of objects (links) each with a minimum of url and name props                                                         | required    |
+| direction       | horizontal or vertical    | adds css classes to nav container for horz and vert                                                                        | horizontal  |
+| template        | string                    | choice of theme if using the default CSS                                                                                   | clean       |
+| isAuth          | boolean                   | if set, component will set appropriate state to login/logout/signup links                                                  | undefined   |
 | authLinks       | AuthLinkTypes             | if set, these links will be added to the auth sidecar (a second ul within the nav container that can be styled separately) | undefined   |
-| cssModuleStyles | { [key: string]: string } | CSS Module object that optionally replaces default. Class names need to match default names. | default CSS |
+| cssModuleStyles | { [key: string]: string } | CSS Module object that optionally replaces default. Class names need to match default names.                               | default CSS |

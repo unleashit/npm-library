@@ -38,8 +38,14 @@ Other scripts are available to build, publish to NPM, clean, etc. Hooks are in p
 
 ### CSS
 
-By default, components come with basic css styling generated with CSS Modules. If you want to use it, either copy it from node_modules/[package-name]/dist/style.css or if using webpack, import it like `import '@unleashit/[package-name]/dist/style.css'`;
+By default, components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
 
-Important: since the CSS Module based class names can change with package updates, you should only use the class names provided in BEM format (i.e. `unl-signup__input`) if you write you own styles or want to modify/override the default style. These will always stay the same. Do not create styles for the class names containing a hash unless you replace with your own as described below.
+To use the standard version, either import it from `@unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path) if using a module bundler or copy it into your project.  
 
-Since I'm a big fan of CSS modules over CSS-in-JS, a special workflow is provided. All React UI components accept an optional `cssModuleStyles` prop that will take your custom CSS module and override the default. You can target all of the component's internal classnames this way, as long as you name the styles correctly. To find the names (since they're missing in the compiled version), I recommend looking in the source files or scss folder for the component on Github. If anyone has any opinions or ideas to improve this, please let me know!
+Since I'm a big fan of CSS modules over CSS-in-JS, support is baked in. All React UI components accept an optional `cssModuleStyles` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app). 
+
+If you use a custom module, you can target all of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` or the source code (sometimes not all possible targets are used in the provided CSS). You can also look at the markup in dev tools and translate from the BEM versions like: `unl-[component-name]__[style-name-with-dashes]` to simply `[styleNameCamelCase]`.
+
+Each component that uses CSS will output BEM class names by default. If a cssModuleStyle prop is passed in with matching classes, a hashed style class name will output for each match while non-provided (and matching) class names will remain BEM.
+
+If anyone has any ideas or opinions to improve this, please let me know. If you're a CSS-in-JS user, you should repent. But if you insist on adding technical dept and soon-to-be obsolete and community incompatible syntax to your project, feel free! You might be able to make use of the cssModules prop if your library works with classes (e.g. Aphrodite).

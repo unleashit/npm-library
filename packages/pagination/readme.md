@@ -66,7 +66,8 @@ export class PaginationDemo extends React.Component {
 ```
 ### CSS
 
-Basic css can be imported if desired: import '@unleashit/pagination/dist/style.css'; . Class names use a CSS modules hash to avoid name collisions.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/pagination/dist/pagination.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/pagination/dist/pagination.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+
 
 ### Props
 

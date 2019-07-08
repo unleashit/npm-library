@@ -101,7 +101,7 @@ export default withAsyncHandler({
 
 ### CSS
 
-Basic css can be imported: `import '@unleashit/async-handler/dist/style.css';`, or you can pass in a custom CSS module. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/async-handler/dist/async-handler.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/async-handler/dist/async-handler.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API and Props
 
