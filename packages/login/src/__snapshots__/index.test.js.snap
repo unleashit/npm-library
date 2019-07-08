@@ -220,7 +220,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                   name="email"
                   type="text"
                 >
-                  <Component
+                  <CustomInput
                     componentName="login"
                     cssModuleStyles={Object {}}
                     field={
@@ -296,7 +296,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                         value=""
                       />
                     </div>
-                  </Component>
+                  </CustomInput>
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <FormikConnect(FieldInner)
@@ -359,7 +359,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                   name="password"
                   type="password"
                 >
-                  <Component
+                  <CustomInput
                     componentName="login"
                     cssModuleStyles={Object {}}
                     field={
@@ -435,7 +435,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                         value=""
                       />
                     </div>
-                  </Component>
+                  </CustomInput>
                 </FieldInner>
               </FormikConnect(FieldInner)>
               <button
