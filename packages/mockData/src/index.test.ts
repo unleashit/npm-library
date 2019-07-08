@@ -182,9 +182,7 @@ describe('mockData', () => {
         id: { chance: 'guid' },
         name: { faker: 'commerce.productName' },
         price: {
-          chance: `floating({"fixed": 2, "min": ${args.minPrice}, "max": ${
-            args.maxPrice
-          }})`,
+          chance: `floating({"fixed": 2, "min": ${args.minPrice}, "max": ${args.maxPrice}})`,
         },
       });
 

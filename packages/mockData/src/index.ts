@@ -61,21 +61,19 @@ const mockData = async ({
       m.schema(modelName, processedTemplate, total);
     } else if (templates) {
       // multiple schemas
-      templates.forEach(
-        (tmpl: any, i: number): void => {
-          const modelName =
-            tmpl.name ||
-            (typeof tmpl.template === 'string' && tmpl.template) ||
-            i.toString();
-          tmpl.args = tmpl.args || {};
+      templates.forEach((tmpl: any, i: number): void => {
+        const modelName =
+          tmpl.name ||
+          (typeof tmpl.template === 'string' && tmpl.template) ||
+          i.toString();
+        tmpl.args = tmpl.args || {};
 
-          if (tmpl.hiddenFields) tmpl.args.hiddenFields = tmpl.hiddenFields;
+        if (tmpl.hiddenFields) tmpl.args.hiddenFields = tmpl.hiddenFields;
 
-          const processedTemplate = processTemplate(tmpl.template, tmpl.args);
+        const processedTemplate = processTemplate(tmpl.template, tmpl.args);
 
-          m.schema(modelName, processedTemplate, tmpl.total || 10);
-        },
-      );
+        m.schema(modelName, processedTemplate, tmpl.total || 10);
+      });
     } else {
       throw new Error('You must provide either a template or templates argument');
     }
