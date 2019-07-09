@@ -7,8 +7,8 @@ const links = [
   {
     text: 'Home',
     url: '/home',
-    // icon: 'https://img.icons8.com/material/420/home-page.png',
-    // iconPosition: 'left',
+    icon: 'https://img.icons8.com/material/420/home-page.png',
+    iconPosition: 'left',
   },
   {
     text: 'Products',
@@ -35,58 +35,7 @@ class NavigationDemo extends Component {
         <Navigation
           links={links}
           // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={true}
-          // direction={'vertical'}
-          // template="light-buttons"
-          // cssModuleStyles={style}
-        />
-        <br />
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={true}
-          // direction={'vertical'}
-          template="light-buttons"
-          // cssModuleStyles={style}
-        />
-        <br />
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={true}
-          // direction={'vertical'}
-          template="dark-buttons"
-          // cssModuleStyles={style}
-        />
-        <br />
-        <br />
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={false}
-          direction={'vertical'}
-          template="clean"
-          // cssModuleStyles={style}
-        />
-        <br />
-        <br />
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={false}
-          direction='vertical'
-          template="light-buttons"
-          // cssModuleStyles={style}
-        />
-        <br />
-        <br />
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={false}
-          direction={'vertical'}
-          template="dark-buttons"
-          // cssModuleStyles={style}
+          isAuth
         />
       </div>
     );
