@@ -3,6 +3,7 @@ const getChild = (tag: string): string => {
   return 'div';
 };
 
-const isObject = (elem: object | any[]): boolean => elem.toString() === '[object Object]';
+const isObject = (elem: object | any[]): boolean =>
+  typeof elem === 'object' && !Array.isArray(elem);
 
 export { getChild, isObject };
