@@ -1,6 +1,10 @@
 ## Mock Data
 
-Wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-generator) providing a set of templates with arguments. Can optionally write to a file (Node).
+![npm (scoped)](https://img.shields.io/npm/v/@unleashit/mock-data.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/mock-data.svg)
+![NPM](https://img.shields.io/npm/l/@unleashit/mock-data.svg)
+
+Wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-generator) providing a set of templates with arguments. Can also optionally write to a file. This is mainly meant for the server, but if you have a good enough reason (please take note of the package size), everything works on the client except file writing.
 
 So far the templates currently available are `user`, `article`, `order` and `product`. More will be added over time.
 

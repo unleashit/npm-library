@@ -1,5 +1,9 @@
 ## Login
 
+![npm (scoped)](https://img.shields.io/npm/v/@unleashit/login.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/login.svg)
+![NPM](https://img.shields.io/npm/l/@unleashit/login.svg)
+
 Customizable React login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, social login buttons and forgot password link.
 
 ![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)

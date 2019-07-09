@@ -1,5 +1,9 @@
 ## Recursive Data Lister
 
+![npm (scoped)](https://img.shields.io/npm/v/@unleashit/recursive-data-lister.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/recursive-data-lister.svg)
+![NPM](https://img.shields.io/npm/l/@unleashit/recursive-data-lister.svg)
+
 React component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
 
 ### Install

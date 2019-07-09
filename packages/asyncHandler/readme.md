@@ -1,5 +1,9 @@
 ## Async Handler
 
+![npm (scoped)](https://img.shields.io/npm/v/@unleashit/async-handler.svg)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/async-handler.svg)
+![NPM](https://img.shields.io/npm/l/@unleashit/async-handler.svg)
+
 HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
 
 ### Install

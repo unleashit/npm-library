@@ -1,10 +1,13 @@
 ## NPM and UI Component Library
 
+![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)
+
 Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Written with Typescript and tested with Jest.
 
 Just getting going, so far we have...
 
 ### React Components
+
 1. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, Formik and Yup. 
 2. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, Formik and Yup.
 3. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable set of forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both  reset request and actual reset views. Assumes Peer depenencies of React, Formik and Yup.
