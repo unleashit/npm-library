@@ -1,8 +1,8 @@
 ## Signup
 
-![npm (scoped)](https://img.shields.io/npm/v/@unleashit/signup.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/signup.svg)
-![NPM](https://img.shields.io/npm/l/@unleashit/signup.svg)
+[![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/signup.svg)](https://www.npmjs.com/package/@unleashit/signup)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/signup.svg)](https://bundlephobia.com/result?p=@unleashit/signup)
 
 Customizable React signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons.
 

@@ -1,8 +1,8 @@
 ## Pagination
 
-![npm (scoped)](https://img.shields.io/npm/v/@unleashit/pagination.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/pagination.svg)
-![NPM](https://img.shields.io/npm/l/@unleashit/pagination.svg)
+[![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/pagination.svg)](https://www.npmjs.com/package/@unleashit/pagination)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/pagination.svg)](https://bundlephobia.com/result?p=@unleashit/pagination)
 
 
 Responsive pagination component for React in Typescript. Just give it a total, current offset and handler and it returns the new offset as needed

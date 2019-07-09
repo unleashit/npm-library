@@ -1,8 +1,8 @@
 ## Mock Data
 
-![npm (scoped)](https://img.shields.io/npm/v/@unleashit/mock-data.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/mock-data.svg)
-![NPM](https://img.shields.io/npm/l/@unleashit/mock-data.svg)
+[![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/mock-data.svg)](https://www.npmjs.com/package/@unleashit/mock-data)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/mock-data.svg)](https://bundlephobia.com/result?p=@unleashit/mock-data)
 
 Wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-generator) providing a set of templates with arguments. Can also optionally write to a file. This is mainly meant for the server, but if you have a good enough reason (please take note of the package size), everything works on the client except file writing.
 

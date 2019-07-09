@@ -1,8 +1,8 @@
 ## Forgot Password
 
-![npm (scoped)](https://img.shields.io/npm/v/@unleashit/forgot-password.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/forgot-password.svg)
-![NPM](https://img.shields.io/npm/l/@unleashit/forgot-password.svg)
+[![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
+[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/forgot-password.svg)](https://www.npmjs.com/package/@unleashit/forgot-password)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/forgot-password.svg)](https://bundlephobia.com/result?p=@unleashit/forgot-password)
 
 Customizable set of React forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both reset request and actual reset views. Assumes Peer depenencies of React, Formik and Yup.
 
