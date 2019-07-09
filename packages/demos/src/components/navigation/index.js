@@ -35,9 +35,57 @@ class NavigationDemo extends Component {
         <Navigation
           links={links}
           // setting the isAuth prop enables default login/logout/signup btns
-          isAuth={false}
+          isAuth={true}
+          // direction={'vertical'}
+          // template="light-buttons"
+          // cssModuleStyles={style}
+        />
+        <br />
+        <Navigation
+          links={links}
+          // setting the isAuth prop enables default login/logout/signup btns
+          isAuth={true}
           // direction={'vertical'}
           template="light-buttons"
+          // cssModuleStyles={style}
+        />
+        <br />
+        <Navigation
+          links={links}
+          // setting the isAuth prop enables default login/logout/signup btns
+          isAuth={true}
+          // direction={'vertical'}
+          template="dark-buttons"
+          // cssModuleStyles={style}
+        />
+        <br />
+        <br />
+        <Navigation
+          links={links}
+          // setting the isAuth prop enables default login/logout/signup btns
+          isAuth={false}
+          direction={'vertical'}
+          template="clean"
+          // cssModuleStyles={style}
+        />
+        <br />
+        <br />
+        <Navigation
+          links={links}
+          // setting the isAuth prop enables default login/logout/signup btns
+          isAuth={false}
+          direction='vertical'
+          template="light-buttons"
+          // cssModuleStyles={style}
+        />
+        <br />
+        <br />
+        <Navigation
+          links={links}
+          // setting the isAuth prop enables default login/logout/signup btns
+          isAuth={false}
+          direction={'vertical'}
+          template="dark-buttons"
           // cssModuleStyles={style}
         />
       </div>

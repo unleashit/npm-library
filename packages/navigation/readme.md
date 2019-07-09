@@ -6,7 +6,11 @@
 
 Customizable auth aware navigation component for React in Typescript. Comes with optional sidecar component for login/login/signup.
 
-![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation.png)
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-horz.png)
+
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-horz-alt.png)
+
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-vert.png)
 
 ### Install
 
