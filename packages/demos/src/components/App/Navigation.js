@@ -49,6 +49,11 @@ const Navigation = () => (
           Recursive Data Lister
         </Link>
       </li>
+      <li>
+        <Link to="/mock-data" className="main-navigation__link">
+          Mock Data
+        </Link>
+      </li>
     </ul>
   </nav>
 );

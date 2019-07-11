@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Pagination from '@unleashit/pagination';
 import AsyncHandler from '@unleashit/async-handler';
 import List from './List';
@@ -6,8 +6,13 @@ import { AppContext } from '../../utils/context';
 import './pagination.scss';
 import '@unleashit/pagination/dist/pagination.css';
 
-export class PaginationDemo extends Component {
-  constructor(props) {
+interface State {
+  offset: number;
+}
+export class PaginationDemo extends React.Component<{}, State> {
+  perPage: number;
+
+  constructor(props: {}) {
     super(props);
 
     this.state = {
@@ -26,14 +31,14 @@ export class PaginationDemo extends Component {
     return data.slice(offset, offset + this.perPage);
   }
 
-  paginationHandler(newOffset) {
+  paginationHandler(newOffset: number) {
     this.setState({ offset: newOffset });
   }
 
   render() {
     return (
       <AsyncHandler request={() => this.context.store.generateFakeBlog({ total: 500 })}>
-        {fakeBlog => (
+        {(fakeBlog: any[]) => (
           <div className="pagination">
             <List data={this.currentOffset()} />
             <Pagination
@@ -41,7 +46,6 @@ export class PaginationDemo extends Component {
               perPage={this.perPage}
               paginationHandler={this.paginationHandler}
               total={fakeBlog.length}
-              // cssModuleStyles={style}
             />
           </div>
         )}

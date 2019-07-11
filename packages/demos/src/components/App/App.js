@@ -10,6 +10,7 @@ import ForgotPasswordReset from '../forgotPasswordReset';
 import AsyncHandler from '../asyncHandler';
 import RecursiveDataLister from '../recursiveDataLister';
 import NavigationDemo from '../navigation';
+import MockData from '../mockData';
 import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
 import './App.scss';
@@ -66,6 +67,7 @@ class App extends React.Component {
                   exact
                   component={RecursiveDataLister}
                 />
+                <Route path="/mock-data" exact component={MockData} />
               </Switch>
             </div>
           </div>

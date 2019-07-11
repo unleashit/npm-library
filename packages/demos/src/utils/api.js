@@ -37,6 +37,39 @@ class ApiService extends AppState {
     );
   }
 
+  async generateFakeUsers({ total = 10, cacheTime = 0 }) {
+    return await this._generate(
+      {
+        template: 'user',
+        name: 'fakeUsers',
+        total,
+      },
+      cacheTime,
+    );
+  }
+
+  async generateFakeProducts({ total = 10, cacheTime = 0 }) {
+    return await this._generate(
+      {
+        template: 'product',
+        name: 'fakeProducts',
+        total,
+      },
+      cacheTime,
+    );
+  }
+
+  async generateFakeOrders({ total = 10, cacheTime = 0 }) {
+    return await this._generate(
+      {
+        template: 'order',
+        name: 'fakeProducts',
+        total,
+      },
+      cacheTime,
+    );
+  }
+
   generateComplexJson({ total = 10, cacheTime = 0 }) {
     return this._generate(
       {

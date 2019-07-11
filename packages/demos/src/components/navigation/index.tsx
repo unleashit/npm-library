@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Navigation from '@unleashit/navigation';
+import Navigation, { Link } from '@unleashit/navigation';
 
 import '@unleashit/navigation/dist/navigation.css';
 
-const links = [
+const links: Link[] = [
   {
     text: 'Home',
     url: '/home',
     icon: 'https://img.icons8.com/material/420/home-page.png',
-    iconPosition: 'left',
+    iconPosition: 'right',
   },
   {
     text: 'Products',

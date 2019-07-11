@@ -1,10 +1,14 @@
 import React from 'react';
-import { ForgotPasswordReset } from '@unleashit/forgot-password';
+import {
+  ForgotPasswordReset,
+  FormValuesReset,
+  ServerResponseReset,
+} from '@unleashit/forgot-password';
 
 import '@unleashit/forgot-password/dist/forgot-password.css';
 
 class ForgotPasswordResetDemo extends React.Component {
-  async forgotPasswordResetHandler(values) {
+  async forgotPasswordResetHandler(values: FormValuesReset) {
     const [token, userid] = new URL(window.location.href).pathname
       .split('/')
       .filter(Boolean)
@@ -22,8 +26,8 @@ class ForgotPasswordResetDemo extends React.Component {
     ).then(resp => resp.json());
   }
 
-  onSuccess(serverResponse) {
-    console.log(serverResponse);
+  onSuccess(res: ServerResponseReset) {
+    console.log(res);
   }
 
   render() {

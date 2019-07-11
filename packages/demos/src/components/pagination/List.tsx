@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Row = ({ row: { title, content, author } }) => {
+interface RowProps {
+  title: string;
+  content: string;
+  author: any;
+}
+
+const Row = ({ row: { title, content, author } }: { row: RowProps }) => {
   return (
     <li className="pagination__row">
       <h3 className="pagination__title">{title}</h3>
@@ -10,7 +16,7 @@ const Row = ({ row: { title, content, author } }) => {
   );
 };
 
-const List = ({ data }) => {
+const List = ({ data }: { data: any[] }) => {
   return (
     <ul className="pagination__list">
       {data.map((row, i) => (

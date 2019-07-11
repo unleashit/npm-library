@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from '@unleashit/login';
+import Login, { FormValues, ServerResponse } from '@unleashit/login';
 import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 
 import '@unleashit/login/dist/login.css';
@@ -10,7 +10,7 @@ const btnStyle = {
 };
 
 class LoginDemo extends Component {
-  async loginHandler(values) {
+  async loginHandler(values: FormValues) {
     return await fetch('https://unleashit-login.now.sh', {
       method: 'POST',
       headers: {
@@ -20,7 +20,7 @@ class LoginDemo extends Component {
     }).then(resp => resp.json());
   }
 
-  onSuccess(resp) {
+  onSuccess(resp: ServerResponse) {
     console.log(resp);
     window.location.href = '/';
   }
@@ -31,11 +31,7 @@ class LoginDemo extends Component {
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid test login: test@test.com/12345678
         </p>
-        <Login
-          loginHandler={this.loginHandler}
-          onSuccess={this.onSuccess}
-          // cssModuleStyles={style}
-        >
+        <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess}>
           <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
           <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
         </Login>

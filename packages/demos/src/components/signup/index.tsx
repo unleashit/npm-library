@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Signup from '@unleashit/signup';
+import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
 import { TwitterLoginButton, GithubLoginButton } from 'react-social-login-buttons';
 // import schema from './validations';
 
@@ -11,18 +11,18 @@ const btnStyle = {
 };
 
 class SignupDemo extends Component {
-  async signupHandler(values) {
+  async signupHandler(values: FormValues) {
     return await fetch('https://unleashit-signup.now.sh', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then(res => res.json());
   }
 
-  onSuccess(resp) {
-    console.log(resp);
+  onSuccess(res: ServerResponse) {
+    console.log(res);
     window.location.href = '/';
   }
 

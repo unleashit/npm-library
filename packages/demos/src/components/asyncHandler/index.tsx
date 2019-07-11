@@ -3,7 +3,13 @@ import AsyncHandler, { withAsyncHandler } from '@unleashit/async-handler';
 
 import '@unleashit/async-handler/dist/async-handler.css';
 
-const users = [
+interface User {
+  id: number;
+  name: string;
+  age: number;
+}
+
+const users: User[] = [
   {
     id: 1,
     name: 'joe',
@@ -16,12 +22,12 @@ const users = [
   },
 ];
 
-let userCache = null;
+let userCache: any = null;
 
-const UserList = ({ data }) => {
+const UserList = ({ data }: { data: User[] }) => {
   return (
     <React.Fragment>
-      {data.map(item => (
+      {data.map((item: User) => (
         <div key={item.id}>
           {item.name} is {item.age} years old.
         </div>
@@ -40,12 +46,12 @@ export default withAsyncHandler({
     });
   },
   cache: () => {
-    return userCache && new Date() - userCache.cacheDate <= 5 * 1000
+    return userCache && new Date().getTime() - userCache.cacheDate <= 5 * 1000
       ? userCache.users
       : null;
   },
-  // loaderComponent: <div>Spinner is spinning...</div>,
-  // noResultsComponent: <div>No user{"'"}s found.</div>,
+  // loaderComponent: () => <div>Spinner is spinning...</div>,
+  // noResultsComponent: () => <div>No user{"'"}s found.</div>,
   errorComponent: ({ error }) => (
     <div>Oops, there was a problem: {JSON.stringify(error)}</div>
   ),
@@ -63,7 +69,7 @@ export class AsyncHandlderDemo extends React.Component {
   }
 
   cache() {
-    return userCache && new Date() - userCache.cacheDate <= 5 * 1000
+    return userCache && new Date().getTime() - userCache.cacheDate <= 5 * 1000
       ? userCache.users
       : null;
   }

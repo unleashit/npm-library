@@ -33,7 +33,7 @@ import '@unleashit/recursive-data-lister/dist/recursive-data-lister.css';
 //   },
 // ];
 
-export function RecursiveDataListerDemo(props) {
+export function RecursiveDataListerDemo(props: any) {
   const { store } = props;
   return (
     <AsyncHandler request={() => store.generateComplexJson({ total: 3 })}>
