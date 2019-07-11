@@ -3,7 +3,20 @@ const getChild = (tag: string): string => {
   return 'div';
 };
 
-const isObject = (elem: object | any[]): boolean =>
+const isObjectNotArray = (elem: object | any[]): boolean =>
   typeof elem === 'object' && !Array.isArray(elem);
 
-export { getChild, isObject };
+// const isObjectNotNull = (elem: any): boolean =>
+//   !!elem && typeof elem === 'object' && !Array.isArray(elem);
+
+const isDate = (elem: object | any[]): boolean =>
+  Object.prototype.toString.call(elem) === '[object Date]';
+
+const isObjectNotDate = (elem: object | any[]): boolean =>
+  typeof elem === 'object' && !isDate(elem);
+
+export type DateFormat = (val: Date) => string | number;
+
+const handleDate = (elem: Date, cb: DateFormat): string | number => cb(elem);
+
+export { getChild, isObjectNotArray, isDate, isObjectNotDate, handleDate };

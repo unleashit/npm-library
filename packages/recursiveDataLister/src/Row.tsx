@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
-import { getChild, isObject } from './utils';
+import {
+  getChild,
+  isObjectNotArray,
+  isObjectNotDate,
+  isDate,
+  handleDate,
+  DateFormat,
+} from './utils';
 
 interface RowProps {
   row: any;
@@ -9,6 +16,7 @@ interface RowProps {
   leafProp: string | null;
   repeatLeafProp: boolean;
   theme?: any;
+  dateFormat: DateFormat;
 }
 
 const Row: React.FC<RowProps> = ({
@@ -18,6 +26,7 @@ const Row: React.FC<RowProps> = ({
   leafProp,
   repeatLeafProp,
   theme = null,
+  dateFormat,
 }): React.ReactElement => {
   const Child: any = getChild(Parent);
 
@@ -30,12 +39,12 @@ const Row: React.FC<RowProps> = ({
       }`}
     >
       {Object.keys(row).map((field): React.ReactElement | null => {
-        if (typeof row[field] === 'object') {
+        if (isObjectNotDate(row[field])) {
           return (
             <Child
               key={field}
               className={`${isCSSModule(theme.leaf, `unl-r-data-lister__leaf`)} ${
-                isObject(row[field])
+                isObjectNotArray(row[field])
                   ? isCSSModule(theme.objectLeaf, `unl-r-data-lister__object-leaf`)
                   : ''
               }`}
@@ -47,7 +56,7 @@ const Row: React.FC<RowProps> = ({
                     `unl-r-data-lister__leaf-label`,
                   )}
                 >
-                  {isObject(row[field]) && leafProp && row[field][leafProp]
+                  {isObjectNotArray(row[field]) && leafProp && row[field][leafProp]
                     ? row[field][leafProp]
                     : field}
                 </span>
@@ -58,6 +67,7 @@ const Row: React.FC<RowProps> = ({
                 theme={theme}
                 leafProp={leafProp}
                 repeatLeafProp={repeatLeafProp}
+                dateFormat={dateFormat}
                 nested
               />
             </Child>
@@ -74,7 +84,7 @@ const Row: React.FC<RowProps> = ({
               </span>
             )}
             <span className={isCSSModule(theme.value, `unl-r-data-lister__value`)}>
-              {row[field]}
+              {isDate(row[field]) ? handleDate(row[field], dateFormat) : row[field]}
             </span>
           </Child>
         );

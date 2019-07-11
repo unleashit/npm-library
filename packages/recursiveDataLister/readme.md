@@ -71,21 +71,23 @@ Basic namespaced (BEM) css can be imported: `import '@unleashit/recursive-data-l
 ### API and Props
 
 ```typescript
-export interface RecursiveDataListerProps {
+interface RecursiveDataListerProps {
   data: { [key: string]: any } | any[];
   tag?: string;
   displayAsList?: boolean;
   arrayLeafPropName?: string | null;
   repeatLeafPropName?: boolean;
-  cssModuleStyle?: any;
+  dateFormat?: (val: Date) => string | number;
+  cssModuleStyle?: { [key: string]: string };
 }
 ```
 
-| Name               | Type                      | Description                                                                                    | default     |
-| ------------------ | ------------------------- | ---------------------------------------------------------------------------------------------- | ----------- |
-| data               | object or array           | object to display                                                                              | required    |
-| displayAsList      | boolean                   | For array only: show first level children as separate parents                                  | false       |
-| tag                | string                    | Parent HTML tag for a choice of ordered/unordered list or plain divs                           | ul          |
-| arrayLeafPropName  | string                    | if set, this will use the property as node labels for arrays of objects (instead of the index) | null        |
-| repeatLeafPropName | boolean                   | If arrayLeafPropName is set, this will remove the prop from the array so it isn't repeated     | false       |
-| cssModuleStyles    | { [key: string]: string } | CSS Module object that optionally replaces default. Class names need to match default names.   | default CSS |
+| Name               | Type            | Description                                                                                    | default                   |
+| ------------------ | --------------- | ---------------------------------------------------------------------------------------------- | ------------------------- |
+| data               | object or array | object to display                                                                              | required                  |
+| displayAsList      | boolean         | For array only: show first level children as separate parents                                  | false                     |
+| tag                | string          | Parent HTML tag for a choice of ordered/unordered list or plain divs                           | ul                        |
+| arrayLeafPropName  | string          | if set, this will use the property as node labels for arrays of objects (instead of the index) | null                      |
+| repeatLeafPropName | boolean         | If arrayLeafPropName is set, this will remove the prop from the array so it isn't repeated     | false                     |
+| dateFormat         | function        | Callback to process Date objects, receives the Date object                                     | (elem) => elem.toString() |
+| cssModuleStyles    | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | BEM class                 |

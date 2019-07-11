@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Row from './Row';
+import { isObjectNotArray, DateFormat } from './utils';
 
 export interface RecursiveDataListerProps {
   data: { [key: string]: any } | any[];
@@ -8,19 +9,21 @@ export interface RecursiveDataListerProps {
   arrayLeafPropName?: string | null;
   repeatLeafPropName?: boolean;
   cssModuleStyle?: any;
+  dateFormat?: DateFormat;
 }
 
-const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
+const RecursiveDataLister = ({
   data,
   tag = 'ul',
   displayAsList = false,
   arrayLeafPropName = null,
   repeatLeafPropName = true,
+  dateFormat = (val: Date) => val.toString(),
   cssModuleStyle: theme = {},
-}): React.ReactElement => {
-  if (displayAsList && data.toString() === '[object Object]') {
+}: RecursiveDataListerProps): React.ReactElement => {
+  if (displayAsList && isObjectNotArray(data)) {
     throw new Error(
-      'The provided data is an object but the displayAsList prop is set to true',
+      'The provided data must be an array when displayAsList prop is set to true',
     );
   }
 
@@ -33,6 +36,7 @@ const RecursiveDataLister: React.FC<RecursiveDataListerProps> = ({
       theme={theme}
       leafProp={arrayLeafPropName}
       repeatLeafProp={repeatLeafPropName}
+      dateFormat={dateFormat}
     />
   );
 
