@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
-import { throttle } from 'lodash';
+import throttle from 'lodash/throttle';
 import { ChevronLeft, ChevronRight } from './Icons';
+
+export type PaginationHandler = (newOffset: number) => void;
 
 interface Props {
   currentOffset: number;
   perPage: number;
-  paginationHandler: (newOffset: number) => any;
+  paginationHandler: PaginationHandler;
   total: number;
   prevLabel: string;
   nextLabel: string;

@@ -6,12 +6,15 @@ interface Style {
 }
 
 export interface DefaultComponentProps {
-  cssModuleStyle: Style;
+  cssModuleStyle?: Style;
+}
+
+export interface DefaultErrorComponentProps extends DefaultComponentProps {
   error?: any;
 }
 
 export const DefaultLoader: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: theme,
+  cssModuleStyle: theme = {},
 }): JSX.Element => (
   <div className={isCSSModule(theme.loader, `unl-async-handler__loader`)}>
     <div className={isCSSModule(theme.loaderChild, `unl-async-handler__loader-child`)}>
@@ -21,15 +24,15 @@ export const DefaultLoader: React.FC<DefaultComponentProps> = ({
 );
 
 export const DefaultNoResults: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: theme,
+  cssModuleStyle: theme = {},
 }): JSX.Element => (
   <div className={isCSSModule(theme.nothingFound, `unl-async-handler__nothing-found`)}>
     Nothing found.
   </div>
 );
 
-export const DefaultError: React.FC<DefaultComponentProps> = ({
-  cssModuleStyle: theme,
+export const DefaultError: React.FC<DefaultErrorComponentProps> = ({
+  cssModuleStyle: theme = {},
   error,
 }): JSX.Element => (
   <div className={isCSSModule(theme.errorMessage, `unl-async-handler__error-message`)}>

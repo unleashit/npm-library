@@ -11,13 +11,13 @@ import {
 } from './defaults/components';
 import schema from './defaults/validationsReset';
 
-interface FormValues {
+export interface FormValuesReset {
   newPassword: string;
   newPasswordConfirm: string;
   serverMessage: string;
 }
 
-interface ForgotPasswordHandlerResetResponse {
+export interface ServerResponseReset {
   success: boolean;
   errors?: {
     serverMessage: string; // error msg to print in browser when auth fails
@@ -26,24 +26,22 @@ interface ForgotPasswordHandlerResetResponse {
 }
 
 interface ForgotPasswordResetProps {
+  forgotPasswordResetHandler: (values: any) => Promise<ServerResponseReset>;
   onSuccess?: (resp: any) => any;
-  forgotPasswordResetHandler: (
-    values: any,
-  ) => Promise<ForgotPasswordHandlerResetResponse>;
-  header: React.FC<ForgotPasswordHeaderProps>;
-  loader: React.FC<ForgotPasswordLoaderProps>;
-  schema: Schema<any>;
-  showDefaultConfirmation: boolean;
+  header?: React.FC<ForgotPasswordHeaderProps>;
+  loader?: React.FC<ForgotPasswordLoaderProps>;
+  schema?: Schema<any>;
+  showDefaultConfirmation?: boolean;
   cssModuleStyles?: { [key: string]: string };
 }
 
 const ForgotPasswordResetRaw: React.FC<
-  FormikProps<FormValues> & ForgotPasswordResetProps
+  FormikProps<FormValuesReset> & ForgotPasswordResetProps
 > = (props): React.ReactElement => {
   const {
     errors,
-    header: Header,
-    loader: Loader,
+    header: Header = ForgotPasswordResetHeader,
+    loader: Loader = ForgotPasswordLoader,
     isSubmitting,
     cssModuleStyles: theme = {},
     onSuccess,
@@ -52,6 +50,7 @@ const ForgotPasswordResetRaw: React.FC<
   } = props;
 
   if (status) {
+    // server response successful and showDefaultConfirmation is set to true
     return React.isValidElement(onSuccess) ? (
       onSuccess
     ) : (
@@ -107,27 +106,22 @@ const ForgotPasswordResetRaw: React.FC<
   );
 };
 
-ForgotPasswordResetRaw.defaultProps = {
-  header: ForgotPasswordResetHeader,
-  loader: ForgotPasswordLoader,
-  showDefaultConfirmation: false,
-};
-
-export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValues>({
+export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValuesReset>({
   mapPropsToValues: (): any => ({
     newPassword: '',
     newPasswordConfirm: '',
     serverMessage: '',
   }),
-  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+  validationSchema: (props: ForgotPasswordResetProps): Schema<any> =>
+    props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
     { props, setSubmitting, setErrors, setStatus },
   ): Promise<any> => {
     try {
-      const resp: ForgotPasswordHandlerResetResponse = await props.forgotPasswordResetHandler(
-        { ...values },
-      );
+      const resp: ServerResponseReset = await props.forgotPasswordResetHandler({
+        ...values,
+      });
       const errors = resp.errors || {};
 
       if (resp.success) {

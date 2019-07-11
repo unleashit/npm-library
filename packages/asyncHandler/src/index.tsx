@@ -4,18 +4,19 @@ import {
   DefaultNoResults,
   DefaultError,
   DefaultComponentProps,
+  DefaultErrorComponentProps,
 } from './defaults/components';
 import { isEmpty, returnComponentFormat } from './utils';
 
-type DefaultComponent = (props?: DefaultComponentProps) => React.ReactNode;
+type DefaultComponent = (props: DefaultComponentProps) => React.ReactElement;
+type DefaultErrorComponent = (props: DefaultErrorComponentProps) => React.ReactElement;
 interface Props {
   request: () => Promise<any>;
   cache: () => object | any[] | false | null;
-  loaderComponent: DefaultComponent;
-  noResultsComponent: DefaultComponent;
-  errorComponent: DefaultComponent;
+  loaderComponent: DefaultComponent | React.ReactElement;
+  noResultsComponent: DefaultComponent | React.ReactElement;
+  errorComponent: DefaultErrorComponent | React.ReactElement;
   cssModuleStyles?: { [key: string]: string };
-  children: (props: any) => any;
 }
 interface State {
   data: any;
@@ -23,7 +24,10 @@ interface State {
   error: any;
 }
 
-export default class AsyncHandler extends React.Component<Props, State> {
+export default class AsyncHandler extends React.Component<
+  Props & { children: (props: any) => any },
+  State
+> {
   state: State = { data: null, loading: true, error: null };
 
   static defaultProps = {
@@ -80,7 +84,18 @@ export default class AsyncHandler extends React.Component<Props, State> {
   }
 }
 
-export const withAsyncHandler = (config: Props): Function => (
+// needed a version with optional props because the
+// HOC is a plain function that doesn't understand defaultProps
+interface HOCProps {
+  request: Props['request'];
+  cache?: Props['cache'];
+  loaderComponent?: Props['loaderComponent'];
+  noResultsComponent?: Props['noResultsComponent'];
+  errorComponent?: Props['errorComponent'];
+  cssModuleStyles?: Props['cssModuleStyles'];
+}
+
+export const withAsyncHandler = (config: HOCProps): Function => (
   Component: React.FC<{ data: any }>,
 ): Function => (...rest: any): React.ReactNode => (
   <AsyncHandler {...config}>

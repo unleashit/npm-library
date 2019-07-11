@@ -32,7 +32,6 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
-      header={[Function]}
       initialValues={
         Object {
           "email": "",
@@ -44,11 +43,8 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       isSubmitting={false}
       isValid={false}
       isValidating={false}
-      loader={[Function]}
       loginHandler={[Function]}
-      loginUrl="/login"
       onSuccess={[Function]}
-      orLine={true}
       registerField={[Function]}
       resetForm={[Function]}
       setError={[Function]}

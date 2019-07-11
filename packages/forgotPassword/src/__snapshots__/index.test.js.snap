@@ -25,7 +25,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
-      header={[Function]}
       initialValues={
         Object {
           "email": "",
@@ -35,7 +34,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
       isSubmitting={false}
       isValid={false}
       isValidating={false}
-      loader={[Function]}
       registerField={[Function]}
       resetForm={[Function]}
       setError={[Function]}
@@ -48,7 +46,6 @@ exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
       setSubmitting={[Function]}
       setTouched={[Function]}
       setValues={[Function]}
-      showDefaultConfirmation={false}
       submitCount={0}
       submitForm={[Function]}
       touched={Object {}}

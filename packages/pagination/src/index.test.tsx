@@ -71,7 +71,9 @@ describe('<Pagination />', () => {
       props.total = total;
       wrapper = shallow(<Pagination {...props} />);
 
-      expect(wrapper.find('.unl-pagination__inner > .unl-pagination__number')).toHaveLength(ex);
+      expect(
+        wrapper.find('.unl-pagination__inner > .unl-pagination__number'),
+      ).toHaveLength(ex);
     });
   });
 

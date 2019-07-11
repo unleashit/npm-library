@@ -27,14 +27,10 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
     <Component
       dirty={false}
       errors={Object {}}
-      forgotPassword={true}
-      forgotPasswordLink="/forgot-password"
-      forgotPasswordText="Forgot your password?"
       handleBlur={[Function]}
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
-      header={[Function]}
       initialValues={
         Object {
           "email": "",
@@ -45,10 +41,8 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       isSubmitting={false}
       isValid={false}
       isValidating={false}
-      loader={[Function]}
       loginHandler={[Function]}
       onSuccess={[Function]}
-      orLine={true}
       registerField={[Function]}
       resetForm={[Function]}
       setError={[Function]}
@@ -61,7 +55,6 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       setSubmitting={[Function]}
       setTouched={[Function]}
       setValues={[Function]}
-      signupUrl="/signup"
       submitCount={0}
       submitForm={[Function]}
       touched={Object {}}

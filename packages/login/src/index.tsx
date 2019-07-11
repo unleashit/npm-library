@@ -10,57 +10,52 @@ import {
 } from './defaults/components';
 import schema from './defaults/validations';
 
-interface FormValues {
+export interface FormValues {
   email: string;
   password: string;
   serverAuth: string;
 }
-
-interface LoginHandlerResponse {
+export interface ServerResponse {
   success: boolean;
   errors?: {
     serverAuth: string; // error msg to print in browser when auth fails
     [key: string]: string; // optionally validate anything else on server
   };
 }
-
 interface Props {
-  onSuccess: (resp: any) => any;
-  loginHandler: (values: any) => Promise<LoginHandlerResponse>;
-  header: React.FC<LoginHeaderProps>;
-  signupUrl: string;
-  loader: React.FC<LoginLoaderProps>;
-  schema: Schema<any>;
+  loginHandler: (values: FormValues) => Promise<ServerResponse>;
+  onSuccess: (resp: ServerResponse) => any;
+  header?: React.FC<LoginHeaderProps>;
+  signupUrl?: string;
+  loader?: React.FC<LoginLoaderProps>;
+  schema?: Schema<any>;
   customFields?: CustomField[];
+  forgotPassword?: boolean;
+  forgotPasswordLink?: string;
+  forgotPasswordText?: string;
+  orLine?: boolean;
   cssModuleStyles?: { [key: string]: string };
-  forgotPassword: boolean;
-  forgotPasswordLink: string;
-  forgotPasswordText: string;
-  orLine: boolean;
+  children?: React.ReactNode;
 }
 
-export const Login: React.FC<FormikProps<FormValues> & Props> = (
-  props,
-): React.ReactElement => {
-  const {
-    errors,
-    signupUrl,
-    header: Header,
-    loader: Loader,
-    isSubmitting,
-    handleChange,
-    handleBlur,
-    values,
-    touched,
-    customFields,
-    cssModuleStyles: theme = {},
-    forgotPassword,
-    forgotPasswordLink,
-    forgotPasswordText,
-    orLine,
-    children,
-  } = props;
-
+export const Login = ({
+  errors,
+  signupUrl = '/signup',
+  header: Header = LoginHeader,
+  loader: Loader = LoginLoader,
+  isSubmitting,
+  handleChange,
+  handleBlur,
+  values,
+  touched,
+  customFields,
+  forgotPassword = true,
+  forgotPasswordLink = '/forgot-password',
+  forgotPasswordText = 'Forgot your password?',
+  orLine = true,
+  cssModuleStyles: theme = {},
+  children,
+}: FormikProps<FormValues> & Props): React.ReactElement => {
   return (
     <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
       <Header signupUrl={signupUrl} theme={theme} />
@@ -136,25 +131,15 @@ export const Login: React.FC<FormikProps<FormValues> & Props> = (
   );
 };
 
-Login.defaultProps = {
-  header: LoginHeader,
-  signupUrl: '/signup',
-  loader: LoginLoader,
-  forgotPassword: true,
-  forgotPasswordLink: '/forgot-password',
-  forgotPasswordText: 'Forgot your password?',
-  orLine: true,
-};
-
 export default withFormik<Props, FormValues>({
   mapPropsToValues: (): any => ({ email: '', password: '', serverAuth: '' }),
-  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+  validationSchema: (props: Props): Schema<any> => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors },
   ): Promise<any> => {
     try {
-      const resp: LoginHandlerResponse = await props.loginHandler(values);
+      const resp: ServerResponse = await props.loginHandler(values);
       const errors = resp.errors || {};
 
       if (resp.success) {

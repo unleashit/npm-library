@@ -11,37 +11,36 @@ import {
 } from './defaults/components';
 import schema from './defaults/validations';
 
-interface FormValues {
+export interface FormValues {
   email: string;
   serverMessage: string;
 }
-
-interface ForgotPasswordHandlerResponse {
+export interface ServerResponse {
   success: boolean;
   errors?: {
     serverMessage: string; // error msg to print in browser when auth fails
     [key: string]: string; // optionally validate anything else on server
   };
 }
-
 interface Props {
-  onSuccess?: (resp: any) => any;
-  forgotPasswordHandler: (values: any) => Promise<ForgotPasswordHandlerResponse>;
-  header: React.FC<ForgotPasswordHeaderProps>;
-  loader: React.FC<ForgotPasswordLoaderProps>;
-  schema: Schema<any>;
+  forgotPasswordHandler: (values: FormValues) => Promise<ServerResponse>;
+  onSuccess?: (resp: ServerResponse) => any;
+  header?: React.FC<ForgotPasswordHeaderProps>;
+  loader?: React.FC<ForgotPasswordLoaderProps>;
+  schema?: Schema<any>;
   customFields?: CustomField[];
   cssModuleStyles?: { [key: string]: string };
-  showDefaultConfirmation: boolean;
+  showDefaultConfirmation?: boolean;
+  children?: React.ReactNode;
 }
 
-export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
-  props,
+export const ForgotPassword = (
+  props: FormikProps<FormValues> & Props,
 ): React.ReactElement => {
   const {
     errors,
-    header: Header,
-    loader: Loader,
+    header: Header = ForgotPasswordHeader,
+    loader: Loader = ForgotPasswordLoader,
     isSubmitting,
     handleChange,
     handleBlur,
@@ -118,23 +117,15 @@ export const ForgotPassword: React.FC<FormikProps<FormValues> & Props> = (
   );
 };
 
-ForgotPassword.defaultProps = {
-  header: ForgotPasswordHeader,
-  loader: ForgotPasswordLoader,
-  showDefaultConfirmation: false,
-};
-
 export default withFormik<Props, FormValues>({
   mapPropsToValues: (): any => ({ email: '', serverMessage: '' }),
-  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+  validationSchema: (props: Props): Schema<any> => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors, setStatus },
   ): Promise<any> => {
     try {
-      const resp: ForgotPasswordHandlerResponse = await props.forgotPasswordHandler(
-        values,
-      );
+      const resp: ServerResponse = await props.forgotPasswordHandler(values);
       const errors = resp.errors || {};
 
       if (resp.success) {

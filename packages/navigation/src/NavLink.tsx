@@ -12,7 +12,7 @@ const getUserClasses = (classes: Link['classes']): string => {
   return classes ? classes.join(' ') : '';
 };
 
-const NavLink: React.FC<Link & NavLinkExtraProps> = ({
+const NavLink = ({
   url,
   text,
   active,
@@ -23,7 +23,7 @@ const NavLink: React.FC<Link & NavLinkExtraProps> = ({
   iconPosition = 'left',
   authLink = null,
   theme,
-}): React.ReactElement | null => {
+}: Link & NavLinkExtraProps): React.ReactElement | null => {
   if (display) {
     return (
       <li

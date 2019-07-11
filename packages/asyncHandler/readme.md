@@ -135,5 +135,5 @@ interface Props {
 | noResultsComponent | () => React.ReactNode                              | React component to override default no results message                                       | Nothing found.                       |
 | errorComponent     | ({ error }: {error: any} ) => React.ReactNode      | React component to override default error message                                            | default message with error displayed |
 | loaderComponent    | () => React.ReactNode                              | React component to override the default loader                                               | Loading...                           |
-| cssModuleStyles    | { [key: string]: string }                          | CSS Module object that optionally replaces default. Class names need to match default names. | default CSS                          |
+| cssModuleStyles    | { [key: string]: string }                          | CSS Module object that optionally replaces default. Class names need to match expected names. | BEM CSS                          |
 | children           | (data: any) => any;                                | Function to be called with data if request returns with results (AsyncHandler only) | n/a                                  |

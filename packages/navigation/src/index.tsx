@@ -13,7 +13,7 @@ export interface Link {
   active?: boolean;
   classes?: string[];
   style?: React.CSSProperties;
-  icon?: any;
+  icon?: string;
   iconPosition?: 'left' | 'right';
   display?: boolean;
   attrs?: React.AllHTMLAttributes<any>;
@@ -61,22 +61,20 @@ const buildAuthLinks = (
   };
 };
 
-const Navigation: React.FC<Props> = (props): React.ReactElement => {
-  const {
-    links,
-    direction,
-    template,
-    isAuth,
-    authLinks,
-    cssModuleStyles: theme = {},
-  } = props;
-
+const Navigation = ({
+  links,
+  direction = 'horizontal',
+  template = 'clean',
+  isAuth,
+  authLinks,
+  cssModuleStyles: theme = {},
+}: Props): React.ReactElement => {
   // * show default authLinks if isAuth is provided.
   // * if user provides authLinks, they will override the default on a property by property basis
   // * don't show authLinks if both authLinks and isAuth are omitted.
   const newAuthLinks =
     isAuth !== undefined ? buildAuthLinks(isAuth, authLinks) : authLinks || null;
-
+  console.log(links);
   return (
     <nav
       className={`${isCSSModule(
@@ -88,11 +86,6 @@ const Navigation: React.FC<Props> = (props): React.ReactElement => {
       {newAuthLinks && <AuthLinks links={newAuthLinks} theme={theme} />}
     </nav>
   );
-};
-
-Navigation.defaultProps = {
-  direction: 'horizontal',
-  template: 'clean',
 };
 
 export default Navigation;

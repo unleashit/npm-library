@@ -10,14 +10,14 @@ import {
 } from './defaults/components';
 import schema from './defaults/validations';
 
-interface FormValues {
+export interface FormValues {
   email: string;
   password: string;
   passwordConfirm: string;
   serverAuth: string;
 }
 
-interface SignupHandlerResponse {
+export interface ServerResponse {
   success: boolean;
   errors?: {
     serverAuth: string; // error msg to print in browser when auth fails
@@ -26,33 +26,34 @@ interface SignupHandlerResponse {
 }
 
 interface Props {
-  onSuccess: (resp: any) => any;
-  signupHandler: (values: any) => Promise<SignupHandlerResponse>;
-  layout: string;
-  header: React.FC<SignupHeaderProps>;
-  loginUrl: string;
-  loader: React.FC<SignupLoaderProps>;
-  schema: Schema<any>;
+  signupHandler: (values: FormValues) => Promise<ServerResponse>;
+  onSuccess: (resp: ServerResponse) => any;
+  layout?: string;
+  header?: React.FC<SignupHeaderProps>;
+  loginUrl?: string;
+  loader?: React.FC<SignupLoaderProps>;
+  schema?: Schema<any>;
   customFields?: CustomField[];
+  orLine?: boolean;
   cssModuleStyles?: { [key: string]: string };
-  orLine: boolean;
+  children?: React.ReactNode;
 }
 
-export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
+export const Signup = ({
   errors,
-  loginUrl,
-  header: Header,
-  loader: Loader,
+  loginUrl = '/login',
+  header: Header = SignupHeader,
+  loader: Loader = SignupLoader,
   isSubmitting,
   handleChange,
   handleBlur,
   values,
   touched,
   customFields,
+  orLine = true,
   cssModuleStyles: theme = {},
-  orLine,
   children,
-}): React.ReactElement => {
+}: FormikProps<FormValues> & Props): React.ReactElement => {
   return (
     <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
       <Header loginUrl={loginUrl} theme={theme} />
@@ -126,13 +127,6 @@ export const Signup: React.FC<FormikProps<FormValues> & Props> = ({
   );
 };
 
-Signup.defaultProps = {
-  header: SignupHeader,
-  loginUrl: '/login',
-  loader: SignupLoader,
-  orLine: true,
-};
-
 export const mapDefaultValues = (
   fields: { [key: string]: string }[],
 ): { [key: string]: string } => {
@@ -161,7 +155,7 @@ export default withFormik<Props, FormValues | any>({
     { props, setFieldValue, setSubmitting, setErrors },
   ): Promise<any> => {
     try {
-      const resp: SignupHandlerResponse = await props.signupHandler(values);
+      const resp: ServerResponse = await props.signupHandler(values);
       const errors = resp.errors || {};
 
       if (resp.success) {
