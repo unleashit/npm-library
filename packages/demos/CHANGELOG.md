@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.13.5...@unleashit/demos@0.14.0) (2019-07-11)
+
+
+### Features
+
+* **demos:** add mock-data demo ([d86222d](https://github.com/unleashit/npm-library/commit/d86222d))
+* **demos:** make demo components Typescript ([a43649f](https://github.com/unleashit/npm-library/commit/a43649f))
+
+
+
+
+
 ## [0.13.5](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.13.4...@unleashit/demos@0.13.5) (2019-07-08)
 
 **Note:** Version bump only for package @unleashit/demos

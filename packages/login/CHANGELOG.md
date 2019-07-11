@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.13.0...@unleashit/login@0.13.1) (2019-07-11)
+
+
+### Bug Fixes
+
+* **all:** fix some TS issues with defaultProps and HOCs ([#5](https://github.com/unleashit/npm-library/issues/5)) ([8250b3f](https://github.com/unleashit/npm-library/commit/8250b3f))
+
+
+
+
+
 # [0.13.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.12.3...@unleashit/login@0.13.0) (2019-07-08)
 
 

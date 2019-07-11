@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.12.0...@unleashit/forgot-password@0.12.1) (2019-07-11)
+
+
+### Bug Fixes
+
+* **all:** fix some TS issues with defaultProps and HOCs ([#5](https://github.com/unleashit/npm-library/issues/5)) ([8250b3f](https://github.com/unleashit/npm-library/commit/8250b3f))
+
+
+
+
+
 # [0.12.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.11.2...@unleashit/forgot-password@0.12.0) (2019-07-08)
 
 

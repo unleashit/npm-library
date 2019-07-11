@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@0.3.0...@unleashit/recursive-data-lister@0.3.1) (2019-07-11)
+
+
+### Bug Fixes
+
+* **r-data-lister:** date objects weren't printing ([35895c6](https://github.com/unleashit/npm-library/commit/35895c6))
+* recursive-data-lister sometimes outputs the wrong css class ([#4](https://github.com/unleashit/npm-library/issues/4)) ([67d3aa3](https://github.com/unleashit/npm-library/commit/67d3aa3))
+
+
+
+
+
 # [0.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@0.2.5...@unleashit/recursive-data-lister@0.3.0) (2019-07-08)
 
 
