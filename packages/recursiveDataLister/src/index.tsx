@@ -8,7 +8,7 @@ export interface RecursiveDataListerProps {
   displayAsList?: boolean;
   arrayLeafPropName?: string | null;
   repeatLeafPropName?: boolean;
-  cssModuleStyle?: any;
+  cssModuleStyle?: { [key: string]: string };
   dateFormat?: DateFormat;
 }
 

@@ -15,7 +15,7 @@ interface RowProps {
   nested?: boolean;
   leafProp: string | null;
   repeatLeafProp: boolean;
-  theme?: any;
+  theme: { [key: string]: string };
   dateFormat: DateFormat;
 }
 
@@ -25,7 +25,7 @@ const Row: React.FC<RowProps> = ({
   nested = false,
   leafProp,
   repeatLeafProp,
-  theme = null,
+  theme,
   dateFormat,
 }): React.ReactElement => {
   const Child: any = getChild(Parent);

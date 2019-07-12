@@ -6,7 +6,7 @@
 
 React component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
 
-![pagination component](recursive-data-lister.png)
+![recursive data lister component](https://github.com/unleashit/npm-library/raw/master/packages/recursiveDataLister/recursive-data-lister.png)
 
 ### Install
 

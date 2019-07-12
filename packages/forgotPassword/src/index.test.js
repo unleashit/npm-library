@@ -28,7 +28,7 @@ describe('<ForgotPasswordContainer />', () => {
     wrapper = mount(<ForgotPasswordContainer />);
   });
 
-  it.only('renders without crashing', () => {
+  it('renders without crashing', () => {
     expect(wrapper.find('.unl-forgot-password__container')).toHaveLength(1);
     expect(wrapper).toMatchSnapshot();
   });
