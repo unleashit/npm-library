@@ -32,14 +32,9 @@ A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos
 
 **Other commands**
 
-Run all tests: `yarn test`
+Run all tests: `yarn run build && yarn test`
 
-Run Storybook (WIP): `yarn run storybook`
-
-Other scripts are available to build, publish to NPM, clean, etc. Hooks are in place on the following commands:
-
-- pre-commit: test, lint, and commit lint
-- pre-publish: build
+Other scripts are available to build, publish to NPM, clean, etc. This is a mirror. Pull/Merge requests should be made at https://gitlab.com/unleashit/npm-library to take advantage of CI.
 
 ### CSS
 
