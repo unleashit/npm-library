@@ -31,7 +31,7 @@
     "lint": "lerna exec -- eslint --fix src/**/*.{ts,tsx,js,jsx,json}",
     "prettier": "lerna exec -- prettier --config ../../.prettierrc.js --write src/**/*.{ts,tsx,js,jsx,json}",
     "prepublishOnly": "yarn run build",
-    "publish": "HUSKY_BYPASS=true lerna publish",
+    "release": "HUSKY_BYPASS=true lerna publish",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
     "clean": "npm run clean:build && lerna clean && rm -rf node_modules",

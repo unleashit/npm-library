@@ -16,8 +16,7 @@ Build:
   stage: build
   before_script:
     # - yarn config set cache-folder .yarn
-    - yarn
-    - npx lerna bootstrap
+    - npx lerna bootstrap -ci
   script:
     - yarn run build
   artifacts:
@@ -28,7 +27,6 @@ Test:
   stage: test
   before_script:
     # - yarn config set cache-folder .yarn
-    - yarn
-    - npx lerna bootstrap
+    - npx lerna bootstrap -ci
   script:
     - yarn test
