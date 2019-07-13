@@ -7,7 +7,7 @@ stages:
 cache:
   paths:
     - node_modules/
-    - .yarn
+    # - .yarn
 
 before_script:
   - apt-get update -qq && apt-get install
@@ -15,8 +15,9 @@ before_script:
 Build:
   stage: build
   before_script:
-    - yarn config set cache-folder .yarn
+    # - yarn config set cache-folder .yarn
     - yarn
+    - npx lerna bootstrap
   script:
     - yarn run build
   artifacts:
@@ -26,9 +27,8 @@ Build:
 Test:
   stage: test
   before_script:
-    - yarn config set cache-folder .yarn
+    # - yarn config set cache-folder .yarn
     - yarn
+    - npx lerna bootstrap
   script:
-    - npx lerna exec -- ls node_modules/
-    - npx lerna exec -- ls node_modules/.bin
     - yarn test
