@@ -48,7 +48,7 @@
     "react": ">=15.0.0"
   },
   "dependencies": {
-    "@unleashit/common": "^0.10.0"
+    "@unleashit/common": "0.10.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",

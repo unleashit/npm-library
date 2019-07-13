@@ -43,6 +43,9 @@
   "peerDependencies": {
     "react": ">=15.0.0"
   },
+  "dependencies": {
+    "@unleashit/common": "0.10.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
@@ -76,8 +79,5 @@
     "ts-loader": "^6.0.4",
     "typescript": "3.5.2"
   },
-  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c",
-  "dependencies": {
-    "@unleashit/common": "^0.10.0"
-  }
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

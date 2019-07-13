@@ -2,6 +2,7 @@
   "name": "@unleashit/demos",
   "version": "0.14.1",
   "private": true,
+  "main": "build/index.js",
   "dependencies": {
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.1",
