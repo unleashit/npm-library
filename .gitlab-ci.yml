@@ -28,4 +28,7 @@ Test:
   before_script:
     - yarn config set cache-folder .yarn
     - yarn
-  script: yarn test
+  script:
+    - npx lerna exec -- ls node_modules/
+    - npx lerna exec -- ls node_modules/.bin
+    - yarn test
