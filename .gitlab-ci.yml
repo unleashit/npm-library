@@ -1,7 +1,6 @@
 image: node:latest
 
 stages:
-  - build
   - test
 
 cache:
@@ -12,21 +11,11 @@ cache:
 before_script:
   - apt-get update -qq && apt-get install
 
-Build:
-  stage: build
-  before_script:
-    # - yarn config set cache-folder .yarn
-    - npx lerna bootstrap --ci
-  script:
-    - yarn run build
-  artifacts:
-    paths:
-      - node_modules/
-
-Test:
+test:
   stage: test
   before_script:
     # - yarn config set cache-folder .yarn
-    - npx lerna bootstrap --ci
+    - yarn
   script:
+    - yarn run build
     - yarn test
