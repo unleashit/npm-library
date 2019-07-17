@@ -1,12 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-it('fake test', () => {
-  expect(true).toBe(true);
-});
+import * as React from 'react';
+import { mount, shallow, ShallowWrapper } from "enzyme";
+import AsyncHandler, { withAsyncHandler } from '.';
 
-// import * as React from 'react';
-// import { mount } from 'enzyme';
-// import LoginContainer from '.';
-//
 // const nextTick = () => {
 //   return new Promise(resolve => {
 //     setTimeout(() => {
@@ -23,23 +19,108 @@ it('fake test', () => {
 //       value,
 //     },
 //   };
-// };
 //
-// describe('<LoginContainer />', () => {
-//   let wrapper;
-//   const props = {
-//     loginHandler: () => jest.fn({ errors: {} }),
-//     onSuccess: () => jest.fn(),
-//   };
-//
-//   beforeEach(() => {
-//     wrapper = mount(<LoginContainer {...props} />);
-//   });
-//
-//   it('renders without crashing', () => {
-//     expect(wrapper.find('.loginContainer')).toHaveLength(1);
-//     expect(wrapper).toMatchSnapshot();
-//   });
+describe('<AsyncHandler />', () => {
+  let wrapper: ShallowWrapper;
+
+  describe('Render Prop', () => {
+    beforeEach(async () => {
+      const props = {
+        request: () =>
+          new Promise(res => {
+            res(['red', 'green', 'blue', 'yellow', 'orange', 'black', 'white']);
+          }),
+      };
+      wrapper = await shallow(
+        <AsyncHandler {...props}>
+          {data => <div className="test-class">{data.join(', ')}</div>}
+        </AsyncHandler>,
+      );
+    });
+
+    it('renders without crashing', () => {
+      expect(wrapper.find('.test-class')).toHaveLength(1);
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    // it('renders without crashing', () => {
+    //   expect(wrapper.find('.test-class')).toHaveLength(1);
+    //   expect(wrapper).toMatchSnapshot();
+    // });
+  });
+
+  describe.only('HOC', () => {
+    beforeEach(async () => {
+      // wrapper = await shallow(
+      //   <AsyncHandler {...props}>
+      //     {data => <div className="test-class">{data.join(', ')}</div>}
+      //   </AsyncHandler>,
+      // );
+      //
+
+      interface User {
+        id: number;
+        name: string;
+        age: number;
+      }
+
+      const users: User[] = [
+        {
+          id: 1,
+          name: 'joe',
+          age: 30,
+        },
+        {
+          id: 2,
+          name: 'judy',
+          age: 27,
+        },
+      ];
+
+      // let userCache = null;
+
+      const UserList = ({ data }: { data: User[] }) => {
+        return (
+          <ul className="user-list">
+            {data.map(item => (
+              <li key={item.id}>
+                {item.name} is {item.age} years old.
+              </li>
+            ))}
+          </ul>
+        );
+      };
+
+      const WrappedHandler = await withAsyncHandler({
+        request: () => {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              // userCache = { users, cacheDate: new Date() };
+              resolve(users);
+            }, 200);
+          });
+        },
+        // cache: () => {
+        //   return userCache && new Date() - userCache.cacheDate <= 5 * 1000
+        //     ? userCache.users
+        //     : null;
+        // },
+        loaderComponent: () => <div>Stay tuned!</div>,
+        noResultsComponent: () => <div>No user{"'"}s found.</div>,
+        errorComponent: ({ error }) => (
+          <div>Oops, there was a problem: {JSON.stringify(error)}</div>
+        ),
+      })(UserList);
+      (wrapper as any) = await mount(<WrappedHandler />);
+    });
+
+    it('renders without crashing', () => {
+      console.log(wrapper.debug());
+      expect(wrapper.find('.user-list')).toHaveLength(1);
+      // expect(wrapper).toMatchSnapshot();
+    });
+  });
+});
 //
 //   describe('validation', () => {
 //     it('fields can be updated and validated', () => {
@@ -102,3 +183,5 @@ it('fake test', () => {
 //     });
 //   });
 // });
+
+// };

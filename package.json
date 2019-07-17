@@ -23,8 +23,9 @@
   "scripts": {
     "start": "lerna run --parallel start",
     "start:build": "yarn run build && yarn start",
-    "build": "NODE_ENV=production lerna run build",
-    "build:pagination": "lerna run build --scope=@unleashit/pagination",
+    "build": "npm run build:common && lerna run --parallel --ignore {@unleashit/common,@unleashit/demos} build",
+    "build:common": "lerna run build --scope=@unleashit/common",
+    "build:demos": "lerna run build --scope=@unleashit/demos",
     "test": "lerna run --stream test",
     "test:watch": "lerna run test -- -- --watch",
     "test:coverage": "lerna run test -- --coverage",
