@@ -1,24 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import SignupContainer, { mapDefaultValues } from '.';
-
-const nextTick = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 0);
-  });
-};
-
-const changeVal = (name, value) => {
-  return {
-    persist: () => {}, // Formik calls e.persist() internally
-    target: {
-      name,
-      value,
-    },
-  };
-};
+import { nextTick, changeVal } from "../../../testConfig/utils";
 
 describe('<SignupContainer />', () => {
   let wrapper;
