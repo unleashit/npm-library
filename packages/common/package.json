@@ -37,7 +37,7 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.6.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
@@ -68,5 +68,8 @@
     "ts-loader": "^6.0.4",
     "typescript": "3.5.2"
   },
-  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c",
+  "dependencies": {
+    "@babel/runtime": "^7.6.0"
+  }
 }
