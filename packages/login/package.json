@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Responsive login component for React with custom fields.",
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.0",
-    "@unleashit/common": "0.10.0"
+    "@unleashit/common": "^0.10.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
