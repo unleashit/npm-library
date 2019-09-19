@@ -3,14 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.12.2](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.12.1...@unleashit/forgot-password@0.12.2) (2019-09-16)
-
-**Note:** Version bump only for package @unleashit/forgot-password
-
-
-
-
-
 ## [0.12.1](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@0.12.0...@unleashit/forgot-password@0.12.1) (2019-07-11)
 
 

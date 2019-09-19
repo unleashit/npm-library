@@ -20,10 +20,10 @@ import AsyncHandler, { withAsyncHandler } from '..';
 //     },
 //   };
 //
-describe('<AsyncHandler />', () => {
+describe.skip('<AsyncHandler />', () => {
   let wrapper: ShallowWrapper;
 
-  describe('Render Prop', () => {
+  describe.skip('Render Prop', () => {
     beforeEach(async () => {
       const props = {
         request: () =>
@@ -39,7 +39,7 @@ describe('<AsyncHandler />', () => {
     });
 
     it('renders without crashing', () => {
-      // expect(wrapper.find('.test-class')).toHaveLength(1);
+      expect(wrapper.find('.test-class')).toHaveLength(1);
       expect(wrapper).toMatchSnapshot();
     });
 
@@ -49,7 +49,7 @@ describe('<AsyncHandler />', () => {
     // });
   });
 
-  describe.only('HOC', () => {
+  describe.skip('HOC', () => {
     beforeEach(async () => {
       // wrapper = await shallow(
       //   <AsyncHandler {...props}>
@@ -114,7 +114,7 @@ describe('<AsyncHandler />', () => {
       (wrapper as any) = await mount(<WrappedHandler />);
     });
 
-    it.skip('renders without crashing', () => {
+    it('renders without crashing', () => {
       console.log(wrapper.debug());
       expect(wrapper.find('.user-list')).toHaveLength(1);
       // expect(wrapper).toMatchSnapshot();
