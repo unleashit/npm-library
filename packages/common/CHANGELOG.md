@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.10.1...@unleashit/common@0.11.0) (2019-09-19)
+
+**Note:** Version bump only for package @unleashit/common
+
+
+
+
+
 # [0.10.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.9.2...@unleashit/common@0.10.0) (2019-07-08)
 
 

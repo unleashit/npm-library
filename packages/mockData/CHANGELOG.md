@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.7.2...@unleashit/mock-data@0.8.0) (2019-09-19)
+
+**Note:** Version bump only for package @unleashit/mock-data
+
+
+
+
+
 ## [0.7.1](https://github.com/unleashit/npm-library/compare/@unleashit/mock-data@0.7.0...@unleashit/mock-data@0.7.1) (2019-07-11)
 
 **Note:** Version bump only for package @unleashit/mock-data
