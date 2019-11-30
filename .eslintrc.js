@@ -1,6 +1,6 @@
 module.exports =  {
   parser:  '@typescript-eslint/parser',  // Specifies the ESLint parser
-  plugins: ["@typescript-eslint", "import"],
+  plugins: ["@typescript-eslint", "import", "react-hooks"],
   extends:  [
     'airbnb',
     'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
@@ -39,7 +39,9 @@ module.exports =  {
     "react/destructuring-assignment": 0,
     "no-plusplus": 0,
     "react/sort-comp": 0, // temp
-    "no-return-await": 0 // temp
+    "no-return-await": 0, // temp
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "env": {
     "browser": true,
