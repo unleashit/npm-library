@@ -1,0 +1,16 @@
+.babelrc
+.eslintrc.js
+jest.config.js
+tsconfig.json
+webpack.config.js
+src
+node_modules
+login.png
+coverage
+dist/*.test.*
+.idea
+.vscode
+*.log
+.gitignore
+.env*
+.secrets

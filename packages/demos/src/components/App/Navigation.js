@@ -54,6 +54,11 @@ const Navigation = () => (
           Mock Data
         </Link>
       </li>
+      <li>
+        <Link to="/modal" className="main-navigation__link">
+          Modal
+        </Link>
+      </li>
     </ul>
   </nav>
 );
