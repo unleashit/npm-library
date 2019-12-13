@@ -17,6 +17,7 @@
     "@unleashit/pagination": "^0.10.0",
     "@unleashit/recursive-data-lister": "^0.4.0",
     "@unleashit/signup": "^0.11.0",
+    "@unleashit/modal": "^0.0.1",
     "formik": "^1.5.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

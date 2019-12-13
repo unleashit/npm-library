@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { returnComponentFormat } from "@unleashit/common";
 import {
   DefaultLoader,
   DefaultNoResults,
@@ -6,7 +7,7 @@ import {
   DefaultComponentProps,
   DefaultErrorComponentProps,
 } from './defaults/components';
-import { isEmpty, returnComponentFormat } from './utils';
+import { isEmpty } from './utils';
 
 type DefaultComponent = (props: DefaultComponentProps) => React.ReactElement;
 type DefaultErrorComponent = (props: DefaultErrorComponentProps) => React.ReactElement;

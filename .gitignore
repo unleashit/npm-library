@@ -1,5 +1,7 @@
 .idea
 .vscode
+# VS Code Live Share plugin config
+.vsls.json
 yarn-error.log
 node_modules
 dist

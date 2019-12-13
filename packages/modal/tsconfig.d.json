@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig",
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "**/__tests__",
+    "**/*.test.*"
+  ],
+  "compilerOptions": {
+    "jsx": "react",
+    "outDir": "dist/commonjs",
+    "emitDeclarationOnly": true
+  }
+}
