@@ -17,5 +17,5 @@ test:
     # - yarn config set cache-folder .yarn
     - yarn
   script:
-    - yarn run build
+    - yarn run build:ci
     - yarn test

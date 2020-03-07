@@ -1,86 +1,195 @@
-// import * as React from 'react';
-// import { mount } from 'enzyme';
-// import LoginContainer from '.';
-// import { nextTick, changeVal } from "../../../testConfig/utils";
+import * as React from 'react';
+import { shallow } from 'enzyme';
+import { act } from 'react-dom/test-utils';
+import Modal from '.';
+import { nextTick } from '../../../testConfig/utils';
 
-it('should do nothing', () => {
-  expect(true).toBe(true);
+const baseProps = () => ({
+  onClose: jest.fn(),
+  isOpen: true,
 });
 
-// describe('<LoginContainer />', () => {
-//   let wrapper;
-//   const props = {
-//     loginHandler: () => jest.fn({ errors: {} }),
-//     onSuccess: () => jest.fn(),
-//   };
-//
-//   beforeEach(() => {
-//     wrapper = mount(<LoginContainer {...props} />);
-//   });
-//
-//   it('renders without crashing', () => {
-//     expect(wrapper.find('.unl-login__container')).toHaveLength(1);
-//     expect(wrapper).toMatchSnapshot();
-//   });
-//
-//   describe('validation', () => {
-//     it('fields can be updated and validated', () => {
-//       wrapper
-//         .find('input[name="email"]')
-//         .simulate('change', changeVal('email', 'test@test.com'));
-//       wrapper
-//         .find('input[name="password"]')
-//         .simulate('change', changeVal('password', '12345678'));
-//
-//       expect(wrapper.find('input[name="email"]').props().value).toEqual('test@test.com');
-//       const errors = wrapper.find('.unl-login__error-message');
-//       expect(errors).toHaveLength(0);
-//     });
-//
-//     it('displays correct email validation errors', async () => {
-//       const emailInput = wrapper.find('input[name="email"]');
-//       const passwordInput = wrapper.find('input[name="password"]');
-//       const form = wrapper.find('form');
-//
-//       // email can't be empty
-//       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
-//       await nextTick();
-//       wrapper.update();
-//       let emailError = wrapper.find('.unl-login__error-message').at(0);
-//       expect(emailError.text()).toEqual('email is a required field');
-//
-//       // email must be a valid email
-//       emailInput.simulate('change', changeVal('email', 'bademail'));
-//       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
-//       await nextTick();
-//       wrapper.update();
-//       emailError = wrapper.find('.unl-login__error-message').at(0);
-//       expect(emailError.text()).toEqual('email must be a valid email');
-//     });
-//
-//     it('displays correct password validation errors', async () => {
-//       const emailInput = wrapper.find('input[name="email"]');
-//       const passwordInput = wrapper.find('input[name="password"]');
-//       const form = wrapper.find('form');
-//
-//       // password field can't be empty
-//       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       form.simulate('submit', { preventDefault: () => {} });
-//       await nextTick();
-//       wrapper.update();
-//       let passwordError = wrapper.find('.unl-login__error-message').at(0);
-//       expect(passwordError.text()).toEqual('password is a required field');
-//
-//       // password must be at least 8 chars
-//       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       passwordInput.simulate('change', changeVal('password', '123'));
-//       form.simulate('submit', { preventDefault: () => {} });
-//       await nextTick();
-//       wrapper.update();
-//       passwordError = wrapper.find('.unl-login__error-message').at(0);
-//       expect(passwordError.text()).toEqual('password must be at least 8 characters');
-//     });
-//   });
-// });
+const modalContent = <div>Test text for modal.</div>;
+
+describe('<Modal />', () => {
+  let wrapper;
+  let props;
+
+  beforeEach(() => {
+    props = baseProps();
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+  });
+
+  it('renders depending on isOpen property', () => {
+    // default for isOpen is false
+    // but should find since it's set to true in test props
+    expect(wrapper.find('.unl-modal__overlay')).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
+
+    // won't render when isOpen is omitted or set to false
+    delete props.isOpen;
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    expect(wrapper.find('.unl-modal__overlay')).toHaveLength(0);
+  });
+
+  it('renders the right children', () => {
+    const children = wrapper.find('.unl-modal__body').children();
+    expect(children.matchesElement(modalContent)).toEqual(true);
+  });
+
+  it('renders the right size class depending on size prop', () => {
+    // default (no size prop provided) is medium
+    expect(wrapper.find('.unl-modal__child--medium')).toHaveLength(1);
+    expect(wrapper.find('.unl-modal__child--large')).toHaveLength(0);
+
+    props = { ...baseProps(), size: 'large' };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+
+    expect(wrapper.find('.unl-modal__child--large')).toHaveLength(1);
+    expect(wrapper.find('.unl-modal__child--medium')).toHaveLength(0);
+  });
+
+  it('displays custom header component when provided', async () => {
+    props = { ...baseProps(), header: () => <div>Test Header</div> };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    const header = wrapper.find('header').dive();
+
+    expect(header.text()).toEqual('Test Header');
+  });
+
+  it('displays default header component when string is provided', async () => {
+    props = { ...baseProps(), header: 'Test Header' };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    const header = wrapper.find('ModalHeader').dive();
+
+    expect(header.find('h3').text()).toEqual('Test Header');
+  });
+
+  it('displays custom footer component when provided', async () => {
+    props = { ...baseProps(), footer: () => <div>Test Footer</div> };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    const footer = wrapper.find('footer').dive();
+
+    expect(footer.text()).toEqual('Test Footer');
+  });
+
+  it('displays default footer component when string is provided', async () => {
+    props = { ...baseProps(), footer: 'Test Footer' };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    const footer = wrapper.find('ModalFooter').dive();
+
+    expect(footer.text()).toEqual('Test Footer');
+  });
+
+  it('executes the onClose prop when closed', async () => {
+    const closeBtn = wrapper.find('.unl-modal__close-btn');
+    closeBtn.simulate('click');
+    expect(props.onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('executes the onClose prop when overlay is clicked', async () => {
+    const overlay = wrapper.find('.unl-modal__overlay');
+    const modalBody = wrapper.find('.unl-modal__body');
+    const eventProps = {
+      stopPropagation: () => {},
+      target: {
+        getAttribute: () => 'data-modal',
+      },
+    };
+    overlay.simulate('click', eventProps);
+    modalBody.simulate('click', eventProps); // this shouldn't call it
+    // only clicking on the close btn or overlay should trigger onClose()
+    expect(props.onClose).toHaveBeenCalledTimes(1);
+
+    // if closeOverlayClick prop is false, don't execute onClose()
+    props = { ...baseProps(), closeOnOverlayClick: false };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    wrapper.find('.unl-modal__overlay').simulate('click', eventProps);
+    expect(props.onClose).toHaveBeenCalledTimes(0);
+  });
+
+  it('adds overlay color when provided', async () => {
+    props = { ...baseProps(), overlayColor: 'red' };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    const overlay = wrapper.find('.unl-modal__overlay');
+
+    expect(overlay.prop('style').backgroundColor).toEqual('red');
+  });
+
+  it('show/hide the close button', async () => {
+    // default is to show it
+    let closeBtn = wrapper.find('.unl-modal__close-btn');
+    expect(closeBtn).toHaveLength(1);
+
+    // hide it
+    props = { ...baseProps(), closeBtn: false };
+    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    closeBtn = wrapper.find('.unl-modal__close-btn');
+
+    expect(closeBtn).toHaveLength(0);
+  });
+
+  it('displays animation classes after timeouts', async () => {
+    jest.useFakeTimers();
+    const inClass = wrapper.find('.unl-modal__child--in');
+
+    expect(inClass).toHaveLength(1);
+    // act(() => {
+      wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+    // });
+
+
+    act(() => {
+      wrapper.setProps({ isOpen: false });
+    });
+    expect(wrapper.find('.unl-modal__child')).toHaveLength(1);
+    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(1);
+
+    act(() => {
+      jest.runAllTimers();
+    });
+    wrapper.update();
+
+    expect(wrapper.find('.unl-modal__child')).toHaveLength(0);
+    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(0);
+  });
+
+  it('with animationSupport set to false', async () => {
+    props = { ...baseProps(), animationSupport: false };
+    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+    expect(wrapper.find('.unl-modal__child')).toHaveLength(1);
+    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(0);
+
+    // should close synchronously, no timer mock needed
+    act(() => {
+      wrapper.setProps({ isOpen: false });
+    });
+    wrapper.update();
+    expect(wrapper.find('.unl-modal__child')).toHaveLength(0);
+  });
+
+  it('clears timeouts on unmount', () => {
+    jest.useFakeTimers();
+    const spy = jest.spyOn(React, 'useRef');
+    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+    // act(() => {
+    //   jest.runAllTimers();
+    // });
+    // act(() => {
+    //   wrapper.setProps({ isOpen: false });
+    // });
+    act(() => {
+      jest.runAllTimers();
+    });
+    wrapper.update();
+    act(() => {
+      wrapper.unmount();
+    });
+    // wrapper.update();
+    console.log(spy.mock.calls[0]);
+    // expect(spy).toHaveBeenCalled();
+
+  });
+});
+
+
