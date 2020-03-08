@@ -12,6 +12,7 @@ import RecursiveDataLister from '../recursiveDataLister';
 import NavigationDemo from '../navigation';
 import MockData from '../mockData';
 import ModalDemo from '../modal';
+import UserProfileDemo from "../userProfile";
 import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
 import './App.scss';
@@ -70,6 +71,7 @@ class App extends React.Component {
                 />
                 <Route path="/mock-data" exact component={MockData} />
                 <Route path="/modal" exact component={ModalDemo} />
+                <Route path="/user-profile" exact component={UserProfileDemo} />
               </Switch>
             </div>
           </div>

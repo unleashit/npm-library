@@ -59,6 +59,11 @@ const Navigation = () => (
           Modal
         </Link>
       </li>
+      <li>
+        <Link to="/user-profile" className="main-navigation__link">
+          User profile
+        </Link>
+      </li>
     </ul>
   </nav>
 );

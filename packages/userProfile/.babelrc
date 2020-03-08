@@ -1,0 +1,19 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"],
+  "ignore": [
+    "**/__tests__",
+    "**/*.test.{js,jsx,ts,tsx,map}"
+  ],
+  "env": {
+    "commonjs": {
+      "presets": ["@babel/preset-env", "@babel/preset-typescript", "@babel/preset-react"]
+    },
+    "esmodules": {
+      "presets": [
+        ["@babel/preset-env", { "modules": false }],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+      ]
+    }
+  }
+}
