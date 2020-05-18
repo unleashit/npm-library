@@ -1,11 +1,31 @@
 import React from 'react';
+import {
+  UserProfileData,
+  renderDefaultProfile,
+  renderAccountDetails,
+  renderPasswordReset
+} from './defaults/userProfileDefaults';
 
 interface ProfileBodyProps {
-    navigateTab?: (val: string) => void;
+  tabState?: string;
+  userProfileData?: UserProfileData;
 }
-function ProfileBody({navigateTab}: ProfileBodyProps): React.ReactElement {
-  console.log(navigateTab ? navigateTab.toString() : '');
-  return <div>profile body</div>;
+
+// const routes = (tabstate) => {
+//   const defaults = [['home', <ProfileHome />], ['profile', <Profile />], ['account', <ProfileAccount />], ['passwordReset', <ProfilePasswordreset />]];
+
+  
+// }
+
+function ProfileBody({ tabState, userProfileData }: ProfileBodyProps): React.ReactElement {
+  const mapOfTabsToDisplay: { [key: string]: Function; } = {
+    'Home': (): JSX.Element => <div>Main Profile Body</div>,
+    'Profile': (): JSX.Element => renderDefaultProfile(userProfileData || {}),
+    'Account': (): JSX.Element => renderAccountDetails(userProfileData || {}),
+    'Password Reset': (): JSX.Element => renderPasswordReset()
+  };
+
+  return tabState ? mapOfTabsToDisplay[tabState]() : mapOfTabsToDisplay.Home;
 }
 
 export default ProfileBody;

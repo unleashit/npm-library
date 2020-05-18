@@ -1,10 +1,35 @@
 import React from 'react';
 
-function ProfileNav(): React.ReactElement {
+interface ProfileBodyProps {
+  navigateTab: (val: string) => void;
+  customLinks?: string[];
+}
+
+function ProfileNav({ navigateTab, customLinks = [] }: ProfileBodyProps): React.ReactElement {
+  const navigationItems = ['Profile', 'Account', 'Password Reset', ...customLinks];
+
   return (
-    <nav>
-      <ul>profile nav</ul>
-    </nav>
+    <div>
+      <nav className="main-navigation">
+        <ul className="main-navigation__ul">
+          {
+            navigationItems.map((item: string): JSX.Element => {
+              return (
+                <li key={item}>
+                  <button
+                    onClick={():void => navigateTab(item)}
+                    className="main-navigation__link"
+                    type="button"
+                  >
+                    {item}
+                  </button>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+    </div>
   );
 }
 
