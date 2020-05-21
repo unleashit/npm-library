@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/pagination",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Responsive pagination component for React.",
@@ -49,7 +49,7 @@
     "react": ">=15.0.0"
   },
   "dependencies": {
-    "@unleashit/common": "^0.11.0",
+    "@unleashit/common": "^0.12.0",
     "lodash": "^4.17.11"
   },
   "devDependencies": {

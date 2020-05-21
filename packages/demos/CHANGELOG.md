@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.15.0...@unleashit/demos@0.16.0) (2020-05-21)
+
+
+### Features
+
+* **modal:** WIP ([6f5af82](https://github.com/unleashit/npm-library/commit/6f5af82))
+* **modal:** wip add modal component ([3af40ab](https://github.com/unleashit/npm-library/commit/3af40ab))
+
+
+
+
+
 # [0.15.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.14.2...@unleashit/demos@0.15.0) (2019-09-19)
 
 **Note:** Version bump only for package @unleashit/demos
