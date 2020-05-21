@@ -1,173 +1,126 @@
 ## Modal
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
-[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/login.svg)](https://www.npmjs.com/package/@unleashit/login)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/login.svg)](https://bundlephobia.com/result?p=@unleashit/login)
+[![npm (scoped)](https://img.shields.io/npm/v/@unleashit/modal.svg)](https://www.npmjs.com/package/@unleashit/modal)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/modal.svg)](https://bundlephobia.com/result?p=@unleashit/modal)
 
-Customizable React login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, social login buttons and forgot password link.
+Customizable React modal component in Typescript. Optional animation support when adding/removing from DOM.
 
-![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
+![modal component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/modal/modal.png)
 
 ### Install
 
 ```
-npm install @unleashit/login
+npm install @unleashit/modal
 ```
 
-Required peer dependencies: react, formik and yup.
+Required peer dependencies: react.
 
 ### Example
 
 ```javascript
-class LoginDemo extends React.Component {
-  async loginHandler(values) {
-    // should return a Promise in the shape of LoginHandlerResponse below
-    return await fetch('https://api.example.com/auth', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    }).then(resp => resp.json());
-  }
+const ModalDemo = () => {
+  const [modalOpen, setModalOpen] = useState(false);
 
-  onSuccess(resp) {
-    // set auth state, etc. resp has full server response from loginHandler().
-    window.location.href = '/signed-in';
-  }
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
 
-  render() {
-    return <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />;
-  }
-}
+  const btnStyle = {
+    padding: '14px 34px',
+    border: 0,
+    backgroundColor: '#f2f2f2',
+    cursor: 'pointer',
+  };
 
-export default LoginDemo;
-```
+  return (
+    <>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam numquam
+        praesentium quisquam repudiandae impedit architecto sapiente consequatur voluptate
+        vitae quis? Pariatur ad fuga fugiat, nostrum ipsa officia eveniet debitis ipsum
+        assumenda labore maiores aspernatur soluta mollitia fugit itaque. Aut repellendus
+        dolorum voluptatem at quam quasi nostrum, labore placeat aliquid est eveniet
+        aliquam! Explicabo, a minima! Nostrum numquam ab, unde, aut temporibus odit, animi
+        sunt officiis rerum a nobis minima maxime nemo quas. Dolor sed consequuntur
+        voluptate qui explicabo est placeat ipsum enim modi sint, eos illum, unde iure eum
+        atque, excepturi ipsam! Quas voluptatibus suscipit dolor delectus tenetur
+        necessitatibus beatae alias vitae maxime? Aliquid, error pariatur architecto
+        maxime velit eligendi? Inventore ex similique omnis dicta nulla nobis nam non
+        itaque! Accusamus reiciendis esse temporibus explicabo porro voluptatum cupiditate
+        sed asperiores, ullam suscipit?
+      </p>
+      <button className="modalBtn" onClick={toggleModal} type="button">
+        open sesame!
+      </button>
 
-### Social Logins
-
-Adding social logins is easy. Simply include them as children and they will display under the main login with a nice separator. You must supply the buttons themselves, but for something fast and nice I recommend `react-social-login-buttons`.
-
-```javascript
-import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
-
-const btnStyle = {
-  margin: '10px 0',
-  boxShadow: 'none',
+      <Modal
+        size="medium"
+        isOpen={modalOpen}
+        onClose={toggleModal}
+        header="Important Message"
+        footer={() => <footer>Important! Please Read!</footer>}
+        overlayColor="rgba(0,0,0,.8)"
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam numquam
+          praesentium quisquam repudiandae impedit architecto sapiente consequatur
+          voluptate vitae quis? Pariatur ad fuga fugiat.
+        </p>
+        <div>
+          <button type="button" style={btnStyle} onClick={toggleModal}>
+            OK
+          </button>
+        </div>
+      </Modal>
+    </>
+  );
 };
 
-render() {
-  return (
-    <Login
-      loginHandler={() => Promise.resolve({ success: true })}
-      onSuccess={(resp) => alert(JSON.stringify(resp, null, 2))}
-    >
-      <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-      <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-    </Login>
-  );
-}
-```
-
-### Custom Fields
-
-It's possible to replace the default fields with custom fields and attributes by adding a `customFields` prop. The loginHandler will be called with their values after passing validation.
-
-This array of fields will replace the defaults, so don't forget to add email/username and password if you need them. If you create a Yup schema with matching name attributes, it will properly validate.
-
-Currently input, select, checkbox and textarea fields are supported.
-
-```javascript
-<Login
-  loginHandler={this.loginHandler}
-  onSuccess={this.onSuccess}
-  forgotPasswordLink={'/auth/password-reset'}
-  schema={schema}
-  customFields={[
-    {
-      element: 'input',
-      type: 'text',
-      name: 'username',
-      label: 'Username',
-    },
-    {
-      element: 'input',
-      type: 'password',
-      name: 'password',
-      label: 'Password',
-    },
-    {
-      element: 'text',
-      type: 'checkbox',
-      name: 'persistLogin',
-      label: 'Remember me?',
-      defaultChecked: true,
-      defaultValue: true,
-    },
-  ]}
-/>;
-
-// yup schema
-const schema = yup.object().shape({
-  username: yup
-    .string()
-    .matches(/^[a-zA-Z0-9\._-]+$/, 'Enter a valid username')
-    .max(56)
-    .required(),
-  password: yup
-    .string()
-    .min(8)
-    .max(512)
-    .required(),
-});
+export default ModalDemo;
 ```
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/login/dist/login.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/modal/dist/modal.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/modal/dist/modal.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API
 
 ```typescript
-// loginHandler() should return this shape:
-
-interface LoginHandlerResponse {
-  success: boolean;
-  errors?: {
-    // error msg to print in browser when auth fails
-    serverAuth: string;
-    // optionally validate anything else on server
-    // key is the field's name attr, value is error msg to display
-    [key: string]: string;
-  };
+// for customer header/footer components
+interface ModalProps {
+  title?: string;
 }
 
-// customFields prop should be an array of objects in this shape:
-interface CustomField {
-  element: 'input' | 'select' | 'textarea';
-  type: string;
-  name: string;
-  label: string;
-  options?: string[][]; // for select element
-  defaultChecked?: boolean; // for checkbox
-  custAttrs?: { [key: string]: string };
+export interface Props {
+  isOpen: boolean;
+  size?: 'small' | 'medium' | 'large' | 'full';
+  onClose?: () => void;
+  closeOnOverlayClick?: boolean;
+  animationSupport?: boolean;
+  animationCloseTimeout?: number;
+  header?: React.FC<ModalProps> | React.ReactElement | string;
+  footer?: React.FC<ModalProps> | string;
+  overlayColor?: string;
+  closeBtn?: boolean;
+  cssModuleStyles?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 ```
 
 ### Props
 
-| Name               | Type                                            | Description                                                                                                                     | default                        |
-| ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| loginHandler       | (values: any) => Promise\<LoginHandlerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                 | required                       |
-| onSuccess          | (resp: LoginHandlerResponse) => any             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required                       |
-| schema             | yup.Schema\<LoginSchema>                        | Yup schema to override the default                                                                                              | standard validation            |
-| header             | React Component                                 | React component to override default header                                                                                      | basic header                   |
-| loader             | React Component                                 | React component to override default loader                                                                                      | Logging in...                  |
-| signupUrl          | string                                          | Url for signup page. Use only if using default header                                                                           | /signup                        |
-| customFields       | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                  | n/a                            |
-| forgotPassword     | boolean                                         | Include the default forgot password link                                                                                        | true                           |
-| forgotPasswordLink | string                                          | Url to forgot password                                                                                                          | /forgot-password               |
-| forgotPasswordText | string                                          | Forgot password link text                                                                                                       | Forgot password?               |
-| orLine             | boolean                                         | Display a "nice" line rule above social login buttons                                                                           | true (note: requires children) |
-| cssModuleStyles    | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                    | BEM CSS                    |
-| children           | React Children                                  | Use for Social login buttons or anything else (displays as footer)                                                              | n/a                            |
+| Name                  | Type                                                         | Description                                                                                   | default         |
+| --------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | --------------- |
+| isOpen                | boolean                                                      | show or hide the modal                                                                        | required        |
+| size                  | 'small' &#124; 'medium' &#124; 'large' &#124; 'full'         | size of modal                                                                                 | medium          |
+| onClose               | () => void                                                   | state changing function to call when closing modal                                            | () => {} (noop) |
+| closeOnOverlayClick   | boolean                                                      | close the modal when user clicks overlay                                                      | true            |
+| animationSupport      | boolean                                                      | use timeouts on modal open/close to support dom animation                                     | true            |
+| animationCloseTimeout | number                                                       | length of timeout                                                                             | 300             |
+| header                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional header component or string                                                           | n/a             |
+| footer                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional footer component or string                                                           | n/a             |
+| overlayColor          | string                                                       | color for the overlay                                                                         | no color        |
+| closeBtn              | boolean                                                      | show the default close icon                                                                   | true            |
+| cssModuleStyles       | { [key: string]: string }                                    | CSS Module object that optionally replaces default. Class names need to match expected names. | BEM CSS         |
+| children              | React Children                                               | content of the modal                                                                          | n/a             |
