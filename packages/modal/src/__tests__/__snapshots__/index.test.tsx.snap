@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Modal /> renders depending on isOpen property 1`] = `
+exports[`<Modal /> renders when isOpen property is true 1`] = `
 <Fragment>
   <div
     className="unl-modal__overlay"

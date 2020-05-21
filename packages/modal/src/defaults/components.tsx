@@ -10,9 +10,7 @@ export interface ModalProps {
   title?: string;
 }
 
-export const ModalHeader: React.FC<ModalProps> = ({
-  title,
-}): JSX.Element => (
+export const ModalHeader: React.FC<ModalProps> = ({ title }): JSX.Element => (
   <>
     <h3>{title}</h3>
   </>
@@ -20,12 +18,6 @@ export const ModalHeader: React.FC<ModalProps> = ({
 
 ModalHeader.displayName = 'ModalHeader';
 
-export const ModalFooter: React.FC<ModalProps> = ({
-  title,
-}): JSX.Element => (
-  <>
-    {title}
-  </>
-);
+export const ModalFooter: React.FC<ModalProps> = ({ title }): JSX.Element => <>{title}</>;
 
 ModalFooter.displayName = 'ModalFooter';

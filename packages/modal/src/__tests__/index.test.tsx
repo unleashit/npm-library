@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
-import Modal from '.';
-import { nextTick } from '../../../testConfig/utils';
+import Modal from '../index';
+// import { nextTick } from '../../../testConfig/utils';
 
-const baseProps = () => ({
+interface BaseProps {
+  isOpen: boolean;
+  onClose: any;
+}
+
+const baseProps = (): BaseProps => ({
   onClose: jest.fn(),
   isOpen: true,
 });
@@ -12,15 +17,15 @@ const baseProps = () => ({
 const modalContent = <div>Test text for modal.</div>;
 
 describe('<Modal />', () => {
-  let wrapper;
-  let props;
+  let wrapper: any;
+  let props: BaseProps & { [key: string]: any };
 
   beforeEach(() => {
     props = baseProps();
     wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
   });
 
-  it('renders depending on isOpen property', () => {
+  it('renders when isOpen property is true', () => {
     // default for isOpen is false
     // but should find since it's set to true in test props
     expect(wrapper.find('.unl-modal__overlay')).toHaveLength(1);
@@ -32,12 +37,12 @@ describe('<Modal />', () => {
     expect(wrapper.find('.unl-modal__overlay')).toHaveLength(0);
   });
 
-  it('renders the right children', () => {
+  it('renders its children', () => {
     const children = wrapper.find('.unl-modal__body').children();
     expect(children.matchesElement(modalContent)).toEqual(true);
   });
 
-  it('renders the right size class depending on size prop', () => {
+  it('renders the correct size class according to size prop', () => {
     // default (no size prop provided) is medium
     expect(wrapper.find('.unl-modal__child--medium')).toHaveLength(1);
     expect(wrapper.find('.unl-modal__child--large')).toHaveLength(0);
@@ -84,6 +89,12 @@ describe('<Modal />', () => {
   it('executes the onClose prop when closed', async () => {
     const closeBtn = wrapper.find('.unl-modal__close-btn');
     closeBtn.simulate('click');
+    expect(props.onClose).toHaveBeenCalledTimes(1);
+
+    // when leaving out onClose(), noop is called
+    wrapper = shallow(<Modal isOpen>{modalContent}</Modal>);
+    const closeBtn2 = wrapper.find('.unl-modal__close-btn');
+    closeBtn2.simulate('click');
     expect(props.onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -135,13 +146,12 @@ describe('<Modal />', () => {
 
     expect(inClass).toHaveLength(1);
     // act(() => {
-      wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
     // });
 
-
-    act(() => {
-      wrapper.setProps({ isOpen: false });
-    });
+    // act(() => {
+    wrapper.setProps({ isOpen: false });
+    // });
     expect(wrapper.find('.unl-modal__child')).toHaveLength(1);
     expect(wrapper.find('.unl-modal__child--in')).toHaveLength(1);
 
@@ -188,8 +198,5 @@ describe('<Modal />', () => {
     // wrapper.update();
     console.log(spy.mock.calls[0]);
     // expect(spy).toHaveBeenCalled();
-
   });
 });
-
-

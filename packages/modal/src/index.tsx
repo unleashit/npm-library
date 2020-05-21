@@ -52,13 +52,13 @@ export const Modal = ({
       }
       // window.clearTimeout(timeoutRef.current);
     } else if (animationSupport) {
-        setIsAnimated(false);
-        timeoutRef.current = window.setTimeout(() => {
-          setIsHidden(true);
-        }, animationCloseTimeout);
-      } else {
+      setIsAnimated(false);
+      timeoutRef.current = window.setTimeout(() => {
         setIsHidden(true);
-      }
+      }, animationCloseTimeout);
+    } else {
+      setIsHidden(true);
+    }
   }, [animationCloseTimeout, animationSupport, isOpen]);
 
   // clear the above timeout on unmount
