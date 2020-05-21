@@ -24,6 +24,7 @@
     "start": "lerna run --parallel start",
     "start:build": "yarn run build && yarn start",
     "build": "npm run build:common && lerna run --parallel --ignore {@unleashit/common,@unleashit/demos} build",
+    "build:ci": "npm run build:common && lerna run --ignore {@unleashit/common,@unleashit/demos} build",
     "build:common": "lerna run build --scope=@unleashit/common",
     "build:demos": "lerna run build --scope=@unleashit/demos",
     "test": "lerna run --stream test",

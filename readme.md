@@ -1,7 +1,6 @@
 ## NPM and UI Component Library
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/unleashit/npm-library.svg)](https://gitlab.com/unleashit/npm-library/pipelines)
 
 Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Written with Typescript and tested with Jest.
 
@@ -14,9 +13,10 @@ Just getting going, so far we have...
 3. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable set of forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both reset request and actual reset views. Assumes Peer depenencies of React, Formik and Yup.
 4. [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable auth aware navigation component in Typescript with optional sidecar component for login/login/signup.
 5. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset when the user interacts. Assumes a peer dependency of React.
-6. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
-7. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
-8. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
+6. [Modal](https://github.com/unleashit/npm-library/tree/master/packages/modal) - customizable modal component in Typescript. Optional animation support when adding/removing from DOM. Assumes a peer dependency of React.
+7. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
+8. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
+9. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 ### Other
 
