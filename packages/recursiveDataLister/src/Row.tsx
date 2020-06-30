@@ -50,14 +50,11 @@ const Row: React.FC<RowProps> = ({
               }`}
             >
               <span
-                className={isCSSModule(
-                    theme.leafLabel,
-                    `unl-r-data-lister__leaf-label`,
-                  )}
+                className={isCSSModule(theme.leafLabel, `unl-r-data-lister__leaf-label`)}
               >
                 {isObjectNotArray(row[field]) && leafProp && row[field][leafProp]
-                    ? row[field][leafProp]
-                    : field}
+                  ? row[field][leafProp]
+                  : field}
               </span>
               <Row
                 row={row[field]}
