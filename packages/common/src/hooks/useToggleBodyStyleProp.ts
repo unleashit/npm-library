@@ -29,7 +29,6 @@ export const useToggleBodyStyleProp = (
   React.useLayoutEffect(() => {
     // cache pre-existing style prop on <body> if it exists
     cachedBodyStyle.current = bodyStyle[prop as any] || '';
-    console.log(cachedBodyStyle.current);
 
     return () => {
       // on unmounting, reapply pre-existing style if it existed

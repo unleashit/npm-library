@@ -114,7 +114,7 @@ export interface Props {
 | --------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | --------------- |
 | isOpen                | boolean                                                      | show or hide the modal                                                                        | required        |
 | size                  | 'small' &#124; 'medium' &#124; 'large' &#124; 'full'         | size of modal                                                                                 | medium          |
-| onClose               | () => void                                                   | state changing function to call when closing modal                                            | () => {} (noop) |
+| onClose               | () => void                                                   | state changing function to call when closing modal                                            | () => undefined (noop) |
 | closeOnOverlayClick   | boolean                                                      | close the modal when user clicks overlay                                                      | true            |
 | animationSupport      | boolean                                                      | use timeouts on modal open/close to support dom animation                                     | true            |
 | animationCloseTimeout | number                                                       | length of timeout                                                                             | 300             |

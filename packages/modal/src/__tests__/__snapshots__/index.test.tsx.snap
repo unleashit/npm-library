@@ -9,6 +9,7 @@ exports[`<Modal /> renders when isOpen property is true 1`] = `
     style={
       Object {
         "backgroundColor": undefined,
+        "zIndex": "auto",
       }
     }
   >

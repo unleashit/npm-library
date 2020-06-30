@@ -3,6 +3,8 @@ import {
   isCSSModule,
   useToggleBodyStyleProp,
   returnComponentFormat,
+  useHighestZindex,
+  useHandleEscapeKey,
 } from '@unleashit/common';
 import { ModalHeader, ModalFooter, ModalProps } from './defaults/components';
 
@@ -26,7 +28,7 @@ export interface Props {
 export const Modal = ({
   isOpen = false,
   size = 'medium',
-  onClose = () => {},
+  onClose = () => undefined,
   closeBtn = true,
   closeOnOverlayClick = true,
   animationSupport = true,
@@ -59,25 +61,18 @@ export const Modal = ({
     } else {
       setIsHidden(true);
     }
+
+    return () => window.clearTimeout(timeoutRef.current);
   }, [animationCloseTimeout, animationSupport, isOpen]);
 
   // clear the above timeout on unmount
-  React.useEffect(() => () => clearTimeout(timeoutRef.current), []);
+  // React.useEffect(() => () => window.clearTimeout(timeoutRef.current), []);
 
   // add overflow: hidden to <body> when modal is active
   useToggleBodyStyleProp('overflow', 'hidden', isOpen);
 
-  const userComponent = (
-    C: React.ReactElement | Function | string | undefined,
-    Default: React.FC<any>,
-  ) => {
-    if (!C) return null;
-    if (typeof C === 'string') {
-      return <Default theme={theme} title={C} />;
-    }
-
-    return returnComponentFormat(C, { theme });
-  };
+  // returns highest z-index in use + 1 or 'auto'
+  const modalZindex = useHighestZindex();
 
   // close the modal when user clicks on the overlay
   const handleOverlayClick = (e: React.MouseEvent): any => {
@@ -90,11 +85,21 @@ export const Modal = ({
     }
   };
 
-  // const handleOverlayEsc = (e: React.KeyboardEvent): any => {
-  //   if (!closeOnOverlayClick || e.key !== 'Escape') return;
-  //
-  //   onClose();
-  // };
+  // close the modal when user clicks esc key
+  useHandleEscapeKey(isOpen, onClose);
+
+  const userComponent = (
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    C: React.ReactElement | Function | string | undefined,
+    Default: React.FC<any>,
+  ) => {
+    if (!C) return null;
+    if (typeof C === 'string') {
+      return <Default theme={theme} title={C} />;
+    }
+
+    return returnComponentFormat(C, { theme });
+  };
 
   return (
     <>
@@ -104,7 +109,7 @@ export const Modal = ({
           onClick={handleOverlayClick}
           data-modal="true"
           className={isCSSModule(theme.overlay, 'unl-modal__overlay')}
-          style={{ backgroundColor: overlayColor }}
+          style={{ backgroundColor: overlayColor, zIndex: modalZindex }}
         >
           <div
             className={`${isCSSModule(theme.child, `unl-modal__child`)} ${isCSSModule(

@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import Modal from '../index';
-// import { nextTick } from '../../../testConfig/utils';
 
 interface BaseProps {
   isOpen: boolean;
@@ -102,7 +101,7 @@ describe('<Modal />', () => {
     const overlay = wrapper.find('.unl-modal__overlay');
     const modalBody = wrapper.find('.unl-modal__body');
     const eventProps = {
-      stopPropagation: () => {},
+      stopPropagation: () => undefined,
       target: {
         getAttribute: () => 'data-modal',
       },
@@ -117,6 +116,16 @@ describe('<Modal />', () => {
     wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
     wrapper.find('.unl-modal__overlay').simulate('click', eventProps);
     expect(props.onClose).toHaveBeenCalledTimes(0);
+  });
+
+  it('executes the onClose prop when escape key is pressed', async () => {
+    const mockListener = (type: string, callback: any) =>
+      type === 'keyup' && callback({ key: 'Escape' });
+    jest.spyOn(document, 'addEventListener').mockImplementation(mockListener);
+
+    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+
+    expect(props.onClose).toHaveBeenCalledTimes(1);
   });
 
   it('adds overlay color when provided', async () => {
@@ -180,14 +189,14 @@ describe('<Modal />', () => {
 
   it('clears timeouts on unmount', () => {
     jest.useFakeTimers();
-    const spy = jest.spyOn(React, 'useRef');
     wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
-    // act(() => {
-    //   jest.runAllTimers();
-    // });
-    // act(() => {
-    //   wrapper.setProps({ isOpen: false });
-    // });
+    act(() => {
+      jest.runAllTimers();
+    });
+    act(() => {
+      wrapper.setProps({ isOpen: false });
+    });
+
     act(() => {
       jest.runAllTimers();
     });
@@ -195,8 +204,7 @@ describe('<Modal />', () => {
     act(() => {
       wrapper.unmount();
     });
-    // wrapper.update();
-    console.log(spy.mock.calls[0]);
-    // expect(spy).toHaveBeenCalled();
+    wrapper.update();
+    expect(window.clearTimeout).toHaveBeenCalledWith(expect.any(Number));
   });
 });
