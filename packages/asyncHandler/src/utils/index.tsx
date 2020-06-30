@@ -8,5 +8,4 @@ const isEmpty = (data: any): boolean => {
   return !data;
 };
 
-
 export { isEmpty };

@@ -19,8 +19,8 @@ storiesOf('Pagination', module)
   .addDecorator(withKnobs)
   .add('Pagination with list', () => (
     <AsyncLoader loader={loader}>
-      {data => (
-        <React.Fragment>
+      {(data) => (
+        <>
           <List data={data.slice(0, 3)} />
           <Pagination
             currentOffset={0}
@@ -28,7 +28,7 @@ storiesOf('Pagination', module)
             total={20}
             perPage={3}
           />
-        </React.Fragment>
+        </>
       )}
     </AsyncLoader>
   ));

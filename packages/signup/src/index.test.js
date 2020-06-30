@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import SignupContainer, { mapDefaultValues } from '.';
-import { nextTick, changeVal } from "../../../testConfig/utils";
+import { nextTick, changeVal } from '../../../testConfig/utils';
 
 describe('<SignupContainer />', () => {
   let wrapper;
@@ -42,7 +42,7 @@ describe('<SignupContainer />', () => {
 
       // email can't be empty
       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-      form.simulate('submit', { preventDefault: () => {} });
+      form.simulate('submit', { preventDefault: () => undefined });
       await nextTick();
       wrapper.update();
       let emailError = wrapper.find('.unl-signup__error-message').at(0);
@@ -51,7 +51,7 @@ describe('<SignupContainer />', () => {
       // email must be a valid email
       emailInput.simulate('change', changeVal('email', 'bademail'));
       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-      form.simulate('submit', { preventDefault: () => {} });
+      form.simulate('submit', { preventDefault: () => undefined });
       await nextTick();
       wrapper.update();
       emailError = wrapper.find('.unl-signup__error-message').at(0);
@@ -65,7 +65,7 @@ describe('<SignupContainer />', () => {
 
       // password field can't be empty
       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-      form.simulate('submit', { preventDefault: () => {} });
+      form.simulate('submit', { preventDefault: () => undefined });
       await nextTick();
       wrapper.update();
       let passwordError = wrapper.find('.unl-signup__error-message').at(0);
@@ -74,7 +74,7 @@ describe('<SignupContainer />', () => {
       // password must be at least 8 chars
       emailInput.simulate('change', changeVal('email', 'good@email.com'));
       passwordInput.simulate('change', changeVal('password', '123'));
-      form.simulate('submit', { preventDefault: () => {} });
+      form.simulate('submit', { preventDefault: () => undefined });
       await nextTick();
       wrapper.update();
       passwordError = wrapper.find('.unl-signup__error-message').at(0);

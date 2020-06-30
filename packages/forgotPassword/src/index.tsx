@@ -90,7 +90,7 @@ export const ForgotPassword = (
               componentName="forgot-password"
             />
           ) : (
-            <React.Fragment>
+            <>
               <Field
                 type="text"
                 name="email"
@@ -98,7 +98,7 @@ export const ForgotPassword = (
                 cssModuleStyles={theme}
                 componentName="forgot-password"
               />
-            </React.Fragment>
+            </>
           )}
           <button
             type="submit"

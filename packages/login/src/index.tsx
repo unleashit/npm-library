@@ -82,7 +82,7 @@ export const Login = ({
               componentName="login"
             />
           ) : (
-            <React.Fragment>
+            <>
               <Field
                 type="text"
                 name="email"
@@ -97,7 +97,7 @@ export const Login = ({
                 cssModuleStyles={theme}
                 componentName="login"
               />
-            </React.Fragment>
+            </>
           )}
           <button
             type="submit"

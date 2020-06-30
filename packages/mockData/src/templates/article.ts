@@ -9,7 +9,7 @@ interface ArticleArgs {
 export const article: template = ({
   maxContent = 5,
   hiddenFields = [],
-}: ArticleArgs): {} =>
+}: ArticleArgs): Record<string, unknown> =>
   removeHidden(hiddenFields, {
     id: {
       chance: 'guid',

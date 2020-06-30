@@ -22,9 +22,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = store.getState();
     this.onStoreChange = this.onStoreChange.bind(this);
   }
+
+  state = store.getState();
 
   onStoreChange() {
     this.setState(store.getState());

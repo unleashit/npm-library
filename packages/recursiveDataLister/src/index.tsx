@@ -28,7 +28,7 @@ const RecursiveDataLister = ({
   }
 
   const key = (): string => Math.random().toString();
-  const renderRow = <T extends {}>(rowData: T): React.ReactElement => (
+  const renderRow = <T extends any>(rowData: T): React.ReactElement => (
     <Row
       key={key()}
       row={rowData}
@@ -46,7 +46,7 @@ const RecursiveDataLister = ({
           return renderRow<any[]>(row);
         },
       )
-    : renderRow<object>(data);
+    : renderRow<any[] | Record<string, unknown>>(data);
 };
 
 export default RecursiveDataLister;

@@ -1,4 +1,8 @@
-const saveToFile = (data: {}, path: string, fileName: string): void => {
+const saveToFile = (
+  data: Record<string, unknown>,
+  path: string,
+  fileName: string,
+): void => {
   if (typeof window !== 'undefined') {
     throw new Error('Saving a file requires a Node environment');
   }

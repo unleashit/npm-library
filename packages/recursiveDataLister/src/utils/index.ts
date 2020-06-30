@@ -3,16 +3,16 @@ const getChild = (tag: string): string => {
   return 'div';
 };
 
-const isObjectNotArray = (elem: object | any[]): boolean =>
+const isObjectNotArray = (elem: Record<string, unknown> | any[]): boolean =>
   typeof elem === 'object' && !Array.isArray(elem);
 
 // const isObjectNotNull = (elem: any): boolean =>
 //   !!elem && typeof elem === 'object' && !Array.isArray(elem);
 
-const isDate = (elem: object | any[]): boolean =>
+const isDate = (elem: Record<string, unknown> | any[]): boolean =>
   Object.prototype.toString.call(elem) === '[object Date]';
 
-const isObjectNotDate = (elem: object | any[]): boolean =>
+const isObjectNotDate = (elem: Record<string, unknown> | any[]): boolean =>
   typeof elem === 'object' && !isDate(elem);
 
 export type DateFormat = (val: Date) => string | number;

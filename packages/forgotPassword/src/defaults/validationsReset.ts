@@ -1,13 +1,8 @@
 import * as yup from 'yup';
 
-interface PasswordReset2Schema {
-  newPassword: string;
-  newPasswordConfirm: string;
-}
-
 const passwordReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-const schema: yup.Schema<PasswordReset2Schema> = yup.object().shape({
+const schema = yup.object().shape({
   newPassword: yup
     .string()
     .min(8, 'Password must have at least 8 characters')

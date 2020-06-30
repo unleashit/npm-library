@@ -81,7 +81,7 @@ export const Signup = ({
               componentName="signup"
             />
           ) : (
-            <React.Fragment>
+            <>
               <Field
                 type="text"
                 name="email"
@@ -103,7 +103,7 @@ export const Signup = ({
                 cssModuleStyles={theme}
                 componentName="signup"
               />
-            </React.Fragment>
+            </>
           )}
           <button
             type="submit"
@@ -127,10 +127,10 @@ export const Signup = ({
   );
 };
 
-export const mapDefaultValues = (
-  fields: { [key: string]: string }[],
-): { [key: string]: string } => {
-  return fields.reduce((a, b): object => {
+type AnyObjLit = { [key: string]: string };
+
+export const mapDefaultValues = (fields: AnyObjLit[]): AnyObjLit => {
+  return fields.reduce((a, b): AnyObjLit => {
     return {
       ...a,
       [b.name]: b.defaultValue || '',
@@ -139,7 +139,7 @@ export const mapDefaultValues = (
 };
 
 export default withFormik<Props, FormValues | any>({
-  mapPropsToValues: (props: any): object => {
+  mapPropsToValues: (props: any): Record<string, unknown> => {
     return props.customFields
       ? mapDefaultValues(props.customFields)
       : {

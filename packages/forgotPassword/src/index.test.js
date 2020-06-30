@@ -12,7 +12,7 @@ import ForgotPasswordContainer from '.';
 //
 // const changeVal = (name, value) => {
 //   return {
-//     persist: () => {}, // Formik calls e.persist() internally
+//     persist: () => undefined, // Formik calls e.persist() internally
 //     target: {
 //       name,
 //       value,
@@ -63,7 +63,7 @@ describe('<ForgotPasswordContainer />', () => {
   //
   //     // email can't be empty
   //     passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-  //     form.simulate('submit', { preventDefault: () => {} });
+  //     form.simulate('submit', { preventDefault: () => undefined });
   //     await nextTick();
   //     wrapper.update();
   //     let emailError = wrapper.find('.errorMessage').at(0);
@@ -72,7 +72,7 @@ describe('<ForgotPasswordContainer />', () => {
   //     // email must be a valid email
   //     emailInput.simulate('change', changeVal('email', 'bademail'));
   //     passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-  //     form.simulate('submit', { preventDefault: () => {} });
+  //     form.simulate('submit', { preventDefault: () => undefined });
   //     await nextTick();
   //     wrapper.update();
   //     emailError = wrapper.find('.errorMessage').at(0);
@@ -86,7 +86,7 @@ describe('<ForgotPasswordContainer />', () => {
   //
   //     // password field can't be empty
   //     emailInput.simulate('change', changeVal('email', 'good@email.com'));
-  //     form.simulate('submit', { preventDefault: () => {} });
+  //     form.simulate('submit', { preventDefault: () => undefined });
   //     await nextTick();
   //     wrapper.update();
   //     let passwordError = wrapper.find('.errorMessage').at(0);
@@ -95,7 +95,7 @@ describe('<ForgotPasswordContainer />', () => {
   //     // password must be at least 8 chars
   //     emailInput.simulate('change', changeVal('email', 'good@email.com'));
   //     passwordInput.simulate('change', changeVal('password', '123'));
-  //     form.simulate('submit', { preventDefault: () => {} });
+  //     form.simulate('submit', { preventDefault: () => undefined });
   //     await nextTick();
   //     wrapper.update();
   //     passwordError = wrapper.find('.errorMessage').at(0);

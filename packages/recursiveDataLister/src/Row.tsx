@@ -49,18 +49,16 @@ const Row: React.FC<RowProps> = ({
                   : ''
               }`}
             >
-              {
-                <span
-                  className={isCSSModule(
+              <span
+                className={isCSSModule(
                     theme.leafLabel,
                     `unl-r-data-lister__leaf-label`,
                   )}
-                >
-                  {isObjectNotArray(row[field]) && leafProp && row[field][leafProp]
+              >
+                {isObjectNotArray(row[field]) && leafProp && row[field][leafProp]
                     ? row[field][leafProp]
                     : field}
-                </span>
-              }
+              </span>
               <Row
                 row={row[field]}
                 parentTag={Parent}

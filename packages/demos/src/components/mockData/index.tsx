@@ -4,7 +4,7 @@ import RecursiveDataLister from '@unleashit/recursive-data-lister';
 import { AppContext } from '../../utils/context';
 import './mock-data.scss';
 
-export class PaginationDemo extends React.Component<{}> {
+export class PaginationDemo extends React.Component<Record<string, unknown>> {
   static contextType = AppContext;
 
   request1 = () => this.context.store.generateFakeUsers({ total: 3 });

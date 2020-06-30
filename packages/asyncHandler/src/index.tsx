@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { returnComponentFormat } from "@unleashit/common";
+import { returnComponentFormat } from '@unleashit/common';
 import {
   DefaultLoader,
   DefaultNoResults,
@@ -13,7 +13,7 @@ type DefaultComponent = (props: DefaultComponentProps) => React.ReactElement;
 type DefaultErrorComponent = (props: DefaultErrorComponentProps) => React.ReactElement;
 interface Props {
   request: () => Promise<any>;
-  cache: () => object | any[] | false | null;
+  cache: () => Record<string, unknown> | any[] | false | null;
   loaderComponent: DefaultComponent | React.ReactElement;
   noResultsComponent: DefaultComponent | React.ReactElement;
   errorComponent: DefaultErrorComponent | React.ReactElement;
@@ -96,8 +96,10 @@ interface HOCProps {
   cssModuleStyles?: Props['cssModuleStyles'];
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export const withAsyncHandler = (config: HOCProps): Function => (
   Component: React.FC<{ data: any }>,
+  // eslint-disable-next-line @typescript-eslint/ban-types
 ): Function => (...rest: any): React.ReactNode => (
   <AsyncHandler {...config}>
     {(data): React.ReactNode => <Component data={data} {...rest} />}

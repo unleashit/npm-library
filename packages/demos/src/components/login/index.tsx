@@ -17,7 +17,7 @@ class LoginDemo extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then((resp) => resp.json());
   }
 
   onSuccess(resp: ServerResponse) {
@@ -27,7 +27,7 @@ class LoginDemo extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid test login: test@test.com/12345678
         </p>
@@ -35,7 +35,7 @@ class LoginDemo extends Component {
           <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
           <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
         </Login>
-      </React.Fragment>
+      </>
     );
   }
 }

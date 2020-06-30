@@ -6,7 +6,12 @@ interface ImportTypes {
   [key: string]: (args?: any) => any;
 }
 
-type TemplateTypes = 'product' | 'article' | 'user' | 'order' | ((args?: {}) => any);
+type TemplateTypes =
+  | 'product'
+  | 'article'
+  | 'user'
+  | 'order'
+  | ((args?: Record<string, unknown>) => any);
 
 interface MultiTemplateTypes {
   template: TemplateTypes;

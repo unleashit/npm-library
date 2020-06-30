@@ -11,7 +11,7 @@ class ForgotPasswordDemo extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(res => res.json());
+    }).then((res) => res.json());
   }
 
   onSuccess(res: ServerResponse) {
@@ -20,7 +20,7 @@ class ForgotPasswordDemo extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Valid user: test@test.com
         </p>
@@ -29,7 +29,7 @@ class ForgotPasswordDemo extends Component {
           onSuccess={this.onSuccess}
           showDefaultConfirmation
         />
-      </React.Fragment>
+      </>
     );
   }
 }

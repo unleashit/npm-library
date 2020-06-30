@@ -23,7 +23,7 @@ class ForgotPasswordResetDemo extends React.Component {
         },
         body: JSON.stringify(values),
       },
-    ).then(resp => resp.json());
+    ).then((resp) => resp.json());
   }
 
   onSuccess(res: ServerResponseReset) {
@@ -32,7 +32,7 @@ class ForgotPasswordResetDemo extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           User ID = 1, token = 1234567890, taken from url in this example
         </p>
@@ -41,7 +41,7 @@ class ForgotPasswordResetDemo extends React.Component {
           onSuccess={this.onSuccess}
           showDefaultConfirmation
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -3,7 +3,7 @@ import mockData from '.';
 
 const fs = require('fs');
 
-const template = (): {} => ({
+const template = (): Record<string, unknown> => ({
   id: {
     chance: 'guid',
   },
@@ -134,7 +134,7 @@ describe('mockData', () => {
         setProperty: 'blarg',
       };
 
-      const template2 = (args: any): {} => ({
+      const template2 = (args: any): Record<string, unknown> => ({
         id: {
           chance: 'guid',
         },
@@ -161,7 +161,7 @@ describe('mockData', () => {
 
   describe('relations', () => {
     it('custom templates work with relations', async () => {
-      const user = (): {} => ({
+      const user = (): Record<string, unknown> => ({
         id: {
           chance: 'guid',
         },
@@ -178,7 +178,7 @@ describe('mockData', () => {
         maxPrice: 100,
       };
 
-      const product = (args: any): {} => ({
+      const product = (args: any): Record<string, unknown> => ({
         id: { chance: 'guid' },
         name: { faker: 'commerce.productName' },
         price: {
@@ -186,7 +186,7 @@ describe('mockData', () => {
         },
       });
 
-      const order: any = (): {} => ({
+      const order: any = (): Record<string, unknown> => ({
         id: {
           chance: 'guid',
         },

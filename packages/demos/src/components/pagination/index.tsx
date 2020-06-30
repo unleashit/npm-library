@@ -9,19 +9,20 @@ import '@unleashit/pagination/dist/pagination.css';
 interface State {
   offset: number;
 }
-export class PaginationDemo extends React.Component<{}, State> {
+export class PaginationDemo extends React.Component<Record<string, unknown>, State> {
   perPage: number;
 
-  constructor(props: {}) {
+  constructor(props: Record<string, unknown>) {
     super(props);
 
-    this.state = {
-      offset: 0,
-    };
     this.perPage = 3;
 
     this.paginationHandler = this.paginationHandler.bind(this);
   }
+
+  state = {
+    offset: 0,
+  };
 
   static contextType = AppContext;
 

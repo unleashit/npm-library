@@ -50,7 +50,7 @@ class Pagination extends React.Component<Props, State> {
     this.setState({ containerWidth });
   }
 
-  clickHandler(type: string, pageNumber: number = 1): void | undefined {
+  clickHandler(type: string, pageNumber = 1): void | undefined {
     const { currentOffset, total, perPage, paginationHandler } = this.props;
     let newOffset;
 

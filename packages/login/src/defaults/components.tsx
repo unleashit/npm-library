@@ -29,7 +29,7 @@ export const LoginHeader: React.FC<LoginHeaderProps> = ({
   <div className={isCSSModule(theme.header, 'unl-login__header')}>
     <h2>Login</h2>
     <p>
-      Don{"'"}t have an account yet? <a href={signupUrl}>Sign up</a>
+      Don't have an account yet? <a href={signupUrl}>Sign up</a>
     </p>
   </div>
 );

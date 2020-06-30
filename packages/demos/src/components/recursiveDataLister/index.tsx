@@ -37,7 +37,7 @@ export function RecursiveDataListerDemo(props: any) {
   const { store } = props;
   return (
     <AsyncHandler request={() => store.generateComplexJson({ total: 3 })}>
-      {data => (
+      {(data) => (
         <RecursiveDataLister
           data={data}
           displayAsList

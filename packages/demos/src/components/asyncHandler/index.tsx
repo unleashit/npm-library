@@ -26,19 +26,19 @@ let userCache: any = null;
 
 const UserList = ({ data }: { data: User[] }) => {
   return (
-    <React.Fragment>
+    <>
       {data.map((item: User) => (
         <div key={item.id}>
           {item.name} is {item.age} years old.
         </div>
       ))}
-    </React.Fragment>
+    </>
   );
 };
 
 export default withAsyncHandler({
   request: () => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         userCache = { users, cacheDate: new Date() };
         resolve(users);
@@ -60,7 +60,7 @@ export default withAsyncHandler({
 // left in to test render prop version
 export class AsyncHandlderDemo extends React.Component {
   request() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         userCache = { users, cacheDate: new Date() };
         resolve(users);
@@ -77,7 +77,7 @@ export class AsyncHandlderDemo extends React.Component {
   render() {
     return (
       <AsyncHandler request={this.request} cache={this.cache}>
-        {data => <UserList data={data} />}
+        {(data) => <UserList data={data} />}
       </AsyncHandler>
     );
   }

@@ -29,8 +29,8 @@ export const ForgotPasswordHeader: React.FC<ForgotPasswordHeaderProps> = ({
   <div className={isCSSModule(theme.header, `unl-forgot-password__header`)}>
     <h2>Forgot Password</h2>
     <p>
-      Enter the email address for your account. We{"'"}ll send an email with a link to
-      reset your password.
+      Enter the email address for your account. We'll send an email with a link to reset
+      your password.
     </p>
   </div>
 );

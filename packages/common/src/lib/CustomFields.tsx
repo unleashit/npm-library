@@ -135,7 +135,7 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
     custAttrs && 'id' in custAttrs ? custAttrs.id : `${componentName}-form-${name}`;
 
   return (
-    <React.Fragment>
+    <>
       <label htmlFor={htmlFor} className={`${theme.label} unl-${componentName}__label`}>
         {label}
       </label>
@@ -150,7 +150,7 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
           <small>{errors[name]}</small>
         </div>
       )}
-    </React.Fragment>
+    </>
   );
 }
 

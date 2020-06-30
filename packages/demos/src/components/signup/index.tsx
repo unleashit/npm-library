@@ -18,7 +18,7 @@ class SignupDemo extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(res => res.json());
+    }).then((res) => res.json());
   }
 
   onSuccess(res: ServerResponse) {
@@ -28,7 +28,7 @@ class SignupDemo extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
           Test account (already registered): test@test.com
         </p>
@@ -89,7 +89,7 @@ class SignupDemo extends Component {
             Sign up with Github
           </GithubLoginButton>
         </Signup>
-      </React.Fragment>
+      </>
     );
   }
 }

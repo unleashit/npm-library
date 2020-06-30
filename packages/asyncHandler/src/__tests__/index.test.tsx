@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import * as React from 'react';
-import { mount, shallow, ShallowWrapper } from "enzyme";
+import { mount, shallow, ShallowWrapper } from 'enzyme';
 import AsyncHandler, { withAsyncHandler } from '..';
 
 // const nextTick = () => {
@@ -13,7 +13,7 @@ import AsyncHandler, { withAsyncHandler } from '..';
 //
 // const changeVal = (name, value) => {
 //   return {
-//     persist: () => {}, // Formik calls e.persist() internally
+//     persist: () => undefined, // Formik calls e.persist() internally
 //     target: {
 //       name,
 //       value,
@@ -27,13 +27,13 @@ describe.skip('<AsyncHandler />', () => {
     beforeEach(async () => {
       const props = {
         request: () =>
-          new Promise(res => {
+          new Promise((res) => {
             res(['red', 'green', 'blue', 'yellow', 'orange', 'black', 'white']);
           }),
       };
       wrapper = await shallow(
         <AsyncHandler {...props}>
-          {data => <div className="test-class">{data.join(', ')}</div>}
+          {(data) => <div className="test-class">{data.join(', ')}</div>}
         </AsyncHandler>,
       );
     });
@@ -82,7 +82,7 @@ describe.skip('<AsyncHandler />', () => {
       const UserList = ({ data }: { data: User[] }) => {
         return (
           <ul className="user-list">
-            {data.map(item => (
+            {data.map((item) => (
               <li key={item.id}>
                 {item.name} is {item.age} years old.
               </li>
@@ -93,7 +93,7 @@ describe.skip('<AsyncHandler />', () => {
 
       const WrappedHandler = await withAsyncHandler({
         request: () => {
-          return new Promise(resolve => {
+          return new Promise((resolve) => {
             setTimeout(() => {
               // userCache = { users, cacheDate: new Date() };
               resolve(users);
@@ -106,7 +106,7 @@ describe.skip('<AsyncHandler />', () => {
         //     : null;
         // },
         loaderComponent: () => <div>Stay tuned!</div>,
-        noResultsComponent: () => <div>No user{"'"}s found.</div>,
+        noResultsComponent: () => <div>No user's found.</div>,
         errorComponent: ({ error }) => (
           <div>Oops, there was a problem: {JSON.stringify(error)}</div>
         ),
@@ -143,7 +143,7 @@ describe.skip('<AsyncHandler />', () => {
 //
 //       // email can't be empty
 //       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       let emailError = wrapper.find('.errorMessage').at(0);
@@ -152,7 +152,7 @@ describe.skip('<AsyncHandler />', () => {
 //       // email must be a valid email
 //       emailInput.simulate('change', changeVal('email', 'bademail'));
 //       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       emailError = wrapper.find('.errorMessage').at(0);
@@ -166,7 +166,7 @@ describe.skip('<AsyncHandler />', () => {
 //
 //       // password field can't be empty
 //       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       let passwordError = wrapper.find('.errorMessage').at(0);
@@ -175,7 +175,7 @@ describe.skip('<AsyncHandler />', () => {
 //       // password must be at least 8 chars
 //       emailInput.simulate('change', changeVal('email', 'good@email.com'));
 //       passwordInput.simulate('change', changeVal('password', '123'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       passwordError = wrapper.find('.errorMessage').at(0);

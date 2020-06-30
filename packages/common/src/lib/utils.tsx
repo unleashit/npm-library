@@ -1,10 +1,14 @@
-import * as React from "react";
+import * as React from 'react';
 
 const isCSSModule = (themeProp: string | undefined, fallback: string): string => {
   return themeProp || fallback;
 };
 
-const returnComponentFormat = (C: React.ReactNode | Function, attrs: object): any => {
+const returnComponentFormat = (
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  C: React.ReactNode | Function,
+  attrs: Record<string, unknown>,
+): any => {
   if (React.isValidElement(C)) {
     return C;
   }

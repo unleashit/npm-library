@@ -11,6 +11,7 @@ const Row = ({ row: { title, content, author } }) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const List = ({ data }) => {
   return data.length ? (
     <ul className="pagination__list">

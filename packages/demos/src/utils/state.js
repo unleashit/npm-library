@@ -50,7 +50,7 @@ class AppState {
   }
 
   notifySubscribers() {
-    Object.values(this.subscriptions).forEach(cb => cb());
+    Object.values(this.subscriptions).forEach((cb) => cb());
   }
 
   checkStale(key, cacheTime) {

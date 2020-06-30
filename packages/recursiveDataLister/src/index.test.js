@@ -16,7 +16,7 @@ it('fake test', () => {
 //
 // const changeVal = (name, value) => {
 //   return {
-//     persist: () => {}, // Formik calls e.persist() internally
+//     persist: () => undefined, // Formik calls e.persist() internally
 //     target: {
 //       name,
 //       value,
@@ -61,7 +61,7 @@ it('fake test', () => {
 //
 //       // email can't be empty
 //       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       let emailError = wrapper.find('.errorMessage').at(0);
@@ -70,7 +70,7 @@ it('fake test', () => {
 //       // email must be a valid email
 //       emailInput.simulate('change', changeVal('email', 'bademail'));
 //       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       emailError = wrapper.find('.errorMessage').at(0);
@@ -84,7 +84,7 @@ it('fake test', () => {
 //
 //       // password field can't be empty
 //       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       let passwordError = wrapper.find('.errorMessage').at(0);
@@ -93,7 +93,7 @@ it('fake test', () => {
 //       // password must be at least 8 chars
 //       emailInput.simulate('change', changeVal('email', 'good@email.com'));
 //       passwordInput.simulate('change', changeVal('password', '123'));
-//       form.simulate('submit', { preventDefault: () => {} });
+//       form.simulate('submit', { preventDefault: () => undefined });
 //       await nextTick();
 //       wrapper.update();
 //       passwordError = wrapper.find('.errorMessage').at(0);
