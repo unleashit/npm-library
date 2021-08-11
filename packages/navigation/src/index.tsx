@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
-import NavLinks from './NavLinks';
+import * as React from 'react';
+
 import AuthLinks from './AuthLinks';
+import NavLinks from './NavLinks';
 import { addTemplateClasses } from './utils/templateClasses';
 
 export interface Style {

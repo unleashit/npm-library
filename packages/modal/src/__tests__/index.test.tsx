@@ -1,6 +1,7 @@
+import { mount, shallow } from 'enzyme';
 import React from 'react';
-import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+
 import Modal from '../index';
 
 interface BaseProps {

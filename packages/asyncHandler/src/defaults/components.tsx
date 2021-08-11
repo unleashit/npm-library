@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
+import * as React from 'react';
 
 interface Style {
   [key: string]: string;

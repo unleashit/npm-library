@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Login, { FormValues, ServerResponse } from '@unleashit/login';
-import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
-
 import '@unleashit/login/dist/login.css';
+
+import Login, { FormValues, ServerResponse } from '@unleashit/login';
+import React, { Component } from 'react';
+import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 
 const btnStyle = {
   margin: '10px 0',

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
-import { TwitterLoginButton, GithubLoginButton } from 'react-social-login-buttons';
 // import schema from './validations';
-
 import '@unleashit/signup/dist/signup.css';
+
+import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
+import React, { Component } from 'react';
+import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 
 const btnStyle = {
   margin: '10px 0',

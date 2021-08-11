@@ -1,12 +1,13 @@
+import { CustomInput, isCSSModule } from '@unleashit/common';
+import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { Schema } from 'yup';
-import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomInput, isCSSModule } from '@unleashit/common';
+
 import {
-  ForgotPasswordLoader,
-  ForgotPasswordResetHeader,
   ForgotPasswordHeaderProps,
+  ForgotPasswordLoader,
   ForgotPasswordLoaderProps,
+  ForgotPasswordResetHeader,
   ForgotPasswordResetSuccessMessage,
 } from './defaults/components';
 import schema from './defaults/validationsReset';

@@ -1,4 +1,5 @@
 import { isCSSModule } from '@unleashit/common';
+
 import { Props, Style } from '../index';
 import { NavLinkExtraProps } from '../NavLink';
 

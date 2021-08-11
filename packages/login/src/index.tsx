@@ -1,11 +1,12 @@
+import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { Schema } from 'yup';
-import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput, isCSSModule } from '@unleashit/common';
+
 import {
-  LoginLoader,
   LoginHeader,
   LoginHeaderProps,
+  LoginLoader,
   LoginLoaderProps,
 } from './defaults/components';
 import schema from './defaults/validations';
@@ -19,8 +20,7 @@ export interface ServerResponse {
   success: boolean;
   errors?: {
     serverAuth: string; // error msg to print in browser when auth fails
-    [key: string]: string; // optionally validate anything else on server
-  };
+  } & { [key: string]: string }; // optionally validate anything else on server with key=name of field, val=error to print;
 }
 interface Props {
   loginHandler: (values: FormValues) => Promise<ServerResponse>;

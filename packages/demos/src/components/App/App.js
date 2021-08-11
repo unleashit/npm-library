@@ -1,20 +1,22 @@
+import './App.scss';
+
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from '../Home/Home';
-import Navigation from './Navigation';
-import Pagination from '../pagination';
-import Login from '../login';
-import Signup from '../signup';
-import ForgotPassword from '../forgotPassword';
-import ForgotPasswordReset from '../forgotPasswordReset';
-import AsyncHandler from '../asyncHandler';
-import RecursiveDataLister from '../recursiveDataLister';
-import NavigationDemo from '../navigation';
-import MockData from '../mockData';
-import ModalDemo from '../modal';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
-import './App.scss';
+import AsyncHandler from '../asyncHandler';
+import ForgotPassword from '../forgotPassword';
+import ForgotPasswordReset from '../forgotPasswordReset';
+import Home from '../Home/Home';
+import Login from '../login';
+import MockData from '../mockData';
+import ModalDemo from '../modal';
+import NavigationDemo from '../navigation';
+import Pagination from '../pagination';
+import RecursiveDataLister from '../recursiveDataLister';
+import Signup from '../signup';
+import Navigation from './Navigation';
 
 const store = new ApiService();
 

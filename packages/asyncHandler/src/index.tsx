@@ -1,11 +1,12 @@
-import * as React from 'react';
 import { returnComponentFormat } from '@unleashit/common';
+import * as React from 'react';
+
 import {
+  DefaultComponentProps,
+  DefaultError,
+  DefaultErrorComponentProps,
   DefaultLoader,
   DefaultNoResults,
-  DefaultError,
-  DefaultComponentProps,
-  DefaultErrorComponentProps,
 } from './defaults/components';
 import { isEmpty } from './utils';
 

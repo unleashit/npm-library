@@ -1,11 +1,12 @@
+import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { Schema } from 'yup';
-import { Field, Form, FormikProps, withFormik } from 'formik';
-import { CustomFields, CustomField, CustomInput, isCSSModule } from '@unleashit/common';
+
 import {
-  SignupLoader,
   SignupHeader,
   SignupHeaderProps,
+  SignupLoader,
   SignupLoaderProps,
 } from './defaults/components';
 import schema from './defaults/validations';

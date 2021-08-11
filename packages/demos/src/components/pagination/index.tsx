@@ -1,10 +1,12 @@
-import * as React from 'react';
-import Pagination from '@unleashit/pagination';
-import AsyncHandler from '@unleashit/async-handler';
-import List from './List';
-import { AppContext } from '../../utils/context';
 import './pagination.scss';
 import '@unleashit/pagination/dist/pagination.css';
+
+import AsyncHandler from '@unleashit/async-handler';
+import Pagination from '@unleashit/pagination';
+import * as React from 'react';
+
+import { AppContext } from '../../utils/context';
+import List from './List';
 
 interface State {
   offset: number;

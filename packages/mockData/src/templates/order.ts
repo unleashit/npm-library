@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { template, removeHidden } from './templateHelper';
+import { removeHidden, template } from './templateHelper';
 
 // TODO: currently the "items" property is repeat data
 //  since mocker-data-generator can't handle arrays of objects

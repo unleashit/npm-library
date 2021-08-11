@@ -1,6 +1,7 @@
 import mocker from 'mocker-data-generator';
-import * as tplImports from './templates';
+
 import saveToFile from './saveToFile';
+import * as tplImports from './templates';
 
 interface ImportTypes {
   [key: string]: (args?: any) => any;

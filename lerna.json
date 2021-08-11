@@ -1,10 +1,21 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "nohoist": [
+    "react-native",
+    "react-native/**",
+    "express",
+    "jsonwebtoken",
+    "pino",
+    "pino-debug",
+    "pino-pretty",
+    "express-pino-logger",
+    "@sentry/node",
+    "@types/express",
+    "@types/node"
+  ],
   "command": {
     "publish": {
       "conventionalCommits": true,

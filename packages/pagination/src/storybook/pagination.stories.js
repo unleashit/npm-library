@@ -1,17 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
-import { storiesOf } from '@storybook/react';
+import '../../dist/style.css';
+
 import { action } from '@storybook/addon-actions';
 /* eslint-disable-next-line */
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { boolean, number, text, withKnobs } from '@storybook/addon-knobs';
+import { storiesOf } from '@storybook/react';
 // import { linkTo } from '@storybook/addon-links';
-
 import mockData from '@unleashit/mock-data';
-import Pagination from '..';
-import List from './List';
-import AsyncLoader from '../../../../.storybook/AsyncLoader';
+import React from 'react';
 
-import '../../dist/style.css';
+import Pagination from '..';
+import AsyncLoader from '../../../../.storybook/AsyncLoader';
+import List from './List';
 
 const loader = async () => (await mockData({ template: 'article', total: 20 })).article;
 

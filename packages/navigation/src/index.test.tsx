@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { shallow, ShallowWrapper } from 'enzyme';
+import * as React from 'react';
+
 import NavigationContainer, { Props } from '.';
 
 describe('<Navigation />', () => {

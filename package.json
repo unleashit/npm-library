@@ -70,5 +70,12 @@
       "commit-msg": "if [ -z \"$HUSKY_BYPASS\" ]; then commitlint -E HUSKY_GIT_PARAMS; fi",
       "pre-commit": "if [ -z \"$HUSKY_BYPASS\" ]; then prettier -l 'packages/**/src/**/*.{ts,tsx,js,jsx,json}' && eslint 'packages/**/src/**/*.{ts,tsx,js,jsx,json}' && yarn run test; fi"
     }
+  },
+  "prettier": {
+    "semi":  true,
+    "trailingComma":  "all",
+    "singleQuote":  true,
+    "printWidth":  90,
+    "tabWidth":  2
   }
 }

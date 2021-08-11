@@ -1,8 +1,10 @@
-import * as React from 'react';
+import './mock-data.scss';
+
 import AsyncHandler from '@unleashit/async-handler';
 import RecursiveDataLister from '@unleashit/recursive-data-lister';
+import * as React from 'react';
+
 import { AppContext } from '../../utils/context';
-import './mock-data.scss';
 
 export class PaginationDemo extends React.Component<Record<string, unknown>> {
   static contextType = AppContext;

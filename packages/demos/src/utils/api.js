@@ -1,4 +1,5 @@
 import mockData from '@unleashit/mock-data';
+
 import AppState from './state';
 import { complexJsonTemplate } from './templates';
 

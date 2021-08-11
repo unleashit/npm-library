@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { FieldProps } from 'formik';
+import * as React from 'react';
+
 import { isCSSModule, sentenceCase } from './utils';
 
 interface CustomInputProps {

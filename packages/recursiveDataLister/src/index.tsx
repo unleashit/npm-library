@@ -1,6 +1,7 @@
 import * as React from 'react';
+
 import Row from './Row';
-import { isObjectNotArray, DateFormat } from './utils';
+import { DateFormat, isObjectNotArray } from './utils';
 
 export interface RecursiveDataListerProps {
   data: { [key: string]: any } | any[];

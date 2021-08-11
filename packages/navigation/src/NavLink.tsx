@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
+import * as React from 'react';
+
 import { Link, Style } from './index';
 import { getAuthClasses } from './utils/templateClasses';
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import AsyncHandler, { withAsyncHandler } from '@unleashit/async-handler';
-
 import '@unleashit/async-handler/dist/async-handler.css';
+
+import AsyncHandler, { withAsyncHandler } from '@unleashit/async-handler';
+import React from 'react';
 
 interface User {
   id: number;

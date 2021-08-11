@@ -1,11 +1,11 @@
-import React from 'react';
+import '@unleashit/forgot-password/dist/forgot-password.css';
+
 import {
   ForgotPasswordReset,
   FormValuesReset,
   ServerResponseReset,
 } from '@unleashit/forgot-password';
-
-import '@unleashit/forgot-password/dist/forgot-password.css';
+import React from 'react';
 
 class ForgotPasswordResetDemo extends React.Component {
   async forgotPasswordResetHandler(values: FormValuesReset) {

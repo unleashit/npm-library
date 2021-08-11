@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Modal from '@unleashit/modal';
-
 import '@unleashit/modal/dist/modal.css';
+
+import Modal from '@unleashit/modal';
+import React, { useState } from 'react';
 
 const ModalDemo = () => {
   const [modalOpen, setModalOpen] = useState(false);

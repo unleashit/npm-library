@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Navigation, { Link } from '@unleashit/navigation';
-
 import '@unleashit/navigation/dist/navigation.css';
+
+import Navigation, { Link } from '@unleashit/navigation';
+import React, { Component } from 'react';
 
 const links: Link[] = [
   {

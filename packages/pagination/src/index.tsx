@@ -1,6 +1,7 @@
-import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
 import throttle from 'lodash/throttle';
+import * as React from 'react';
+
 import { ChevronLeft, ChevronRight } from './Icons';
 
 export type PaginationHandler = (newOffset: number) => void;

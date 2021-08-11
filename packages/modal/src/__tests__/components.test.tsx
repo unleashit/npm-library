@@ -1,6 +1,7 @@
-import * as React from 'react';
 import { shallow } from 'enzyme';
-import { ModalHeader, ModalFooter } from '../defaults/components';
+import * as React from 'react';
+
+import { ModalFooter, ModalHeader } from '../defaults/components';
 
 describe('<Modal />', () => {
   let wrapper: any;

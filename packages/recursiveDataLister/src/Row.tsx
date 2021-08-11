@@ -1,12 +1,13 @@
-import * as React from 'react';
 import { isCSSModule } from '@unleashit/common';
+import * as React from 'react';
+
 import {
+  DateFormat,
   getChild,
+  handleDate,
+  isDate,
   isObjectNotArray,
   isObjectNotDate,
-  isDate,
-  handleDate,
-  DateFormat,
 } from './utils';
 
 interface RowProps {

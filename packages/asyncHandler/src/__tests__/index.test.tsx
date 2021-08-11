@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import * as React from 'react';
 import { mount, shallow, ShallowWrapper } from 'enzyme';
+import * as React from 'react';
+
 import AsyncHandler, { withAsyncHandler } from '..';
 
 // const nextTick = () => {

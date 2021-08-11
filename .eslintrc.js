@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
-  plugins: ['@typescript-eslint', 'import', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'import', 'react-hooks', 'simple-import-sort'],
   extends: [
     'airbnb',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
@@ -75,6 +75,10 @@ module.exports = {
 
     // allow any for now
     '@typescript-eslint/explicit-module-boundary-types': 0,
+
+    'simple-import-sort/sort': 'error',
+    'no-unused-expressions': ['error', { allowShortCircuit: true }],
+    'consistent-return': 0,
   },
 
   // overrides for test files

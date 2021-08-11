@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import * as React from 'react';
 /* eslint-disable-next-line import/no-extraneous-dependencies */
 import { shallow } from 'enzyme';
+import * as React from 'react';
+
 import Pagination from './index';
 
 // declare const shallow: any;

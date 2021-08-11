@@ -1,4 +1,4 @@
-import { template, removeHidden } from './templateHelper';
+import { removeHidden, template } from './templateHelper';
 
 interface UserArgs {
   dobMin?: number;

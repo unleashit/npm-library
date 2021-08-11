@@ -1,13 +1,13 @@
-import * as React from 'react';
 import {
   isCSSModule,
-  useToggleBodyStyleProp,
   returnComponentFormat,
-  useHighestZindex,
   useHandleEscapeKey,
+  useHighestZindex,
+  useToggleBodyStyleProp,
 } from '@unleashit/common';
-import { ModalHeader, ModalFooter, ModalProps } from './defaults/components';
+import * as React from 'react';
 
+import { ModalFooter, ModalHeader, ModalProps } from './defaults/components';
 import { closeIcon } from './images/icons';
 
 export interface Props {

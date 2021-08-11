@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { mount } from 'enzyme';
+import * as React from 'react';
+
+import { changeVal, nextTick } from '../../../testConfig/utils';
 import LoginContainer from '.';
-import { nextTick, changeVal } from '../../../testConfig/utils';
 
 describe('<LoginContainer />', () => {
   let wrapper;

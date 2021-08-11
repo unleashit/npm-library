@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { AppContext } from './context';
 
 const withAppContext = (Component) => () => (
