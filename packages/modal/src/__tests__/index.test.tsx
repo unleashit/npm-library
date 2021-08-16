@@ -32,6 +32,8 @@ describe('<Modal />', () => {
     expect(wrapper).toMatchSnapshot();
 
     // won't render when isOpen is omitted or set to false
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     delete props.isOpen;
     wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
     expect(wrapper.find('.unl-modal__overlay')).toHaveLength(0);

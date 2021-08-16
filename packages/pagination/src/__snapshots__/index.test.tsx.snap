@@ -54,7 +54,7 @@ exports[`<Pagination /> renders without crashing 1`] = `
     >
       next
        
-      <Component
+      <ChevronRight
         className="unl-pagination__chevron-right"
       />
     </button>
