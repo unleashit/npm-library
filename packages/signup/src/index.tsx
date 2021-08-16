@@ -1,7 +1,7 @@
 import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
-import { Schema } from 'yup';
+import { SchemaOf } from 'yup';
 
 import {
   SignupHeader,
@@ -33,7 +33,7 @@ interface Props {
   header?: React.FC<SignupHeaderProps>;
   loginUrl?: string;
   loader?: React.FC<SignupLoaderProps>;
-  schema?: Schema<any>;
+  schema?: SchemaOf<any>;
   customFields?: CustomField[];
   orLine?: boolean;
   cssModuleStyles?: { [key: string]: string };
@@ -54,103 +54,97 @@ export const Signup = ({
   orLine = true,
   cssModuleStyles: theme = {},
   children,
-}: FormikProps<FormValues> & Props): React.ReactElement => {
-  return (
-    <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
-      <Header loginUrl={loginUrl} theme={theme} />
-      {errors.serverAuth && (
-        <div
-          className={isCSSModule(theme.serverAuthError, `unl-signup__server-auth-error`)}
-        >
-          {errors.serverAuth}
-        </div>
-      )}
+}: FormikProps<FormValues> & Props): React.ReactElement => (
+  <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
+    <Header loginUrl={loginUrl} theme={theme} />
+    {errors.serverAuth && (
+      <div
+        className={isCSSModule(theme.serverAuthError, `unl-signup__server-auth-error`)}
+      >
+        {errors.serverAuth}
+      </div>
+    )}
 
-      {isSubmitting ? (
-        <Loader theme={theme} />
-      ) : (
-        <Form className={isCSSModule(theme.form, `unl-signup__form`)}>
-          {customFields ? (
-            <CustomFields
-              fields={customFields}
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
+    {isSubmitting ? (
+      <Loader theme={theme} />
+    ) : (
+      <Form className={isCSSModule(theme.form, `unl-signup__form`)}>
+        {customFields ? (
+          <CustomFields
+            fields={customFields}
+            values={values}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            cssModuleStyles={theme}
+            componentName="signup"
+          />
+        ) : (
+          <>
+            <Field
+              type="text"
+              name="email"
+              component={CustomInput}
               cssModuleStyles={theme}
               componentName="signup"
             />
-          ) : (
-            <>
-              <Field
-                type="text"
-                name="email"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="signup"
-              />
-              <Field
-                type="password"
-                name="password"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="signup"
-              />
-              <Field
-                type="password"
-                name="passwordConfirm"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="signup"
-              />
-            </>
-          )}
-          <button
-            type="submit"
-            className={isCSSModule(theme.button, `unl-signup__button`)}
-          >
-            Sign Up
-          </button>
-          {children && (
-            <div className={isCSSModule(theme.socialSignup, `unl-signup__social-signup`)}>
-              {orLine && (
-                <div className={isCSSModule(theme.orLine, `unl-signup__or-line`)}>
-                  <span>or</span>
-                </div>
-              )}
-              {children}
-            </div>
-          )}
-        </Form>
-      )}
-    </div>
-  );
-};
+            <Field
+              type="password"
+              name="password"
+              component={CustomInput}
+              cssModuleStyles={theme}
+              componentName="signup"
+            />
+            <Field
+              type="password"
+              name="passwordConfirm"
+              component={CustomInput}
+              cssModuleStyles={theme}
+              componentName="signup"
+            />
+          </>
+        )}
+        <button type="submit" className={isCSSModule(theme.button, `unl-signup__button`)}>
+          Sign Up
+        </button>
+        {children && (
+          <div className={isCSSModule(theme.socialSignup, `unl-signup__social-signup`)}>
+            {orLine && (
+              <div className={isCSSModule(theme.orLine, `unl-signup__or-line`)}>
+                <span>or</span>
+              </div>
+            )}
+            {children}
+          </div>
+        )}
+      </Form>
+    )}
+  </div>
+);
 
 type AnyObjLit = { [key: string]: string };
 
-export const mapDefaultValues = (fields: AnyObjLit[]): AnyObjLit => {
-  return fields.reduce((a, b): AnyObjLit => {
-    return {
+export const mapDefaultValues = (fields: AnyObjLit[]): AnyObjLit =>
+  fields.reduce(
+    (a, b): AnyObjLit => ({
       ...a,
       [b.name]: b.defaultValue || '',
-    };
-  }, {});
-};
+    }),
+    {},
+  );
 
 export default withFormik<Props, FormValues | any>({
-  mapPropsToValues: (props: any): Record<string, unknown> => {
-    return props.customFields
+  mapPropsToValues: (props: any): Record<string, unknown> =>
+    props.customFields
       ? mapDefaultValues(props.customFields)
       : {
           email: '',
           password: '',
           passwordConfirm: '',
           serverAuth: '',
-        };
-  },
-  validationSchema: (props: any): Schema<any> => (props.schema ? props.schema : schema),
+        },
+  validationSchema: (props: any): SchemaOf<any> => (props.schema ? props.schema : schema),
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors },

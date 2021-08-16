@@ -9,9 +9,8 @@ export interface NavLinkExtraProps {
   authLink?: 'login' | 'logout' | 'signup' | null;
 }
 
-const getUserClasses = (classes: Link['classes']): string => {
-  return classes ? classes.join(' ') : '';
-};
+const getUserClasses = (classes: Link['classes']): string =>
+  classes ? classes.join(' ') : '';
 
 const NavLink = ({
   url,

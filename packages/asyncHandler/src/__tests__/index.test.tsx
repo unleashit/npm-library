@@ -80,27 +80,24 @@ describe.skip('<AsyncHandler />', () => {
 
       // let userCache = null;
 
-      const UserList = ({ data }: { data: User[] }) => {
-        return (
-          <ul className="user-list">
-            {data.map((item) => (
-              <li key={item.id}>
-                {item.name} is {item.age} years old.
-              </li>
-            ))}
-          </ul>
-        );
-      };
+      const UserList = ({ data }: { data: User[] }) => (
+        <ul className="user-list">
+          {data.map((item) => (
+            <li key={item.id}>
+              {item.name} is {item.age} years old.
+            </li>
+          ))}
+        </ul>
+      );
 
       const WrappedHandler = await withAsyncHandler({
-        request: () => {
-          return new Promise((resolve) => {
+        request: () =>
+          new Promise((resolve) => {
             setTimeout(() => {
               // userCache = { users, cacheDate: new Date() };
               resolve(users);
             }, 200);
-          });
-        },
+          }),
         // cache: () => {
         //   return userCache && new Date() - userCache.cacheDate <= 5 * 1000
         //     ? userCache.users

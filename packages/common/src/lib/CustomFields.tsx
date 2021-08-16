@@ -34,13 +34,11 @@ type FieldProps = Omit<PassedProps, 'cssModuleStyles' | 'fields'> & {
 
 const ce = React.createElement;
 
-const getOptions = (options: string[][]): React.ReactElement[] => {
-  return options.map(
-    (option): React.ReactElement => {
-      return ce('option', { key: option[0], value: option[0] }, option[1]);
-    },
+const getOptions = (options: string[][]): React.ReactElement[] =>
+  options.map(
+    (option): React.ReactElement =>
+      ce('option', { key: option[0], value: option[0] }, option[1]),
   );
-};
 
 function Field(props: CustomField & FieldProps): JSX.Element | null {
   const {

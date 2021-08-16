@@ -35,11 +35,8 @@ interface MockDataArguments {
 
 const tpl: ImportTypes = tplImports;
 
-const processTemplate = (templateType: TemplateTypes, args: any): string => {
-  return typeof templateType === 'function'
-    ? templateType(args)
-    : tpl[templateType](args);
-};
+const processTemplate = (templateType: TemplateTypes, args: any): string =>
+  typeof templateType === 'function' ? templateType(args) : tpl[templateType](args);
 
 const mockData = async ({
   template = null,

@@ -4,7 +4,7 @@
     "src"
   ],
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "outDir": "build",
     "lib": [
       "dom",

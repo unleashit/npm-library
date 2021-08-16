@@ -1,7 +1,7 @@
 import { CustomInput, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
-import { Schema } from 'yup';
+import { SchemaOf } from 'yup';
 
 import {
   ForgotPasswordHeaderProps,
@@ -31,7 +31,7 @@ interface ForgotPasswordResetProps {
   onSuccess?: (resp: any) => any;
   header?: React.FC<ForgotPasswordHeaderProps>;
   loader?: React.FC<ForgotPasswordLoaderProps>;
-  schema?: Schema<any>;
+  schema?: SchemaOf<any>;
   showDefaultConfirmation?: boolean;
   cssModuleStyles?: { [key: string]: string };
 }
@@ -113,7 +113,7 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
     newPasswordConfirm: '',
     serverMessage: '',
   }),
-  validationSchema: (props: ForgotPasswordResetProps): Schema<any> =>
+  validationSchema: (props: ForgotPasswordResetProps): SchemaOf<any> =>
     props.schema ? props.schema : schema,
   handleSubmit: async (
     values,

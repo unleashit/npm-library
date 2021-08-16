@@ -1,12 +1,8 @@
 import { isCSSModule } from '@unleashit/common';
 import * as React from 'react';
 
-interface Style {
-  [key: string]: string;
-}
-
 export interface DefaultComponentProps {
-  cssModuleStyle?: Style;
+  cssModuleStyle?: any;
 }
 
 export interface DefaultErrorComponentProps extends DefaultComponentProps {

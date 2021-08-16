@@ -21,9 +21,9 @@ interface Props {
   cssModuleStyles?: { [key: string]: string };
 }
 interface State {
-  data: any;
-  loading: boolean;
-  error: any;
+  data?: any;
+  loading?: boolean;
+  error?: any;
 }
 
 export default class AsyncHandler extends React.Component<
@@ -98,11 +98,15 @@ interface HOCProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const withAsyncHandler = (config: HOCProps): Function => (
-  Component: React.FC<{ data: any }>,
-  // eslint-disable-next-line @typescript-eslint/ban-types
-): Function => (...rest: any): React.ReactNode => (
-  <AsyncHandler {...config}>
-    {(data): React.ReactNode => <Component data={data} {...rest} />}
-  </AsyncHandler>
-);
+export const withAsyncHandler =
+  (config: HOCProps) =>
+  (
+    Component: React.FC<{ data: any }>,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+  ): Function =>
+  (...rest: any): React.ReactNode =>
+    (
+      <AsyncHandler {...config}>
+        {(data): React.ReactNode => <Component data={data} {...rest} />}
+      </AsyncHandler>
+    );

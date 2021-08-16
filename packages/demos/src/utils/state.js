@@ -22,15 +22,16 @@ class AppState {
   mergeWithState(stateChange) {
     if (stateChange.toString() !== '[object Object]')
       throw new TypeError('Setting appState requires an object literal as an argument.');
-    const addCacheDate = Object.keys(stateChange).reduce((a, b) => {
-      return {
+    const addCacheDate = Object.keys(stateChange).reduce(
+      (a, b) => ({
         ...a,
         [b]: {
           cacheDate: new Date(),
           data: stateChange[b],
         },
-      };
-    }, {});
+      }),
+      {},
+    );
 
     this[$state] = {
       ...this[$state],

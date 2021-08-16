@@ -1,6 +1,4 @@
-export type template = (
-  args?: any,
-) => {
+export type template = (args?: any) => {
   [key: string]: any;
 };
 
@@ -9,8 +7,9 @@ export type template = (
 // } & undefined &
 //   null;
 
-export const removeHidden = (fields: string[], obj: any): Record<string, unknown> => {
-  return Object.keys(obj).reduce((a: any, key: string): Record<string, unknown> => {
-    return fields.indexOf(key) > -1 ? a : { ...a, [key]: obj[key] };
-  }, {});
-};
+export const removeHidden = (fields: string[], obj: any): Record<string, unknown> =>
+  Object.keys(obj).reduce(
+    (a: any, key: string): Record<string, unknown> =>
+      fields.indexOf(key) > -1 ? a : { ...a, [key]: obj[key] },
+    {},
+  );

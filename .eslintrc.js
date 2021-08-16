@@ -5,7 +5,7 @@ module.exports = {
     'airbnb',
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     'prettier',
-    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    // 'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
     // 'plugin:prettier/recommended',  // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   parserOptions: {
@@ -76,9 +76,22 @@ module.exports = {
     // allow any for now
     '@typescript-eslint/explicit-module-boundary-types': 0,
 
-    'simple-import-sort/sort': 'error',
+    // 'simple-import-sort/sort': 'error',
     'no-unused-expressions': ['error', { allowShortCircuit: true }],
     'consistent-return': 0,
+
+    // triggered after an eslint update.
+    // fix bug where importing React caused this error
+    'no-use-before-define': 0,
+    '@typescript-eslint/no-use-before-define': ['error'],
+
+    // triggered after an eslint update
+    // fix bug relating to double destructuring props not using prop-types anyway
+    'react/no-unused-prop-types': 0,
+
+    // triggered after an eslint update
+    // Shouldn't be needed since default function params are used instead of default props
+    'react/require-default-props': 0,
   },
 
   // overrides for test files

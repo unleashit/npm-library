@@ -1,7 +1,7 @@
 import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
-import { Schema } from 'yup';
+import { SchemaOf } from 'yup';
 
 import {
   LoginHeader,
@@ -28,7 +28,7 @@ interface Props {
   header?: React.FC<LoginHeaderProps>;
   signupUrl?: string;
   loader?: React.FC<LoginLoaderProps>;
-  schema?: Schema<any>;
+  schema?: SchemaOf<any>;
   customFields?: CustomField[];
   forgotPassword?: boolean;
   forgotPasswordLink?: string;
@@ -55,85 +55,79 @@ export const Login = ({
   orLine = true,
   cssModuleStyles: theme = {},
   children,
-}: FormikProps<FormValues> & Props): React.ReactElement => {
-  return (
-    <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
-      <Header signupUrl={signupUrl} theme={theme} />
-      {errors.serverAuth && (
-        <div
-          className={isCSSModule(theme.serverAuthError, 'unl-login__server-auth-error')}
-        >
-          {errors.serverAuth}
-        </div>
-      )}
-      {isSubmitting ? (
-        <Loader theme={theme} />
-      ) : (
-        <Form className={isCSSModule(theme.form, 'unl-login__form')}>
-          {customFields ? (
-            <CustomFields
-              fields={customFields}
-              values={values}
-              errors={errors}
-              touched={touched}
-              handleChange={handleChange}
-              handleBlur={handleBlur}
+}: FormikProps<FormValues> & Props): React.ReactElement => (
+  <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
+    <Header signupUrl={signupUrl} theme={theme} />
+    {errors.serverAuth && (
+      <div className={isCSSModule(theme.serverAuthError, 'unl-login__server-auth-error')}>
+        {errors.serverAuth}
+      </div>
+    )}
+    {isSubmitting ? (
+      <Loader theme={theme} />
+    ) : (
+      <Form className={isCSSModule(theme.form, 'unl-login__form')}>
+        {customFields ? (
+          <CustomFields
+            fields={customFields}
+            values={values}
+            errors={errors}
+            touched={touched}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            cssModuleStyles={theme}
+            componentName="login"
+          />
+        ) : (
+          <>
+            <Field
+              type="text"
+              name="email"
+              component={CustomInput}
               cssModuleStyles={theme}
               componentName="login"
             />
-          ) : (
-            <>
-              <Field
-                type="text"
-                name="email"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="login"
-              />
-              <Field
-                type="password"
-                name="password"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="login"
-              />
-            </>
-          )}
-          <button
-            type="submit"
-            className={isCSSModule(theme.button, 'unl-login__button')}
+            <Field
+              type="password"
+              name="password"
+              component={CustomInput}
+              cssModuleStyles={theme}
+              componentName="login"
+            />
+          </>
+        )}
+        <button type="submit" className={isCSSModule(theme.button, 'unl-login__button')}>
+          Login
+        </button>
+        {children && (
+          <div className={isCSSModule(theme.socialLogins, 'unl-login__social-logins')}>
+            {orLine && (
+              <div className={isCSSModule(theme.orLine, 'unl-login__or-line')}>
+                <span>or</span>
+              </div>
+            )}
+            {children}
+          </div>
+        )}
+        {forgotPassword ? (
+          <div
+            className={isCSSModule(
+              theme.forgotPasswordLink,
+              'unl-login__forgot-password-link',
+            )}
           >
-            Login
-          </button>
-          {children && (
-            <div className={isCSSModule(theme.socialLogins, 'unl-login__social-logins')}>
-              {orLine && (
-                <div className={isCSSModule(theme.orLine, 'unl-login__or-line')}>
-                  <span>or</span>
-                </div>
-              )}
-              {children}
-            </div>
-          )}
-          {forgotPassword ? (
-            <div
-              className={isCSSModule(
-                theme.forgotPasswordLink,
-                'unl-login__forgot-password-link',
-              )}
-            >
-              <a href={forgotPasswordLink}>{forgotPasswordText}</a>
-            </div>
-          ) : null}
-        </Form>
-      )}
-    </div>
-  );
-};
+            <a href={forgotPasswordLink}>{forgotPasswordText}</a>
+          </div>
+        ) : null}
+      </Form>
+    )}
+  </div>
+);
 
 export default withFormik<Props, FormValues>({
   mapPropsToValues: (): any => ({ email: '', password: '', serverAuth: '' }),
-  validationSchema: (props: Props): Schema<any> => (props.schema ? props.schema : schema),
+  validationSchema: (props: Props): SchemaOf<any> =>
+    props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors },

@@ -24,32 +24,28 @@ const users: User[] = [
 
 let userCache: any = null;
 
-const UserList = ({ data }: { data: User[] }) => {
-  return (
-    <>
-      {data.map((item: User) => (
-        <div key={item.id}>
-          {item.name} is {item.age} years old.
-        </div>
-      ))}
-    </>
-  );
-};
+const UserList = ({ data }: { data: User[] }) => (
+  <>
+    {data.map((item: User) => (
+      <div key={item.id}>
+        {item.name} is {item.age} years old.
+      </div>
+    ))}
+  </>
+);
 
 export default withAsyncHandler({
-  request: () => {
-    return new Promise((resolve) => {
+  request: () =>
+    new Promise((resolve) => {
       setTimeout(() => {
         userCache = { users, cacheDate: new Date() };
         resolve(users);
       }, 1500);
-    });
-  },
-  cache: () => {
-    return userCache && new Date().getTime() - userCache.cacheDate <= 5 * 1000
+    }),
+  cache: () =>
+    userCache && new Date().getTime() - userCache.cacheDate <= 5 * 1000
       ? userCache.users
-      : null;
-  },
+      : null,
   // loaderComponent: () => <div>Spinner is spinning...</div>,
   // noResultsComponent: () => <div>No user{"'"}s found.</div>,
   errorComponent: ({ error }) => (

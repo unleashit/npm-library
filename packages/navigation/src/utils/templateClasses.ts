@@ -3,11 +3,10 @@ import { isCSSModule } from '@unleashit/common';
 import { Props, Style } from '../index';
 import { NavLinkExtraProps } from '../NavLink';
 
-const isVertical = (dir: Props['direction'], style: Style): string => {
-  return dir === 'vert' || dir === 'vertical'
+const isVertical = (dir: Props['direction'], style: Style): string =>
+  dir === 'vert' || dir === 'vertical'
     ? ` ${isCSSModule(style.vertical, 'unl-navigation__container--vertical')}`
     : '';
-};
 
 const isTemplate = (template: Props['template'], style: Style): string => {
   let classes = '';
@@ -40,9 +39,7 @@ export const addTemplateClasses = (
   template: Props['template'],
   direction: Props['direction'],
   theme: Style,
-): string => {
-  return `${isTemplate(template, theme)}${isVertical(direction, theme)}`;
-};
+): string => `${isTemplate(template, theme)}${isVertical(direction, theme)}`;
 
 export const getAuthClasses = (
   authLink: NavLinkExtraProps['authLink'],

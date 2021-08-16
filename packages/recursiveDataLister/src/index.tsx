@@ -42,11 +42,7 @@ const RecursiveDataLister = ({
   );
 
   return displayAsList
-    ? data.map(
-        (row: any[]): React.ReactElement => {
-          return renderRow<any[]>(row);
-        },
-      )
+    ? data.map((row: any[]): React.ReactElement => renderRow<any[]>(row))
     : renderRow<any[] | Record<string, unknown>>(data);
 };
 
