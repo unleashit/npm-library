@@ -3,11 +3,14 @@
   "version": "0.16.3",
   "private": true,
   "main": "build/index.js",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "test": "jest test",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
   "dependencies": {
-    "@types/jest": "^27.0.0",
-    "@types/node": "^16.6.0",
-    "@types/react": "^17.0.17",
-    "@types/react-dom": "^17.0.9",
     "@unleashit/async-handler": "^0.6.4",
     "@unleashit/common": "^0.13.2",
     "@unleashit/forgot-password": "^0.13.4",
@@ -21,20 +24,37 @@
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3",
-    "react-social-login-buttons": "^3.5.0",
-    "typescript": "^4.3.5",
-    "yup": "^0.32.9"
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.2.1",
+    "react-social-login-buttons": "^3.6.0",
+    "typescript": "^4.5.4",
+    "yup": "^0.32.11"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "CI=true react-scripts test",
-    "test:watch": "react-scripts test --watch",
-    "test:coverage": "react-scripts test --coverage",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-router": "^5.1.17",
+    "@types/react-router-dom": "^5.3.2",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "ignore-loader": "^0.1.2",
+    "mini-css-extract-plugin": "^2.4.6",
+    "node-sass": "^7.0.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,12 +65,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "babel-loader": "8.1.0",
-    "concurrently": "^6.2.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "node-sass": "^6.0.1"
+  "browser": {
+    "fs": false
   }
 }

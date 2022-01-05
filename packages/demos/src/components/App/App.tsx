@@ -20,14 +20,16 @@ import Navigation from './Navigation';
 
 const store = new ApiService();
 
-class App extends React.Component {
-  constructor(props) {
+class App extends React.Component<any> {
+  constructor(props: any) {
     super(props);
 
     this.onStoreChange = this.onStoreChange.bind(this);
   }
 
   state = store.getState();
+
+  subscriptionId: number | undefined;
 
   onStoreChange() {
     this.setState(store.getState());
@@ -44,6 +46,7 @@ class App extends React.Component {
   render() {
     return (
       <AppContext.Provider
+        /* eslint-disable-next-line react/jsx-no-constructed-context-values */
         value={{
           globalState: this.state,
           store,

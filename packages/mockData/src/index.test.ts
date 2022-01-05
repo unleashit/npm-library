@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import mockData from '.';
 
@@ -104,7 +108,7 @@ describe('mockData', () => {
     try {
       await mockData({});
     } catch (err) {
-      expect(err.message).toEqual(
+      expect(err instanceof Error && err.message).toEqual(
         'You must provide either a template or templates argument',
       );
     }
@@ -237,7 +241,6 @@ describe('mockData', () => {
           },
         ],
         name: 'testData',
-        path: __dirname,
       });
 
       expect('user' in data && 'product' in data && 'order' in data).toBe(true);

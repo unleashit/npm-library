@@ -24,15 +24,17 @@ const users: User[] = [
 
 let userCache: any = null;
 
-const UserList = ({ data }: { data: User[] }) => (
-  <>
-    {data.map((item: User) => (
-      <div key={item.id}>
-        {item.name} is {item.age} years old.
-      </div>
-    ))}
-  </>
-);
+function UserList({ data }: { data: User[] }) {
+  return (
+    <>
+      {data.map((item: User) => (
+        <div key={item.id}>
+          {item.name} is {item.age} years old.
+        </div>
+      ))}
+    </>
+  );
+}
 
 export default withAsyncHandler({
   request: () =>
@@ -54,7 +56,7 @@ export default withAsyncHandler({
 })(UserList);
 
 // left in to test render prop version
-export class AsyncHandlderDemo extends React.Component {
+export class AsyncHandlerDemo extends React.Component {
   request() {
     return new Promise((resolve) => {
       setTimeout(() => {

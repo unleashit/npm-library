@@ -1,12 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoginContainer /> renders without crashing 1`] = `
-<WithFormik(Function)
+<WithFormik(Login)
   loginHandler={[Function]}
   onSuccess={[Function]}
 >
   <Formik
-    enableReinitialize={false}
     handleSubmit={[Function]}
     initialValues={
       Object {
@@ -15,22 +14,23 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
         "serverAuth": "",
       }
     }
-    isInitialValid={false}
     loginHandler={[Function]}
     onSubmit={[Function]}
     onSuccess={[Function]}
-    render={[Function]}
-    validateOnBlur={true}
-    validateOnChange={true}
     validationSchema={[Function]}
   >
-    <Component
+    <Login
       dirty={false}
       errors={Object {}}
+      getFieldHelpers={[Function]}
+      getFieldMeta={[Function]}
+      getFieldProps={[Function]}
       handleBlur={[Function]}
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
+      initialErrors={Object {}}
+      initialTouched={Object {}}
       initialValues={
         Object {
           "email": "",
@@ -39,13 +39,12 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
         }
       }
       isSubmitting={false}
-      isValid={false}
+      isValid={true}
       isValidating={false}
       loginHandler={[Function]}
       onSuccess={[Function]}
       registerField={[Function]}
       resetForm={[Function]}
-      setError={[Function]}
       setErrors={[Function]}
       setFieldError={[Function]}
       setFieldTouched={[Function]}
@@ -63,6 +62,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       validateForm={[Function]}
       validateOnBlur={true}
       validateOnChange={true}
+      validateOnMount={false}
       values={
         Object {
           "email": "",
@@ -74,7 +74,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       <div
         className="unl-login__container"
       >
-        <Component
+        <LoginHeader
           signupUrl="/signup"
           theme={Object {}}
         >
@@ -93,362 +93,217 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
               </a>
             </p>
           </div>
-        </Component>
+        </LoginHeader>
         <Form
           className="unl-login__form"
         >
-          <Component
+          <form
+            action="#"
             className="unl-login__form"
-            formik={
-              Object {
-                "dirty": false,
-                "errors": Object {},
-                "handleBlur": [Function],
-                "handleChange": [Function],
-                "handleReset": [Function],
-                "handleSubmit": [Function],
-                "initialValues": Object {
-                  "email": "",
-                  "password": "",
-                  "serverAuth": "",
-                },
-                "isSubmitting": false,
-                "isValid": false,
-                "isValidating": false,
-                "registerField": [Function],
-                "resetForm": [Function],
-                "setError": [Function],
-                "setErrors": [Function],
-                "setFieldError": [Function],
-                "setFieldTouched": [Function],
-                "setFieldValue": [Function],
-                "setFormikState": [Function],
-                "setStatus": [Function],
-                "setSubmitting": [Function],
-                "setTouched": [Function],
-                "setValues": [Function],
-                "status": undefined,
-                "submitCount": 0,
-                "submitForm": [Function],
-                "touched": Object {},
-                "unregisterField": [Function],
-                "validate": undefined,
-                "validateField": [Function],
-                "validateForm": [Function],
-                "validateOnBlur": true,
-                "validateOnChange": true,
-                "validationSchema": [Function],
-                "values": Object {
-                  "email": "",
-                  "password": "",
-                  "serverAuth": "",
-                },
-              }
-            }
+            onReset={[Function]}
+            onSubmit={[Function]}
           >
-            <form
-              className="unl-login__form"
-              onReset={[Function]}
-              onSubmit={[Function]}
+            <Field
+              component={[Function]}
+              componentName="login"
+              cssModuleStyles={Object {}}
+              name="email"
+              type="text"
             >
-              <FormikConnect(FieldInner)
-                component={[Function]}
+              <CustomInput
                 componentName="login"
                 cssModuleStyles={Object {}}
-                name="email"
+                field={
+                  Object {
+                    "name": "email",
+                    "onBlur": [Function],
+                    "onChange": [Function],
+                    "value": "",
+                  }
+                }
+                form={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "email": "",
+                      "password": "",
+                      "serverAuth": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "email": "",
+                      "password": "",
+                      "serverAuth": "",
+                    },
+                  }
+                }
                 type="text"
               >
-                <FieldInner
-                  component={[Function]}
-                  componentName="login"
-                  cssModuleStyles={Object {}}
-                  formik={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialValues": Object {
-                        "email": "",
-                        "password": "",
-                        "serverAuth": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": false,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setError": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validate": undefined,
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validationSchema": [Function],
-                      "values": Object {
-                        "email": "",
-                        "password": "",
-                        "serverAuth": "",
-                      },
-                    }
-                  }
-                  name="email"
-                  type="text"
+                <div
+                  className="unl-login__form-group"
                 >
-                  <CustomInput
-                    componentName="login"
-                    cssModuleStyles={Object {}}
-                    field={
-                      Object {
-                        "name": "email",
-                        "onBlur": [Function],
-                        "onChange": [Function],
-                        "value": "",
-                      }
-                    }
-                    form={
-                      Object {
-                        "dirty": false,
-                        "errors": Object {},
-                        "handleBlur": [Function],
-                        "handleChange": [Function],
-                        "handleReset": [Function],
-                        "handleSubmit": [Function],
-                        "initialValues": Object {
-                          "email": "",
-                          "password": "",
-                          "serverAuth": "",
-                        },
-                        "isSubmitting": false,
-                        "isValid": false,
-                        "isValidating": false,
-                        "registerField": [Function],
-                        "resetForm": [Function],
-                        "setError": [Function],
-                        "setErrors": [Function],
-                        "setFieldError": [Function],
-                        "setFieldTouched": [Function],
-                        "setFieldValue": [Function],
-                        "setFormikState": [Function],
-                        "setStatus": [Function],
-                        "setSubmitting": [Function],
-                        "setTouched": [Function],
-                        "setValues": [Function],
-                        "status": undefined,
-                        "submitCount": 0,
-                        "submitForm": [Function],
-                        "touched": Object {},
-                        "unregisterField": [Function],
-                        "validateField": [Function],
-                        "validateForm": [Function],
-                        "validateOnBlur": true,
-                        "validateOnChange": true,
-                        "values": Object {
-                          "email": "",
-                          "password": "",
-                          "serverAuth": "",
-                        },
-                      }
-                    }
-                    type="text"
+                  <label
+                    className="unl-login__label"
+                    htmlFor="login-form-email"
                   >
-                    <div
-                      className="unl-login__form-group"
-                    >
-                      <label
-                        className="unl-login__label"
-                        htmlFor="login-form-email"
-                      >
-                        Email
-                      </label>
-                      <input
-                        className="unl-login__input "
-                        id="login-form-email"
-                        name="email"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </CustomInput>
-                </FieldInner>
-              </FormikConnect(FieldInner)>
-              <FormikConnect(FieldInner)
-                component={[Function]}
+                    Email
+                  </label>
+                  <input
+                    className="unl-login__input "
+                    id="login-form-email"
+                    name="email"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </CustomInput>
+            </Field>
+            <Field
+              component={[Function]}
+              componentName="login"
+              cssModuleStyles={Object {}}
+              name="password"
+              type="password"
+            >
+              <CustomInput
                 componentName="login"
                 cssModuleStyles={Object {}}
-                name="password"
+                field={
+                  Object {
+                    "name": "password",
+                    "onBlur": [Function],
+                    "onChange": [Function],
+                    "value": "",
+                  }
+                }
+                form={
+                  Object {
+                    "dirty": false,
+                    "errors": Object {},
+                    "getFieldHelpers": [Function],
+                    "getFieldMeta": [Function],
+                    "getFieldProps": [Function],
+                    "handleBlur": [Function],
+                    "handleChange": [Function],
+                    "handleReset": [Function],
+                    "handleSubmit": [Function],
+                    "initialErrors": Object {},
+                    "initialStatus": undefined,
+                    "initialTouched": Object {},
+                    "initialValues": Object {
+                      "email": "",
+                      "password": "",
+                      "serverAuth": "",
+                    },
+                    "isSubmitting": false,
+                    "isValid": true,
+                    "isValidating": false,
+                    "registerField": [Function],
+                    "resetForm": [Function],
+                    "setErrors": [Function],
+                    "setFieldError": [Function],
+                    "setFieldTouched": [Function],
+                    "setFieldValue": [Function],
+                    "setFormikState": [Function],
+                    "setStatus": [Function],
+                    "setSubmitting": [Function],
+                    "setTouched": [Function],
+                    "setValues": [Function],
+                    "status": undefined,
+                    "submitCount": 0,
+                    "submitForm": [Function],
+                    "touched": Object {},
+                    "unregisterField": [Function],
+                    "validateField": [Function],
+                    "validateForm": [Function],
+                    "validateOnBlur": true,
+                    "validateOnChange": true,
+                    "validateOnMount": false,
+                    "values": Object {
+                      "email": "",
+                      "password": "",
+                      "serverAuth": "",
+                    },
+                  }
+                }
                 type="password"
               >
-                <FieldInner
-                  component={[Function]}
-                  componentName="login"
-                  cssModuleStyles={Object {}}
-                  formik={
-                    Object {
-                      "dirty": false,
-                      "errors": Object {},
-                      "handleBlur": [Function],
-                      "handleChange": [Function],
-                      "handleReset": [Function],
-                      "handleSubmit": [Function],
-                      "initialValues": Object {
-                        "email": "",
-                        "password": "",
-                        "serverAuth": "",
-                      },
-                      "isSubmitting": false,
-                      "isValid": false,
-                      "isValidating": false,
-                      "registerField": [Function],
-                      "resetForm": [Function],
-                      "setError": [Function],
-                      "setErrors": [Function],
-                      "setFieldError": [Function],
-                      "setFieldTouched": [Function],
-                      "setFieldValue": [Function],
-                      "setFormikState": [Function],
-                      "setStatus": [Function],
-                      "setSubmitting": [Function],
-                      "setTouched": [Function],
-                      "setValues": [Function],
-                      "status": undefined,
-                      "submitCount": 0,
-                      "submitForm": [Function],
-                      "touched": Object {},
-                      "unregisterField": [Function],
-                      "validate": undefined,
-                      "validateField": [Function],
-                      "validateForm": [Function],
-                      "validateOnBlur": true,
-                      "validateOnChange": true,
-                      "validationSchema": [Function],
-                      "values": Object {
-                        "email": "",
-                        "password": "",
-                        "serverAuth": "",
-                      },
-                    }
-                  }
-                  name="password"
-                  type="password"
+                <div
+                  className="unl-login__form-group"
                 >
-                  <CustomInput
-                    componentName="login"
-                    cssModuleStyles={Object {}}
-                    field={
-                      Object {
-                        "name": "password",
-                        "onBlur": [Function],
-                        "onChange": [Function],
-                        "value": "",
-                      }
-                    }
-                    form={
-                      Object {
-                        "dirty": false,
-                        "errors": Object {},
-                        "handleBlur": [Function],
-                        "handleChange": [Function],
-                        "handleReset": [Function],
-                        "handleSubmit": [Function],
-                        "initialValues": Object {
-                          "email": "",
-                          "password": "",
-                          "serverAuth": "",
-                        },
-                        "isSubmitting": false,
-                        "isValid": false,
-                        "isValidating": false,
-                        "registerField": [Function],
-                        "resetForm": [Function],
-                        "setError": [Function],
-                        "setErrors": [Function],
-                        "setFieldError": [Function],
-                        "setFieldTouched": [Function],
-                        "setFieldValue": [Function],
-                        "setFormikState": [Function],
-                        "setStatus": [Function],
-                        "setSubmitting": [Function],
-                        "setTouched": [Function],
-                        "setValues": [Function],
-                        "status": undefined,
-                        "submitCount": 0,
-                        "submitForm": [Function],
-                        "touched": Object {},
-                        "unregisterField": [Function],
-                        "validateField": [Function],
-                        "validateForm": [Function],
-                        "validateOnBlur": true,
-                        "validateOnChange": true,
-                        "values": Object {
-                          "email": "",
-                          "password": "",
-                          "serverAuth": "",
-                        },
-                      }
-                    }
-                    type="password"
+                  <label
+                    className="unl-login__label"
+                    htmlFor="login-form-password"
                   >
-                    <div
-                      className="unl-login__form-group"
-                    >
-                      <label
-                        className="unl-login__label"
-                        htmlFor="login-form-password"
-                      >
-                        Password
-                      </label>
-                      <input
-                        className="unl-login__input "
-                        id="login-form-password"
-                        name="password"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        type="password"
-                        value=""
-                      />
-                    </div>
-                  </CustomInput>
-                </FieldInner>
-              </FormikConnect(FieldInner)>
-              <button
-                className="unl-login__button"
-                type="submit"
+                    Password
+                  </label>
+                  <input
+                    className="unl-login__input "
+                    id="login-form-password"
+                    name="password"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    type="password"
+                    value=""
+                  />
+                </div>
+              </CustomInput>
+            </Field>
+            <button
+              className="unl-login__button"
+              type="submit"
+            >
+              Login
+            </button>
+            <div
+              className="unl-login__forgot-password-link"
+            >
+              <a
+                href="/forgot-password"
               >
-                Login
-              </button>
-              <div
-                className="unl-login__forgot-password-link"
-              >
-                <a
-                  href="/forgot-password"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </form>
-          </Component>
+                Forgot your password?
+              </a>
+            </div>
+          </form>
         </Form>
       </div>
-    </Component>
+    </Login>
   </Formik>
-</WithFormik(Function)>
+</WithFormik(Login)>
 `;
