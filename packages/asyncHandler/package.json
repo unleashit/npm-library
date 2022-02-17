@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/async-handler",
-  "version": "0.6.6",
+  "version": "0.6.7",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Simple HOC that handles loading, error and no result states of data fetching.",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@types/cheerio": "^0.22.31",
-    "@unleashit/common": "^0.13.4"
+    "@unleashit/common": "^0.13.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.3",
