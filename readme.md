@@ -1,7 +1,6 @@
 ## NPM and UI Component Library
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/unleashit/npm-library.svg)](https://gitlab.com/unleashit/npm-library/pipelines)
 
 Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Written with Typescript and tested with Jest.
 
