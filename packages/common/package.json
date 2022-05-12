@@ -33,6 +33,7 @@
     "react": ">=17.0.2",
     "yup": ">=0.32.9"
   },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
@@ -70,8 +71,5 @@
     "typescript": "4.6.4",
     "yup": "^0.32.11"
   },
-  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c",
-  "dependencies": {
-    "@types/cheerio": "^0.22.31"
-  }
+  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

@@ -50,7 +50,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@types/cheerio": "^0.22.31",
     "mocker-data-generator": "^2.12.0"
   },
   "devDependencies": {

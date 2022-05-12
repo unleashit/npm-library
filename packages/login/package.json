@@ -52,7 +52,6 @@
     "yup": ">=0.32.9"
   },
   "dependencies": {
-    "@types/cheerio": "^0.22.31",
     "@unleashit/common": "^0.13.6"
   },
   "devDependencies": {

@@ -12,7 +12,7 @@ module.exports = (_env, { mode }) => {
 
   return {
     devtool: 'source-map',
-    entry: `./src/index.js`,
+    entry: `./src/index.tsx`,
     output: {
       publicPath: '/',
     },
