@@ -9,7 +9,7 @@ import { storiesOf } from '@storybook/react';
 import mockData from '@unleashit/mock-data';
 import React from 'react';
 
-import AsyncLoader from "npm-library/.storybook/AsyncLoader";
+import AsyncLoader from 'npm-library/.storybook/AsyncLoader';
 import Pagination from '..';
 import List from './List';
 

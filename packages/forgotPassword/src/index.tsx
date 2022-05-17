@@ -92,12 +92,12 @@ export const ForgotPassword = (
             />
           ) : (
             <Field
-                type="text"
-                name="email"
-                component={CustomInput}
-                cssModuleStyles={theme}
-                componentName="forgot-password"
-              />
+              type="text"
+              name="email"
+              component={CustomInput}
+              cssModuleStyles={theme}
+              componentName="forgot-password"
+            />
           )}
           <button
             type="submit"
