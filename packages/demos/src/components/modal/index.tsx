@@ -10,12 +10,7 @@ const ModalDemo = () => {
     setModalOpen(!modalOpen);
   };
 
-  const btnStyle = {
-    padding: '14px 34px',
-    border: 0,
-    backgroundColor: '#f2f2f2',
-    cursor: 'pointer',
-  };
+  const ModalFooter = React.memo(() => <footer>Important! Please Read!</footer>);
 
   return (
     <>
@@ -43,7 +38,7 @@ const ModalDemo = () => {
         isOpen={modalOpen}
         onClose={toggleModal}
         header="Important Message"
-        footer={() => <footer>Important! Please Read!</footer>}
+        footer={ModalFooter}
         overlayColor="rgba(0,0,0,.8)"
       >
         <p>
@@ -52,7 +47,7 @@ const ModalDemo = () => {
           voluptate vitae quis? Pariatur ad fuga fugiat.
         </p>
         <div>
-          <button type="button" style={btnStyle} onClick={toggleModal}>
+          <button type="button" onClick={toggleModal}>
             OK
           </button>
         </div>

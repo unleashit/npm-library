@@ -80,20 +80,30 @@ module.exports = {
     'no-unused-expressions': ['error', { allowShortCircuit: true }],
     'consistent-return': 0,
 
-    // triggered after an eslint update.
+    // rule introduced after an eslint update.
     // fix bug where importing React caused this error
     'no-use-before-define': 0,
     '@typescript-eslint/no-use-before-define': ['error'],
 
-    // triggered after an eslint update
+    // rule introduced after an eslint update
     // fix bug relating to double destructuring props not using prop-types anyway
     'react/no-unused-prop-types': 0,
 
-    // triggered after an eslint update
+    // rule introduced after an eslint update
     // Shouldn't be needed since default function params are used instead of default props
     'react/require-default-props': 0,
-  },
 
+    // rule introduced after airbnb update
+    'react/function-component-definition': 0,
+
+    // rule introduced after update
+    // allow in tests
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.*'] }],
+
+    // rule introduced after update
+    // requires proptypes so doesn't make sense in a typescript project
+    'react/default-props-match-prop-types': 0,
+  },
   // overrides for test files
   // overrides: [
   //   {

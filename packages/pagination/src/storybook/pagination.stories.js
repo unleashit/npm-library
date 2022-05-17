@@ -9,8 +9,8 @@ import { storiesOf } from '@storybook/react';
 import mockData from '@unleashit/mock-data';
 import React from 'react';
 
+import AsyncLoader from "npm-library/.storybook/AsyncLoader";
 import Pagination from '..';
-import AsyncLoader from '../../../../.storybook/AsyncLoader';
 import List from './List';
 
 const loader = async () => (await mockData({ template: 'article', total: 20 })).article;

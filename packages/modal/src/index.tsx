@@ -22,7 +22,6 @@ export interface Props {
   overlayColor?: string;
   closeBtn?: boolean;
   cssModuleStyles?: { [key: string]: string };
-  children?: React.ReactNode;
 }
 
 export const Modal = ({
@@ -38,7 +37,7 @@ export const Modal = ({
   overlayColor,
   cssModuleStyles: theme = {},
   children,
-}: Props): React.ReactElement => {
+}: React.PropsWithChildren<Props>) => {
   const [isHidden, setIsHidden] = React.useState(!isOpen);
   const [isAnimated, setIsAnimated] = React.useState(isOpen);
   const timeoutRef = React.useRef<number>();
@@ -101,53 +100,49 @@ export const Modal = ({
     return returnComponentFormat(C, { theme });
   };
 
-  return (
-    <>
-      {!isHidden && (
-        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
-        <div
-          onClick={handleOverlayClick}
-          data-modal="true"
-          className={isCSSModule(theme.overlay, 'unl-modal__overlay')}
-          style={{ backgroundColor: overlayColor, zIndex: modalZindex }}
-        >
-          <div
-            className={`${isCSSModule(theme.child, `unl-modal__child`)} ${isCSSModule(
-              theme[`child--${size}`],
-              `unl-modal__child--${size}`,
-            )} ${
-              animationSupport && isAnimated
-                ? `${isCSSModule(theme[`child--in`], 'unl-modal__child--in')}`
-                : ''
-            }`}
-          >
-            {closeBtn && (
-              <div className={isCSSModule(theme.close, 'unl-modal__close')}>
-                <button
-                  onClick={onClose}
-                  type="button"
-                  className={isCSSModule(theme.closeBtn, 'unl-modal__close-btn')}
-                >
-                  {closeIcon}
-                </button>
-              </div>
-            )}
-            {Header && (
-              <div className={isCSSModule(theme.header, 'unl-modal__header')}>
-                {userComponent(Header, ModalHeader)}
-              </div>
-            )}
-            <div className={isCSSModule(theme.body, 'unl-modal__body')}>{children}</div>
-            {Footer && (
-              <div className={isCSSModule(theme.footer, 'unl-modal__footer')}>
-                {userComponent(Footer, ModalFooter)}
-              </div>
-            )}
+  return !isHidden ? (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+    <div
+      onClick={handleOverlayClick}
+      data-modal="true"
+      className={isCSSModule(theme.overlay, 'unl-modal__overlay')}
+      style={{ backgroundColor: overlayColor, zIndex: modalZindex }}
+    >
+      <div
+        className={`${isCSSModule(theme.child, `unl-modal__child`)} ${isCSSModule(
+          theme[`child--${size}`],
+          `unl-modal__child--${size}`,
+        )} ${
+          animationSupport && isAnimated
+            ? `${isCSSModule(theme[`child--in`], 'unl-modal__child--in')}`
+            : ''
+        }`}
+      >
+        {closeBtn && (
+          <div className={isCSSModule(theme.close, 'unl-modal__close')}>
+            <button
+              onClick={onClose}
+              type="button"
+              className={isCSSModule(theme.closeBtn, 'unl-modal__close-btn')}
+            >
+              {closeIcon}
+            </button>
           </div>
-        </div>
-      )}
-    </>
-  );
+        )}
+        {Header && (
+          <div className={isCSSModule(theme.header, 'unl-modal__header')}>
+            {userComponent(Header, ModalHeader)}
+          </div>
+        )}
+        <div className={isCSSModule(theme.body, 'unl-modal__body')}>{children}</div>
+        {Footer && (
+          <div className={isCSSModule(theme.footer, 'unl-modal__footer')}>
+            {userComponent(Footer, ModalFooter)}
+          </div>
+        )}
+      </div>
+    </div>
+  ) : null;
 };
 
 export default Modal;

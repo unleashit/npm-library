@@ -91,15 +91,13 @@ export const ForgotPassword = (
               componentName="forgot-password"
             />
           ) : (
-            <>
-              <Field
+            <Field
                 type="text"
                 name="email"
                 component={CustomInput}
                 cssModuleStyles={theme}
                 componentName="forgot-password"
               />
-            </>
           )}
           <button
             type="submit"

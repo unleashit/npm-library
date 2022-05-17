@@ -26,7 +26,7 @@ export interface ServerResponse {
   };
 }
 
-interface Props {
+export interface Props {
   signupHandler: (values: FormValues) => Promise<ServerResponse>;
   onSuccess: (resp: ServerResponse) => any;
   layout?: string;
@@ -37,7 +37,6 @@ interface Props {
   customFields?: CustomField[];
   orLine?: boolean;
   cssModuleStyles?: { [key: string]: string };
-  children?: React.ReactNode;
 }
 
 export const Signup = ({
@@ -54,7 +53,7 @@ export const Signup = ({
   orLine = true,
   cssModuleStyles: theme = {},
   children,
-}: FormikProps<FormValues> & Props): React.ReactElement => (
+}: FormikProps<FormValues> & React.PropsWithChildren<Props>): React.ReactElement => (
   <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
     <Header loginUrl={loginUrl} theme={theme} />
     {errors.serverAuth && (

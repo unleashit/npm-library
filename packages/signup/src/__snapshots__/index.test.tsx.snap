@@ -2,8 +2,8 @@
 
 exports[`<SignupContainer /> renders without crashing 1`] = `
 <WithFormik(Signup)
-  loginHandler={[Function]}
   onSuccess={[Function]}
+  signupHandler={[Function]}
 >
   <Formik
     handleSubmit={[Function]}
@@ -15,9 +15,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
         "serverAuth": "",
       }
     }
-    loginHandler={[Function]}
     onSubmit={[Function]}
     onSuccess={[Function]}
+    signupHandler={[Function]}
     validationSchema={[Function]}
   >
     <Signup
@@ -43,7 +43,6 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       isSubmitting={false}
       isValid={true}
       isValidating={false}
-      loginHandler={[Function]}
       onSuccess={[Function]}
       registerField={[Function]}
       resetForm={[Function]}
@@ -56,6 +55,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       setSubmitting={[Function]}
       setTouched={[Function]}
       setValues={[Function]}
+      signupHandler={[Function]}
       submitCount={0}
       submitForm={[Function]}
       touched={Object {}}

@@ -8,6 +8,26 @@ import { addTemplateClasses } from './utils/templateClasses';
 export interface Style {
   [key: string]: any;
 }
+
+// type LinkProps = HTMLAnchorElement;
+
+// type CommonLinkProps = {
+//   active?: boolean;
+//   classes?: string[];
+//   style?: React.CSSProperties;
+//   icon?: string;
+//   iconPosition?: 'left' | 'right';
+//   display?: boolean;
+//   attrs?: React.AllHTMLAttributes<any>;
+// }
+//
+// export type Link<T = LinkProps> = {
+//   url: string;
+//   text: string;
+// } & CommonLinkProps | {
+//   component: React.FC<T> | React.ReactElement<T>;
+// } & CommonLinkProps;
+
 export interface Link {
   url: string;
   text: string;
