@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.16.7...@unleashit/demos@0.17.0) (2022-05-20)
+
+
+### Features
+
+* **navigation:** add router (including React Router) support ([3c62820](https://github.com/unleashit/npm-library/commit/3c62820eed3e8d0b7f837f933d0502bc3ab30ac3))
+
+
+
+
+
 ## [0.16.7](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.16.6...@unleashit/demos@0.16.7) (2022-05-04)
 
 **Note:** Version bump only for package @unleashit/demos

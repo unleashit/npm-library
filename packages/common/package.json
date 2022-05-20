@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/common",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Shared library for @unleashit components. Probabaly not otherwise useful.",
@@ -33,7 +33,6 @@
     "react": ">=17.0.2",
     "yup": ">=0.32.9"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.12",
