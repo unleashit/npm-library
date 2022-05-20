@@ -1,26 +1,26 @@
-import '@unleashit/navigation/dist/navigation.css';
+import Navigation, { NavigationLink } from '@unleashit/navigation';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styles from './style.module.scss';
 
-import Navigation, { Link } from '@unleashit/navigation';
-import React, { Component } from 'react';
-
-const links: Link[] = [
+const links: NavigationLink[] = [
   {
-    text: 'Home',
-    url: '/home',
+    title: 'Home',
+    href: '/home',
     icon: 'https://img.icons8.com/material/420/home-page.png',
     iconPosition: 'right',
   },
   {
-    text: 'Products',
-    url: '/products',
+    title: 'Products',
+    href: '/products',
   },
   {
-    text: 'Services',
-    url: '/services',
+    title: 'Services',
+    href: '/services',
   },
   {
-    text: 'About',
-    url: '/about',
+    title: 'About',
+    href: '/about',
     attrs: {
       target: '_blank',
       rel: 'noopener noreferrer',
@@ -28,18 +28,35 @@ const links: Link[] = [
   },
 ];
 
-class NavigationDemo extends Component {
-  render() {
-    return (
-      <div>
-        <Navigation
-          links={links}
-          // setting the isAuth prop enables default login/logout/signup btns
-          isAuth
-        />
-      </div>
-    );
-  }
-}
+const NavigationDemo = () => (
+  <div className={styles.navbar}>
+    <p>With auth sidecar (logged in) and default template</p>
+    <Navigation
+      linkComponent={Link}
+      linkComponentHrefAttr="to"
+      links={links}
+      isAuth // setting the isAuth prop enables default login/logout/signup btns
+    />
+    <p>With auth sidecar (logged out) and dark-buttons template</p>
+    <Navigation
+      linkComponent={Link}
+      linkComponentHrefAttr="to"
+      links={links}
+      isAuth={false}
+      template="dark-buttons"
+    />
+    <p>Dark-buttons template, no auth sidecar </p>
+    <Navigation links={links} template="light-buttons" />
+    <p>Vertical with dark-buttons template and auth sidecar</p>
+    <Navigation
+      linkComponent={Link}
+      linkComponentHrefAttr="to"
+      links={links}
+      isAuth={false}
+      template="dark-buttons"
+      direction="vert"
+    />
+  </div>
+);
 
 export default NavigationDemo;

@@ -1,35 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Navigation /> renders without crashing 1`] = `
-<nav
-  className="unl-navigation__container unl-navigation__container--clean"
->
-  <NavLinks
-    links={
-      Array [
-        Object {
-          "text": "Home",
-          "url": "/home",
-        },
-        Object {
-          "text": "Products",
-          "url": "/products",
-        },
-        Object {
-          "text": "Services",
-          "url": "/services",
-        },
-        Object {
-          "attrs": Object {
-            "rel": "noopener noreferrer",
-            "target": "_blank",
-          },
-          "text": "About",
-          "url": "/about",
-        },
-      ]
+<ContextProvider
+  value={
+    Object {
+      "cssModule": Object {},
+      "linkComponent": [Function],
+      "linkComponentHrefAttr": "href",
     }
-    theme={Object {}}
-  />
-</nav>
+  }
+>
+  <nav
+    className="unl-navigation__container unl-navigation__container--clean"
+  >
+    <NavLinks
+      cssModule={Object {}}
+      links={
+        Array [
+          Object {
+            "href": "/home",
+            "title": "Home",
+          },
+          Object {
+            "href": "/products",
+            "title": "Products",
+          },
+          Object {
+            "href": "/services",
+            "title": "Services",
+          },
+          Object {
+            "attrs": Object {
+              "rel": "noopener noreferrer",
+              "target": "_blank",
+            },
+            "href": "/about",
+            "title": "About",
+          },
+        ]
+      }
+    />
+  </nav>
+</ContextProvider>
 `;

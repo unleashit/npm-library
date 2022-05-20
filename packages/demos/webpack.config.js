@@ -62,9 +62,7 @@ module.exports = (_env, { mode }) => {
                 sourceMap: true,
                 modules: {
                   mode: 'local',
-                  localIdentName: devMode
-                    ? '[name]__[local]--[hash:base64:5]'
-                    : '[hash:base64]',
+                  localIdentName: devMode ? '[local]--[hash:base64:5]' : '[hash:base64]',
                 },
               },
             },

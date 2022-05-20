@@ -6,21 +6,20 @@ import NavLink from './NavLink';
 
 interface AuthLinksProps {
   links: AuthLinkTypes;
-  theme: Style;
+  cssModule: Style;
 }
 
-const AuthLinks: React.FC<AuthLinksProps> = ({ links, theme }): React.ReactElement => {
+const AuthLinks: React.FC<AuthLinksProps> = ({
+  links,
+  cssModule,
+}): React.ReactElement => {
   const { login, logout, signup } = links;
 
   return (
-    <ul className={isCSSModule(theme.authLinks, `unl-navigation__auth-links`)}>
-      {login && login.display && <NavLink {...login} authLink="login" theme={theme} />}
-      {logout && logout.display && (
-        <NavLink {...logout} authLink="logout" theme={theme} />
-      )}
-      {signup && signup.display && (
-        <NavLink {...signup} authLink="signup" theme={theme} />
-      )}
+    <ul className={isCSSModule(cssModule.authLinks, `unl-navigation__auth-links`)}>
+      {login && login.display && <NavLink {...login} authLink="login" />}
+      {logout && logout.display && <NavLink {...logout} authLink="logout" />}
+      {signup && signup.display && <NavLink {...signup} authLink="signup" />}
     </ul>
   );
 };

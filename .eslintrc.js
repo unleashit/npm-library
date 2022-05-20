@@ -96,7 +96,7 @@ module.exports = {
     // rule introduced after airbnb update
     'react/function-component-definition': 0,
 
-    // rule introduced after update
+    // rule behavior changed after update (can't import dev deps, even in tests)
     // allow in tests
     'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.*'] }],
 

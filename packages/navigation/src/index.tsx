@@ -3,12 +3,10 @@ import * as React from 'react';
 
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
+import NavContext from './NavContext';
 import { addTemplateClasses } from './utils/templateClasses';
 
-export interface Style {
-  [key: string]: any;
-}
-
+export type Style = Record<string, string>;
 // type LinkProps = HTMLAnchorElement;
 
 // type CommonLinkProps = {
@@ -28,9 +26,9 @@ export interface Style {
 //   component: React.FC<T> | React.ReactElement<T>;
 // } & CommonLinkProps;
 
-export interface Link {
-  url: string;
-  text: string;
+export interface NavigationLink {
+  href: string;
+  title: string;
   active?: boolean;
   classes?: string[];
   style?: React.CSSProperties;
@@ -40,37 +38,42 @@ export interface Link {
   attrs?: React.AllHTMLAttributes<any>;
 }
 export interface AuthLinkTypes {
-  login?: Link;
-  logout?: Link;
-  signup?: Link;
+  login?: NavigationLink;
+  logout?: NavigationLink;
+  signup?: NavigationLink;
 }
-export interface Props {
-  links: Link[];
+export interface NavigationProps {
+  links: NavigationLink[];
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
   template?: 'plain' | 'clean' | 'dark-buttons' | 'light-buttons';
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: Record<string, string>;
 }
 
-const buildAuthLinks = (
+export const DefaultLinkComponent = ({ children, ...rest }: any) => (
+  <a {...rest}>{children}</a>
+);
+const mapAuthLinks = (
   isAuth: boolean,
-  authLinks: Props['authLinks'] = {},
+  authLinks: NavigationProps['authLinks'] = {},
 ): AuthLinkTypes => {
   const defaults = {
     login: {
-      text: 'Login',
-      url: '/login',
+      title: 'Login',
+      href: '/login',
       display: !isAuth,
     },
     logout: {
-      text: 'Logout',
-      url: '/logout',
+      title: 'Logout',
+      href: '/logout',
       display: isAuth,
     },
     signup: {
-      text: 'Signup',
-      url: '/signup',
+      title: 'Signup',
+      href: '/signup',
       display: !isAuth,
     },
   };
@@ -88,24 +91,37 @@ const Navigation = ({
   template = 'clean',
   isAuth,
   authLinks,
-  cssModuleStyles: theme = {},
-}: Props): React.ReactElement => {
+  linkComponent = DefaultLinkComponent,
+  linkComponentHrefAttr = 'href',
+  cssModule = {},
+}: NavigationProps): React.ReactElement => {
   // * show default authLinks if isAuth is provided.
   // * if user provides authLinks, they will override the default on a property by property basis
   // * don't show authLinks if both authLinks and isAuth are omitted.
-  const newAuthLinks =
-    isAuth !== undefined ? buildAuthLinks(isAuth, authLinks) : authLinks || null;
-  console.log(links);
+  const authSidecarLinks =
+    isAuth !== undefined ? mapAuthLinks(isAuth, authLinks) : authLinks || null;
+
+  const contextValue = React.useMemo(
+    () => ({
+      linkComponent,
+      linkComponentHrefAttr,
+      cssModule,
+    }),
+    [linkComponent, linkComponentHrefAttr, cssModule],
+  );
+
   return (
-    <nav
-      className={`${isCSSModule(
-        theme.container,
-        `unl-navigation__container`,
-      )}${addTemplateClasses(template, direction, theme)}`}
-    >
-      <NavLinks links={links} theme={theme} />
-      {newAuthLinks && <AuthLinks links={newAuthLinks} theme={theme} />}
-    </nav>
+    <NavContext.Provider value={contextValue}>
+      <nav
+        className={`${isCSSModule(
+          cssModule.container,
+          `unl-navigation__container`,
+        )}${addTemplateClasses(template, direction, cssModule)}`}
+      >
+        <NavLinks links={links} cssModule={cssModule} />
+        {authSidecarLinks && <AuthLinks links={authSidecarLinks} cssModule={cssModule} />}
+      </nav>
+    </NavContext.Provider>
   );
 };
 

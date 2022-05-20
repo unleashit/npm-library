@@ -24,9 +24,12 @@ $darkColor: #555;
     text-align: center;
   }
   .unl-navigation__link {
+    height: 40px;
+    display: flex;
     flex: 1;
+    align-items: center;
+    justify-content: center;
     color: #000;
-    line-height: 1.2rem;
     text-decoration: none;
     cursor: pointer;
   }
@@ -189,15 +192,16 @@ $darkColor: #555;
 
 // icons
 .unl-navigation__icon-span--left {
-  padding-right: 6px;
+  padding-right: 7px;
 }
 .unl-navigation__icon-span--right {
-  padding-left: 6px;
-  flex: 100;
+  padding-left: 7px;
 }
 
 .unl-navigation__icon {
-  max-width: 25px;
-  max-height: 25px;
+  position: relative;
+  top: -2px;
+  max-width: 20px;
+  max-height: 20px;
   vertical-align: bottom;
 }

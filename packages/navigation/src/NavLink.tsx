@@ -1,20 +1,25 @@
 import { isCSSModule } from '@unleashit/common';
 import * as React from 'react';
 
-import { Link, Style } from './index';
+import { NavigationLink } from './index';
+import NavContext from './NavContext';
 import { getAuthClasses } from './utils/templateClasses';
 
 export interface NavLinkExtraProps {
-  theme: Style;
   authLink?: 'login' | 'logout' | 'signup' | null;
 }
 
-const getUserClasses = (classes: Link['classes']): string =>
+const getUserClasses = (classes: NavigationLink['classes']): string =>
   classes ? classes.join(' ') : '';
 
+// generates the attr name and value for the link in case
+// the user is using a routing component like React Router
+// which uses a `to` attribute instead of the standard `href`
+const getHref = (attrName: string, href: string) => ({ [attrName]: href });
+
 const NavLink = ({
-  url,
-  text,
+  href,
+  title,
   active,
   classes,
   display = true,
@@ -22,52 +27,60 @@ const NavLink = ({
   icon,
   iconPosition = 'left',
   authLink = null,
-  theme,
-}: Link & NavLinkExtraProps): React.ReactElement | null => {
+}: NavigationLink & NavLinkExtraProps): React.ReactElement | null => {
+  const {
+    linkComponent: LinkComponent,
+    linkComponentHrefAttr,
+    cssModule,
+  } = React.useContext(NavContext);
+
   if (display) {
     return (
       <li
         className={`${isCSSModule(
-          theme.linkItem,
+          cssModule.linkItem,
           'unl-navigation__link-item',
         )} ${getUserClasses(classes)} ${
-          active ? isCSSModule(theme.active, `unl-navigation__link-item--active`) : ''
+          active ? isCSSModule(cssModule.active, `unl-navigation__link-item--active`) : ''
         }`}
       >
-        {icon && iconPosition === 'left' && (
-          <span
-            className={isCSSModule(theme.iconSpanLeft, `unl-navigation__icon-span--left`)}
-          >
-            <img
-              src={icon}
-              alt=""
-              className={isCSSModule(theme.icon, `unl-navigation__icon`)}
-            />
-          </span>
-        )}
-        <a
-          href={url}
-          className={`${isCSSModule(theme.link, `unl-navigation__link`)}${
-            authLink ? getAuthClasses(authLink, theme) : ''
+        <LinkComponent
+          {...getHref(linkComponentHrefAttr, href)}
+          className={`${isCSSModule(cssModule.link, `unl-navigation__link`)}${
+            authLink ? getAuthClasses(authLink, cssModule) : ''
           }`}
           {...attrs}
         >
-          {text}
-        </a>
-        {icon && iconPosition === 'right' && (
-          <span
-            className={isCSSModule(
-              theme.iconSpanRight,
-              `unl-navigation__icon-span--right`,
-            )}
-          >
-            <img
-              src={icon}
-              alt=""
-              className={isCSSModule(theme.icon, `unl-navigation__icon`)}
-            />
-          </span>
-        )}
+          {icon && iconPosition === 'left' && (
+            <span
+              className={isCSSModule(
+                cssModule.iconSpanLeft,
+                `unl-navigation__icon-span--left`,
+              )}
+            >
+              <img
+                src={icon}
+                alt=""
+                className={isCSSModule(cssModule.icon, `unl-navigation__icon`)}
+              />
+            </span>
+          )}
+          <span>{title}</span>
+          {icon && iconPosition === 'right' && (
+            <span
+              className={isCSSModule(
+                cssModule.iconSpanRight,
+                `unl-navigation__icon-span--right`,
+              )}
+            >
+              <img
+                src={icon}
+                alt=""
+                className={isCSSModule(cssModule.icon, `unl-navigation__icon`)}
+              />
+            </span>
+          )}
+        </LinkComponent>
       </li>
     );
   }
