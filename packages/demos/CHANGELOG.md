@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.17.0...@unleashit/demos@0.17.1) (2022-05-28)
+
+
+### Bug Fixes
+
+* **navigation:** major cleanup and Css fixes ([098ca57](https://github.com/unleashit/npm-library/commit/098ca57c306014026df1ba32bc4dfa419d42f26d))
+
+
+
+
+
 # [0.17.0](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.16.7...@unleashit/demos@0.17.0) (2022-05-20)
 
 

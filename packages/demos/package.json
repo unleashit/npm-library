@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demos",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "private": true,
   "main": "build/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "@unleashit/login": "^0.14.9",
     "@unleashit/mock-data": "^0.8.9",
     "@unleashit/modal": "^0.2.7",
-    "@unleashit/navigation": "^0.5.0",
+    "@unleashit/navigation": "^0.5.1",
     "@unleashit/pagination": "^0.10.9",
     "@unleashit/recursive-data-lister": "^0.4.9",
     "@unleashit/signup": "^0.11.9",

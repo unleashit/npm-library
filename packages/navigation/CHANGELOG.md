@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@0.5.0...@unleashit/navigation@0.5.1) (2022-05-28)
+
+
+### Bug Fixes
+
+* **navigation:** major cleanup and Css fixes ([098ca57](https://github.com/unleashit/npm-library/commit/098ca57c306014026df1ba32bc4dfa419d42f26d))
+
+
+
+
+
 # [0.5.0](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@0.4.8...@unleashit/navigation@0.5.0) (2022-05-20)
 
 
