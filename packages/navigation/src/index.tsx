@@ -4,27 +4,7 @@ import * as React from 'react';
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
 import NavContext from './NavContext';
-import { addTemplateClasses } from './utils/templateClasses';
-
-export type Style = Record<string, string>;
-// type LinkProps = HTMLAnchorElement;
-
-// type CommonLinkProps = {
-//   active?: boolean;
-//   classes?: string[];
-//   style?: React.CSSProperties;
-//   icon?: string;
-//   iconPosition?: 'left' | 'right';
-//   display?: boolean;
-//   attrs?: React.AllHTMLAttributes<any>;
-// }
-//
-// export type Link<T = LinkProps> = {
-//   url: string;
-//   text: string;
-// } & CommonLinkProps | {
-//   component: React.FC<T> | React.ReactElement<T>;
-// } & CommonLinkProps;
+import { addTemplateClasses, mapArrayToClasses } from './utils/generateClasses';
 
 export interface NavigationLink {
   href: string;
@@ -47,10 +27,11 @@ export interface NavigationProps {
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
-  template?: 'plain' | 'clean' | 'dark-buttons' | 'light-buttons';
+  template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
+  classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
-  cssModule?: Record<string, string>;
+  cssModule?: { [key: string]: string };
 }
 
 export const DefaultLinkComponent = ({ children, ...rest }: any) => (
@@ -89,6 +70,7 @@ const Navigation = ({
   links,
   direction = 'horizontal',
   template = 'clean',
+  classes,
   isAuth,
   authLinks,
   linkComponent = DefaultLinkComponent,
@@ -112,11 +94,19 @@ const Navigation = ({
 
   return (
     <NavContext.Provider value={contextValue}>
+      {/*
+       * if tempate is 'none', container class name is changed which prevents any style
+       * add classes for template and direction
+       * add any user supplied classes
+       */}
       <nav
-        className={`${isCSSModule(
-          cssModule.container,
-          `unl-navigation__container`,
-        )}${addTemplateClasses(template, direction, cssModule)}`}
+        className={`${
+          template !== 'none'
+            ? isCSSModule(cssModule.container, `unl-navigation__container`)
+            : isCSSModule(cssModule.container, `unl-navigation`)
+        }${addTemplateClasses(template, direction, cssModule)}${mapArrayToClasses<
+          NavigationProps['classes']
+        >(classes)}`}
       >
         <NavLinks links={links} cssModule={cssModule} />
         {authSidecarLinks && <AuthLinks links={authSidecarLinks} cssModule={cssModule} />}

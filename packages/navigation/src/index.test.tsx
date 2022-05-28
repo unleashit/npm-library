@@ -77,18 +77,21 @@ describe('<Navigation />', () => {
     expect(wrapper.find('AuthLinks')).toHaveLength(1);
   });
 
-  it('displays template class', () => {
-    // default template class
+  it('displays corrent template classes', () => {
+    // default template (clean)
     expect(wrapper.find('nav.unl-navigation__container--clean')).toHaveLength(1);
 
-    // the other options
+    // none template
     let newProps: NavigationProps = {
       ...props,
-      template: 'plain',
+      template: 'none',
     };
 
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.unl-navigation__container--plain')).toHaveLength(1);
+    // template of none should output a different classname on the container with no extra template classes
+    expect(wrapper.find('nav.unl-navigation').at(0).props().className).toEqual(
+      'unl-navigation',
+    );
 
     newProps = {
       ...props,

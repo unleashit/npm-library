@@ -3,14 +3,11 @@ import * as React from 'react';
 
 import { NavigationLink } from './index';
 import NavContext from './NavContext';
-import { getAuthClasses } from './utils/templateClasses';
+import { getAuthLinkClass, mapArrayToClasses } from './utils/generateClasses';
 
 export interface NavLinkExtraProps {
   authLink?: 'login' | 'logout' | 'signup' | null;
 }
-
-const getUserClasses = (classes: NavigationLink['classes']): string =>
-  classes ? classes.join(' ') : '';
 
 // generates the attr name and value for the link in case
 // the user is using a routing component like React Router
@@ -40,14 +37,14 @@ const NavLink = ({
         className={`${isCSSModule(
           cssModule.linkItem,
           'unl-navigation__link-item',
-        )} ${getUserClasses(classes)} ${
+        )} ${mapArrayToClasses<NavigationLink['classes']>(classes)} ${
           active ? isCSSModule(cssModule.active, `unl-navigation__link-item--active`) : ''
         }`}
       >
         <LinkComponent
           {...getHref(linkComponentHrefAttr, href)}
           className={`${isCSSModule(cssModule.link, `unl-navigation__link`)}${
-            authLink ? getAuthClasses(authLink, cssModule) : ''
+            authLink ? getAuthLinkClass(authLink, cssModule) : ''
           }`}
           {...attrs}
         >

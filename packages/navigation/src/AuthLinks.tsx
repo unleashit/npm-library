@@ -1,17 +1,17 @@
 import { isCSSModule } from '@unleashit/common';
 import * as React from 'react';
 
-import { AuthLinkTypes, Style } from './index';
+import { AuthLinkTypes, NavigationProps } from './index';
 import NavLink from './NavLink';
 
 interface AuthLinksProps {
   links: AuthLinkTypes;
-  cssModule: Style;
+  cssModule: Required<NavigationProps['cssModule']>;
 }
 
 const AuthLinks: React.FC<AuthLinksProps> = ({
   links,
-  cssModule,
+  cssModule = {},
 }): React.ReactElement => {
   const { login, logout, signup } = links;
 

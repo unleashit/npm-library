@@ -1,6 +1,7 @@
 import Navigation, { NavigationLink } from '@unleashit/navigation';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '@unleashit/navigation/dist/navigation.css';
 import styles from './style.module.scss';
 
 const links: NavigationLink[] = [
@@ -30,7 +31,7 @@ const links: NavigationLink[] = [
 
 const NavigationDemo = () => (
   <div className={styles.navbar}>
-    <p>With auth sidecar (logged in) and default template</p>
+    <p>With auth sidecar (logged in) and default/clean template</p>
     <Navigation
       linkComponent={Link}
       linkComponentHrefAttr="to"
@@ -56,6 +57,8 @@ const NavigationDemo = () => (
       template="dark-buttons"
       direction="vert"
     />
+    <p>"none" template with auth sidecar</p>
+    <Navigation links={links} isAuth={false} template="none" />
   </div>
 );
 

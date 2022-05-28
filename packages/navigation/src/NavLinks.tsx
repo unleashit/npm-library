@@ -1,13 +1,10 @@
 import { isCSSModule } from '@unleashit/common';
 import * as React from 'react';
 
-import { NavigationLink, Style } from './index';
+import { NavigationProps } from './index';
 import NavLink from './NavLink';
 
-interface NavLinksProps {
-  links: NavigationLink[];
-  cssModule: Style;
-}
+type NavLinksProps = Required<Pick<NavigationProps, 'links' | 'cssModule'>>;
 
 const NavLinks = ({ links, cssModule }: NavLinksProps) => (
   <ul className={isCSSModule(cssModule.navList, `unl-navigation__nav-list`)}>

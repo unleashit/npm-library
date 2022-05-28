@@ -1,19 +1,21 @@
 import { isCSSModule } from '@unleashit/common';
 
-import { NavigationProps, Style } from '../index';
+import { NavigationProps } from '../index';
 import { NavLinkExtraProps } from '../NavLink';
 
-const isVertical = (dir: NavigationProps['direction'], style: Style): string =>
+type Direction = NavigationProps['direction'];
+type Template = NavigationProps['template'];
+type Style = Required<NavigationProps>['cssModule'];
+type AuthLink = NavLinkExtraProps['authLink'];
+
+const isVertical = (dir: Direction, style: Style): string =>
   dir === 'vert' || dir === 'vertical'
     ? ` ${isCSSModule(style.vertical, 'unl-navigation__container--vertical')}`
     : '';
 
-const isTemplate = (template: NavigationProps['template'], style: Style): string => {
+const isTemplate = (template: Template, style: Style): string => {
   let classes = '';
   switch (template) {
-    case 'plain':
-      classes = ` ${isCSSModule(style.plain, 'unl-navigation__container--plain')}`;
-      break;
     case 'clean':
       classes = ` ${isCSSModule(style.clean, 'unl-navigation__container--clean')}`;
       break;
@@ -30,29 +32,28 @@ const isTemplate = (template: NavigationProps['template'], style: Style): string
       )}`;
       break;
     default:
+      // Either default or 'none' template
       classes = '';
   }
   return classes;
 };
 
 export const addTemplateClasses = (
-  template: NavigationProps['template'],
-  direction: NavigationProps['direction'],
+  template: Template,
+  direction: Direction,
   theme: Style,
 ): string => `${isTemplate(template, theme)}${isVertical(direction, theme)}`;
 
-export const getAuthClasses = (
-  authLink: NavLinkExtraProps['authLink'],
-  theme: Style,
-): string => {
-  if (authLink === 'login') {
-    return ` ${isCSSModule(theme.loginLink, 'unl-navigation__login-link')}`;
+export const getAuthLinkClass = (authLink: AuthLink, theme: Style): string => {
+  if (authLink && ['login', 'logout', 'signup'].includes(authLink)) {
+    return ` ${isCSSModule(
+      theme[`${authLink}Link`],
+      `unl-navigation__${authLink}-link`,
+    )}`;
   }
-  if (authLink === 'logout') {
-    return ` ${isCSSModule(theme.logoutLink, 'unl-navigation__logout-link')}`;
-  }
-  if (authLink === 'signup') {
-    return ` ${isCSSModule(theme.signupLink, 'unl-navigation__signup-link')}`;
-  }
+
   return '';
 };
+
+export const mapArrayToClasses = <T extends string[] | undefined>(classes: T): string =>
+  classes && classes.length ? ` ${classes.join(' ')}` : '';
