@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demos",
-  "version": "0.17.1",
+  "version": "0.17.2",
   "private": true,
   "main": "build/index.js",
   "scripts": {
@@ -11,16 +11,16 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@unleashit/async-handler": "^0.6.9",
+    "@unleashit/async-handler": "^0.6.10",
     "@unleashit/common": "^0.13.7",
-    "@unleashit/forgot-password": "^0.13.9",
-    "@unleashit/login": "^0.14.9",
+    "@unleashit/forgot-password": "^0.13.10",
+    "@unleashit/login": "^0.14.10",
     "@unleashit/mock-data": "^0.8.9",
-    "@unleashit/modal": "^0.2.7",
-    "@unleashit/navigation": "^0.5.1",
-    "@unleashit/pagination": "^0.10.9",
+    "@unleashit/modal": "^0.2.8",
+    "@unleashit/navigation": "^0.5.2",
+    "@unleashit/pagination": "^0.10.10",
     "@unleashit/recursive-data-lister": "^0.4.9",
-    "@unleashit/signup": "^0.11.9",
+    "@unleashit/signup": "^0.11.10",
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

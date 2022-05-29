@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/unleashit/npm-library/compare/@unleashit/modal@0.2.7...@unleashit/modal@0.2.8) (2022-05-29)
+
+
+### Bug Fixes
+
+* **all:** ensure prop types are exported ([9081578](https://github.com/unleashit/npm-library/commit/9081578541726c7309a7843606fa13eb66ca192d))
+
+
+
+
+
 ## [0.2.7](https://github.com/unleashit/npm-library/compare/@unleashit/modal@0.2.6...@unleashit/modal@0.2.7) (2022-05-20)
 
 **Note:** Version bump only for package @unleashit/modal
