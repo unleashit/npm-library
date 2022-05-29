@@ -7,18 +7,18 @@ import {
 } from '@unleashit/common';
 import * as React from 'react';
 
-import { ModalFooter, ModalHeader, ModalProps } from './defaults/components';
+import { ModalFooter, ModalHeader, CustomHeaderFooterProps } from './defaults/components';
 import { closeIcon } from './images/icons';
 
-export interface Props {
+export interface ModalProps {
   isOpen: boolean;
   size?: 'small' | 'medium' | 'large' | 'full';
   onClose?: () => void;
   closeOnOverlayClick?: boolean;
   animationSupport?: boolean;
   animationCloseTimeout?: number;
-  header?: React.FC<ModalProps> | React.ReactElement | string;
-  footer?: React.FC<ModalProps> | string;
+  header?: React.FC<CustomHeaderFooterProps> | React.ReactElement | string;
+  footer?: React.FC<CustomHeaderFooterProps> | string;
   overlayColor?: string;
   closeBtn?: boolean;
   cssModuleStyles?: { [key: string]: string };
@@ -37,7 +37,7 @@ export const Modal = ({
   overlayColor,
   cssModuleStyles: theme = {},
   children,
-}: React.PropsWithChildren<Props>) => {
+}: React.PropsWithChildren<ModalProps>) => {
   const [isHidden, setIsHidden] = React.useState(!isOpen);
   const [isAnimated, setIsAnimated] = React.useState(isOpen);
   const timeoutRef = React.useRef<number>();

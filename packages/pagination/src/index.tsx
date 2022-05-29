@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight } from './Icons';
 
 export type PaginationHandler = (newOffset: number) => void;
 
-interface Props {
+export interface PaginationProps {
   currentOffset: number;
   perPage: number;
   paginationHandler: PaginationHandler;
@@ -20,7 +20,7 @@ interface State {
   containerWidth: number;
 }
 
-class Pagination extends React.Component<Props, State> {
+class Pagination extends React.Component<PaginationProps, State> {
   static defaultProps = {
     perPage: 10,
     prevLabel: 'prev',

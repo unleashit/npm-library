@@ -12,7 +12,7 @@ import { isEmpty } from './utils';
 
 type DefaultComponent = (props: DefaultComponentProps) => React.ReactElement;
 type DefaultErrorComponent = (props: DefaultErrorComponentProps) => React.ReactElement;
-interface Props {
+export interface AsyncHandlerProps {
   request: () => Promise<any>;
   cache: () => Record<string, unknown> | any[] | false | null;
   loaderComponent: DefaultComponent | React.ReactElement;
@@ -27,7 +27,7 @@ interface State {
 }
 
 export default class AsyncHandler extends React.Component<
-  Props & { children: (props: any) => any },
+  AsyncHandlerProps & { children: (props: any) => any },
   State
 > {
   state: State = { data: null, loading: true, error: null };
@@ -89,12 +89,12 @@ export default class AsyncHandler extends React.Component<
 // needed a version with optional props because the
 // HOC is a plain function that doesn't understand defaultProps
 interface HOCProps {
-  request: Props['request'];
-  cache?: Props['cache'];
-  loaderComponent?: Props['loaderComponent'];
-  noResultsComponent?: Props['noResultsComponent'];
-  errorComponent?: Props['errorComponent'];
-  cssModuleStyles?: Props['cssModuleStyles'];
+  request: AsyncHandlerProps['request'];
+  cache?: AsyncHandlerProps['cache'];
+  loaderComponent?: AsyncHandlerProps['loaderComponent'];
+  noResultsComponent?: AsyncHandlerProps['noResultsComponent'];
+  errorComponent?: AsyncHandlerProps['errorComponent'];
+  cssModuleStyles?: AsyncHandlerProps['cssModuleStyles'];
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-types

@@ -4,11 +4,11 @@ import { act } from 'react-dom/test-utils';
 
 // eslint-disable-next-line import/no-relative-packages
 import { changeVal, nextTick } from '../../../testConfig/utils';
-import SignupContainer, { mapDefaultValues, Props } from '.';
+import SignupContainer, { mapDefaultValues, SignupProps } from '.';
 
 describe('<SignupContainer />', () => {
   let wrapper: ReactWrapper;
-  let props: Props;
+  let props: SignupProps;
 
   beforeEach(() => {
     props = {

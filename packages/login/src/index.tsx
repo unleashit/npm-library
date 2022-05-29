@@ -22,7 +22,7 @@ export interface ServerResponse {
     serverAuth: string; // error msg to print in browser when auth fails
   } & { [key: string]: string }; // optionally validate anything else on server with key=name of field, val=error to print;
 }
-interface Props {
+export interface LoginProps {
   loginHandler: (values: FormValues) => Promise<ServerResponse>;
   onSuccess: (resp: ServerResponse) => any;
   header?: React.FC<LoginHeaderProps>;
@@ -55,7 +55,7 @@ export const Login = ({
   orLine = true,
   cssModuleStyles: theme = {},
   children,
-}: FormikProps<FormValues> & Props): React.ReactElement => (
+}: FormikProps<FormValues> & LoginProps): React.ReactElement => (
   <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
     <Header signupUrl={signupUrl} theme={theme} />
     {errors.serverAuth && (
@@ -124,9 +124,9 @@ export const Login = ({
   </div>
 );
 
-export default withFormik<Props, FormValues>({
+export default withFormik<LoginProps, FormValues>({
   mapPropsToValues: (): any => ({ email: '', password: '', serverAuth: '' }),
-  validationSchema: (props: Props): SchemaOf<any> =>
+  validationSchema: (props: LoginProps): SchemaOf<any> =>
     props.schema ? props.schema : schema,
   handleSubmit: async (
     values,

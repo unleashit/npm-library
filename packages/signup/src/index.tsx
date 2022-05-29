@@ -26,7 +26,7 @@ export interface ServerResponse {
   };
 }
 
-export interface Props {
+export interface SignupProps {
   signupHandler: (values: FormValues) => Promise<ServerResponse>;
   onSuccess: (resp: ServerResponse) => any;
   layout?: string;
@@ -53,7 +53,8 @@ export const Signup = ({
   orLine = true,
   cssModuleStyles: theme = {},
   children,
-}: FormikProps<FormValues> & React.PropsWithChildren<Props>): React.ReactElement => (
+}: FormikProps<FormValues> &
+  React.PropsWithChildren<SignupProps>): React.ReactElement => (
   <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
     <Header loginUrl={loginUrl} theme={theme} />
     {errors.serverAuth && (
@@ -133,7 +134,7 @@ export const mapDefaultValues = (fields: AnyObjLit[]): AnyObjLit =>
     {},
   );
 
-export default withFormik<Props, FormValues | any>({
+export default withFormik<SignupProps, FormValues | any>({
   mapPropsToValues: (props: any): Record<string, unknown> =>
     props.customFields
       ? mapDefaultValues(props.customFields)

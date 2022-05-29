@@ -23,7 +23,7 @@ export interface ServerResponse {
     [key: string]: string; // optionally validate anything else on server
   };
 }
-interface Props {
+export interface ForgotPasswordProps {
   forgotPasswordHandler: (values: FormValues) => Promise<ServerResponse>;
   onSuccess?: (resp: ServerResponse) => any;
   header?: React.FC<ForgotPasswordHeaderProps>;
@@ -36,7 +36,7 @@ interface Props {
 }
 
 export const ForgotPassword = (
-  props: FormikProps<FormValues> & Props,
+  props: FormikProps<FormValues> & ForgotPasswordProps,
 ): React.ReactElement => {
   const {
     errors,
@@ -116,9 +116,9 @@ export const ForgotPassword = (
   );
 };
 
-export default withFormik<Props, FormValues>({
+export default withFormik<ForgotPasswordProps, FormValues>({
   mapPropsToValues: (): any => ({ email: '', serverMessage: '' }),
-  validationSchema: (props: Props): SchemaOf<any> =>
+  validationSchema: (props: ForgotPasswordProps): SchemaOf<any> =>
     props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
