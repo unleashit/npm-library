@@ -3,6 +3,7 @@ import { useHighestZindex } from './hooks/useHighestZindex';
 import { useToggleBodyStyleProp } from './hooks/useToggleBodyStyleProp';
 import { CustomInput } from './lib/CustomInput';
 import { isCSSModule, returnComponentFormat } from './lib/utils';
+import { DefaultLinkComponent } from './lib/DefaultLink';
 
 // Solution for Babel unable to handle multiple ts interface exports
 export * from './lib/CustomFields';
@@ -13,4 +14,5 @@ export {
   useToggleBodyStyleProp,
   useHighestZindex,
   useHandleEscapeKey,
+  DefaultLinkComponent,
 };

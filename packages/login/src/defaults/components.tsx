@@ -11,6 +11,8 @@ export interface LoginLoaderProps {
 
 export interface LoginHeaderProps {
   signupUrl: string;
+  linkComponent: React.ComponentType<any>;
+  linkComponentHrefAttr: string;
   theme: CSSModule;
 }
 
@@ -24,12 +26,15 @@ export const LoginLoader: React.FC<LoginLoaderProps> = ({ theme }): JSX.Element 
 
 export const LoginHeader: React.FC<LoginHeaderProps> = ({
   signupUrl,
+  linkComponent: LinkComponent,
+  linkComponentHrefAttr = 'href',
   theme,
 }): JSX.Element => (
   <div className={isCSSModule(theme.header, 'unl-login__header')}>
     <h2>Login</h2>
     <p>
-      Don't have an account yet? <a href={signupUrl}>Sign up</a>
+      Don't have an account yet?{' '}
+      <LinkComponent {...{ [linkComponentHrefAttr]: signupUrl }}>Sign up</LinkComponent>
     </p>
   </div>
 );

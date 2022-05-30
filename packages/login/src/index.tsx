@@ -1,4 +1,10 @@
-import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import {
+  CustomField,
+  CustomFields,
+  CustomInput,
+  isCSSModule,
+  DefaultLinkComponent,
+} from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -34,8 +40,9 @@ export interface LoginProps {
   forgotPasswordLink?: string;
   forgotPasswordText?: string;
   orLine?: boolean;
-  cssModuleStyles?: { [key: string]: string };
-  children?: React.ReactNode;
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
+  cssModule?: { [key: string]: string };
 }
 
 export const Login = ({
@@ -53,11 +60,18 @@ export const Login = ({
   forgotPasswordLink = '/forgot-password',
   forgotPasswordText = 'Forgot your password?',
   orLine = true,
-  cssModuleStyles: theme = {},
+  linkComponent: LinkComponent = DefaultLinkComponent,
+  linkComponentHrefAttr = 'href',
+  cssModule: theme = {},
   children,
-}: FormikProps<FormValues> & LoginProps): React.ReactElement => (
+}: FormikProps<FormValues> & React.PropsWithChildren<LoginProps>): React.ReactElement => (
   <div className={isCSSModule(theme.loginContainer, 'unl-login__container')}>
-    <Header signupUrl={signupUrl} theme={theme} />
+    <Header
+      signupUrl={signupUrl}
+      theme={theme}
+      linkComponent={LinkComponent}
+      linkComponentHrefAttr={linkComponentHrefAttr}
+    />
     {errors.serverAuth && (
       <div className={isCSSModule(theme.serverAuthError, 'unl-login__server-auth-error')}>
         {errors.serverAuth}
@@ -116,7 +130,9 @@ export const Login = ({
               'unl-login__forgot-password-link',
             )}
           >
-            <a href={forgotPasswordLink}>{forgotPasswordText}</a>
+            <LinkComponent {...{ [linkComponentHrefAttr]: forgotPasswordLink }}>
+              {forgotPasswordText}
+            </LinkComponent>
           </div>
         ) : null}
       </Form>

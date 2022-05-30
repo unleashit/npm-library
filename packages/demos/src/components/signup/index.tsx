@@ -4,6 +4,7 @@ import '@unleashit/signup/dist/signup.css';
 import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
 import React, { Component } from 'react';
 import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
+import { Link } from 'react-router-dom';
 
 const btnStyle = {
   margin: '10px 0',
@@ -35,6 +36,8 @@ class SignupDemo extends Component {
         <Signup
           signupHandler={this.signupHandler}
           onSuccess={this.onSuccess}
+          linkComponent={Link}
+          linkComponentHrefAttr="to"
           // schema={schema}
           // customFields={[
           //   {

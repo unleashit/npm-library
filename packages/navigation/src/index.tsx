@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { isCSSModule, DefaultLinkComponent } from '@unleashit/common';
 import * as React from 'react';
 
 import AuthLinks from './AuthLinks';
@@ -34,9 +34,6 @@ export interface NavigationProps {
   cssModule?: { [key: string]: string };
 }
 
-export const DefaultLinkComponent = ({ children, ...rest }: any) => (
-  <a {...rest}>{children}</a>
-);
 const mapAuthLinks = (
   isAuth: boolean,
   authLinks: NavigationProps['authLinks'] = {},

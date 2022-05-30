@@ -12,7 +12,7 @@ export interface NavLinkExtraProps {
 // generates the attr name and value for the link in case
 // the user is using a routing component like React Router
 // which uses a `to` attribute instead of the standard `href`
-const getHref = (attrName: string, href: string) => ({ [attrName]: href });
+// const getHref = (attrName: string, href: string) => ({ [attrName]: href });
 
 const NavLink = ({
   href,
@@ -42,7 +42,7 @@ const NavLink = ({
         }`}
       >
         <LinkComponent
-          {...getHref(linkComponentHrefAttr, href)}
+          {...{ [linkComponentHrefAttr]: href }}
           className={`${isCSSModule(cssModule.link, `unl-navigation__link`)}${
             authLink ? getAuthLinkClass(authLink, cssModule) : ''
           }`}

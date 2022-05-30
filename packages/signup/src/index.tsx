@@ -1,4 +1,10 @@
-import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import {
+  CustomField,
+  CustomFields,
+  CustomInput,
+  isCSSModule,
+  DefaultLinkComponent,
+} from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -36,7 +42,9 @@ export interface SignupProps {
   schema?: SchemaOf<any>;
   customFields?: CustomField[];
   orLine?: boolean;
-  cssModuleStyles?: { [key: string]: string };
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
+  cssModule?: { [key: string]: string };
 }
 
 export const Signup = ({
@@ -51,12 +59,19 @@ export const Signup = ({
   touched,
   customFields,
   orLine = true,
-  cssModuleStyles: theme = {},
+  linkComponent = DefaultLinkComponent,
+  linkComponentHrefAttr = 'href',
+  cssModule: theme = {},
   children,
 }: FormikProps<FormValues> &
   React.PropsWithChildren<SignupProps>): React.ReactElement => (
   <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
-    <Header loginUrl={loginUrl} theme={theme} />
+    <Header
+      loginUrl={loginUrl}
+      theme={theme}
+      linkComponent={linkComponent}
+      linkComponentHrefAttr={linkComponentHrefAttr}
+    />
     {errors.serverAuth && (
       <div
         className={isCSSModule(theme.serverAuthError, `unl-signup__server-auth-error`)}

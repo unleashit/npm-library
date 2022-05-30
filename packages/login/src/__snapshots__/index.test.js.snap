@@ -75,6 +75,8 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
         className="unl-login__container"
       >
         <LoginHeader
+          linkComponent={[Function]}
+          linkComponentHrefAttr="href"
           signupUrl="/signup"
           theme={Object {}}
         >
@@ -85,12 +87,17 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
               Login
             </h2>
             <p>
-              Don't have an account yet? 
-              <a
+              Don't have an account yet?
+               
+              <DefaultLinkComponent
                 href="/signup"
               >
-                Sign up
-              </a>
+                <a
+                  href="/signup"
+                >
+                  Sign up
+                </a>
+              </DefaultLinkComponent>
             </p>
           </div>
         </LoginHeader>
@@ -294,11 +301,15 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <div
               className="unl-login__forgot-password-link"
             >
-              <a
+              <DefaultLinkComponent
                 href="/forgot-password"
               >
-                Forgot your password?
-              </a>
+                <a
+                  href="/forgot-password"
+                >
+                  Forgot your password?
+                </a>
+              </DefaultLinkComponent>
             </div>
           </form>
         </Form>

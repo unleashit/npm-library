@@ -78,6 +78,8 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
         className="unl-signup__container"
       >
         <SignupHeader
+          linkComponent={[Function]}
+          linkComponentHrefAttr="href"
           loginUrl="/login"
           theme={Object {}}
         >
@@ -88,12 +90,17 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
               Sign Up
             </h2>
             <p>
-              Already have an account? 
-              <a
+              Already have an account?
+               
+              <DefaultLinkComponent
                 href="/login"
               >
-                Login
-              </a>
+                <a
+                  href="/login"
+                >
+                  Login
+                </a>
+              </DefaultLinkComponent>
             </p>
           </div>
         </SignupHeader>
