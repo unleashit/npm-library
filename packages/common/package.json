@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/common",
-  "version": "0.13.7",
+  "version": "0.13.8",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Shared library for @unleashit components. Probabaly not otherwise useful.",

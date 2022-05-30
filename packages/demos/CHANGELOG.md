@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.3](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.17.2...@unleashit/demos@0.17.3) (2022-05-30)
+
+
+### Bug Fixes
+
+* **demos:** modal demo component props can\'t currently be memoized ([0001217](https://github.com/unleashit/npm-library/commit/0001217b1269daecad3c1c6451e08f48329bc5e7))
+* **login,navigation:** support custom link component in default text links ([30a5f4f](https://github.com/unleashit/npm-library/commit/30a5f4ffcc721af3b234d49fbf33e20765408b2f))
+
+
+
+
+
 ## [0.17.2](https://github.com/unleashit/npm-library/compare/@unleashit/demos@0.17.1...@unleashit/demos@0.17.2) (2022-05-29)
 
 **Note:** Version bump only for package @unleashit/demos

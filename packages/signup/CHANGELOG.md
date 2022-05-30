@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.11](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.11.10...@unleashit/signup@0.11.11) (2022-05-30)
+
+
+### Bug Fixes
+
+* **login,navigation:** support custom link component in default text links ([30a5f4f](https://github.com/unleashit/npm-library/commit/30a5f4ffcc721af3b234d49fbf33e20765408b2f))
+
+
+
+
+
 ## [0.11.10](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.11.9...@unleashit/signup@0.11.10) (2022-05-29)
 
 
