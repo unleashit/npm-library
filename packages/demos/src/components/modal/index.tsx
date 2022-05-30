@@ -3,14 +3,14 @@ import '@unleashit/modal/dist/modal.css';
 import Modal from '@unleashit/modal';
 import React, { useState } from 'react';
 
+const ModalFooter = () => <footer>Important! Please Read!</footer>;
+
 const ModalDemo = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   };
-
-  const ModalFooter = React.memo(() => <footer>Important! Please Read!</footer>);
 
   return (
     <>
@@ -41,15 +41,17 @@ const ModalDemo = () => {
         footer={ModalFooter}
         overlayColor="rgba(0,0,0,.8)"
       >
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam numquam
-          praesentium quisquam repudiandae impedit architecto sapiente consequatur
-          voluptate vitae quis? Pariatur ad fuga fugiat.
-        </p>
         <div>
-          <button type="button" onClick={toggleModal}>
-            OK
-          </button>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam numquam
+            praesentium quisquam repudiandae impedit architecto sapiente consequatur
+            voluptate vitae quis? Pariatur ad fuga fugiat.
+          </p>
+          <div>
+            <button type="button" onClick={toggleModal}>
+              OK
+            </button>
+          </div>
         </div>
       </Modal>
     </>
