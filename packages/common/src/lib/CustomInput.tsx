@@ -39,7 +39,7 @@ export const CustomInput: React.FC<FieldProps<any> & CustomInputProps> = ({
       <div
         className={isCSSModule(style.errorMessage, `unl-${componentName}__error-message`)}
       >
-        <small>{errors[field.name]}</small>
+        <small>{String(errors[field.name])}</small>
       </div>
     )}
   </div>

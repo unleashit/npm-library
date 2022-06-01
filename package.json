@@ -41,21 +41,20 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
-    "eslint": "8.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "8.16.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^8.0.1",
-    "jest-environment-jsdom": "^28.1.0",
-    "lerna": "^3.22.1"
+    "lerna": "^5.0.0"
   },
   "workspaces": {
     "packages": [
@@ -79,8 +78,5 @@
     "singleQuote": true,
     "printWidth": 90,
     "tabWidth": 2
-  },
-  "resolutions": {
-    "@types/react": "^17.0.44"
   }
 }

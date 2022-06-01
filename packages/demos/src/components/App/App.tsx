@@ -1,7 +1,7 @@
 import './App.scss';
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
@@ -56,27 +56,22 @@ class App extends React.Component<any> {
           <div className="app-container">
             <Navigation />
             <div className="component-container">
-              <Switch>
-                <Route path="/" exact component={Home} />
-                <Route path="/pagination" exact component={Pagination} />
-                <Route path="/navigation" exact component={NavigationDemo} />
-                <Route path="/login" exact component={Login} />
-                <Route path="/signup" exact component={Signup} />
-                <Route path="/forgot-password" exact component={ForgotPassword} />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/pagination" element={<Pagination />} />
+                <Route path="/navigation" element={<NavigationDemo />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route
                   path="/forgot-password/reset/:userid/:token"
-                  exact
-                  component={ForgotPasswordReset}
+                  element={<ForgotPasswordReset />}
                 />
-                <Route path="/async-handler" exact component={AsyncHandler} />
-                <Route
-                  path="/recursive-data-lister"
-                  exact
-                  component={RecursiveDataLister}
-                />
-                <Route path="/mock-data" exact component={MockData} />
-                <Route path="/modal" exact component={ModalDemo} />
-              </Switch>
+                <Route path="/async-handler" element={<AsyncHandler />} />
+                <Route path="/recursive-data-lister" element={<RecursiveDataLister />} />
+                <Route path="/mock-data" element={<MockData />} />
+                <Route path="/modal" element={<ModalDemo />} />
+              </Routes>
             </div>
           </div>
         </Router>

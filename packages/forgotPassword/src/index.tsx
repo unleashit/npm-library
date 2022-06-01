@@ -30,13 +30,12 @@ export interface ForgotPasswordProps {
   loader?: React.FC<ForgotPasswordLoaderProps>;
   schema?: SchemaOf<any>;
   customFields?: CustomField[];
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
   showDefaultConfirmation?: boolean;
-  children?: React.ReactNode;
 }
 
 export const ForgotPassword = (
-  props: FormikProps<FormValues> & ForgotPasswordProps,
+  props: FormikProps<FormValues> & React.PropsWithChildren<ForgotPasswordProps>,
 ): React.ReactElement => {
   const {
     errors,
@@ -48,7 +47,7 @@ export const ForgotPassword = (
     values,
     touched,
     customFields,
-    cssModuleStyles: theme = {},
+    cssModule: theme = {},
     onSuccess,
     status,
     children,

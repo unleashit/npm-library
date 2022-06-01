@@ -33,18 +33,18 @@ interface ForgotPasswordResetProps {
   loader?: React.FC<ForgotPasswordLoaderProps>;
   schema?: SchemaOf<any>;
   showDefaultConfirmation?: boolean;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
 }
 
 const ForgotPasswordResetRaw: React.FC<
-  FormikProps<FormValuesReset> & ForgotPasswordResetProps
+  FormikProps<FormValuesReset> & React.PropsWithChildren<ForgotPasswordResetProps>
 > = (props): React.ReactElement => {
   const {
     errors,
     header: Header = ForgotPasswordResetHeader,
     loader: Loader = ForgotPasswordLoader,
     isSubmitting,
-    cssModuleStyles: theme = {},
+    cssModule: theme = {},
     onSuccess,
     status,
     children,
