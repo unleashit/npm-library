@@ -4,7 +4,7 @@ import * as React from 'react';
 import { isCSSModule, sentenceCase } from './utils';
 
 interface CustomInputProps {
-  cssModuleStyles: {
+  cssModule: {
     [key: string]: string;
   };
   componentName: string;
@@ -13,7 +13,7 @@ interface CustomInputProps {
 export const CustomInput: React.FC<FieldProps<any> & CustomInputProps> = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
-  cssModuleStyles: style,
+  cssModule: style,
   componentName = 'unknown',
   ...props
 }): JSX.Element => (

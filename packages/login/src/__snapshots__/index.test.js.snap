@@ -113,13 +113,13 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="login"
-              cssModuleStyles={Object {}}
+              cssModule={Object {}}
               name="email"
               type="text"
             >
               <CustomInput
                 componentName="login"
-                cssModuleStyles={Object {}}
+                cssModule={Object {}}
                 field={
                   Object {
                     "name": "email",
@@ -204,13 +204,13 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="login"
-              cssModuleStyles={Object {}}
+              cssModule={Object {}}
               name="password"
               type="password"
             >
               <CustomInput
                 componentName="login"
-                cssModuleStyles={Object {}}
+                cssModule={Object {}}
                 field={
                   Object {
                     "name": "password",

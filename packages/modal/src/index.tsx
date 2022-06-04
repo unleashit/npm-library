@@ -21,7 +21,7 @@ export interface ModalProps {
   footer?: React.FC<CustomHeaderFooterProps> | string;
   overlayColor?: string;
   closeBtn?: boolean;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
 }
 
 export const Modal = ({
@@ -35,7 +35,7 @@ export const Modal = ({
   header: Header,
   footer: Footer,
   overlayColor,
-  cssModuleStyles: theme = {},
+  cssModule: theme = {},
   children,
 }: React.PropsWithChildren<ModalProps>) => {
   const [isHidden, setIsHidden] = React.useState(!isOpen);

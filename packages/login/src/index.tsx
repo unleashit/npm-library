@@ -89,7 +89,7 @@ export const Login = ({
             touched={touched}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            cssModuleStyles={theme}
+            cssModule={theme}
             componentName="login"
           />
         ) : (
@@ -98,14 +98,14 @@ export const Login = ({
               type="text"
               name="email"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="login"
             />
             <Field
               type="password"
               name="password"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="login"
             />
           </>

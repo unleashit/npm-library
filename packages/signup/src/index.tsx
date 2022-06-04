@@ -92,7 +92,7 @@ export const Signup = ({
             touched={touched}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            cssModuleStyles={theme}
+            cssModule={theme}
             componentName="signup"
           />
         ) : (
@@ -101,21 +101,21 @@ export const Signup = ({
               type="text"
               name="email"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="signup"
             />
             <Field
               type="password"
               name="password"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="signup"
             />
             <Field
               type="password"
               name="passwordConfirm"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="signup"
             />
           </>

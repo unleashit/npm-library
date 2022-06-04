@@ -21,14 +21,14 @@ export interface PassedProps {
   handleBlur: any;
   values?: any;
   value?: any;
-  cssModuleStyles: Style;
+  cssModule: Style;
   errors: any;
   touched: any;
   componentName?: string;
   fields: CustomField[];
 }
 
-type FieldProps = Omit<PassedProps, 'cssModuleStyles' | 'fields'> & {
+type FieldProps = Omit<PassedProps, 'cssModule' | 'fields'> & {
   theme: Style;
 };
 
@@ -160,7 +160,7 @@ export function CustomFields({
   values,
   errors,
   touched,
-  cssModuleStyles: theme,
+  cssModule: theme,
   componentName = 'unknown',
 }: PassedProps): JSX.Element {
   return (

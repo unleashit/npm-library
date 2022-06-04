@@ -57,7 +57,7 @@
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^27.5.1",
     "@types/lodash": "^4.14.182",
-    "@types/react": "^18.0.10",
+    "@types/react": "^17.0.45",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.7",

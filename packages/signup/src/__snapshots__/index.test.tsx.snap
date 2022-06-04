@@ -116,13 +116,13 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModuleStyles={Object {}}
+              cssModule={Object {}}
               name="email"
               type="text"
             >
               <CustomInput
                 componentName="signup"
-                cssModuleStyles={Object {}}
+                cssModule={Object {}}
                 field={
                   Object {
                     "name": "email",
@@ -209,13 +209,13 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModuleStyles={Object {}}
+              cssModule={Object {}}
               name="password"
               type="password"
             >
               <CustomInput
                 componentName="signup"
-                cssModuleStyles={Object {}}
+                cssModule={Object {}}
                 field={
                   Object {
                     "name": "password",
@@ -302,13 +302,13 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModuleStyles={Object {}}
+              cssModule={Object {}}
               name="passwordConfirm"
               type="password"
             >
               <CustomInput
                 componentName="signup"
-                cssModuleStyles={Object {}}
+                cssModule={Object {}}
                 field={
                   Object {
                     "name": "passwordConfirm",

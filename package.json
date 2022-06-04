@@ -30,14 +30,17 @@
     "test": "lerna run --stream test",
     "test:watch": "lerna run test -- -- --watch",
     "test:coverage": "lerna run test -- --coverage",
-    "lint": "eslint --fix 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
-    "prettier": "prettier --write 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "lint": "eslint 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "lint:fix": "eslint --fix 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "prettier": "prettier 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "prettier:write": "prettier --write 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "prepublishOnly": "yarn run build",
     "release": "HUSKY_BYPASS=true lerna publish",
     "storybook": "start-storybook -p 9009",
     "build-storybook": "build-storybook",
     "clean": "npm run clean:build && lerna clean && rm -rf node_modules",
-    "clean:build": "lerna exec -- rm -rf dist build"
+    "clean:build": "lerna exec -- rm -rf dist build",
+    "prepare": "husky install"
   },
   "dependencies": {},
   "devDependencies": {
@@ -54,7 +57,11 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "husky": "^8.0.1",
+    "jest-environment-jsdom": "^28.1.0",
     "lerna": "^5.0.0"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.45"
   },
   "workspaces": {
     "packages": [
@@ -65,12 +72,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "if [ -z \"$HUSKY_BYPASS\" ]; then commitlint -E HUSKY_GIT_PARAMS; fi",
-      "pre-commit": "if [ -z \"$HUSKY_BYPASS\" ]; then prettier -l 'packages/**/src/**/*.{ts,tsx,js,jsx,json}' && eslint 'packages/**/src/**/*.{ts,tsx,js,jsx,json}' && yarn run test; fi"
-    }
   },
   "prettier": {
     "semi": true,

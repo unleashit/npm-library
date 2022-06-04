@@ -86,7 +86,7 @@ export const ForgotPassword = (
               touched={touched}
               handleChange={handleChange}
               handleBlur={handleBlur}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="forgot-password"
             />
           ) : (
@@ -94,7 +94,7 @@ export const ForgotPassword = (
               type="text"
               name="email"
               component={CustomInput}
-              cssModuleStyles={theme}
+              cssModule={theme}
               componentName="forgot-password"
             />
           )}

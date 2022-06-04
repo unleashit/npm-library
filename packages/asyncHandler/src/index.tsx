@@ -18,7 +18,7 @@ export interface AsyncHandlerProps {
   loaderComponent: DefaultComponent | React.ReactElement;
   noResultsComponent: DefaultComponent | React.ReactElement;
   errorComponent: DefaultErrorComponent | React.ReactElement;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
 }
 interface State {
   data?: any;
@@ -69,18 +69,18 @@ export default class AsyncHandler extends React.Component<
       loaderComponent: LoaderComponent,
       noResultsComponent: NoResultsComponent,
       errorComponent: ErrorComponent,
-      cssModuleStyles: theme = {},
+      cssModule: theme = {},
       children,
     } = this.props;
 
     if (error) {
-      return returnComponentFormat(ErrorComponent, { cssModuleStyle: theme, error });
+      return returnComponentFormat(ErrorComponent, { cssModule: theme, error });
     }
     if (loading) {
-      return returnComponentFormat(LoaderComponent, { cssModuleStyle: theme });
+      return returnComponentFormat(LoaderComponent, { cssModule: theme });
     }
     if (isEmpty(data)) {
-      return returnComponentFormat(NoResultsComponent, { cssModuleStyle: theme });
+      return returnComponentFormat(NoResultsComponent, { cssModule: theme });
     }
     return children(data);
   }
@@ -94,10 +94,9 @@ interface HOCProps {
   loaderComponent?: AsyncHandlerProps['loaderComponent'];
   noResultsComponent?: AsyncHandlerProps['noResultsComponent'];
   errorComponent?: AsyncHandlerProps['errorComponent'];
-  cssModuleStyles?: AsyncHandlerProps['cssModuleStyles'];
+  cssModule?: AsyncHandlerProps['cssModule'];
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export const withAsyncHandler =
   (config: HOCProps) =>
   (

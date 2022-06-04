@@ -80,14 +80,14 @@ const ForgotPasswordResetRaw: React.FC<
             type="password"
             name="newPassword"
             component={CustomInput}
-            cssModuleStyles={theme}
+            cssModule={theme}
             componentName="forgot-password"
           />
           <Field
             type="password"
             name="newPasswordConfirm"
             component={CustomInput}
-            cssModuleStyles={theme}
+            cssModule={theme}
             componentName="forgot-password"
           />
           <button

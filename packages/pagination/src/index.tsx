@@ -13,7 +13,7 @@ export interface PaginationProps {
   total: number;
   prevLabel: string;
   nextLabel: string;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
 }
 
 interface State {
@@ -79,7 +79,7 @@ class Pagination extends React.Component<PaginationProps, State> {
   }
 
   prev(): JSX.Element | null {
-    const { currentOffset, perPage, prevLabel, cssModuleStyles: theme = {} } = this.props;
+    const { currentOffset, perPage, prevLabel, cssModule: theme = {} } = this.props;
 
     return currentOffset - perPage >= 0 ? (
       <button
@@ -101,7 +101,7 @@ class Pagination extends React.Component<PaginationProps, State> {
       perPage,
       total,
       nextLabel,
-      cssModuleStyles: theme = {},
+      cssModule: theme = {},
     } = this.props;
 
     return currentOffset + perPage < total ? (
@@ -119,7 +119,7 @@ class Pagination extends React.Component<PaginationProps, State> {
   }
 
   numbers(): JSX.Element[] | null {
-    const { total, perPage, currentOffset, cssModuleStyles: theme = {} } = this.props;
+    const { total, perPage, currentOffset, cssModule: theme = {} } = this.props;
     const { containerWidth } = this.state;
 
     const pages = Math.ceil(total / perPage);
@@ -185,7 +185,7 @@ class Pagination extends React.Component<PaginationProps, State> {
   }
 
   render(): JSX.Element | null {
-    const { total, perPage, cssModuleStyles: theme = {} } = this.props;
+    const { total, perPage, cssModule: theme = {} } = this.props;
 
     return total > perPage ? (
       <div

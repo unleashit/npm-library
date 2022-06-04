@@ -9,7 +9,7 @@ export interface RecursiveDataListerProps {
   displayAsList?: boolean;
   arrayLeafPropName?: string | null;
   repeatLeafPropName?: boolean;
-  cssModuleStyle?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
   dateFormat?: DateFormat;
 }
 
@@ -20,7 +20,7 @@ const RecursiveDataLister = ({
   arrayLeafPropName = null,
   repeatLeafPropName = true,
   dateFormat = (val: Date) => val.toString(),
-  cssModuleStyle: theme = {},
+  cssModule: theme = {},
 }: RecursiveDataListerProps): React.ReactElement => {
   if (displayAsList && isObjectNotArray(data)) {
     throw new Error(
