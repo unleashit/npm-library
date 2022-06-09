@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.12](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.10.11...@unleashit/pagination@0.10.12) (2022-06-09)
+
+
+### Bug Fixes
+
+* **all:** downgrade to React 17 to fix Enzyme/Tests ([80ce517](https://github.com/unleashit/npm-library/commit/80ce517e1e65d7a6b7de0e20d47e19d4750482b7))
+
+
+
+
+
 ## [0.10.11](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@0.10.10...@unleashit/pagination@0.10.11) (2022-05-30)
 
 **Note:** Version bump only for package @unleashit/pagination
