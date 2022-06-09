@@ -11,10 +11,12 @@ module.exports = (_env, { mode }) => {
   const devMode = mode !== 'production';
 
   return {
-    devtool: 'source-map',
+    devtool: devMode ? 'inline-source-map' : 'source-map',
     entry: `./src/index.tsx`,
     output: {
       publicPath: '/',
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', 'jsx'],

@@ -15,7 +15,7 @@ class ForgotPasswordResetDemo extends React.Component {
       .reverse();
 
     return await fetch(
-      `https://forgotpassword.unleashit.now.sh/passwordreset/${userid}/${token}`,
+      `https://unleashit-forgot-password.vercel.app/passwordreset/${userid}/${token}`,
       {
         method: 'POST',
         headers: {
@@ -23,7 +23,12 @@ class ForgotPasswordResetDemo extends React.Component {
         },
         body: JSON.stringify(values),
       },
-    ).then((resp) => resp.json());
+    ).then((resp) => {
+      if (resp.ok) {
+        return resp.json();
+      }
+      throw new Error('Problem connecting to the server');
+    });
   }
 
   onSuccess(res: ServerResponseReset) {

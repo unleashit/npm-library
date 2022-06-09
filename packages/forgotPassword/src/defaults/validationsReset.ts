@@ -5,7 +5,6 @@ const passwordReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 const schema = yup.object().shape({
   newPassword: yup
     .string()
-    .min(8, 'Password must have at least 8 characters')
     .max(56, "Password can't contain more than 56 characters")
     .matches(
       passwordReg,

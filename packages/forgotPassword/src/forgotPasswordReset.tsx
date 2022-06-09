@@ -1,4 +1,4 @@
-import { CustomInput, isCSSModule } from '@unleashit/common';
+import { CustomInput, formSubmitErrorHandler, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -15,13 +15,13 @@ import schema from './defaults/validationsReset';
 export interface FormValuesReset {
   newPassword: string;
   newPasswordConfirm: string;
-  serverMessage: string;
+  serverAuth: string;
 }
 
 export interface ServerResponseReset {
   success: boolean;
   errors?: {
-    serverMessage: string; // error msg to print in browser when auth fails
+    serverAuth: string; // error msg to print in browser when auth fails
     [key: string]: string; // optionally validate anything else on server
   };
 }
@@ -62,14 +62,14 @@ const ForgotPasswordResetRaw: React.FC<
   return (
     <div className={isCSSModule(theme.container, `unl-forgot-password__container`)}>
       <Header theme={theme} />
-      {errors.serverMessage && (
+      {errors.serverAuth && (
         <div
           className={isCSSModule(
             theme.serverAuthError,
             `unl-forgot-password__server-auth-error`,
           )}
         >
-          {errors.serverMessage}
+          {errors.serverAuth}
         </div>
       )}
       {isSubmitting ? (
@@ -111,7 +111,7 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
   mapPropsToValues: (): any => ({
     newPassword: '',
     newPasswordConfirm: '',
-    serverMessage: '',
+    serverAuth: '',
   }),
   validationSchema: (props: ForgotPasswordResetProps): SchemaOf<any> =>
     props.schema ? props.schema : schema,
@@ -142,8 +142,7 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
         setSubmitting(false);
       }
     } catch (err) {
-      setSubmitting(false);
-      console.error(err);
+      formSubmitErrorHandler(err, setErrors, setSubmitting);
     }
   },
 })(ForgotPasswordResetRaw);

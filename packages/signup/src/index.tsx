@@ -4,6 +4,7 @@ import {
   CustomInput,
   isCSSModule,
   DefaultLinkComponent,
+  formSubmitErrorHandler,
 } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
@@ -177,8 +178,7 @@ export default withFormik<SignupProps, FormValues | any>({
         setSubmitting(false);
       }
     } catch (err) {
-      setSubmitting(false);
-      console.error(err);
+      formSubmitErrorHandler(err, setErrors, setSubmitting);
     }
   },
 })(Signup);

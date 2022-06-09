@@ -1,4 +1,10 @@
-import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import {
+  CustomField,
+  CustomFields,
+  CustomInput,
+  isCSSModule,
+  formSubmitErrorHandler,
+} from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -14,12 +20,12 @@ import schema from './defaults/validations';
 
 export interface FormValues {
   email: string;
-  serverMessage: string;
+  serverAuth: string;
 }
 export interface ServerResponse {
   success: boolean;
   errors?: {
-    serverMessage: string; // error msg to print in browser when auth fails
+    serverAuth: string; // error msg to print in browser when auth fails
     [key: string]: string; // optionally validate anything else on server
   };
 }
@@ -64,14 +70,14 @@ export const ForgotPassword = (
   return (
     <div className={isCSSModule(theme.container, `unl-forgot-password__container`)}>
       <Header theme={theme} />
-      {errors.serverMessage && (
+      {errors.serverAuth && (
         <div
           className={isCSSModule(
             theme.serverAuthError,
             `unl-forgot-password__server-auth-error`,
           )}
         >
-          {errors.serverMessage}
+          {errors.serverAuth}
         </div>
       )}
       {isSubmitting ? (
@@ -116,7 +122,7 @@ export const ForgotPassword = (
 };
 
 export default withFormik<ForgotPasswordProps, FormValues>({
-  mapPropsToValues: (): any => ({ email: '', serverMessage: '' }),
+  mapPropsToValues: (): any => ({ email: '', serverAuth: '' }),
   validationSchema: (props: ForgotPasswordProps): SchemaOf<any> =>
     props.schema ? props.schema : schema,
   handleSubmit: async (
@@ -143,8 +149,7 @@ export default withFormik<ForgotPasswordProps, FormValues>({
         setSubmitting(false);
       }
     } catch (err) {
-      setSubmitting(false);
-      console.error(err);
+      formSubmitErrorHandler(err, setErrors, setSubmitting);
     }
   },
 })(ForgotPassword);

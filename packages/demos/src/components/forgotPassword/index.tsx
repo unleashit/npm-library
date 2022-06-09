@@ -4,7 +4,7 @@ import '@unleashit/forgot-password/dist/forgot-password.css';
 
 class ForgotPasswordDemo extends Component {
   async forgotPasswordHandler(values: FormValues) {
-    return await fetch('https://forgotpassword.unleashit.now.sh', {
+    return await fetch('https://unleashit-forgot-password.vercel.app', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
