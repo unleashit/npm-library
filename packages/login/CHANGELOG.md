@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.14.12...@unleashit/login@0.15.0) (2022-06-09)
+
+
+### Features
+
+* **login,signup,forgotPassword:** better error handling ([fb08579](https://github.com/unleashit/npm-library/commit/fb08579af91ac6845ee27ec20af3fd20147a1c8e))
+
+
+
+
+
 ## [0.14.12](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.14.11...@unleashit/login@0.14.12) (2022-06-09)
 
 
