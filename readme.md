@@ -42,10 +42,10 @@ By default, components come with basic css styling in two formats: standard (BEM
 
 To use the standard version, either import it from `@unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path) if using a module bundler or copy it into your project.
 
-Since I'm a big fan of CSS modules over CSS-in-JS, support is baked in. All React UI components accept an optional `cssModuleStyles` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app).
+Since I'm a big fan of CSS modules over CSS-in-JS, support is baked in. All React UI components accept an optional `cssModule` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app).
 
 If you use a custom module, you can target all of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` or the source code (sometimes not all possible targets are used in the provided CSS). You can also look at the markup in dev tools and translate from the BEM versions like: `unl-[component-name]__[style-name-with-dashes]` to simply `[styleNameCamelCase]`.
 
-Each component that uses CSS will output BEM class names by default. If a cssModuleStyle prop is passed in with matching classes, a hashed style class name will output for each match while non-provided (and matching) class names will remain BEM.
+Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided (and matching) class names will remain BEM.
 
 If anyone has any ideas or opinions to improve this, please let me know. If you're a CSS-in-JS user, you should repent. But if you insist on adding technical dept and soon-to-be obsolete and community incompatible syntax to your project, feel free! You might be able to make use of the cssModules prop if your library works with classes (e.g. Aphrodite).

@@ -182,4 +182,4 @@ export interface AuthLinkTypes {
 | template              | string                    | choice of theme if using the default CSS                                                                                   | clean      |
 | isAuth                | boolean                   | if set, component will set appropriate state to login/logout/signup links                                                  | undefined  |
 | authLinks             | AuthLinkTypes             | if set, these links will be added to the auth sidecar (a second ul within the nav container that can be styled separately) | undefined  |
-| cssModule             | { [key: string]: string } | CSS Module object that optionally replaces default. Class names need to match expected names.                              | BEM CSS    |
+| cssModule             | { [key: string]: string } | CSS Module object that optionally replaces default. Class names need to match expected names.                              | undefined  |

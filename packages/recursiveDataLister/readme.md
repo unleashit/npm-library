@@ -66,7 +66,7 @@ export default RecursiveDataListerDemo;
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/recursive-data-lister/dist/recursive-data-lister.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/recursive-data-lister/dist/recursive-data-lister.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/recursive-data-lister/dist/recursive-data-lister.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/recursive-data-lister/dist/recursive-data-lister.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API and Props
 
@@ -78,7 +78,7 @@ interface RecursiveDataListerProps {
   arrayLeafPropName?: string | null;
   repeatLeafPropName?: boolean;
   dateFormat?: (val: Date) => string | number;
-  cssModuleStyle?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
 }
 ```
 
@@ -90,4 +90,4 @@ interface RecursiveDataListerProps {
 | arrayLeafPropName  | string          | if set, this will use the property as node labels for arrays of objects (instead of the index) | null                      |
 | repeatLeafPropName | boolean         | If arrayLeafPropName is set, this will remove the prop from the array so it isn't repeated     | false                     |
 | dateFormat         | function        | Callback to process Date objects, receives the Date object                                     | (elem) => elem.toString() |
-| cssModuleStyles    | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | BEM class                 |
+| cssModule          | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | undefined                 |

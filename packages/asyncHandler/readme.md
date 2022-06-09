@@ -22,7 +22,7 @@ import AsyncHandler from '@unleashit/async-handler';
 
 class ColorList extends React.Component {
   request() {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         resolve(['red', 'green', 'blue', 'yellow', 'orange', 'black', 'white']);
       }, 1500);
@@ -32,7 +32,7 @@ class ColorList extends React.Component {
   render() {
     return (
       <AsyncHandler request={this.request}>
-        {data => <div>{data.join(', ')}</div>}
+        {(data) => <div>{data.join(', ')}</div>}
       </AsyncHandler>
     );
   }
@@ -72,7 +72,7 @@ let userCache = null;
 const UserList = ({ data }) => {
   return (
     <ul>
-      {data.map(item => (
+      {data.map((item) => (
         <li key={item.id}>
           {item.name} is {item.age} years old.
         </li>
@@ -83,7 +83,7 @@ const UserList = ({ data }) => {
 
 export default withAsyncHandler({
   request: () => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       setTimeout(() => {
         userCache = { users, cacheDate: new Date() };
         resolve(users);
@@ -105,13 +105,13 @@ export default withAsyncHandler({
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/async-handler/dist/async-handler.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/async-handler/dist/async-handler.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/async-handler/dist/async-handler.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/async-handler/dist/async-handler.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API and Props
 
 ```typescript
 interface DefaultComponentProps {
-  cssModuleStyle?: {
+  cssModule?: {
     [key: string]: string;
   };
   error?: any;
@@ -123,17 +123,17 @@ interface Props {
   loaderComponent: DefaultComponent;
   noResultsComponent: DefaultComponent;
   errorComponent: DefaultComponent;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
   children: (data: any) => any;
 }
 ```
 
-| Name               | Type                                               | Description                                                                                  | default                              |
-| ------------------ | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------ |
-| request            | () => Promise<any>                                 | Called if cache function exists and doesn't return a falsy value                             | required                             |
-| cache              | () => object &#124; any[] &#124; false &#124; null | Optional function that should return a cache object or null (calls the request)              | n/a                                  |
-| noResultsComponent | () => React.ReactNode                              | React component to override default no results message                                       | Nothing found.                       |
-| errorComponent     | ({ error }: {error: any} ) => React.ReactNode      | React component to override default error message                                            | default message with error displayed |
-| loaderComponent    | () => React.ReactNode                              | React component to override the default loader                                               | Loading...                           |
-| cssModuleStyles    | { [key: string]: string }                          | CSS Module object that optionally replaces default. Class names need to match expected names. | BEM CSS                          |
-| children           | (data: any) => any;                                | Function to be called with data if request returns with results (AsyncHandler only) | n/a                                  |
+| Name               | Type                                               | Description                                                                                   | default                              |
+| ------------------ | -------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
+| request            | () => Promise<any>                                 | Called if cache function exists and doesn't return a falsy value                              | required                             |
+| cache              | () => object &#124; any[] &#124; false &#124; null | Optional function that should return a cache object or null (calls the request)               | n/a                                  |
+| noResultsComponent | () => React.ReactNode                              | React component to override default no results message                                        | Nothing found.                       |
+| errorComponent     | ({ error }: {error: any} ) => React.ReactNode      | React component to override default error message                                             | default message with error displayed |
+| loaderComponent    | () => React.ReactNode                              | React component to override the default loader                                                | Loading...                           |
+| cssModule          | { [key: string]: string }                          | CSS Module object that optionally replaces default. Class names need to match expected names. | undefined                            |
+| children           | (data: any) => any;                                | Function to be called with data if request returns with results (AsyncHandler only)           | n/a                                  |

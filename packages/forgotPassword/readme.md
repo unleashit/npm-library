@@ -32,7 +32,7 @@ class ForgotPasswordDemo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then((resp) => resp.json());
   }
 
   onSuccess(serverResponse) {
@@ -74,7 +74,7 @@ class ForgotPasswordResetDemo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then((resp) => resp.json());
   }
 
   onSuccess(serverResponse) {
@@ -139,25 +139,15 @@ Currently input, select, checkbox and textarea fields are supported.
 
 // yup schema
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .max(56)
-    .required(),
-  secretQuestion1: yup
-    .string()
-    .max(512)
-    .required(),
-  secretQuestion2: yup
-    .string()
-    .max(512)
-    .required(),
+  email: yup.string().email().max(56).required(),
+  secretQuestion1: yup.string().max(512).required(),
+  secretQuestion2: yup.string().max(512).required(),
 });
 ```
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/forgot-password/dist/forgot-password.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/forgot-password/dist/forgot-password.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/forgot-password/dist/forgot-password.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/forgot-password/dist/forgot-password.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API and Props
 
@@ -186,7 +176,6 @@ interface CustomField {
   defaultChecked?: boolean; // for checkbox
   custAttrs?: { [key: string]: string };
 }
-
 ```
 
 **ForgotPassword**
@@ -200,7 +189,7 @@ interface CustomField {
 | header                  | React.FC                                                 | React component to override default pw request header                                                                                                                                                       | basic header        |
 | loader                  | React.FC                                                 | React component to override default loader                                                                                                                                                                  | Sending...          |
 | customFields            | CustomField[]                                            | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                                                       | n/a                 |
-| cssModuleStyles         | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                                | BEM CSS         |
+| cssModule               | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                               | undefined           |
 | children                | React Children                                           | Optional footer                                                                                                                                                                                             | n/a                 |
 
 **ForgotPasswordReset**
@@ -213,5 +202,5 @@ interface CustomField {
 | schema                     | yup.Schema\<ForgotPasswordSchema>                        | Yup schema to override the default                                                                                                                                                                                    | standard validation |
 | header                     | React.FC                                                 | React component to override default pw reset header                                                                                                                                                                   | basic header        |
 | loader                     | React.FC                                                 | React component to override default loader                                                                                                                                                                            | Sending...          |
-| cssModuleStyles            | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                                          | BEM CSS         |
+| cssModule                  | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                                         | undefined           |
 | children                   | React Children                                           | Optional footer                                                                                                                                                                                                       | n/a                 |

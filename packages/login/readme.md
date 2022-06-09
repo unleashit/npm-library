@@ -28,7 +28,7 @@ class LoginDemo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then((resp) => resp.json());
   }
 
   onSuccess(resp) {
@@ -114,17 +114,13 @@ const schema = yup.object().shape({
     .matches(/^[a-zA-Z0-9\._-]+$/, 'Enter a valid username')
     .max(56)
     .required(),
-  password: yup
-    .string()
-    .min(8)
-    .max(512)
-    .required(),
+  password: yup.string().min(8).max(512).required(),
 });
 ```
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/login/dist/login.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/login/dist/login.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API
 
@@ -169,5 +165,5 @@ interface CustomField {
 | forgotPasswordLink | string                                          | Url to forgot password                                                                                                          | /forgot-password               |
 | forgotPasswordText | string                                          | Forgot password link text                                                                                                       | Forgot password?               |
 | orLine             | boolean                                         | Display a "nice" line rule above social login buttons                                                                           | true (note: requires children) |
-| cssModuleStyles    | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                    | BEM CSS                    |
+| cssModule          | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                   | undefined                      |
 | children           | React Children                                  | Use for Social login buttons or anything else (displays as footer)                                                              | n/a                            |

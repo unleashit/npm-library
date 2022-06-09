@@ -82,7 +82,7 @@ export default ModalDemo;
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/modal/dist/modal.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/modal/dist/modal.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/modal/dist/modal.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/modal/dist/modal.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API
 
@@ -103,24 +103,24 @@ export interface Props {
   footer?: React.FC<ModalProps> | string;
   overlayColor?: string;
   closeBtn?: boolean;
-  cssModuleStyles?: { [key: string]: string };
+  cssModule?: { [key: string]: string };
   children?: React.ReactNode;
 }
 ```
 
 ### Props
 
-| Name                  | Type                                                         | Description                                                                                   | default         |
-| --------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | --------------- |
-| isOpen                | boolean                                                      | show or hide the modal                                                                        | required        |
-| size                  | 'small' &#124; 'medium' &#124; 'large' &#124; 'full'         | size of modal                                                                                 | medium          |
+| Name                  | Type                                                         | Description                                                                                   | default                |
+| --------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | ---------------------- |
+| isOpen                | boolean                                                      | show or hide the modal                                                                        | required               |
+| size                  | 'small' &#124; 'medium' &#124; 'large' &#124; 'full'         | size of modal                                                                                 | medium                 |
 | onClose               | () => void                                                   | state changing function to call when closing modal                                            | () => undefined (noop) |
-| closeOnOverlayClick   | boolean                                                      | close the modal when user clicks overlay                                                      | true            |
-| animationSupport      | boolean                                                      | use timeouts on modal open/close to support dom animation                                     | true            |
-| animationCloseTimeout | number                                                       | length of timeout                                                                             | 300             |
-| header                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional header component or string                                                           | n/a             |
-| footer                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional footer component or string                                                           | n/a             |
-| overlayColor          | string                                                       | color for the overlay                                                                         | no color        |
-| closeBtn              | boolean                                                      | show the default close icon                                                                   | true            |
-| cssModuleStyles       | { [key: string]: string }                                    | CSS Module object that optionally replaces default. Class names need to match expected names. | BEM CSS         |
-| children              | React Children                                               | content of the modal                                                                          | n/a             |
+| closeOnOverlayClick   | boolean                                                      | close the modal when user clicks overlay                                                      | true                   |
+| animationSupport      | boolean                                                      | use timeouts on modal open/close to support dom animation                                     | true                   |
+| animationCloseTimeout | number                                                       | length of timeout                                                                             | 300                    |
+| header                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional header component or string                                                           | n/a                    |
+| footer                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional footer component or string                                                           | n/a                    |
+| overlayColor          | string                                                       | color for the overlay                                                                         | no color               |
+| closeBtn              | boolean                                                      | show the default close icon                                                                   | true                   |
+| cssModule             | { [key: string]: string }                                    | CSS Module object that optionally replaces default. Class names need to match expected names. | undefined              |
+| children              | React Children                                               | content of the modal                                                                          | n/a                    |

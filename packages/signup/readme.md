@@ -28,7 +28,7 @@ class SignupDemo extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then(resp => resp.json());
+    }).then((resp) => resp.json());
   }
 
   onSuccess(resp) {
@@ -130,30 +130,19 @@ Currently input, select, checkbox and textarea fields are supported.
 
 // yup schema
 const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .max(56)
-    .required(),
-  password: yup
-    .string()
-    .min(8)
-    .max(512)
-    .required(),
+  email: yup.string().email().max(56).required(),
+  password: yup.string().min(8).max(512).required(),
   passwordConfirm: yup
     .string()
     .oneOf([yup.ref('password'), ''], 'Passwords must match')
     .required(),
-  color: yup
-    .string()
-    .oneOf(['red', 'green', 'blue', 'yellow'])
-    .required(),
+  color: yup.string().oneOf(['red', 'green', 'blue', 'yellow']).required(),
 });
 ```
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/signup/dist/signup.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/signup/dist/signup.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModuleStyles` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/signup/dist/signup.css'`. CSS Module support is baked in. If you use CSS Modules you can `import styles from '@unleashit/signup/dist/signup.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
 ### API
 
@@ -185,15 +174,15 @@ interface CustomField {
 
 ### Props
 
-| Name            | Type                                             | Description                                                                                                                       | default                        |
-| --------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| signupHandler   | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required                       |
-| onSuccess       | (resp: SignupHandlerResponse) => any             | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required                       |
-| schema          | yup.Schema\<SignupSchema>                        | Yup schema to override the default                                                                                                | standard validation            |
-| header          | React Component                                  | React component to override default header                                                                                        | basic header                   |
-| loader          | React Component                                  | React component to override default loader                                                                                        | Signing up...                  |
-| loginUrl        | string                                           | Url for login page. Use only if using default header                                                                              | /login                         |
-| customFields    | CustomField[]                                    | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                            |
-| orLine          | boolean                                          | Display a "nice" line rule above social signup buttons                                                                            | true (note: requires children) |
-| cssModuleStyles | { [key: string]: string }                        | CSS Module object that optionally replaces default. Class names need to match expected names.                                      | BEM CSS                        |
-| children        | React Children                                   | Use for Social signup buttons or anything else (displays as footer)                                                               | n/a                            |
+| Name          | Type                                             | Description                                                                                                                       | default                        |
+| ------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| signupHandler | (values: any) => Promise\<SignupHandlerResponse> | Called on submission and after validation. Use to register user and validate serverside. Should return the above interface        | required                       |
+| onSuccess     | (resp: SignupHandlerResponse) => any             | Called if signupHandler returns success. Provides the server response from serverHandler. Use to store auth state, redirect, etc. | required                       |
+| schema        | yup.Schema\<SignupSchema>                        | Yup schema to override the default                                                                                                | standard validation            |
+| header        | React Component                                  | React component to override default header                                                                                        | basic header                   |
+| loader        | React Component                                  | React component to override default loader                                                                                        | Signing up...                  |
+| loginUrl      | string                                           | Url for login page. Use only if using default header                                                                              | /login                         |
+| customFields  | CustomField[]                                    | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                    | n/a                            |
+| orLine        | boolean                                          | Display a "nice" line rule above social signup buttons                                                                            | true (note: requires children) |
+| cssModule     | { [key: string]: string }                        | CSS Module object that optionally replaces default. Class names need to match expected names.                                     | undefined                      |
+| children      | React Children                                   | Use for Social signup buttons or anything else (displays as footer)                                                               | n/a                            |
