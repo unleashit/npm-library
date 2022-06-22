@@ -11,4 +11,6 @@ const NavContext = React.createContext<NavContextValue>({
   cssModule: {},
 });
 
+NavContext.displayName = 'Navigation';
+
 export default NavContext;
