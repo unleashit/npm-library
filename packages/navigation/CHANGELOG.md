@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@0.5.5...@unleashit/navigation@0.5.6) (2022-08-11)
+
+
+### Bug Fixes
+
+* **navigation:** add displayName to context for debugging ([8873250](https://github.com/unleashit/npm-library/commit/8873250dfd1bf9fc074a50ee746f6dacea5080fc))
+
+
+
+
+
 ## [0.5.5](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@0.5.4...@unleashit/navigation@0.5.5) (2022-06-09)
 
 **Note:** Version bump only for package @unleashit/navigation

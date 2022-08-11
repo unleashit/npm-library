@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.14.0...@unleashit/common@0.15.0) (2022-08-11)
+
+
+### Features
+
+* **forms:** support toast for server/fail messages and other forms improvements ([81bd687](https://github.com/unleashit/npm-library/commit/81bd687824ee55af6e1de3cffe24381257eae82a))
+
+
+
+
+
 # [0.14.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.13.9...@unleashit/common@0.14.0) (2022-06-09)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.12.0...@unleashit/signup@0.13.0) (2022-08-11)
+
+
+### Features
+
+* **forms:** support toast for server/fail messages and other forms improvements ([81bd687](https://github.com/unleashit/npm-library/commit/81bd687824ee55af6e1de3cffe24381257eae82a))
+
+
+
+
+
 # [0.12.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@0.11.12...@unleashit/signup@0.12.0) (2022-06-09)
 
 
