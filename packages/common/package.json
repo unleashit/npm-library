@@ -29,7 +29,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "formik": ">=2.1.4",
+    "formik": "1.x || 2.x",
     "react": "16.x || 17.x || 18.x",
     "yup": ">=0.32.9"
   },

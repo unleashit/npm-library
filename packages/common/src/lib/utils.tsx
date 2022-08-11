@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FormikHelpers } from 'formik';
 
 export const isCSSModule = (themeProp: string | undefined, fallback: string): string =>
   themeProp || fallback;
@@ -26,22 +25,3 @@ export const sentenceCase = (str: string): string =>
     .slice(1)
     .split(/(?=[A-Z])/)
     .join(' ');
-
-export const formSubmitErrorHandler = (
-  err: unknown,
-  setErrors: FormikHelpers<any>['setErrors'],
-  setSubmitting: FormikHelpers<any>['setSubmitting'],
-) => {
-  console.error(err);
-
-  const message =
-    // eslint-disable-next-line no-nested-ternary
-    err instanceof Error
-      ? err.message
-      : typeof err === 'string'
-      ? err
-      : 'Something went wrong. Are you connected to the network?';
-
-  setErrors({ serverAuth: message });
-  setSubmitting(false);
-};

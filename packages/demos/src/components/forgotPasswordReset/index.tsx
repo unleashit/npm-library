@@ -3,7 +3,7 @@ import '@unleashit/forgot-password/dist/forgot-password.css';
 import {
   ForgotPasswordReset,
   FormValuesReset,
-  ServerResponseReset,
+  ServerResponse,
 } from '@unleashit/forgot-password';
 import React from 'react';
 
@@ -31,7 +31,7 @@ class ForgotPasswordResetDemo extends React.Component {
     });
   }
 
-  onSuccess(res: ServerResponseReset) {
+  onSuccess(res: ServerResponse) {
     console.log(res);
   }
 

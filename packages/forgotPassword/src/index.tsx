@@ -1,10 +1,4 @@
-import {
-  CustomField,
-  CustomFields,
-  CustomInput,
-  isCSSModule,
-  formSubmitErrorHandler,
-} from '@unleashit/common';
+import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -36,8 +30,10 @@ export interface ForgotPasswordProps {
   loader?: React.FC<ForgotPasswordLoaderProps>;
   schema?: SchemaOf<any>;
   customFields?: CustomField[];
-  cssModule?: { [key: string]: string };
   showDefaultConfirmation?: boolean;
+  failMsg?: string; // loginHandler failure msg
+  toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
+  cssModule?: { [key: string]: string };
 }
 
 export const ForgotPassword = (
@@ -131,7 +127,7 @@ export default withFormik<ForgotPasswordProps, FormValues>({
   ): Promise<any> => {
     try {
       const resp: ServerResponse = await props.forgotPasswordHandler(values);
-      const errors = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
 
       if (resp.success) {
         const isComponent = props.onSuccess && React.isValidElement(props.onSuccess);
@@ -145,11 +141,25 @@ export default withFormik<ForgotPasswordProps, FormValues>({
         }
       } else {
         setFieldValue('email', '', false);
+
+        if (props.toast && errors.serverAuth) {
+          props.toast(errors.serverAuth);
+        }
+
         setErrors(errors);
         setSubmitting(false);
       }
     } catch (err) {
-      formSubmitErrorHandler(err, setErrors, setSubmitting);
+      console.error(err);
+
+      const failMsg = props.failMsg || 'Failed to Fetch. Are you online?';
+
+      if (props.toast) {
+        props.toast(failMsg);
+      }
+
+      setErrors({ serverAuth: failMsg });
+      setSubmitting(false);
     }
   },
 })(ForgotPassword);

@@ -4,7 +4,6 @@ import {
   CustomInput,
   isCSSModule,
   DefaultLinkComponent,
-  formSubmitErrorHandler,
 } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
@@ -43,6 +42,8 @@ export interface LoginProps {
   orLine?: boolean;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
+  failMsg?: string; // loginHandler failure msg
+  toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
   cssModule?: { [key: string]: string };
 }
 
@@ -151,17 +152,31 @@ export default withFormik<LoginProps, FormValues>({
   ): Promise<any> => {
     try {
       const resp: ServerResponse = await props.loginHandler(values);
-      const errors = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
 
       if (resp.success) {
         props.onSuccess(resp);
       } else {
         setFieldValue('password', '', false);
+
+        if (props.toast && errors.serverAuth) {
+          props.toast(errors.serverAuth);
+        }
+
         setErrors(errors);
         setSubmitting(false);
       }
     } catch (err) {
-      formSubmitErrorHandler(err, setErrors, setSubmitting);
+      console.error(err);
+
+      const failMsg = props.failMsg || 'Failed to Fetch. Are you online?';
+
+      if (props.toast) {
+        props.toast(failMsg);
+      }
+
+      setErrors({ serverAuth: failMsg });
+      setSubmitting(false);
     }
   },
 })(Login);

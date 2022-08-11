@@ -1,4 +1,4 @@
-import { CustomInput, formSubmitErrorHandler, isCSSModule } from '@unleashit/common';
+import { CustomInput, isCSSModule } from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -12,27 +12,23 @@ import {
 } from './defaults/components';
 import schema from './defaults/validationsReset';
 
+import type { ServerResponse } from '.';
+
 export interface FormValuesReset {
   newPassword: string;
   newPasswordConfirm: string;
   serverAuth: string;
 }
 
-export interface ServerResponseReset {
-  success: boolean;
-  errors?: {
-    serverAuth: string; // error msg to print in browser when auth fails
-    [key: string]: string; // optionally validate anything else on server
-  };
-}
-
 interface ForgotPasswordResetProps {
-  forgotPasswordResetHandler: (values: any) => Promise<ServerResponseReset>;
+  forgotPasswordResetHandler: (values: any) => Promise<ServerResponse>;
   onSuccess?: (resp: any) => any;
   header?: React.FC<ForgotPasswordHeaderProps>;
   loader?: React.FC<ForgotPasswordLoaderProps>;
   schema?: SchemaOf<any>;
   showDefaultConfirmation?: boolean;
+  failMsg?: string; // loginHandler failure msg
+  toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
   cssModule?: { [key: string]: string };
 }
 
@@ -120,10 +116,10 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
     { props, setSubmitting, setErrors, setStatus },
   ): Promise<any> => {
     try {
-      const resp: ServerResponseReset = await props.forgotPasswordResetHandler({
+      const resp: ServerResponse = await props.forgotPasswordResetHandler({
         ...values,
       });
-      const errors = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
 
       if (resp.success) {
         const isComponent = props.onSuccess && React.isValidElement(props.onSuccess);
@@ -138,11 +134,24 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
       } else {
         // setFieldValue('newPassword', '', false);
         // setFieldValue('newPasswordConfirm', '', false);
+        if (props.toast && errors.serverAuth) {
+          props.toast(errors.serverAuth);
+        }
+
         setErrors(errors);
         setSubmitting(false);
       }
     } catch (err) {
-      formSubmitErrorHandler(err, setErrors, setSubmitting);
+      console.error(err);
+
+      const failMsg = props.failMsg || 'Failed to Fetch. Are you online?';
+
+      if (props.toast) {
+        props.toast(failMsg);
+      }
+
+      setErrors({ serverAuth: failMsg });
+      setSubmitting(false);
     }
   },
 })(ForgotPasswordResetRaw);
