@@ -8,7 +8,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
   <Formik
     handleSubmit={[Function]}
     initialValues={
-      Object {
+      {
         "email": "",
         "password": "",
         "serverAuth": "",
@@ -21,7 +21,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
   >
     <Login
       dirty={false}
-      errors={Object {}}
+      errors={{}}
       getFieldHelpers={[Function]}
       getFieldMeta={[Function]}
       getFieldProps={[Function]}
@@ -29,10 +29,10 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
-      initialErrors={Object {}}
-      initialTouched={Object {}}
+      initialErrors={{}}
+      initialTouched={{}}
       initialValues={
-        Object {
+        {
           "email": "",
           "password": "",
           "serverAuth": "",
@@ -56,7 +56,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       setValues={[Function]}
       submitCount={0}
       submitForm={[Function]}
-      touched={Object {}}
+      touched={{}}
       unregisterField={[Function]}
       validateField={[Function]}
       validateForm={[Function]}
@@ -64,7 +64,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
       validateOnChange={true}
       validateOnMount={false}
       values={
-        Object {
+        {
           "email": "",
           "password": "",
           "serverAuth": "",
@@ -78,7 +78,7 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
           linkComponent={[Function]}
           linkComponentHrefAttr="href"
           signupUrl="/signup"
-          theme={Object {}}
+          theme={{}}
         >
           <div
             className="unl-login__header"
@@ -113,15 +113,15 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="login"
-              cssModule={Object {}}
+              cssModule={{}}
               name="email"
               type="text"
             >
               <CustomInput
                 componentName="login"
-                cssModule={Object {}}
+                cssModule={{}}
                 field={
-                  Object {
+                  {
                     "name": "email",
                     "onBlur": [Function],
                     "onChange": [Function],
@@ -129,9 +129,9 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                   }
                 }
                 form={
-                  Object {
+                  {
                     "dirty": false,
-                    "errors": Object {},
+                    "errors": {},
                     "getFieldHelpers": [Function],
                     "getFieldMeta": [Function],
                     "getFieldProps": [Function],
@@ -139,10 +139,10 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     "handleChange": [Function],
                     "handleReset": [Function],
                     "handleSubmit": [Function],
-                    "initialErrors": Object {},
+                    "initialErrors": {},
                     "initialStatus": undefined,
-                    "initialTouched": Object {},
-                    "initialValues": Object {
+                    "initialTouched": {},
+                    "initialValues": {
                       "email": "",
                       "password": "",
                       "serverAuth": "",
@@ -164,14 +164,14 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     "status": undefined,
                     "submitCount": 0,
                     "submitForm": [Function],
-                    "touched": Object {},
+                    "touched": {},
                     "unregisterField": [Function],
                     "validateField": [Function],
                     "validateForm": [Function],
                     "validateOnBlur": true,
                     "validateOnChange": true,
                     "validateOnMount": false,
-                    "values": Object {
+                    "values": {
                       "email": "",
                       "password": "",
                       "serverAuth": "",
@@ -204,15 +204,15 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="login"
-              cssModule={Object {}}
+              cssModule={{}}
               name="password"
               type="password"
             >
               <CustomInput
                 componentName="login"
-                cssModule={Object {}}
+                cssModule={{}}
                 field={
-                  Object {
+                  {
                     "name": "password",
                     "onBlur": [Function],
                     "onChange": [Function],
@@ -220,9 +220,9 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                   }
                 }
                 form={
-                  Object {
+                  {
                     "dirty": false,
-                    "errors": Object {},
+                    "errors": {},
                     "getFieldHelpers": [Function],
                     "getFieldMeta": [Function],
                     "getFieldProps": [Function],
@@ -230,10 +230,10 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     "handleChange": [Function],
                     "handleReset": [Function],
                     "handleSubmit": [Function],
-                    "initialErrors": Object {},
+                    "initialErrors": {},
                     "initialStatus": undefined,
-                    "initialTouched": Object {},
-                    "initialValues": Object {
+                    "initialTouched": {},
+                    "initialValues": {
                       "email": "",
                       "password": "",
                       "serverAuth": "",
@@ -255,14 +255,14 @@ exports[`<LoginContainer /> renders without crashing 1`] = `
                     "status": undefined,
                     "submitCount": 0,
                     "submitForm": [Function],
-                    "touched": Object {},
+                    "touched": {},
                     "unregisterField": [Function],
                     "validateField": [Function],
                     "validateForm": [Function],
                     "validateOnBlur": true,
                     "validateOnChange": true,
                     "validateOnMount": false,
-                    "values": Object {
+                    "values": {
                       "email": "",
                       "password": "",
                       "serverAuth": "",

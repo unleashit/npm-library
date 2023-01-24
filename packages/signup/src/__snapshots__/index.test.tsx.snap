@@ -8,7 +8,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
   <Formik
     handleSubmit={[Function]}
     initialValues={
-      Object {
+      {
         "email": "",
         "password": "",
         "passwordConfirm": "",
@@ -22,7 +22,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
   >
     <Signup
       dirty={false}
-      errors={Object {}}
+      errors={{}}
       getFieldHelpers={[Function]}
       getFieldMeta={[Function]}
       getFieldProps={[Function]}
@@ -30,10 +30,10 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       handleChange={[Function]}
       handleReset={[Function]}
       handleSubmit={[Function]}
-      initialErrors={Object {}}
-      initialTouched={Object {}}
+      initialErrors={{}}
+      initialTouched={{}}
       initialValues={
-        Object {
+        {
           "email": "",
           "password": "",
           "passwordConfirm": "",
@@ -58,7 +58,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       signupHandler={[Function]}
       submitCount={0}
       submitForm={[Function]}
-      touched={Object {}}
+      touched={{}}
       unregisterField={[Function]}
       validateField={[Function]}
       validateForm={[Function]}
@@ -66,7 +66,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
       validateOnChange={true}
       validateOnMount={false}
       values={
-        Object {
+        {
           "email": "",
           "password": "",
           "passwordConfirm": "",
@@ -81,7 +81,7 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
           linkComponent={[Function]}
           linkComponentHrefAttr="href"
           loginUrl="/login"
-          theme={Object {}}
+          theme={{}}
         >
           <div
             className="unl-signup__header"
@@ -116,15 +116,15 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModule={Object {}}
+              cssModule={{}}
               name="email"
               type="text"
             >
               <CustomInput
                 componentName="signup"
-                cssModule={Object {}}
+                cssModule={{}}
                 field={
-                  Object {
+                  {
                     "name": "email",
                     "onBlur": [Function],
                     "onChange": [Function],
@@ -132,9 +132,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   }
                 }
                 form={
-                  Object {
+                  {
                     "dirty": false,
-                    "errors": Object {},
+                    "errors": {},
                     "getFieldHelpers": [Function],
                     "getFieldMeta": [Function],
                     "getFieldProps": [Function],
@@ -142,10 +142,10 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "handleChange": [Function],
                     "handleReset": [Function],
                     "handleSubmit": [Function],
-                    "initialErrors": Object {},
+                    "initialErrors": {},
                     "initialStatus": undefined,
-                    "initialTouched": Object {},
-                    "initialValues": Object {
+                    "initialTouched": {},
+                    "initialValues": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",
@@ -168,14 +168,14 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "status": undefined,
                     "submitCount": 0,
                     "submitForm": [Function],
-                    "touched": Object {},
+                    "touched": {},
                     "unregisterField": [Function],
                     "validateField": [Function],
                     "validateForm": [Function],
                     "validateOnBlur": true,
                     "validateOnChange": true,
                     "validateOnMount": false,
-                    "values": Object {
+                    "values": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",
@@ -209,15 +209,15 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModule={Object {}}
+              cssModule={{}}
               name="password"
               type="password"
             >
               <CustomInput
                 componentName="signup"
-                cssModule={Object {}}
+                cssModule={{}}
                 field={
-                  Object {
+                  {
                     "name": "password",
                     "onBlur": [Function],
                     "onChange": [Function],
@@ -225,9 +225,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   }
                 }
                 form={
-                  Object {
+                  {
                     "dirty": false,
-                    "errors": Object {},
+                    "errors": {},
                     "getFieldHelpers": [Function],
                     "getFieldMeta": [Function],
                     "getFieldProps": [Function],
@@ -235,10 +235,10 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "handleChange": [Function],
                     "handleReset": [Function],
                     "handleSubmit": [Function],
-                    "initialErrors": Object {},
+                    "initialErrors": {},
                     "initialStatus": undefined,
-                    "initialTouched": Object {},
-                    "initialValues": Object {
+                    "initialTouched": {},
+                    "initialValues": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",
@@ -261,14 +261,14 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "status": undefined,
                     "submitCount": 0,
                     "submitForm": [Function],
-                    "touched": Object {},
+                    "touched": {},
                     "unregisterField": [Function],
                     "validateField": [Function],
                     "validateForm": [Function],
                     "validateOnBlur": true,
                     "validateOnChange": true,
                     "validateOnMount": false,
-                    "values": Object {
+                    "values": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",
@@ -302,15 +302,15 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
             <Field
               component={[Function]}
               componentName="signup"
-              cssModule={Object {}}
+              cssModule={{}}
               name="passwordConfirm"
               type="password"
             >
               <CustomInput
                 componentName="signup"
-                cssModule={Object {}}
+                cssModule={{}}
                 field={
-                  Object {
+                  {
                     "name": "passwordConfirm",
                     "onBlur": [Function],
                     "onChange": [Function],
@@ -318,9 +318,9 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                   }
                 }
                 form={
-                  Object {
+                  {
                     "dirty": false,
-                    "errors": Object {},
+                    "errors": {},
                     "getFieldHelpers": [Function],
                     "getFieldMeta": [Function],
                     "getFieldProps": [Function],
@@ -328,10 +328,10 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "handleChange": [Function],
                     "handleReset": [Function],
                     "handleSubmit": [Function],
-                    "initialErrors": Object {},
+                    "initialErrors": {},
                     "initialStatus": undefined,
-                    "initialTouched": Object {},
-                    "initialValues": Object {
+                    "initialTouched": {},
+                    "initialValues": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",
@@ -354,14 +354,14 @@ exports[`<SignupContainer /> renders without crashing 1`] = `
                     "status": undefined,
                     "submitCount": 0,
                     "submitForm": [Function],
-                    "touched": Object {},
+                    "touched": {},
                     "unregisterField": [Function],
                     "validateField": [Function],
                     "validateForm": [Function],
                     "validateOnBlur": true,
                     "validateOnChange": true,
                     "validateOnMount": false,
-                    "values": Object {
+                    "values": {
                       "email": "",
                       "password": "",
                       "passwordConfirm": "",

@@ -3,8 +3,8 @@
 exports[`<Navigation /> renders without crashing 1`] = `
 <ContextProvider
   value={
-    Object {
-      "cssModule": Object {},
+    {
+      "cssModule": {},
       "linkComponent": [Function],
       "linkComponentHrefAttr": "href",
     }
@@ -14,23 +14,23 @@ exports[`<Navigation /> renders without crashing 1`] = `
     className="unl-navigation__container unl-navigation__container--clean"
   >
     <NavLinks
-      cssModule={Object {}}
+      cssModule={{}}
       links={
-        Array [
-          Object {
+        [
+          {
             "href": "/home",
             "title": "Home",
           },
-          Object {
+          {
             "href": "/products",
             "title": "Products",
           },
-          Object {
+          {
             "href": "/services",
             "title": "Services",
           },
-          Object {
-            "attrs": Object {
+          {
+            "attrs": {
               "rel": "noopener noreferrer",
               "target": "_blank",
             },
