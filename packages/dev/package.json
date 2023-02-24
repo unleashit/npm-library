@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/dev",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Development dependencies for npm-library",
@@ -30,7 +30,6 @@
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",

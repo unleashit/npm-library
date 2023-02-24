@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/navigation",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Basic navigation component for React with configurable links and login/logout",
@@ -48,7 +48,7 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^0.15.1"
+    "@unleashit/common": "^0.15.2"
   },
   "devDependencies": {
     "@unleashit/common": "^0.15.1"

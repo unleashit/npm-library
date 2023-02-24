@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Forgot password component for React with custom fields.",
@@ -54,10 +54,10 @@
     "yup": "^0.32.11"
   },
   "dependencies": {
-    "@unleashit/common": "^0.15.1"
+    "@unleashit/common": "^0.15.2"
   },
   "devDependencies": {
-    "@unleashit/dev": "*"
+    "@unleashit/dev": "^0.1.1"
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }
