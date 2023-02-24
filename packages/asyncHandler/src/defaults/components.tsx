@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AsyncHandlerProps } from '../index';
 
 export interface DefaultComponentProps {
-  cssModule?: AsyncHandlerProps["cssModule"];
+  cssModule?: AsyncHandlerProps['cssModule'];
 }
 
 export interface DefaultErrorComponentProps extends DefaultComponentProps {

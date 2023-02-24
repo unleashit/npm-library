@@ -22,7 +22,7 @@ Just getting going, so far we have...
 
 1. [mock-data](https://github.com/unleashit/npm-library/tree/master/packages/mockData) - Typescript wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-generator) to easily generate random data from a selection of templates or full custom schemas. Returns a JS object and/or a file in JSON format.
 
-A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos) is available for previewing the components. Will probably soon be removed in favor of Storybook.
+A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos) is available for previewing the components.
 
 ### How to Use
 

@@ -33,7 +33,7 @@ module.exports = {
     ],
     '@typescript-eslint/explicit-function-return-type': 0,
     // 'no-unused-vars': [2, { "argsIgnorePattern": "^_" }],
-    'no-console': process.NODE_ENV === 'production' ? 2 : 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-underscore-dangle': 0,
     'import/prefer-default-export': 0,
     'jsx-a11y/label-has-for': [
@@ -96,9 +96,8 @@ module.exports = {
     // rule introduced after airbnb update
     'react/function-component-definition': 0,
 
-    // rule behavior changed after update (can't import dev deps, even in tests)
-    // allow in tests
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.test.*'] }],
+    // temp solution for moving dev deps into own package
+    'import/no-extraneous-dependencies': 0,
 
     // rule introduced after update
     // requires proptypes so doesn't make sense in a typescript project

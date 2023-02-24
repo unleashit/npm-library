@@ -3010,7 +3010,7 @@ babel-jest@^29.4.3:
     graceful-fs "^4.2.9"
     slash "^3.0.0"
 
-babel-loader@9.1.2, babel-loader@^9.1.2:
+babel-loader@9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-9.1.2.tgz#a16a080de52d08854ee14570469905a5fc00d39c"
   integrity sha512-mN14niXW43tddohGl8HPu5yfQq70iUThvFL/4QzESA7GcZoC0eVOhvWdQ8+3UlSjaDE9MVtsW9mxDY07W7VpVA==
@@ -4348,9 +4348,9 @@ ejs@^3.1.7:
     jake "^10.8.5"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.309"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.309.tgz#82158606da135ffffc16a2e1eb853fa0a10955e7"
-  integrity sha512-U7DTiKe4h+irqBG6h4EZ0XXaZuJj4md3xIXXaGSYhwiumPZ4BSc6rgf9UD0hVUMaeP/jB0q5pKWCPxvhO8fvZA==
+  version "1.4.310"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.310.tgz#cb85dc8ceac536e99b20a364d7ab00ea35168f9e"
+  integrity sha512-/xlATgfwkm5uDDwLw5nt/MNEf7c1oazLURMZLy39vOioGYyYzLWIDT8fZMJak6qTiAJ7udFTy7JG7ziyjNutiA==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -7520,9 +7520,9 @@ minipass@^3.0.0, minipass@^3.1.0, minipass@^3.1.1, minipass@^3.1.3, minipass@^3.
     yallist "^4.0.0"
 
 minipass@^4.0.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/minipass/-/minipass-4.2.0.tgz#4bf124d8c87c14e99846f9a27c3219d956998c0e"
-  integrity sha512-ExlilAIS7zJ2EWUMaVXi14H+FnZ18kr17kFkGemMqBx6jW0m8P6XfqwYVPEG53ENlgsED+alVP9ZxC3JzkK23Q==
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/minipass/-/minipass-4.2.1.tgz#084031141113657662d40f66f9c2329036892128"
+  integrity sha512-KS4CHIsDfOZetnT+u6fwxyFADXLamtkPxkGScmmtTW//MlRrImV+LtbmbJpLQ86Hw7km/utbfEfndhGBrfwvlA==
 
 minizlib@^2.0.0, minizlib@^2.1.1, minizlib@^2.1.2:
   version "2.1.2"
