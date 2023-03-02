@@ -1,8 +1,7 @@
 {
   "name": "@unleashit/dev",
   "version": "0.1.1",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "module": "index.ts",
   "description": "Development dependencies for npm-library",
   "private": true,
   "scripts": {},

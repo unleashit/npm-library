@@ -25,3 +25,5 @@ export const sentenceCase = (str: string): string =>
     .slice(1)
     .split(/(?=[A-Z])/)
     .join(' ');
+
+export const removeUndefined = (val: unknown[]) => val.filter((v) => v !== undefined);

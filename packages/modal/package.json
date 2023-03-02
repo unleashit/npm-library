@@ -17,8 +17,7 @@
     "sass": "npm run sass:build && npm run sass:watch",
     "sass:build": "node-sass -r src/scss -o dist --source-map true",
     "sass:watch": "node-sass -wr src/scss -o dist --source-map true",
-    "test": "NODE_ENV=test jest --config ./jest.config.js",
-    "test:watch": "NODE_ENV=test jest --config ./jest.config.js --watch"
+    "test": "NODE_ENV=test jest"
   },
   "license": "MIT",
   "keywords": [
@@ -51,10 +50,10 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^0.15.2"
+    "@unleashit/common": "*"
   },
   "devDependencies": {
-    "@unleashit/common": "^0.15.1"
+    "@unleashit/common": "*"
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

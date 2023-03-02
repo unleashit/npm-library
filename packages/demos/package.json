@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@unleashit/async-handler": "^0.6.16",
-    "@unleashit/common": "^0.15.2",
+    "@unleashit/common": "*",
     "@unleashit/forgot-password": "^0.15.2",
     "@unleashit/login": "^0.16.2",
     "@unleashit/mock-data": "^0.8.12",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/react-dom": "^18.0.11",
     "@types/webpack-dev-server": "^4.7.2",
-    "@unleashit/dev": "^0.1.1",
+    "@unleashit/dev": "*",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
