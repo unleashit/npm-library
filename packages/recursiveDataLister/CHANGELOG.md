@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.16](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@0.4.15...@unleashit/recursive-data-lister@0.4.16) (2023-03-10)
+
+**Note:** Version bump only for package @unleashit/recursive-data-lister
+
+
+
+
+
 ## [0.4.15](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@0.4.14...@unleashit/recursive-data-lister@0.4.15) (2023-02-24)
 
 **Note:** Version bump only for package @unleashit/recursive-data-lister

@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demos",
-  "version": "0.19.2",
+  "version": "0.19.3",
   "private": true,
   "main": "build/index.js",
   "scripts": {
@@ -11,16 +11,16 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "@unleashit/async-handler": "^0.6.16",
-    "@unleashit/common": "*",
-    "@unleashit/forgot-password": "^0.15.2",
-    "@unleashit/login": "^0.16.2",
-    "@unleashit/mock-data": "^0.8.12",
-    "@unleashit/modal": "^0.2.14",
-    "@unleashit/navigation": "^0.5.8",
-    "@unleashit/pagination": "^0.10.16",
-    "@unleashit/recursive-data-lister": "^0.4.15",
-    "@unleashit/signup": "^0.13.2",
+    "@unleashit/async-handler": "^0.6.17",
+    "@unleashit/common": "^0.15.3",
+    "@unleashit/forgot-password": "^0.15.3",
+    "@unleashit/login": "^0.16.3",
+    "@unleashit/mock-data": "^0.8.13",
+    "@unleashit/modal": "^0.2.15",
+    "@unleashit/navigation": "^0.5.9",
+    "@unleashit/pagination": "^0.10.17",
+    "@unleashit/recursive-data-lister": "^0.4.16",
+    "@unleashit/signup": "^0.13.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.7.0",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/react-dom": "^18.0.11",
     "@types/webpack-dev-server": "^4.7.2",
-    "@unleashit/dev": "*",
+    "@unleashit/dev": "^0.1.2",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",

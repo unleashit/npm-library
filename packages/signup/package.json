@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "description": "Responsive signup component for React with custom fields.",
@@ -54,7 +54,7 @@
     "yup": "^0.32.11"
   },
   "dependencies": {
-    "@unleashit/common": "*"
+    "@unleashit/common": "^0.15.3"
   },
   "devDependencies": {
     "@unleashit/common": "*"
