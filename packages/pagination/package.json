@@ -49,11 +49,11 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^0.15.3",
+    "@unleashit/common": "*",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@unleashit/dev": "^0.1.2"
+    "@unleashit/dev": "*"
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

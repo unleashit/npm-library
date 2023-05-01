@@ -16,6 +16,7 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true
   },
+  "files": ["fixes.d.ts"],
   "exclude": [
     "node_modules",
     "typings/browser.d.ts",

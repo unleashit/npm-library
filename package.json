@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "CI=true lerna run --parallel start",
-    "start:build": "yarn run build && yarn start",
+    "start:build": "npm run build && npm start",
     "build": "npm run build:common && lerna run --parallel --ignore {@unleashit/common,@unleashit/demos} build",
     "build:ci": "npm run build:common && lerna run --ignore {@unleashit/common,@unleashit/demos} build",
     "build:common": "lerna run build --scope=@unleashit/common",
@@ -34,22 +34,23 @@
     "lint:fix": "eslint --fix 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "prettier": "prettier 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "prettier:write": "prettier --write 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
-    "prepublishOnly": "yarn run build",
+    "prepublishOnly": "npm run build",
     "release": "HUSKY_BYPASS=true lerna publish",
     "clean": "npm run clean:build && lerna clean && rm -rf node_modules",
     "clean:build": "lerna exec -- rm -rf dist build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {},
   "devDependencies": {
     "@unleashit/dev": "*",
-    "@commitlint/cli": "^17.4.4",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "husky": "^8.0.3",
-    "lerna": "^6.5.1"
+    "lerna": "^6.6.1"
   },
   "resolutions": {
-    "@types/react": "^17.0.53"
+    "@types/react": "18.2.0"
   },
   "workspaces": {
     "packages": [

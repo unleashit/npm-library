@@ -34,7 +34,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@unleashit/dev": "^0.1.2"
+    "@unleashit/dev": "*"
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

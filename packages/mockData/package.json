@@ -50,10 +50,10 @@
     "access": "public"
   },
   "dependencies": {
-    "mocker-data-generator": "2.12.0"
+    "mocker-data-generator": "3.0.3"
   },
   "devDependencies": {
-    "@unleashit/dev": "^0.1.2"
+    "@unleashit/dev": "*"
   },
   "moduleDirectories": [
     "node_modules"
