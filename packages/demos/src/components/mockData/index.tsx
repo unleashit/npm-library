@@ -6,33 +6,31 @@ import * as React from 'react';
 
 import { AppContext } from '../../utils/context';
 
-export class PaginationDemo extends React.Component<Record<string, unknown>> {
-  static contextType = AppContext;
+export function PaginationDemo() {
+  const { store } = React.useContext(AppContext);
 
-  request1 = () => this.context.store.generateFakeUsers({ total: 3 });
+  const request1 = React.useMemo(() => store.generateFakeUsers({ total: 3 }), [store]);
+  const request2 = React.useMemo(() => store.generateFakeProducts({ total: 3 }), [store]);
+  const request3 = React.useMemo(() => store.generateComplexJson({ total: 3 }), [store]);
 
-  request2 = () => this.context.store.generateFakeProducts({ total: 3 });
 
-  request3 = () => this.context.store.generateComplexJson({ total: 3 });
-
-  render() {
     return (
       <div>
         <h2>List of Users (user template)</h2>
-        <AsyncHandler request={this.request1}>
+        <AsyncHandler request={request1}>
           {(data: any[]) => <RecursiveDataLister data={data} />}
         </AsyncHandler>
         <h2>List of Products (product template)</h2>
-        <AsyncHandler request={this.request2}>
+        <AsyncHandler request={request2}>
           {(data: any[]) => <RecursiveDataLister data={data} />}
         </AsyncHandler>
         <h2>Nested Data (custom template)</h2>
-        <AsyncHandler request={this.request3}>
+        <AsyncHandler request={request3}>
           {(data: any[]) => <RecursiveDataLister data={data} />}
         </AsyncHandler>
       </div>
     );
-  }
+
 }
 
 export default PaginationDemo;

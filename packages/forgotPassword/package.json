@@ -1,20 +1,22 @@
 {
   "name": "@unleashit/forgot-password",
   "version": "0.15.3",
-  "main": "dist/commonjs/index.js",
-  "module": "dist/es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "description": "Forgot password component for React with custom fields.",
   "scripts": {
+    "build": "NODE_ENV=production tsup && pnpm sass:build",
+    "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
     "start": "concurrently \"npm run sass\" \"npm run babel:watch\" \"npm run ts:watch\"",
     "babel:watch": "BABEL_ENV=esmodules babel src --out-dir dist/es --extensions \".ts,.tsx\" --watch --source-maps --verbose",
-    "build": "rm -rf ./dist && concurrently \"npm run build:commonjs\" \"npm run build:es\" && concurrently \"npm run sass:build\" \"npm run ts\"",
+    "build2": "rm -rf ./dist && concurrently \"npm run build:commonjs\" \"npm run build:es\" && concurrently \"npm run sass:build\" \"npm run ts\"",
     "build:commonjs": "BABEL_ENV=commonjs NODE_ENV=production babel src --out-dir dist/commonjs --extensions \".ts,.tsx\" --source-maps",
     "build:es": "BABEL_ENV=esmodules NODE_ENV=production babel src --out-dir dist/es --extensions \".ts,.tsx\" --source-maps",
     "ts": "concurrently \"npm run ts:commonjs\" \"npm run ts:es\"",
     "ts:commonjs": "tsc -p tsconfig.d.json --outDir dist/commonjs --emitDeclarationOnly",
     "ts:es": "tsc -p tsconfig.d.json --outDir dist/es --module esnext",
     "ts:watch": "tsc --noEmit true --watch",
-    "sass": "npm run sass:build && npm run sass:watch",
+    "sass": "pnpm sass:build && pnpm sass:watch",
     "sass:build": "node-sass -r src/scss -o dist --source-map true",
     "sass:watch": "node-sass -wr src/scss -o dist --source-map true",
     "test": "NODE_ENV=test jest"
@@ -54,10 +56,10 @@
     "yup": "^0.32.11"
   },
   "dependencies": {
-    "@unleashit/common": "*"
+    "@unleashit/common": "workspace:*"
   },
   "devDependencies": {
-    "@unleashit/dev": "*"
+    "@unleashit/dev": "workspace:*"
   },
   "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
 }

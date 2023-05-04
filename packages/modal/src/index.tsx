@@ -22,6 +22,7 @@ export interface ModalProps {
   overlayColor?: string;
   closeBtn?: boolean;
   cssModule?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 
 export const Modal = ({
@@ -37,7 +38,7 @@ export const Modal = ({
   overlayColor,
   cssModule: theme = {},
   children,
-}: React.PropsWithChildren<ModalProps>) => {
+}: ModalProps) => {
   const [isHidden, setIsHidden] = React.useState(!isOpen);
   const [isAnimated, setIsAnimated] = React.useState(isOpen);
   const timeoutRef = React.useRef<number>();

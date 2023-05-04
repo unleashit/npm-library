@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const React = require('react');
 const Enzyme = require('enzyme');
-const Adapter = require('@cfaester/enzyme-adapter-react-18');
+const Adapter = require('@cfaester/enzyme-adapter-react-18').default;
 
 // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 

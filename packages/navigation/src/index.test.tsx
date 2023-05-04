@@ -109,7 +109,10 @@ describe('<Navigation />', () => {
   });
 
   it('takes an optional anchor/link component', () => {
-    const MyLink = ({ children, ...rest }: React.PropsWithChildren<any>) => (
+    const MyLink = ({
+      children,
+      ...rest
+    }: { children?: React.ReactNode } & Record<string, any>) => (
       <a {...rest}>myspeciallink - {children}</a>
     );
     let newProps: NavigationProps = {

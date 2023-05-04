@@ -13,7 +13,7 @@ const jestConfig = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   //  collectCoverageFrom: ['<rootDir>/src/**/*.test.{ts,tsx,js,jsx}'],
   transformIgnorePatterns: ['<rootDir>/(config|dist|node_modules)/'],
-  setupFiles: [`${__dirname}/../../../node_modules/regenerator-runtime/runtime`],
+  // setupFiles: [`${__dirname}/../../../node_modules/regenerator-runtime/runtime`],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {

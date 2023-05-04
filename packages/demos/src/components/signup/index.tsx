@@ -85,12 +85,17 @@ const SignupDemo = () => {
         //   },
         // ]}
       >
-        <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle}>
-          Sign up with Twitter
-        </TwitterLoginButton>
-        <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle}>
-          Sign up with Github
-        </GithubLoginButton>
+        <TwitterLoginButton
+          onClick={() => alert('Hello')}
+          style={btnStyle}
+          text="Sign up with Twitter"
+        />
+
+        <GithubLoginButton
+          onClick={() => alert('Hello')}
+          style={btnStyle}
+          text="Sign up with Github"
+        />
       </Signup>
     </>
   );

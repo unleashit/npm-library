@@ -19,7 +19,7 @@ module.exports = (_env, { mode }) => {
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', 'jsx'],
+      extensions: [".ts",".tsx",".js",".jsx", ".mjs"],
       fallback: { fs: false },
     },
     plugins: [
@@ -53,6 +53,16 @@ module.exports = (_env, { mode }) => {
               ],
             },
           },
+        },
+        // {
+        //   test: /\.mjs$/i,
+        //   resolve: { byDependency: { esm: { fullySpecified: false } } }
+        // },
+        {
+          test: /\.m?js/,
+          resolve: {
+            fullySpecified: false
+          }
         },
         {
           test: /module\.(scss|css)$/,

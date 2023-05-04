@@ -30,10 +30,11 @@ interface ForgotPasswordResetProps {
   failMsg?: string; // loginHandler failure msg
   toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
   cssModule?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 
 const ForgotPasswordResetRaw: React.FC<
-  FormikProps<FormValuesReset> & React.PropsWithChildren<ForgotPasswordResetProps>
+  FormikProps<FormValuesReset> & ForgotPasswordResetProps
 > = (props): React.ReactElement => {
   const {
     errors,

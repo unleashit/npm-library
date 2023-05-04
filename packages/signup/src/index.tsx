@@ -47,6 +47,7 @@ export interface SignupProps {
   failMsg?: string; // signupHandler failure msg
   toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
   cssModule?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 
 export const Signup = ({
@@ -65,8 +66,7 @@ export const Signup = ({
   linkComponentHrefAttr = 'href',
   cssModule: theme = {},
   children,
-}: FormikProps<FormValues> &
-  React.PropsWithChildren<SignupProps>): React.ReactElement => (
+}: FormikProps<FormValues> & SignupProps): React.ReactElement => (
   <div className={isCSSModule(theme.signupContainer, `unl-signup__container`)}>
     <Header
       loginUrl={loginUrl}

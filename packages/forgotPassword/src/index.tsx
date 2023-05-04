@@ -34,10 +34,11 @@ export interface ForgotPasswordProps {
   failMsg?: string; // loginHandler failure msg
   toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
   cssModule?: { [key: string]: string };
+  children?: React.ReactNode;
 }
 
 export const ForgotPassword = (
-  props: FormikProps<FormValues> & React.PropsWithChildren<ForgotPasswordProps>,
+  props: FormikProps<FormValues> & ForgotPasswordProps,
 ): React.ReactElement => {
   const {
     errors,
