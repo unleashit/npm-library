@@ -7,15 +7,6 @@
   "scripts": {
     "build": "NODE_ENV=production tsup",
     "dev": "NODE_ENV=development tsup --watch",
-    "start": "concurrently \"npm run babel:watch\" \"npm run ts:watch\"",
-    "babel:watch": "BABEL_ENV=esmodules babel src --out-dir dist/es --extensions \".ts,.tsx\" --watch --source-maps --verbose",
-    "build2": "rm -rf ./dist && concurrently \"npm run build:commonjs\" \"npm run build:es\" &&  npm run ts",
-    "build:commonjs": "BABEL_ENV=commonjs NODE_ENV=production babel src --out-dir dist/commonjs --extensions \".ts,.tsx\" --source-maps",
-    "build:es": "BABEL_ENV=esmodules NODE_ENV=production babel src --out-dir dist/es --extensions \".ts,.tsx\" --source-maps",
-    "ts": "concurrently \"npm run ts:commonjs\" \"npm run ts:es\"",
-    "ts:commonjs": "tsc -p tsconfig.d.json --outDir dist/commonjs --emitDeclarationOnly",
-    "ts:es": "tsc -p tsconfig.d.json --outDir dist/es --module esnext",
-    "ts:watch": "tsc --noEmit true --watch",
     "test": "NODE_ENV=test jest"
   },
   "keywords": [
@@ -55,10 +46,9 @@
     "mocker-data-generator": "^2.12.0"
   },
   "devDependencies": {
-    "@unleashit/dev": "workspace:*"
+    "@unleashit/configs": "workspace:*"
   },
   "moduleDirectories": [
     "node_modules"
-  ],
-  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c"
+  ]
 }

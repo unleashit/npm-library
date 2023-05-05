@@ -3,7 +3,7 @@ import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 
 // eslint-disable-next-line import/no-relative-packages
-import { changeVal, nextTick } from '@unleashit/dev';
+import { changeVal, nextTick } from '@unleashit/configs';
 import SignupContainer, { mapDefaultValues, SignupProps } from '.';
 
 describe('<SignupContainer />', () => {

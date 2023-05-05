@@ -13,24 +13,22 @@ export function PaginationDemo() {
   const request2 = React.useMemo(() => store.generateFakeProducts({ total: 3 }), [store]);
   const request3 = React.useMemo(() => store.generateComplexJson({ total: 3 }), [store]);
 
-
-    return (
-      <div>
-        <h2>List of Users (user template)</h2>
-        <AsyncHandler request={request1}>
-          {(data: any[]) => <RecursiveDataLister data={data} />}
-        </AsyncHandler>
-        <h2>List of Products (product template)</h2>
-        <AsyncHandler request={request2}>
-          {(data: any[]) => <RecursiveDataLister data={data} />}
-        </AsyncHandler>
-        <h2>Nested Data (custom template)</h2>
-        <AsyncHandler request={request3}>
-          {(data: any[]) => <RecursiveDataLister data={data} />}
-        </AsyncHandler>
-      </div>
-    );
-
+  return (
+    <div>
+      <h2>List of Users (user template)</h2>
+      <AsyncHandler request={request1}>
+        {(data: any[]) => <RecursiveDataLister data={data} />}
+      </AsyncHandler>
+      <h2>List of Products (product template)</h2>
+      <AsyncHandler request={request2}>
+        {(data: any[]) => <RecursiveDataLister data={data} />}
+      </AsyncHandler>
+      <h2>Nested Data (custom template)</h2>
+      <AsyncHandler request={request3}>
+        {(data: any[]) => <RecursiveDataLister data={data} />}
+      </AsyncHandler>
+    </div>
+  );
 }
 
 export default PaginationDemo;

@@ -27,6 +27,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@unleashit/dev": "workspace:*"
+    "@unleashit/configs": "workspace:*"
   }
 }

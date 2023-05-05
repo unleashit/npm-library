@@ -1,5 +1,5 @@
 {
-  "name": "@unleashit/dev",
+  "name": "@unleashit/configs",
   "version": "0.1.2",
   "files": [
     "index.ts",
@@ -32,7 +32,6 @@
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },
-  "gitHead": "af2f3b787aed55691b0141675f8f3d9a1aabac9c",
   "devDependencies": {
     "tsup": "^6.7.0",
     "react": "^18.2.0"

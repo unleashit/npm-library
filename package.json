@@ -6,13 +6,10 @@
   "license": "MIT",
   "keywords": [
     "monorepo",
-    "lerna",
+    "nx",
     "react",
     "node",
-    "nodejs",
-    "components",
     "npm packages",
-    "npm components",
     "react components",
     "ui components",
     "ui library"
@@ -21,23 +18,15 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "scripts": {
-    "demo": "nx dev @unleashit/demos",
     "build": "nx run-many -t build --exclude=@unleashit/demos",
-    "dev": "nx run-many --target=dev --all --maxParallel=11",
-    "start": "CI=true lerna run --parallel start",
-    "start:build": "npm run build && npm start",
-    "build2": "pnpm --filter @unleashit/common build && pnpm --filter=!@unleashit/demos -r --parallel build",
-    "dev2": "pnpm -r --parallel dev",
-    "build:ci": "npm run build:common && lerna run --ignore {@unleashit/common,@unleashit/demos} build",
-    "build:common": "lerna run build --scope=@unleashit/common",
-    "build:demos": "lerna run build --scope=@unleashit/demos",
-    "test": "lerna run --stream test",
-    "test:watch": "lerna run test -- -- --watch",
-    "test:coverage": "lerna run test -- --coverage",
+    "build:pnpm": "pnpm --filter @unleashit/common build && pnpm --filter=!@unleashit/demos -r --parallel build",
+    "dev": "nx run-many --target=dev --all --parallel=12",
+    "demo": "nx dev @unleashit/demos",
+    "test": "nx run-many --target=test --all",
     "lint": "eslint 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "lint:fix": "eslint --fix 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
-    "prettier": "prettier 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
-    "prettier:write": "prettier --write 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "format": "prettier 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
+    "format:write": "prettier --write 'packages/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "prepublishOnly": "npm run build",
     "release": "HUSKY_BYPASS=true lerna publish",
     "clean": "npm run clean:build && lerna clean && rm -rf node_modules",
@@ -45,13 +34,6 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.5",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-transform-runtime": "^7.21.4",
-    "@babel/preset-env": "^7.21.5",
-    "@babel/preset-react": "^7.18.6",
-    "@babel/preset-typescript": "^7.21.5",
     "@cfaester/enzyme-adapter-react-18": "^0.7.0",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
@@ -64,8 +46,7 @@
     "@types/yup": "^0.29.14",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
-    "@unleashit/dev": "*",
-    "babel-loader": "9.1.2",
+    "@unleashit/configs": "*",
     "concurrently": "^8.0.1",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
@@ -84,13 +65,12 @@
     "jest-environment-jsdom": "^29.5.0",
     "lerna": "^6.6.1",
     "node-sass": "^8.0.0",
-    "nx": "^16.0.3",
+    "nx": "16.1.0",
     "prettier": "^2.8.8",
     "react-dom": "^18.2.0",
     "sass-loader": "^13.2.2",
     "ts-jest": "29.1.0",
     "ts-loader": "^9.4.2",
-    "ts-node": "^10.9.1",
     "tsup": "^6.7.0",
     "typescript": "5.0.4",
     "yup": "^1.1.1"
@@ -116,3 +96,4 @@
     "tabWidth": 2
   }
 }
+

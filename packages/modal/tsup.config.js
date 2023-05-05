@@ -1,3 +1,3 @@
-import tsup from '@unleashit/dev/tsup.config'
+import tsup from '@unleashit/configs/tsup.config';
 
 export default tsup;

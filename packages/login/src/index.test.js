@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-relative-packages
-import { changeVal, nextTick } from '@unleashit/dev';
+import { changeVal, nextTick } from '@unleashit/configs';
 import LoginContainer from '.';
 
 describe('<LoginContainer />', () => {
