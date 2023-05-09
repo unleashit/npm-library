@@ -1,6 +1,6 @@
 {
   "name": "npm-library",
-  "description": "Lerna/Yarn Workspaces monorepo of NPM packages, React and UI components",
+  "description": "NX and pnpm Workspaces monorepo of NPM packages, React and UI components",
   "private": true,
   "author": "unleashit",
   "license": "MIT",
