@@ -2,9 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 
-Lerna + Yarn Workspaces monorepo of various UI components and NPM modules. Written with Typescript and tested with Jest.
-
-Just getting going, so far we have...
+NX and PNPM workspaces monorepo of various UI components and installable NPM modules. Written with Typescript and tested with Jest.
 
 ### React Components
 
@@ -16,7 +14,6 @@ Just getting going, so far we have...
 6. [Modal](https://github.com/unleashit/npm-library/tree/master/packages/modal) - customizable modal component in Typescript. Optional animation support when adding/removing from DOM. Assumes a peer dependency of React.
 7. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run.
 8. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
-9. [React Help Desk](https://github.com/unleashit/npm-library) - coming soon
 
 ### Other
 
@@ -26,26 +23,26 @@ A [demo app](https://github.com/unleashit/npm-library/tree/master/packages/demos
 
 ### How to Use
 
-- Install individual components via NPM. See individual component.
+- Install the individual components via NPM. See each component.
 
-- Run the demo app (demos all components): `yarn start`
+- To run the demo app (demos all components): `pnpm demo`
 
 **Other commands**
 
-Run all tests: `yarn run build && yarn test`
+Run the demo plus all components in dev mode `pnpm dev`.
 
-Other scripts are available to build, publish to NPM, clean, etc. This is a mirror. Pull/Merge requests should be made at https://gitlab.com/unleashit/npm-library to take advantage of CI.
+Run tests: `pnpm build && pnpm test`.
 
 ### CSS
 
 By default, components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
 
-To use the standard version, either import it from `@unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path) if using a module bundler or copy it into your project.
+To use the standard version, either import it from `@unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path) or copy it into your project.
 
-Since I'm a big fan of CSS modules over CSS-in-JS, support is baked in. All React UI components accept an optional `cssModule` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app).
+Support for CSS modules is baked in. All React UI components accept an optional `cssModule` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app).
 
-If you use a custom module, you can target all of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` or the source code (sometimes not all possible targets are used in the provided CSS). You can also look at the markup in dev tools and translate from the BEM versions like: `unl-[component-name]__[style-name-with-dashes]` to simply `[styleNameCamelCase]`.
+Using the `cssModules` prop and your own modules, you can target any of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` (keeping in mind that sometimes not all possible targets are utilized) or the source code. Another option is to simply look at the markup in dev tools and translate the default BEM classnames like `unl-[component-name]__[style-name-with-dashes]` to `[styleNameCamelCase]` in your module.
 
 Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided (and matching) class names will remain BEM.
 
-If anyone has any ideas or opinions to improve this, please let me know. If you're a CSS-in-JS user, you should repent. But if you insist on adding technical dept and soon-to-be obsolete and community incompatible syntax to your project, feel free! You might be able to make use of the cssModules prop if your library works with classes (e.g. Aphrodite).
+If anyone has likes this novel way to provide CSS with a library, or have any ideas to improve it please let me know. If you're a Tailwind or CSS-in-JS user, you should repent. But if you insist on adding technical debt and spaghetti to your project, feel free! You might skill be able to make use of the cssModules prop if your library works with classes (e.g. Aphrodite).
