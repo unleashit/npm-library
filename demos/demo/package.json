@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demo",
-  "version": "0.19.3",
+  "version": "0.19.4",
   "private": true,
   "main": "build/index.js",
   "scripts": {
