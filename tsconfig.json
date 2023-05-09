@@ -3,9 +3,7 @@
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
-    // Import non-ES modules as default imports.,
     "esModuleInterop": true,
-    //    "lib": ["dom", "es2015", "es2017"],
     "declaration": true,
     "strict": true,
     "strictFunctionTypes": true,
@@ -15,11 +13,13 @@
     "noFallthroughCasesInSwitch": true,
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths" : {
+      "@unleashit/configs": ["shared/configs"],
+//      "@unleashit/common": ["shared/common"],
+    },
   },
   "files": ["fixes.d.ts"],
-  "exclude": [
-    "node_modules",
-    "typings/browser.d.ts",
-    "typings/browser"
-  ]
+  "exclude": ["node_modules"]
 }

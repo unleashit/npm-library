@@ -1,4 +1,4 @@
-import jestConfig from '@unleashit/configs/index';
+import { jestConfig } from '@unleashit/configs';
 
 export default {
   ...jestConfig,

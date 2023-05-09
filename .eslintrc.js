@@ -102,6 +102,10 @@ module.exports = {
     // rule introduced after update
     // requires proptypes so doesn't make sense in a typescript project
     'react/default-props-match-prop-types': 0,
+
+    // upgrade caused: TypeError: Cannot read properties of undefined (reading 'getTokens')
+    // turning off for now since it crashes IDE
+    '@typescript-eslint/no-empty-function': 0,
   },
   // overrides for test files
   // overrides: [

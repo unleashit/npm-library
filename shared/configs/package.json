@@ -1,0 +1,41 @@
+{
+  "name": "@unleashit/configs",
+  "version": "0.1.2",
+  "main": "index.ts",
+  "module": "index.ts",
+  "exports": {
+    ".": ["./index.ts"]
+  },
+  "types": "./index.ts",
+  "description": "Development dependencies for npm-library",
+  "private": true,
+  "scripts": {},
+  "license": "MIT",
+  "keywords": [
+    "login",
+    "react login",
+    "responsive",
+    "custom fields",
+    "react",
+    "react components",
+    "npm packages",
+    "npm components",
+    "ui components",
+    "ui library",
+    "monorepo",
+    "lerna",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unleashit/npm-library.git"
+  },
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/dev",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "devDependencies": {
+    "tsup": "^6.7.0",
+    "react": "^18.2.0"
+  }
+}

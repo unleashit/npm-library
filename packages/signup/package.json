@@ -47,9 +47,10 @@
     "yup": "^0.32.11"
   },
   "dependencies": {
-    "@unleashit/common": "workspace:*"
+    "@unleashit/common": "workspace:*",
+    "@unleashit/configs": "workspace:*"
   },
   "devDependencies": {
-    "@unleashit/configs": "workspace:*"
+
   }
 }

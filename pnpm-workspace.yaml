@@ -1,2 +1,4 @@
 packages:
+  - 'shared/*'
   - 'packages/*'
+  - 'demos/*'
