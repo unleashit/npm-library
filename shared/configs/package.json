@@ -3,11 +3,6 @@
   "version": "0.1.4",
   "main": "index.ts",
   "module": "index.ts",
-  "exports": {
-    ".": [
-      "./index.ts"
-    ]
-  },
   "types": "./index.ts",
   "description": "Development dependencies for npm-library",
   "private": true,
