@@ -15,10 +15,9 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths" : {
-      "@unleashit/configs": ["shared/configs"],
-//      "@unleashit/common": ["shared/common"],
-    },
+    "paths": {
+      "@unleashit/configs": ["shared/configs"]
+    }
   },
   "files": ["fixes.d.ts"],
   "exclude": ["node_modules"]
