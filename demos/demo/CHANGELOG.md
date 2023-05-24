@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.6](https://github.com/unleashit/npm-library/compare/@unleashit/demo@0.19.5...@unleashit/demo@0.19.6) (2023-05-24)
+
+### Bug Fixes
+
+- **demo:** fix ts error after ts updates ([94697d6](https://github.com/unleashit/npm-library/commit/94697d6675a999d6d18cd0e26cf64969ab8cf954))
+
 ## [0.19.5](https://github.com/unleashit/npm-library/compare/@unleashit/demo@0.19.4...@unleashit/demo@0.19.5) (2023-05-24)
 
 **Note:** Version bump only for package @unleashit/demo
