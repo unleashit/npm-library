@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "0.15.5",
+  "version": "0.15.6",
   "description": "Forgot password component for React with custom fields.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

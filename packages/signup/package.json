@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "description": "Responsive signup component for React with custom fields.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
