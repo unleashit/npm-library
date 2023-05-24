@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "0.16.4",
+  "version": "0.16.5",
   "description": "Responsive login component for React with custom fields.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -14,7 +14,9 @@
       "require": "./dist/*.css"
     }
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",

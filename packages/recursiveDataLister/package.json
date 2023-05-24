@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/recursive-data-lister",
-  "version": "0.4.17",
+  "version": "0.4.18",
   "description": "Simple React component that displays a nested object recursively with a choice of markup.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -14,7 +14,9 @@
       "require": "./dist/*.css"
     }
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",

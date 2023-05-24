@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/navigation",
-  "version": "0.5.10",
+  "version": "0.5.11",
   "description": "Basic navigation component for React with configurable links and login/logout",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -14,7 +14,9 @@
       "require": "./dist/*.css"
     }
   },
-  "sideEffects": ["*.css"],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
