@@ -5,7 +5,7 @@ import AsyncHandler from '@unleashit/async-handler';
 import Pagination from '@unleashit/pagination';
 import * as React from 'react';
 
-import { AppContext } from '../../utils/context';
+import { AppContext, AppContextValue } from '../../utils/context';
 import List from './List';
 
 interface State {
@@ -27,6 +27,8 @@ export class PaginationDemo extends React.Component<Record<string, unknown>, Sta
   };
 
   static contextType = AppContext;
+
+  context: AppContextValue = this.context;
 
   currentOffset() {
     const { offset } = this.state;

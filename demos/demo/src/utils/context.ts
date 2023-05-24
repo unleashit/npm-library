@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-type AppContextValue = {
+export type AppContextValue = {
   globalState: any;
   store: any;
 };
