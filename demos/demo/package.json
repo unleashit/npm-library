@@ -22,9 +22,9 @@
     "@unleashit/signup": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.11.0",
-    "react-router-dom": "^6.11.0",
-    "react-social-login-buttons": "^3.6.1",
+    "react-router": "^6.11.2",
+    "react-router-dom": "^6.11.2",
+    "react-social-login-buttons": "^3.9.1",
     "yup": "^1.1.1"
   },
   "devDependencies": {
@@ -33,21 +33,21 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.21.5",
     "@babel/runtime": "^7.21.5",
-    "@types/react-dom": "^18.2.1",
+    "@types/react-dom": "^18.2.4",
     "@types/webpack-dev-server": "^4.7.2",
     "@unleashit/configs": "workspace:*",
     "babel-loader": "^9.1.2",
-    "css-loader": "^6.7.3",
+    "css-loader": "^6.7.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
     "ignore-loader": "^0.1.2",
-    "mini-css-extract-plugin": "^2.7.5",
-    "style-loader": "^3.3.2",
-    "ts-loader": "^9.4.2",
+    "mini-css-extract-plugin": "^2.7.6",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.3",
     "typescript": "^5.0.4",
-    "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2",
-    "webpack-dev-server": "^4.13.3"
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "eslintConfig": {
     "extends": "react-app"
