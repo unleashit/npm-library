@@ -1,0 +1,22 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  min-height: 350px;
+  svg {
+    animation-name: unl-spinner-lg;
+    animation-duration: 1500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes unl-spinner-lg {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}

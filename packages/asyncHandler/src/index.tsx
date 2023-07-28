@@ -11,7 +11,9 @@ import {
 import { isEmpty } from './utils';
 
 type DefaultComponent = (props: DefaultComponentProps) => React.ReactElement;
-type DefaultErrorComponent = (props: DefaultErrorComponentProps) => React.ReactElement;
+type DefaultErrorComponent = (
+  props: DefaultErrorComponentProps,
+) => React.ReactElement;
 export interface AsyncHandlerProps {
   request: () => Promise<any>;
   cache: () => Record<string, unknown> | any[] | false | null;

@@ -13,9 +13,8 @@ export const useToggleBodyStyleProp = (
   valToSet: string,
   condition: boolean,
 ) => {
-  const { current: bodyStyle }: React.RefObject<CSSStyleDeclaration> = React.useRef(
-    document.body.style,
-  );
+  const { current: bodyStyle }: React.RefObject<CSSStyleDeclaration> =
+    React.useRef(document.body.style);
   const cachedBodyStyle: React.MutableRefObject<string> = React.useRef('');
 
   const returnCachedStyleState = React.useCallback((): void => {

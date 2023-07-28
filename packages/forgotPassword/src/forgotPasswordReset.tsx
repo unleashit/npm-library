@@ -57,7 +57,9 @@ const ForgotPasswordResetRaw: React.FC<
   }
 
   return (
-    <div className={isCSSModule(theme.container, `unl-forgot-password__container`)}>
+    <div
+      className={isCSSModule(theme.container, `unl-forgot-password__container`)}
+    >
       <Header theme={theme} />
       {errors.serverAuth && (
         <div
@@ -94,7 +96,12 @@ const ForgotPasswordResetRaw: React.FC<
             Send
           </button>
           {children && (
-            <div className={isCSSModule(theme.footer, `unl-forgot-password__footer`)}>
+            <div
+              className={isCSSModule(
+                theme.footer,
+                `unl-forgot-password__footer`,
+              )}
+            >
               {children}
             </div>
           )}
@@ -104,7 +111,10 @@ const ForgotPasswordResetRaw: React.FC<
   );
 };
 
-export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValuesReset>({
+export const ForgotPasswordReset = withFormik<
+  ForgotPasswordResetProps,
+  FormValuesReset
+>({
   mapPropsToValues: (): any => ({
     newPassword: '',
     newPasswordConfirm: '',
@@ -120,10 +130,12 @@ export const ForgotPasswordReset = withFormik<ForgotPasswordResetProps, FormValu
       const resp: ServerResponse = await props.forgotPasswordResetHandler({
         ...values,
       });
-      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> =
+        resp.errors || {};
 
       if (resp.success) {
-        const isComponent = props.onSuccess && React.isValidElement(props.onSuccess);
+        const isComponent =
+          props.onSuccess && React.isValidElement(props.onSuccess);
 
         if (props.onSuccess && !isComponent) {
           props.onSuccess(resp);

@@ -1,0 +1,67 @@
+{
+  "name": "@unleashit/simple-form",
+  "version": "0.1.0",
+  "description": "Quick and responsive simple forms for React",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./dist/*.css": "./src/scss/*.scss"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      },
+      "./dist/*.css": "./dist/*.css"
+    },
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css", "*.scss"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production tsup --tsconfig tsconfig.lib.json && pnpm sass:build",
+    "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
+    "sass": "pnpm sass:build && pnpm sass:watch",
+    "sass:build": "node-sass -r src/scss -o dist --source-map true --include-path '../../shared/common/src/scss' && pnpm sass:postbuild",
+    "sass:postbuild": "../../shared/scripts/postcssRename.js --name simple-form ./dist/simple-form.module.css",
+    "sass:watch": "node-sass -wr src/scss -o dist --source-map true --include-path '../../shared/common/src/scss'",
+    "test": "NODE_ENV=test jest"
+  },
+  "license": "MIT",
+  "keywords": [
+    "form builder",
+    "contact component",
+    "responsive",
+    "custom fields",
+    "react",
+    "npm",
+    "ui components",
+    "ui library",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unleashit/npm-library.git"
+  },
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/contact",
+  "bugs": {
+    "url": "https://github.com/unleashit/npm-library/issues"
+  },
+  "peerDependencies": {
+    "react": "16.x || 17.x || 18.x",
+    "react-hook-form": "7.x",
+    "zod": "3.x"
+  },
+  "dependencies": {
+    "@unleashit/common": "workspace:*"
+  },
+  "devDependencies": {
+    "@unleashit/configs": "workspace:*"
+  }
+}

@@ -77,14 +77,19 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
   }
   if (element === 'select') {
     if (!options)
-      throw new Error('Must provide and options prop for a select element field');
+      throw new Error(
+        'Must provide and options prop for a select element field',
+      );
 
     Element = ce(
       'select',
       {
         name,
         id: `${componentName}-form-${name}`,
-        className: `${isCSSModule(theme.input, `unl-${componentName}__input`)} ${
+        className: `${isCSSModule(
+          theme.input,
+          `unl-${componentName}__input`,
+        )} ${
           touched[name] && errors[name]
             ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
             : ''
@@ -102,7 +107,10 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
       type: 'checkbox',
       name,
       id: `${componentName}-form-${name}`,
-      className: `${isCSSModule(theme.checkbox, `unl-${componentName}__checkbox`)} ${
+      className: `${isCSSModule(
+        theme.checkbox,
+        `unl-${componentName}__checkbox`,
+      )} ${
         touched[name] && errors[name]
           ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
           : ''
@@ -118,7 +126,10 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
     Element = ce('textarea', {
       name,
       id: `${componentName}-form-${name}`,
-      className: `${isCSSModule(theme.textarea, `unl-${componentName}__textarea`)} ${
+      className: `${isCSSModule(
+        theme.textarea,
+        `unl-${componentName}__textarea`,
+      )} ${
         touched[name] && errors[name]
           ? isCSSModule(theme.inputError, `unl-${componentName}__input-error`)
           : ''
@@ -131,11 +142,16 @@ function Field(props: CustomField & FieldProps): JSX.Element | null {
   }
 
   const htmlFor =
-    custAttrs && 'id' in custAttrs ? custAttrs.id : `${componentName}-form-${name}`;
+    custAttrs && 'id' in custAttrs
+      ? custAttrs.id
+      : `${componentName}-form-${name}`;
 
   return (
     <>
-      <label htmlFor={htmlFor} className={`${theme.label} unl-${componentName}__label`}>
+      <label
+        htmlFor={htmlFor}
+        className={`${theme.label} unl-${componentName}__label`}
+      >
         {label}
       </label>
       {Element}
@@ -171,7 +187,10 @@ export function CustomFields({
             key={field.name}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={isCSSModule(theme.formGroup, `unl-${componentName}__form-group`)}
+            className={isCSSModule(
+              theme.formGroup,
+              `unl-${componentName}__form-group`,
+            )}
           >
             <Field
               errors={errors}

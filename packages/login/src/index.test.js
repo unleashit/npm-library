@@ -30,7 +30,9 @@ describe('<LoginContainer />', () => {
         .find('input[name="password"]')
         .simulate('change', changeVal('password', '12345678'));
 
-      expect(wrapper.find('input[name="email"]').props().value).toEqual('test@test.com');
+      expect(wrapper.find('input[name="email"]').props().value).toEqual(
+        'test@test.com',
+      );
       const errors = wrapper.find('.unl-login__error-message');
       expect(errors).toHaveLength(0);
     });
@@ -78,7 +80,9 @@ describe('<LoginContainer />', () => {
       await nextTick();
       wrapper.update();
       passwordError = wrapper.find('.unl-login__error-message').at(0);
-      expect(passwordError.text()).toEqual('password must be at least 8 characters');
+      expect(passwordError.text()).toEqual(
+        'password must be at least 8 characters',
+      );
     });
   });
 });

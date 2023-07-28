@@ -16,7 +16,18 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@unleashit/configs": ["shared/configs"]
+      "@unleashit/configs": ["./shared/configs"],
+      "@unleashit/common": ["./shared/common/src"],
+      "@unleashit/asyncHandler": ["./packages/asyncHandler/src"],
+      "@unleashit/contact": ["./packages/contact/src"],
+      "@unleashit/forgotPassword": ["./packages/forgotPassword/src"],
+      "@unleashit/login": ["./packages/login/src"],
+      "@unleashit/mockData": ["./packages/mockData/src"],
+      "@unleashit/modal": ["./packages/modal/src"],
+      "@unleashit/navigation": ["./packages/navigation/src"],
+      "@unleashit/pagination": ["./packages/pagination/src"],
+      "@unleashit/recursiveDataLister": ["./packages/recursiveDataLister/src"],
+      "@unleashit/signup": ["./packages/signup/src"]
     }
   },
   "files": ["fixes.d.ts"],

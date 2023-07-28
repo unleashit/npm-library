@@ -7,7 +7,11 @@ import {
 } from '@unleashit/common';
 import * as React from 'react';
 
-import { ModalFooter, ModalHeader, CustomHeaderFooterProps } from './defaults/components';
+import {
+  ModalFooter,
+  ModalHeader,
+  CustomHeaderFooterProps,
+} from './defaults/components';
 import { closeIcon } from './images/icons';
 
 export interface ModalProps {
@@ -110,7 +114,10 @@ export const Modal = ({
       style={{ backgroundColor: overlayColor, zIndex: modalZindex }}
     >
       <div
-        className={`${isCSSModule(theme.child, `unl-modal__child`)} ${isCSSModule(
+        className={`${isCSSModule(
+          theme.child,
+          `unl-modal__child`,
+        )} ${isCSSModule(
           theme[`child--${size}`],
           `unl-modal__child--${size}`,
         )} ${
@@ -135,7 +142,9 @@ export const Modal = ({
             {userComponent(Header, ModalHeader)}
           </div>
         )}
-        <div className={isCSSModule(theme.body, 'unl-modal__body')}>{children}</div>
+        <div className={isCSSModule(theme.body, 'unl-modal__body')}>
+          {children}
+        </div>
         {Footer && (
           <div className={isCSSModule(theme.footer, 'unl-modal__footer')}>
             {userComponent(Footer, ModalFooter)}

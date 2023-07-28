@@ -262,7 +262,9 @@ describe('mockData', () => {
         path: testPath,
       });
 
-      const data = JSON.parse(fs.readFileSync(`${testPath}/testData.json`).toString());
+      const data = JSON.parse(
+        fs.readFileSync(`${testPath}/testData.json`).toString(),
+      );
       expect('testData' in data).toBe(true);
       expect(data.testData).toHaveLength(7);
     });
@@ -283,7 +285,9 @@ describe('mockData', () => {
         path: testPath,
       });
 
-      const data = JSON.parse(fs.readFileSync(`${testPath}/testData.json`).toString());
+      const data = JSON.parse(
+        fs.readFileSync(`${testPath}/testData.json`).toString(),
+      );
       expect('article' in data).toBe(true);
       expect(data.article).toHaveLength(2);
       expect('user' in data).toBe(true);

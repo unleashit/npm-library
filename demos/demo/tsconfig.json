@@ -1,16 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "outDir": "build",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
@@ -19,6 +13,6 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "isolatedModules": true,
-    "declaration": false
+    "declaration": false,
   }
 }

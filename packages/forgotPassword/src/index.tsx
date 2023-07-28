@@ -1,4 +1,9 @@
-import { CustomField, CustomFields, CustomInput, isCSSModule } from '@unleashit/common';
+import {
+  CustomField,
+  CustomFields,
+  CustomInput,
+  isCSSModule,
+} from '@unleashit/common';
 import { Field, Form, FormikProps, withFormik } from 'formik';
 import * as React from 'react';
 import { SchemaOf } from 'yup';
@@ -65,7 +70,9 @@ export const ForgotPassword = (
   }
 
   return (
-    <div className={isCSSModule(theme.container, `unl-forgot-password__container`)}>
+    <div
+      className={isCSSModule(theme.container, `unl-forgot-password__container`)}
+    >
       <Header theme={theme} />
       {errors.serverAuth && (
         <div
@@ -108,7 +115,12 @@ export const ForgotPassword = (
             Send
           </button>
           {children && (
-            <div className={isCSSModule(theme.footer, `unl-forgot-password__footer`)}>
+            <div
+              className={isCSSModule(
+                theme.footer,
+                `unl-forgot-password__footer`,
+              )}
+            >
               {children}
             </div>
           )}
@@ -128,10 +140,12 @@ export default withFormik<ForgotPasswordProps, FormValues>({
   ): Promise<any> => {
     try {
       const resp: ServerResponse = await props.forgotPasswordHandler(values);
-      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> =
+        resp.errors || {};
 
       if (resp.success) {
-        const isComponent = props.onSuccess && React.isValidElement(props.onSuccess);
+        const isComponent =
+          props.onSuccess && React.isValidElement(props.onSuccess);
 
         if (props.onSuccess && !isComponent) {
           props.onSuccess(resp);

@@ -2,20 +2,34 @@
   "name": "@unleashit/recursive-data-lister",
   "version": "0.4.19",
   "description": "Simple React component that displays a nested object recursively with a choice of markup.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "src/index.tsx",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./src/index.tsx",
+      "require": "./src/index.tsx"
     },
     "./dist/*.css": {
-      "import": "./dist/*.css",
-      "require": "./dist/*.css"
+      "import": "./src/scss/*.scss",
+      "require": "./src/scss/*.scss"
     }
   },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      },
+      "./dist/*.css": {
+        "import": "./dist/*.css",
+        "require": "./dist/*.css"
+      }
+    },
+    "access": "public"
+  },
   "sideEffects": [
-    "*.css"
+    "*.css", "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",
@@ -42,9 +56,6 @@
   "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister",
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "peerDependencies": {
     "react": "16.x || 17.x || 18.x"

@@ -24,7 +24,9 @@ export const article: template = ({
     },
     content: {
       function() {
-        return this.faker.lorem.paragraphs(Math.floor(Math.random() * maxContent + 1));
+        return this.faker.lorem.paragraphs(
+          Math.floor(Math.random() * maxContent + 1),
+        );
       },
     } as any,
     author: {

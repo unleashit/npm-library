@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import * as React from 'react';
 
-import { isCSSModule, sentenceCase } from './utils';
+import { isCSSModule, convertToSentence } from './utils';
 
 interface CustomInputProps {
   cssModule: {
@@ -17,12 +17,14 @@ export const CustomInput: React.FC<FieldProps<any> & CustomInputProps> = ({
   componentName = 'unknown',
   ...props
 }): JSX.Element => (
-  <div className={isCSSModule(style.formGroup, `unl-${componentName}__form-group`)}>
+  <div
+    className={isCSSModule(style.formGroup, `unl-${componentName}__form-group`)}
+  >
     <label
       htmlFor={`${componentName}-form-${field.name}`}
       className={isCSSModule(style.label, `unl-${componentName}__label`)}
     >
-      {sentenceCase(field.name)}
+      {convertToSentence(field.name)}
     </label>
     <input
       type="text"
@@ -37,7 +39,10 @@ export const CustomInput: React.FC<FieldProps<any> & CustomInputProps> = ({
     />
     {touched[field.name] && errors[field.name] && (
       <div
-        className={isCSSModule(style.errorMessage, `unl-${componentName}__error-message`)}
+        className={isCSSModule(
+          style.errorMessage,
+          `unl-${componentName}__error-message`,
+        )}
       >
         <small>{String(errors[field.name])}</small>
       </div>

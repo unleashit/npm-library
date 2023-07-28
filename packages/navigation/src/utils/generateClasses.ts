@@ -17,7 +17,10 @@ const isTemplate = (template: Template, style: Style): string => {
   let classes = '';
   switch (template) {
     case 'clean':
-      classes = ` ${isCSSModule(style.clean, 'unl-navigation__container--clean')}`;
+      classes = ` ${isCSSModule(
+        style.clean,
+        'unl-navigation__container--clean',
+      )}`;
       break;
     case 'dark-buttons':
       classes = ` ${isCSSModule(
@@ -55,5 +58,6 @@ export const getAuthLinkClass = (authLink: AuthLink, theme: Style): string => {
   return '';
 };
 
-export const mapArrayToClasses = <T extends string[] | undefined>(classes: T): string =>
-  classes && classes.length ? ` ${classes.join(' ')}` : '';
+export const mapArrayToClasses = <T extends string[] | undefined>(
+  classes: T,
+): string => (classes && classes.length ? ` ${classes.join(' ')}` : '');

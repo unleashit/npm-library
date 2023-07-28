@@ -16,7 +16,9 @@ export interface LoginHeaderProps {
   theme: CSSModule;
 }
 
-export const LoginLoader: React.FC<LoginLoaderProps> = ({ theme }): JSX.Element => (
+export const LoginLoader: React.FC<LoginLoaderProps> = ({
+  theme,
+}): JSX.Element => (
   <div className={isCSSModule(theme.loader, 'unl-login__loader')}>
     <div className={isCSSModule(theme.loaderChild, 'unl-login__loader-child')}>
       Logging in...
@@ -34,7 +36,9 @@ export const LoginHeader: React.FC<LoginHeaderProps> = ({
     <h2>Login</h2>
     <p>
       Don't have an account yet?{' '}
-      <LinkComponent {...{ [linkComponentHrefAttr]: signupUrl }}>Sign up</LinkComponent>
+      <LinkComponent {...{ [linkComponentHrefAttr]: signupUrl }}>
+        Sign up
+      </LinkComponent>
     </p>
   </div>
 );

@@ -2,21 +2,24 @@
   "name": "@unleashit/mock-data",
   "version": "0.8.16",
   "description": "Wrapper for mocker-data-generator providing a set of templates and arguments. Can optionally write to a file (node)",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "src/index.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./dist/*.css": {
-      "import": "./dist/*.css",
-      "require": "./dist/*.css"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     }
   },
-  "sideEffects": [
-    "*.css"
-  ],
+  "publishConfig": {
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      }
+    },
+    "access": "public"
+  },
   "scripts": {
     "build": "NODE_ENV=production tsup",
     "dev": "NODE_ENV=development tsup --watch",
@@ -51,9 +54,6 @@
   "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/mockData",
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "mocker-data-generator": "^2.12.0"

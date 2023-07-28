@@ -16,7 +16,9 @@ export interface SignupHeaderProps {
   theme: Style;
 }
 
-export const SignupLoader: React.FC<SignupLoaderProps> = ({ theme }): JSX.Element => (
+export const SignupLoader: React.FC<SignupLoaderProps> = ({
+  theme,
+}): JSX.Element => (
   <div className={isCSSModule(theme.loader, `unl-signup__loader`)}>
     <div className={isCSSModule(theme.loaderChild, `unl-signup__loader-child`)}>
       Signing up...
@@ -34,7 +36,9 @@ export const SignupHeader: React.FC<SignupHeaderProps> = ({
     <h2>Sign Up</h2>
     <p>
       Already have an account?{' '}
-      <LinkComponent {...{ [linkComponentHrefAttr]: loginUrl }}>Login</LinkComponent>
+      <LinkComponent {...{ [linkComponentHrefAttr]: loginUrl }}>
+        Login
+      </LinkComponent>
     </p>
   </div>
 );

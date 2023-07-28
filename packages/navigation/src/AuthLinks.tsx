@@ -16,7 +16,9 @@ const AuthLinks: React.FC<AuthLinksProps> = ({
   const { login, logout, signup } = links;
 
   return (
-    <ul className={isCSSModule(cssModule.authLinks, `unl-navigation__auth-links`)}>
+    <ul
+      className={isCSSModule(cssModule.authLinks, `unl-navigation__auth-links`)}
+    >
       {login && login.display && <NavLink {...login} authLink="login" />}
       {logout && logout.display && <NavLink {...logout} authLink="logout" />}
       {signup && signup.display && <NavLink {...signup} authLink="signup" />}

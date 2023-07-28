@@ -79,7 +79,9 @@ describe('<Navigation />', () => {
 
   it('displays corrent template classes', () => {
     // default template (clean)
-    expect(wrapper.find('nav.unl-navigation__container--clean')).toHaveLength(1);
+    expect(wrapper.find('nav.unl-navigation__container--clean')).toHaveLength(
+      1,
+    );
 
     // none template
     let newProps: NavigationProps = {
@@ -98,14 +100,18 @@ describe('<Navigation />', () => {
       template: 'dark-buttons',
     };
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.unl-navigation__container--dark-btns')).toHaveLength(1);
+    expect(
+      wrapper.find('nav.unl-navigation__container--dark-btns'),
+    ).toHaveLength(1);
 
     newProps = {
       ...props,
       template: 'light-buttons',
     };
     wrapper = shallow(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('nav.unl-navigation__container--light-btns')).toHaveLength(1);
+    expect(
+      wrapper.find('nav.unl-navigation__container--light-btns'),
+    ).toHaveLength(1);
   });
 
   it('takes an optional anchor/link component', () => {
@@ -131,6 +137,8 @@ describe('<Navigation />', () => {
       linkComponentHrefAttr: 'to',
     };
     wrapper = mount(<NavigationContainer {...newProps} />);
-    expect(wrapper.find('.unl-navigation__link').at(0).props().to).toEqual('/home');
+    expect(wrapper.find('.unl-navigation__link').at(0).props().to).toEqual(
+      '/home',
+    );
   });
 });

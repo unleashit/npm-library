@@ -24,7 +24,10 @@ export const complexJsonTemplate = () => ({
             .fill(undefined)
             .map(() => ({
               id: this.chance.guid(),
-              date: this.chance.date({ year: rRange(1940, 2018), string: true }),
+              date: this.chance.date({
+                year: rRange(1940, 2018),
+                string: true,
+              }),
               description: this.faker.lorem.sentence(),
             })),
         };

@@ -35,7 +35,10 @@ const Row: React.FC<RowProps> = ({
     <Parent
       className={`${
         !nested
-          ? isCSSModule(theme.topLevelParent, `unl-r-data-lister__top-level-parent`)
+          ? isCSSModule(
+              theme.topLevelParent,
+              `unl-r-data-lister__top-level-parent`,
+            )
           : isCSSModule(theme.parent, `unl-r-data-lister__child-parent`)
       }`}
     >
@@ -44,16 +47,27 @@ const Row: React.FC<RowProps> = ({
           return (
             <Child
               key={field}
-              className={`${isCSSModule(theme.leaf, `unl-r-data-lister__leaf`)} ${
+              className={`${isCSSModule(
+                theme.leaf,
+                `unl-r-data-lister__leaf`,
+              )} ${
                 isObjectNotArray(row[field])
-                  ? isCSSModule(theme.objectLeaf, `unl-r-data-lister__object-leaf`)
+                  ? isCSSModule(
+                      theme.objectLeaf,
+                      `unl-r-data-lister__object-leaf`,
+                    )
                   : ''
               }`}
             >
               <span
-                className={isCSSModule(theme.leafLabel, `unl-r-data-lister__leaf-label`)}
+                className={isCSSModule(
+                  theme.leafLabel,
+                  `unl-r-data-lister__leaf-label`,
+                )}
               >
-                {isObjectNotArray(row[field]) && leafProp && row[field][leafProp]
+                {isObjectNotArray(row[field]) &&
+                leafProp &&
+                row[field][leafProp]
                   ? row[field][leafProp]
                   : field}
               </span>
@@ -72,15 +86,24 @@ const Row: React.FC<RowProps> = ({
         return leafProp && field === leafProp && !repeatLeafProp ? null : (
           <Child
             key={field}
-            className={isCSSModule(theme.childItem, `unl-r-data-lister__child-item`)}
+            className={isCSSModule(
+              theme.childItem,
+              `unl-r-data-lister__child-item`,
+            )}
           >
             {!Array.isArray(row) && (
-              <span className={isCSSModule(theme.label, `unl-r-data-lister__label`)}>
+              <span
+                className={isCSSModule(theme.label, `unl-r-data-lister__label`)}
+              >
                 {field}:{' '}
               </span>
             )}
-            <span className={isCSSModule(theme.value, `unl-r-data-lister__value`)}>
-              {isDate(row[field]) ? handleDate(row[field], dateFormat) : row[field]}
+            <span
+              className={isCSSModule(theme.value, `unl-r-data-lister__value`)}
+            >
+              {isDate(row[field])
+                ? handleDate(row[field], dateFormat)
+                : row[field]}
             </span>
           </Child>
         );

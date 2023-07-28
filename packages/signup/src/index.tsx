@@ -76,7 +76,10 @@ export const Signup = ({
     />
     {errors.serverAuth && (
       <div
-        className={isCSSModule(theme.serverAuthError, `unl-signup__server-auth-error`)}
+        className={isCSSModule(
+          theme.serverAuthError,
+          `unl-signup__server-auth-error`,
+        )}
       >
         {errors.serverAuth}
       </div>
@@ -122,11 +125,19 @@ export const Signup = ({
             />
           </>
         )}
-        <button type="submit" className={isCSSModule(theme.button, `unl-signup__button`)}>
+        <button
+          type="submit"
+          className={isCSSModule(theme.button, `unl-signup__button`)}
+        >
           Sign Up
         </button>
         {children && (
-          <div className={isCSSModule(theme.socialSignup, `unl-signup__social-signup`)}>
+          <div
+            className={isCSSModule(
+              theme.socialSignup,
+              `unl-signup__social-signup`,
+            )}
+          >
             {orLine && (
               <div className={isCSSModule(theme.orLine, `unl-signup__or-line`)}>
                 <span>or</span>
@@ -161,14 +172,16 @@ export default withFormik<SignupProps, FormValues | any>({
           passwordConfirm: '',
           serverAuth: '',
         },
-  validationSchema: (props: any): SchemaOf<any> => (props.schema ? props.schema : schema),
+  validationSchema: (props: any): SchemaOf<any> =>
+    props.schema ? props.schema : schema,
   handleSubmit: async (
     values,
     { props, setFieldValue, setSubmitting, setErrors },
   ): Promise<any> => {
     try {
       const resp: ServerResponse = await props.signupHandler(values);
-      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> =
+        resp.errors || {};
 
       if (resp.success) {
         props.onSuccess(resp);

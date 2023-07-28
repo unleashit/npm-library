@@ -63,6 +63,11 @@ function Navigation() {
             Modal
           </Link>
         </li>
+        <li>
+          <Link to="/simple-form" className="main-navigation__link">
+            Contact (Simple Form)
+          </Link>
+        </li>
       </ul>
     </nav>
   );

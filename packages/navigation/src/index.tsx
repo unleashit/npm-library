@@ -101,12 +101,16 @@ const Navigation = ({
           template !== 'none'
             ? isCSSModule(cssModule.container, `unl-navigation__container`)
             : isCSSModule(cssModule.container, `unl-navigation`)
-        }${addTemplateClasses(template, direction, cssModule)}${mapArrayToClasses<
-          NavigationProps['classes']
-        >(classes)}`}
+        }${addTemplateClasses(
+          template,
+          direction,
+          cssModule,
+        )}${mapArrayToClasses<NavigationProps['classes']>(classes)}`}
       >
         <NavLinks links={links} cssModule={cssModule} />
-        {authSidecarLinks && <AuthLinks links={authSidecarLinks} cssModule={cssModule} />}
+        {authSidecarLinks && (
+          <AuthLinks links={authSidecarLinks} cssModule={cssModule} />
+        )}
       </nav>
     </NavContext.Provider>
   );

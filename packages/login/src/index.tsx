@@ -76,7 +76,12 @@ export const Login = ({
       linkComponentHrefAttr={linkComponentHrefAttr}
     />
     {errors.serverAuth && (
-      <div className={isCSSModule(theme.serverAuthError, 'unl-login__server-auth-error')}>
+      <div
+        className={isCSSModule(
+          theme.serverAuthError,
+          'unl-login__server-auth-error',
+        )}
+      >
         {errors.serverAuth}
       </div>
     )}
@@ -113,11 +118,19 @@ export const Login = ({
             />
           </>
         )}
-        <button type="submit" className={isCSSModule(theme.button, 'unl-login__button')}>
+        <button
+          type="submit"
+          className={isCSSModule(theme.button, 'unl-login__button')}
+        >
           Login
         </button>
         {children && (
-          <div className={isCSSModule(theme.socialLogins, 'unl-login__social-logins')}>
+          <div
+            className={isCSSModule(
+              theme.socialLogins,
+              'unl-login__social-logins',
+            )}
+          >
             {orLine && (
               <div className={isCSSModule(theme.orLine, 'unl-login__or-line')}>
                 <span>or</span>
@@ -153,7 +166,8 @@ export default withFormik<LoginProps, FormValues>({
   ): Promise<any> => {
     try {
       const resp: ServerResponse = await props.loginHandler(values);
-      const errors: ServerResponse['errors'] | Record<string, never> = resp.errors || {};
+      const errors: ServerResponse['errors'] | Record<string, never> =
+        resp.errors || {};
 
       if (resp.success) {
         props.onSuccess(resp);

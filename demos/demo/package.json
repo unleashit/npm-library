@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@unleashit/async-handler": "workspace:*",
+    "@unleashit/simple-form": "workspace:*",
     "@unleashit/forgot-password": "workspace:*",
     "@unleashit/login": "workspace:*",
     "@unleashit/mock-data": "workspace:*",

@@ -1,4 +1,7 @@
-import ForgotPassword, { FormValues, ServerResponse } from '@unleashit/forgot-password';
+import ForgotPassword, {
+  FormValues,
+  ServerResponse,
+} from '@unleashit/forgot-password';
 import React from 'react';
 import '@unleashit/forgot-password/dist/forgot-password.css';
 

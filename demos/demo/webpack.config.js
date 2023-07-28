@@ -2,16 +2,34 @@ const path = require('path');
 const { HotModuleReplacementPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const { readdirSync } = require('fs');
 // const ESLintPlugin = require('eslint-webpack-plugin');
 
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
+// function globIncludes(source) {
+//   return readdirSync(source, { withFileTypes: true })
+//     .filter((found) => found.isDirectory())
+//     .map((found) => path.join(__dirname, `../../packages/${found.name}/src`));
+// }
+
+const commonSASSpath = '../../shared/common/src/scss';
+
+const sassLoader = () => ({
+  loader: 'sass-loader',
+  options: {
+    sassOptions: {
+      includePaths: [commonSASSpath],
+    },
+  },
+});
+
 module.exports = (_env, { mode }) => {
   const devMode = mode !== 'production';
 
   return {
-    devtool: devMode ? 'inline-source-map' : 'source-map',
+    ...(devMode && { devtool: 'eval-source-map' }),
     entry: `./src/index.tsx`,
     output: {
       publicPath: '/',
@@ -19,7 +37,7 @@ module.exports = (_env, { mode }) => {
       path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
-      extensions: [".ts",".tsx",".js",".jsx", ".mjs"],
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.mjs'],
       fallback: { fs: false },
     },
     plugins: [
@@ -41,7 +59,11 @@ module.exports = (_env, { mode }) => {
       rules: [
         {
           test: /\.(ts|js)x?$/i,
-          include: path.join(__dirname, 'src'),
+          // include: [
+          //   path.join(__dirname, 'src'),
+          //   path.join(__dirname, '../../shared/common/src'),
+          //   ...globIncludes('../../packages'),
+          // ],
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -61,8 +83,8 @@ module.exports = (_env, { mode }) => {
         {
           test: /\.m?js/,
           resolve: {
-            fullySpecified: false
-          }
+            fullySpecified: false,
+          },
         },
         {
           test: /module\.(scss|css)$/,
@@ -74,11 +96,13 @@ module.exports = (_env, { mode }) => {
                 sourceMap: true,
                 modules: {
                   mode: 'local',
-                  localIdentName: devMode ? '[local]--[hash:base64:5]' : '[hash:base64]',
+                  localIdentName: devMode
+                    ? '[local]--[hash:base64:5]'
+                    : '[hash:base64]',
                 },
               },
             },
-            'sass-loader',
+            sassLoader(),
           ],
         },
         {
@@ -87,12 +111,14 @@ module.exports = (_env, { mode }) => {
           use: [
             devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
             'css-loader',
-            'sass-loader',
+            sassLoader(),
           ],
         },
         {
           test: /\.(jpe?g|png|gif|ico)$/i,
-          use: ['file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]'],
+          use: [
+            'file-loader?hash=sha512&digest=hex&name=css/[name]-[hash].[ext]',
+          ],
         },
         {
           test: /\.svg$/,

@@ -118,7 +118,9 @@ describe('<Pagination />', () => {
         props.paginationHandler.mockClear();
 
         wrapper = shallow(<Pagination {...props} />);
-        const firstPageBtn = wrapper.find('.unl-pagination__number').at(pageClicked - 1);
+        const firstPageBtn = wrapper
+          .find('.unl-pagination__number')
+          .at(pageClicked - 1);
 
         firstPageBtn.simulate('click');
 

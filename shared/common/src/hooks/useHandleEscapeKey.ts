@@ -5,7 +5,10 @@ import * as React from 'react';
  * adds keyup listener that calls supplied callback
  */
 
-export function useHandleEscapeKey(active: boolean, callback: () => void): void {
+export function useHandleEscapeKey(
+  active: boolean,
+  callback: () => void,
+): void {
   React.useEffect(() => {
     const handleEscKey = (e: KeyboardEvent): void => {
       if (active && e.key === 'Escape') callback();

@@ -36,7 +36,9 @@ interface MockDataArguments {
 const tpl: ImportTypes = tplImports;
 
 const processTemplate = (templateType: TemplateTypes, args: any): string =>
-  typeof templateType === 'function' ? templateType(args) : tpl[templateType](args);
+  typeof templateType === 'function'
+    ? templateType(args)
+    : tpl[templateType](args);
 
 const mockData = async ({
   template = null,
@@ -53,12 +55,16 @@ const mockData = async ({
   try {
     if (template) {
       // single schema
-      if (typeof template !== 'function' && Object.keys(tpl).indexOf(template) === -1) {
+      if (
+        typeof template !== 'function' &&
+        Object.keys(tpl).indexOf(template) === -1
+      ) {
         throw new Error('That template does not exist');
       }
 
       if (hiddenFields.length) args.hiddenFields = hiddenFields;
-      const modelName = name || (typeof template === 'string' && template) || 'data';
+      const modelName =
+        name || (typeof template === 'string' && template) || 'data';
       const processedTemplate = processTemplate(template, args);
 
       m.schema(modelName, processedTemplate, total);
@@ -78,7 +84,9 @@ const mockData = async ({
         m.schema(modelName, processedTemplate, tmpl.total || 10);
       });
     } else {
-      throw new Error('You must provide either a template or templates argument');
+      throw new Error(
+        'You must provide either a template or templates argument',
+      );
     }
 
     const fakeData = await m.build();

@@ -12,7 +12,10 @@ const saveToFile = (
 
   if (fs.existsSync(path)) {
     try {
-      fs.writeFileSync(`${path}/${fileName}.json`, JSON.stringify(data, null, 2));
+      fs.writeFileSync(
+        `${path}/${fileName}.json`,
+        JSON.stringify(data, null, 2),
+      );
     } catch (err) {
       throw new Error('Could not write the file');
     }

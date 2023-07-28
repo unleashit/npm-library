@@ -1,9 +1,29 @@
 {
   "name": "@unleashit/common",
   "version": "0.15.6",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "description": "Shared library for @unleashit components. Not directly useful.",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./dist/*.css": "./src/scss/*.scss"
+  },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      },
+      "./dist/*.css": "./dist/*.css"
+    },
+    "access": "public"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "build": "NODE_ENV=production tsup",
     "dev": "NODE_ENV=development tsup --watch",
@@ -18,15 +38,17 @@
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "peerDependencies": {
     "formik": "1.x || 2.x",
     "react": "16.x || 17.x || 18.x",
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@unleashit/configs": "workspace:*"
+    "@unleashit/configs": "workspace:*",
+    "tsup": "^6.7.0"
+  },
+  "dependencies": {
+    "@unleashit/common": "workspace:*",
+    "lodash": "^4.17.21"
   }
 }

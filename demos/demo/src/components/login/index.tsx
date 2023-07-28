@@ -2,7 +2,10 @@ import '@unleashit/login/dist/login.css';
 
 import Login, { FormValues, ServerResponse } from '@unleashit/login';
 import React from 'react';
-import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
+import {
+  GithubLoginButton,
+  TwitterLoginButton,
+} from 'react-social-login-buttons';
 import { Link, useNavigate } from 'react-router-dom';
 
 const btnStyle = {

@@ -9,9 +9,18 @@ import { AppContext } from '../../utils/context';
 export function PaginationDemo() {
   const { store } = React.useContext(AppContext);
 
-  const request1 = React.useMemo(() => store.generateFakeUsers({ total: 3 }), [store]);
-  const request2 = React.useMemo(() => store.generateFakeProducts({ total: 3 }), [store]);
-  const request3 = React.useMemo(() => store.generateComplexJson({ total: 3 }), [store]);
+  const request1 = React.useMemo(
+    () => store.generateFakeUsers({ total: 3 }),
+    [store],
+  );
+  const request2 = React.useMemo(
+    () => store.generateFakeProducts({ total: 3 }),
+    [store],
+  );
+  const request3 = React.useMemo(
+    () => store.generateComplexJson({ total: 3 }),
+    [store],
+  );
 
   return (
     <div>

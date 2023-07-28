@@ -11,7 +11,10 @@ import List from './List';
 interface State {
   offset: number;
 }
-export class PaginationDemo extends React.Component<Record<string, unknown>, State> {
+export class PaginationDemo extends React.Component<
+  Record<string, unknown>,
+  State
+> {
   perPage: number;
 
   constructor(props: Record<string, unknown>) {
@@ -42,7 +45,9 @@ export class PaginationDemo extends React.Component<Record<string, unknown>, Sta
 
   render() {
     return (
-      <AsyncHandler request={() => this.context.store.generateFakeBlog({ total: 500 })}>
+      <AsyncHandler
+        request={() => this.context.store.generateFakeBlog({ total: 500 })}
+      >
         {(fakeBlog: any[]) => (
           <div className="pagination">
             <List data={this.currentOffset()} />

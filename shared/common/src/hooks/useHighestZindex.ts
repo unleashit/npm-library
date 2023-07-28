@@ -22,7 +22,8 @@ export function useHighestZindex(): HighestZindex {
       .sort()
       .pop();
 
-    const newZindex = typeof highestZindex === 'number' ? highestZindex + 1 : 'auto';
+    const newZindex =
+      typeof highestZindex === 'number' ? highestZindex + 1 : 'auto';
 
     setModalZindex(newZindex);
   }, []);

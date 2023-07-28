@@ -68,7 +68,8 @@ class Pagination extends React.Component<PaginationProps, State> {
         break;
       case 'page':
         newOffset = (pageNumber - 1) * perPage;
-        if (newOffset === currentOffset || newOffset > total || newOffset < 0) return;
+        if (newOffset === currentOffset || newOffset > total || newOffset < 0)
+          return;
         paginationHandler(newOffset);
         break;
       default:
@@ -79,7 +80,12 @@ class Pagination extends React.Component<PaginationProps, State> {
   }
 
   prev(): JSX.Element | null {
-    const { currentOffset, perPage, prevLabel, cssModule: theme = {} } = this.props;
+    const {
+      currentOffset,
+      perPage,
+      prevLabel,
+      cssModule: theme = {},
+    } = this.props;
 
     return currentOffset - perPage >= 0 ? (
       <button
@@ -88,7 +94,10 @@ class Pagination extends React.Component<PaginationProps, State> {
         onClick={(): void => this.clickHandler('prev')}
       >
         <ChevronLeft
-          className={isCSSModule(theme.chevronLeft, 'unl-pagination__chevron-left')}
+          className={isCSSModule(
+            theme.chevronLeft,
+            'unl-pagination__chevron-left',
+          )}
         />{' '}
         {prevLabel}
       </button>
@@ -112,7 +121,10 @@ class Pagination extends React.Component<PaginationProps, State> {
       >
         {nextLabel}{' '}
         <ChevronRight
-          className={isCSSModule(theme.chevronRight, 'unl-pagination__chevron-right')}
+          className={isCSSModule(
+            theme.chevronRight,
+            'unl-pagination__chevron-right',
+          )}
         />
       </button>
     ) : null;
@@ -145,7 +157,10 @@ class Pagination extends React.Component<PaginationProps, State> {
 
     if (pages > maxPages) {
       if (currentPage > 1 && currentPage < pages) {
-        pageAry = pageAry.slice(currentPage - 1, currentPage - 1 + (maxPages - 1));
+        pageAry = pageAry.slice(
+          currentPage - 1,
+          currentPage - 1 + (maxPages - 1),
+        );
         if (pageAry[pageAry.length - 1] === pages) pageAry.pop();
         pageAry.unshift(1, null);
         pageAry.push(null, pages);
@@ -164,7 +179,10 @@ class Pagination extends React.Component<PaginationProps, State> {
             !page ? (
               <span
                 key={`${i}-ellipsis`}
-                className={isCSSModule(theme.ellipsis, `unl-pagination__ellipsis`)}
+                className={isCSSModule(
+                  theme.ellipsis,
+                  `unl-pagination__ellipsis`,
+                )}
               >
                 ...
               </span>
@@ -172,7 +190,10 @@ class Pagination extends React.Component<PaginationProps, State> {
               <button
                 type="button"
                 key={`${page}-pagination`}
-                className={`${isCSSModule(theme.number, 'unl-pagination__number')}${
+                className={`${isCSSModule(
+                  theme.number,
+                  'unl-pagination__number',
+                )}${
                   page === currentPage ? ' unl-pagination__number--active' : ''
                 }`}
                 onClick={(): void => this.clickHandler('page', page)}
@@ -189,10 +210,18 @@ class Pagination extends React.Component<PaginationProps, State> {
 
     return total > perPage ? (
       <div
-        className={isCSSModule(theme.paginationContainer, `unl-pagination__container`)}
+        className={isCSSModule(
+          theme.paginationContainer,
+          `unl-pagination__container`,
+        )}
         ref={this.containerRef}
       >
-        <div className={isCSSModule(theme.paginationInner, `unl-pagination__inner`)}>
+        <div
+          className={isCSSModule(
+            theme.paginationInner,
+            `unl-pagination__inner`,
+          )}
+        >
           {this.prev()}
           {this.numbers()}
           {this.next()}

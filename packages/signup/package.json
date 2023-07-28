@@ -2,20 +2,34 @@
   "name": "@unleashit/signup",
   "version": "0.13.6",
   "description": "Responsive signup component for React with custom fields.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "src/index.tsx",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./src/index.tsx",
+      "require": "./src/index.tsx"
     },
     "./dist/*.css": {
-      "import": "./dist/*.css",
-      "require": "./dist/*.css"
+      "import": "./src/scss/*.scss",
+      "require": "./src/scss/*.scss"
     }
   },
+  "publishConfig": {
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.js"
+      },
+      "./dist/*.css": {
+        "import": "./dist/*.css",
+        "require": "./dist/*.css"
+      }
+    },
+    "access": "public"
+  },
   "sideEffects": [
-    "*.css"
+    "*.css", "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",
@@ -50,9 +64,6 @@
   "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/signup",
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "peerDependencies": {
     "formik": "1.x || 2.x",

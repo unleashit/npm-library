@@ -38,7 +38,9 @@ const NavLink = ({
           cssModule.linkItem,
           'unl-navigation__link-item',
         )} ${mapArrayToClasses<NavigationLink['classes']>(classes)} ${
-          active ? isCSSModule(cssModule.active, `unl-navigation__link-item--active`) : ''
+          active
+            ? isCSSModule(cssModule.active, `unl-navigation__link-item--active`)
+            : ''
         }`}
       >
         <LinkComponent

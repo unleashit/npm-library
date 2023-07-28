@@ -1,0 +1,19 @@
+@import 'common_vars';
+@import 'common_form_base';
+@import 'common_loaders';
+
+.container {
+  // maintains height when form is swapped for spinner
+  height: 100%;
+}
+
+// default simple-form components
+
+.thanks {
+  display: flex;
+  min-height: 350px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem;
+}

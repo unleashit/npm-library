@@ -26,7 +26,12 @@ describe('template helper', () => {
 
     fieldsToRemove = ['lastName', 'regDate'];
     newObj = removeHidden(fieldsToRemove, obj);
-    expect(Object.keys(newObj)).toEqual(['firstName', 'age', 'validUser', 'lastActive']);
+    expect(Object.keys(newObj)).toEqual([
+      'firstName',
+      'age',
+      'validUser',
+      'lastActive',
+    ]);
 
     fieldsToRemove = ['firstName', 'lastName', 'age', 'validUser', 'regDate'];
     newObj = removeHidden(fieldsToRemove, obj);

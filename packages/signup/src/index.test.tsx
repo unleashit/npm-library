@@ -35,7 +35,9 @@ describe('<SignupContainer />', () => {
           .simulate('change', changeVal('password', '12345678'));
       });
       wrapper.update();
-      expect(wrapper.find('input[name="email"]').props().value).toEqual('test@test.com');
+      expect(wrapper.find('input[name="email"]').props().value).toEqual(
+        'test@test.com',
+      );
       const errors = wrapper.find('.errorMessage');
       expect(errors).toHaveLength(0);
     });
@@ -43,7 +45,9 @@ describe('<SignupContainer />', () => {
     it('displays correct email validation errors', async () => {
       const emailInput = wrapper.find('input[name="email"]');
       const passwordInput = wrapper.find('input[name="password"]');
-      const passwordConfirmInput = wrapper.find('input[name="passwordConfirm"]');
+      const passwordConfirmInput = wrapper.find(
+        'input[name="passwordConfirm"]',
+      );
       const form = wrapper.find('form');
 
       // email can't be empty
@@ -59,7 +63,10 @@ describe('<SignupContainer />', () => {
       await act(async () => {
         emailInput.simulate('change', changeVal('email', 'bad email'));
         passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-        passwordConfirmInput.simulate('change', changeVal('password', 'goodpassword'));
+        passwordConfirmInput.simulate(
+          'change',
+          changeVal('password', 'goodpassword'),
+        );
         await nextTick();
         form.simulate('submit', { preventDefault: () => undefined });
       });
@@ -92,7 +99,9 @@ describe('<SignupContainer />', () => {
       });
       wrapper.update();
       passwordError = wrapper.find('.unl-signup__error-message').at(0);
-      expect(passwordError.text()).toEqual('password must be at least 8 characters');
+      expect(passwordError.text()).toEqual(
+        'password must be at least 8 characters',
+      );
     });
   });
 
