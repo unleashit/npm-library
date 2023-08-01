@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "0.13.6",
+  "version": "1.0.0",
   "description": "Responsive signup component for React with custom fields.",
   "main": "src/index.tsx",
   "exports": {
@@ -29,7 +29,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "*.css", "*.scss"
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",

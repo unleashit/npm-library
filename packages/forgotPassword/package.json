@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "0.15.6",
+  "version": "1.0.0",
   "description": "Forgot password component for React with custom fields.",
   "main": "src/index.tsx",
   "exports": {
@@ -29,7 +29,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "*.css", "*.scss"
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",

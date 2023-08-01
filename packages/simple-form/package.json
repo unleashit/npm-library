@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/simple-form",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Quick and responsive simple forms for React",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
@@ -22,7 +22,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "*.css", "*.scss"
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup --tsconfig tsconfig.lib.json && pnpm sass:build",

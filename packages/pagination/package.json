@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/pagination",
-  "version": "0.10.20",
+  "version": "1.0.0",
   "description": "Responsive pagination component for React.",
   "main": "src/index.tsx",
   "exports": {
@@ -29,7 +29,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "*.css", "*.scss"
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",

@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/async-handler",
-  "version": "0.6.20",
+  "version": "1.0.0",
   "description": "Simple HOC that handles loading, error and no result states of data fetching.",
   "main": "src/index.tsx",
   "exports": {
@@ -29,7 +29,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "*.css", "*.scss"
+    "*.css",
+    "*.scss"
   ],
   "scripts": {
     "build": "NODE_ENV=production tsup && pnpm sass:build",

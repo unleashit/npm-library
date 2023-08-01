@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demo",
-  "version": "0.19.7",
+  "version": "1.0.0",
   "private": true,
   "main": "build/index.js",
   "scripts": {
@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@unleashit/async-handler": "workspace:*",
-    "@unleashit/simple-form": "workspace:*",
     "@unleashit/forgot-password": "workspace:*",
     "@unleashit/login": "workspace:*",
     "@unleashit/mock-data": "workspace:*",
@@ -21,6 +20,7 @@
     "@unleashit/pagination": "workspace:*",
     "@unleashit/recursive-data-lister": "workspace:*",
     "@unleashit/signup": "workspace:*",
+    "@unleashit/simple-form": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.11.2",
