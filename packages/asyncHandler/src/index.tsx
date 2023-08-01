@@ -105,9 +105,8 @@ export const withAsyncHandler =
     Component: React.FC<{ data: any }>,
     // eslint-disable-next-line @typescript-eslint/ban-types
   ): Function =>
-  (...rest: any): React.ReactNode =>
-    (
-      <AsyncHandler {...config}>
-        {(data): React.ReactNode => <Component data={data} {...rest} />}
-      </AsyncHandler>
-    );
+  (...rest: any): React.ReactNode => (
+    <AsyncHandler {...config}>
+      {(data): React.ReactNode => <Component data={data} {...rest} />}
+    </AsyncHandler>
+  );
