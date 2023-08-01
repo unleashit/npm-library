@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/async-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple HOC that handles loading, error and no result states of data fetching.",
   "main": "src/index.tsx",
   "exports": {

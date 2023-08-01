@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.0.1...@unleashit/quick-form@1.0.2) (2023-08-01)
+
+
+### Bug Fixes
+
+* **quick-form:** remove type keyword from export (tripping up bundlephobia) ([80c8dfb](https://github.com/unleashit/npm-library/commit/80c8dfb594bfa1eace4d1bb87085dcc4b80b908c))
+
+
+
+
+
 ## 1.0.1 (2023-08-01)
 
 ### Bug Fixes
