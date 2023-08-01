@@ -64,8 +64,8 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/simple-form" className="main-navigation__link">
-            Contact (Simple Form)
+          <Link to="/quick-form" className="main-navigation__link">
+            Contact (Quick Form)
           </Link>
         </li>
       </ul>

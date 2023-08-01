@@ -1,4 +1,4 @@
-## Quick Form
+### Quick Form
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/quick-form.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/quick-form.svg)](https://www.npmjs.com/package/@unleashit/quick-form)

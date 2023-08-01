@@ -16,7 +16,7 @@ import NavigationDemo from '../navigation';
 import Pagination from '../pagination';
 import RecursiveDataLister from '../recursiveDataLister';
 import Signup from '../signup';
-import ContactDemo from '../simple-form';
+import ContactDemo from '../quickForm';
 import Navigation from './Navigation';
 import ErrorBoundary from './errorBoundary';
 
@@ -81,7 +81,7 @@ class App extends React.Component<any> {
                     />
                     <Route path="/mock-data" element={<MockData />} />
                     <Route path="/modal" element={<ModalDemo />} />
-                    <Route path="/simple-form" element={<ContactDemo />} />
+                    <Route path="/quick-form" element={<ContactDemo />} />
                   </Routes>
                 </div>
               </div>

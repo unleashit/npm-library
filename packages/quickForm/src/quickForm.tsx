@@ -25,7 +25,7 @@ import {
   defaultContactSchemaWithPhone,
 } from './defaults/schema';
 
-export interface SimpleFormProps {
+export interface QuickFormProps {
   // async function that to submit form
   // should return a boolean success prop
   // and any serverside validation errors
@@ -54,7 +54,7 @@ export interface SimpleFormProps {
   cssModule?: Record<string, string>;
 }
 
-function SimpleForm({
+function QuickForm({
   handler,
   onSuccess,
   title,
@@ -70,7 +70,7 @@ function SimpleForm({
   toast,
   failMsg = 'Failed to Fetch. Are you online?',
   cssModule = {},
-}: SimpleFormProps) {
+}: QuickFormProps) {
   const schema =
     userSchema ??
     (showPhone ? defaultContactSchemaWithPhone : defaultContactSchema);
@@ -106,7 +106,7 @@ function SimpleForm({
     [],
   );
 
-  const { clsName } = genClassNames('simpleForm', cssModule);
+  const { clsName } = genClassNames('quickForm', cssModule);
 
   const onSubmit: SubmitHandler<FormValues<typeof schema>> = async (values) => {
     try {
@@ -185,7 +185,7 @@ function SimpleForm({
   return (
     <div className={clsName('container')}>
       {isSubmitting && (
-        <Loader componentName="simpleForm" cssModule={cssModule} />
+        <Loader componentName="quickForm" cssModule={cssModule} />
       )}
       {!isSubmitting && <Header title={title} cssModule={cssModule} />}
       {errors.root && !toast && (
@@ -200,7 +200,7 @@ function SimpleForm({
       >
         {customFields ? (
           <CustomFieldsHF
-            componentName="simpleForm"
+            componentName="quickForm"
             fields={customFields}
             register={register}
             errors={errors}
@@ -209,7 +209,7 @@ function SimpleForm({
         ) : (
           <>
             <Input
-              componentName={SimpleForm.displayName}
+              componentName={QuickForm.displayName}
               label="Name"
               type="text"
               register={register('name')}
@@ -217,7 +217,7 @@ function SimpleForm({
               cssModule={cssModule}
             />
             <Input
-              componentName={SimpleForm.displayName}
+              componentName={QuickForm.displayName}
               label="Email"
               type="email"
               register={register('email')}
@@ -226,7 +226,7 @@ function SimpleForm({
             />
             {showPhone && (
               <Input
-                componentName={SimpleForm.displayName}
+                componentName={QuickForm.displayName}
                 label="Phone"
                 type="text"
                 register={register('phone')}
@@ -235,7 +235,7 @@ function SimpleForm({
               />
             )}
             <Textarea
-              componentName={SimpleForm.displayName}
+              componentName={QuickForm.displayName}
               label="Message"
               register={register('message')}
               error={errors.message}
@@ -258,5 +258,5 @@ function SimpleForm({
   );
 }
 
-SimpleForm.displayName = 'simpleForm';
-export default SimpleForm;
+QuickForm.displayName = 'quickForm';
+export default QuickForm;

@@ -1,9 +1,9 @@
 import React from 'react';
-import SimpleForm, {
+import QuickForm, {
   type ServerResponse,
   type FormValues,
-} from '@unleashit/simple-form';
-import css from '@unleashit/simple-form/dist/simple-form.module.css';
+} from '@unleashit/quick-form';
+import css from '@unleashit/quick-form/dist/quick-form.module.css';
 // import { CustomFieldHF } from '@unleashit/common';
 import contactSchema from './custSchema';
 
@@ -70,7 +70,7 @@ function ContactDemo() {
   };
 
   return (
-    <SimpleForm
+    <QuickForm
       onSuccess={onSuccess}
       handler={contactHandler}
       // customFields={customFields}

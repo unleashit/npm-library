@@ -10,7 +10,7 @@ export const DefaultHeader = ({
   title = 'Contact Us',
   cssModule,
 }: DefaultHeaderProps) => {
-  const { clsName } = genClassNames('simpleForm', cssModule);
+  const { clsName } = genClassNames('quickForm', cssModule);
   return (
     <div className={clsName('header')}>
       <h2>{title}</h2>
@@ -27,9 +27,9 @@ export const DefaultSuccess = ({
   message = 'Thanks for your message!',
   cssModule,
 }: DefaultSuccessProps) => {
-  const { clsName } = genClassNames('simpleForm', cssModule);
+  const { clsName } = genClassNames('quickForm', cssModule);
   return (
-    <div className={clsName('simpleForm')}>
+    <div className={clsName('quickForm')}>
       <div className={clsName('thanks')}>{message}</div>
     </div>
   );

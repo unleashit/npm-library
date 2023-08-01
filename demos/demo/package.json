@@ -20,7 +20,7 @@
     "@unleashit/pagination": "workspace:*",
     "@unleashit/recursive-data-lister": "workspace:*",
     "@unleashit/signup": "workspace:*",
-    "@unleashit/simple-form": "workspace:*",
+    "@unleashit/quick-form": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.11.2",
