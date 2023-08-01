@@ -7,4 +7,4 @@ export * from './lib/utils';
 export * from './lib/CustomFields';
 export * from './lib/forms';
 export * from './lib/DefaultLoader';
-export type * from './lib/forms/types';
+export * from './lib/forms/types';
