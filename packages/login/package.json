@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/login",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Responsive login component for React with custom fields.",
   "main": "src/index.tsx",
   "exports": {
