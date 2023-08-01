@@ -106,5 +106,6 @@
   },
   "dependencies": {
     "glob": "^10.2.7"
-  }
+  },
+  "version": "1.0.0"
 }
