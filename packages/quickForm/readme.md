@@ -1,6 +1,6 @@
 ### Quick Form
 
-[![NPM](https://img.shields.io/npm/l/@unleashit/quick-form.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
+[![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/quick-form.svg)](https://www.npmjs.com/package/@unleashit/quick-form)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/quick-form.svg)](https://bundlephobia.com/result?p=@unleashit/quick-form)
 
