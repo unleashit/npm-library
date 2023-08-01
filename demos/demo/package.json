@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "main": "build/index.js",
   "scripts": {
@@ -18,9 +18,9 @@
     "@unleashit/modal": "workspace:*",
     "@unleashit/navigation": "workspace:*",
     "@unleashit/pagination": "workspace:*",
+    "@unleashit/quick-form": "workspace:*",
     "@unleashit/recursive-data-lister": "workspace:*",
     "@unleashit/signup": "workspace:*",
-    "@unleashit/quick-form": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.11.2",
