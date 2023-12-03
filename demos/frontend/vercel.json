@@ -1,5 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "alias": "npm-library-demo-frontend.vercel.app",
+  "alias": "npm-library-demo.vercel.app",
   "rewrites": [{ "source": "./dist/(.*)", "destination": "index.js" }]
 }

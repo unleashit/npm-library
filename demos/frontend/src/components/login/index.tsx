@@ -69,7 +69,7 @@ const LoginDemo = () => {
 
   const loginHandler = async (values: FormValues): Promise<ServerResponse> => {
     console.log(values);
-    return await fetch(`${process.env.DEMO_URL}/login`, {
+    return await fetch(`${process.env.DEMO_URL_REMOTE}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
