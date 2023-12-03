@@ -75,7 +75,6 @@ function ContactDemo() {
     <QuickForm
       onSuccess={onSuccess}
       handler={contactHandler}
-      showPhone
       // customFields={customFields}
       // customSchema={contactSchema}
       cssModule={css}
