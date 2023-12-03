@@ -2,7 +2,9 @@
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 
-NX and PNPM workspaces monorepo of various UI components and installable NPM modules. Written with Typescript and tested with Jest.
+NX and PNPM workspaces monorepo of various UI components, written with Typescript and tested with Jest. Individually installable as NPM modules.
+
+Demo: https://npm-library-demo.vercel.app
 
 ### React Components
 
@@ -18,21 +20,13 @@ NX and PNPM workspaces monorepo of various UI components and installable NPM mod
 
 ### Other
 
-1. [mock-data](https://github.com/unleashit/npm-library/tree/master/packages/mockData) - Typescript wrapper for [mocker-data-generator](https://github.com/danibram/mocker-data-generator) to easily generate random data from a selection of templates or full custom schemas. Returns a JS object and/or a file in JSON format.
-
-A [demo app](https://github.com/unleashit/npm-library/tree/master/demos/demo) is available for previewing the components.
+A [demo app](https://github.com/unleashit/npm-library/tree/master/demos/frontend) is available for previewing the components that can be run in parallel with a [demo backend](https://github.com/unleashit/npm-library/tree/master/demos/backend) to test server functionality.
 
 ### How to Use
 
 - Install the individual components via NPM. See each component.
 
-- To run the demo app (demos all components): `pnpm demo`
-
-**Other commands**
-
-Run the demo plus all components in dev mode `pnpm dev`.
-
-Run tests: `pnpm build && pnpm test`.
+- To run the demo app (including backend): `pnpm dev`
 
 ### CSS
 
