@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.1.0 (2023-12-03)
+
+
+### Bug Fixes
+
+* **demos:** fix vercel configs and deploy ([1f2d027](https://github.com/unleashit/npm-library/commit/1f2d0278b603f33d499ae34b52884efc0698e4d7))
+
+
+
+
+
 ## [1.0.3](https://github.com/unleashit/npm-library/compare/@unleashit/demo@1.0.2...@unleashit/demo@1.0.3) (2023-08-01)
 
 **Note:** Version bump only for package @unleashit/demo

@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Responsive signup component for React with custom fields.",
   "main": "src/index.tsx",
   "exports": {
