@@ -37,7 +37,9 @@ class LoginDemo extends React.Component {
   }
 
   render() {
-    return <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />;
+    return (
+      <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />
+    );
   }
 }
 
@@ -79,7 +81,7 @@ Currently input, select, checkbox and textarea fields are supported.
 
 ```javascript
 <Login
-  loginHandler={this.loginHandler}
+  loginHandler={this.handler}
   onSuccess={this.onSuccess}
   forgotPasswordLink={'/auth/password-reset'}
   schema={schema}

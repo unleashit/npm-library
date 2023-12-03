@@ -9,7 +9,8 @@
   margin-top: 2.5rem;
 }
 
-.formGroup {
+// TODO: should be .fieldGroup in markup (remove .formGroup after conversion)
+.formGroup, .fieldGroup {
   margin-bottom: .8rem;
 }
 
@@ -67,7 +68,8 @@
 .serverAuthError {
   margin: 1rem 0;
   padding: .7rem .5rem;
-  background-color: $gray;
+  color: $error-text;
+  background-color: $error-background;
   border-radius: 5px;
   text-align: center;
 }

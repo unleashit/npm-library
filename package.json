@@ -18,9 +18,9 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "scripts": {
-    "build": "nx run-many -t build --exclude=@unleashit/demo",
-    "build:pnpm": "pnpm --filter @unleashit/common build && pnpm --filter=!@unleashit/demo -r --parallel build",
-    "dev": "nx run @unleashit/demo:dev",
+    "build": "nx run-many -t build --exclude=@unleashit/demo-*",
+    "build:pnpm": "pnpm --filter @unleashit/common build && pnpm --filter=!@unleashit/demo-* -r --parallel build",
+    "dev": "nx run-many -t dev -p @unleashit/demo-frontend @unleashit/demo-backend",
     "dev:all": "pnpm -r --parallel dev",
     "test": "nx run-many --target=test --all",
     "test:types": "pnpm -r exec tsc --noEmit",
@@ -106,6 +106,5 @@
   },
   "dependencies": {
     "glob": "^10.3.3"
-  },
-  "version": "1.0.0"
+  }
 }

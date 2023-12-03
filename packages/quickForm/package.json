@@ -6,7 +6,7 @@
   "types": "src/index.d.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./dist/*.css": "./src/scss/*.scss"
+    "./dist/*.module.css": "./src/scss/*.module.scss"
   },
   "publishConfig": {
     "main": "dist/index.js",
@@ -50,7 +50,7 @@
     "type": "git",
     "url": "git+https://github.com/unleashit/npm-library.git"
   },
-  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/contact",
+  "homepage": "https://github.com/unleashit/npm-library/tree/master/packages/quick-form",
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
   },

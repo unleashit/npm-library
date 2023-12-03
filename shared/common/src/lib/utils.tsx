@@ -22,17 +22,6 @@ export const isCSSModule = (
   fallback: string,
 ): string => themeProp || fallback;
 
-// export const getClassName = (
-//   cssModule: Record<string, string>,
-//   camelCaseClassName: string,
-// ) => {
-//   if (!(camelCaseClassName in cssModule)) {
-//     return `${prefix}-${kebabCase(camelCaseClassName)}`;
-//   }
-//
-//   return cssModule[camelCaseClassName];
-// };
-
 export const genClassNames = (
   moduleName: string,
   cssModule?: Record<string, string>,
@@ -61,7 +50,7 @@ export const returnComponentFormat = (
   );
 };
 
-export function getDefaultsFromZodSchema<Schema extends AnyZodObject>(
+export function getDefaultsFromZodObject<Schema extends AnyZodObject>(
   s: Schema,
 ) {
   return Object.fromEntries(
