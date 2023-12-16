@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server dist -p 3000",
     "dev": "node_modules/.bin/webpack serve --mode development",
-    "build": "NODE_ENV=production node_modules/.bin/webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "test": "jest test",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"

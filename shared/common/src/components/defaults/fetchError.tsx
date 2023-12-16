@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { ClsName } from '@unleashit/common';
 
 export type FetchErrorProps = {
   fetchError: Error;
   setFetchError: React.Dispatch<React.SetStateAction<Error | null>>;
   reset: (...args: any) => void;
-  clsName: (title: string) => string;
+  clsName: ClsName;
 };
 
 export function FetchError({

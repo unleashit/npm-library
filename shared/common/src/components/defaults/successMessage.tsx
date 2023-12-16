@@ -1,10 +1,8 @@
 import React from 'react';
-// import { genClassNames } from '@unleashit/common';
+import { ClsName } from '../../types';
 
 export type BaseSuccessMessageProps = {
-  // componentName: string;
-  clsName: (title: string) => string;
-  // cssModule?: Record<string, string>;
+  clsName: ClsName;
 };
 
 type DefaultSuccessMessageProps = BaseSuccessMessageProps & {
@@ -16,30 +14,20 @@ export type ShowSuccessProps = BaseSuccessMessageProps & {
 };
 
 export const DefaultSuccessMessage = ({
-  // componentName,
   message,
   clsName,
 }: DefaultSuccessMessageProps) => (
-  // const { clsName } = React.useMemo(
-  //   () => genClassNames(componentName, cssModule),
-  //   [componentName, cssModule],
-  // );
   <div className={clsName('success')}>
     <p>{message}</p>
   </div>
 );
 
 export const ShowSuccess = ({
-  // componentName,
   successMessage: SuccessMessage,
   clsName,
 }: ShowSuccessProps) =>
   typeof SuccessMessage === 'string' ? (
-    <DefaultSuccessMessage
-      // componentName={componentName}
-      message={SuccessMessage}
-      clsName={clsName}
-    />
+    <DefaultSuccessMessage message={SuccessMessage} clsName={clsName} />
   ) : (
     <SuccessMessage clsName={clsName} />
   );

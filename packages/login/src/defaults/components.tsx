@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultHeader } from '@unleashit/common';
+import { ClsName, DefaultHeader } from '@unleashit/common';
 
 // interface CSSModule {
 //   [key: string]: string;
@@ -44,7 +44,7 @@ export interface DefaultLoginHeaderProps {
   signupUrl: string;
   linkComponent: React.ComponentType<any>;
   linkComponentHrefAttr: string;
-  clsName: (camelCaseClassName: string) => string;
+  clsName: ClsName;
 }
 
 export const DefaultLoginHeader = ({

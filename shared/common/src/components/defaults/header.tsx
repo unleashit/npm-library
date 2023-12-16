@@ -1,8 +1,9 @@
 import React from 'react';
+import { ClsName } from '../../types';
 
 export type DefaultHeaderProps = {
   title: string;
-  clsName: (camelCaseClassName: string) => string;
+  clsName: ClsName;
   children?: React.ReactNode;
 };
 

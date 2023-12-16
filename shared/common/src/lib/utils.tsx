@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { z, AnyZodObject } from 'zod';
+import { z } from 'zod';
 import { prefix } from './constants';
 
 export const removeUndefined = (val: unknown[]) =>
@@ -50,14 +50,50 @@ export const returnComponentFormat = (
   );
 };
 
-export function getDefaultsFromZodObject<Schema extends AnyZodObject>(
-  s: Schema,
-) {
+// export function getDefaultsFromZodObject<Schema extends AnyZodObject>(
+//   schema: Schema,
+// ) {
+//   return Object.fromEntries(
+//     Object.entries(schema.shape).map(([key, value]) => {
+//       if (value instanceof z.ZodDefault)
+//         return [key, value._def.defaultValue()];
+//       return [key, undefined];
+//     }),
+//   );
+// }
+
+export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
+  schema: z.AnyZodObject | z.ZodEffects<any>,
+): z.infer<T> {
+  // Check if it's a ZodEffect
+  if (schema instanceof z.ZodEffects) {
+    // Check if it's a recursive ZodEffect
+    if (schema.innerType() instanceof z.ZodEffects)
+      return getDefaultsFromZodObject(schema.innerType());
+    // return schema inner shape as a fresh zodObject
+    return getDefaultsFromZodObject(
+      z.ZodObject.create(schema.innerType().shape),
+    );
+  }
+
+  // eslint-disable-next-line no-shadow
+  function getDefaultValue(schema: z.ZodTypeAny): unknown {
+    if (schema instanceof z.ZodDefault) return schema._def.defaultValue();
+    // return an empty array if it is
+    if (schema instanceof z.ZodArray) return [];
+    // return an empty string if it is
+    if (schema instanceof z.ZodString) return '';
+    // return an content of object recursivly
+    if (schema instanceof z.ZodObject) return getDefaultsFromZodObject(schema);
+
+    if (!('innerType' in schema._def)) return undefined;
+    return getDefaultValue(schema._def.innerType);
+  }
+
   return Object.fromEntries(
-    Object.entries(s.shape).map(([key, value]) => {
-      if (value instanceof z.ZodDefault)
-        return [key, value._def.defaultValue()];
-      return [key, undefined];
-    }),
+    Object.entries(schema.shape as z.ZodRawShape).map(([key, value]) => [
+      key,
+      getDefaultValue(value),
+    ]),
   );
 }

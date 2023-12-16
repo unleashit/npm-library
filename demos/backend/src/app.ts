@@ -6,6 +6,7 @@ import login from './routes/login';
 import { notFound, errorHandler, MessageResponse } from './middlewares';
 import signup from './routes/signup';
 import quickForm from './routes/quickForm';
+import forgotPasswordRoutes from './routes/forgotPassword';
 
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ app.get<object, MessageResponse | string>('/', (_, res) => {
 app.post('/login', login);
 app.post('/signup', signup);
 app.post('/quickform', quickForm);
+app.use('/forgot-password', forgotPasswordRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

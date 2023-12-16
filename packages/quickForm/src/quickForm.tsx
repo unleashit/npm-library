@@ -6,13 +6,13 @@ import {
   CustomFieldsHF,
   DefaultLoader,
   genClassNames,
-  getDefaultsFromZodObject,
   useShowSuccessTimer,
   DefaultHeader,
   ShowSuccess,
   formHandler,
   type FormValues,
   type BaseFormProps,
+  getDefaultsFromZodObject,
 } from '@unleashit/common';
 import {
   defaultContactSchema,
@@ -98,36 +98,41 @@ function QuickForm({
 
   return (
     <div className={clsName('container')}>
-      {isSubmitting && (
-        <Loader componentName="quickForm" cssModule={cssModule} />
+      {isSubmitting ? (
+        <Loader clsName={clsName} />
+      ) : (
+        <>
+          {!!Header && <Header title={title} clsName={clsName} />}
+          {errors.root && !toast && (
+            <div className={clsName('serverAuthError')}>
+              {errors.root.message}
+            </div>
+          )}
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            style={{
+              display: isSubmitting ? 'none' : 'block',
+            }}
+            className={clsName('form')}
+          >
+            <CustomFieldsHF
+              componentName={QuickForm.displayName}
+              fields={customFields}
+              register={register}
+              errors={errors}
+              clsName={clsName}
+            />
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={clsName('button')}
+            >
+              Send
+            </button>
+          </form>
+          {!!Footer && <Footer />}
+        </>
       )}
-      {Header && !isSubmitting && <Header title={title} clsName={clsName} />}
-      {errors.root && !toast && (
-        <div className={clsName('serverAuthError')}>{errors.root.message}</div>
-      )}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        style={{
-          display: isSubmitting ? 'none' : 'block',
-        }}
-        className={clsName('form')}
-      >
-        <CustomFieldsHF
-          componentName={QuickForm.displayName}
-          fields={customFields}
-          register={register}
-          errors={errors}
-          cssModule={cssModule}
-        />
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={clsName('button')}
-        >
-          Send
-        </button>
-      </form>
-      {!isSubmitting && Footer && <Footer />}
     </div>
   );
 }

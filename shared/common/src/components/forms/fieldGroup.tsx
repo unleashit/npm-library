@@ -1,13 +1,12 @@
 import React from 'react';
-import { genClassNames } from '../../lib/utils';
-import { InputProps } from '../../types';
+import { ClsName, InputProps } from '../../types';
 
 interface FieldGroupProps {
   componentName: string;
   fieldName: string;
   label?: string;
   error: Partial<InputProps['error']>;
-  cssModule: Record<string, string>;
+  clsName: ClsName;
   children: React.ReactNode;
 }
 
@@ -16,10 +15,9 @@ export function FieldGroup({
   label,
   error,
   componentName,
-  cssModule = {},
+  clsName,
   children,
 }: FieldGroupProps) {
-  const { clsName } = genClassNames(componentName, cssModule);
   return (
     <div className={clsName(`fieldGroup`)}>
       {label && (

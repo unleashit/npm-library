@@ -13,14 +13,14 @@ import {
 import { Input } from './input';
 import { Textarea } from './textarea';
 import { Select } from './select';
-import { FormValues } from '../../types';
+import { ClsName, FormValues } from '../../types';
 
 export interface CustomFieldsPropsHF<TSchema extends ZodTypeAny = ZodTypeAny> {
-  cssModule: Record<string, string>;
   errors: FieldErrors<any>;
   componentName: string;
   fields: CustomFieldHF[];
   register: UseFormRegister<FormValues<TSchema>>;
+  clsName: ClsName;
 }
 
 export interface CustomFieldHF {
@@ -35,7 +35,7 @@ export interface CustomFieldHF {
 type FieldProps = {
   register: UseFormRegisterReturn<any>;
   componentName: CustomFieldsPropsHF['componentName'];
-  cssModule: Record<string, string>;
+  clsName: ClsName;
   error: Partial<CustomFieldsPropsHF['errors']> | any;
 };
 
@@ -48,7 +48,7 @@ function Field({
   error,
   componentName,
   register,
-  cssModule,
+  clsName,
 }: CustomFieldHF & FieldProps) {
   if (element === 'input') {
     return (
@@ -58,7 +58,7 @@ function Field({
         type={type}
         register={register}
         error={error}
-        cssModule={cssModule}
+        clsName={clsName}
         {...attrs}
       />
     );
@@ -75,7 +75,7 @@ function Field({
         options={options}
         register={register}
         error={error}
-        cssModule={cssModule}
+        clsName={clsName}
         {...attrs}
       />
     );
@@ -88,7 +88,7 @@ function Field({
         label={label}
         register={register}
         error={error}
-        cssModule={cssModule}
+        clsName={clsName}
         {...attrs}
       />
     );
@@ -101,7 +101,7 @@ export function CustomFieldsHF({
   fields,
   register,
   errors,
-  cssModule,
+  clsName,
   componentName,
 }: CustomFieldsPropsHF) {
   return (
@@ -111,7 +111,7 @@ export function CustomFieldsHF({
           componentName={componentName}
           register={register(field.name)}
           error={errors[field.name]}
-          cssModule={cssModule}
+          clsName={clsName}
           key={field.name}
           {...field}
         />

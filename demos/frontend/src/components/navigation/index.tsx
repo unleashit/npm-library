@@ -7,9 +7,9 @@ import styles from './style.module.scss';
 const links: NavigationLink[] = [
   {
     title: 'Home',
-    href: '/home',
+    href: '/',
     icon: 'https://img.icons8.com/material/420/home-page.png',
-    iconPosition: 'right',
+    // iconPosition: 'right',
   },
   {
     title: 'Products',

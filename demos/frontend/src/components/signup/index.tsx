@@ -1,33 +1,83 @@
 // import schema from './validations';
-import '@unleashit/signup/dist/signup.css';
-
+import { Link, useNavigate } from 'react-router-dom';
 import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
 import React from 'react';
 import {
   GithubLoginButton,
   TwitterLoginButton,
 } from 'react-social-login-buttons';
-import { Link, useNavigate } from 'react-router-dom';
+import css from '@unleashit/signup/dist/signup.module.css';
 
 const btnStyle = {
   margin: '10px 0',
   boxShadow: 'none',
 };
 
+// const customFields: CustomFieldHF[] = [
+//   {
+//     element: 'input',
+//     type: 'text',
+//     name: 'email',
+//     label: 'Email',
+//   },
+//   {
+//     element: 'input',
+//     type: 'password',
+//     name: 'password',
+//     label: 'Password',
+//   },
+//   {
+//     element: 'input',
+//     type: 'password',
+//     name: 'passwordConfirm',
+//     label: 'Type password again',
+//   },
+//   {
+//     element: 'select',
+//     name: 'color',
+//     type: 'text',
+//     label: 'Choose a color',
+//     options: [
+//       ['', '- select -'],
+//       ['red', 'red'],
+//       ['green', 'green'],
+//       ['blue', 'blue'],
+//       ['yellow', 'yellow'],
+//     ],
+//   },
+//   {
+//     element: 'textarea',
+//     type: 'text',
+//     name: 'comments',
+//     label: 'Give us your feedback',
+//   },
+//   {
+//     element: 'input',
+//     type: 'checkbox',
+//     name: 'newsletterOptIn',
+//     label: 'Subscribe to our newsletter?',
+//     attrs: {
+//       defaultChecked: true,
+//     },
+//   },
+// ];
+
 const SignupDemo = () => {
   const navigate = useNavigate();
 
-  const signupHandler = async (values: FormValues) =>
-    await fetch('https://unleashit-signup.now.sh', {
+  const signupHandler = async (values: FormValues): Promise<ServerResponse> => {
+    console.log(values);
+    return await fetch(`${process.env.DEMO_URL}/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    }).then((res) => res.json());
+    }).then((resp) => resp.json());
+  };
 
-  const onSuccess = (res: ServerResponse) => {
-    console.log(res);
+  const onSuccess = (resp: ServerResponse) => {
+    console.log(resp);
     navigate('/');
   };
 
@@ -37,56 +87,14 @@ const SignupDemo = () => {
         Test account (already registered): test@test.com
       </p>
       <Signup
-        signupHandler={signupHandler}
+        handler={signupHandler}
         onSuccess={onSuccess}
         linkComponent={Link}
         linkComponentHrefAttr="to"
-        // schema={schema}
-        // customFields={[
-        //   {
-        //     element: 'input',
-        //     type: 'text',
-        //     name: 'email',
-        //     label: 'Email',
-        //   },
-        //   {
-        //     element: 'input',
-        //     type: 'password',
-        //     name: 'password',
-        //     label: 'Password',
-        //   },
-        //   {
-        //     element: 'input',
-        //     type: 'password',
-        //     name: 'passwordConfirm',
-        //     label: 'Type password again',
-        //   },
-        //   {
-        //     element: 'select',
-        //     name: 'color',
-        //     label: 'Choose a color',
-        //     options: [
-        //       ['', '- select -'],
-        //       ['red', 'red'],
-        //       ['green', 'green'],
-        //       ['blue', 'blue'],
-        //       ['yellow', 'yellow'],
-        //     ],
-        //   },
-        //   {
-        //     element: 'textarea',
-        //     name: 'comments',
-        //     label: 'Give us your feedback',
-        //   },
-        //   {
-        //     element: 'input',
-        //     type: 'checkbox',
-        //     name: 'newsletterOptIn',
-        //     label: 'Subscribe to our newsletter?',
-        //     value: 'yes',
-        //     defaultValue: true
-        //   },
-        // ]}
+        cssModule={css}
+        // childrenPosition="bottom"
+        // schema={custSchema}
+        // customFields={customFields}
       >
         <TwitterLoginButton
           onClick={() => alert('Hello')}

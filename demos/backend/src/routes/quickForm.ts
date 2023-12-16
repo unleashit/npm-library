@@ -1,18 +1,17 @@
 import { Request, Response } from 'express';
-import { BaseValidationErrors, validator } from '../helpers';
+import { ValidationErrors, validator } from '../helpers';
 
 type PostBody = {
   email?: string;
   message?: string;
 };
-type ValidationErrors = BaseValidationErrors & PostBody;
 export interface QuickFormResponse {
   success: boolean;
-  errors: ValidationErrors;
+  errors: ValidationErrors<PostBody>;
 }
 
 function validations({ email, message }: PostBody) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<PostBody> = {};
 
   if (!email) {
     errors.email = 'Email is required';

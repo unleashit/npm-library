@@ -1,9 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import Login, {
-  ServerResponse,
-  FormValues,
-  // CustomFieldHF,
-} from '@unleashit/login';
+import Login, { ServerResponse, FormValues } from '@unleashit/login';
 import React from 'react';
 import {
   GithubLoginButton,

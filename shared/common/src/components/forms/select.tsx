@@ -1,5 +1,4 @@
 import React from 'react';
-import { genClassNames } from '../../lib/utils';
 import { SelectProps } from '../../types';
 import { FieldGroup } from './fieldGroup';
 
@@ -8,29 +7,26 @@ export const Select = ({
   register,
   error,
   componentName,
-  cssModule = {},
+  clsName,
   ...attrs
-}: SelectProps) => {
-  const { clsName } = genClassNames(componentName, cssModule);
-  return (
-    <FieldGroup
-      componentName={componentName}
-      fieldName={register.name}
-      error={error}
-      cssModule={cssModule}
+}: SelectProps) => (
+  <FieldGroup
+    componentName={componentName}
+    fieldName={register.name}
+    error={error}
+    clsName={clsName}
+  >
+    <select
+      className={`${clsName('input')} ${error ? clsName('inputError') : ''}`}
+      id={`${componentName}-form-${register.name}`}
+      {...register}
+      {...attrs}
     >
-      <select
-        className={`${clsName('input')} ${error ? clsName('inputError') : ''}`}
-        id={`${componentName}-form-${register.name}`}
-        {...register}
-        {...attrs}
-      >
-        {options.map(([display, value, optAttrs]) => (
-          <option key={value} value={value} {...optAttrs}>
-            {display}
-          </option>
-        ))}
-      </select>
-    </FieldGroup>
-  );
-};
+      {options.map(([display, value, optAttrs]) => (
+        <option key={value} value={value} {...optAttrs}>
+          {display}
+        </option>
+      ))}
+    </select>
+  </FieldGroup>
+);

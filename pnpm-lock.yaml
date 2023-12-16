@@ -445,18 +445,19 @@ importers:
       '@unleashit/common':
         specifier: workspace:*
         version: link:../../shared/common
-      '@unleashit/configs':
-        specifier: workspace:*
-        version: link:../../shared/configs
-      formik:
-        specifier: 1.x || 2.x
-        version: 2.2.9(react@18.2.0)
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
-      yup:
-        specifier: ^0.32.11
-        version: 0.32.11
+      react-hook-form:
+        specifier: 7.x
+        version: 7.45.2(react@18.2.0)
+      zod:
+        specifier: 3.x
+        version: 3.21.4
+    devDependencies:
+      '@unleashit/configs':
+        specifier: workspace:*
+        version: link:../../shared/configs
 
   shared/common:
     dependencies:

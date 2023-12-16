@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BaseValidationErrors, validator } from '../helpers';
+import { ValidationErrors, validator } from '../helpers';
 
 export interface SignupResponse {
   success: boolean;
@@ -11,7 +11,6 @@ type PostBody = {
   password?: string;
   passwordConfirm?: string;
 };
-type ValidationErrors = BaseValidationErrors & PostBody;
 
 const demoUsers = [
   {
@@ -25,7 +24,7 @@ const demoUsers = [
 ];
 
 function validations({ email, password, passwordConfirm }: PostBody) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<PostBody> = {};
 
   if (!email) {
     errors.email = 'Email is required';
@@ -36,7 +35,7 @@ function validations({ email, password, passwordConfirm }: PostBody) {
   }
 
   if (!passwordConfirm) {
-    errors.password = 'Password confirm is required';
+    errors.passwordConfirm = 'Password confirm is required';
   }
 
   if (password !== passwordConfirm) {

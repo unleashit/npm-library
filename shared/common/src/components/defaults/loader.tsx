@@ -1,5 +1,4 @@
 import React from 'react';
-import { genClassNames } from '../../lib/utils';
 
 export type SpinnerSVGProps = {
   width?: string;
@@ -47,25 +46,17 @@ function SpinnerSVG({
 }
 
 export interface DefaultLoaderProps {
-  componentName: string;
-  cssModule: Record<string, string>;
+  clsName: any;
   color?: string;
   opacity?: string;
 }
 
 export const DefaultLoader = ({
-  componentName,
-  cssModule,
+  clsName,
   color,
   opacity,
-}: DefaultLoaderProps) => {
-  const { clsName } = React.useMemo(
-    () => genClassNames(componentName, cssModule),
-    [componentName, cssModule],
-  );
-  return (
-    <div className={clsName('loader')}>
-      <SpinnerSVG {...(color && { color })} {...(opacity && { opacity })} />
-    </div>
-  );
-};
+}: DefaultLoaderProps) => (
+  <div className={clsName('loader')}>
+    <SpinnerSVG {...(color && { color })} {...(opacity && { opacity })} />
+  </div>
+);

@@ -1,14 +1,13 @@
 import { Request, Response } from 'express';
-import { validator, BaseValidationErrors } from '../helpers';
+import { validator, ValidationErrors } from '../helpers';
 
 type PostBody = {
   email?: string;
   password?: string;
 };
-type ValidationErrors = BaseValidationErrors & PostBody;
 export interface LoginResponse {
   success: boolean;
-  errors: ValidationErrors;
+  errors: ValidationErrors<PostBody>;
 }
 
 const demoUser = {
@@ -17,7 +16,7 @@ const demoUser = {
 };
 
 function validations({ email, password }: PostBody) {
-  const errors: ValidationErrors = {};
+  const errors: ValidationErrors<PostBody> = {};
 
   if (!email) {
     errors.email = 'Email is required';

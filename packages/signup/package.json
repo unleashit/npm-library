@@ -2,29 +2,22 @@
   "name": "@unleashit/signup",
   "version": "1.1.0",
   "description": "Responsive signup component for React with custom fields.",
-  "main": "src/index.tsx",
+  "main": "src/index.ts",
+  "types": "src/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./src/index.tsx",
-      "require": "./src/index.tsx"
-    },
-    "./dist/*.css": {
-      "import": "./src/scss/*.scss",
-      "require": "./src/scss/*.scss"
-    }
+    ".": "./src/index.ts",
+    "./dist/*.module.css": "./src/scss/*.module.scss"
   },
   "publishConfig": {
     "main": "dist/index.js",
     "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
     "exports": {
       ".": {
         "import": "./dist/index.mjs",
         "require": "./dist/index.js"
       },
-      "./dist/*.css": {
-        "import": "./dist/*.css",
-        "require": "./dist/*.css"
-      }
+      "./dist/*.css": "./dist/*.css"
     },
     "access": "public"
   },
@@ -33,29 +26,24 @@
     "*.scss"
   ],
   "scripts": {
-    "build": "NODE_ENV=production tsup && pnpm sass:build",
+    "build": "NODE_ENV=production tsup --tsconfig tsconfig.lib.json && pnpm sass:build",
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
     "sass": "pnpm sass:build && pnpm sass:watch",
-    "sass:build": "node-sass -r src/scss -o dist --source-map true",
-    "sass:watch": "node-sass -wr src/scss -o dist --source-map true",
+    "sass:build": "node-sass -r src/scss -o dist --source-map true --include-path '../../shared/common/src/scss' && pnpm sass:postbuild",
+    "sass:postbuild": "../../shared/scripts/postcssRename.js --name signup ./dist/signup.module.css",
+    "sass:watch": "node-sass -wr src/scss -o dist --source-map true --include-path '../../shared/common/src/scss'",
     "test": "NODE_ENV=test jest"
   },
   "license": "MIT",
   "keywords": [
     "signup",
-    "react signup",
+    "signup component",
     "registration",
-    "react registration",
     "responsive",
     "custom fields",
     "react",
-    "react components",
-    "npm packages",
-    "npm components",
     "ui components",
     "ui library",
-    "monorepo",
-    "lerna",
     "typescript"
   ],
   "repository": {
@@ -67,12 +55,14 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
-    "formik": "1.x || 2.x",
     "react": "16.x || 17.x || 18.x",
-    "yup": "^0.32.11"
+    "react-hook-form": "7.x",
+    "zod": "3.x"
   },
   "dependencies": {
-    "@unleashit/common": "workspace:*",
+    "@unleashit/common": "workspace:*"
+  },
+  "devDependencies": {
     "@unleashit/configs": "workspace:*"
   }
 }

@@ -21,41 +21,6 @@ import {
   DefaultLoginHeaderProps,
 } from './defaults/components';
 
-// export interface FormValues {
-//   email: string;
-//   password: string;
-//   serverAuth: string;
-// }
-// export interface ServerResponse {
-//   success: boolean;
-//   errors?: {
-//     serverAuth: string; // error msg to print in browser when auth fails
-//   } & { [key: string]: string }; // optionally validate anything else on server with key=name of field, val=error to print;
-// }
-// export interface LoginProps {
-//   handler: <T extends z.ZodTypeAny>(
-//     values: FormValues<T>,
-//   ) => Promise<ServerResponse>;
-//   onSuccess: (resp: ServerResponse<any, any>) => void;
-//   title?: string;
-//   header?: React.FC<LoginHeaderProps>;
-//   footer?: React.FC<any>;
-//   signupUrl?: string;
-//   loader?: React.FC<LoginLoaderProps>;
-//   schema?: AnyZodObject;
-//   customFields?: CustomFieldHF[];
-//   forgotPassword?: boolean;
-//   forgotPasswordLink?: string;
-//   forgotPasswordText?: string;
-//   orLine?: boolean;
-//   linkComponent?: React.ComponentType<any>;
-//   linkComponentHrefAttr?: string;
-//   failMsg?: string; // loginHandler failure msg
-//   toast?: (msg: string) => void; // optionally will call toast function with server or fail msgs
-//   cssModule?: Record<string, string>;
-//   children?: React.ReactNode;
-// }
-
 export type LoginProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultLoginHeaderProps> | false | null;
   signupUrl?: string;
@@ -63,6 +28,7 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   forgotPasswordLink?: string;
   forgotPasswordText?: string;
   orLine?: boolean;
+  childrenPosition?: 'top' | 'bottom';
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
   children?: React.ReactNode;
@@ -79,6 +45,7 @@ export const Login = ({
   forgotPasswordLink = '/forgot-password',
   forgotPasswordText = 'Forgot your password?',
   orLine = true,
+  childrenPosition = 'bottom',
   linkComponent: LinkComponent = DefaultLinkComponent,
   linkComponentHrefAttr = 'href',
   customFields = defaultLoginFields,
@@ -129,70 +96,102 @@ export const Login = ({
   });
 
   if (!!successMessage && showSuccessMsg) {
-    return (
-      <ShowSuccess
-        // componentName={Login.displayName}
-        successMessage={successMessage}
-        clsName={clsName}
-      />
-    );
+    return <ShowSuccess successMessage={successMessage} clsName={clsName} />;
   }
 
   return (
     <div className={clsName('container')}>
-      {Header && !isSubmitting && (
-        <Header
-          title={title}
-          signupUrl={signupUrl}
-          linkComponent={LinkComponent}
-          linkComponentHrefAttr={linkComponentHrefAttr}
-          clsName={clsName}
-        />
-      )}
-      {errors.root && !toast && (
-        <div className={clsName('serverAuthError')}>{errors.root.message}</div>
-      )}
       {isSubmitting ? (
-        <Loader componentName="login" cssModule={cssModule} />
+        <Loader clsName={clsName} />
       ) : (
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          style={{
-            display: isSubmitting ? 'none' : 'block',
-          }}
-          className={clsName('form')}
-        >
-          <CustomFieldsHF
-            componentName={Login.displayName}
-            fields={customFields}
-            register={register}
-            errors={errors}
-            cssModule={cssModule}
-          />
-
-          <button type="submit" className={clsName('button')}>
-            Login
-          </button>
-          {children && (
-            <div className={clsName('socialLogins')}>
-              {orLine && (
-                <div className={clsName('orLine')}>
-                  <span>or</span>
-                </div>
-              )}
-              {children}
+        <>
+          {Header && (
+            <Header
+              title={title}
+              signupUrl={signupUrl}
+              linkComponent={LinkComponent}
+              linkComponentHrefAttr={linkComponentHrefAttr}
+              clsName={clsName}
+            />
+          )}
+          {errors.root && !toast && (
+            <div className={clsName('serverAuthError')}>
+              {errors.root.message}
             </div>
           )}
-          {forgotPassword ? (
-            <div className={clsName('forgotPasswordLink')}>
-              <LinkComponent
-                {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
-              >
-                {forgotPasswordText}
-              </LinkComponent>
-            </div>
-          ) : null}
-        </form>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            style={{
+              display: isSubmitting ? 'none' : 'block',
+            }}
+            className={clsName('form')}
+          >
+            {childrenPosition === 'bottom' && (
+              <>
+                <CustomFieldsHF
+                  componentName={Login.displayName}
+                  fields={customFields}
+                  register={register}
+                  errors={errors}
+                  clsName={clsName}
+                />
+
+                <button type="submit" className={clsName('button')}>
+                  Login
+                </button>
+                {forgotPassword ? (
+                  <div className={clsName('forgotPasswordLink')}>
+                    <LinkComponent
+                      {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
+                    >
+                      {forgotPasswordText}
+                    </LinkComponent>
+                  </div>
+                ) : null}
+              </>
+            )}
+
+            {children && (
+              <div className={clsName('socialButtons')}>
+                {orLine && childrenPosition === 'bottom' && (
+                  <div className={clsName('orLine')}>
+                    <span>or</span>
+                  </div>
+                )}
+                {children}
+                {orLine && childrenPosition === 'top' && (
+                  <div className={clsName('orLine')}>
+                    <span>or</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {childrenPosition === 'top' && (
+              <>
+                <CustomFieldsHF
+                  componentName={Login.displayName}
+                  fields={customFields}
+                  register={register}
+                  errors={errors}
+                  clsName={clsName}
+                />
+
+                <button type="submit" className={clsName('button')}>
+                  Login
+                </button>
+                {forgotPassword ? (
+                  <div className={clsName('forgotPasswordLink')}>
+                    <LinkComponent
+                      {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
+                    >
+                      {forgotPasswordText}
+                    </LinkComponent>
+                  </div>
+                ) : null}
+              </>
+            )}
+          </form>
+        </>
       )}
     </div>
   );

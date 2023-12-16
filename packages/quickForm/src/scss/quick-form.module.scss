@@ -2,13 +2,6 @@
 @import 'common_form_base';
 @import 'common_loaders';
 
-.container {
-  // maintains height when form is swapped for spinner
-  height: 100%;
-}
-
-// default quick form components
-
 .success {
   display: flex;
   min-height: 350px;

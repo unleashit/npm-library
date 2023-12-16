@@ -1,17 +1,19 @@
 import React from 'react';
-import { AnyZodObject, z, ZodTypeAny } from 'zod';
+import { z, ZodTypeAny } from 'zod';
 import type { InputHTMLAttributes, SelectHTMLAttributes } from 'react';
 import type { GlobalError, UseFormRegisterReturn } from 'react-hook-form';
 import { CustomFieldHF } from './components/forms/CustomFieldsHF';
 import { DefaultHeaderProps } from './components/defaults/header';
 import { DefaultLoaderProps } from './components/defaults/loader';
 
+export type ClsName = (camelCaseClassName: string) => string;
+
 type CommonFormProps = {
   componentName: string;
   label?: string;
   register: UseFormRegisterReturn;
   error?: GlobalError;
-  cssModule?: Record<string, string>;
+  clsName: ClsName;
 };
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> &
@@ -60,7 +62,7 @@ export type BaseFormProps = {
   footer?: React.FC<any>;
   loader?: React.FC<DefaultLoaderProps>;
   customFields?: CustomFieldHF[];
-  customSchema?: AnyZodObject;
+  customSchema?: z.AnyZodObject | z.ZodEffects<any>;
   // optionally send root server error message and/or
   // handler exceptions to toast
   toast?: (msg: string) => void;

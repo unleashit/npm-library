@@ -2,103 +2,17 @@
 @import 'common_form_base';
 @import 'common_loaders';
 
-//$gray: #e8e8e8;
-//$red: #e74444;
-
-//.loginContainer {
-//  width: 100%;
-//}
-//
-//.header {
-//  h2 {
-//    font-weight: normal;
-//    margin-bottom: 0.8rem;
-//  }
-//}
-//
-//.form {
-//  margin-top: 2.5rem;
-//}
-//
-//.formGroup {
-//  margin-bottom: 0.8rem;
-//}
-//
-//.input,
-//.textarea {
-//  box-sizing: border-box;
-//  width: 100%;
-//  border: 1px solid #ccc;
-//  border-radius: 5px;
-//  padding: 0.7rem 0.5rem;
-//}
-//
-//.textarea {
-//  height: 8rem;
-//}
-//
-//.select {
-//  box-sizing: border-box;
-//  width: 100%;
-//  border: 1px solid #ccc;
-//  border-radius: 5px;
-//  padding: 0.7rem 0.5rem;
-//}
-//
-//.inputError {
-//  border-color: $red;
-//}
-//
-//.label {
-//  display: block;
-//  margin-bottom: 0.4rem;
-//}
-//
-//.button {
-//  display: block;
-//  width: 100%;
-//  margin-top: 1.2rem;
-//  padding: 0.7rem 0.5rem;
-//  border: none;
-//  border-radius: 5px;
-//  background-color: $gray;
-//  font-size: 1rem;
-//  cursor: pointer;
-//  outline: none;
-//}
-//
-//.errorMessage {
-//  color: $red;
-//}
-//
-//.serverAuthError {
-//  margin: 1rem 0;
-//  padding: 0.7rem 0.5rem;
-//  background-color: $gray;
-//  border-radius: 5px;
-//  text-align: center;
-//}
-
 .forgotPasswordLink {
   margin-top: 2rem;
 }
 
-// default components
-
-.loader {
-  display: flex;
-  justify-content: center;
-  margin-top: 4rem;
-}
-
-.socialLogins {
-  margin: 2rem 0;
+.socialButtons {
   text-align: center;
 }
 
 .orLine {
   position: relative;
-  margin: 1.4rem 0;
+  margin: 2rem 0;
   font-size: .85rem;
   line-height: normal;
   text-transform: uppercase;

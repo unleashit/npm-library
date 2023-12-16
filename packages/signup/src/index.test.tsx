@@ -4,7 +4,8 @@ import { act } from 'react-dom/test-utils';
 
 // eslint-disable-next-line import/no-relative-packages
 import { changeVal, nextTick } from '@unleashit/configs';
-import SignupContainer, { mapDefaultValues, SignupProps } from '.';
+import { getDefaultsFromZodObject } from '@unleashit/common';
+import SignupContainer, { SignupProps } from '.';
 
 describe('<SignupContainer />', () => {
   let wrapper: ReactWrapper;
@@ -12,7 +13,7 @@ describe('<SignupContainer />', () => {
 
   beforeEach(() => {
     props = {
-      signupHandler: () => Promise.resolve({ success: true }),
+      handler: () => Promise.resolve({ success: true }),
       onSuccess: () => jest.fn(),
     };
 
@@ -106,7 +107,7 @@ describe('<SignupContainer />', () => {
   });
 
   describe('helper functions', () => {
-    it('mapDefaultValues() returns the right object', () => {
+    it('getDefaultsFromZodObject() returns the right object', () => {
       const fields: any = [
         {
           element: 'input',
@@ -128,7 +129,7 @@ describe('<SignupContainer />', () => {
        *     [name]: defaultValue || ''
        *   }
        * */
-      const { email, password } = mapDefaultValues(fields);
+      const { email, password } = getDefaultsFromZodObject(fields);
 
       expect(email).toEqual('something');
       expect(password).toEqual('');

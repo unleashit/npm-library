@@ -2,7 +2,9 @@ export const jestConfig = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/coverage/'],
-  setupFilesAfterEnv: ['<rootDir>/../dev/testConfig/jestSetupReact.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/../../shared/configs/testConfig/jestSetupReact.ts',
+  ],
   // url: 'http://localhost/',
   transform: {
     '\\.tsx?$': 'ts-jest',
@@ -18,8 +20,9 @@ export const jestConfig = {
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|svg)$':
-      '<rootDir>/../dev/testConfig/__mocks__/fileMock.js',
-    '\\.(css|scss)$': '<rootDir>/../../testConfig/__mocks__/styleMock.js',
+      '<rootDir>/../../shared/configs/testConfig/__mocks__/fileMock.js',
+    '\\.(css|scss)$':
+      '<rootDir>/../../shared/configs/testConfig/__mocks__/styleMock.js',
   },
   verbose: true,
 };

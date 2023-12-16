@@ -1,5 +1,4 @@
 import React from 'react';
-import { genClassNames } from '../../lib/utils';
 import { TextAreaProps } from '../../types';
 import { FieldGroup } from './fieldGroup';
 
@@ -8,24 +7,21 @@ export const Textarea = ({
   label,
   register,
   error,
-  cssModule = {},
+  clsName,
   ...attrs
-}: TextAreaProps) => {
-  const { clsName } = genClassNames(componentName, cssModule);
-  return (
-    <FieldGroup
-      componentName={componentName}
-      label={label}
-      fieldName={register.name}
-      error={error}
-      cssModule={cssModule}
-    >
-      <textarea
-        className={`${clsName('textarea')} ${error && clsName('inputError')}`}
-        id={`${componentName}-form-${register.name}`}
-        {...register}
-        {...attrs}
-      />
-    </FieldGroup>
-  );
-};
+}: TextAreaProps) => (
+  <FieldGroup
+    componentName={componentName}
+    label={label}
+    fieldName={register.name}
+    error={error}
+    clsName={clsName}
+  >
+    <textarea
+      className={`${clsName('textarea')} ${error ? clsName('inputError') : ''}`}
+      id={`${componentName}-form-${register.name}`}
+      {...register}
+      {...attrs}
+    />
+  </FieldGroup>
+);
