@@ -4,7 +4,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/login.svg)](https://www.npmjs.com/package/@unleashit/login)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/login.svg)](https://bundlephobia.com/result?p=@unleashit/login)
 
-Customizable React login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, social login buttons and forgot password link.
+Customizable React login component that validates with a built-in or custom Zod schema. It accepts custom fields, header/footer, social login buttons and forgot password link.
 
 ![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
 
@@ -14,34 +14,35 @@ Customizable React login component in Typescript that validates with a built-in 
 npm install @unleashit/login
 ```
 
-Required peer dependencies: react, formik and yup.
+Required peer dependencies: react, react-hook-form and zod.
 
 ### Example
 
-```javascript
-class LoginDemo extends React.Component {
-  async loginHandler(values) {
-    // should return a Promise in the shape of LoginHandlerResponse below
-    return await fetch('https://api.example.com/auth', {
+```typescript jsx
+const LoginDemo = () => {
+  const loginHandler = async (values: FormValues): Promise<ServerResponse> => {
+    // server should return a ServerResponse
+    // success property of true indicates all validations pass
+    // errors named after field names will display with fields
+    // error with property of "root" will display at the top or sent to toast
+    return await fetch('https://api.example.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
     }).then((resp) => resp.json());
-  }
+  };
 
-  onSuccess(resp) {
-    // set auth state, etc. resp has full server response from loginHandler().
-    window.location.href = '/signed-in';
-  }
+  const onSuccess = (resp: ServerResponse) => {
+    // Redirect or set auth state, etc.
+    // resp has full server response from loginHandler().
+    console.log(resp);
+    navigate('/');
+  };
 
-  render() {
-    return (
-      <Login loginHandler={this.loginHandler} onSuccess={this.onSuccess} />
-    );
-  }
-}
+  return <Login handler={loginHandler} onSuccess={onSuccess} />;
+};
 
 export default LoginDemo;
 ```
@@ -50,25 +51,18 @@ export default LoginDemo;
 
 Adding social logins is easy. Simply include them as children and they will display under the main login with a nice separator. You must supply the buttons themselves, but for something fast and nice I recommend `react-social-login-buttons`.
 
-```javascript
-import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
+```typescript jsx
+import {
+  GithubLoginButton,
+  TwitterLoginButton,
+} from 'react-social-login-buttons';
 
-const btnStyle = {
-  margin: '10px 0',
-  boxShadow: 'none',
-};
-
-render() {
-  return (
-    <Login
-      loginHandler={() => Promise.resolve({ success: true })}
-      onSuccess={(resp) => alert(JSON.stringify(resp, null, 2))}
-    >
-      <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-      <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-    </Login>
-  );
-}
+return (
+  <Login loginHandler={/* ... */}>
+    <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
+    <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
+  </Login>
+);
 ```
 
 ### Custom Fields
@@ -91,6 +85,7 @@ Currently input, select, checkbox and textarea fields are supported.
       type: 'text',
       name: 'username',
       label: 'Username',
+      focus: true, // sets the form focus
     },
     {
       element: 'input',
@@ -99,24 +94,19 @@ Currently input, select, checkbox and textarea fields are supported.
       label: 'Password',
     },
     {
-      element: 'text',
+      element: 'input',
       type: 'checkbox',
       name: 'persistLogin',
       label: 'Remember me?',
-      defaultChecked: true,
-      defaultValue: true,
     },
   ]}
 />;
 
 // yup schema
-const schema = yup.object().shape({
-  username: yup
-    .string()
-    .matches(/^[a-zA-Z0-9\._-]+$/, 'Enter a valid username')
-    .max(56)
-    .required(),
-  password: yup.string().min(8).max(512).required(),
+const schema = z.object({
+  username: z.string().nonempty().email(),
+  password: z.string().nonempty(),
+  persistLogin: z.boolean().default(true),
 });
 ```
 
@@ -124,39 +114,13 @@ const schema = yup.object().shape({
 
 Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/login/dist/login.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
 
-### API
-
-```typescript
-// loginHandler() should return this shape:
-
-interface LoginHandlerResponse {
-  success: boolean;
-  errors?: {
-    // error msg to print in browser when auth fails
-    serverAuth: string;
-    // optionally validate anything else on server
-    // key is the field's name attr, value is error msg to display
-    [key: string]: string;
-  };
-}
-
-// customFields prop should be an array of objects in this shape:
-interface CustomField {
-  element: 'input' | 'select' | 'textarea';
-  type: string;
-  name: string;
-  label: string;
-  options?: string[][]; // for select element
-  defaultChecked?: boolean; // for checkbox
-  custAttrs?: { [key: string]: string };
-}
 ```
 
 ### Props
 
 | Name               | Type                                            | Description                                                                                                                     | default                        |
 | ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| loginHandler       | (values: any) => Promise\<LoginHandlerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                 | required                       |
+| handler       | (values: any) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                 | required                       |
 | onSuccess          | (resp: LoginHandlerResponse) => any             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required                       |
 | schema             | yup.Schema\<LoginSchema>                        | Yup schema to override the default                                                                                              | standard validation            |
 | header             | React Component                                 | React component to override default header                                                                                      | basic header                   |
@@ -169,3 +133,4 @@ interface CustomField {
 | orLine             | boolean                                         | Display a "nice" line rule above social login buttons                                                                           | true (note: requires children) |
 | cssModule          | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                   | undefined                      |
 | children           | React Children                                  | Use for Social login buttons or anything else (displays as footer)                                                              | n/a                            |
+```
