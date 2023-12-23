@@ -3,6 +3,7 @@
   "version": "2.1.1",
   "main": "src/index.ts",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
