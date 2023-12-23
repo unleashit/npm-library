@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/recursive-data-lister",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Simple React component that displays a nested object recursively with a choice of markup.",
   "main": "src/index.tsx",
   "exports": {
