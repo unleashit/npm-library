@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { checkUser } from './checkUser';
+import { resetRequest } from './resetRequest';
 // import { checkToken } from './checkToken';
 import { passwordReset } from './passwordReset';
 
 const router: Router = Router();
 
-router.post('/', checkUser);
+router.post('/', resetRequest);
 router.post('/:id/:token', passwordReset);
 // router.post('/auth', checkToken);
 // router.post('/other');

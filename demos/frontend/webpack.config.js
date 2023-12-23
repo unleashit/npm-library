@@ -2,6 +2,8 @@ const path = require('path');
 const { HotModuleReplacementPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const { readdirSync } = require('fs');
 // const ESLintPlugin = require('eslint-webpack-plugin');
 
@@ -13,7 +15,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //     .filter((found) => found.isDirectory())
 //     .map((found) => path.join(__dirname, `../../packages/${found.name}/src`));
 // }
-const Dotenv = require('dotenv-webpack');
 
 const commonSASSpath = '../../shared/common/src/scss';
 
@@ -43,6 +44,7 @@ module.exports = (_env, { mode }) => {
     },
     plugins: [
       new HotModuleReplacementPlugin(),
+      // new BundleAnalyzerPlugin(),
       new HtmlWebpackPlugin({
         template: 'public/index.html',
       }),
@@ -66,6 +68,9 @@ module.exports = (_env, { mode }) => {
           //   path.join(__dirname, '../../shared/common/src'),
           //   ...globIncludes('../../packages'),
           // ],
+          // ...(!devMode && {
+          //   include: path.join(__dirname, 'src'),
+          // }),
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',

@@ -4,6 +4,7 @@ export { useToggleBodyStyleProp } from './hooks/useToggleBodyStyleProp';
 export { useShowSuccessTimer } from './hooks/useShowSuccessTimer';
 export { DefaultLinkComponent } from './lib/DefaultLink';
 export { CustomInput } from './lib/CustomInput';
+export { useSetFocus } from './hooks/useSetFocus';
 export * from './lib/utils';
 export * from './lib/CustomFields';
 export { formHandler, type OnSubmitArgs } from './lib/formHandler';

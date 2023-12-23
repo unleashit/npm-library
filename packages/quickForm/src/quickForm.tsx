@@ -13,6 +13,7 @@ import {
   type FormValues,
   type BaseFormProps,
   getDefaultsFromZodObject,
+  useSetFocus,
 } from '@unleashit/common';
 import {
   defaultContactSchema,
@@ -57,12 +58,16 @@ function QuickForm({
     handleSubmit,
     reset,
     setError,
+    setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<ZodTypeAny>>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });
+
+  // set focus on the first (if any) field with a focus prop
+  useSetFocus(customFields, setFocus);
 
   // Display/hide the success message
   const [showSuccessMsg] = useShowSuccessTimer({

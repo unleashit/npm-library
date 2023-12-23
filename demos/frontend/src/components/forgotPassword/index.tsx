@@ -1,13 +1,17 @@
-import ForgotPassword, {
+import React from 'react';
+import {
+  ForgotPassword,
   FormValues,
   ServerResponse,
 } from '@unleashit/forgot-password';
-import React from 'react';
-import '@unleashit/forgot-password/dist/forgot-password.css';
+import css from '@unleashit/forgot-password/dist/forgot-password.module.css';
+import { Link } from 'react-router-dom';
 
 const ForgotPasswordDemo = () => {
-  const forgotPasswordHandler = async (values: FormValues) =>
-    await fetch('https://unleashit-forgot-password.vercel.app', {
+  const forgotPasswordHandler = async (
+    values: FormValues,
+  ): Promise<ServerResponse> =>
+    await fetch(`${process.env.DEMO_URL}/forgot-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,9 +29,11 @@ const ForgotPasswordDemo = () => {
         Valid user: test@test.com
       </p>
       <ForgotPassword
-        forgotPasswordHandler={forgotPasswordHandler}
+        handler={forgotPasswordHandler}
         onSuccess={onSuccess}
-        showDefaultConfirmation
+        linkComponent={Link}
+        linkComponentHrefAttr="to"
+        cssModule={css}
       />
     </>
   );

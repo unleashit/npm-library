@@ -12,6 +12,7 @@ import {
   formHandler,
   useShowSuccessTimer,
   ShowSuccess,
+  useSetFocus,
 } from '@unleashit/common';
 import { FormValues } from './types';
 import defaultLoginSchema from './defaults/schema';
@@ -24,11 +25,10 @@ import {
 export type LoginProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultLoginHeaderProps> | false | null;
   signupUrl?: string;
-  forgotPassword?: boolean;
-  forgotPasswordLink?: string;
-  forgotPasswordText?: string;
   orLine?: boolean;
   childrenPosition?: 'top' | 'bottom';
+  forgotPasswordLink?: string | false | null;
+  forgotPasswordLinkText?: string;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
   children?: React.ReactNode;
@@ -41,9 +41,8 @@ export const Login = ({
   signupUrl = '/signup',
   header: Header = DefaultLoginHeader,
   loader: Loader = DefaultLoader,
-  forgotPassword = true,
   forgotPasswordLink = '/forgot-password',
-  forgotPasswordText = 'Forgot your password?',
+  forgotPasswordLinkText = 'Forgot your password?',
   orLine = true,
   childrenPosition = 'bottom',
   linkComponent: LinkComponent = DefaultLinkComponent,
@@ -61,12 +60,16 @@ export const Login = ({
     handleSubmit,
     reset,
     setError,
+    setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<ZodTypeAny>>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });
+
+  // set focus on the first (if any) field with a focus prop
+  useSetFocus(customFields, setFocus);
 
   // Submit handler
   const onSubmit = useMemo(
@@ -139,12 +142,12 @@ export const Login = ({
                 <button type="submit" className={clsName('button')}>
                   Login
                 </button>
-                {forgotPassword ? (
+                {forgotPasswordLink ? (
                   <div className={clsName('forgotPasswordLink')}>
                     <LinkComponent
                       {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
                     >
-                      {forgotPasswordText}
+                      {forgotPasswordLinkText}
                     </LinkComponent>
                   </div>
                 ) : null}
@@ -179,12 +182,12 @@ export const Login = ({
                 <button type="submit" className={clsName('button')}>
                   Login
                 </button>
-                {forgotPassword ? (
+                {forgotPasswordLink ? (
                   <div className={clsName('forgotPasswordLink')}>
                     <LinkComponent
                       {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
                     >
-                      {forgotPasswordText}
+                      {forgotPasswordLinkText}
                     </LinkComponent>
                   </div>
                 ) : null}

@@ -1,7 +1,7 @@
 .header {
   h2 {
     font-weight: normal;
-    margin-bottom: .8rem;
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -10,16 +10,18 @@
 }
 
 // TODO: should be .fieldGroup in markup (remove .formGroup after conversion)
-.formGroup, .fieldGroup {
-  margin-bottom: .8rem;
+.formGroup,
+.fieldGroup {
+  margin-bottom: 0.8rem;
 }
 
-.input, .textarea {
+.input,
+.textarea {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
 }
 
 .checkbox {
@@ -35,7 +37,7 @@
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
 }
 
 .inputError {
@@ -45,20 +47,28 @@
 
 .label {
   display: block;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
 
 .button {
   display: block;
   width: 100%;
   margin-top: 1.2rem;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
   border: none;
   border-radius: 5px;
   background-color: $gray;
   font-size: 1rem;
   cursor: pointer;
   outline: none;
+  &:active,
+  &:hover {
+    background-color: darken($gray, 8);
+  }
+  &:focus {
+    background-color: darken($gray, 8);
+    border: 1px solid darken($gray, 30);
+  }
 }
 
 .errorMessage {
@@ -67,7 +77,7 @@
 
 .serverAuthError {
   margin: 1rem 0;
-  padding: .7rem .5rem;
+  padding: 0.7rem 0.5rem;
   color: $error-text;
   background-color: $error-background;
   border-radius: 5px;
@@ -76,4 +86,8 @@
 
 .fetchErrorDisplay {
   color: $pink;
+}
+
+.forgotPasswordLink {
+  margin-top: 1.75rem;
 }

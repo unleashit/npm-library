@@ -28,6 +28,7 @@ export interface CustomFieldHF {
   type: string;
   name: string;
   label?: string;
+  focus?: boolean;
   options?: Array<[string, string, OptionHTMLAttributes<any>?]>;
   attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
 }

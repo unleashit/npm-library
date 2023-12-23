@@ -1,29 +1,32 @@
 import { ValidationErrors } from '../../helpers';
 
-type FPPostBody = {
+export type ResetRequestPostBody = {
   email?: string;
 };
 
-type PRPostBody = {
+export type TokenPostBody = {
   id?: string;
   token?: string;
   newPassword?: string;
   newPasswordConfirm?: string;
 };
 
-const user = {
-  email: 'test@test.com',
-};
-
-export const validateEmail = ({ email }: FPPostBody) => {
-  const errors: ValidationErrors<FPPostBody> = {};
+export const validateResetRequest = ({ email }: ResetRequestPostBody) => {
+  const errors: ValidationErrors<ResetRequestPostBody> = {};
 
   if (!email) {
-    errors.root = 'You must provide a valid email';
     errors.email = 'Email is required';
-  } else if (email !== user.email) {
-    errors.root = 'A user with that email was not found';
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+    errors.email = 'Email must be valid';
   }
+
+  // const user = {
+  //   email: 'test@test.com',
+  // };
+
+  // else if (email !== user.email) {
+  //   errors.root = 'A user with that email was not found';
+  // }
 
   return errors;
 };
@@ -33,8 +36,8 @@ export const validatePassword = ({
   token,
   newPassword,
   newPasswordConfirm,
-}: PRPostBody) => {
-  const errors: ValidationErrors<PRPostBody> = {};
+}: TokenPostBody) => {
+  const errors: ValidationErrors<TokenPostBody> = {};
   const validUser = '1';
   const validToken = '1234567890';
   // const pwdReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;

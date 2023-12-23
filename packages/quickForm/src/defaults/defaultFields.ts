@@ -6,6 +6,7 @@ export const defaultContactFields: CustomFieldHF[] = [
     type: 'text',
     name: 'name',
     label: 'Name',
+    focus: true,
   },
   {
     element: 'input',

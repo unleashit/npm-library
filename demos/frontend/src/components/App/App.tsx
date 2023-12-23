@@ -7,7 +7,7 @@ import ApiService from '../../utils/api';
 import { AppContext } from '../../utils/context';
 import AsyncHandler from '../asyncHandler';
 import ForgotPassword from '../forgotPassword';
-import ForgotPasswordReset from '../forgotPasswordReset';
+// import ForgotPasswordReset from '../forgotPasswordReset';
 import Home from '../Home/Home';
 import Login from '../login';
 import MockData from '../mockData';
@@ -70,10 +70,10 @@ class App extends React.Component<any> {
                       path="/forgot-password"
                       element={<ForgotPassword />}
                     />
-                    <Route
-                      path="/forgot-password/reset/:userid/:token"
-                      element={<ForgotPasswordReset />}
-                    />
+                    {/* <Route */}
+                    {/*  path="/forgot-password/reset/:userid/:token" */}
+                    {/*  element={<ForgotPasswordReset />} */}
+                    {/* /> */}
                     <Route path="/async-handler" element={<AsyncHandler />} />
                     <Route
                       path="/recursive-data-lister"

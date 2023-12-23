@@ -9,6 +9,7 @@ import {
   useShowSuccessTimer,
   ShowSuccess,
   getDefaultsFromZodObject,
+  useSetFocus,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -22,11 +23,12 @@ import defaultSignupFields from './defaults/fields';
 
 export type SignupProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultSignupHeaderProps> | false | null;
+  // link to login page, when using default login header
   loginUrl?: string;
+  // show a separator line between email and social logins (children required)
   orLine?: boolean;
+  // position of social logins relative to email login
   childrenPosition?: 'top' | 'bottom';
-  linkComponent?: React.ComponentType<any>;
-  linkComponentHrefAttr?: string;
   children?: React.ReactNode;
 };
 
@@ -34,11 +36,11 @@ export const Signup = ({
   handler,
   onSuccess,
   title = 'Signup',
-  loginUrl = '/login',
   header: Header = DefaultSignupHeader,
   loader: Loader = DefaultLoader,
   orLine = true,
   childrenPosition = 'bottom',
+  loginUrl = '/login',
   linkComponent: LinkComponent = DefaultLinkComponent,
   linkComponentHrefAttr = 'href',
   customFields = defaultSignupFields,
@@ -54,12 +56,16 @@ export const Signup = ({
     handleSubmit,
     reset,
     setError,
+    setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<typeof schema>>({
     resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });
+
+  // set focus on the first (if any) field with a focus prop
+  useSetFocus(customFields, setFocus);
 
   // Submit handler
   const onSubmit = useMemo(

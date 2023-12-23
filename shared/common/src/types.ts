@@ -69,6 +69,8 @@ export type BaseFormProps = {
   // override default failure message to show user
   failMsg?: string;
   // override or remove the default success message
-  successMessage?: React.FC | string | false | null;
+  successMessage?: React.FC<any> | string | false | null;
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
   cssModule?: Record<string, string>;
 };

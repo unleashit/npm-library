@@ -1,68 +1,77 @@
-import { isCSSModule } from '@unleashit/common';
+import { ClsName, DefaultHeader, isCSSModule } from '@unleashit/common';
 import * as React from 'react';
 
 interface Style {
   [key: string]: string;
 }
 
-export interface ForgotPasswordLoaderProps {
-  theme: Style;
-}
+// export interface ForgotPasswordLoaderProps {
+//   theme: Style;
+// }
 
 export interface ForgotPasswordHeaderProps {
   theme: Style;
 }
 
-export const ForgotPasswordLoader: React.FC<ForgotPasswordLoaderProps> = ({
-  theme,
-}): JSX.Element => (
-  <div className={isCSSModule(theme.loader, `unl-forgot-password__loader`)}>
-    <div
-      className={isCSSModule(
-        theme.loaderChild,
-        `unl-forgot-password__loader-child`,
-      )}
-    >
-      Sending...
-    </div>
-  </div>
-);
+export interface DefaultForgotPasswordHeaderProps {
+  title: string;
+  clsName: ClsName;
+}
 
-export const ForgotPasswordHeader: React.FC<ForgotPasswordHeaderProps> = ({
-  theme,
-}): JSX.Element => (
-  <div className={isCSSModule(theme.header, `unl-forgot-password__header`)}>
-    <h2>Forgot Password</h2>
+// export const ForgotPasswordLoader: React.FC<ForgotPasswordLoaderProps> = ({
+//   theme,
+// }): JSX.Element => (
+//   <div className={isCSSModule(theme.loader, `unl-forgot-password__loader`)}>
+//     <div
+//       className={isCSSModule(
+//         theme.loaderChild,
+//         `unl-forgot-password__loader-child`,
+//       )}
+//     >
+//       Sending...
+//     </div>
+//   </div>
+// );
+
+// export const ForgotPasswordHeader: React.FC<ForgotPasswordHeaderProps> = ({
+//   theme,
+// }): JSX.Element => (
+//   <div className={isCSSModule(theme.header, `unl-forgot-password__header`)}>
+//     <h2>Forgot Password</h2>
+//     <p>
+//       Enter the email address for your account. We'll send an email with a link
+//       to reset your password.
+//     </p>
+//   </div>
+// );
+
+export const DefaultForgotPasswordHeader = ({
+  title = 'Forgot Password',
+  clsName,
+}: DefaultForgotPasswordHeaderProps) => (
+  <DefaultHeader title={title} clsName={clsName}>
     <p>
       Enter the email address for your account. We'll send an email with a link
       to reset your password.
     </p>
-  </div>
+  </DefaultHeader>
 );
 
-export const ForgotPasswordResetHeader: React.FC<ForgotPasswordHeaderProps> = ({
-  theme,
-}): JSX.Element => (
-  <div
-    className={isCSSModule(
-      theme.resetHeader,
-      `unl-forgot-password__reset-header`,
-    )}
-  >
+export const DefaultForgotPasswordResetHeader: React.FC<
+  DefaultForgotPasswordHeaderProps
+> = ({ clsName }) => (
+  <div className={clsName('resetHeader')}>
     <h2>Reset Password</h2>
     <p>Please enter a new password and confirm.</p>
   </div>
 );
 
-export const ForgotPasswordSuccessMessage: React.FC<{ theme: Style }> = ({
-  theme,
-}): JSX.Element => (
-  <div
-    className={isCSSModule(
-      theme.confirmation,
-      `unl-forgot-password__confirmation`,
-    )}
-  >
+export const DefaultForgotPasswordSuccessMessage = ({
+  clsName,
+}: {
+  clsName: ClsName;
+}) => (
+  <div className={clsName('confirmation')}>
     <h2>Verification Email Sent</h2>
     <p>
       Please check your inbox and click on the provided link. You will then be
@@ -73,7 +82,7 @@ export const ForgotPasswordSuccessMessage: React.FC<{ theme: Style }> = ({
 
 export const ForgotPasswordResetSuccessMessage: React.FC<{ theme: Style }> = ({
   theme,
-}): JSX.Element => (
+}) => (
   <div
     className={isCSSModule(
       theme.resetConfirmation,

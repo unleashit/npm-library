@@ -48,7 +48,6 @@
     "tsup": "^6.7.0"
   },
   "dependencies": {
-    "@unleashit/common": "workspace:*",
     "lodash": "^4.17.21"
   }
 }

@@ -8,12 +8,6 @@ const defaultLoginFields: CustomFieldHF[] = [
     label: 'Email',
     focus: true,
   },
-  {
-    element: 'input',
-    type: 'password',
-    name: 'password',
-    label: 'Password',
-  },
 ];
 
 export default defaultLoginFields;

@@ -10,7 +10,7 @@ type DefaultSuccessMessageProps = BaseSuccessMessageProps & {
 };
 
 export type ShowSuccessProps = BaseSuccessMessageProps & {
-  successMessage: React.FC<BaseSuccessMessageProps> | string;
+  successMessage: React.FC<any> | string;
 };
 
 export const DefaultSuccessMessage = ({
