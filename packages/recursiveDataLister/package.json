@@ -28,6 +28,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -42,12 +43,10 @@
   },
   "license": "MIT",
   "keywords": [
+    "nested lists to html",
     "react",
-    "react components",
     "ui components",
     "ui library",
-    "monorepo",
-    "lerna",
     "typescript"
   ],
   "repository": {

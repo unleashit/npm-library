@@ -21,6 +21,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -36,7 +37,6 @@
   },
   "license": "MIT",
   "keywords": [
-    "login",
     "login component",
     "responsive",
     "custom fields",

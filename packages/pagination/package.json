@@ -28,6 +28,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -43,16 +44,11 @@
   "license": "MIT",
   "keywords": [
     "pagination",
-    "react pagination",
-    "responsive",
     "react",
-    "react components",
-    "npm packages",
-    "npm components",
+    "responsive",
+    "npm",
     "ui components",
     "ui library",
-    "monorepo",
-    "lerna",
     "typescript"
   ],
   "repository": {

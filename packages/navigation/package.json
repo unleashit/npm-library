@@ -28,6 +28,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -43,15 +44,11 @@
   "license": "MIT",
   "keywords": [
     "navigation",
-    "navigation bar",
     "nav bar",
     "react",
-    "react components",
     "ui components",
     "ui library",
     "responsive",
-    "monorepo",
-    "lerna",
     "typescript"
   ],
   "repository": {

@@ -28,6 +28,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -42,14 +43,13 @@
   },
   "license": "MIT",
   "keywords": [
-    "data state handler",
-    "HOC",
+    "async state handler",
+    "isomorphic suspense",
     "react",
-    "react components",
+    "higher order component",
     "ui components",
     "ui library",
-    "monorepo",
-    "lerna",
+    "npm",
     "typescript"
   ],
   "repository": {

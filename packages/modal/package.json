@@ -28,6 +28,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -43,17 +44,12 @@
   "license": "MIT",
   "keywords": [
     "modal",
-    "react modal",
+    "react",
     "responsive",
     "custom fields",
-    "react",
-    "react components",
-    "npm packages",
-    "npm components",
+    "npm",
     "ui components",
     "ui library",
-    "monorepo",
-    "lerna",
     "typescript"
   ],
   "repository": {

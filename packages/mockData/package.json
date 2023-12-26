@@ -20,29 +20,20 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
+  "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=production tsup",
     "dev": "NODE_ENV=development tsup --watch",
     "test": "NODE_ENV=test jest"
   },
   "keywords": [
-    "mock",
     "mock data",
-    "generator",
-    "json",
-    "mocker-data-generator",
+    "mock data templates",
     "faker",
     "chance",
     "casual",
-    "randexp",
-    "templates",
-    "schema",
-    "npm packages",
-    "npm components",
-    "ui components",
-    "ui library",
-    "monorepo",
-    "lerna",
+    "npm",
     "typescript"
   ],
   "author": "unleashit",

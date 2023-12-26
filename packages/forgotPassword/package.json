@@ -21,6 +21,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -36,7 +37,7 @@
   },
   "license": "MIT",
   "keywords": [
-    "forgot password",
+    "forgot password component",
     "password reset",
     "responsive",
     "custom fields",

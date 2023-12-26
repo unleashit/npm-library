@@ -5,7 +5,10 @@
   "main": "src/index.ts",
   "types": "src/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
     "./dist/*.module.css": "./src/scss/*.module.scss"
   },
   "publishConfig": {
@@ -21,6 +24,7 @@
     },
     "access": "public"
   },
+  "files": ["dist", "*.png"],
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -36,9 +40,8 @@
   },
   "license": "MIT",
   "keywords": [
-    "signup",
     "signup component",
-    "registration",
+    "registration component",
     "responsive",
     "custom fields",
     "react",
