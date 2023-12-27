@@ -29,8 +29,6 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   forgotPasswordLink?: string | false | null;
   forgotPasswordLinkText?: string;
-  linkComponent?: React.ComponentType<any>;
-  linkComponentHrefAttr?: string;
   children?: React.ReactNode;
 };
 

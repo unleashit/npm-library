@@ -24,7 +24,10 @@ import {
   defaultContactFieldsWithPhone,
 } from './defaults/defaultFields';
 
-export type QuickFormProps = BaseFormProps & {
+export type QuickFormProps = Omit<
+  BaseFormProps,
+  'linkComponent' | 'linkComponentHrefAttr'
+> & {
   // show phone field (ignored when using custom fields)
   showPhone?: boolean;
   // show success msg for x ms, then toggle back to blank form
