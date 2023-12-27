@@ -91,7 +91,6 @@ const LoginDemo = () => {
         linkComponent={Link}
         linkComponentHrefAttr="to"
         cssModule={css}
-        successMessage="you gotta be kidding!"
       >
         <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
         <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />

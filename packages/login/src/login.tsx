@@ -49,7 +49,7 @@ export const Login = ({
   customSchema: schema = defaultLoginSchema,
   toast,
   failMsg,
-  successMessage = 'You are now logged in.',
+  successMessage = false,
   cssModule = {},
   children,
 }: LoginProps) => {

@@ -47,7 +47,7 @@ export const Signup = ({
   customSchema: schema = defaultSignupSchema,
   toast,
   failMsg,
-  successMessage = 'Signup was successful. Welcome!',
+  successMessage = false,
   cssModule = {},
   children,
 }: SignupProps) => {
@@ -64,7 +64,7 @@ export const Signup = ({
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });
 
-  // set focus on the first (if any) field with a focus prop
+  // set focus on the first field with a focus prop, if any
   useSetFocus(customFields, setFocus);
 
   // Submit handler
