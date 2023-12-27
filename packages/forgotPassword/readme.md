@@ -4,9 +4,20 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/forgot-password.svg)](https://www.npmjs.com/package/@unleashit/forgot-password)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/forgot-password.svg)](https://bundlephobia.com/result?p=@unleashit/forgot-password)
 
-Customizable set of React forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both reset request and actual reset views. Assumes Peer depenencies of React, Formik and Yup.
+Customizable set of React forgot password components that validate against a default or custom Zod schema. Accepts custom fields and includes reset request, token submission and confirmation views as needed.
 
 ![forgot password component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/forgotPassword/forgotPassword.png)
+
+### Features
+
+- Displays and handles client and serverside errors
+- Custom fields and schema
+- Show success components and/or provide onSuccess functions to redirect, set state, etc.
+- Custom header/footer
+- Loader (default or custom)
+- Show a link to login instead
+- Client router support for links
+- Toast support
 
 ### Install
 
@@ -14,113 +25,123 @@ Customizable set of React forgot password components in Typescript that validate
 npm install @unleashit/forgot-password
 ```
 
-**Required peer dependencies:** react, formik and yup.
+**Required peer dependencies:** react, react-hook-form and zod.
 
-There are two components, one for the initial view to request a reset and another for the actual reset.
+### Password Reset Request Example
 
-### Password Reset "Request" Example
+```typescript jsx
+import ForgotPassword, {
+  FormValues,
+  ServerResponse,
+} from '@unleashit/forgot-password';
 
-```javascript
-import ForgotPassword from '@unleashit/forgot-password';
-
-class ForgotPasswordDemo extends React.Component {
-  async forgotPasswordHandler(values) {
-    // should return a Promise in the shape of LoginHandlerResponse below
-    return await fetch('https://api.example.com/auth/reset-request', {
+function ForgotPasswordDemo() {
+  const forgotPasswordHandler = async (
+    values: FormValues,
+  ): Promise<ServerResponse> => {
+    // server should return a ServerResponse
+    // success property of true indicates all validations pass
+    // errors named after field names will display with fields
+    // error with property of "root" will display at the top or sent to toast
+    return await fetch('https://api.example.com/reset-request', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
     }).then((resp) => resp.json());
-  }
+  };
 
-  onSuccess(serverResponse) {
-    // serverResponse has server's full response from forgotPasswordHandler().
-    console.log(serverResponse);
-  }
+  const onSuccess = (resp: ServerResponse) => {
+    // Redirect or set state, etc.
+    // resp has full server response from forgotPasswordHandler()
+    console.log(resp);
+  };
 
-  render() {
-    return (
-      <ForgotPassword
-        forgotPasswordHandler={this.forgotPasswordHandler}
-        onSuccess={this.onSuccess}
-        showDefaultConfirmation={true}
-      />
-    );
-  }
+  return (
+    <ForgotPassword handler={forgotPasswordHandler} onSuccess={onSuccess} />
+  );
 }
-
-export default ForgotPasswordDemo;
 ```
 
-Notes: a `showDefaultConfirmation` prop set to true will show a default confirmation message that instructs the user to check their email for a link. For customized behavior, omit this prop and handle it with `onSuccess`. `onSuccess` is optional and can take either a normal function or a React component instance. If you pass in a function, it will be called with the server's reponse. If you instead pass a component, it will render it.
+Note that `onSuccess` is optional. By default, the user will be shown a generic success message as long as the server returns a `success` boolean. If you provide an `successMessage` prop, you can override it or set `false` to turn off.
 
 ### Password Reset Example
 
-```javascript
-import { ForgotPasswordReset } from '@unleashit/forgot-password';
+```typescript jsx
+import ForgotPasswordReset, {
+  FormValues,
+  ServerResponse,
+} from '@unleashit/forgot-password';
 
-class ForgotPasswordResetDemo extends React.Component {
-  async forgotPasswordResetHandler(values) {
+function ForgotPasswordResetDemo() {
+  const forgotPasswordResetHandler = async (
+    values: FormValues,
+  ): Promise<ServerResponse> => {
+    // userID and token are extracted from url
     const [token, userid] = new URL(window.location.href).pathname
       .split('/')
       .filter(Boolean)
       .reverse();
 
-    return await fetch(`https://api.example.com/auth/reset/${userid}/${token}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    return await fetch(
+      `https://api.example.com/password-reset/${userid}/${token}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
       },
-      body: JSON.stringify(values),
-    }).then((resp) => resp.json());
-  }
+    ).then((resp) => resp.json());
+  };
 
-  onSuccess(serverResponse) {
-    console.log(serverResponse);
-  }
+  const onSuccess = (resp: ServerResponse) => {
+    console.log(resp);
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
-          User ID = 1, token = 1234567890, extracted from url
-        </p>
-        <ForgotPasswordReset
-          forgotPasswordResetHandler={this.forgotPasswordResetHandler}
-          onSuccess={this.onSuccess}
-          showDefaultConfirmation={true}
-        />
-      </React.Fragment>
-    );
-  }
+  return (
+    <ForgotPasswordReset
+      handler={forgotPasswordResetHandler}
+      onSuccess={onSuccess}
+    />
+  );
 }
-
-export default ForgotPasswordResetDemo;
 ```
 
-For this example, the userId and authorization token are taken from the url under the assumption the user arrived from a link via email or SMS. For brevity, the form itself is not protected from public display. But you could easily add an initial request to the server in the parent component to achieve that if you wanted.
+In this example, the userId and authorization token are taken from the url under the assumption the user arrived from a link sent via email or SMS.
 
 ### Custom Fields
 
-It's possible to replace the default field(s) of the password request (not yet the reset) with custom field(s) and attributes by adding a `customFields` prop. The forgotPasswordHandler will be called with their values after passing validation.
+It's possible to replace the default fields with custom fields by adding `customFields` and `customSchema` props. On submission and after passing validation, the handler will be called with the field values.
 
-This array of fields will replace the defaults, so don't forget to add anything you need. If you create and pass in a Yup schema with matching name attributes, it will properly validate.
+`customFields` is an array of field objects where `element` is the type of field. Currently input, select, checkbox and textarea fields are supported.
 
-Currently input, select, checkbox and textarea fields are supported.
+```typescript jsx
+interface CustomField {
+  element: 'input' | 'select' | 'textarea';
+  type: string; // html `type` attribute
+  name: string; // html `name` attribute
+  label?: string; // label to display in an html <label>
+  focus?: boolean; // sets the focus to this element (only the first is used)
+  options?: Array<[string, string, OptionHTMLAttributes<any>?]>; // select options: [title, value, {attribute: value}]
+  attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
+}
+```
 
-```javascript
+Note that supplying a `customFields` object completely replaces the defaults, so don't forget to add all needed fields. `customSchema` should be a Zod schema with matching name attributes.
+
+```typescript jsx
 <ForgotPassword
-  forgotPasswordHandler={this.forgotPasswordHandler}
-  onSuccess={<MyCustomConfimationComponent />}
-  schema={schema}
+  handler={forgotPasswordHandler}
+  successMessage={CustomSuccessMessage}
   customFields={[
     {
       element: 'input',
       type: 'text',
       name: 'email',
       label: 'Email',
+      focus: true,
     },
     {
       element: 'input',
@@ -135,72 +156,39 @@ Currently input, select, checkbox and textarea fields are supported.
       label: 'What was the name of your first pet?',
     },
   ]}
-/>;
-
-// yup schema
-const schema = yup.object().shape({
-  email: yup.string().email().max(56).required(),
-  secretQuestion1: yup.string().max(512).required(),
-  secretQuestion2: yup.string().max(512).required(),
-});
+  schema={customSchema} // zod schema to match
+/>
 ```
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/forgot-password/dist/forgot-password.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/forgot-password/dist/forgot-password.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/forgot-password/dist/forgot-password.css'`. Alternatively, if you use CSS Modules you can `import css from '@unleashit/forgot-password/dist/forgot-password.module.css'` and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names. Please see CSS in the main readme of the repo for more info.
 
-### API and Props
-
-```typescript
-// both forgotPasswordHandler() and forgotPasswordResetHandler()
-// should return this shape:
-interface ForgotPasswordHandlerResponse {
-  success: boolean;
-  errors?: {
-    // error msg to print at top of form in browser when req fails
-    serverMessage: string;
-    // optionally validate anything else on server
-    // key is the field's name attr, value is error msg to display
-    // displays with fields, matches client validations
-    [key: string]: string;
-  };
-}
-
-// customFields prop should be an array of objects in this shape:
-interface CustomField {
-  element: 'input' | 'select' | 'textarea';
-  type: string;
-  name: string;
-  label: string;
-  options?: string[][]; // for select element
-  defaultChecked?: boolean; // for checkbox
-  custAttrs?: { [key: string]: string };
-}
-```
+### Props
 
 **ForgotPassword**
 
-| Name                    | Type                                                     | Description                                                                                                                                                                                                 | default             |
-| ----------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| forgotPasswordHandler   | (values: any) => Promise\<ForgotPasswordHandlerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                                             | required            |
-| onSuccess               | (resp: LoginHandlerResponse) => any &#124; React.Element | Called if forgotPasswordHandler returns success. Provides the server response from forgotPasswordHandler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                 |
-| showDefaultConfirmation | boolean                                                  | If set to true, show a default confirmation message (check email to continue)                                                                                                                               | false               |
-| schema                  | yup.Schema\<ForgotPasswordSchema>                        | Yup schema to override the default                                                                                                                                                                          | standard validation |
-| header                  | React.FC                                                 | React component to override default pw request header                                                                                                                                                       | basic header        |
-| loader                  | React.FC                                                 | React component to override default loader                                                                                                                                                                  | Sending...          |
-| customFields            | CustomField[]                                            | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                                                       | n/a                 |
-| cssModule               | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                               | undefined           |
-| children                | React Children                                           | Optional footer                                                                                                                                                                                             | n/a                 |
+| Name           | Type                                      | Description                                                                                                                                                                     | default                                        |
+| -------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| handler        | (values: any) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required                                       |
+| onSuccess      | (resp: ServerResponse) => void            | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                                            |
+| successMessage | React.FC, string, false                   | Show a component or string on success                                                                                                                                           | default confirmation (check email to continue) |
+| schema         | zod schema                                | Zod schema to override default                                                                                                                                                  | default validation                             |
+| header         | React.FC                                  | React component to override default pw request header                                                                                                                           | basic header                                   |
+| loader         | React.FC                                  | React component to override default loader                                                                                                                                      | Sending...                                     |
+| customFields   | CustomField[]                             | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                           | n/a                                            |
+| cssModule      | Record<string, string>                    | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined                                      |
+| children       | React Children                            | Optional footer                                                                                                                                                                 | n/a                                            |
 
 **ForgotPasswordReset**
 
-| Name                       | Type                                                     | Description                                                                                                                                                                                                           | default             |
-| -------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| forgotPasswordResetHandler | (values: any) => Promise\<ForgotPasswordHandlerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                                                       | required            |
-| onSuccess                  | (resp: LoginHandlerResponse) => any &#124; React.Element | Called if forgotPasswordResetHandler returns success. Provides the server response from forgotPasswordResetHandler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                 |
-| showDefaultConfirmation    | boolean                                                  | If set to true, show a default reset success message                                                                                                                                                                  | false               |
-| schema                     | yup.Schema\<ForgotPasswordSchema>                        | Yup schema to override the default                                                                                                                                                                                    | standard validation |
-| header                     | React.FC                                                 | React component to override default pw reset header                                                                                                                                                                   | basic header        |
-| loader                     | React.FC                                                 | React component to override default loader                                                                                                                                                                            | Sending...          |
-| cssModule                  | { [key: string]: string }                                | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                                                         | undefined           |
-| children                   | React Children                                           | Optional footer                                                                                                                                                                                                       | n/a                 |
+| Name           | Type                                             | Description                                                                                                                                                                     | default            |
+| -------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| handler        | (values: FromValues) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required           |
+| onSuccess      | (resp: ServerResponse) => void                   | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                |
+| successMessage | React.FC, string, false                          | Show a component or string on success                                                                                                                                           | false              |
+| schema         | Zod schema                                       | Zod schema to override the default                                                                                                                                              | default validation |
+| header         | React.FC                                         | React component to override default pw reset header                                                                                                                             | basic header       |
+| loader         | React.FC                                         | React component to override default loader                                                                                                                                      | Sending...         |
+| cssModule      | Record<string, string>                           | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined          |
+| children       | React Children                                   | Optional footer                                                                                                                                                                 | n/a                |
