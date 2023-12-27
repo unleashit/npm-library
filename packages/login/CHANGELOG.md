@@ -3,29 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.1...@unleashit/login@1.1.2) (2023-12-27)
+
+### Bug Fixes
+
+* **login,signup:** set default successMessage to false ([cae5209](https://github.com/unleashit/npm-library/commit/cae52093689642c392f76980964d320383c99505))
+
 ## [1.1.1](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.0...@unleashit/login@1.1.1) (2023-12-23)
 
 **Note:** Version bump only for package @unleashit/login
-
-
-
-
 
 # [1.1.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.0.1...@unleashit/login@1.1.0) (2023-12-03)
 
 **Note:** Version bump only for package @unleashit/login
 
-
-
-
-
 ## [1.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.0.0...@unleashit/login@1.0.1) (2023-08-01)
 
 **Note:** Version bump only for package @unleashit/login
-
-
-
-
 
 # [1.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/login@0.16.6...@unleashit/login@1.0.0) (2023-08-01)
 

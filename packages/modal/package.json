@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/modal",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Responsive modal component for React with custom header, footer and more.",
   "main": "src/index.tsx",
   "exports": {
@@ -28,7 +28,10 @@
     },
     "access": "public"
   },
-  "files": ["dist", "*.png"],
+  "files": [
+    "dist",
+    "*.png"
+  ],
   "sideEffects": [
     "*.css",
     "*.scss"

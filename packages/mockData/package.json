@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/mock-data",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrapper for mocker-data-generator providing a set of templates and arguments. Can optionally write to a file (node)",
   "main": "src/index.ts",
   "exports": {
@@ -20,7 +20,10 @@
     },
     "access": "public"
   },
-  "files": ["dist", "*.png"],
+  "files": [
+    "dist",
+    "*.png"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=production tsup",

@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/pagination",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Responsive pagination component for React.",
   "main": "src/index.tsx",
   "exports": {
@@ -28,7 +28,10 @@
     },
     "access": "public"
   },
-  "files": ["dist", "*.png"],
+  "files": [
+    "dist",
+    "*.png"
+  ],
   "sideEffects": [
     "*.css",
     "*.scss"
