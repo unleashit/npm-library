@@ -4,9 +4,22 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/login.svg)](https://www.npmjs.com/package/@unleashit/login)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/login.svg)](https://bundlephobia.com/result?p=@unleashit/login)
 
-Customizable React login component that validates with a built-in or custom Zod schema. It accepts custom fields, header/footer, social login buttons and forgot password link.
+Customizable React login component that validates against a default or custom Zod schema.
 
 ![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
+
+### Features
+
+- Displays and handles client and serverside errors
+- Custom fields and schema
+- Show a success component and/or provide an onSuccess function to redirect, set state, etc.
+- Show social logins either above or below email login with optional separator
+- Custom header/footer
+- Loader (default or custom)
+- Show a link to registration
+- Show a forgot password link
+- Client router support for links
+- Toast support
 
 ### Install
 
@@ -14,12 +27,16 @@ Customizable React login component that validates with a built-in or custom Zod 
 npm install @unleashit/login
 ```
 
-Required peer dependencies: react, react-hook-form and zod.
+**Required peer dependencies:** react, react-hook-form and zod.
 
 ### Example
 
 ```typescript jsx
-const LoginDemo = () => {
+import Login, { FormValues, ServerResponse } from '@unleashit/login';
+
+function LoginDemo() {
+  const navigate = useNavigate();
+
   const loginHandler = async (values: FormValues): Promise<ServerResponse> => {
     // server should return a ServerResponse
     // success property of true indicates all validations pass
@@ -36,15 +53,12 @@ const LoginDemo = () => {
 
   const onSuccess = (resp: ServerResponse) => {
     // Redirect or set auth state, etc.
-    // resp has full server response from loginHandler().
-    console.log(resp);
+    // resp has full server response from loginHandler()
     navigate('/');
   };
 
   return <Login handler={loginHandler} onSuccess={onSuccess} />;
-};
-
-export default LoginDemo;
+}
 ```
 
 ### Social Logins
@@ -58,7 +72,7 @@ import {
 } from 'react-social-login-buttons';
 
 return (
-  <Login loginHandler={/* ... */}>
+  <Login handler={/* ... */}>
     <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
     <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
   </Login>
@@ -67,18 +81,30 @@ return (
 
 ### Custom Fields
 
-It's possible to replace the default fields with custom fields and attributes by adding a `customFields` prop. The loginHandler will be called with their values after passing validation.
+It's possible to replace the default fields with custom fields by adding `customFields` and `customSchema` props. On submission and after passing validation, the handler will be called with the field values.
 
-This array of fields will replace the defaults, so don't forget to add email/username and password if you need them. If you create a Yup schema with matching name attributes, it will properly validate.
+`customFields` is an array of field objects where `element` is the type of field. Currently input, select, checkbox and textarea fields are supported.
 
-Currently input, select, checkbox and textarea fields are supported.
+```typescript jsx
+interface CustomField {
+  element: 'input' | 'select' | 'textarea';
+  type: string; // html `type` attribute
+  name: string; // html `name` attribute
+  label?: string; // label to display in an html <label>
+  focus?: boolean; // sets the focus to this element (only the first is used)
+  options?: Array<[string, string, OptionHTMLAttributes<any>?]>; // select options: [title, value, {attribute: value}]
+  attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
+}
+```
 
-```javascript
+Note that supplying a `customFields` object completely replaces the defaults, so don't forget to add all needed fields. `customSchema` should be a Zod schema with matching name attributes.
+
+```typescript jsx
 <Login
-  loginHandler={this.handler}
-  onSuccess={this.onSuccess}
-  forgotPasswordLink={'/auth/password-reset'}
-  schema={schema}
+  handler={handler}
+  successMessage={() => <div>You are logged in.</div>}
+  forgotPasswordLink={'/reset-password'}
+  forgotPasswordLinkText="Need to reset your password?"
   customFields={[
     {
       element: 'input',
@@ -100,9 +126,10 @@ Currently input, select, checkbox and textarea fields are supported.
       label: 'Remember me?',
     },
   ]}
+  customSchema={schema}
 />;
 
-// yup schema
+// zod schema
 const schema = z.object({
   username: z.string().nonempty().email(),
   password: z.string().nonempty(),
@@ -112,7 +139,7 @@ const schema = z.object({
 
 ### CSS
 
-Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. CSS Module support is baked in. If you use CSS Modules you can `import '@unleashit/login/dist/login.module.css'` or import your own custom module targeting the internal classes and pass to the `cssModule` prop. Please see CSS in the main readme of the repo for more info.
+Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. Alternatively, if you use CSS Modules you can `import css from '@unleashit/login/dist/login.module.css'` and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names. Please see CSS in the main readme of the repo for more info.
 
 ```
 
@@ -120,8 +147,8 @@ Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login
 
 | Name               | Type                                            | Description                                                                                                                     | default                        |
 | ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| handler       | (values: any) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                 | required                       |
-| onSuccess          | (resp: LoginHandlerResponse) => any             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required                       |
+| handler       | (values: FormValues) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Returns a boolean success and errors, if any  | required                       |
+| onSuccess          | (resp: ServerResponse) => void             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required                       |
 | schema             | yup.Schema\<LoginSchema>                        | Yup schema to override the default                                                                                              | standard validation            |
 | header             | React Component                                 | React component to override default header                                                                                      | basic header                   |
 | loader             | React Component                                 | React component to override default loader                                                                                      | Logging in...                  |
