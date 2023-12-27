@@ -1,4 +1,8 @@
 {
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/nx-schema.json",
+  "affected": {
+    "defaultBase": "master"
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
