@@ -19,7 +19,10 @@ export const useShowSuccessTimer = ({
     if (!!successMessage && isSubmitSuccessful) {
       reset();
       setShowSuccessMsg(true);
-      if (typeof successMessageTimeout === 'number') {
+      if (
+        typeof successMessageTimeout === 'number' &&
+        successMessageTimeout !== Infinity
+      ) {
         messageTimer.current = setTimeout(() => {
           setShowSuccessMsg(false);
         }, successMessageTimeout);
