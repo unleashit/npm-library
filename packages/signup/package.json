@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "Responsive signup component for React with custom fields.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -50,5 +50,5 @@
     "@unleashit/common": "workspace:*"
   },
   "module": "dist/index.mjs",
-  "gitHead": "45eee43d47688e5d059e6ab750551ad43e67f598"
+  "gitHead": "4661e6d76be2ed7f106d91eb6ab8e44eac9e5417"
 }
