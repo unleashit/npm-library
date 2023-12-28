@@ -5,14 +5,16 @@
   "author": "unleashit",
   "license": "MIT",
   "keywords": [
-    "monorepo",
-    "nx",
     "react",
-    "node",
-    "npm packages",
     "react components",
     "ui components",
-    "ui library"
+    "authentication ui suite",
+    "pagination",
+    "modal",
+    "contact form",
+    "forms builder",
+    "navigation",
+    "npm"
   ],
   "bugs": {
     "url": "https://github.com/unleashit/npm-library/issues"
@@ -29,7 +31,7 @@
     "lint": "eslint --fix '{demos,packages,shared}/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "format": "prettier --write '{demos,packages,shared}/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "prepublishOnly": "pnpm run build",
-    "release": "HUSKY_BYPASS=true lerna publish",
+    "release": "husky=0 lerna publish",
     "clean": "pnpm clean:build && pnpm clean:nm",
     "clean:build": "pnpm -r exec rm -rf dist build",
     "clean:nm": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
