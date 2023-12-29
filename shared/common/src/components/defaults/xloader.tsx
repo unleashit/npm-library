@@ -1,5 +1,5 @@
 import React from 'react';
-import { genClassNames } from '@unleashit/common';
+import { genClassNames } from '../../lib/utils';
 
 export interface SignupLoaderProps {
   componentName: string;

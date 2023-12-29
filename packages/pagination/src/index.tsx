@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import throttle from 'lodash/throttle';
 import * as React from 'react';
 
@@ -19,6 +19,8 @@ export interface PaginationProps {
 interface State {
   containerWidth: number;
 }
+
+const { isCSSModule } = utils;
 
 class Pagination extends React.Component<PaginationProps, State> {
   static defaultProps = {

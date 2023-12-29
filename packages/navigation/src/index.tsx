@@ -1,4 +1,4 @@
-import { isCSSModule, DefaultLinkComponent } from '@unleashit/common';
+import { utils, DefaultLinkComponent } from '@unleashit/common';
 import * as React from 'react';
 
 import AuthLinks from './AuthLinks';
@@ -33,6 +33,8 @@ export interface NavigationProps {
   authLinks?: AuthLinkTypes;
   cssModule?: { [key: string]: string };
 }
+
+const { isCSSModule } = utils;
 
 const mapAuthLinks = (
   isAuth: boolean,
@@ -92,7 +94,7 @@ const Navigation = ({
   return (
     <NavContext.Provider value={contextValue}>
       {/*
-       * if tempate is 'none', container class name is changed which prevents any style
+       * if template is 'none', container class name is changed which prevents any style
        * add classes for template and direction
        * add any user supplied classes
        */}

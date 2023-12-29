@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import * as React from 'react';
 
 import { NavigationLink } from './index';
@@ -8,6 +8,8 @@ import { getAuthLinkClass, mapArrayToClasses } from './utils/generateClasses';
 export interface NavLinkExtraProps {
   authLink?: 'login' | 'logout' | 'signup' | null;
 }
+
+const { isCSSModule } = utils;
 
 // generates the attr name and value for the link in case
 // the user is using a routing component like React Router

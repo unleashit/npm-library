@@ -1,6 +1,5 @@
 import {
-  isCSSModule,
-  returnComponentFormat,
+  utils,
   useHandleEscapeKey,
   useHighestZindex,
   useToggleBodyStyleProp,
@@ -28,6 +27,8 @@ export interface ModalProps {
   cssModule?: { [key: string]: string };
   children?: React.ReactNode;
 }
+
+const { isCSSModule, returnComponentFormat } = utils;
 
 export const Modal = ({
   isOpen = false,

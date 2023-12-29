@@ -1,4 +1,4 @@
-import { ClsName, DefaultHeader, isCSSModule } from '@unleashit/common';
+import { ClsName, DefaultHeader, utils } from '@unleashit/common';
 import * as React from 'react';
 
 interface Style {
@@ -17,6 +17,8 @@ export interface DefaultForgotPasswordHeaderProps {
   title: string;
   clsName: ClsName;
 }
+
+const { isCSSModule } = utils;
 
 // export const ForgotPasswordLoader: React.FC<ForgotPasswordLoaderProps> = ({
 //   theme,

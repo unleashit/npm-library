@@ -5,11 +5,10 @@ import {
   BaseFormProps,
   DefaultLoader,
   formHandler,
-  genClassNames,
   useShowSuccessTimer,
   ShowSuccess,
-  getDefaultsFromZodObject,
   useSetFocus,
+  utils,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -31,6 +30,8 @@ export type SignupProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   children?: React.ReactNode;
 };
+
+const { genClassNames, getDefaultsFromZodObject } = utils;
 
 export const Signup = ({
   handler,

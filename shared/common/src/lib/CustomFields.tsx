@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { isCSSModule } from './utils';
 
 export interface CustomField {

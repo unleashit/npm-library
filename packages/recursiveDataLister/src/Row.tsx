@@ -1,6 +1,5 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import * as React from 'react';
-
 import {
   DateFormat,
   getChild,
@@ -19,6 +18,8 @@ interface RowProps {
   theme: { [key: string]: string };
   dateFormat: DateFormat;
 }
+
+const { isCSSModule } = utils;
 
 const Row: React.FC<RowProps> = ({
   row,

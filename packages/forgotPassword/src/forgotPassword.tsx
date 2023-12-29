@@ -8,11 +8,10 @@ import {
   DefaultLinkComponent,
   DefaultLoader,
   formHandler,
-  genClassNames,
-  getDefaultsFromZodObject,
   ShowSuccess,
   useShowSuccessTimer,
   useSetFocus,
+  utils,
 } from '@unleashit/common';
 // import { Field, Form, FormikProps, withFormik } from 'formik';
 
@@ -65,6 +64,8 @@ export type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   loginLinkText?: string;
   children?: React.ReactNode;
 };
+
+const { genClassNames, getDefaultsFromZodObject } = utils;
 
 export const ForgotPassword = ({
   handler,

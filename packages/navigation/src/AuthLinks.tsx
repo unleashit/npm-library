@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import * as React from 'react';
 
 import { AuthLinkTypes, NavigationProps } from './index';
@@ -8,6 +8,8 @@ interface AuthLinksProps {
   links: AuthLinkTypes;
   cssModule: Required<NavigationProps['cssModule']>;
 }
+
+const { isCSSModule } = utils;
 
 const AuthLinks: React.FC<AuthLinksProps> = ({
   links,

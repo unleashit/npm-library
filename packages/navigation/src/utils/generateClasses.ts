@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 
 import { NavigationProps } from '../index';
 import { NavLinkExtraProps } from '../NavLink';
@@ -7,6 +7,8 @@ type Direction = NavigationProps['direction'];
 type Template = NavigationProps['template'];
 type Style = Required<NavigationProps>['cssModule'];
 type AuthLink = NavLinkExtraProps['authLink'];
+
+const { isCSSModule } = utils;
 
 const isVertical = (dir: Direction, style: Style): string =>
   dir === 'vert' || dir === 'vertical'

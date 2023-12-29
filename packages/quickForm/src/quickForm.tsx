@@ -5,14 +5,13 @@ import { ZodTypeAny } from 'zod';
 import {
   CustomFieldsHF,
   DefaultLoader,
-  genClassNames,
   useShowSuccessTimer,
   DefaultHeader,
   ShowSuccess,
   formHandler,
   type FormValues,
   type BaseFormProps,
-  getDefaultsFromZodObject,
+  utils,
   useSetFocus,
 } from '@unleashit/common';
 import {
@@ -34,6 +33,8 @@ export type QuickFormProps = Omit<
   // 0 or false to disable toggle and leave message
   successMessageTimeout?: number | false | null;
 };
+
+const { genClassNames, getDefaultsFromZodObject } = utils;
 
 function QuickForm({
   handler,

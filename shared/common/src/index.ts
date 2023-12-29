@@ -5,8 +5,11 @@ export { useShowSuccessTimer } from './hooks/useShowSuccessTimer';
 export { DefaultLinkComponent } from './lib/DefaultLink';
 export { CustomInput } from './lib/CustomInput';
 export { useSetFocus } from './hooks/useSetFocus';
-export * from './lib/utils';
-export * from './lib/CustomFields';
+export {
+  type CustomField,
+  CustomFields,
+  type PassedProps,
+} from './lib/CustomFields';
 export { formHandler, type OnSubmitArgs } from './lib/formHandler';
 export {
   FetchError,
@@ -35,5 +38,6 @@ export { FieldGroup } from './components/forms/fieldGroup';
 export { Input } from './components/forms/input';
 export { Select } from './components/forms/select';
 export { Textarea } from './components/forms/textarea';
+export * as utils from './lib/utils';
 export * as constants from './lib/constants';
 export * from './types';

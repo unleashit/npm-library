@@ -5,14 +5,13 @@ import { ZodTypeAny } from 'zod';
 import {
   DefaultLoader,
   DefaultLinkComponent,
-  genClassNames,
   CustomFieldsHF,
-  getDefaultsFromZodObject,
   BaseFormProps,
   formHandler,
   useShowSuccessTimer,
   ShowSuccess,
   useSetFocus,
+  utils,
 } from '@unleashit/common';
 import { FormValues } from './types';
 import defaultLoginSchema from './defaults/schema';
@@ -31,6 +30,8 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   forgotPasswordLinkText?: string;
   children?: React.ReactNode;
 };
+
+const { genClassNames, getDefaultsFromZodObject } = utils;
 
 export const Login = ({
   handler,

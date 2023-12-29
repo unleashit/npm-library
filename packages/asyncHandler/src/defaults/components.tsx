@@ -1,4 +1,4 @@
-import { isCSSModule } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import * as React from 'react';
 import { AsyncHandlerProps } from '../index';
 
@@ -9,6 +9,8 @@ export interface DefaultComponentProps {
 export interface DefaultErrorComponentProps extends DefaultComponentProps {
   error?: any;
 }
+
+const { isCSSModule } = utils;
 
 export const DefaultLoader: React.FC<DefaultComponentProps> = ({
   cssModule: theme = {},

@@ -1,6 +1,5 @@
-import { returnComponentFormat } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import * as React from 'react';
-
 import {
   DefaultComponentProps,
   DefaultError,
@@ -27,6 +26,8 @@ interface State {
   loading?: boolean;
   error?: any;
 }
+
+const { returnComponentFormat } = utils;
 
 export default class AsyncHandler extends React.Component<
   AsyncHandlerProps & { children: (props: any) => any },
