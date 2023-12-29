@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
+  "$schema": "node_modules/.pnpm/@lerna-lite+cli@3.1.0_@lerna-lite+publish@3.1.0_@lerna-lite+version@3.1.0_typescript@5.1.6/node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
   "version": "independent",
   "npmClient": "pnpm",
   "command": {
@@ -15,7 +15,6 @@
       "createRelease": "github",
       "syncWorkspaceLock": true
     },
-    "packages": ["packages/*", "shared/common"],
-    "useWorkspaces": true
+    "packages": ["packages/*", "shared/*"],
   }
 }
