@@ -16,8 +16,7 @@
   },
   "files": [
     "dist",
-    "*.png",
-    ".npmrc"
+    "*.png"
   ],
   "sideEffects": [
     "*.css",
