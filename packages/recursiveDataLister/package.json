@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/recursive-data-lister",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Simple React component that displays a nested object recursively with a choice of markup.",
   "main": "dist/index.js",
   "exports": {
@@ -52,7 +52,7 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^1.2.1"
+    "@unleashit/common": "^1.2.2"
   },
   "devDependencies": {
     "@unleashit/configs": "^1.0.3"

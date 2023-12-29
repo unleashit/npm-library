@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.1...@unleashit/common@1.2.2) (2023-12-29)
+
+### Bug Fixes
+
+* **common:** sideEffects property should be false not null ([4391d78](https://github.com/unleashit/npm-library/commit/4391d787762c87305dae2dedd03feaa96b594f68))
+
 ## [1.2.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.0...@unleashit/common@1.2.1) (2023-12-29)
 
 ### Reverts
