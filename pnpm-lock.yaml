@@ -321,20 +321,20 @@ importers:
   packages/asyncHandler:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/forgotPassword:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -347,13 +347,13 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/login:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -366,7 +366,7 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/mockData:
@@ -376,13 +376,13 @@ importers:
         version: 2.12.0
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/modal:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -391,20 +391,20 @@ importers:
   packages/navigation:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/pagination:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       lodash:
         specifier: ^4.17.21
@@ -414,13 +414,13 @@ importers:
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/quickForm:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -433,20 +433,20 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/recursiveDataLister:
     dependencies:
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   packages/signup:
@@ -455,7 +455,7 @@ importers:
         specifier: 3.x
         version: 3.3.3(react-hook-form@7.49.2)
       '@unleashit/common':
-        specifier: ^1.2.2
+        specifier: ^1.2.3
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -468,7 +468,7 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/configs
 
   shared/common:
@@ -490,7 +490,7 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../configs
       tsup:
         specifier: ^6.7.0
