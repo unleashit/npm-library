@@ -4,8 +4,10 @@ import { act } from 'react-dom/test-utils';
 
 // eslint-disable-next-line import/no-relative-packages
 import { changeVal, nextTick } from '@unleashit/configs';
-import { getDefaultsFromZodObject } from '@unleashit/common';
+import { utils } from '@unleashit/common';
 import SignupContainer, { SignupProps } from '.';
+
+const { getDefaultsFromZodObject } = utils;
 
 describe('<SignupContainer />', () => {
   let wrapper: ReactWrapper;

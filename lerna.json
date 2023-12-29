@@ -6,8 +6,7 @@
     "publish": {
       "conventionalCommits": true,
       "createRelease": "github",
-      "message": "chore(release): publish",
-      "removePackageFields": ["devDependencies", "scripts"]
+      "message": "chore(release): publish"
     },
     "version": {
       "conventionalCommits": true,
