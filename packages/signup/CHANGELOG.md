@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.1.10...@unleashit/signup@1.2.0) (2023-12-29)
+
+### Features
+
+* **signup:** add .npmrc in attempt to force peer deps to install ([29fe7de](https://github.com/unleashit/npm-library/commit/29fe7de3e4cef4d663d66b55acea157396d3d75a))
+
 ## [1.1.10](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.1.8...@unleashit/signup@1.1.10) (2023-12-29)
 
 ### Bug Fixes

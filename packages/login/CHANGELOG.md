@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.6...@unleashit/login@1.1.7) (2023-12-29)
+
+**Note:** Version bump only for package @unleashit/login
+
 ## [1.1.6](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.4...@unleashit/login@1.1.6) (2023-12-29)
 
 ### Bug Fixes

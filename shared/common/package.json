@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/common",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Shared library for @unleashit components. Not directly useful.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -37,10 +37,10 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
+    "@hookform/resolvers": "3.x",
     "react": "16.x || 17.x || 18.x",
     "react-hook-form": "7.x",
-    "zod": "3.x",
-    "@hookform/resolvers": "3.x"
+    "zod": "3.x"
   },
   "devDependencies": {
     "@unleashit/configs": "^1.0.3",
