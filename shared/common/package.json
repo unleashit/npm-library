@@ -19,9 +19,7 @@
     "*.png",
     ".npmrc"
   ],
-  "sideEffects": [
-    "*.css"
-  ],
+  "sideEffects": null,
   "scripts": {
     "build": "NODE_ENV=production tsup",
     "dev": "NODE_ENV=development tsup --watch",
