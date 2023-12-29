@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.0...@unleashit/common@1.2.1) (2023-12-29)
+
+### Reverts
+
+* remove .npmrcs ([283ffe6](https://github.com/unleashit/npm-library/commit/283ffe6c0d1323c870d77362d3d4e2e5c97d6d9f))
+
 # [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.1.4...@unleashit/common@1.2.0) (2023-12-29)
 
 ### Features
