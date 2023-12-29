@@ -12,8 +12,8 @@
       "conventionalCommits": true,
       "skipBumpOnlyReleases": true,
       "createRelease": "github",
-      "syncWorkspaceLock": true
-    },
-    "packages": ["packages/*", "shared/*"],
-  }
+      "syncWorkspaceLock": true,
+    }
+  },
+  "useWorkspaces": true
 }

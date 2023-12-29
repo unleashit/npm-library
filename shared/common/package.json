@@ -16,7 +16,8 @@
   },
   "files": [
     "dist",
-    "*.png"
+    "*.png",
+    ".npmrc"
   ],
   "sideEffects": [
     "*.css"
@@ -36,9 +37,10 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
-    "formik": "1.x || 2.x",
     "react": "16.x || 17.x || 18.x",
-    "yup": "^0.32.11"
+    "react-hook-form": "7.x",
+    "zod": "3.x",
+    "@hookform/resolvers": "3.x"
   },
   "devDependencies": {
     "@unleashit/configs": "^1.0.3",
