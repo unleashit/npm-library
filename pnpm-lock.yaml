@@ -321,20 +321,20 @@ importers:
   packages/asyncHandler:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/forgotPassword:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -347,13 +347,13 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/login:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -366,7 +366,7 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/mockData:
@@ -376,13 +376,13 @@ importers:
         version: 2.12.0
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/modal:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -391,20 +391,20 @@ importers:
   packages/navigation:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/pagination:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       lodash:
         specifier: ^4.17.21
@@ -414,13 +414,13 @@ importers:
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/quickForm:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -433,26 +433,26 @@ importers:
         version: 3.22.4
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/recursiveDataLister:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
         version: 18.2.0
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../../shared/configs
 
   packages/signup:
     dependencies:
       '@unleashit/common':
-        specifier: workspace:*
+        specifier: ^1.1.4
         version: link:../../shared/common
       react:
         specifier: 16.x || 17.x || 18.x
@@ -463,6 +463,10 @@ importers:
       zod:
         specifier: 3.x
         version: 3.22.4
+    devDependencies:
+      '@unleashit/configs':
+        specifier: ^1.0.3
+        version: link:../../shared/configs
 
   shared/common:
     dependencies:
@@ -480,7 +484,7 @@ importers:
         version: 0.32.11
     devDependencies:
       '@unleashit/configs':
-        specifier: workspace:*
+        specifier: ^1.0.3
         version: link:../configs
       tsup:
         specifier: ^6.7.0

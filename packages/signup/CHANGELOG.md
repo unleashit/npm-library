@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.10](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.1.8...@unleashit/signup@1.1.10) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+* **signup:** lerna-lite mangled package.json ([c0e9afb](https://github.com/unleashit/npm-library/commit/c0e9afb314151ce1e9d37a00cc79fd7f0f22e184))
+
+## [1.1.9](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.1.8...@unleashit/signup@1.1.9) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+* **signup:** lerna-lite mangled package.json ([c0e9afb](https://github.com/unleashit/npm-library/commit/c0e9afb314151ce1e9d37a00cc79fd7f0f22e184))
+
 ## [1.1.8](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.1.7...@unleashit/signup@1.1.8) (2023-12-28)
 
 **Note:** Version bump only for package @unleashit/signup

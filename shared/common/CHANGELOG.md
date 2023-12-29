@@ -3,32 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.1.1...@unleashit/common@1.1.4) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+* **common:** support Inifinity in useShowSuccessTimer hook ([88b4277](https://github.com/unleashit/npm-library/commit/88b42772a9649568ae20940070f9c70f550cf6e7))
+
+## [1.1.3](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.1.1...@unleashit/common@1.1.3) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+* **common:** support Inifinity in useShowSuccessTimer hook ([88b4277](https://github.com/unleashit/npm-library/commit/88b42772a9649568ae20940070f9c70f550cf6e7))
+
 ## [1.1.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.1.0...@unleashit/common@1.1.1) (2023-12-23)
 
 **Note:** Version bump only for package @unleashit/common
-
-
-
-
 
 # [1.1.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.0.1...@unleashit/common@1.1.0) (2023-12-03)
 
 **Note:** Version bump only for package @unleashit/common
 
-
-
-
-
 ## [1.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.0.0...@unleashit/common@1.0.1) (2023-08-01)
-
 
 ### Bug Fixes
 
 * remove a couple more type keywords from export * ([fdde947](https://github.com/unleashit/npm-library/commit/fdde947cdd94f7852c85fa0ef7b21cc7c6bd241e))
-
-
-
-
 
 # [1.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@0.15.6...@unleashit/common@1.0.0) (2023-08-01)
 

@@ -1,24 +1,17 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "description": "Responsive forgot password and reset components for React with custom fields.",
-  "main": "src/index.ts",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./dist/*.module.css": "./src/scss/*.module.scss"
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./dist/*.css": "./dist/*.css"
   },
   "publishConfig": {
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
-    "exports": {
-      ".": {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.js"
-      },
-      "./dist/*.css": "./dist/*.css"
-    },
     "access": "public"
   },
   "files": [
@@ -64,9 +57,11 @@
     "zod": "3.x"
   },
   "dependencies": {
-    "@unleashit/common": "workspace:*"
+    "@unleashit/common": "^1.1.4"
   },
   "devDependencies": {
-    "@unleashit/configs": "workspace:*"
-  }
+    "@unleashit/configs": "^1.0.3"
+  },
+  "module": "dist/index.mjs",
+  "gitHead": "c0e9afb314151ce1e9d37a00cc79fd7f0f22e184"
 }

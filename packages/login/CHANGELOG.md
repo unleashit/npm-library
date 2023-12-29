@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.4...@unleashit/login@1.1.6) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+
+## [1.1.5](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.4...@unleashit/login@1.1.5) (2023-12-29)
+
+### Bug Fixes
+
+* attempt to fix bundlephobia build with explicit export or export as ([c4735e5](https://github.com/unleashit/npm-library/commit/c4735e5ba8ce3d26eec9ec31b3adfd55b2ab3fb2))
+
 ## [1.1.4](https://github.com/unleashit/npm-library/compare/@unleashit/login@1.1.3...@unleashit/login@1.1.4) (2023-12-29)
 
 **Note:** Version bump only for package @unleashit/login

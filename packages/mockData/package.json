@@ -1,23 +1,15 @@
 {
   "name": "@unleashit/mock-data",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Wrapper for mocker-data-generator providing a set of templates and arguments. Can optionally write to a file (node)",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "publishConfig": {
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "exports": {
-      ".": {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.js"
-      }
-    },
     "access": "public"
   },
   "files": [
@@ -53,9 +45,11 @@
     "mocker-data-generator": "^2.12.0"
   },
   "devDependencies": {
-    "@unleashit/configs": "workspace:*"
+    "@unleashit/configs": "^1.0.3"
   },
   "moduleDirectories": [
     "node_modules"
-  ]
+  ],
+  "module": "dist/index.mjs",
+  "gitHead": "c0e9afb314151ce1e9d37a00cc79fd7f0f22e184"
 }
