@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/configs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.ts",
   "module": "index.ts",
   "types": "./index.ts",

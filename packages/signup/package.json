@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/signup",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Responsive signup component for React with custom fields.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -57,10 +57,10 @@
     "zod": "3.x"
   },
   "dependencies": {
-    "@unleashit/common": "^1.2.3"
+    "@unleashit/common": "^1.2.4"
   },
   "devDependencies": {
-    "@unleashit/configs": "^1.0.4"
+    "@unleashit/configs": "^1.0.5"
   },
   "module": "dist/index.mjs",
   "gitHead": "c0e9afb314151ce1e9d37a00cc79fd7f0f22e184"

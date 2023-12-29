@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/modal",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Responsive modal component for React with custom header, footer and more.",
   "main": "dist/index.js",
   "exports": {
@@ -55,7 +55,7 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^1.2.3"
+    "@unleashit/common": "^1.2.4"
   },
   "devDependencies": {
     "@unleashit/common": "workspace:*"

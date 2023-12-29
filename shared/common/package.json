@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/common",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Shared library for @unleashit components. Not directly useful.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,7 +40,7 @@
     "zod": "3.x"
   },
   "devDependencies": {
-    "@unleashit/configs": "^1.0.4",
+    "@unleashit/configs": "^1.0.5",
     "tsup": "^6.7.0"
   },
   "dependencies": {
