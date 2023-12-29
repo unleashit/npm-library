@@ -13,7 +13,7 @@ export const tsup = defineConfig(() => ({
   skipNodeModulesBundle: true,
   entryPoints: ['src/index.ts'],
   target: 'es2020',
-  sourcemap: true,
+  sourcemap: false,
   // noExternal: ['lodash'],
   outDir: 'dist',
   entry: ['src/**/*.{ts,tsx}'], // include all files under src
