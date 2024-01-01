@@ -9,15 +9,15 @@ import { AppContext } from '../../utils/context';
 export function PaginationDemo() {
   const { store } = React.useContext(AppContext);
 
-  const request1 = React.useMemo(
+  const request1 = React.useCallback(
     () => store.generateFakeUsers({ total: 3 }),
     [store],
   );
-  const request2 = React.useMemo(
+  const request2 = React.useCallback(
     () => store.generateFakeProducts({ total: 3 }),
     [store],
   );
-  const request3 = React.useMemo(
+  const request3 = React.useCallback(
     () => store.generateComplexJson({ total: 3 }),
     [store],
   );
