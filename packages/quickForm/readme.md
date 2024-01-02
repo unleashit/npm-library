@@ -200,20 +200,58 @@ function SignupAndSubscribe() {
 
 ### Props
 
-| Name                  | Type                                                                       | Description                                                                                                          | default                        |
-| --------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| handler               | <T extends z.ZodTypeAny>(values: FormValues<T>) => Promise<ServerResponse> | Called on form submission after validation. Use to check auth. Should return ServerResponse                          | required                       |
-| onSuccess             | (resp: ServerResponse<any, any>) => void                                   | Called if handler returns success. Provides the server response from handler. Use to redirect, display a toast, etc. | undefined                      |
-| title                 | string                                                                     | Override title when using default header component                                                                   | Contact Us                     |
-| header                | React Component                                                            | Optional header component (replaces default)                                                                         | basic header                   |
-| footer                | React Component                                                            | Optional footer component                                                                                            | undefined                      |
-| loader                | React Component                                                            | Loader component to replace default                                                                                  | Default Loader                 |
-| showPhone             | boolean                                                                    | Show a phone field (default form only)                                                                               | false                          |
-| customFields          | CustomField[]                                                              | Array of custom fields. Schema will be required.                                                                     | undefined                      |
-| successMessage        | string                                                                     | Replace default success message                                                                                      | Default success message        |
-| successComponent      | React.FC<DefaultSuccessProps> \| false \| null                             | Replace success component                                                                                            | Default success component      |
-| successMessageTimeout | number \| false \| null                                                    | Time to show success message in ms, then return to reset form                                                        | 5000                           |
-| schema                | zod.AnyZodObject                                                           | Zod schema to replace the default                                                                                    | simple contact form validation |
-| failMsg               | string                                                                     | Optional override for promise rejection message                                                                      | System error                   |
-| toast                 | (msg: string) => void                                                      | Optionally call toast with root server errors or promise rejection                                                   | undefined                      |
-| cssModule             | Record<string, string>                                                     | Provided or custom CSS Module                                                                                        | undefined                      |
+```typescript
+type BaseFormProps = {
+  handler: <T extends ZodTypeAny>(
+    values: FormValues<T>,
+  ) => Promise<ServerResponse<FormValues<T>>>;
+  onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
+    resp: ServerResponse<FormValues<T>, Meta>,
+  ) => void;
+  title?: string;
+  header?: React.FC<DefaultHeaderProps> | false | null;
+  footer?: React.FC<any>;
+  loader?: React.FC<DefaultLoaderProps>;
+  customFields?: CustomFieldHF[];
+  customSchema?: z.AnyZodObject | z.ZodEffects<any>;
+  // optionally send root server error message and/or
+  // handler exceptions to toast
+  toast?: (msg: string) => void;
+  // override default failure message to show user
+  failMsg?: string;
+  // override or remove the default success message
+  successMessage?: React.FC<any> | string | false | null;
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
+  cssModule?: Record<string, string>;
+};
+
+type QuickFormProps = Omit<
+  BaseFormProps,
+  'linkComponent' | 'linkComponentHrefAttr'
+> & {
+  // show phone field (ignored when using custom fields)
+  showPhone?: boolean;
+  // show success msg for x ms, then toggle back to blank form
+  // 0 or false to disable toggle and leave message
+  successMessageTimeout?: number | false | null;
+};
+```
+
+[//]: # '| Name                  | Type                                                                       | Description                                                                                                          | default                        |'
+[//]: # '|-----------------------| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------ |'
+[//]: # '| handler               | <T extends z.ZodTypeAny>(values: FormValues<T>) => Promise<ServerResponse> | Called on form submission after validation. Use to check auth. Should return ServerResponse                          | required                       |'
+[//]: # '| onSuccess             | (resp: ServerResponse<any, any>) => void                                   | Called if handler returns success. Provides the server response from handler. Use to redirect, display a toast, etc. | undefined                      |'
+[//]: # '| title                 | string                                                                     | Override title when using default header component                                                                   | Contact Us                     |'
+[//]: # '| header                | React Component                                                            | Optional header component (replaces default)                                                                         | basic header                   |'
+[//]: # '| footer                | React Component                                                            | Optional footer component                                                                                            | undefined                      |'
+[//]: # '| loader                | React Component                                                            | Loader component to replace default                                                                                  | Default Loader                 |'
+[//]: # '| showPhone             | boolean                                                                    | Show a phone field (default form only)                                                                               | false                          |'
+[//]: # '| customFields          | CustomField[]                                                              | Array of custom fields. Schema will be required.                                                                     | undefined                      |'
+[//]: # '| successMessage        | string                                                                     | Replace default success message                                                                                      | Default success message        |'
+[//]: # '| successComponent      | React.FC<DefaultSuccessProps> | false | null                             | Replace success component                                                                                            | Default success component      |'
+[//]: # '| successMessageTimeout | number | false | null                                                    | Time to show success message in ms, then return to reset form                                                        | 5000                           |'
+[//]: # '| customSchema          | zod.AnyZodObject                                                           | Zod schema to replace the default                                                                                    | simple contact form validation |'
+[//]: # '| failMsg               | string                                                                     | Optional override for promise rejection message                                                                      | System error                   |'
+[//]: # '| toast                 | (msg: string) => void                                                      | Optionally call toast with root server errors or promise rejection                                                   | undefined                      |'
+[//]: # '| cssModule             | Record<string, string>                                                     | Provided or custom CSS Module                                                                                        | undefined                      |'

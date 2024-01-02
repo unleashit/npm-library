@@ -109,7 +109,7 @@ function ForgotPasswordResetDemo() {
 }
 ```
 
-In this example, the userId and authorization token are taken from the url under the assumption the user arrived from a link sent via email or SMS.
+In this example, the userId and authorization token are taken from the url under the assumption the user arrived from a link sent via email or SMS. By default (can be customized or turned off with a `successMessage` prop), a success message will be shown to the user if the server returns a positive response with no errors.
 
 ### Custom Fields
 
@@ -168,27 +168,65 @@ Basic namespaced (BEM) css can be imported: `import '@unleashit/forgot-password/
 
 **ForgotPassword**
 
-| Name           | Type                                      | Description                                                                                                                                                                     | default                                        |
-| -------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| handler        | (values: any) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required                                       |
-| onSuccess      | (resp: ServerResponse) => void            | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                                            |
-| successMessage | React.FC, string, false                   | Show a component or string on success                                                                                                                                           | default confirmation (check email to continue) |
-| schema         | zod schema                                | Zod schema to override default                                                                                                                                                  | default validation                             |
-| header         | React.FC                                  | React component to override default pw request header                                                                                                                           | basic header                                   |
-| loader         | React.FC                                  | React component to override default loader                                                                                                                                      | Sending...                                     |
-| customFields   | CustomField[]                             | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                           | n/a                                            |
-| cssModule      | Record<string, string>                    | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined                                      |
-| children       | React Children                            | Optional footer                                                                                                                                                                 | n/a                                            |
+```typescript
+type BaseFormProps = {
+  handler: <T extends ZodTypeAny>(
+    values: FormValues<T>,
+  ) => Promise<ServerResponse<FormValues<T>>>;
+  onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
+    resp: ServerResponse<FormValues<T>, Meta>,
+  ) => void;
+  title?: string;
+  header?: React.FC<DefaultHeaderProps> | false | null;
+  footer?: React.FC<any>;
+  loader?: React.FC<DefaultLoaderProps>;
+  customFields?: CustomFieldHF[];
+  customSchema?: z.AnyZodObject | z.ZodEffects<any>;
+  // optionally send root server error message and/or
+  // handler exceptions to toast
+  toast?: (msg: string) => void;
+  // override default failure message to show user
+  failMsg?: string;
+  // Show a success component or message
+  successMessage?: React.FC<any> | string | false | null;
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
+  cssModule?: Record<string, string>;
+};
+
+type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
+  header?: React.FC<DefaultForgotPasswordHeaderProps> | false | null;
+  signupUrl?: string;
+  childrenPosition?: 'top' | 'bottom';
+  loginLink?: string | false | null;
+  loginLinkText?: string;
+  children?: React.ReactNode;
+};
+```
+
+[//]: # '| Name           | Type                                      | Description                                                                                                                                                                     | default                                        |'
+[//]: # '| -------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |'
+[//]: # '| handler        | (values: any) => Promise<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required                                       |'
+[//]: # '| onSuccess      | (resp: ServerResponse) => void            | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                                            |'
+[//]: # '| successMessage | React.FC, string, false                   | Show a component or string on success                                                                                                                                           | default confirmation (check email to continue) |'
+[//]: # '| schema         | zod schema                                | Zod schema to override default                                                                                                                                                  | default validation                             |'
+[//]: # '| header         | React.FC                                  | React component to override default pw request header                                                                                                                           | basic header                                   |'
+[//]: # '| loader         | React.FC                                  | React component to override default loader                                                                                                                                      | Sending...                                     |'
+[//]: # '| customFields   | CustomField[]                             | Array of custom fields. Replaces defaults (including email). Custom validation schema will be needed.                                                                           | n/a                                            |'
+[//]: # '| cssModule      | Record<string, string>                    | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined                                      |'
+[//]: # '| children       | React Children                            | Optional footer                                                                                                                                                                 | n/a                                            |'
 
 **ForgotPasswordReset**
 
-| Name           | Type                                             | Description                                                                                                                                                                     | default            |
-| -------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| handler        | (values: FromValues) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required           |
-| onSuccess      | (resp: ServerResponse) => void                   | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                |
-| successMessage | React.FC, string, false                          | Show a component or string on success                                                                                                                                           | false              |
-| schema         | Zod schema                                       | Zod schema to override the default                                                                                                                                              | default validation |
-| header         | React.FC                                         | React component to override default pw reset header                                                                                                                             | basic header       |
-| loader         | React.FC                                         | React component to override default loader                                                                                                                                      | Sending...         |
-| cssModule      | Record<string, string>                           | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined          |
-| children       | React Children                                   | Optional footer                                                                                                                                                                 | n/a                |
+ForgetPasswordReset is being refactored and has been temporarily unpublished.
+
+[//]: # '| Name           | Type                                             | Description                                                                                                                                                                     | default            |'
+[//]: # '| -------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |'
+[//]: # '| handler        | (values: FromValues) => Promise<ServerResponse> | Called on submission and after validation. Use to check auth. Should return the above interface                                                                                 | required           |'
+[//]: # '| onSuccess      | (resp: ServerResponse) => void                   | Called if handler returns success. Provides the server response from handler() if a function is passed. If a component instance is passed instead of a function, it will render | n/a                |'
+[//]: # '| successMessage | React.FC, string, false                          | Show a component or string on success                                                                                                                                           | false              |'
+[//]: # '| schema         | Zod schema                                       | Zod schema to override the default                                                                                                                                              | default validation |'
+[//]: # '| header         | React.FC                                         | React component to override default pw reset header                                                                                                                             | basic header       |'
+[//]: # '| loader         | React.FC                                         | React component to override default loader                                                                                                                                      | Sending...         |'
+[//]: # '| cssModule      | Record<string, string>                           | CSS Module object that optionally replaces default. Class names need to match expected names.                                                                                   | undefined          |'
+[//]: # '| children       | React Children                                   | Optional footer                                                                                                                                                                 | n/a                |'

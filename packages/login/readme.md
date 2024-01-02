@@ -27,12 +27,13 @@ Customizable React login component that validates against a default or custom Zo
 npm install @unleashit/login
 ```
 
-**Required peer dependencies:** react, react-hook-form and zod.
+**Peer dependencies:** react, react-hook-form and zod.
 
 ### Example
 
 ```typescript jsx
 import Login, { FormValues, ServerResponse } from '@unleashit/login';
+import { useNavigate } from 'react-router-dom';
 
 function LoginDemo() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ function LoginDemo() {
 
 ### Social Logins
 
-Adding social logins is easy. Simply include them as children and they will display under the main login with a nice separator. You must supply the buttons themselves, but for something fast and nice I recommend `react-social-login-buttons`.
+Adding social logins is easy. Simply include them as children and they will display (by default) under the main login with a nice separator.
 
 ```typescript jsx
 import {
@@ -71,12 +72,15 @@ import {
   TwitterLoginButton,
 } from 'react-social-login-buttons';
 
-return (
-  <Login handler={/* ... */}>
-    <TwitterLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-    <GithubLoginButton onClick={() => alert('Hello')} style={btnStyle} />
-  </Login>
-);
+<Login handler={/* ... */}>
+  <TwitterLoginButton onClick={() => alert('Hello')}>
+    Sign in with Twitter
+  </TwitterLoginButton>
+  <GithubLoginButton onClick={() => alert('Hello')}>
+    Sign in with Github
+  </GithubLoginButton>
+</Login>
+
 ```
 
 ### Custom Fields
@@ -141,23 +145,58 @@ const schema = z.object({
 
 Basic namespaced (BEM) css can be imported: `import '@unleashit/login/dist/login.css'`. Alternatively, if you use CSS Modules you can `import css from '@unleashit/login/dist/login.module.css'` and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names. Please see CSS in the main readme of the repo for more info.
 
-```
-
 ### Props
 
-| Name               | Type                                            | Description                                                                                                                     | default                        |
-| ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| handler       | (values: FormValues) => Promise\<ServerResponse> | Called on submission and after validation. Use to check auth. Returns a boolean success and errors, if any  | required                       |
-| onSuccess          | (resp: ServerResponse) => void             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | required                       |
-| schema             | yup.Schema\<LoginSchema>                        | Yup schema to override the default                                                                                              | standard validation            |
-| header             | React Component                                 | React component to override default header                                                                                      | basic header                   |
-| loader             | React Component                                 | React component to override default loader                                                                                      | Logging in...                  |
-| signupUrl          | string                                          | Url for signup page. Use only if using default header                                                                           | /signup                        |
-| customFields       | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                  | n/a                            |
-| forgotPassword     | boolean                                         | Include the default forgot password link                                                                                        | true                           |
-| forgotPasswordLink | string                                          | Url to forgot password                                                                                                          | /forgot-password               |
-| forgotPasswordText | string                                          | Forgot password link text                                                                                                       | Forgot password?               |
-| orLine             | boolean                                         | Display a "nice" line rule above social login buttons                                                                           | true (note: requires children) |
-| cssModule          | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                   | undefined                      |
-| children           | React Children                                  | Use for Social login buttons or anything else (displays as footer)                                                              | n/a                            |
+```typescript
+type BaseFormProps = {
+  handler: <T extends ZodTypeAny>(
+    values: FormValues<T>,
+  ) => Promise<ServerResponse<FormValues<T>>>;
+  onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
+    resp: ServerResponse<FormValues<T>, Meta>,
+  ) => void;
+  title?: string;
+  header?: React.FC<DefaultHeaderProps> | false | null;
+  footer?: React.FC<any>;
+  loader?: React.FC<DefaultLoaderProps>;
+  customFields?: CustomFieldHF[];
+  customSchema?: z.AnyZodObject | z.ZodEffects<any>;
+  // optionally send root server error message and/or
+  // handler exceptions to toast
+  toast?: (msg: string) => void;
+  // override default failure message to show user
+  failMsg?: string;
+  // Show a success component or message
+  successMessage?: React.FC<any> | string | false | null;
+  linkComponent?: React.ComponentType<any>;
+  linkComponentHrefAttr?: string;
+  cssModule?: Record<string, string>;
+};
+
+type LoginProps = Omit<BaseFormProps, 'header'> & {
+  header?: React.FC<DefaultLoginHeaderProps> | false | null;
+  signupUrl?: string;
+  orLine?: boolean;
+  childrenPosition?: 'top' | 'bottom';
+  forgotPasswordLink?: string | false | null;
+  forgotPasswordLinkText?: string;
+  children?: React.ReactNode;
+};
 ```
+
+[//]: # '| Name               | Type                                            | Description                                                                                                                     | default                        |'
+[//]: # '| ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |'
+[//]: # '| handler       | (values: FormValues) => Promise<ServerResponse> | Called on submission and after validation. Use to check auth. Returns a boolean success and errors, if any  | required                       |'
+[//]: # '| onSuccess          | (resp: ServerResponse) => void             | Called if loginHandler returns success. Provides the server response from loginHandler. Use to redirect, store auth state, etc. | undefined                       |'
+[//]: # '| schema             | AnyZodObject                        | Zod schema to override the default                                                                                              | standard validation            |'
+[//]: # '| header             | React Component                                 | React component to override default header                                                                                      | basic header                   |'
+[//]: # '| loader             | React Component                                 | React component to override default loader                                                                                      | Logging in...                  |'
+[//]: # '| signupUrl          | string                                          | Url for signup page. Use only if using default header                                                                           | /signup                        |'
+[//]: # '| customFields       | CustomField[]                                   | Array of custom fields. Replaces defaults (including email/password). Custom validation schema will be needed.                  | n/a                            |'
+[//]: # '| forgotPassword     | boolean                                         | Include the default forgot password link                                                                                        | true                           |'
+[//]: # '| forgotPasswordLink | string                                          | Url to forgot password                                                                                                          | /forgot-password               |'
+[//]: # '| forgotPasswordText | string                                          | Forgot password link text                                                                                                       | Forgot password?               |'
+[//]: # '| orLine             | boolean                                         | Display a "nice" line rule above social login buttons                                                                           | true (note: requires children) |'
+[//]: # '| cssModule          | { [key: string]: string }                       | CSS Module object that optionally replaces default. Class names need to match expected names.                                   | undefined                      |'
+[//]: # '| children           | React Children                                  | Use for Social login buttons or anything else (displays as footer)                                                              | n/a                            |'
+[//]: # '```'
