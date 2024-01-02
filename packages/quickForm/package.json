@@ -27,7 +27,7 @@
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
     "sass": "pnpm sass:build && pnpm sass:watch",
     "sass:build": "node-sass -r src/scss -o dist --source-map true --include-path '../../shared/common/src/scss' && pnpm sass:postbuild",
-    "sass:postbuild": "../../shared/scripts/postcssRename.js --name quick-form ./dist/quick-form.module.css",
+    "sass:postbuild": "../../shared/scripts/postcssRename.js --name quickForm ./dist/quick-form.module.css",
     "sass:watch": "node-sass -wr src/scss -o dist --source-map true --include-path '../../shared/common/src/scss'",
     "test": "NODE_ENV=test jest"
   },
