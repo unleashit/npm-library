@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/navigation",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Basic navigation component for React with configurable links and login/logout",
   "main": "dist/index.js",
   "exports": {

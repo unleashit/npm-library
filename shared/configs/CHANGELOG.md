@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/unleashit/npm-library/compare/@unleashit/configs@1.0.5...@unleashit/configs@1.0.6) (2024-01-02)
+
+**Note:** Version bump only for package @unleashit/configs
+
 ## [1.0.5](https://github.com/unleashit/npm-library/compare/@unleashit/configs@1.0.4...@unleashit/configs@1.0.5) (2023-12-29)
 
 **Note:** Version bump only for package @unleashit/configs

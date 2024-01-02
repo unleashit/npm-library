@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.1.8...@unleashit/demo-frontend@1.1.9) (2024-01-02)
+
+### Bug Fixes
+
+* **demo:** useMemo should be useCallback in mock data demo ([323c996](https://github.com/unleashit/npm-library/commit/323c9963e56ab074c7ab0b29b97b085079b0d249))
+
 ## [1.1.8](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.1.7...@unleashit/demo-frontend@1.1.8) (2023-12-29)
 
 **Note:** Version bump only for package @unleashit/demo-frontend
