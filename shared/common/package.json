@@ -40,12 +40,10 @@
     "zod": "3.x"
   },
   "devDependencies": {
-    "@unleashit/configs": "^1.0.5",
-    "tsup": "^6.7.0"
+    "@unleashit/configs": "workspace:*"
   },
   "dependencies": {
     "lodash": "^4.17.21"
   },
-  "module": "dist/index.mjs",
-  "gitHead": "c0e9afb314151ce1e9d37a00cc79fd7f0f22e184"
+  "module": "dist/index.mjs"
 }

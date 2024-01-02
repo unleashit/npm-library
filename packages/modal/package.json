@@ -55,11 +55,10 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "^1.2.4"
+    "@unleashit/common": "workspace:*"
   },
   "devDependencies": {
     "@unleashit/common": "workspace:*"
   },
-  "module": "dist/index.mjs",
-  "gitHead": "c0e9afb314151ce1e9d37a00cc79fd7f0f22e184"
+  "module": "dist/index.mjs"
 }
