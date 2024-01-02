@@ -8,4 +8,5 @@ module.exports = {
     'react/prefer-stateless-function': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
   },
+  ignorePatterns: ['*.json'],
 };

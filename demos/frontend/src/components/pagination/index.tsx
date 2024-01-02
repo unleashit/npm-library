@@ -1,17 +1,17 @@
 import * as React from 'react';
 import Pagination from '@unleashit/pagination';
 import List from './List';
-import generateFakeBlog from './dummyData';
+import dummyData from '../../dummyData/pagination/dummyData.json';
+
 import '@unleashit/pagination/dist/pagination.css';
 import './pagination.scss';
 
 const perPage = 3;
-const fakeBlog = generateFakeBlog(500);
 
 export function PaginationDemo() {
   const [offset, setOffset] = React.useState(0);
 
-  const currentOffset = () => fakeBlog.slice(offset, offset + perPage);
+  const currentOffset = () => dummyData.slice(offset, offset + perPage);
 
   const paginationHandler = (newOffset: number) => {
     setOffset(newOffset);
@@ -24,7 +24,7 @@ export function PaginationDemo() {
         currentOffset={offset}
         perPage={perPage}
         paginationHandler={paginationHandler}
-        total={fakeBlog.length}
+        total={dummyData.length}
       />
     </div>
   );

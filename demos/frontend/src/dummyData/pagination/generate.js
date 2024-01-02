@@ -1,4 +1,7 @@
-import { faker } from '@faker-js/faker';
+#!/usr/bin/env node
+
+const { faker } = require('@faker-js/faker');
+const { writeFileSync } = require('node:fs');
 
 function randomBlogPost() {
   return {
@@ -14,7 +17,6 @@ function randomBlogPost() {
     author: faker.person.fullName(),
   };
 }
-// generate between 3 and 5 blog posts
-export default function generateFakeBlog(items = 10) {
-  return Array.from({ length: items }, () => randomBlogPost());
-}
+
+const data = Array.from({ length: 500 }, () => randomBlogPost());
+writeFileSync(`${__dirname}/dummyData.json`, JSON.stringify(data, null, 2));

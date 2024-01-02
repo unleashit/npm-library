@@ -1,4 +1,7 @@
-import { faker } from '@faker-js/faker';
+#!/usr/bin/env node
+
+const { faker } = require('@faker-js/faker');
+const { writeFileSync } = require('node:fs');
 
 function generateBook() {
   return {
@@ -15,7 +18,7 @@ function generateBook() {
   };
 }
 
-export function randomBookReader(): Record<string, any> {
+function randomBookReader() {
   return {
     id: faker.string.uuid(),
     firstName: faker.person.firstName(),
@@ -28,6 +31,9 @@ export function randomBookReader(): Record<string, any> {
   };
 }
 
-export function generateComplexJson(): Record<string, any> {
-  return [randomBookReader(), randomBookReader(), randomBookReader()];
+function main() {
+  const data = [randomBookReader(), randomBookReader(), randomBookReader()];
+  writeFileSync(`${__dirname}/dummyData.json`, JSON.stringify(data, null, 2));
 }
+
+main();
