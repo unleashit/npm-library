@@ -1,6 +1,6 @@
-import { CustomFieldHF } from '@unleashit/common';
+import { CustomField } from '@unleashit/common';
 
-const defaultLoginFields: CustomFieldHF[] = [
+const defaultLoginFields: CustomField[] = [
   {
     element: 'input',
     name: 'email',

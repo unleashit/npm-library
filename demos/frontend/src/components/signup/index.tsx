@@ -1,19 +1,23 @@
-// import schema from './validations';
 import { Link, useNavigate } from 'react-router-dom';
-import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
+import Signup, {
+  // CustomField,
+  FormValues,
+  ServerResponse,
+} from '@unleashit/signup';
 import React from 'react';
 import {
   GithubLoginButton,
   TwitterLoginButton,
 } from 'react-social-login-buttons';
 import css from '@unleashit/signup/dist/signup.module.css';
+// import custSchema from './custSchema';
 
 const btnStyle = {
   margin: '10px 0',
   boxShadow: 'none',
 };
 
-// const customFields: CustomFieldHF[] = [
+// const customFields: CustomField[] = [
 //   {
 //     element: 'input',
 //     type: 'text',
@@ -93,7 +97,7 @@ const SignupDemo = () => {
         linkComponentHrefAttr="to"
         cssModule={css}
         // childrenPosition="bottom"
-        // schema={custSchema}
+        // customSchema={custSchema}
         // customFields={customFields}
       >
         <TwitterLoginButton

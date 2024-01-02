@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import {
-  CustomFieldsHF,
+  CustomFields,
   DefaultLinkComponent,
   BaseFormProps,
   DefaultLoader,
@@ -125,7 +125,7 @@ export const Signup = ({
         >
           {childrenPosition === 'bottom' && (
             <>
-              <CustomFieldsHF
+              <CustomFields
                 componentName={Signup.displayName}
                 fields={customFields}
                 register={register}
@@ -155,7 +155,7 @@ export const Signup = ({
           )}
           {childrenPosition === 'top' && (
             <>
-              <CustomFieldsHF
+              <CustomFields
                 componentName={Signup.displayName}
                 fields={customFields}
                 register={register}

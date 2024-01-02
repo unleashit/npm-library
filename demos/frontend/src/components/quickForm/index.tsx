@@ -2,12 +2,12 @@ import React from 'react';
 import QuickForm, {
   type ServerResponse,
   type FormValues,
-  // type CustomFieldHF,
+  // type CustomField,
 } from '@unleashit/quick-form';
 import css from '@unleashit/quick-form/dist/quick-form.module.css';
 // import contactSchema from './custSchema';
 
-// const customFields: CustomFieldHF[] = [
+// const customFields: CustomField[] = [
 //   {
 //     element: 'input',
 //     type: 'text',

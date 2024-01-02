@@ -5,7 +5,7 @@ import { ZodTypeAny } from 'zod';
 import {
   DefaultLoader,
   DefaultLinkComponent,
-  CustomFieldsHF,
+  CustomFields,
   BaseFormProps,
   formHandler,
   useShowSuccessTimer,
@@ -130,7 +130,7 @@ export const Login = ({
           >
             {childrenPosition === 'bottom' && (
               <>
-                <CustomFieldsHF
+                <CustomFields
                   componentName={Login.displayName}
                   fields={customFields}
                   register={register}
@@ -170,7 +170,7 @@ export const Login = ({
             )}
             {childrenPosition === 'top' && (
               <>
-                <CustomFieldsHF
+                <CustomFields
                   componentName={Login.displayName}
                   fields={customFields}
                   register={register}

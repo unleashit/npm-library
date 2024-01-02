@@ -12,7 +12,7 @@ const btnStyle = {
   boxShadow: 'none',
 };
 
-// const customFields: CustomFieldHF[] = [
+// const customFields: CustomField[] = [
 //   {
 //     element: 'input',
 //     type: 'text',

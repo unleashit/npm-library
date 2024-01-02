@@ -12,4 +12,5 @@ lerna-debug.log
 .secrets
 TODO.md
 .vercel
-_forgotPassword
+.nx
+

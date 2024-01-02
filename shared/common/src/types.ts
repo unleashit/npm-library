@@ -2,7 +2,7 @@ import React from 'react';
 import { z, ZodTypeAny } from 'zod';
 import type { InputHTMLAttributes, SelectHTMLAttributes } from 'react';
 import type { GlobalError, UseFormRegisterReturn } from 'react-hook-form';
-import { CustomFieldHF } from './components/forms/CustomFieldsHF';
+import { CustomField } from './components/forms/CustomFields';
 import { DefaultHeaderProps } from './components/defaults/header';
 import { DefaultLoaderProps } from './components/defaults/loader';
 
@@ -20,7 +20,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
   CommonFormProps & { type: string };
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> &
   CommonFormProps & {
-    options: NonNullable<CustomFieldHF['options']>;
+    options: NonNullable<CustomField['options']>;
   };
 export type TextAreaProps = InputHTMLAttributes<HTMLTextAreaElement> &
   CommonFormProps;
@@ -61,7 +61,7 @@ export type BaseFormProps = {
   header?: React.FC<DefaultHeaderProps> | false | null;
   footer?: React.FC<any>;
   loader?: React.FC<DefaultLoaderProps>;
-  customFields?: CustomFieldHF[];
+  customFields?: CustomField[];
   customSchema?: z.AnyZodObject | z.ZodEffects<any>;
   // optionally send root server error message and/or
   // handler exceptions to toast

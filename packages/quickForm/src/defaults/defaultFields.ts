@@ -1,6 +1,6 @@
-import { CustomFieldHF } from '@unleashit/common';
+import { CustomField } from '@unleashit/common';
 
-export const defaultContactFields: CustomFieldHF[] = [
+export const defaultContactFields: CustomField[] = [
   {
     element: 'input',
     type: 'text',
@@ -22,7 +22,7 @@ export const defaultContactFields: CustomFieldHF[] = [
   },
 ];
 
-export const defaultContactFieldsWithPhone: CustomFieldHF[] = [
+export const defaultContactFieldsWithPhone: CustomField[] = [
   ...defaultContactFields.slice(0, 2),
   {
     element: 'input',

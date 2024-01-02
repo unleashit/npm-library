@@ -15,15 +15,15 @@ import { Textarea } from './textarea';
 import { Select } from './select';
 import { ClsName, FormValues } from '../../types';
 
-export interface CustomFieldsPropsHF<TSchema extends ZodTypeAny = ZodTypeAny> {
+export interface CustomFieldsProps<TSchema extends ZodTypeAny = ZodTypeAny> {
   errors: FieldErrors<any>;
   componentName: string;
-  fields: CustomFieldHF[];
+  fields: CustomField[];
   register: UseFormRegister<FormValues<TSchema>>;
   clsName: ClsName;
 }
 
-export interface CustomFieldHF {
+export interface CustomField {
   element: 'input' | 'select' | 'textarea';
   type: string;
   name: string;
@@ -35,9 +35,9 @@ export interface CustomFieldHF {
 
 type FieldProps = {
   register: UseFormRegisterReturn<any>;
-  componentName: CustomFieldsPropsHF['componentName'];
+  componentName: CustomFieldsProps['componentName'];
   clsName: ClsName;
-  error: Partial<CustomFieldsPropsHF['errors']> | any;
+  error: Partial<CustomFieldsProps['errors']> | any;
 };
 
 function Field({
@@ -50,7 +50,7 @@ function Field({
   componentName,
   register,
   clsName,
-}: CustomFieldHF & FieldProps) {
+}: CustomField & FieldProps) {
   if (element === 'input') {
     return (
       <Input
@@ -98,13 +98,13 @@ function Field({
   throw new Error(`Unsupported custom field element \`${element}\``);
 }
 
-export function CustomFieldsHF({
+export function CustomFields({
   fields,
   register,
   errors,
   clsName,
   componentName,
-}: CustomFieldsPropsHF) {
+}: CustomFieldsProps) {
   return (
     <>
       {fields.map((field) => (

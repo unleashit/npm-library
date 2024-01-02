@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ZodTypeAny } from 'zod';
 import {
-  CustomFieldsHF,
+  CustomFields,
   DefaultLoader,
   useShowSuccessTimer,
   DefaultHeader,
@@ -124,7 +124,7 @@ function QuickForm({
             }}
             className={clsName('form')}
           >
-            <CustomFieldsHF
+            <CustomFields
               componentName={QuickForm.displayName}
               fields={customFields}
               register={register}

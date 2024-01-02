@@ -192,7 +192,7 @@ function SignupAndSubscribe() {
     <QuickForm
       handler={quickFormHandler}
       customFields={customFields}
-      schema={customSchema}
+      customSchema={customSchema}
     />
   );
 }
@@ -212,7 +212,7 @@ type BaseFormProps = {
   header?: React.FC<DefaultHeaderProps> | false | null;
   footer?: React.FC<any>;
   loader?: React.FC<DefaultLoaderProps>;
-  customFields?: CustomFieldHF[];
+  customFields?: CustomField[];
   customSchema?: z.AnyZodObject | z.ZodEffects<any>;
   // optionally send root server error message and/or
   // handler exceptions to toast

@@ -3,13 +3,7 @@ export { useHighestZindex } from './hooks/useHighestZindex';
 export { useToggleBodyStyleProp } from './hooks/useToggleBodyStyleProp';
 export { useShowSuccessTimer } from './hooks/useShowSuccessTimer';
 export { DefaultLinkComponent } from './lib/DefaultLink';
-export { CustomInput } from './lib/CustomInput';
 export { useSetFocus } from './hooks/useSetFocus';
-export {
-  type CustomField,
-  CustomFields,
-  type PassedProps,
-} from './lib/CustomFields';
 export { formHandler, type OnSubmitArgs } from './lib/formHandler';
 export {
   FetchError,
@@ -30,10 +24,10 @@ export {
   type ShowSuccessProps,
 } from './components/defaults/successMessage';
 export {
-  CustomFieldsHF,
-  type CustomFieldHF,
-  type CustomFieldsPropsHF,
-} from './components/forms/CustomFieldsHF';
+  CustomFields,
+  type CustomField,
+  type CustomFieldsProps,
+} from './components/forms/CustomFields';
 export { FieldGroup } from './components/forms/fieldGroup';
 export { Input } from './components/forms/input';
 export { Select } from './components/forms/select';

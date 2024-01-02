@@ -1,11 +1,11 @@
 import React from 'react';
 import { UseFormSetFocus } from 'react-hook-form';
 import { ZodTypeAny } from 'zod';
-import { CustomFieldHF, FormValues } from '@unleashit/common';
+import { CustomField, FormValues } from '@unleashit/common';
 
 // set focus on the first (if any) field with a focus prop
 export function useSetFocus(
-  customFields: CustomFieldHF[],
+  customFields: CustomField[],
   setFocus: UseFormSetFocus<FormValues<ZodTypeAny, any>>,
 ) {
   React.useEffect(() => {

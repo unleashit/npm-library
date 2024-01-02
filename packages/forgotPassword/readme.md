@@ -156,7 +156,7 @@ Note that supplying a `customFields` object completely replaces the defaults, so
       label: 'What was the name of your first pet?',
     },
   ]}
-  schema={customSchema} // zod schema to match
+  customSchema={customSchema} // zod schema to match
 />
 ```
 
@@ -180,7 +180,7 @@ type BaseFormProps = {
   header?: React.FC<DefaultHeaderProps> | false | null;
   footer?: React.FC<any>;
   loader?: React.FC<DefaultLoaderProps>;
-  customFields?: CustomFieldHF[];
+  customFields?: CustomField[];
   customSchema?: z.AnyZodObject | z.ZodEffects<any>;
   // optionally send root server error message and/or
   // handler exceptions to toast

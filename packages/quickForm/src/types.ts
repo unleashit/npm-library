@@ -38,4 +38,4 @@ export type ServerResponse<
 //   Meta extends Record<string, any> = Record<string, any>,
 // > = ServerResponseBase<FormValues<Schema>, Meta>;
 
-export { type CustomFieldHF } from '@unleashit/common';
+export { type CustomField } from '@unleashit/common';

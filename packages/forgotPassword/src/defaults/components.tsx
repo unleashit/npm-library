@@ -1,24 +1,24 @@
-import { ClsName, DefaultHeader, utils } from '@unleashit/common';
+import { ClsName, DefaultHeader } from '@unleashit/common';
 import * as React from 'react';
 
-interface Style {
-  [key: string]: string;
-}
+// interface Style {
+//   [key: string]: string;
+// }
 
 // export interface ForgotPasswordLoaderProps {
 //   theme: Style;
 // }
 
-export interface ForgotPasswordHeaderProps {
-  theme: Style;
-}
+// export interface ForgotPasswordHeaderProps {
+//   theme: Style;
+// }
 
 export interface DefaultForgotPasswordHeaderProps {
   title: string;
   clsName: ClsName;
 }
 
-const { isCSSModule } = utils;
+// const { isCSSModule } = utils;
 
 // export const ForgotPasswordLoader: React.FC<ForgotPasswordLoaderProps> = ({
 //   theme,
@@ -82,18 +82,18 @@ export const DefaultForgotPasswordSuccessMessage = ({
   </div>
 );
 
-export const ForgotPasswordResetSuccessMessage: React.FC<{ theme: Style }> = ({
-  theme,
-}) => (
-  <div
-    className={isCSSModule(
-      theme.resetConfirmation,
-      `unl-forgot-password__reset-confirmation`,
-    )}
-  >
-    <h2>Thank you.</h2>
-    <p>
-      Your password has been updated. You may now login with the new password.
-    </p>
-  </div>
-);
+// export const ForgotPasswordResetSuccessMessage: React.FC<{ theme: Style }> = ({
+//   theme,
+// }) => (
+//   <div
+//     className={isCSSModule(
+//       theme.resetConfirmation,
+//       `unl-forgot-password__reset-confirmation`,
+//     )}
+//   >
+//     <h2>Thank you.</h2>
+//     <p>
+//       Your password has been updated. You may now login with the new password.
+//     </p>
+//   </div>
+// );

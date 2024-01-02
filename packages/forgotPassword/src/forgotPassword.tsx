@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   BaseFormProps,
-  CustomFieldsHF,
+  CustomFields,
   DefaultLinkComponent,
   DefaultLoader,
   formHandler,
@@ -153,7 +153,7 @@ export const ForgotPassword = ({
           >
             {childrenPosition === 'bottom' && (
               <>
-                <CustomFieldsHF
+                <CustomFields
                   componentName={ForgotPassword.displayName}
                   fields={customFields}
                   register={register}
@@ -178,7 +178,7 @@ export const ForgotPassword = ({
 
             {childrenPosition === 'top' && (
               <>
-                <CustomFieldsHF
+                <CustomFields
                   componentName={ForgotPassword.displayName}
                   fields={customFields}
                   register={register}
