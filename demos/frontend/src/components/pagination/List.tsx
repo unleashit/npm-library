@@ -5,13 +5,16 @@ interface RowProps {
   content: string;
   author: any;
 }
-
+/* eslint-disable react/no-danger */
 function Row({ row: { title, content, author } }: { row: RowProps }) {
   return (
     <li className="pagination__row">
       <h3 className="pagination__title">{title}</h3>
-      <p className="pagination__author">by {author.name}</p>
-      <div className="pagination__content">{content}</div>
+      <p className="pagination__author">by {author}</p>
+      <div
+        className="pagination__content"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </li>
   );
 }

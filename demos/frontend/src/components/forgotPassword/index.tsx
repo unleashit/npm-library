@@ -24,18 +24,13 @@ const ForgotPasswordDemo = () => {
   };
 
   return (
-    <>
-      <p style={{ marginBottom: '2.5rem', color: '#aaaaaa' }}>
-        Valid user: test@test.com
-      </p>
-      <ForgotPassword
-        handler={forgotPasswordHandler}
-        onSuccess={onSuccess}
-        linkComponent={Link}
-        linkComponentHrefAttr="to"
-        cssModule={css}
-      />
-    </>
+    <ForgotPassword
+      handler={forgotPasswordHandler}
+      onSuccess={onSuccess}
+      linkComponent={Link}
+      linkComponentHrefAttr="to"
+      cssModule={css}
+    />
   );
 };
 

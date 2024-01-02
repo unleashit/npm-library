@@ -54,11 +54,6 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/mock-data" className="main-navigation__link">
-            Mock Data
-          </Link>
-        </li>
-        <li>
           <Link to="/modal" className="main-navigation__link">
             Modal
           </Link>

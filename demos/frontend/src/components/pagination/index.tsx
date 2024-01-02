@@ -1,67 +1,33 @@
-import './pagination.scss';
-import '@unleashit/pagination/dist/pagination.css';
-
-import AsyncHandler from '@unleashit/async-handler';
-import Pagination from '@unleashit/pagination';
 import * as React from 'react';
-
-import { AppContext, AppContextValue } from '../../utils/context';
+import Pagination from '@unleashit/pagination';
 import List from './List';
+import generateFakeBlog from './dummyData';
+import '@unleashit/pagination/dist/pagination.css';
+import './pagination.scss';
 
-interface State {
-  offset: number;
-}
-export class PaginationDemo extends React.Component<
-  Record<string, unknown>,
-  State
-> {
-  perPage: number;
+const perPage = 3;
+const fakeBlog = generateFakeBlog(500);
 
-  constructor(props: Record<string, unknown>) {
-    super(props);
+export function PaginationDemo() {
+  const [offset, setOffset] = React.useState(0);
 
-    this.perPage = 3;
+  const currentOffset = () => fakeBlog.slice(offset, offset + perPage);
 
-    this.paginationHandler = this.paginationHandler.bind(this);
-  }
-
-  state = {
-    offset: 0,
+  const paginationHandler = (newOffset: number) => {
+    setOffset(newOffset);
   };
 
-  static contextType = AppContext;
-
-  context: AppContextValue = this.context;
-
-  currentOffset() {
-    const { offset } = this.state;
-    const { data } = this.context.globalState.fakeBlog;
-    return data.slice(offset, offset + this.perPage);
-  }
-
-  paginationHandler(newOffset: number) {
-    this.setState({ offset: newOffset });
-  }
-
-  render() {
-    return (
-      <AsyncHandler
-        request={() => this.context.store.generateFakeBlog({ total: 500 })}
-      >
-        {(fakeBlog: any[]) => (
-          <div className="pagination">
-            <List data={this.currentOffset()} />
-            <Pagination
-              currentOffset={this.state.offset}
-              perPage={this.perPage}
-              paginationHandler={this.paginationHandler}
-              total={fakeBlog.length}
-            />
-          </div>
-        )}
-      </AsyncHandler>
-    );
-  }
+  return (
+    <div className="pagination">
+      <List data={currentOffset()} />
+      <Pagination
+        currentOffset={offset}
+        perPage={perPage}
+        paginationHandler={paginationHandler}
+        total={fakeBlog.length}
+      />
+    </div>
+  );
 }
 
 export default PaginationDemo;
