@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.12](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.1.11...@unleashit/quick-form@1.1.12) (2024-01-02)
+
+### Bug Fixes
+
+* **quick-form:** wrong css classnames from bad postcssRename cli arg ([14bf44c](https://github.com/unleashit/npm-library/commit/14bf44c3941bd730ea978944164a7033579fb3e1))
+
 ## [1.1.11](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.1.10...@unleashit/quick-form@1.1.11) (2024-01-02)
 
 **Note:** Version bump only for package @unleashit/quick-form
