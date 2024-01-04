@@ -22,7 +22,6 @@
       "@unleashit/contact": ["./packages/contact/src"],
       "@unleashit/forgotPassword": ["./packages/forgotPassword/src"],
       "@unleashit/login": ["./packages/login/src"],
-      "@unleashit/mockData": ["./packages/mockData/src"],
       "@unleashit/modal": ["./packages/modal/src"],
       "@unleashit/navigation": ["./packages/navigation/src"],
       "@unleashit/pagination": ["./packages/pagination/src"],
