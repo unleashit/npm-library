@@ -1,0 +1,5 @@
+import { utils } from '@unleashit/common';
+
+Basic namespaced (BEM) css can be imported: <code>import '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.css'</code>. Alternatively, if you use CSS Modules you can <code>import css from '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.module.css'</code> and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names.
+
+Please see CSS in the main readme of the repo for more info.
