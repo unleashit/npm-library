@@ -5,10 +5,16 @@ import { prefix } from './constants';
 export const removeUndefined = (val: unknown[]) =>
   val.filter((v) => v !== undefined);
 
-// const kebabToCamel = (str) => str.replace(/-./g, (m) => m.toUpperCase()[1]);
+export const reactComponentCase = (str: string) =>
+  str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase())
+    .replace(/\s+/g, '');
 
-const camelToKebab = (str: string) =>
-  str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+export const camelToKebab = (str: string) =>
+  str
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/\s/, '-')
+    .toLowerCase();
 
 export const convertToSentence = (str: string): string =>
   str.charAt(0).toUpperCase() +
