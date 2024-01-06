@@ -1,6 +1,6 @@
 import { utils } from '@unleashit/common';
 
-import { NavigationProps } from '../index';
+import { NavigationProps } from '../navigation';
 import { NavLinkExtraProps } from '../NavLink';
 
 type Direction = NavigationProps['direction'];

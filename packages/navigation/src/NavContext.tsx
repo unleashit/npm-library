@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultLinkComponent } from '@unleashit/common';
-import { NavigationProps } from './index';
+import { NavigationProps } from './navigation';
 
 type NavContextValue = Required<
   Pick<NavigationProps, 'linkComponent' | 'linkComponentHrefAttr' | 'cssModule'>

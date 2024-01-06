@@ -1,7 +1,7 @@
 import { utils } from '@unleashit/common';
 import * as React from 'react';
 
-import { AuthLinkTypes, NavigationProps } from './index';
+import { AuthLinkTypes, NavigationProps } from './navigation';
 import NavLink from './NavLink';
 
 interface AuthLinksProps {

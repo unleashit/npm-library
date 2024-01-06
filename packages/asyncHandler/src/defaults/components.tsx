@@ -1,6 +1,6 @@
 import { utils } from '@unleashit/common';
 import * as React from 'react';
-import { AsyncHandlerProps } from '../index';
+import { AsyncHandlerProps } from '../asyncHandler';
 
 export interface DefaultComponentProps {
   cssModule?: AsyncHandlerProps['cssModule'];

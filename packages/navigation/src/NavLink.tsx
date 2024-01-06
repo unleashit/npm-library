@@ -1,7 +1,7 @@
 import { utils } from '@unleashit/common';
 import * as React from 'react';
 
-import { NavigationLink } from './index';
+import { NavigationLink } from './navigation';
 import NavContext from './NavContext';
 import { getAuthLinkClass, mapArrayToClasses } from './utils/generateClasses';
 

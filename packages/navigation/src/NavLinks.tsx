@@ -1,7 +1,7 @@
 import { utils } from '@unleashit/common';
 import * as React from 'react';
 
-import { NavigationProps } from './index';
+import { NavigationProps } from './navigation';
 import NavLink from './NavLink';
 
 type NavLinksProps = Required<Pick<NavigationProps, 'links' | 'cssModule'>>;

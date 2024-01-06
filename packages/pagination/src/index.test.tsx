@@ -3,7 +3,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
 
-import Pagination from './index';
+import Pagination from './pagination';
 
 // declare const shallow: any;
 

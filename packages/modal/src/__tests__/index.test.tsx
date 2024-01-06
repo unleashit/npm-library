@@ -2,7 +2,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import Modal from '../index';
+import Modal from '../modal';
 
 interface BaseProps {
   isOpen: boolean;
