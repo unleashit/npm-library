@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/docs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -27,10 +27,10 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.0",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.1.0",
     "@docusaurus/theme-classic": "^3.1.0",
     "@docusaurus/tsconfig": "3.1.0",
     "@docusaurus/types": "3.1.0",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.1.0",
     "remark-code-snippets": "^1.1.0",
     "typescript": "~5.2.2"
   },

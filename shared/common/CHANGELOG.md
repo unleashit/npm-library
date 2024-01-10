@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.5...@unleashit/common@1.3.0) (2024-01-10)
+
+### Bug Fixes
+
+* **all:** restore package.json files mangled by lerna and fix css import bug ([d64f745](https://github.com/unleashit/npm-library/commit/d64f74535ee30fda76a89234790b6017c8a731ca))
+
+### Features
+
+* **common:** add reactComponentCase to utils ([9599452](https://github.com/unleashit/npm-library/commit/9599452ebda26be5548b8cf9068efa881d406d52))
+
 ## [1.2.5](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.4...@unleashit/common@1.2.5) (2024-01-02)
 
 **Note:** Version bump only for package @unleashit/common

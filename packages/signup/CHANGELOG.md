@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.2.5...@unleashit/signup@1.2.6) (2024-01-10)
+
+### Bug Fixes
+
+* **all:** restore package.json files mangled by lerna and fix css import bug ([d64f745](https://github.com/unleashit/npm-library/commit/d64f74535ee30fda76a89234790b6017c8a731ca))
+
 ## [1.2.5](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.2.4...@unleashit/signup@1.2.5) (2024-01-02)
 
 **Note:** Version bump only for package @unleashit/signup
