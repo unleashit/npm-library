@@ -14,7 +14,7 @@ export interface PaginationProps {
   perPage?: number;
   prevLabel?: string;
   nextLabel?: string;
-  cssModule?: { [key: string]: string };
+  cssModule?: Record<string, string>;
 }
 
 // interface State {
