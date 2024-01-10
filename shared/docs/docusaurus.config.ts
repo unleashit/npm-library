@@ -44,6 +44,7 @@ const config: Config = {
             'https://github.com/unleashit/npm-library/tree/master/shared/docs/',
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+            [require('remark-code-snippets'), { baseDir: '../..' }],
           ],
         },
         blog: {

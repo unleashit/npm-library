@@ -17,7 +17,6 @@
   "dependencies": {
     "@docusaurus/core": "3.1.0",
     "@docusaurus/preset-classic": "3.1.0",
-    "@docusaurus/remark-plugin-npm2yarn": "^3.1.0",
     "@mdx-js/react": "^3.0.0",
     "@unleashit/common": "workspace:^",
     "clsx": "^2.0.0",
@@ -28,9 +27,11 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.1.0",
+    "@docusaurus/theme-classic": "^3.1.0",
     "@docusaurus/tsconfig": "3.1.0",
     "@docusaurus/types": "3.1.0",
-    "@docusaurus/theme-classic": "^3.1.0",
+    "@docusaurus/remark-plugin-npm2yarn": "^3.1.0",
+    "remark-code-snippets": "^1.1.0",
     "typescript": "~5.2.2"
   },
   "browserslist": {
