@@ -15,3 +15,17 @@ export const ChevronRight = (props: {
     <path d="M19.768 15.661l-13.25 13.25a1.132 1.132 0 0 1-1.607 0l-2.964-2.964a1.132 1.132 0 0 1 0-1.607l9.482-9.482-9.482-9.482a1.132 1.132 0 0 1 0-1.607L4.911.805a1.132 1.132 0 0 1 1.607 0l13.25 13.25a1.132 1.132 0 0 1 0 1.607z" />
   </svg>
 );
+
+export const Ellipsis = ({ fill = '#000000' }: any) => (
+  <svg
+    fill={fill}
+    width="25px"
+    height="25px"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="17.5" cy="12" r="1.5" />
+    <circle cx="12" cy="12" r="1.5" />
+    <circle cx="6.5" cy="12" r="1.5" />
+  </svg>
+);
