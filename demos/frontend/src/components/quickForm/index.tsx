@@ -59,7 +59,7 @@ import css from '@unleashit/quick-form/dist/quick-form.module.css';
 
 function ContactDemo() {
   const contactHandler = async (values: FormValues): Promise<ServerResponse> =>
-    await fetch(`${process.env.DEMO_URL_REMOTE}/quickform`, {
+    await fetch(`${process.env.DEMO_URL}/quickform`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
