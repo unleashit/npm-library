@@ -4,9 +4,19 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/pagination.svg)](https://www.npmjs.com/package/@unleashit/pagination)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/pagination.svg)](https://bundlephobia.com/result?p=@unleashit/pagination)
 
-Responsive pagination component for React. Just give it a total number of items and the current offset. It then calls a handler with new offset as needed.
+Responsive pagination component for React. Just give it a total number of items and the current offset. It then calls a handler with the new offset as needed.
 
 ![pagination component](https://github.com/unleashit/npm-library/raw/master/packages/pagination/pagination.png)
+
+## Features
+
+- Lightweight UI component. Doesn't care about data, caching or state. Send it the total items and current offset, and it renders the correct interface.
+- Responsive, with a container query to show the right amount of pages
+- Gracefully supports unlimited pages
+- Automatically hides next/prev buttons when not needed
+- Customizable labels
+- Default CSS or fully customizable
+- CSS module support can override internal styles with a custom module
 
 ### Install
 
@@ -14,50 +24,61 @@ Responsive pagination component for React. Just give it a total number of items 
 npm install @unleashit/pagination
 ```
 
-**Required peer dependency:** react
+**Peer dependency:** react
 
 ### Example
 
 ```tsx
 import React from 'react';
 import Pagination from '@unleashit/pagination';
+import Articles from './Articles';
 import { getTotalRowsFromDB, getPageFromDB } from './api';
 
 const perPage = 10;
 
 function PaginationDemo() {
-  const [totalRows, setTotalRows] = useState();
-  const [data, setData] = useState();
+  // The main thing you have to do is keep track of the changed offset
+  // Pagination doesn't care about the list data,
+  // only the current offset and total number of items
+  const [totalRows, setTotalRows] = useState<number>();
+  const [data, setData] = useState<any[]>();
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     // Basic example without caching or error handling
-    promise
-      .all([getTotalRowsFromDB(), getPageFromDB({ offset, limit: perPage })])
-      .then(([total, data]) => {
-        setTotalRows(total);
-        setData(data);
-      });
+    Promise.all([
+      // example to get the count(*) from the DB
+      getTotalRowsFromDB(),
+      // example to get a page of data starting at the offset
+      // and ending with the perPage amount
+      getPageFromDB({ offset, limit: perPage }),
+    ]).then(([total, page]) => {
+      setTotalRows(total);
+      setData(page);
+    });
   }, [offset]);
 
+  // handler is called whenever the user clicks on a page, next or prev buttons
+  // and is provided the new offset corresponding with the button the user clicked.
+  // For example, if perPage is set to 10 and the user clicks page 3,
+  // the handler will be called with 20 (page 1 = 0, page 2 = 10, page 3 = 20, etc.).
   const paginationHandler = (newOffset: number) => {
-    // handler will be called whenever the user clicks on a page, next or prev btns
     setOffset(newOffset);
   };
 
   if (!data) return <div>Loading...</div>;
-  if (!!data.length) return <div>No items found.</div>;
+  if (!totalRows || !data.length) return <div>No items found.</div>;
 
   return (
-    <div>
-      <DisplayList data={data} />
+    <>
+      <Articles data={data} />
       <Pagination
         currentOffset={offset}
         perPage={perPage}
         handler={paginationHandler}
         total={totalRows}
       />
-    </div>
+    </>
   );
 }
 ```
