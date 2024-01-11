@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { faker } from '@faker-js/faker';
+import { kv } from '@vercel/kv';
 
 type QueryString = {
   count?: number;
@@ -14,7 +15,7 @@ export interface PaginationResponse {
 }
 
 const totalPosts = 500;
-let data: ReturnType<typeof randomBlogPost>[] = [];
+let cache: ReturnType<typeof randomBlogPost>[];
 
 function randomBlogPost() {
   return {
@@ -31,11 +32,25 @@ function randomBlogPost() {
   };
 }
 
-function generateBlogData(total: number) {
-  data = Array.from({ length: total }, () => randomBlogPost());
-}
+async function getOrSetBLogData(total: number) {
+  if (cache) {
+    return cache;
+  }
 
-generateBlogData(totalPosts);
+  const exists = await kv.keys('npm-library-fake-blog');
+
+  if (!exists) {
+    const data = Array.from({ length: total }, () => randomBlogPost());
+    await kv.set('npm-library-fake-blog', JSON.stringify(data));
+  }
+
+  const data = (await kv.get('npm-library-fake-blog')) as ReturnType<
+    typeof randomBlogPost
+  >[];
+
+  cache = data;
+  return data;
+}
 
 const pagination = (
   req: Request<QueryString>,
@@ -45,32 +60,34 @@ const pagination = (
   const limit = Number(req.query.limit) || 20;
   const count = req.query.count === 'true';
 
-  if (count) {
+  getOrSetBLogData(totalPosts).then((data) => {
+    if (count) {
+      return res.json({
+        count: totalPosts,
+      });
+    }
+
+    if (offset < 0) {
+      return res.status(400).json({
+        error: 'Offset cannot be negative',
+      });
+    }
+
+    if (offset > totalPosts - 1) {
+      return res.status(400).json({
+        error: 'Offset is too high',
+      });
+    }
+
+    if (limit > 50) {
+      return res.status(400).json({
+        error: 'Limit is too high',
+      });
+    }
+
     return res.json({
-      count: totalPosts,
+      data: data.slice(offset, offset + limit),
     });
-  }
-
-  if (offset < 0) {
-    return res.status(400).json({
-      error: 'Offset cannot be negative',
-    });
-  }
-
-  if (offset > totalPosts - 1) {
-    return res.status(400).json({
-      error: 'Offset is too high',
-    });
-  }
-
-  if (limit > 50) {
-    return res.status(400).json({
-      error: 'Limit is too high',
-    });
-  }
-
-  return res.json({
-    data: data.slice(offset, offset + limit),
   });
 };
 
