@@ -1,37 +1,53 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Pagination from '@unleashit/pagination';
 import css from '@unleashit/pagination/dist/pagination.module.css';
-import List from './List';
-import dummyData from '../../dummyData/pagination/dummyData.json';
+import Articles from './Articles';
 import './pagination.scss';
+import { getPageFromDB, getTotalRowsFromDB } from './api';
 
 const perPage = 3;
 
 export function PaginationDemo() {
   // The main thing you have to do is keep track of the changed offset
-  // In this example, simply call setOffset with the new offset in the handler
-  const [offset, setOffset] = React.useState(0);
+  // Pagination doesn't care about the list data,
+  // only the current offset and total number of items
+  const [totalRows, setTotalRows] = useState<number>();
+  const [data, setData] = useState<any[]>();
+  const [offset, setOffset] = useState(0);
 
-  // Get the data starting with the current offset and a LIMIT equal to the perPage prop
-  // You probably will want to cache these calls locally for a smooth experience
-  // This is just a demo using local data
-  const getCurrentPage = () => dummyData.slice(offset, offset + perPage);
+  useEffect(() => {
+    // Basic example without caching or error handling
+    Promise.all([
+      // this just gets the count(*) from the DB
+      getTotalRowsFromDB(),
+      // this gets one page of data starting with the current offset
+      // with a `perPage` number of items
+      getPageFromDB({ offset, limit: perPage }),
+    ]).then(([total, page]) => {
+      setTotalRows(total);
+      setData(page);
+    });
+  }, [offset]);
 
-  // handler is called with the new offset corresponding with the button the user clicks
-  // For example, if perPage is set to 20 and the user clicks page 3,
-  // the handler will be called with 40 (page 1 = 0, page 2 = 20, page 3 = 40, etc.).
+  // handler is called whenever the user clicks on a page, next or prev buttons
+  // and is provided the new offset corresponding with the button the user clicked.
+  // For example, if perPage is set to 10 and the user clicks page 3,
+  // the handler will be called with 20 (page 1 = 0, page 2 = 10, page 3 = 20, etc.).
   const paginationHandler = (newOffset: number) => {
     setOffset(newOffset);
   };
 
+  if (!data) return <div>Loading...</div>;
+  if (!totalRows || !data.length) return <div>No items found.</div>;
+
   return (
     <div className="pagination">
-      <List data={getCurrentPage()} />
+      <Articles data={data} />
       <Pagination
-        handler={paginationHandler}
         currentOffset={offset}
         perPage={perPage}
-        total={dummyData.length}
+        handler={paginationHandler}
+        total={totalRows}
         cssModule={css}
       />
     </div>

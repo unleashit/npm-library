@@ -34,7 +34,6 @@
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
     "@babel/runtime": "^7.23.7",
-    "@faker-js/faker": "^8.3.1",
     "@types/dotenv-webpack": "^7.0.7",
     "@types/react-dom": "^18.2.18",
     "@types/webpack-dev-server": "^4.7.2",

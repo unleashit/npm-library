@@ -24,6 +24,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^18.4.3
         version: 18.4.3
+      '@faker-js/faker':
+        specifier: ^8.3.1
+        version: 8.3.1
       '@hookform/resolvers':
         specifier: ^3.3.3
         version: 3.3.3(react-hook-form@7.49.2)
@@ -254,9 +257,6 @@ importers:
       '@babel/runtime':
         specifier: ^7.23.7
         version: 7.23.7
-      '@faker-js/faker':
-        specifier: ^8.3.1
-        version: 8.3.1
       '@types/dotenv-webpack':
         specifier: ^7.0.7
         version: 7.0.7(esbuild@0.19.11)(webpack-cli@5.1.4)

@@ -19,7 +19,7 @@ function Row({ row: { title, content, author } }: { row: RowProps }) {
   );
 }
 
-function List({ data }: { data: any[] }) {
+function Articles({ data }: { data: any[] }) {
   return (
     <ul className="pagination__list">
       {data.map((row, i) => (
@@ -29,4 +29,4 @@ function List({ data }: { data: any[] }) {
   );
 }
 
-export default List;
+export default Articles;

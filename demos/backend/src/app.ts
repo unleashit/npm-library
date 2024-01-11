@@ -6,6 +6,7 @@ import login from './routes/login';
 import { notFound, errorHandler, MessageResponse } from './middlewares';
 import signup from './routes/signup';
 import quickForm from './routes/quickForm';
+import pagination from './routes/pagination';
 import forgotPasswordRoutes from './routes/forgotPassword';
 
 require('dotenv').config();
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get<object, MessageResponse | string>('/', (_, res) => {
   res.json({ message: 'Welcome to the npm-library demo api' });
 });
+app.get('/blog', pagination);
 app.post('/login', login);
 app.post('/signup', signup);
 app.post('/quickform', quickForm);
