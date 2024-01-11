@@ -1,27 +1,11 @@
-import { utils, DefaultLinkComponent } from '@unleashit/common';
 import * as React from 'react';
-
+import { DefaultLinkComponent, utils } from '@unleashit/common';
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
 import NavContext from './NavContext';
 import { addTemplateClasses, mapArrayToClasses } from './utils/generateClasses';
+import { AuthLinkTypes, NavigationLink } from './types';
 
-export interface NavigationLink {
-  href: string;
-  title: string;
-  active?: boolean;
-  classes?: string[];
-  style?: React.CSSProperties;
-  icon?: string;
-  iconPosition?: 'left' | 'right';
-  display?: boolean;
-  attrs?: React.AllHTMLAttributes<any>;
-}
-export interface AuthLinkTypes {
-  login?: NavigationLink;
-  logout?: NavigationLink;
-  signup?: NavigationLink;
-}
 export interface NavigationProps {
   links: NavigationLink[];
   linkComponent?: React.ComponentType<any>;
@@ -31,10 +15,10 @@ export interface NavigationProps {
   classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
-  cssModule?: { [key: string]: string };
+  cssModule?: Record<string, string>;
 }
 
-const { isCSSModule } = utils;
+const { genClassNames } = utils;
 
 const mapAuthLinks = (
   isAuth: boolean,
@@ -76,19 +60,26 @@ const Navigation = ({
   linkComponentHrefAttr = 'href',
   cssModule = {},
 }: NavigationProps): React.ReactElement => {
-  // * show default authLinks if isAuth is provided.
-  // * if user provides authLinks, they will override the default on a property by property basis
-  // * don't show authLinks if both authLinks and isAuth are omitted.
+  // show default authLinks if isAuth is provided.
+  // if user provides authLinks, they will override the default on a property by property basis
+  // don't show authLinks if both authLinks and isAuth are omitted.
   const authSidecarLinks =
     isAuth !== undefined ? mapAuthLinks(isAuth, authLinks) : authLinks || null;
+
+  const { clsName } = React.useMemo(
+    () => genClassNames(Navigation.displayName, cssModule),
+    [cssModule],
+  );
+
+  console.log({ cssModule, clsName });
 
   const contextValue = React.useMemo(
     () => ({
       linkComponent,
       linkComponentHrefAttr,
-      cssModule,
+      clsName,
     }),
-    [linkComponent, linkComponentHrefAttr, cssModule],
+    [linkComponent, linkComponentHrefAttr, clsName],
   );
 
   return (
@@ -100,22 +91,19 @@ const Navigation = ({
        */}
       <nav
         className={`${
-          template !== 'none'
-            ? isCSSModule(cssModule.container, `unl-navigation__container`)
-            : isCSSModule(cssModule.container, `unl-navigation`)
-        }${addTemplateClasses(
-          template,
-          direction,
-          cssModule,
-        )}${mapArrayToClasses<NavigationProps['classes']>(classes)}`}
+          template !== 'none' ? clsName('container') : clsName('')
+        }${addTemplateClasses(template, direction, clsName)}${mapArrayToClasses<
+          NavigationProps['classes']
+        >(classes)}`}
       >
-        <NavLinks links={links} cssModule={cssModule} />
+        <NavLinks links={links} clsName={clsName} />
         {authSidecarLinks && (
-          <AuthLinks links={authSidecarLinks} cssModule={cssModule} />
+          <AuthLinks links={authSidecarLinks} clsName={clsName} />
         )}
       </nav>
     </NavContext.Provider>
   );
 };
 
+Navigation.displayName = 'navigation';
 export default Navigation;

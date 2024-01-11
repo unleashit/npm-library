@@ -1,15 +1,15 @@
-import { utils } from '@unleashit/common';
 import * as React from 'react';
-
+import { ClsName } from '@unleashit/common';
 import { NavigationProps } from './navigation';
 import NavLink from './NavLink';
 
-type NavLinksProps = Required<Pick<NavigationProps, 'links' | 'cssModule'>>;
+type NavLinksProps = {
+  links: Required<NavigationProps['links']>;
+  clsName: ClsName;
+};
 
-const { isCSSModule } = utils;
-
-const NavLinks = ({ links, cssModule }: NavLinksProps) => (
-  <ul className={isCSSModule(cssModule.navList, `unl-navigation__nav-list`)}>
+const NavLinks = ({ links, clsName }: NavLinksProps) => (
+  <ul className={clsName('navList')}>
     {links.map(
       (link): React.ReactNode => (
         <NavLink {...link} key={link.title} />

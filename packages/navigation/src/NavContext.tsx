@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { DefaultLinkComponent } from '@unleashit/common';
+import { DefaultLinkComponent, ClsName } from '@unleashit/common';
 import { NavigationProps } from './navigation';
 
 type NavContextValue = Required<
-  Pick<NavigationProps, 'linkComponent' | 'linkComponentHrefAttr' | 'cssModule'>
+  Pick<NavigationProps, 'linkComponent' | 'linkComponentHrefAttr'> & {
+    clsName: ClsName;
+  }
 >;
 const NavContext = React.createContext<NavContextValue>({
   linkComponent: DefaultLinkComponent,
   linkComponentHrefAttr: 'href',
-  cssModule: {},
+  clsName: () => '',
 });
 
 NavContext.displayName = 'Navigation';

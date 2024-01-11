@@ -1,20 +1,16 @@
-import { utils } from '@unleashit/common';
 import * as React from 'react';
-
-import { NavigationLink } from './navigation';
-import NavContext from './NavContext';
 import { getAuthLinkClass, mapArrayToClasses } from './utils/generateClasses';
-
-export interface NavLinkExtraProps {
-  authLink?: 'login' | 'logout' | 'signup' | null;
-}
-
-const { isCSSModule } = utils;
+import { NavigationLink } from './types';
+import NavContext from './NavContext';
 
 // generates the attr name and value for the link in case
 // the user is using a routing component like React Router
 // which uses a `to` attribute instead of the standard `href`
 // const getHref = (attrName: string, href: string) => ({ [attrName]: href });
+
+export type NavLinkProps = {
+  authLink?: 'login' | 'logout' | 'signup' | null;
+} & NavigationLink;
 
 const NavLink = ({
   href,
@@ -26,59 +22,47 @@ const NavLink = ({
   icon,
   iconPosition = 'left',
   authLink = null,
-}: NavigationLink & NavLinkExtraProps): React.ReactElement | null => {
+}: NavLinkProps): React.ReactElement | null => {
   const {
     linkComponent: LinkComponent,
     linkComponentHrefAttr,
-    cssModule,
+    clsName,
   } = React.useContext(NavContext);
 
   if (display) {
     return (
       <li
-        className={`${isCSSModule(
-          cssModule.linkItem,
-          'unl-navigation__link-item',
-        )} ${mapArrayToClasses<NavigationLink['classes']>(classes)} ${
+        className={`${clsName('linkItem')} ${mapArrayToClasses<
+          NavigationLink['classes']
+        >(classes)} ${
           active
-            ? isCSSModule(cssModule.active, `unl-navigation__link-item--active`)
+            ? // unl-navigation__link-item--active
+              clsName('active')
             : ''
         }`}
       >
         <LinkComponent
           {...{ [linkComponentHrefAttr]: href }}
-          className={`${isCSSModule(cssModule.link, `unl-navigation__link`)}${
-            authLink ? getAuthLinkClass(authLink, cssModule) : ''
+          className={`${clsName('link')}${
+            authLink ? getAuthLinkClass(authLink, clsName) : ''
           }`}
           {...attrs}
         >
           {icon && iconPosition === 'left' && (
             <span
-              className={isCSSModule(
-                cssModule.iconSpanLeft,
-                `unl-navigation__icon-span--left`,
-              )}
+              // unl-navigation__icon-span--left
+              className={clsName('iconSpanLeft')}
             >
-              <img
-                src={icon}
-                alt=""
-                className={isCSSModule(cssModule.icon, `unl-navigation__icon`)}
-              />
+              <img src={icon} alt="" className={clsName('icon')} />
             </span>
           )}
           <span>{title}</span>
           {icon && iconPosition === 'right' && (
             <span
-              className={isCSSModule(
-                cssModule.iconSpanRight,
-                `unl-navigation__icon-span--right`,
-              )}
+              // unl-navigation__icon-span--right
+              className={clsName('iconSpanRight')}
             >
-              <img
-                src={icon}
-                alt=""
-                className={isCSSModule(cssModule.icon, `unl-navigation__icon`)}
-              />
+              <img src={icon} alt="" className={clsName('icon')} />
             </span>
           )}
         </LinkComponent>

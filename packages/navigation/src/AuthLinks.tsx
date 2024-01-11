@@ -1,26 +1,21 @@
-import { utils } from '@unleashit/common';
 import * as React from 'react';
-
-import { AuthLinkTypes, NavigationProps } from './navigation';
+import { ClsName } from '@unleashit/common';
 import NavLink from './NavLink';
+import { AuthLinkTypes } from './types';
 
-interface AuthLinksProps {
+type AuthLinksProps = {
   links: AuthLinkTypes;
-  cssModule: Required<NavigationProps['cssModule']>;
-}
-
-const { isCSSModule } = utils;
+  clsName: ClsName;
+};
 
 const AuthLinks: React.FC<AuthLinksProps> = ({
   links,
-  cssModule = {},
+  clsName,
 }): React.ReactElement => {
   const { login, logout, signup } = links;
 
   return (
-    <ul
-      className={isCSSModule(cssModule.authLinks, `unl-navigation__auth-links`)}
-    >
+    <ul className={clsName('authLinks')}>
       {login && login.display && <NavLink {...login} authLink="login" />}
       {logout && logout.display && <NavLink {...logout} authLink="logout" />}
       {signup && signup.display && <NavLink {...signup} authLink="signup" />}

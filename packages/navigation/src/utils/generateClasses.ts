@@ -1,40 +1,26 @@
-import { utils } from '@unleashit/common';
-
 import { NavigationProps } from '../navigation';
-import { NavLinkExtraProps } from '../NavLink';
+import { NavLinkProps } from '../NavLink';
 
 type Direction = NavigationProps['direction'];
 type Template = NavigationProps['template'];
-type Style = Required<NavigationProps>['cssModule'];
-type AuthLink = NavLinkExtraProps['authLink'];
+type AuthLink = NavLinkProps['authLink'];
+type ClsName = (title: string) => string;
 
-const { isCSSModule } = utils;
+// container--vertical
+const isVertical = (dir: Direction, clsName: ClsName): string =>
+  dir === 'vert' || dir === 'vertical' ? ` ${clsName('vertical')}` : '';
 
-const isVertical = (dir: Direction, style: Style): string =>
-  dir === 'vert' || dir === 'vertical'
-    ? ` ${isCSSModule(style.vertical, 'unl-navigation__container--vertical')}`
-    : '';
-
-const isTemplate = (template: Template, style: Style): string => {
+const isTemplate = (template: Template, clsName: ClsName): string => {
   let classes = '';
   switch (template) {
     case 'clean':
-      classes = ` ${isCSSModule(
-        style.clean,
-        'unl-navigation__container--clean',
-      )}`;
+      classes = ` ${clsName('clean')}`;
       break;
     case 'dark-buttons':
-      classes = ` ${isCSSModule(
-        style.darkButtons,
-        'unl-navigation__container--dark-btns',
-      )}`;
+      classes = ` ${clsName('darkButtons')}`;
       break;
     case 'light-buttons':
-      classes = ` ${isCSSModule(
-        style.lightButtons,
-        'unl-navigation__container--light-btns',
-      )}`;
+      classes = ` ${clsName('lightButtons')}`;
       break;
     default:
       // Either default or 'none' template
@@ -46,15 +32,16 @@ const isTemplate = (template: Template, style: Style): string => {
 export const addTemplateClasses = (
   template: Template,
   direction: Direction,
-  theme: Style,
-): string => `${isTemplate(template, theme)}${isVertical(direction, theme)}`;
+  clsName: ClsName,
+): string =>
+  `${isTemplate(template, clsName)}${isVertical(direction, clsName)}`;
 
-export const getAuthLinkClass = (authLink: AuthLink, theme: Style): string => {
+export const getAuthLinkClass = (
+  authLink: AuthLink,
+  clsName: ClsName,
+): string => {
   if (authLink && ['login', 'logout', 'signup'].includes(authLink)) {
-    return ` ${isCSSModule(
-      theme[`${authLink}Link`],
-      `unl-navigation__${authLink}-link`,
-    )}`;
+    return ` ${clsName(`${authLink}Link`)}`;
   }
 
   return '';
