@@ -60,28 +60,31 @@ const pagination = (
   const limit = Number(req.query.limit) || 20;
   const count = req.query.count === 'true';
 
+  if (offset < 0) {
+    res.status(400).json({
+      error: 'Offset cannot be negative',
+    });
+    return;
+  }
+
+  if (offset > totalPosts - 1) {
+    res.status(400).json({
+      error: 'Offset is too high',
+    });
+    return;
+  }
+
+  if (limit > 50) {
+    res.status(400).json({
+      error: 'Limit is too high',
+    });
+    return;
+  }
+
   getOrSetBLogData(totalPosts).then((data) => {
     if (count) {
       return res.json({
-        count: totalPosts,
-      });
-    }
-
-    if (offset < 0) {
-      return res.status(400).json({
-        error: 'Offset cannot be negative',
-      });
-    }
-
-    if (offset > totalPosts - 1) {
-      return res.status(400).json({
-        error: 'Offset is too high',
-      });
-    }
-
-    if (limit > 50) {
-      return res.status(400).json({
-        error: 'Limit is too high',
+        count: data.length,
       });
     }
 
