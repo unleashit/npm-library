@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.13](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@1.1.12...@unleashit/recursive-data-lister@1.1.13) (2024-01-12)
+
+### Bug Fixes
+
+* **recursiveDataLister:** fix several bugs and refactor ([28793bc](https://github.com/unleashit/npm-library/commit/28793bc1bae8efb111be41ade73538f210e1c28f))
+
 ## [1.1.12](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@1.1.11...@unleashit/recursive-data-lister@1.1.12) (2024-01-10)
 
 ### Bug Fixes

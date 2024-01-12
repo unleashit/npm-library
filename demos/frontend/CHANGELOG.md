@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.12](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.1.11...@unleashit/demo-frontend@1.1.12) (2024-01-12)
+
+### Bug Fixes
+
+* **demos:** consolidate api env var and fix some vercel related issues ([99a5a8b](https://github.com/unleashit/npm-library/commit/99a5a8b373e484f715fc0178b289db12d22dbc44))
+* **recursiveDataLister:** fix several bugs and refactor ([28793bc](https://github.com/unleashit/npm-library/commit/28793bc1bae8efb111be41ade73538f210e1c28f))
+
 ## [1.1.11](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.1.10...@unleashit/demo-frontend@1.1.11) (2024-01-10)
 
 **Note:** Version bump only for package @unleashit/demo-frontend

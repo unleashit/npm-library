@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.13](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.1.12...@unleashit/navigation@1.1.13) (2024-01-12)
+
+**Note:** Version bump only for package @unleashit/navigation
+
 ## [1.1.12](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.1.11...@unleashit/navigation@1.1.12) (2024-01-10)
 
 ### Bug Fixes
