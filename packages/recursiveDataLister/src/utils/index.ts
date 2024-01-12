@@ -1,22 +1,33 @@
-const getChild = (tag: string): string => {
+export const getChildTag = (tag: string): keyof JSX.IntrinsicElements => {
   if (tag === 'ul' || tag === 'ol') return 'li';
   return 'div';
 };
 
-const isObjectNotArray = (elem: Record<string, unknown> | any[]): boolean =>
-  typeof elem === 'object' && !Array.isArray(elem);
+export const isObjectNotArray = (
+  elem: Record<string, unknown> | any[],
+): boolean => typeof elem === 'object' && !Array.isArray(elem);
 
 // const isObjectNotNull = (elem: any): boolean =>
 //   !!elem && typeof elem === 'object' && !Array.isArray(elem);
 
-const isDate = (elem: Record<string, unknown> | any[]): boolean =>
-  Object.prototype.toString.call(elem) === '[object Date]';
+export const isDate = (elem: unknown): boolean =>
+  Object.prototype.toString.call(elem) === '[object Date]' ||
+  // eslint-disable-next-line no-restricted-globals
+  (typeof elem === 'string' && !isNaN(new Date(elem) as any));
 
-const isObjectNotDate = (elem: Record<string, unknown> | any[]): boolean =>
-  typeof elem === 'object' && !isDate(elem);
+// const isStringDate = (elem: unknown): boolean =>
+//   // eslint-disable-next-line no-restricted-globals
+//   typeof elem === 'string' && !isNaN(new Date(elem) as any);
+export const isObjectNotDate = (
+  elem: Record<string, unknown> | any[],
+): boolean => typeof elem === 'object' && !isDate(elem);
 
 export type DateFormat = (val: Date) => string | number;
 
-const handleDate = (elem: Date, cb: DateFormat): string | number => cb(elem);
+export const handleDate = (elem: Date, cb: DateFormat): string | number =>
+  cb(elem);
 
-export { getChild, isObjectNotArray, isDate, isObjectNotDate, handleDate };
+export const isPrimitive = (elem: unknown): boolean =>
+  typeof elem === 'string' ||
+  typeof elem === 'number' ||
+  typeof elem === 'boolean';

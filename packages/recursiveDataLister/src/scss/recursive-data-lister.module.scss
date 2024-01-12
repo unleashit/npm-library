@@ -23,17 +23,19 @@ ul.topLevelParent {
     list-style: circle;
   }
   li li li li li li li {
-    list-style: sqaure;
+    list-style: square;
   }
 }
 
-.label, .leafLabel {
+.label, .branchLabel {
   font-weight: bold;
 }
 
-.objectLeaf > .leafLabel {
+.arrayBranchLabel {
   font-weight: normal;
 }
+
+/* divs don't have the same defaults as lists */
 
 div.childItem:first-child {}
 
@@ -41,10 +43,11 @@ div.childItem:last-child {
   margin-bottom: 12px;
 }
 
-div.objectLeaf .label {
+div.objectBranch .label {
   font-weight: normal;
 }
 
-div.objectLeaf > .leafLabel {
+div.objectBranch > .branchLabel {
   display: none;
 }
+

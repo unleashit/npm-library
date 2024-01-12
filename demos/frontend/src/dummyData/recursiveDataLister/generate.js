@@ -12,7 +12,7 @@ function generateBook() {
       .fill(undefined)
       .map(() => ({
         id: faker.string.uuid(),
-        date: faker.date.between({ from: 1940, to: new Date().getFullYear() }),
+        date: faker.date.between({ from: 1940, to: new Date() }),
         description: faker.lorem.sentence(),
       })),
   };
@@ -21,13 +21,16 @@ function generateBook() {
 function randomBookReader() {
   return {
     id: faker.string.uuid(),
-    firstName: faker.person.firstName(),
-    lastName: faker.person.lastName(),
-    avatar: faker.image.avatar(),
+    user: {
+      firstName: faker.person.firstName(),
+      lastName: faker.person.lastName(),
+      age: faker.number.int({ min: 12, max: 100 }),
+      avatar: faker.image.avatar(),
+    },
     booksRead: Array(faker.helpers.rangeToNumber({ min: 1, max: 5 }))
       .fill(undefined)
       .map(generateBook),
-    registeredAt: faker.date.past({ years: 10 }),
+    memberSince: faker.date.past({ years: 10 }),
   };
 }
 

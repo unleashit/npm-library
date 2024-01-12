@@ -1,114 +1,97 @@
-import { utils } from '@unleashit/common';
+import { ClsName } from '@unleashit/common';
 import * as React from 'react';
 import {
   DateFormat,
-  getChild,
+  getChildTag,
   handleDate,
   isDate,
   isObjectNotArray,
   isObjectNotDate,
+  isPrimitive,
 } from './utils';
 
 interface RowProps {
   row: any;
-  parentTag: any;
+  parentTag: keyof JSX.IntrinsicElements;
   nested?: boolean;
-  leafProp: string | null;
-  repeatLeafProp: boolean;
-  theme: { [key: string]: string };
+  branchProp: string | null;
+  removeRepeatedProp: boolean;
+  clsName: ClsName;
   dateFormat: DateFormat;
 }
-
-const { isCSSModule } = utils;
-
 const Row: React.FC<RowProps> = ({
   row,
   parentTag: Parent,
   nested = false,
-  leafProp,
-  repeatLeafProp,
-  theme,
+  branchProp,
+  removeRepeatedProp,
+  clsName,
   dateFormat,
 }): React.ReactElement => {
-  const Child: any = getChild(Parent);
+  const Child = getChildTag(Parent);
 
   return (
     <Parent
-      className={`${
-        !nested
-          ? isCSSModule(
-              theme.topLevelParent,
-              `unl-r-data-lister__top-level-parent`,
-            )
-          : isCSSModule(theme.parent, `unl-r-data-lister__child-parent`)
-      }`}
+      className={`${!nested ? clsName(`topLevelParent`) : clsName('parent')}`}
     >
-      {Object.keys(row).map((field): React.ReactElement | null => {
-        if (isObjectNotDate(row[field])) {
-          return (
-            <Child
-              key={field}
-              className={`${isCSSModule(
-                theme.leaf,
-                `unl-r-data-lister__leaf`,
-              )} ${
-                isObjectNotArray(row[field])
-                  ? isCSSModule(
-                      theme.objectLeaf,
-                      `unl-r-data-lister__object-leaf`,
-                    )
-                  : ''
-              }`}
-            >
-              <span
-                className={isCSSModule(
-                  theme.leafLabel,
-                  `unl-r-data-lister__leaf-label`,
-                )}
+      {isPrimitive(row) ? (
+        <Child className={clsName('childItem')}>
+          <span className={clsName('value')}>{row}</span>
+        </Child>
+      ) : (
+        Object.keys(row).map((field): React.ReactElement | null => {
+          if (isObjectNotDate(row[field])) {
+            return (
+              <Child
+                key={field}
+                className={`${clsName('childItem')} ${clsName('branch')} ${
+                  isObjectNotArray(row[field]) ? clsName('objectBranch') : ''
+                }`}
               >
-                {isObjectNotArray(row[field]) &&
-                leafProp &&
-                row[field][leafProp]
-                  ? row[field][leafProp]
-                  : field}
+                <span
+                  className={`${clsName('branchLabel')}${
+                    isObjectNotArray(row[field]) &&
+                    branchProp &&
+                    row[field][branchProp]
+                      ? ` ${clsName('arrayBranchLabel')}`
+                      : ''
+                  }`}
+                >
+                  {isObjectNotArray(row[field]) &&
+                  branchProp &&
+                  row[field][branchProp]
+                    ? row[field][branchProp]
+                    : field}
+                </span>
+                <Row
+                  row={row[field]}
+                  parentTag={Parent}
+                  clsName={clsName}
+                  branchProp={branchProp}
+                  removeRepeatedProp={removeRepeatedProp}
+                  dateFormat={dateFormat}
+                  nested
+                />
+              </Child>
+            );
+          }
+          return nested &&
+            branchProp &&
+            field === branchProp &&
+            removeRepeatedProp ? null : (
+            <Child key={field} className={clsName('childItem')}>
+              {!Array.isArray(row) && (
+                <span className={clsName('label')}>{field}: </span>
+              )}
+              <span className={clsName('value')}>
+                {isDate(row[field])
+                  ? handleDate(row[field], dateFormat)
+                  : row[field]}
               </span>
-              <Row
-                row={row[field]}
-                parentTag={Parent}
-                theme={theme}
-                leafProp={leafProp}
-                repeatLeafProp={repeatLeafProp}
-                dateFormat={dateFormat}
-                nested
-              />
             </Child>
           );
-        }
-        return leafProp && field === leafProp && !repeatLeafProp ? null : (
-          <Child
-            key={field}
-            className={isCSSModule(
-              theme.childItem,
-              `unl-r-data-lister__child-item`,
-            )}
-          >
-            {!Array.isArray(row) && (
-              <span
-                className={isCSSModule(theme.label, `unl-r-data-lister__label`)}
-              >
-                {field}:{' '}
-              </span>
-            )}
-            <span
-              className={isCSSModule(theme.value, `unl-r-data-lister__value`)}
-            >
-              {isDate(row[field])
-                ? handleDate(row[field], dateFormat)
-                : row[field]}
-            </span>
-          </Child>
-        );
-      })}
+        })
+      )}
     </Parent>
   );
 };

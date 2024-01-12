@@ -1,28 +1,43 @@
 import * as React from 'react';
-
+import { utils } from '@unleashit/common';
 import Row from './Row';
 import { DateFormat, isObjectNotArray } from './utils';
 
 export interface RecursiveDataListerProps {
-  data: { [key: string]: any } | any[];
-  tag?: string;
-  displayAsList?: boolean;
-  arrayLeafPropName?: string | null;
-  repeatLeafPropName?: boolean;
-  cssModule?: { [key: string]: string };
+  data: Record<string, any> | any[];
+  // Top level html tag for the list, like ul, ol or div
+  tag?: keyof JSX.IntrinsicElements;
+  // Display in multiple ul, ol, etc. lists per parent
+  // Data must be an array
+  multiList?: boolean;
+  // When a branch is an array, select a property to be used as a label instead
+  // of the index. Note: this is a global setting, and applies to all child arrays
+  // If the prop isn't found, the index will be used anyway
+  arrayBranchProp?: string | null;
+  // By default, the arrayBranchProp will be repeated in the list
+  removeRepeatedProp?: boolean;
+  // Function to transform Date objects
   dateFormat?: DateFormat;
+  cssModule?: Record<string, string>;
 }
+
+const { genClassNames } = utils;
 
 const RecursiveDataLister = ({
   data,
   tag = 'ul',
-  displayAsList = false,
-  arrayLeafPropName = null,
-  repeatLeafPropName = true,
+  multiList = false,
+  arrayBranchProp = null,
+  removeRepeatedProp = false,
   dateFormat = (val: Date) => val.toString(),
-  cssModule: theme = {},
+  cssModule,
 }: RecursiveDataListerProps): React.ReactElement => {
-  if (displayAsList && isObjectNotArray(data)) {
+  const { clsName } = React.useMemo(
+    () => genClassNames(RecursiveDataLister.displayName, cssModule),
+    [cssModule],
+  );
+
+  if (multiList && isObjectNotArray(data)) {
     throw new Error(
       'The provided data must be an array when displayAsList prop is set to true',
     );
@@ -34,16 +49,19 @@ const RecursiveDataLister = ({
       key={key()}
       row={rowData}
       parentTag={tag}
-      theme={theme}
-      leafProp={arrayLeafPropName}
-      repeatLeafProp={repeatLeafPropName}
+      branchProp={arrayBranchProp}
+      removeRepeatedProp={removeRepeatedProp}
       dateFormat={dateFormat}
+      clsName={clsName}
     />
   );
 
-  return displayAsList
-    ? data.map((row: any[]): React.ReactElement => renderRow<any[]>(row))
-    : renderRow<any[] | Record<string, unknown>>(data);
+  return multiList
+    ? data.map(
+        (row: unknown[]): React.ReactElement => renderRow<unknown[]>(row),
+      )
+    : renderRow<unknown[] | Record<string, unknown>>(data);
 };
 
+RecursiveDataLister.displayName = 'recursiveDataLister';
 export default RecursiveDataLister;

@@ -7,9 +7,10 @@ export function RecursiveDataListerDemo() {
   return (
     <RecursiveDataLister
       data={dummyData}
-      displayAsList
-      arrayLeafPropName="id"
-      repeatLeafPropName={false}
+      multiList
+      arrayBranchProp="id"
+      removeRepeatedProp
+      dateFormat={(val) => new Date(val).toLocaleDateString()}
     />
   );
 }
