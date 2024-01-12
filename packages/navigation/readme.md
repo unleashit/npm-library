@@ -4,7 +4,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/navigation.svg)](https://www.npmjs.com/package/@unleashit/navigation)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/navigation.svg)](https://bundlephobia.com/result?p=@unleashit/navigation)
 
-Customizable auth aware navigation component for React in Typescript. Comes with optional sidecar component for login/login/signup.
+Customizable navigation component for React. Comes with optional sidecar component for login/login/signup.
 
 ![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-horz.png)
 
