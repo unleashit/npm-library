@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.3.0...@unleashit/common@1.4.0) (2024-01-13)
+
+### Features
+
+* **navigation:** covert sass vars to css vars. Add colors prop to component ([70d90ac](https://github.com/unleashit/npm-library/commit/70d90ac2ea03fbebb63f25787ad3de3e7c972eca))
+
 # [1.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.2.5...@unleashit/common@1.3.0) (2024-01-10)
 
 ### Bug Fixes
