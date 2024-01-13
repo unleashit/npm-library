@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.14](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@1.1.13...@unleashit/pagination@1.1.14) (2024-01-13)
+
+**Note:** Version bump only for package @unleashit/pagination
+
 ## [1.1.13](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@1.1.12...@unleashit/pagination@1.1.13) (2024-01-12)
 
 **Note:** Version bump only for package @unleashit/pagination
