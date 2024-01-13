@@ -16,6 +16,15 @@ export const camelToKebab = (str: string) =>
     .replace(/\s/, '-')
     .toLowerCase();
 
+export const stringToKebab = (str: string) => {
+  const matches = str.match(
+    /[0-9]{1,}(?=\b)|[A-Z]{2,}(?=[A-Z][a-z]+|[0-9]|\b|_)|[A-Z]?[a-z]+|[A-Z]|[0-9]+/g,
+  );
+  if (!matches || matches.length === 0) return str;
+
+  return matches.map((x) => x.toLowerCase()).join('-');
+};
+
 export const convertToSentence = (str: string): string =>
   str.charAt(0).toUpperCase() +
   str
@@ -55,18 +64,6 @@ export const returnComponentFormat = (
     'Not a valid component. Please supply a component or valid React element.',
   );
 };
-
-// export function getDefaultsFromZodObject<Schema extends AnyZodObject>(
-//   schema: Schema,
-// ) {
-//   return Object.fromEntries(
-//     Object.entries(schema.shape).map(([key, value]) => {
-//       if (value instanceof z.ZodDefault)
-//         return [key, value._def.defaultValue()];
-//       return [key, undefined];
-//     }),
-//   );
-// }
 
 export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
   schema: z.AnyZodObject | z.ZodEffects<any>,

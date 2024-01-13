@@ -5,6 +5,16 @@
   display: flex;
   font-size: 1.1rem;
   text-transform: uppercase;
+  --unl-navigation-light: #{$lightColor};
+  --unl-navigation-light-darker-5: #{darken($lightColor, 5%)};
+  --unl-navigation-light-darker-10: #{darken($lightColor, 10%)};
+  --unl-navigation-light-darker-15: #{darken($lightColor, 15%)};
+  --unl-navigation-dark: #{$darkColor};
+  --unl-navigation-dark-lighter-5: #{lighten($darkColor, 5%)};
+  --unl-navigation-dark-lighter-10: #{lighten($darkColor, 10%)};
+  --unl-navigation-dark-lighter-15: #{lighten($darkColor, 15%)};
+  --unl-navigation-text-light: #{$white};
+  --unl-navigation-text-dark: #{$black};
 }
 
 .container {
@@ -28,7 +38,7 @@
     padding: 8px 20px;
     align-items: center;
     justify-content: center;
-    color: #000;
+    color: var(--unl-navigation-text-dark);
     text-decoration: none;
     cursor: pointer;
   }
@@ -69,34 +79,35 @@
     }
   }
   .link {
-    background-color: $darkColor;
-    color: #fff;
-    border-right: 1px solid lighten($darkColor, 15%);
+    background-color: var(--unl-navigation-dark);
+    color: var(--unl-navigation-text-light);
+    border-right: 1px solid var(--unl-navigation-dark-lighter-15);
     &:hover {
-      background-color: lighten($darkColor, 10%);
+      background-color: var(--unl-navigation-dark-lighter-10);
     }
   }
   .active .link {
-    background-color: $lightColor;
-    color: #000;
+    background-color: var(--unl-navigation-light);
+    color: var(--unl-navigation-text-dark);
   }
   &.vertical {
     .link {
       border-right: none;
-      border-bottom: 1px solid lighten($darkColor, 15%);
+      border-bottom: 1px solid var(--unl-navigation-dark-lighter-15);
     }
   }
   .authLinks {
     .link {
       background-color: transparent;
       border: none;
+      color: var(--unl-navigation-text-dark);
     }
     .signupLink,
     .logoutLink {
-      background-color: $lightColor;
+      background-color: var(--unl-navigation-light);
       border-radius: 0;
       &:hover {
-        background-color: darken($lightColor, 5%);
+        background-color: var(--unl-navigation-light-darker-5);
       }
     }
   }
@@ -111,21 +122,21 @@
     }
   }
   .link {
-    background-color: $lightColor;
-    color: #000;
-    border-right: 1px solid darken($lightColor, 15%);
+    background-color: var(--unl-navigation-light);
+    color: var(--unl-navigation-text-dark);
+    border-right: 1px solid var(--unl-navigation-light-darker-15);
     &:hover {
-      background-color: darken($lightColor, 5%);
+      background-color: var(--unl-navigation-light-darker-5);
     }
   }
   .active .link {
-    background-color: $darkColor;
-    color: #fff;
+    background-color: var(--unl-navigation-dark);
+    color: var(--unl-navigation-text-light);
   }
   &.vertical {
     .link {
       border-right: none;
-      border-bottom: 1px solid darken($lightColor, 15%);
+      border-bottom: 1px solid var(--unl-navigation-light-darker-15);
     }
   }
   .authLinks {
@@ -135,11 +146,11 @@
     }
     .signupLink,
     .logoutLink {
-      background-color: $darkColor;
+      background-color: var(--unl-navigation-dark);
       border-radius: 0;
-      color: #fff;
+      color: var(--unl-navigation-text-light);
       &:hover {
-        background-color: lighten($darkColor, 10%);
+        background-color: var(--unl-navigation-dark-lighter-10);
       }
     }
   }
@@ -159,10 +170,10 @@
     }
     .signupLink,
     .logoutLink {
-      background-color: $lightColor;
+      background-color: var(--unl-navigation-light);
       border-radius: 5px;
       &:hover {
-        background-color: darken($lightColor, 5%);
+        background-color: var(--unl-navigation-light-darker-5);
       }
     }
     .iconSpanLeft + .loginLink {

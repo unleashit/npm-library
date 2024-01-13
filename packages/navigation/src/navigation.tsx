@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { DefaultLinkComponent, utils } from '@unleashit/common';
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
 import NavContext from './NavContext';
 import { addTemplateClasses, mapArrayToClasses } from './utils/generateClasses';
 import { AuthLinkTypes, NavigationLink } from './types';
+import { Colors, mapColorsToStyles } from './utils/mapColorsToStyles';
 
 export interface NavigationProps {
   links: NavigationLink[];
@@ -12,6 +13,7 @@ export interface NavigationProps {
   linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
   template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
+  colors?: Colors;
   classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
@@ -53,6 +55,7 @@ const Navigation = ({
   links,
   direction = 'horizontal',
   template = 'clean',
+  colors,
   classes,
   isAuth,
   authLinks,
@@ -70,8 +73,6 @@ const Navigation = ({
     () => genClassNames(Navigation.displayName, cssModule),
     [cssModule],
   );
-
-  console.log({ cssModule, clsName });
 
   const contextValue = React.useMemo(
     () => ({
@@ -95,6 +96,7 @@ const Navigation = ({
         }${addTemplateClasses(template, direction, clsName)}${mapArrayToClasses<
           NavigationProps['classes']
         >(classes)}`}
+        style={mapColorsToStyles(colors)}
       >
         <NavLinks links={links} clsName={clsName} />
         {authSidecarLinks && (
