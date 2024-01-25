@@ -1,9 +1,9 @@
-import '@unleashit/modal/dist/modal.css';
-
 import Modal from '@unleashit/modal';
 import React, { useState } from 'react';
+import '@unleashit/modal/dist/modal.css';
+import css from './style.module.css';
 
-const ModalFooter = () => <footer>Important! Please Read!</footer>;
+const Footer = () => <div>Important! Please Read!</div>;
 
 const ModalDemo = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,17 +31,15 @@ const ModalDemo = () => {
         temporibus explicabo porro voluptatum cupiditate sed asperiores, ullam
         suscipit?
       </p>
-      <button className="modalBtn" onClick={toggleModal} type="button">
+      <button className={css.button} onClick={toggleModal} type="button">
         open sesame!
       </button>
 
       <Modal
-        size="medium"
         isOpen={modalOpen}
         onClose={toggleModal}
         header="Important Message"
-        footer={ModalFooter}
-        overlayColor="rgba(0,0,0,.8)"
+        footer={Footer}
       >
         <div>
           <p>
@@ -50,7 +48,7 @@ const ModalDemo = () => {
             consequatur voluptate vitae quis? Pariatur ad fuga fugiat.
           </p>
           <div>
-            <button type="button" onClick={toggleModal}>
+            <button className={css.button} type="button" onClick={toggleModal}>
               OK
             </button>
           </div>
