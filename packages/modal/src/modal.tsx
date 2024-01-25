@@ -10,6 +10,8 @@ import {
   useHandleEscapeKey,
   useHighestZindex,
   useToggleBodyStyleProp,
+  CSSVars,
+  mapCSSVarsToStyles,
 } from '@unleashit/common';
 import { closeIcon } from './images/icons';
 
@@ -31,11 +33,28 @@ export interface ModalProps {
   footer?: React.FC<any> | string;
   overlayColor?: string | false | null;
   closeBtn?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
   children?: React.ReactNode;
 }
 
 const { genClassNames } = utils;
+
+const varNames = [
+  'modalPadding',
+  'overlayColor',
+  'headerColor',
+  'borderColor',
+  'smallWidth',
+  'mediumWidth',
+  'largeWidth',
+  'fullWidth',
+  'modalY',
+  'breakXs',
+  'breakSm',
+  'breakMd',
+  'breakLg',
+] as const;
 
 export const Modal = ({
   isOpen = false,
@@ -48,6 +67,7 @@ export const Modal = ({
   header: Header,
   footer: Footer,
   overlayColor = 'rgba(0,0,0,.8)',
+  cssVars,
   cssModule = {},
   children,
 }: ModalProps) => {
@@ -125,6 +145,10 @@ export const Modal = ({
       style={{
         backgroundColor: !overlayColor ? 'transparent' : overlayColor,
         zIndex: modalZindex,
+        ...mapCSSVarsToStyles<typeof varNames>({
+          cssVars,
+          varNames,
+        }),
       }}
     >
       <div
