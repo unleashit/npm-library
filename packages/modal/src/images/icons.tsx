@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 export const closeIcon = (
   <svg x="0px" y="0px" width="12px" height="12px" viewBox="0 0 348.333 348.334">

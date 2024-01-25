@@ -7,7 +7,7 @@ exports[`<Modal /> renders when isOpen property is true 1`] = `
   onClick={[Function]}
   style={
     {
-      "backgroundColor": undefined,
+      "backgroundColor": "rgba(0,0,0,.8)",
       "zIndex": "auto",
     }
   }

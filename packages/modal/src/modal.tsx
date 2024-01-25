@@ -1,34 +1,41 @@
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+  useLayoutEffect,
+} from 'react';
 import {
   utils,
   useHandleEscapeKey,
   useHighestZindex,
   useToggleBodyStyleProp,
 } from '@unleashit/common';
-import * as React from 'react';
-
-import {
-  ModalFooter,
-  ModalHeader,
-  CustomHeaderFooterProps,
-} from './defaults/components';
 import { closeIcon } from './images/icons';
+
+const cssUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax'] as const;
 
 export interface ModalProps {
   isOpen: boolean;
-  size?: 'small' | 'medium' | 'large' | 'full';
+  size?:
+    | 'small'
+    | 'medium'
+    | 'large'
+    | 'full'
+    | `${number}${(typeof cssUnits)[number]}`;
   onClose?: () => void;
   closeOnOverlayClick?: boolean;
   animationSupport?: boolean;
   animationCloseTimeout?: number;
-  header?: React.FC<CustomHeaderFooterProps> | React.ReactElement | string;
-  footer?: React.FC<CustomHeaderFooterProps> | string;
-  overlayColor?: string;
+  header?: React.FC<any> | string;
+  footer?: React.FC<any> | string;
+  overlayColor?: string | false | null;
   closeBtn?: boolean;
-  cssModule?: { [key: string]: string };
+  cssModule?: Record<string, string>;
   children?: React.ReactNode;
 }
 
-const { isCSSModule, returnComponentFormat } = utils;
+const { genClassNames } = utils;
 
 export const Modal = ({
   isOpen = false,
@@ -40,16 +47,16 @@ export const Modal = ({
   animationCloseTimeout = 300,
   header: Header,
   footer: Footer,
-  overlayColor,
-  cssModule: theme = {},
+  overlayColor = 'rgba(0,0,0,.8)',
+  cssModule = {},
   children,
 }: ModalProps) => {
-  const [isHidden, setIsHidden] = React.useState(!isOpen);
-  const [isAnimated, setIsAnimated] = React.useState(isOpen);
-  const timeoutRef = React.useRef<number>();
+  const [isHidden, setIsHidden] = useState(!isOpen);
+  const [isAnimated, setIsAnimated] = useState(isOpen);
+  const timeoutRef = useRef<number>();
 
   // allow time for animation after modal is opened/closed
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen) {
       setIsHidden(false);
       if (animationSupport) {
@@ -67,11 +74,9 @@ export const Modal = ({
       setIsHidden(true);
     }
 
+    // clear the above timeout on unmount
     return () => window.clearTimeout(timeoutRef.current);
   }, [animationCloseTimeout, animationSupport, isOpen]);
-
-  // clear the above timeout on unmount
-  // React.useEffect(() => () => window.clearTimeout(timeoutRef.current), []);
 
   // add overflow: hidden to <body> when modal is active
   useToggleBodyStyleProp('overflow', 'hidden', isOpen);
@@ -79,81 +84,81 @@ export const Modal = ({
   // returns highest z-index in use + 1 or 'auto'
   const modalZindex = useHighestZindex();
 
-  // close the modal when user clicks on the overlay
-  const handleOverlayClick = (e: React.MouseEvent): any => {
-    if (!closeOnOverlayClick) return;
-
-    e.stopPropagation();
-    const isContainer = (e.target as HTMLDivElement).getAttribute('data-modal');
-    if (isContainer) {
-      onClose();
-    }
-  };
-
   // close the modal when user clicks esc key
   useHandleEscapeKey(isOpen, onClose);
 
-  const userComponent = (
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    C: React.ReactElement | Function | string | undefined,
-    Default: React.FC<any>,
-  ) => {
-    if (!C) return null;
-    if (typeof C === 'string') {
-      return <Default theme={theme} title={C} />;
-    }
+  const { clsName } = React.useMemo(
+    () => genClassNames(Modal.displayName, cssModule),
+    [cssModule],
+  );
 
-    return returnComponentFormat(C, { theme });
-  };
+  // close the modal when user clicks on the overlay
+  const handleOverlayClick = useCallback(
+    (e: React.MouseEvent): any => {
+      if (!closeOnOverlayClick) return;
+
+      e.stopPropagation();
+      const isContainer = (e.target as HTMLDivElement).getAttribute(
+        'data-modal',
+      );
+      if (isContainer) {
+        onClose();
+      }
+    },
+    [closeOnOverlayClick, onClose],
+  );
+
+  const customWidth = useMemo(
+    () =>
+      cssUnits.some((unit) => size.endsWith(unit))
+        ? { maxWidth: size }
+        : undefined,
+    [size],
+  );
 
   return !isHidden ? (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
       onClick={handleOverlayClick}
       data-modal="true"
-      className={isCSSModule(theme.overlay, 'unl-modal__overlay')}
-      style={{ backgroundColor: overlayColor, zIndex: modalZindex }}
+      className={clsName('overlay')}
+      style={{
+        backgroundColor: !overlayColor ? 'transparent' : overlayColor,
+        zIndex: modalZindex,
+      }}
     >
       <div
-        className={`${isCSSModule(
-          theme.child,
-          `unl-modal__child`,
-        )} ${isCSSModule(
-          theme[`child--${size}`],
-          `unl-modal__child--${size}`,
-        )} ${
-          animationSupport && isAnimated
-            ? `${isCSSModule(theme[`child--in`], 'unl-modal__child--in')}`
-            : ''
-        }`}
+        className={`${clsName('child')}${
+          customWidth ? '' : ` ${clsName(`child--${size}`)}`
+        } ${animationSupport && isAnimated ? `${clsName('child--in')}` : ''}`}
+        style={customWidth}
       >
         {closeBtn && (
-          <div className={isCSSModule(theme.close, 'unl-modal__close')}>
+          <div className={clsName('close')}>
             <button
               onClick={onClose}
               type="button"
-              className={isCSSModule(theme.closeBtn, 'unl-modal__close-btn')}
+              className={clsName('closeBtn')}
             >
               {closeIcon}
             </button>
           </div>
         )}
         {Header && (
-          <div className={isCSSModule(theme.header, 'unl-modal__header')}>
-            {userComponent(Header, ModalHeader)}
-          </div>
+          <header className={clsName('header')}>
+            {typeof Header === 'string' ? Header : <Header />}
+          </header>
         )}
-        <div className={isCSSModule(theme.body, 'unl-modal__body')}>
-          {children}
-        </div>
+        <div className={clsName('body')}>{children}</div>
         {Footer && (
-          <div className={isCSSModule(theme.footer, 'unl-modal__footer')}>
-            {userComponent(Footer, ModalFooter)}
-          </div>
+          <footer className={clsName('footer')}>
+            {typeof Footer === 'string' ? Footer : <Footer />}
+          </footer>
         )}
       </div>
     </div>
   ) : null;
 };
 
+Modal.displayName = 'modal';
 export default Modal;
