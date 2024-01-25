@@ -1,12 +1,17 @@
+$white: #ffffff;
+$black: #000000;
 $gray: #e8e8e8;
 $red: #e74444;
 $pink: #e77070;
+$navy: #314262;
+$maroon: #c20562;
+$ltgray: #f2f2f2;
+
 $error-background: #e23d64;
 $error-text: #ffffff;
 
-// in use??
-$navy: #314262;
-$white: #ffffff;
-$maroon: #c20562;
-$ltgray: #f2f2f2;
-$black: #000000;
+// breakpoints
+$break-xs: 500px;
+$break-sm: 767px;
+$break-md: 1200px;
+$break-lg: 1600px;
