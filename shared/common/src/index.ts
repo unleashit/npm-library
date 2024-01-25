@@ -33,6 +33,6 @@ export { Input } from './components/forms/input';
 export { Select } from './components/forms/select';
 export { Textarea } from './components/forms/textarea';
 export * as utils from './lib/utils';
-export * from './lib/mapColorsToStyles';
+export * from './lib/mapCSSVarsToStyles';
 export * as constants from './lib/constants';
 export * from './types';
