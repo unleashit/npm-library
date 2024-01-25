@@ -2,8 +2,8 @@ import React from 'react';
 import {
   DefaultLinkComponent,
   utils,
-  mapColorsToStyles,
-  Colors,
+  mapCSSVarsToStyles,
+  CSSVars,
 } from '@unleashit/common';
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
@@ -17,7 +17,7 @@ export interface NavigationProps {
   linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
   template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
-  colors?: Colors<typeof colorKeys>;
+  cssVars?: CSSVars<typeof varNames>;
   classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
@@ -26,7 +26,7 @@ export interface NavigationProps {
 
 const { genClassNames } = utils;
 
-const colorKeys = [
+const varNames = [
   'light',
   'dark',
   'textLight',
@@ -72,7 +72,7 @@ const Navigation = ({
   links,
   direction = 'horizontal',
   template = 'clean',
-  colors,
+  cssVars,
   classes,
   isAuth,
   authLinks,
@@ -108,15 +108,14 @@ const Navigation = ({
        * add any user supplied classes
        */}
       <nav
-        className={`${
-          template !== 'none' ? clsName('container') : clsName('')
-        }${addTemplateClasses(template, direction, clsName)}${mapArrayToClasses<
-          NavigationProps['classes']
-        >(classes)}`}
-        style={mapColorsToStyles<typeof colorKeys>({
-          componentName: Navigation.displayName,
-          colors,
-          colorKeys,
+        className={`${clsName('container')}${addTemplateClasses(
+          template,
+          direction,
+          clsName,
+        )}${mapArrayToClasses<NavigationProps['classes']>(classes)}`}
+        style={mapCSSVarsToStyles<typeof varNames>({
+          cssVars,
+          varNames,
         })}
       >
         <NavLinks links={links} clsName={clsName} />

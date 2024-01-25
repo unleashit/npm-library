@@ -22,8 +22,10 @@ const isTemplate = (template: Template, clsName: ClsName): string => {
     case 'light-buttons':
       classes = ` ${clsName('lightButtons')}`;
       break;
+    case 'none':
+      classes = ` ${clsName('none')}`;
+      break;
     default:
-      // Either default or 'none' template
       classes = '';
   }
   return classes;
