@@ -1,6 +1,19 @@
-@import 'vars';
+@import 'common_vars';
 
 .overlay {
+  --unl-modal-padding: 16px;
+  --unl-overlay-color: transparent;
+  --unl-header-color: #{$ltgray};
+  --unl-border-color: #{#d0d0d0};
+  --unl-small-width: 400px;
+  --unl-medium-width: 600px;
+  --unl-large-width: 75%;
+  --unl-full-width: 100%;
+  --unl-modal-y: calc(50vh - 50%);
+  --unl-break-xs: #{$break-xs};
+  --unl-break-sm: #{$break-sm};
+  --unl-break-md: #{$break-md};
+  --unl-break-lg: #{$break-lg};
   position: fixed;
   top: 0;
   right: 0;
@@ -9,32 +22,34 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  background-color: var(--unl-overlay-color);
 }
+
 .child {
   width: 100%;
   transform: translateY(-100%);
-  border: 1px solid #d0d0d0;
+  border: 1px solid var(--unl-border-color);
   background-color: #fff;
   transition: all 0.25s ease-in-out;
   &--in {
-    transform: translateY(15vh);
+    transform: translateY(var(--unl-modal-y));
     transition: all 0.25s ease-in-out;
   }
   &--small {
-    max-width: 400px;
+    max-width: var(--unl-small-width);
   }
   &--medium {
-    max-width: 600px;
+    max-width: var(--unl-medium-width);
   }
   &--large {
-    max-width: 75%;
-    @media screen and (max-width: $break-sm) {
+    max-width: var(--unl-large-width);
+    @media screen and (max-width: var(--unl-break-sm)) {
       max-width: 100%;
       width: 100%;
     }
   }
   &--full {
-    width: 100%;
+    width: var(--unl-full-width);
   }
 }
 .close {
@@ -50,8 +65,8 @@
   outline: none;
 }
 .header {
-  background-color: $ltgray;
-  padding: $modal-padding;
+  background-color: var(--unl-header-color);
+  padding: var(--unl-modal-padding);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
   h3 {
     margin-bottom: 0;
@@ -59,10 +74,9 @@
   }
 }
 .footer {
-  margin-top: $modal-padding;
-  padding: 8px $modal-padding;
-  border-top: 1px solid #d8d8d8;
+  padding: var(--unl-modal-padding);
+  border-top: 1px solid var(--unl-border-color);
 }
 .body {
-  padding: $modal-padding;
+  padding: var(--unl-modal-padding);
 }
