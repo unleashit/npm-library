@@ -1,11 +1,15 @@
 import React from 'react';
-import { DefaultLinkComponent, utils } from '@unleashit/common';
+import {
+  DefaultLinkComponent,
+  utils,
+  mapColorsToStyles,
+  Colors,
+} from '@unleashit/common';
 import AuthLinks from './AuthLinks';
 import NavLinks from './NavLinks';
 import NavContext from './NavContext';
 import { addTemplateClasses, mapArrayToClasses } from './utils/generateClasses';
 import { AuthLinkTypes, NavigationLink } from './types';
-import { Colors, mapColorsToStyles } from './utils/mapColorsToStyles';
 
 export interface NavigationProps {
   links: NavigationLink[];
@@ -13,7 +17,7 @@ export interface NavigationProps {
   linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
   template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
-  colors?: Colors;
+  colors?: Colors<typeof colorKeys>;
   classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
@@ -21,6 +25,19 @@ export interface NavigationProps {
 }
 
 const { genClassNames } = utils;
+
+const colorKeys = [
+  'light',
+  'dark',
+  'textLight',
+  'textDark',
+  'lightDarker5',
+  'lightDarker10',
+  'lightDarker15',
+  'darkLighter5',
+  'darkLighter10',
+  'darkLighter15',
+] as const;
 
 const mapAuthLinks = (
   isAuth: boolean,
@@ -96,7 +113,11 @@ const Navigation = ({
         }${addTemplateClasses(template, direction, clsName)}${mapArrayToClasses<
           NavigationProps['classes']
         >(classes)}`}
-        style={mapColorsToStyles(colors)}
+        style={mapColorsToStyles<typeof colorKeys>({
+          componentName: Navigation.displayName,
+          colors,
+          colorKeys,
+        })}
       >
         <NavLinks links={links} clsName={clsName} />
         {authSidecarLinks && (
