@@ -59,9 +59,8 @@ $darkColor: #555555;
     border: none;
   }
 
-  .vertical {
+  &.vertical {
     flex-direction: column;
-
     .navList {
       flex-direction: column;
       align-items: normal;
@@ -81,7 +80,7 @@ $darkColor: #555555;
     flex: auto;
     text-align: left;
   }
-  .vertical {
+  &.vertical {
     .linkItem {
       text-align: left;
     }
@@ -111,7 +110,7 @@ $darkColor: #555555;
     background-color: var(--unl-light);
     color: var(--unl-text-dark);
   }
-  .vertical {
+  &.vertical {
     .link {
       border-right: none;
       border-bottom: 1px solid var(--unl-dark-lighter-15);
@@ -157,7 +156,7 @@ $darkColor: #555555;
     background-color: var(--unl-dark);
     color: var(--unl-text-light);
   }
-  .vertical {
+  &.vertical {
     .link {
       border-right: none;
       border-bottom: 1px solid var(--unl-light-darker-15);
@@ -209,7 +208,7 @@ $darkColor: #555555;
     }
   }
 
-  .vertical {
+  &.vertical {
     .authLinks {
       flex-direction: column;
       margin: 20px 0 0;
@@ -236,4 +235,19 @@ $darkColor: #555555;
   max-width: 20px;
   max-height: 20px;
   vertical-align: bottom;
+}
+
+@media screen and (max-width: $break-sm) {
+  .container:not(.none) {
+    flex-direction: column;
+    .navList {
+      flex-direction: column;
+      align-items: normal;
+    }
+    .authLinks {
+      flex-direction: column;
+      margin: 20px 0 0;
+      align-items: normal;
+    }
+  }
 }
