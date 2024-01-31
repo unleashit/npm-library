@@ -9,7 +9,9 @@ interface RowProps {
 function Row({ row: { title, content, author } }: { row: RowProps }) {
   return (
     <li className="pagination__row">
-      <h3 className="pagination__title">{title}</h3>
+      <h2 className="pagination__title">
+        {title[0].toUpperCase() + title.slice(1)}
+      </h2>
       <p className="pagination__author">by {author}</p>
       <div
         className="pagination__content"
