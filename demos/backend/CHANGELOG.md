@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.2.0...@unleashit/demo-backend@2.2.2) (2024-01-31)
+
+**Note:** Version bump only for package @unleashit/demo-backend
+
 ## [2.2.1](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.2.0...@unleashit/demo-backend@2.2.1) (2024-01-13)
 
 **Note:** Version bump only for package @unleashit/demo-backend

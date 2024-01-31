@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.1.13...@unleashit/quick-form@1.2.0) (2024-01-31)
+
+### Features
+
+* **all:** finish adding css vars, css var override and dark mode support ([1044d8d](https://github.com/unleashit/npm-library/commit/1044d8d1f787e3ede88b78bbe5cef5ea4a7788e0))
+
 ## [1.1.14](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.1.13...@unleashit/quick-form@1.1.14) (2024-01-13)
 
 **Note:** Version bump only for package @unleashit/quick-form

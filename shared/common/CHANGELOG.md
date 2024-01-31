@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.3.0...@unleashit/common@1.5.0) (2024-01-31)
+
+### Bug Fixes
+
+* **commom:** add missing props to loader from spinner svg ([4ea6a40](https://github.com/unleashit/npm-library/commit/4ea6a40a1cd0f7c924df7755d88f5a436a3b1244))
+* **common:** changes/fixes to mapColorsToStyles() ([7354ea8](https://github.com/unleashit/npm-library/commit/7354ea8be6b08c74e8987bbd9d3c31bc54193953))
+
+### Features
+
+* **all:** finish adding css vars, css var override and dark mode support ([1044d8d](https://github.com/unleashit/npm-library/commit/1044d8d1f787e3ede88b78bbe5cef5ea4a7788e0))
+* **navigation:** covert sass vars to css vars. Add colors prop to component ([70d90ac](https://github.com/unleashit/npm-library/commit/70d90ac2ea03fbebb63f25787ad3de3e7c972eca))
+
 # [1.4.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.3.0...@unleashit/common@1.4.0) (2024-01-13)
 
 ### Features

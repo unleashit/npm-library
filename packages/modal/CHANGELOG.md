@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/modal@1.1.12...@unleashit/modal@1.2.0) (2024-01-31)
+
+### Bug Fixes
+
+* **modal:** update for new napCSSVarsToStyles api ([8f71a3a](https://github.com/unleashit/npm-library/commit/8f71a3a4ea6467aef62fe508e36ad5e1e11d0420))
+
+### Features
+
+* **all:** finish adding css vars, css var override and dark mode support ([1044d8d](https://github.com/unleashit/npm-library/commit/1044d8d1f787e3ede88b78bbe5cef5ea4a7788e0))
+* **modal:** major refactor and features ([0a5a704](https://github.com/unleashit/npm-library/commit/0a5a7044aefc2b3b70db3714b784832726810a62))
+
 ## [1.1.13](https://github.com/unleashit/npm-library/compare/@unleashit/modal@1.1.12...@unleashit/modal@1.1.13) (2024-01-13)
 
 **Note:** Version bump only for package @unleashit/modal

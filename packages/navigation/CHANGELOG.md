@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.1.13...@unleashit/navigation@1.3.0) (2024-01-31)
+
+### Bug Fixes
+
+* **navigation:** update for new napCSSVarsToStyles api ([e574cf0](https://github.com/unleashit/npm-library/commit/e574cf0f6821d41b77d3cc2401c612c81c32e09d))
+
+### Features
+
+* **all:** finish adding css vars, css var override and dark mode support ([1044d8d](https://github.com/unleashit/npm-library/commit/1044d8d1f787e3ede88b78bbe5cef5ea4a7788e0))
+* **navigation:** covert sass vars to css vars. Add colors prop to component ([70d90ac](https://github.com/unleashit/npm-library/commit/70d90ac2ea03fbebb63f25787ad3de3e7c972eca))
+
 # [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.1.13...@unleashit/navigation@1.2.0) (2024-01-13)
 
 ### Features
