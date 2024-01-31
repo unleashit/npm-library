@@ -4,18 +4,18 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@unleashit/recursive-data-lister.svg)](https://www.npmjs.com/package/@unleashit/recursive-data-lister)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@unleashit/recursive-data-lister.svg)](https://bundlephobia.com/result?p=@unleashit/recursive-data-lister)
 
-React component that recursively outputs a nested list or object with various options for the output.
+React component that recursively pretty prints nested lists or objects with various options for html markup and styling.
 
 ![recursive data lister component](https://github.com/unleashit/npm-library/raw/master/packages/recursiveDataLister/recursive-data-lister.png)
 
 ### Features
 
-- Easily display simple or complex nested lists and objects.
+- Quickly display simple or complex nested lists and objects as html.
 - Choice of html (ul, ol, div, etc.).
-- For arrays of objects, the option to choose a property to use its value as a heading (instead of showing the index).
-- Display as a single list or separate lists per parent.
+- Display as a single list or separate lists per first level parent.
+- For arrays of objects, the option to choose a property to use its value as the heading (replace the numerical index).
 - Handles dates. Either provide a formatter function, or by default they will be converted to strings.
-- Basic default CSS available. CSS module support lets you target internal styles with your own module.
+- Basic default CSS available with easy customization through cssVars prop.
 
 ### Install
 
