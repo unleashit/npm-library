@@ -53,8 +53,26 @@ const Pagination = ({
 
   useEffect(() => {
     const setWidth = throttle(() => {
-      const width = containerRef.current ? containerRef.current.offsetWidth : 0;
-      setContainerWidth(width);
+      let effectiveWidth = 0;
+      if (containerRef.current) {
+        const container = window.getComputedStyle(containerRef.current);
+        const totalWidth = Number(
+          container.getPropertyValue('width').replace(/px$/, ''),
+        );
+
+        // subtract padding plus a buffer to account for smaller overall space
+        // when padding is introduced
+        const leftPad =
+          Number(
+            container.getPropertyValue('padding-left').replace(/px$/, ''),
+          ) * 2;
+        const rightPad =
+          Number(
+            container.getPropertyValue('padding-right').replace(/px$/, ''),
+          ) * 2;
+        effectiveWidth = totalWidth - leftPad - rightPad;
+      }
+      setContainerWidth(effectiveWidth);
     }, 500);
 
     setWidth();

@@ -154,7 +154,41 @@ $darkmode-page-active: $ltgray;
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $break-xs) {
   .number {
+    width: 2.1rem;
+    height: 2.1rem;
+    line-height: 2.1rem;
+    font-size: 0.8rem;
+  }
+  .number {
+    margin-right: 0.4rem;
+  }
+  .ellipsis {
+    margin-right: 0.2rem;
+  }
+  .prev, .chevronLeft {
+    margin-right: 0.3rem;
+  }
+  .chevronRight {
+    margin-left: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .ellipsis {
+    display: none;
+  }
+}
+
+/*
+  hack assumes default padding is set in dark mode theme
+  consider container query if browser support is good enough
+*/
+@media screen and (max-width: 400px) {
+  [data-theme='dark'] {
+    .ellipsis {
+      display: none;
+    }
   }
 }

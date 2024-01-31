@@ -25,8 +25,8 @@ const Numbers = ({
   let maxPages;
   if (containerWidth <= 1000) {
     const [_, breakPointPages]: any = [
-      [450, 2],
-      [550, 3],
+      [340, 2],
+      [380, 3],
       [650, 4],
       [850, 8],
       [1000, 10],
