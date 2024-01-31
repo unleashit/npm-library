@@ -1,4 +1,5 @@
 import React from 'react';
+import { ClsName } from '../../types';
 
 export type SpinnerSVGProps = {
   width?: string;
@@ -8,8 +9,8 @@ export type SpinnerSVGProps = {
 };
 
 function SpinnerSVG({
-  width = '75px',
-  height = '175px',
+  width = '4.688rem',
+  height = '10.938rem',
   color = '#555555',
   opacity = '0.2',
 }: SpinnerSVGProps) {
@@ -22,13 +23,9 @@ function SpinnerSVG({
       xmlns="http://www.w3.org/2000/svg"
       transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"
     >
-      <g id="SVGRepo_bgCarrier" strokeWidth="0" />
-      <g
-        id="SVGRepo_tracerCarrier"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <g id="SVGRepo_iconCarrier">
+      <g strokeWidth="0" />
+      <g strokeLinecap="round" strokeLinejoin="round" />
+      <g>
         <path
           opacity={opacity}
           fillRule="evenodd"
@@ -46,17 +43,21 @@ function SpinnerSVG({
 }
 
 export interface DefaultLoaderProps {
-  clsName: any;
+  clsName: ClsName;
+  width?: string;
+  height?: string;
   color?: string;
   opacity?: string;
 }
 
 export const DefaultLoader = ({
   clsName,
+  width,
+  height,
   color,
   opacity,
 }: DefaultLoaderProps) => (
   <div className={clsName('loader')}>
-    <SpinnerSVG {...(color && { color })} {...(opacity && { opacity })} />
+    <SpinnerSVG color={color} opacity={opacity} width={width} height={height} />
   </div>
 );

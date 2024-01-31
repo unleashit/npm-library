@@ -1,14 +1,18 @@
 .loader {
+  //--unl-loader-margin-top: 4rem;
+  --unl-loader-min-height: 350px;
+  --unl-loader-animation-duration: 1500ms;
+  --unl-loader-animation-timing-function: linear;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
-  min-height: 350px;
+  //margin-top: var(--unl-loader-margin-top);
+  min-height: var(--unl-loader-min-height);
   svg {
     animation-name: unl-spinner-lg;
-    animation-duration: 1500ms;
+    animation-duration: var(--unl-loader-animation-duration);
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: var(--unl-loader-animation-timing-function);
   }
 }
 
