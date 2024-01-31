@@ -65,7 +65,6 @@ export type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   loginLink?: string | false | null;
   loginLinkText?: string;
-  darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };

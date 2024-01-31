@@ -31,9 +31,6 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   forgotPasswordLink?: string | false | null;
   forgotPasswordLinkText?: string;
-  // setting auto or undefined will honor prefers-color-scheme
-  // light or dark will force light or dark mode
-  darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };

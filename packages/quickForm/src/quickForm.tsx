@@ -35,7 +35,6 @@ export type QuickFormProps = Omit<
   // show success msg for x ms, then toggle back to blank form
   // 0 or false to disable toggle and leave message
   successMessageTimeout?: number | false | null;
-  darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
 };
 

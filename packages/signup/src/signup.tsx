@@ -31,7 +31,6 @@ export type SignupProps = Omit<BaseFormProps, 'header'> & {
   orLine?: boolean;
   // position of social logins relative to email login
   childrenPosition?: 'top' | 'bottom';
-  darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };

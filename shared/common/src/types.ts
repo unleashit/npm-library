@@ -72,5 +72,8 @@ export type BaseFormProps = {
   successMessage?: React.FC<any> | string | false | null;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
+  // setting auto or undefined will honor prefers-color-scheme
+  // light or dark will force light or dark mode
+  darkMode?: boolean;
   cssModule?: Record<string, string>;
 };
