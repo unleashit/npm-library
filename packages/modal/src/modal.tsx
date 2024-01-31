@@ -15,8 +15,6 @@ import {
 } from '@unleashit/common';
 import { closeIcon } from './images/icons';
 
-const cssUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax'] as const;
-
 export interface ModalProps {
   isOpen: boolean;
   size?:
@@ -33,12 +31,15 @@ export interface ModalProps {
   footer?: React.FC<any> | string;
   overlayColor?: string | false | null;
   closeBtn?: boolean;
+  darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
   children?: React.ReactNode;
 }
 
 const { genClassNames } = utils;
+
+const cssUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax'] as const;
 
 const varNames = [
   'modalPadding',
@@ -67,6 +68,7 @@ export const Modal = ({
   header: Header,
   footer: Footer,
   overlayColor = 'rgba(0,0,0,.8)',
+  darkMode = false,
   cssVars,
   cssModule = {},
   children,
@@ -141,6 +143,7 @@ export const Modal = ({
     <div
       onClick={handleOverlayClick}
       data-modal="true"
+      data-theme={darkMode ? 'dark' : 'light'}
       className={clsName('overlay')}
       style={{
         backgroundColor: !overlayColor ? 'transparent' : overlayColor,

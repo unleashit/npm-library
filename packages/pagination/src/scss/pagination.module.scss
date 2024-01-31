@@ -1,11 +1,39 @@
 @import 'common_vars';
 
+$lightmode-background: transparent;
+$lightmode-page: $navy;
+$lightmode-page-active: $maroon;
+$darkmode-background: $navy;
+$darkmode-page: $maroon;
+$darkmode-page-active: $ltgray;
+
+/*
+  alt light mode colors
+  $lightmode-page: #a06bad;
+  $lightmode-page-active: #a06bad52;
+*/
+
 .container {
-  background-color: #314262;
-  padding: 30px;
-  color: $white;
+  --unl-light-mode-text: #{$black};
+  --unl-light-mode-container-padding: 1.875rem 0;
+  --unl-light-mode-background-color: #{$lightmode-background};
+  --unl-light-mode-page-number-background: #{$lightmode-page};
+  --unl-light-mode-page-number-background-active: #{$lightmode-page-active};
+  --unl-light-mode-page-number-background-hover: #{$lightmode-page-active};
+  --unl-dark-mode-text: #{$white};
+  --unl-dark-mode-container-padding: 1.875rem;
+  --unl-dark-mode-background-color: #{$darkmode-background};
+  --unl-dark-mode-page-number-background: #{$darkmode-page};
+  --unl-dark-mode-page-number-background-active: #{$darkmode-page-active};
+  --unl-dark-mode-page-number-background-hover: #{$darkmode-page-active};
+  background-color: var(--unl-light-mode-background-color);
+  padding: var(--unl-light-mode-container-padding);
   box-sizing: border-box;
   user-select: none;
+  &[data-theme='dark'] {
+    padding: var(--unl-dark-mode-container-padding);
+    background-color: var(--unl-dark-mode-background-color);
+  }
 }
 
 .container:global(.hidden) {
@@ -25,12 +53,16 @@
   align-items: center;
   background: none;
   border: none;
-  color: $white;
+  color: var(--unl-light-mode-text);
   font-size: 1rem;
   cursor: pointer;
   outline: none;
-  svg {
-    margin-top: .2rem;
+}
+
+[data-theme='dark'] {
+  .next,
+  .prev {
+    color: var(--unl-dark-mode-text);
   }
 }
 
@@ -43,9 +75,9 @@
 }
 
 .number {
-  background-color: $maroon;
+  background-color: var(--unl-light-mode-page-number-background);
   border: none;
-  color: $white;
+  color: var(--unl-dark-mode-text);
   padding: 0;
   display: inline-block;
   width: 2.6rem;
@@ -63,8 +95,26 @@
   }
   &--active,
   &:global(.active) {
-    background-color: $ltgray;
-    color: $black;
+    background-color: var(--unl-light-mode-page-number-background-active);
+    color: var(--unl-dark-mode-text);
+  }
+  &:hover {
+    background-color: var(--unl-light-mode-page-number-background-hover);
+    color: var(--unl-dark-mode-text);
+  }
+}
+
+[data-theme='dark'] .number {
+  background-color: var(--unl-dark-mode-page-number-background);
+  color: var(--unl-dark-mode-text);
+  &--active,
+  &:global(.active) {
+    background-color: var(--unl-dark-mode-page-number-background-active);
+    color: var(--unl-light-mode-text);
+  }
+  &:hover {
+    background-color: var(--unl-dark-mode-page-number-background-hover);
+    color: var(--unl-light-mode-text);
   }
 }
 
@@ -73,12 +123,20 @@
   height: 2.6rem;
   display: flex;
   align-items: center;
+  svg {
+    fill: var(--unl-light-mode-text);
+  }
+}
+
+[data-theme='dark'] .ellipsis svg {
+  fill: var(--unl-dark-mode-text);
 }
 
 .chevronLeft,
 .chevronRight {
-  fill: $white;
+  fill: var(--unl-light-mode-text);
   height: 1.1rem;
+  margin-top: .1rem;
 }
 
 .chevronLeft {
@@ -88,6 +146,13 @@
 .chevronRight {
   margin-left: 0.5rem;
 }
+
+[data-theme='dark'] {
+  .chevronLeft, .chevronRight {
+    fill: var(--unl-dark-mode-text);
+  }
+}
+
 
 @media screen and (max-width: 1000px) {
   .number {

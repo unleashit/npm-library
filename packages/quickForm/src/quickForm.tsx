@@ -13,6 +13,9 @@ import {
   type BaseFormProps,
   utils,
   useSetFocus,
+  CSSVars,
+  mapCSSVarsToStyles,
+  varNamesCommonForm,
 } from '@unleashit/common';
 import {
   defaultContactSchema,
@@ -32,9 +35,13 @@ export type QuickFormProps = Omit<
   // show success msg for x ms, then toggle back to blank form
   // 0 or false to disable toggle and leave message
   successMessageTimeout?: number | false | null;
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
 };
 
 const { genClassNames, getDefaultsFromZodObject } = utils;
+
+const varNames = [...varNamesCommonForm] as const;
 
 function QuickForm({
   handler,
@@ -54,6 +61,8 @@ function QuickForm({
     : defaultContactSchema,
   toast,
   failMsg,
+  darkMode = false,
+  cssVars,
   cssModule = {},
 }: QuickFormProps) {
   // Setup React Hook Form
@@ -101,14 +110,21 @@ function QuickForm({
     [cssModule],
   );
 
-  if (!!successMessage && showSuccessMsg) {
-    return <ShowSuccess successMessage={successMessage} clsName={clsName} />;
+  if (isSubmitting) {
+    return <Loader clsName={clsName} />;
   }
 
   return (
-    <div className={clsName('container')}>
-      {isSubmitting ? (
-        <Loader clsName={clsName} />
+    <div
+      className={clsName('container')}
+      data-theme={darkMode ? 'dark' : 'light'}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
+      {!!successMessage && showSuccessMsg ? (
+        <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
           {!!Header && <Header title={title} clsName={clsName} />}

@@ -12,6 +12,9 @@ import {
   ShowSuccess,
   useSetFocus,
   utils,
+  CSSVars,
+  mapCSSVarsToStyles,
+  varNamesCommonForm,
 } from '@unleashit/common';
 import { FormValues } from './types';
 import defaultLoginSchema from './defaults/schema';
@@ -28,10 +31,20 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   forgotPasswordLink?: string | false | null;
   forgotPasswordLinkText?: string;
+  // setting auto or undefined will honor prefers-color-scheme
+  // light or dark will force light or dark mode
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
 
 const { genClassNames, getDefaultsFromZodObject } = utils;
+
+const varNames = [
+  ...varNamesCommonForm,
+  'orlineColor',
+  'orlineMargin',
+] as const;
 
 export const Login = ({
   handler,
@@ -51,6 +64,8 @@ export const Login = ({
   toast,
   failMsg,
   successMessage = false,
+  darkMode = false,
+  cssVars,
   cssModule = {},
   children,
 }: LoginProps) => {
@@ -97,14 +112,21 @@ export const Login = ({
     reset,
   });
 
-  if (!!successMessage && showSuccessMsg) {
-    return <ShowSuccess successMessage={successMessage} clsName={clsName} />;
+  if (isSubmitting) {
+    return <Loader clsName={clsName} />;
   }
 
   return (
-    <div className={clsName('container')}>
-      {isSubmitting ? (
-        <Loader clsName={clsName} />
+    <div
+      className={clsName('container')}
+      data-theme={darkMode ? 'dark' : 'light'}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
+      {!!successMessage && showSuccessMsg ? (
+        <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
           {Header && (

@@ -1,4 +1,4 @@
-import { utils } from '@unleashit/common';
+import { CSSVars, mapCSSVarsToStyles, utils } from '@unleashit/common';
 import throttle from 'lodash/throttle';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { NextBtn, PrevBtn } from './nextPrevBtns';
@@ -13,12 +13,29 @@ export interface PaginationProps {
   perPage?: number;
   prevLabel?: string;
   nextLabel?: string;
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
 
 export type ClickHandlerEvent = 'next' | 'prev' | 'page';
 
 const { genClassNames } = utils;
+
+const varNames = [
+  'lightModeText',
+  'lightModeContainerPadding',
+  'lightModeBackgroundColor',
+  'lightModePageNumberBackground',
+  'lightModePageNumberBackgroundActive',
+  'lightModePageNumberBackgroundHover',
+  'darkModeText',
+  'darkModeContainerPadding',
+  'darkModeBackgroundColor',
+  'darkModePageNumberBackground',
+  'darkModePageNumberBackgroundActive',
+  'darkModePageNumberBackgroundHover',
+] as const;
 
 const Pagination = ({
   perPage = 10,
@@ -27,6 +44,8 @@ const Pagination = ({
   currentOffset,
   total,
   handler,
+  darkMode = false,
+  cssVars,
   cssModule = {},
 }: PaginationProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -81,7 +100,15 @@ const Pagination = ({
   );
 
   return total > perPage ? (
-    <div className={clsName('container')} ref={containerRef}>
+    <div
+      className={clsName('container')}
+      ref={containerRef}
+      data-theme={darkMode ? 'dark' : 'light'}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
       <div className={clsName('inner')}>
         <PrevBtn
           currentOffset={currentOffset}

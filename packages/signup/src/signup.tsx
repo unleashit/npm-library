@@ -9,6 +9,9 @@ import {
   ShowSuccess,
   useSetFocus,
   utils,
+  CSSVars,
+  mapCSSVarsToStyles,
+  varNamesCommonForm,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -28,10 +31,18 @@ export type SignupProps = Omit<BaseFormProps, 'header'> & {
   orLine?: boolean;
   // position of social logins relative to email login
   childrenPosition?: 'top' | 'bottom';
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
 
 const { genClassNames, getDefaultsFromZodObject } = utils;
+
+const varNames = [
+  ...varNamesCommonForm,
+  'orlineColor',
+  'orlineMargin',
+] as const;
 
 export const Signup = ({
   handler,
@@ -49,6 +60,8 @@ export const Signup = ({
   toast,
   failMsg,
   successMessage = false,
+  darkMode = false,
+  cssVars,
   cssModule = {},
   children,
 }: SignupProps) => {
@@ -99,76 +112,91 @@ export const Signup = ({
     return <ShowSuccess successMessage={successMessage} clsName={clsName} />;
   }
 
-  return (
-    <div className={clsName('container')}>
-      {Header && !isSubmitting && (
-        <Header
-          title={title}
-          loginUrl={loginUrl}
-          linkComponent={LinkComponent}
-          linkComponentHrefAttr={linkComponentHrefAttr}
-          clsName={clsName}
-        />
-      )}
-      {errors.root && !toast && (
-        <div className={clsName('serverAuthError')}>{errors.root.message}</div>
-      )}
-      {isSubmitting ? (
-        <Loader clsName={clsName} />
-      ) : (
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          style={{
-            display: isSubmitting ? 'none' : 'block',
-          }}
-          className={clsName('form')}
-        >
-          {childrenPosition === 'bottom' && (
-            <>
-              <CustomFields
-                componentName={Signup.displayName}
-                fields={customFields}
-                register={register}
-                errors={errors}
-                clsName={clsName}
-              />
+  if (isSubmitting) {
+    return <Loader clsName={clsName} />;
+  }
 
-              <button type="submit" className={clsName('button')}>
-                Signup
-              </button>
-            </>
+  return (
+    <div
+      className={clsName('container')}
+      data-theme={darkMode ? 'dark' : 'light'}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
+      {!!successMessage && showSuccessMsg ? (
+        <ShowSuccess successMessage={successMessage} clsName={clsName} />
+      ) : (
+        <>
+          {Header && (
+            <Header
+              title={title}
+              loginUrl={loginUrl}
+              linkComponent={LinkComponent}
+              linkComponentHrefAttr={linkComponentHrefAttr}
+              clsName={clsName}
+            />
           )}
-          {children && (
-            <div className={clsName('socialButtons')}>
-              {orLine && childrenPosition === 'bottom' && (
-                <div className={clsName('orLine')}>
-                  <span>or</span>
-                </div>
-              )}
-              {children}
-              {orLine && childrenPosition === 'top' && (
-                <div className={clsName('orLine')}>
-                  <span>or</span>
-                </div>
-              )}
+          {errors.root && !toast && (
+            <div className={clsName('serverAuthError')}>
+              {errors.root.message}
             </div>
           )}
-          {childrenPosition === 'top' && (
-            <>
-              <CustomFields
-                componentName={Signup.displayName}
-                fields={customFields}
-                register={register}
-                errors={errors}
-                clsName={clsName}
-              />
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            style={{
+              display: isSubmitting ? 'none' : 'block',
+            }}
+            className={clsName('form')}
+          >
+            {childrenPosition === 'bottom' && (
+              <>
+                <CustomFields
+                  componentName={Signup.displayName}
+                  fields={customFields}
+                  register={register}
+                  errors={errors}
+                  clsName={clsName}
+                />
 
-              <button type="submit" className={clsName('button')}>
-                Signup
-              </button>
-            </>
-          )}
-        </form>
+                <button type="submit" className={clsName('button')}>
+                  Signup
+                </button>
+              </>
+            )}
+            {children && (
+              <div className={clsName('socialButtons')}>
+                {orLine && childrenPosition === 'bottom' && (
+                  <div className={clsName('orLine')}>
+                    <span>or</span>
+                  </div>
+                )}
+                {children}
+                {orLine && childrenPosition === 'top' && (
+                  <div className={clsName('orLine')}>
+                    <span>or</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {childrenPosition === 'top' && (
+              <>
+                <CustomFields
+                  componentName={Signup.displayName}
+                  fields={customFields}
+                  register={register}
+                  errors={errors}
+                  clsName={clsName}
+                />
+
+                <button type="submit" className={clsName('button')}>
+                  Signup
+                </button>
+              </>
+            )}
+          </form>
+        </>
       )}
     </div>
   );

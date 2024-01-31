@@ -1,14 +1,24 @@
 $white: #ffffff;
 $black: #000000;
 $gray: #e8e8e8;
-$red: #e74444;
+$gray-darker-8: darken($gray, 4%);
+$gray-darker-30: darken($gray, 30%);
+$dkgray: #777777;
+$dkgray-darker-8: darken($dkgray, 4%);
+$dkgray-darker-30: darken($dkgray, 30%);
+$red: #e34646;
+//$red: #e63333;
+//$red: #e74444;
 $pink: #e77070;
 $navy: #314262;
 $maroon: #c20562;
 $ltgray: #f2f2f2;
+$skyblue: #91d1ff;
 
-$error-background: #e23d64;
-$error-text: #ffffff;
+// $error-background: $red;
+$error-color: $red;
+$form-border-color: #cccccc;
+$form-border-color-dark: #888888;
 
 // breakpoints
 $break-xs: 500px;

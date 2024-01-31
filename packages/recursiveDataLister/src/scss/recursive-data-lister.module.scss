@@ -1,7 +1,25 @@
+.container {
+  --unl-label-color: inherit;
+  --unl-label-weight: bold;
+  --unl-value-weight: normal;
+  --unl-value-color: inherit;
+  --unl-array-branch-label-weight: 'normal';
+  --unl-level-indent: 1.875rem;
+  --unl-bullet-color: inherit;
+  --unl-list-style-level1: disc;
+  --unl-list-style-level2: circle;
+  --unl-list-style-level3: square;
+  --unl-list-style-level4: circle;
+  --unl-list-style-level5: square;
+  --unl-list-style-level6: circle;
+  --unl-list-style-level7: square;
+  --unl-top-level-parent-border: 1px solid #ccc;
+}
+
 .topLevelParent {
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: var(--unl-top-level-parent-border);
   &:last-child {
     border: none;
     margin-bottom: 0;
@@ -9,30 +27,46 @@
 }
 
 ul.topLevelParent {
-  padding-left: 30px;
+  padding-left: var(--unl-level-indent);
+  list-style: var(--unl-list-style-level1);
+  li::marker {
+    color: var(--unl-bullet-color);
+  }
   ul {
-    padding-left: 30px;
+    padding-left: var(--unl-level-indent);
+  }
+  li li {
+    list-style: var(--unl-list-style-level2);
+  }
+  li li li {
+    list-style: var(--unl-list-style-level3);
   }
   li li li li {
-    list-style: circle;
+    list-style: var(--unl-list-style-level4);
   }
   li li li li li {
-    list-style: square;
+    list-style: var(--unl-list-style-level5);
   }
   li li li li li li {
-    list-style: circle;
+    list-style: var(--unl-list-style-level6);
   }
   li li li li li li li {
-    list-style: square;
+    list-style: var(--unl-list-style-level7);
   }
 }
 
 .label, .branchLabel {
-  font-weight: bold;
+  font-weight: var(--unl-label-weight);
+  color: var(--unl-label-color)
 }
 
 .arrayBranchLabel {
-  font-weight: normal;
+  font-weight: var(--unl-array-branch-label-weight);
+}
+
+.value {
+  color: var(--unl-value-color);
+  font-weight: var(--unl-value-weight);
 }
 
 /* divs don't have the same defaults as lists */

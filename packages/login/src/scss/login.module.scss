@@ -2,24 +2,28 @@
 @import 'common_form_base';
 @import 'common_loaders';
 
+.container {
+  --unl-orline-color: #{$form-border-color};
+  --unl-orline-margin: 2rem 0;
+}
+
 .socialButtons {
   text-align: center;
 }
 
 .orLine {
   position: relative;
-  margin: 2rem 0;
+  margin: var(--unl-orline-margin);
   font-size: .85rem;
   line-height: normal;
   text-transform: uppercase;
-  color: #444;
   span::before,
   span::after {
     content: '';
     position: absolute;
     width: calc(50% - 32px);
     height: 1px;
-    background-color: #ccc;
+    background-color: var(--unl-orline-color);
     top: 8px;
   }
   span::before {

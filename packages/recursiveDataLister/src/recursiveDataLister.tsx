@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { utils } from '@unleashit/common';
+import { CSSVars, mapCSSVarsToStyles, utils } from '@unleashit/common';
 import Row from './Row';
 import { DateFormat, isObjectNotArray } from './utils';
 
@@ -18,10 +18,29 @@ export interface RecursiveDataListerProps {
   removeRepeatedProp?: boolean;
   // Function to transform Date objects
   dateFormat?: DateFormat;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
 
 const { genClassNames } = utils;
+
+const varNames = [
+  'labelColor',
+  'labelWeight',
+  'valueWeight',
+  'valueColor',
+  'arrayBranchLabelWeight',
+  'levelIndent',
+  'bulletColor',
+  'listStyleLevel1',
+  'listStyleLevel2',
+  'listStyleLevel3',
+  'listStyleLevel4',
+  'listStyleLevel5',
+  'listStyleLevel6',
+  'listStyleLevel7',
+  'topLevelParentBorder',
+] as const;
 
 const RecursiveDataLister = ({
   data,
@@ -30,6 +49,7 @@ const RecursiveDataLister = ({
   arrayBranchProp = null,
   removeRepeatedProp = false,
   dateFormat = (val: Date) => val.toString(),
+  cssVars,
   cssModule,
 }: RecursiveDataListerProps): React.ReactElement => {
   const { clsName } = React.useMemo(
@@ -56,11 +76,21 @@ const RecursiveDataLister = ({
     />
   );
 
-  return multiList
-    ? data.map(
-        (row: unknown[]): React.ReactElement => renderRow<unknown[]>(row),
-      )
-    : renderRow<unknown[] | Record<string, unknown>>(data);
+  return (
+    <div
+      className={clsName('container')}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
+      {multiList
+        ? data.map(
+            (row: unknown[]): React.ReactElement => renderRow<unknown[]>(row),
+          )
+        : renderRow<unknown[] | Record<string, unknown>>(data)}
+    </div>
+  );
 };
 
 RecursiveDataLister.displayName = 'recursiveDataLister';

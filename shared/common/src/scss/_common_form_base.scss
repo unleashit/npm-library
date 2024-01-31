@@ -1,3 +1,47 @@
+@import 'common_vars';
+
+.container {
+  --unl-form-padding: 0;
+  --unl-form-light-mode-text: #{$black};
+  --unl-form-dark-mode-text: #{$white};
+  --unl-form-light-mode-background: transparent;
+  --unl-form-dark-mode-background: #{$black};
+  --unl-form-light-mode-link-color: inherit;
+  --unl-form-dark-mode-link-color: inherit;
+  --unl-form-light-mode-field-background: #{$white};
+  --unl-form-dark-mode-field-background: #{$white};
+  --unl-form-light-mode-border-color: #{$form-border-color};
+  --unl-form-dark-mode-border-color: #{$form-border-color-dark};
+  --unl-form-light-mode-button-color: #{$gray};
+  --unl-form-dark-mode-button-color: #{$dkgray};
+  --unl-form-button-hover-color: #{$gray-darker-8};
+  --unl-form-dark-mode-button-hover-color: #{$dkgray-darker-8};
+  --unl-form-field-group-margin: 0.8rem;
+  --unl-form-error-color: #{$error-color};
+  --unl-form-error-border-color: #{$error-color};
+  --unl-form-root-error-color: var(--unl-form-dark-mode-text);
+  --unl-form-root-error-background: var(--unl-form-error-color);
+  --unl-form-light-mode-focus-color: #{$gray-darker-30};
+  --unl-success-justify-content: center;
+  --unl-success-align-items: center;
+  --unl-success-font-size: inherit;
+  padding: var(--unl-form-padding);
+  background-color: var(--unl-form-light-mode-background);
+  a:link, a:visited, a:hover, a:active {
+    color: var(--unl-form-light-mode-link-color);
+  }
+  &[data-theme='dark'] {
+    background-color: var(--unl-form-dark-mode-background);
+    color: var(--unl-form-dark-mode-text);
+  }
+}
+
+[data-theme='dark']  {
+  a:link, a:visited, a:hover, a:active {
+    color: var(--unl-form-dark-mode-link-color);
+  }
+}
+
 .header {
   h2 {
     font-weight: normal;
@@ -9,17 +53,19 @@
   margin-top: 2.5rem;
 }
 
-// TODO: should be .fieldGroup in markup (remove .formGroup after conversion)
+/*
+ * TODO: should be .fieldGroup in markup (remove .formGroup after conversion)
+ */
 .formGroup,
 .fieldGroup {
-  margin-bottom: 0.8rem;
+  margin-bottom: var(--unl-form-field-group-margin);
 }
 
 .input,
 .textarea {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid var(--unl-form-light-mode-border-color);
   border-radius: 5px;
   padding: 0.7rem 0.5rem;
 }
@@ -35,14 +81,36 @@
 .select {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid var(--unl-form-light-mode-border-color);
   border-radius: 5px;
   padding: 0.7rem 0.5rem;
 }
 
+.input,
+.textarea,
+.select {
+  background-color: var(--unl-form-light-mode-field-background);
+  &:focus-visible {
+    border: none;
+    outline: 2px solid var(--unl-form-light-mode-border-color);
+  }
+}
+
+[data-theme='dark'] {
+  .input,
+  .textarea,
+  .select {
+    border: 0;
+    background-color: var(--unl-form-dark-mode-field-background);
+    &:focus-visible {
+      outline: 3px dotted var(--unl-form-dark-mode-border-color);
+    }
+  }
+}
+
 .inputError {
   display: block;
-  border-color: $red;
+  border-color: var(--unl-form-error-border-color);
 }
 
 .label {
@@ -53,33 +121,51 @@
 .button {
   display: block;
   width: 100%;
-  margin-top: 1.2rem;
+  margin-top: 2rem;
   padding: 0.7rem 0.5rem;
+  color: inherit;
   border: none;
   border-radius: 5px;
-  background-color: $gray;
+  background-color: var(--unl-form-light-mode-button-color);
   font-size: 1rem;
   cursor: pointer;
   outline: none;
   &:active,
   &:hover {
-    background-color: darken($gray, 8);
+    background-color: var(--unl-form-button-hover-color);
   }
-  &:focus {
-    background-color: darken($gray, 8);
-    border: 1px solid darken($gray, 30);
+  &:focus-visible {
+    background-color: var(--unl-form-button-hover-color);
+    border: 1px solid var(--unl-form-light-mode-focus-color);
+  }
+}
+
+[data-theme='dark'] .button {
+  color: var(--unl-form-dark-mode-text);
+  background-color: var(--unl-form-dark-mode-button-color);
+  &:hover {
+    background-color: var(--unl-form-dark-mode-button-hover-color);
+  }
+  &:focus-visible {
+    border: 0;
+    background-color: var(--unl-form-dark-mode-button-hover-color);
+    outline: 2px dotted var(--unl-form-dark-mode-border-color);
   }
 }
 
 .errorMessage {
-  color: $red;
+  display: block;
+  margin-top: .3rem;
+  color: var(--unl-form-error-color);
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 .serverAuthError {
   margin: 1rem 0;
   padding: 0.7rem 0.5rem;
-  color: $error-text;
-  background-color: $error-background;
+  color: var(--unl-form-root-error-color);
+  background-color: var(--unl-form-root-error-background);
   border-radius: 5px;
   text-align: center;
 }
@@ -91,3 +177,13 @@
 .forgotPasswordLink {
   margin-top: 1.75rem;
 }
+
+/* success messages or components */
+.success {
+  font-size: var(--unl-success-font-size);
+}
+
+[data-theme='dark'] .success {
+  color: var(--unl-form-dark-mode-text);
+}
+

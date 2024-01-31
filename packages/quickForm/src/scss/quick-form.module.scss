@@ -2,11 +2,12 @@
 @import 'common_form_base';
 @import 'common_loaders';
 
-.success {
-  display: flex;
-  min-height: 350px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 2rem;
+.container {
+  --unl-success-font-size: 2rem;
+  &:has(.success) {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

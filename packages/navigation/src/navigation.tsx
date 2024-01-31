@@ -17,10 +17,11 @@ export interface NavigationProps {
   linkComponentHrefAttr?: string;
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
   template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
-  cssVars?: CSSVars<typeof varNames>;
   classes?: string[];
   isAuth?: boolean;
   authLinks?: AuthLinkTypes;
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
 
@@ -78,6 +79,7 @@ const Navigation = ({
   authLinks,
   linkComponent = DefaultLinkComponent,
   linkComponentHrefAttr = 'href',
+  darkMode = false,
   cssModule = {},
 }: NavigationProps): React.ReactElement => {
   // show default authLinks if isAuth is provided.
@@ -113,6 +115,7 @@ const Navigation = ({
           direction,
           clsName,
         )}${mapArrayToClasses<NavigationProps['classes']>(classes)}`}
+        data-theme={darkMode ? 'dark' : 'light'}
         style={mapCSSVarsToStyles<typeof varNames>({
           cssVars,
           varNames,

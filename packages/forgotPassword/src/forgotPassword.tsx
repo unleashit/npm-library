@@ -12,6 +12,9 @@ import {
   useShowSuccessTimer,
   useSetFocus,
   utils,
+  varNamesCommonForm,
+  CSSVars,
+  mapCSSVarsToStyles,
 } from '@unleashit/common';
 // import { Field, Form, FormikProps, withFormik } from 'formik';
 
@@ -62,10 +65,14 @@ export type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   loginLink?: string | false | null;
   loginLinkText?: string;
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
 
 const { genClassNames, getDefaultsFromZodObject } = utils;
+
+const varNames = [...varNamesCommonForm] as const;
 
 export const ForgotPassword = ({
   handler,
@@ -83,6 +90,8 @@ export const ForgotPassword = ({
   loginLinkText = 'Back to Login',
   linkComponent: LinkComponent = DefaultLinkComponent,
   linkComponentHrefAttr = 'href',
+  darkMode = false,
+  cssVars,
   cssModule = {},
   children,
 }: ForgotPasswordProps) => {
@@ -128,14 +137,21 @@ export const ForgotPassword = ({
     reset,
   });
 
-  if (!!successMessage && showSuccessMsg) {
-    return <ShowSuccess successMessage={successMessage} clsName={clsName} />;
+  if (isSubmitting) {
+    return <Loader clsName={clsName} />;
   }
 
   return (
-    <div className={clsName('container')}>
-      {isSubmitting ? (
-        <Loader clsName={clsName} />
+    <div
+      className={clsName('container')}
+      data-theme={darkMode ? 'dark' : 'light'}
+      style={mapCSSVarsToStyles<typeof varNames>({
+        cssVars,
+        varNames,
+      })}
+    >
+      {!!successMessage && showSuccessMsg ? (
+        <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
           {Header && <Header title={title} clsName={clsName} />}
