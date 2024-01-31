@@ -11,16 +11,6 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/pagination" className="main-navigation__link">
-            Pagination
-          </Link>
-        </li>
-        <li>
-          <Link to="/navigation" className="main-navigation__link">
-            Navigation
-          </Link>
-        </li>
-        <li>
           <Link to="/login" className="main-navigation__link">
             Login
           </Link>
@@ -44,13 +34,18 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/async-handler" className="main-navigation__link">
-            Async Handler
+          <Link to="/quick-form" className="main-navigation__link">
+            Quick Form
           </Link>
         </li>
         <li>
-          <Link to="/recursive-data-lister" className="main-navigation__link">
-            Recursive Data Lister
+          <Link to="/navigation" className="main-navigation__link">
+            Navigation
+          </Link>
+        </li>
+        <li>
+          <Link to="/pagination" className="main-navigation__link">
+            Pagination
           </Link>
         </li>
         <li>
@@ -59,8 +54,13 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/quick-form" className="main-navigation__link">
-            Contact (Quick Form)
+          <Link to="/recursive-data-lister" className="main-navigation__link">
+            Recursive Data Lister
+          </Link>
+        </li>
+        <li>
+          <Link to="/async-handler" className="main-navigation__link">
+            Async Handler (deprecated)
           </Link>
         </li>
       </ul>

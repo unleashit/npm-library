@@ -22,7 +22,7 @@ function App() {
         <Router>
           <div className="app-container">
             <Navigation />
-            <div className="component-container">
+            <main className="component-container">
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/pagination" element={<Pagination />} />
@@ -42,7 +42,7 @@ function App() {
                 <Route path="/modal" element={<ModalDemo />} />
                 <Route path="/quick-form" element={<ContactDemo />} />
               </Routes>
-            </div>
+            </main>
           </div>
         </Router>
       </ErrorBoundary>

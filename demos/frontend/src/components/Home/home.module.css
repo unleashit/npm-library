@@ -1,0 +1,4 @@
+a.package, a:link.package, a:visited.package, a:hover.package, a:active.package {
+  color: black;
+  text-decoration: none;
+}
