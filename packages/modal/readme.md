@@ -105,6 +105,8 @@ export interface Props {
   footer?: React.FC<ModalProps> | string;
   overlayColor?: string;
   closeBtn?: boolean;
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: { [key: string]: string };
   children?: React.ReactNode;
 }
@@ -124,5 +126,7 @@ export interface Props {
 | footer                | React.FC<ModalProps> &#124; React.ReactElement &#124; string | optional footer component or string                                                           | n/a                    |
 | overlayColor          | string                                                       | color for the overlay                                                                         | no color               |
 | closeBtn              | boolean                                                      | show the default close icon                                                                   | true                   |
+| darkMode              | boolean                                                      | enables dark mode                                                                             | false                  |
+| cssVars               | object                                                       | optional object to override css custom properties                                             | undefined              |
 | cssModule             | { [key: string]: string }                                    | CSS Module object that optionally replaces default. Class names need to match expected names. | undefined              |
 | children              | React Children                                               | content of the modal                                                                          | n/a                    |

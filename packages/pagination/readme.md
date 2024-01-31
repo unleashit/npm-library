@@ -97,4 +97,6 @@ Basic namespaced (BEM) css can be imported: `import '@unleashit/pagination/dist/
 | perPage       | Number                      | Number of items per page                                                                     | 10        |
 | prevLabel     | String                      | Label for previous button                                                                    | 'prev'    |
 | nextLabel     | String                      | Label for next button                                                                        | 'next'    |
+| darkMode      | boolean                     | enables dark mode                                                                            | false     |
+| cssVars       | object                      | optional object to override css custom properties                                            | undefined |
 | cssModule     | Record<string, string>      | CSS Module object that optionally replaces default. Class names need to match expected names | undefined |

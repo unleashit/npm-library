@@ -170,6 +170,7 @@ type BaseFormProps = {
   successMessage?: React.FC<any> | string | false | null;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
+  darkMode?: boolean;
   cssModule?: Record<string, string>;
 };
 
@@ -180,6 +181,7 @@ type LoginProps = Omit<BaseFormProps, 'header'> & {
   childrenPosition?: 'top' | 'bottom';
   forgotPasswordLink?: string | false | null;
   forgotPasswordLinkText?: string;
+  cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
 ```

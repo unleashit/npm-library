@@ -14,7 +14,7 @@ React component that recursively pretty prints nested lists or objects with vari
 - Choice of html (ul, ol, div, etc.).
 - Display as a single list or separate lists per first level parent.
 - For arrays of objects, the option to choose a property to use its value as the heading (replace the numerical index).
-- Handles dates. Either provide a formatter function, or by default they will be converted to strings.
+- Handles dates. Either provide a formatter function, or by default will be displayed as strings. Also attempts to find and handle dates in string values.
 - Basic default CSS available with easy customization through cssVars prop.
 
 ### Install
@@ -62,10 +62,10 @@ const users = [
 const RecursiveDataListerDemo = () => (
   <RecursiveDataLister
     data={users}
-    multiList={true} // For array only: show first level children as separate parents. False is default (outputs as a single top level html list)
+    multiList={true} // For top level array only: show first level children as separate lists. False is default (outputs as a single top level html list)
     tag="ul" // parent html tag. ul is default, you can also choose ol or div
     arrayBranchProp="title" // if set, this will use the property as node labels for arrays of objects (instead of the index). Careful with this, it only works with one property!
-    removeRepeatedProp={true} // false is default. If arrayBranchProp is set, this will remove the prop from the array so it isn't repeated
+    removeRepeatedProp={true} // false is default. If arrayBranchProp is set, this will remove the prop from the object so it isn't repeated
   />
 );
 
@@ -94,6 +94,7 @@ interface RecursiveDataListerProps {
   removeRepeatedProp?: boolean;
   // Function to transform Date objects or strings (ex: stringified dates)
   dateFormat?: (val: Date | string) => string | number;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
 ```
@@ -106,4 +107,5 @@ interface RecursiveDataListerProps {
 | arrayBranchProp    | string          | if set, it will use the property as branch labels for arrays of objects (instead of the index) | null                      |
 | removeRepeatedProp | boolean         | If arrayBranchProp is set, this will remove the prop from the array so it isn't repeated       | false                     |
 | dateFormat         | function        | Callback to process Date objects or strings, receives the Date or Date like string             | (elem) => elem.toString() |
+| cssVars            | object          | optional object to override css custom properties                                              | undefined                 |
 | cssModule          | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | undefined                 |

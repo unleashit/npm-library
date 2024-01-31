@@ -18,7 +18,6 @@ Customizable navigation component for React. Comes with optional sidecar compone
 - Horizontal or Vertical display.
 - Can independently control display state of each link.
 - Optional login/logout/signup sidecar can be positioned independently from main links.
-- Auth sidecar has typical defaults, but customizable.
 - Accepts custom attributes per link.
 - Several CSS themes to choose, or make your own.
 - CSS module support can override internal styles with a custom module.
@@ -186,6 +185,8 @@ interface NavigationProps {
   classes?: string[]; // optional classes to be added nav elem
   isAuth?: boolean; // if set, adds default login, logout and sign up links
   authLinks?: AuthLinkTypes; // customize default authLinks (requires isAuth to be set)
+  darkMode?: boolean;
+  cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
 
@@ -220,4 +221,6 @@ export interface AuthLinkTypes {
 | classes               | array                    | optional array of classes to add to nav element                                                                            | undefined  |
 | isAuth                | boolean                  | if set, component will set appropriate state to login/logout/signup links                                                  | undefined  |
 | authLinks             | AuthLinkTypes            | if set, these links will be added to the auth sidecar (a second ul within the nav container that can be styled separately) | undefined  |
+| darkMode              | boolean                  | enables dark mode                                                                                                          | false      |
+| cssVars               | object                   | optional object to override css custom properties                                                                          | undefined  |
 | cssModule             | Record<string, string>   | CSS Module object that optionally replaces default. Class names need to match expected names.                              | undefined  |

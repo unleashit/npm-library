@@ -179,6 +179,7 @@ type BaseFormProps = {
   successMessage?: React.FC<any> | string | false | null;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
+  darkMode?: boolean;
   cssModule?: Record<string, string>;
 };
 
@@ -190,6 +191,7 @@ type SignupProps = Omit<BaseFormProps, 'header'> & {
   orLine?: boolean;
   // position of social logins relative to email login
   childrenPosition?: 'top' | 'bottom';
+  cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
 ```

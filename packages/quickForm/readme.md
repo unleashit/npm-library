@@ -223,6 +223,7 @@ type BaseFormProps = {
   successMessage?: React.FC<any> | string | false | null;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
+  darkMode?: boolean;
   cssModule?: Record<string, string>;
 };
 
@@ -235,6 +236,7 @@ type QuickFormProps = Omit<
   // show success msg for x ms, then toggle back to blank form
   // 0 or false to disable toggle and leave message
   successMessageTimeout?: number | false | null;
+  cssVars?: CSSVars<typeof varNames>;
 };
 ```
 
