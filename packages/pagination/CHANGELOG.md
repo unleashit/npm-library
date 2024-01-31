@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@1.2.0...@unleashit/pagination@1.2.1) (2024-01-31)
+
+### Bug Fixes
+
+* **pagination:** consider padding in container query and css ([2ccf613](https://github.com/unleashit/npm-library/commit/2ccf61304b8d302f585d9973ab2b78258f19dd93))
+
 # [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/pagination@1.1.13...@unleashit/pagination@1.2.0) (2024-01-31)
 
 ### Features
