@@ -2,42 +2,91 @@
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 
-NX and PNPM workspaces monorepo of various UI components, written with Typescript and tested with Jest. Individually installable as NPM modules.
+NX and PNPM workspaces monorepo of React UI components. Written with Typescript and individually installable with npm.
 
 Demo: https://npm-library-demo.vercel.app
 
 ### React Components
 
-1. [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable login component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer, forgot password and social login buttons. Assumes Peer depenencies of React, React Hook Form and Zod.
-2. [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable signup component in Typescript that validates with a built-in or custom Yup schema. It accepts custom fields, header/footer and social sign up buttons. Assumes Peer depenencies of React, React Hook Form and Zod.
-3. [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable set of forgot password components in Typescript that validate with a built-in or custom Yup schema. It accepts custom fields, custom header/footer and includes both reset request and actual reset views. Assumes Peer dependencies of React, React Hook Form and Zod.
-4. [Quick Form](https://github.com/unleashit/npm-library/tree/master/packages/quickForm) - Form generator that can quickly produce any type of simple form. Defaults as a contact form. Assumes Peer dependencies of React, React Hook Form and Zod.
-5. [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable auth aware navigation component in Typescript with optional sidecar component for login/login/signup.
-6. [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - responsive pagination component in Typescript. Just give it a total, current offset and handler and it returns the new offset when the user interacts. Assumes a peer dependency of React.
-7. [Modal](https://github.com/unleashit/npm-library/tree/master/packages/modal) - customizable modal component in Typescript. Optional animation support when adding/removing from DOM. Assumes a peer dependency of React.
-8. [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that outputs a nested object/array recursively with options such as choice of html and choice of leaf key for arrays of objects.
-9. [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** _this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks._
+FORMS
 
-### Other
+- [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable, responsive login component with server support that validates against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
+- [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable, responsive signup component with server support that validates against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
+- [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable, responsive set of forgot password components with server support that validate against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
+- [Quick Form](https://github.com/unleashit/npm-library/tree/master/packages/quickForm) - form generator that can quickly produce simple React forms with validation and server support. By default, it is a Contact form. Peer deps: `react-hook-form` and `zod`.
 
-A [demo app](https://github.com/unleashit/npm-library/tree/master/demos/frontend) is available for previewing the components that can be run in parallel with a [demo backend](https://github.com/unleashit/npm-library/tree/master/demos/backend) to test server functionality.
+UI WIDGETS
+
+- [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable, responsive navigation component. Supports auth states and comes with an optional sidecar component for login/logout/signup.
+- [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - sexy and responsive pagination component for React.
+- [Modal](https://github.com/unleashit/npm-library/tree/master/packages/modal) - customizable, responsive, portal free modal component. Optional animation state support when adding/removing from DOM.
+
+OTHER
+
+- [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that recursively pretty prints nested lists or objects with various options for html markup and styling.
+- [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks.
+- [demo app](https://github.com/unleashit/npm-library/tree/master/demos/frontend) is available for previewing the components that can be run in parallel with a [demo backend](https://github.com/unleashit/npm-library/tree/master/demos/backend) to demonstrate server functionality.
 
 ### How to Use
 
-- Install the individual components via NPM. See each component.
+- Install the individual components via npm. See each component.
 
 - To run the demo app (including backend): `pnpm dev`
 
+### CSS Custom Properties
+
+For quick and easy theming, all components accept a `cssVars` prop. Assuming you have imported the css using one of the methods in the CSS section below, you can use `cssVars` to override any of the component's css variables. Here's an example:
+
+```tsx
+// Note: for a proper example of Modal, see the docs.
+// This just shows how to add css property overrides.
+
+const cssVars = {
+  lightModeBackgroundColor: '#dddddd',
+  modalYPosition: '3rem', // default is vertically centered in the viewport
+};
+
+// keys should equal the css custom property name in camel case, minus the unl- prefix
+
+<Modal isOpen={isOpen} cssVars={cssVars}>
+  Welcome to our website!
+</Modal>;
+```
+
+> If you are using Typescript, Intellisense can give you the list of possible variables. Without TS, you find them by inspecting the parent element in browser dev tools.
+
+### Dark Mode
+
+All components except recursive-data-lister and async-handler support dark mode. However, `prefers-color-scheme` is not queried so it is up to you to manually set the `darkMode` (boolean) prop. This is to give you the flexibility to integrate it with for example a light/dark switch, or however else you like.
+
+> css custom properties each have light and dark mode versions. Don't forget to style both when overriding.
+
 ### CSS
 
-By default, components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
+By default, all components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
 
-To use the standard version, either import it from `@unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path) or copy it into your project.
+To use the standard version, import it like `import @unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path). Alternatively you can copy it into your project if your build process doesn't support importing css.
 
-Support for CSS modules is baked in. All React UI components accept an optional `cssModule` prop where you can pass in either a provided or a custom CSS module. The provided version, same as the BEM but with short/camel cased names, can be imported like `@unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for CSS Module support in create-react-app).
+Or if you are using CSS Modules, all of the UI components accept an optional `cssModule` prop where you can pass in either the provided or a custom CSS module. The provided version can be imported like `import css from @unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for automatic CSS Module support in most React frameworks).
 
-Using the `cssModules` prop and your own modules, you can target any of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` (keeping in mind that sometimes not all possible targets are utilized) or the source code. Another option is to simply look at the markup in dev tools and translate the default BEM classnames like `unl-[component-name]__[style-name-with-dashes]` to `[styleNameCamelCase]` in your module.
+Using the `cssModule` prop and your own modules, you can target any of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` (keeping in mind that sometimes not all possible targets are utilized) or the source code. Another option is to simply look at the markup in dev tools and translate the default BEM classnames like `unl-[component-name]__[style-name-with-dashes]` to `[styleNameCamelCase]` in your module.
 
-Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided (and matching) class names will remain BEM.
+You could also easily use the default styles as a base, then override only certain styles like:
 
-If anyone has likes this novel way to provide CSS with a library, or have any ideas to improve it please let me know. If you're a Tailwind or CSS-in-JS user, you should repent. But if you insist on adding technical debt and spaghetti to your project, feel free! You might skill be able to make use of the cssModules prop if your library works with classes (e.g. Aphrodite).
+```tsx
+import defaultCSS from '@unleashit/login/dist/login.module.css';
+import overrides from './styles/login-overrides.module.css';
+
+const cssModule = {
+  ...defaultCSS,
+  ...overrides,
+};
+
+const MyLogin = () => <Login handler={/* ... */} cssModule={cssModule} />;
+```
+
+Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided class names will remain BEM.
+
+#### Tailwind or CSS-in-JS
+
+If you are using either of these abominations in a web application you should repent. But if you insist on adding technical debt and spaghetti to your project, you should still be able to make use of the `cssModule` prop if your library works with classes (e.g. Aphrodite or Tailwind). In that case, the key would be the camel cased class to target and the value would be a standard className string.
