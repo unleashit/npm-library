@@ -43,7 +43,7 @@ function ForgotPasswordDemo() {
     // success property of true indicates all validations pass
     // errors named after field names will display with fields
     // error with property of "root" will display at the top or sent to toast
-    return await fetch('https://api.example.com/reset-request', {
+    return await fetch('https://api.example.com/forgot-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -70,14 +70,14 @@ Note that `onSuccess` is optional. By default, the user will be shown a generic 
 
 ```typescript jsx
 import ForgotPasswordReset, {
-  FormValues,
-  ServerResponse,
+  FormValuesReset,
+  ServerResponseReset,
 } from '@unleashit/forgot-password';
 
 function ForgotPasswordResetDemo() {
   const forgotPasswordResetHandler = async (
-    values: FormValues,
-  ): Promise<ServerResponse> => {
+    values: FormValuesReset,
+  ): Promise<ServerResponseReset> => {
     // userID and token are extracted from url
     const [token, userid] = new URL(window.location.href).pathname
       .split('/')
@@ -85,7 +85,7 @@ function ForgotPasswordResetDemo() {
       .reverse();
 
     return await fetch(
-      `https://api.example.com/password-reset/${userid}/${token}`,
+      `https://api.example.com/forgot-password/${userid}/${token}`,
       {
         method: 'POST',
         headers: {
@@ -96,7 +96,7 @@ function ForgotPasswordResetDemo() {
     ).then((resp) => resp.json());
   };
 
-  const onSuccess = (resp: ServerResponse) => {
+  const onSuccess = (resp: ServerResponseReset) => {
     console.log(resp);
   };
 
