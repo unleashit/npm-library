@@ -40,7 +40,7 @@ export const validatePassword = ({
   const errors: ValidationErrors<TokenPostBody> = {};
   const validUser = '1';
   const validToken = '1234567890';
-  // const pwdReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  const pwdReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   if (!token || token !== validToken || !id || id !== validUser) {
     errors.root = 'Unauthorized';
@@ -56,14 +56,18 @@ export const validatePassword = ({
     errors.newPasswordConfirm = 'Password confirm is required';
   }
 
-  // if (newPassword !== newPasswordConfirm) {
-  //   errors.root = errors.newPasswordConfirm =
-  //     'Password and password confirm must match';
-  // }
-  // if (!pwdReg.test(newPassword)) {
-  //   errors.root = errors.newPassword =
-  //     'Password must contain a min of 8 characters and have at least 1 letter and 1 number';
-  // }
+  if (newPassword !== newPasswordConfirm) {
+    const msg = 'Password and password confirmation must match';
+    errors.root = msg;
+    errors.newPasswordConfirm = msg;
+  }
+
+  if (newPassword && !pwdReg.test(newPassword)) {
+    const msg =
+      'Password must contain a min of 8 characters and have at least 1 letter and 1 number';
+    errors.root = msg;
+    errors.newPassword = msg;
+  }
 
   return errors;
 };
