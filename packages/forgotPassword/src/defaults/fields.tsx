@@ -1,6 +1,6 @@
 import { CustomField } from '@unleashit/common';
 
-const defaultLoginFields: CustomField[] = [
+export const defaultForgotPasswordFields: CustomField[] = [
   {
     element: 'input',
     type: 'text',
@@ -10,4 +10,18 @@ const defaultLoginFields: CustomField[] = [
   },
 ];
 
-export default defaultLoginFields;
+export const defaultForgotPasswordResetFields: CustomField[] = [
+  {
+    element: 'input',
+    type: 'password',
+    name: 'newPassword',
+    label: 'New Password',
+    focus: true,
+  },
+  {
+    element: 'input',
+    type: 'password',
+    name: 'newPasswordConfirm',
+    label: 'Password confirm',
+  },
+];
