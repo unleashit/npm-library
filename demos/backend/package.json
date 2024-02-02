@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/demo-backend",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "main": "src/index.ts",
   "license": "MIT",
   "private": true,

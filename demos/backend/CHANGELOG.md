@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.2.2...@unleashit/demo-backend@2.3.0) (2024-02-02)
+
+### Features
+
+* **demo:** add forgot password reset to backend demo ([7d12fba](https://github.com/unleashit/npm-library/commit/7d12fba1b8a848e8c9570a1f2a5015615992ceaf))
+
 ## [2.2.2](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.2.0...@unleashit/demo-backend@2.2.2) (2024-01-31)
 
 **Note:** Version bump only for package @unleashit/demo-backend

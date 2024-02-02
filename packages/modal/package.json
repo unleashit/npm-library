@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/modal",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Responsive modal component for React with custom header, footer and more.",
   "main": "src/index.ts",
   "types": "src/index.d.ts",

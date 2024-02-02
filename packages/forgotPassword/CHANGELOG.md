@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@1.2.0...@unleashit/forgot-password@1.3.1) (2024-02-02)
+
+### Bug Fixes
+
+* **forgotPassword:** refactor and reenable forgot password reset ([c6e2208](https://github.com/unleashit/npm-library/commit/c6e220814a65dd04bc5f0c81b13d79b2ef391a2a))
+
 # [1.2.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@1.1.12...@unleashit/forgot-password@1.2.0) (2024-01-31)
 
 ### Features
