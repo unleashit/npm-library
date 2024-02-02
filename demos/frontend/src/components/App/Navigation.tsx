@@ -27,7 +27,7 @@ function Navigation() {
         </li>
         <li>
           <Link
-            to="/forgot-password/reset/1/1234567890"
+            to="/forgot-password/1/1234567890"
             className="main-navigation__link"
           >
             Forgot Password Reset

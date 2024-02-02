@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AsyncHandler from '../asyncHandler';
 import ForgotPassword from '../forgotPassword';
-// import ForgotPasswordReset from '../forgotPasswordReset';
+import ForgotPasswordReset from '../forgotPasswordReset';
 import Home from '../Home/Home';
 import Login from '../login';
 import ModalDemo from '../modal';
@@ -30,10 +30,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
-                {/* <Route */}
-                {/*  path="/forgot-password/reset/:userid/:token" */}
-                {/*  element={<ForgotPasswordReset />} */}
-                {/* /> */}
+                <Route
+                  path="/forgot-password/:userid/:token"
+                  element={<ForgotPasswordReset />}
+                />
                 <Route path="/async-handler" element={<AsyncHandler />} />
                 <Route
                   path="/recursive-data-lister"
