@@ -10,6 +10,11 @@ class Home extends React.Component {
 
         <h3>Forms</h3>
         <p>
+          The form components have a mock backend just for demonstration
+          purposes. You can view the form states, try sample users to get server
+          feedback, etc.
+        </p>
+        <p>
           <strong>
             <Link to="/login" className={css.package}>
               Login
