@@ -13,6 +13,7 @@ const defaultLoginFields: CustomField[] = [
     type: 'password',
     name: 'password',
     label: 'Password',
+    clearOnServerError: true,
   },
 ];
 

@@ -38,7 +38,7 @@ export type QuickFormProps = Omit<
   cssVars?: CSSVars<typeof varNames>;
 };
 
-const { genClassNames, getDefaultsFromZodObject } = utils;
+const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 
 const varNames = [...varNamesCommonForm] as const;
 
@@ -69,6 +69,7 @@ function QuickForm({
     register,
     handleSubmit,
     reset,
+    setValue,
     setError,
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
@@ -98,10 +99,22 @@ function QuickForm({
         onSuccess,
         toast,
         failMsg,
+        setValue,
         setError,
         reset,
+        clearOnError: clearOnError(customFields),
       }),
-    [schema, handler, onSuccess, toast, failMsg, setError, reset],
+    [
+      schema,
+      handler,
+      onSuccess,
+      toast,
+      failMsg,
+      setValue,
+      setError,
+      reset,
+      customFields,
+    ],
   );
 
   const { clsName } = React.useMemo(

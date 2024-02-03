@@ -35,7 +35,7 @@ export type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   children?: React.ReactNode;
 };
 
-const { genClassNames, getDefaultsFromZodObject } = utils;
+const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 
 const varNames = [...varNamesCommonForm] as const;
 
@@ -64,6 +64,7 @@ export const ForgotPassword = ({
     register,
     handleSubmit,
     reset,
+    setValue,
     setError,
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
@@ -84,10 +85,22 @@ export const ForgotPassword = ({
         onSuccess,
         toast,
         failMsg,
+        setValue,
         setError,
         reset,
+        clearOnError: clearOnError(customFields),
       }),
-    [schema, handler, onSuccess, toast, failMsg, setError, reset],
+    [
+      schema,
+      handler,
+      onSuccess,
+      toast,
+      failMsg,
+      setValue,
+      setError,
+      reset,
+      customFields,
+    ],
   );
 
   const { clsName } = React.useMemo(

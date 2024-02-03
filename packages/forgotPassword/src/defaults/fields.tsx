@@ -17,11 +17,13 @@ export const defaultForgotPasswordResetFields: CustomField[] = [
     name: 'newPassword',
     label: 'New Password',
     focus: true,
+    clearOnServerError: true,
   },
   {
     element: 'input',
     type: 'password',
     name: 'newPasswordConfirm',
     label: 'Password confirm',
+    clearOnServerError: true,
   },
 ];

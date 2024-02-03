@@ -25,11 +25,22 @@ export interface CustomFieldsProps<TSchema extends ZodTypeAny = ZodTypeAny> {
 
 export interface CustomField {
   element: 'input' | 'select' | 'textarea';
+  // html type attribute for the field
   type: string;
+  // html name attribute for the field
   name: string;
+  // html label elem text
   label?: string;
+  // set the browser focus to this field on mount
+  // only the first field with the attribute will be focused
   focus?: boolean;
+  // clear the field value on server error
+  // use for example to reset password fields on bad logins, etc.
+  clearOnServerError?: boolean;
+  // array of html option key/value pairs
+  // only applicable to select elements (optgroup and datalist not yet supported)
   options?: Array<[string, string, OptionHTMLAttributes<any>?]>;
+  // any other html attributes to apply to the field
   attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
 }
 

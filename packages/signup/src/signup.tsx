@@ -35,7 +35,7 @@ export type SignupProps = Omit<BaseFormProps, 'header'> & {
   children?: React.ReactNode;
 };
 
-const { genClassNames, getDefaultsFromZodObject } = utils;
+const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 
 const varNames = [
   ...varNamesCommonForm,
@@ -68,6 +68,7 @@ export const Signup = ({
     register,
     handleSubmit,
     reset,
+    setValue,
     setError,
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
@@ -89,10 +90,22 @@ export const Signup = ({
         onSuccess,
         toast,
         failMsg,
+        setValue,
         setError,
         reset,
+        clearOnError: clearOnError(customFields),
       }),
-    [schema, handler, onSuccess, toast, failMsg, setError, reset],
+    [
+      schema,
+      handler,
+      onSuccess,
+      toast,
+      failMsg,
+      setValue,
+      setError,
+      reset,
+      customFields,
+    ],
   );
 
   const { clsName } = React.useMemo(

@@ -13,12 +13,14 @@ const defaultLoginFields: CustomField[] = [
     name: 'password',
     type: 'password',
     label: 'Password',
+    clearOnServerError: true,
   },
   {
     element: 'input',
     name: 'passwordConfirm',
     type: 'password',
     label: 'Password confirm',
+    clearOnServerError: true,
   },
 ];
 

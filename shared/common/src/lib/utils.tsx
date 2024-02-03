@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { z } from 'zod';
 import { prefix } from './constants';
+import { CustomField } from '../components/forms/CustomFields';
 
 export const removeUndefined = (val: unknown[]) =>
   val.filter((v) => v !== undefined);
@@ -99,4 +100,10 @@ export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
       getDefaultValue(value),
     ]),
   );
+}
+
+export function clearOnError(fields: CustomField[]) {
+  return fields
+    .filter((field) => field.clearOnServerError)
+    .map((field) => field.name);
 }
