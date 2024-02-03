@@ -46,7 +46,7 @@ const varNames = [
 export const Login = ({
   handler,
   onSuccess,
-  title = 'Login',
+  headerText = 'Login',
   signupUrl = '/signup',
   header: Header = DefaultLoginHeader,
   loader: Loader = DefaultLoader,
@@ -141,7 +141,7 @@ export const Login = ({
         <>
           {Header && (
             <Header
-              title={title}
+              title={headerText}
               signupUrl={signupUrl}
               linkComponent={LinkComponent}
               linkComponentHrefAttr={linkComponentHrefAttr}

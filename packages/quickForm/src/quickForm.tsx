@@ -45,7 +45,7 @@ const varNames = [...varNamesCommonForm] as const;
 function QuickForm({
   handler,
   onSuccess,
-  title = 'Contact Us',
+  headerText = 'Contact Us',
   header: Header = DefaultHeader,
   footer: Footer,
   loader: Loader = DefaultLoader,
@@ -139,7 +139,7 @@ function QuickForm({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {!!Header && <Header title={title} clsName={clsName} />}
+          {!!Header && <Header title={headerText} clsName={clsName} />}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}

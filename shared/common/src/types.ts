@@ -57,7 +57,7 @@ export type BaseFormProps = {
   onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
     resp: ServerResponse<FormValues<T>, Meta>,
   ) => void;
-  title?: string;
+  headerText?: string;
   header?: React.FC<DefaultHeaderProps> | false | null;
   footer?: React.FC<any>;
   loader?: React.FC<DefaultLoaderProps>;

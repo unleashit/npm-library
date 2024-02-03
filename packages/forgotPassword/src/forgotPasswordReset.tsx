@@ -39,7 +39,7 @@ const varNames = [...varNamesCommonForm] as const;
 export const ForgotPasswordReset = ({
   handler,
   onSuccess,
-  title = 'Reset Password',
+  headerText = 'Reset Password',
   header: Header = DefaultForgotPasswordResetHeader,
   loader: Loader = DefaultLoader,
   childrenPosition = 'bottom',
@@ -125,7 +125,7 @@ export const ForgotPasswordReset = ({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {Header && <Header title={title} clsName={clsName} />}
+          {Header && <Header title={headerText} clsName={clsName} />}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}
