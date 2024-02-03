@@ -25,7 +25,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// async..await is not allowed in global scope, must use a wrapper
+transporter.verify((err) => {
+  if (err) {
+    console.error(err);
+  }
+});
+
 export async function email({ to, subject, text, html }: EmailOpts) {
   if (!text && !html) {
     throw new Error('Either text or html must be provided in email opts');
