@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.16](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@1.1.15...@unleashit/async-handler@1.1.16) (2024-02-03)
+
+**Note:** Version bump only for package @unleashit/async-handler
+
 ## [1.1.15](https://github.com/unleashit/npm-library/compare/@unleashit/async-handler@1.1.14...@unleashit/async-handler@1.1.15) (2024-02-02)
 
 **Note:** Version bump only for package @unleashit/async-handler

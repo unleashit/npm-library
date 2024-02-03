@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.2.1...@unleashit/quick-form@1.3.0) (2024-02-03)
+
+### Features
+
+* **forms:** password and any other field values can now be cleared after invalid logins, etc ([c6116a3](https://github.com/unleashit/npm-library/commit/c6116a38afdbef0c260706fa6bbb37ef5af383d9))
+
 ## [1.2.1](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.2.0...@unleashit/quick-form@1.2.1) (2024-02-02)
 
 **Note:** Version bump only for package @unleashit/quick-form
