@@ -70,7 +70,6 @@ export function formHandler({
               setValue(field, '');
             });
         } catch (e) {
-          console.log(clearOnError);
           console.error(e);
         }
       }

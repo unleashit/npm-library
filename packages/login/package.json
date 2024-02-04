@@ -61,6 +61,7 @@
   "peerDependencies": {
     "react": "16.x || 17.x || 18.x",
     "react-hook-form": "7.x",
+    "@hookform/resolvers": "3.x",
     "zod": "3.x"
   },
   "dependencies": {
