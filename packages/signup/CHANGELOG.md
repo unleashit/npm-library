@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.4.0...@unleashit/signup@1.4.1) (2024-02-17)
+
+### Bug Fixes
+
+* **form:** rename text to headerText in BaseFormProps ([d2f7aa2](https://github.com/unleashit/npm-library/commit/d2f7aa2cf1bbd3a9248ffec0b9cb1f2b39ac3aaa))
+
 # [1.4.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.3.1...@unleashit/signup@1.4.0) (2024-02-03)
 
 ### Features

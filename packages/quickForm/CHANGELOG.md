@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.3.0...@unleashit/quick-form@1.3.1) (2024-02-17)
+
+### Bug Fixes
+
+* **form:** rename text to headerText in BaseFormProps ([d2f7aa2](https://github.com/unleashit/npm-library/commit/d2f7aa2cf1bbd3a9248ffec0b9cb1f2b39ac3aaa))
+* **forms:** add missing @hookform/resolvers peer dep on a few forms components ([3ce596a](https://github.com/unleashit/npm-library/commit/3ce596ababfb34340447eadc6fe9e5ea33ded400))
+
 # [1.3.0](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.2.1...@unleashit/quick-form@1.3.0) (2024-02-03)
 
 ### Features

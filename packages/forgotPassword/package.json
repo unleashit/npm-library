@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Responsive forgot password and reset components for React with custom fields.",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
@@ -60,9 +60,9 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
+    "@hookform/resolvers": "3.x",
     "react": "16.x || 17.x || 18.x",
     "react-hook-form": "7.x",
-    "@hookform/resolvers": "3.x",
     "zod": "3.x"
   },
   "dependencies": {
