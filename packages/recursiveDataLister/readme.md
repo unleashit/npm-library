@@ -23,89 +23,10 @@ React component that recursively pretty prints nested lists or objects with vari
 npm install @unleashit/recursive-data-lister
 ```
 
-Required peer dependencies: react.
+### Documentation
 
-### Example
+https://unleashit.github.io/npm-library/components/recursiveDataLister
 
-```javascript
-import React from 'react';
-import RecursiveDataLister from '@unleashit/recursive-data-lister';
+### Demo
 
-const users = [
-  {
-    id: 1,
-    name: 'joe',
-    booksRead: [
-      {
-        title: 'The Castle',
-        author: 'Franz Kafka',
-      },
-      {
-        title: 'Waynes World 2',
-        author: 'Mike Meyers IV',
-      },
-    ],
-  },
-  {
-    id: 2,
-    name: 'judy',
-    booksRead: [
-      {
-        title: 'The Overcoat',
-        author: 'Nikolai Gogol',
-        editions: ['first: 1842', 'second: 1844'],
-      },
-    ],
-  },
-];
-
-const RecursiveDataListerDemo = () => (
-  <RecursiveDataLister
-    data={users}
-    multiList={true} // For top level array only: show first level children as separate lists. False is default (outputs as a single top level html list)
-    tag="ul" // parent html tag. ul is default, you can also choose ol or div
-    arrayBranchProp="title" // if set, this will use the property as node labels for arrays of objects (instead of the index). Careful with this, it only works with one property!
-    removeRepeatedProp={true} // false is default. If arrayBranchProp is set, this will remove the prop from the object so it isn't repeated
-  />
-);
-
-export default RecursiveDataListerDemo;
-```
-
-### CSS
-
-Basic namespaced (BEM) css can be imported: `import '@unleashit/recursive-data-lister/dist/recursive-data-lister.css'`. Alternatively, if you use CSS Modules you can `import css from '@unleashit/recursive-data-lister/dist/recursive-data-lister.module.css'` and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names. Please see CSS in the main readme of the repo for more info.
-
-### API and Props
-
-```typescript
-interface RecursiveDataListerProps {
-  data: Record<string, any> | any[];
-  // Top level html tag for the list, like ul, ol or div
-  tag?: keyof JSX.IntrinsicElements;
-  // Display in multiple ul, ol, etc. lists per parent
-  // Data must be an array
-  multiList?: boolean;
-  // When a branch is an array, select a property to be used as a label instead
-  // of the index. Note: this is a global setting, and applies to all child arrays
-  // If the prop isn't found, the index will be used anyway
-  arrayBranchProp?: string | null;
-  // By default, the arrayBranchProp will be repeated in the list
-  removeRepeatedProp?: boolean;
-  // Function to transform Date objects or strings (ex: stringified dates)
-  dateFormat?: (val: Date | string) => string | number;
-  cssVars?: CSSVars<typeof varNames>;
-  cssModule?: Record<string, string>;
-}
-```
-
-| Name               | Type            | Description                                                                                    | default                   |
-| ------------------ | --------------- | ---------------------------------------------------------------------------------------------- | ------------------------- |
-| data               | object or array | object to display                                                                              | required                  |
-| multilist          | boolean         | For array only: show first level children as separate parents                                  | false                     |
-| tag                | string          | Parent HTML tag for a choice of ordered/unordered list or plain divs                           | ul                        |
-| arrayBranchProp    | string          | if set, it will use the property as branch labels for arrays of objects (instead of the index) | null                      |
-| removeRepeatedProp | boolean         | If arrayBranchProp is set, this will remove the prop from the array so it isn't repeated       | false                     |
-| dateFormat         | function        | Callback to process Date objects or strings, receives the Date or Date like string             | (elem) => elem.toString() |
-| cssVars            | object          | optional object to override css custom properties                                              | undefined                 |
-| cssModule          | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | undefined                 |
+https://npm-library-demo.vercel.app/recursive-data-lister

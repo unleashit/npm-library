@@ -4,7 +4,13 @@
 
 NX and PNPM workspaces monorepo of React UI components. Written with Typescript and individually installable with npm.
 
-Demo: https://npm-library-demo.vercel.app
+### Documentation
+
+https://unleashit.github.io/npm-library
+
+### Demo
+
+https://npm-library-demo.vercel.app
 
 ### React Components
 
@@ -27,66 +33,66 @@ OTHER
 - [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks.
 - [demo app](https://github.com/unleashit/npm-library/tree/master/demos/frontend) is available for previewing the components that can be run in parallel with a [demo backend](https://github.com/unleashit/npm-library/tree/master/demos/backend) to demonstrate server functionality.
 
-### How to Use
-
-- Install the individual components via npm. See each component.
-
-- To run the demo app (including backend): `pnpm dev`
-
-### CSS Custom Properties
-
-For quick and easy theming, all components accept a `cssVars` prop. Assuming you have imported the css using one of the methods in the CSS section below, you can use `cssVars` to override any of the component's css variables. Here's an example:
-
-```tsx
-// Note: for a proper example of Modal, see the docs.
-// This just shows how to add css property overrides.
-
-const cssVars = {
-  lightModeBackgroundColor: '#dddddd',
-  modalYPosition: '3rem', // default is vertically centered in the viewport
-};
-
-// keys should equal the css custom property name in camel case, minus the unl- prefix
-
-<Modal isOpen={isOpen} cssVars={cssVars}>
-  Welcome to our website!
-</Modal>;
-```
-
-> If you are using Typescript, Intellisense can give you the list of possible variables. Without TS, you find them by inspecting the parent element in browser dev tools.
-
-### Dark Mode
-
-All components except recursive-data-lister and async-handler support dark mode. However, `prefers-color-scheme` is not queried so it is up to you to manually set the `darkMode` (boolean) prop. This is to give you the flexibility to integrate it with for example a light/dark switch, or however else you like.
-
-> css custom properties each have light and dark mode versions. Don't forget to style both when overriding.
-
-### CSS
-
-By default, all components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
-
-To use the standard version, import it like `import @unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path). Alternatively you can copy it into your project if your build process doesn't support importing css.
-
-Or if you are using CSS Modules, all of the UI components accept an optional `cssModule` prop where you can pass in either the provided or a custom CSS module. The provided version can be imported like `import css from @unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for automatic CSS Module support in most React frameworks).
-
-Using the `cssModule` prop and your own modules, you can target any of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` (keeping in mind that sometimes not all possible targets are utilized) or the source code. Another option is to simply look at the markup in dev tools and translate the default BEM classnames like `unl-[component-name]__[style-name-with-dashes]` to `[styleNameCamelCase]` in your module.
-
-You could also easily use the default styles as a base, then override only certain styles like:
-
-```tsx
-import defaultCSS from '@unleashit/login/dist/login.module.css';
-import overrides from './styles/login-overrides.module.css';
-
-const cssModule = {
-  ...defaultCSS,
-  ...overrides,
-};
-
-const MyLogin = () => <Login handler={/* ... */} cssModule={cssModule} />;
-```
-
-Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided class names will remain BEM.
-
-#### Tailwind or CSS-in-JS
-
-If you are using either of these abominations in a web application you should repent. But if you insist on adding technical debt and spaghetti to your project, you should still be able to make use of the `cssModule` prop if your library works with classes (e.g. Aphrodite or Tailwind). In that case, the key would be the camel cased class to target and the value would be a standard className string.
+[//]: # '### How to Use'
+[//]: #
+[//]: # '- Install the individual components via npm. See each component.'
+[//]: #
+[//]: # '- To run the demo app (including backend): `pnpm dev`'
+[//]: #
+[//]: # '### CSS Custom Properties'
+[//]: #
+[//]: # "For quick and easy theming, all components accept a `cssVars` prop. Assuming you have imported the css using one of the methods in the CSS section below, you can use `cssVars` to override any of the component's css variables. Here's an example:"
+[//]: #
+[//]: # '```tsx'
+[//]: # '// Note: for a proper example of Modal, see the docs.'
+[//]: # '// This just shows how to add css property overrides.'
+[//]: #
+[//]: # 'const cssVars = {'
+[//]: # "  lightModeBackgroundColor: '#dddddd',"
+[//]: # "  modalYPosition: '3rem', // default is vertically centered in the viewport"
+[//]: # '};'
+[//]: #
+[//]: # '// keys should equal the css custom property name in camel case, minus the unl- prefix'
+[//]: #
+[//]: # '<Modal isOpen={isOpen} cssVars={cssVars}>'
+[//]: # '  Welcome to our website!'
+[//]: # '</Modal>;'
+[//]: # '```'
+[//]: #
+[//]: # '> If you are using Typescript, Intellisense can give you the list of possible variables. Without TS, you find them by inspecting the parent element in browser dev tools.'
+[//]: #
+[//]: # '### Dark Mode'
+[//]: #
+[//]: # 'All components except recursive-data-lister and async-handler support dark mode. However, `prefers-color-scheme` is not queried so it is up to you to manually set the `darkMode` (boolean) prop. This is to give you the flexibility to integrate it with for example a light/dark switch, or however else you like.'
+[//]: #
+[//]: # "> css custom properties each have light and dark mode versions. Don't forget to style both when overriding."
+[//]: #
+[//]: # '### CSS'
+[//]: #
+[//]: # 'By default, all components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.'
+[//]: #
+[//]: # "To use the standard version, import it like `import @unleashit/[package-name]/dist/[component-name].css` (see each component's readme for exact path). Alternatively you can copy it into your project if your build process doesn't support importing css."
+[//]: #
+[//]: # 'Or if you are using CSS Modules, all of the UI components accept an optional `cssModule` prop where you can pass in either the provided or a custom CSS module. The provided version can be imported like `import css from @unleashit/[package-name]/dist/[component-name].module.css` (the `*.module.css` convention allows for automatic CSS Module support in most React frameworks).'
+[//]: #
+[//]: # "Using the `cssModule` prop and your own modules, you can target any of the component's internal classnames as long as you name the styles correctly. To find the right names, check out the component's `*.module.css` (keeping in mind that sometimes not all possible targets are utilized) or the source code. Another option is to simply look at the markup in dev tools and translate the default BEM classnames like `unl-[component-name]__[style-name-with-dashes]` to `[styleNameCamelCase]` in your module."
+[//]: #
+[//]: # 'You could also easily use the default styles as a base, then override only certain styles like:'
+[//]: #
+[//]: # '```tsx'
+[//]: # "import defaultCSS from '@unleashit/login/dist/login.module.css';"
+[//]: # "import overrides from './styles/login-overrides.module.css';"
+[//]: #
+[//]: # 'const cssModule = {'
+[//]: # '  ...defaultCSS,'
+[//]: # '  ...overrides,'
+[//]: # '};'
+[//]: #
+[//]: # 'const MyLogin = () => <Login handler={/* ... */} cssModule={cssModule} />;'
+[//]: # '```'
+[//]: #
+[//]: # 'Each component that uses CSS will output BEM class names by default. If a `cssModule` prop is passed in with matching classes, a hashed style class name will output for each match while non-provided class names will remain BEM.'
+[//]: #
+[//]: # '#### Tailwind or CSS-in-JS'
+[//]: #
+[//]: # 'If you are using either of these abominations in a web application you should repent. But if you insist on adding technical debt and spaghetti to your project, you should still be able to make use of the `cssModule` prop if your library works with classes (e.g. Aphrodite or Tailwind). In that case, the key would be the camel cased class to target and the value would be a standard className string.'
