@@ -197,7 +197,6 @@ type BaseFormProps = {
 
 type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultForgotPasswordHeaderProps> | false | null;
-  signupUrl?: string;
   childrenPosition?: 'top' | 'bottom';
   loginLink?: string | false | null;
   loginLinkText?: string;

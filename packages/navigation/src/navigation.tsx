@@ -11,6 +11,7 @@ import NavContext from './NavContext';
 import { addTemplateClasses, mapArrayToClasses } from './utils/generateClasses';
 import { AuthLinkTypes, NavigationLink } from './types';
 
+// mdx_navigation_props_start
 export interface NavigationProps {
   links: NavigationLink[];
   linkComponent?: React.ComponentType<any>;
@@ -24,6 +25,7 @@ export interface NavigationProps {
   cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
+// mdx_navigation_props_end
 
 const { genClassNames } = utils;
 

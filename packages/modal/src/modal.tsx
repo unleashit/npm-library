@@ -15,6 +15,7 @@ import {
 } from '@unleashit/common';
 import { closeIcon } from './images/icons';
 
+// mdx_modal_props_start
 export interface ModalProps {
   isOpen: boolean;
   size?:
@@ -36,6 +37,7 @@ export interface ModalProps {
   cssModule?: Record<string, string>;
   children?: React.ReactNode;
 }
+// mdx_modal_props_end
 
 const { genClassNames } = utils;
 

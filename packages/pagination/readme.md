@@ -15,7 +15,7 @@ Responsive pagination component for React. Just give it a total number of items 
 - Gracefully supports unlimited pages
 - Automatically hides next/prev buttons when not needed
 - Customizable labels
-- Default CSS or fully customizable
+- Default CSS with light/dark mode available
 - CSS module support can override internal styles with a custom module
 
 ### Install

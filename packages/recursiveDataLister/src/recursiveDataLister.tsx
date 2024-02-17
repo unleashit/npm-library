@@ -3,6 +3,7 @@ import { CSSVars, mapCSSVarsToStyles, utils } from '@unleashit/common';
 import Row from './Row';
 import { DateFormat, isObjectNotArray } from './utils';
 
+// mdx_recursive_dl_props_start
 export interface RecursiveDataListerProps {
   data: Record<string, any> | any[];
   // Top level html tag for the list, like ul, ol or div
@@ -21,6 +22,7 @@ export interface RecursiveDataListerProps {
   cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
+// mdx_recursive_dl_props_end
 
 const { genClassNames } = utils;
 

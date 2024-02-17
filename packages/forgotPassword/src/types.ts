@@ -1,6 +1,6 @@
 import {
   FormValues as FormValuesBase,
-  ServerResponse as ServerResponseBase,
+  BaseServerResponse,
 } from '@unleashit/common';
 import { z } from 'zod';
 import {
@@ -21,11 +21,11 @@ export type FormValuesReset<
 export type ServerResponse<
   TFormValues extends Record<string, any> = FormValues,
   Meta extends Record<string, any> = Record<string, any>,
-> = ServerResponseBase<TFormValues, Meta>;
+> = BaseServerResponse<TFormValues, Meta>;
 
 export type ServerResponseReset<
   TFormValues extends Record<string, any> = FormValuesReset,
   Meta extends Record<string, any> = Record<string, any>,
-> = ServerResponseBase<TFormValues, Meta>;
+> = BaseServerResponse<TFormValues, Meta>;
 
 export { type CustomField } from '@unleashit/common';

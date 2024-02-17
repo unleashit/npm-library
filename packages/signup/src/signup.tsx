@@ -23,6 +23,7 @@ import { FormValues } from './types';
 import defaultSignupSchema from './defaults/schema';
 import defaultSignupFields from './defaults/fields';
 
+// mdx_signup_props_start
 export type SignupProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultSignupHeaderProps> | false | null;
   // link to login page, when using default login header
@@ -34,6 +35,7 @@ export type SignupProps = Omit<BaseFormProps, 'header'> & {
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
+// mdx_signup_props_end
 
 const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 

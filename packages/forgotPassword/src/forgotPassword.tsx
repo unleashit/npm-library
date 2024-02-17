@@ -25,15 +25,16 @@ import { defaultForgotPasswordSchema } from './defaults/schema';
 import { defaultForgotPasswordFields } from './defaults/fields';
 import { FormValues } from './types';
 
+// mdx_fp_props_start
 export type ForgotPasswordProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultForgotPasswordHeaderProps> | false | null;
-  signupUrl?: string;
   childrenPosition?: 'top' | 'bottom';
   loginLink?: string | false | null;
   loginLinkText?: string;
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
+// mdx_fp_props_end
 
 const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 

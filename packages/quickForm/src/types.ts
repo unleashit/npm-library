@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import {
   FormValues as FormValuesBase,
-  ServerResponse as ServerResponseBase,
+  BaseServerResponse,
 } from '@unleashit/common';
 import {
   defaultContactSchema,
@@ -19,10 +19,12 @@ type DefaultContactSchemas =
 export type FormValues<T extends z.ZodTypeAny = DefaultContactSchemas> =
   FormValuesBase<T>;
 
+// mdx_server_response_start
 export type ServerResponse<
   TFormValues extends Record<string, any> = FormValues,
   Meta extends Record<string, any> = Record<string, any>,
-> = ServerResponseBase<TFormValues, Meta>;
+> = BaseServerResponse<TFormValues, Meta>;
+// mdx_server_response_end
 
 // type ContactSchema<T extends z.ZodTypeAny = DefaultContactSchemas> = z.infer<T>;
 

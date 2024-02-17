@@ -22,7 +22,9 @@ export const isObjectNotDate = (
   elem: Record<string, unknown> | any[],
 ): boolean => typeof elem === 'object' && !isDate(elem);
 
+// mdx_recursive_dl_date_start
 export type DateFormat = (val: Date) => string | number;
+// mdx_recursive_dl_date_end
 
 export const handleDate = (elem: Date, cb: DateFormat): string | number =>
   cb(elem);

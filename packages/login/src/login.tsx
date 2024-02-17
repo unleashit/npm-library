@@ -24,6 +24,7 @@ import {
   DefaultLoginHeaderProps,
 } from './defaults/components';
 
+// mdx_login_props_start
 export type LoginProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultLoginHeaderProps> | false | null;
   signupUrl?: string;
@@ -34,6 +35,7 @@ export type LoginProps = Omit<BaseFormProps, 'header'> & {
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
+// mdx_login_props_end
 
 const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 

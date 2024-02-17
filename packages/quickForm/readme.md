@@ -8,6 +8,8 @@ Quick Form is a form builder that lets you crank out simple forms fast. It's a w
 
 \* When no config or schema are provided, Quick Form defaults as a standard contact form.
 
+![quick form](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/quick-form/quick-form.png)
+
 ### Install
 
 Required peer dependencies: **react**, **react-hook-form** and **zod**.

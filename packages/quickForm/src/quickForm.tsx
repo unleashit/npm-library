@@ -26,6 +26,7 @@ import {
   defaultContactFieldsWithPhone,
 } from './defaults/defaultFields';
 
+// mdx_quickForm_props_start
 export type QuickFormProps = Omit<
   BaseFormProps,
   'linkComponent' | 'linkComponentHrefAttr'
@@ -37,6 +38,7 @@ export type QuickFormProps = Omit<
   successMessageTimeout?: number | false | null;
   cssVars?: CSSVars<typeof varNames>;
 };
+// mdx_quickForm_props_end
 
 const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 

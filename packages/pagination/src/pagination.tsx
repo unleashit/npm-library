@@ -4,8 +4,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { NextBtn, PrevBtn } from './nextPrevBtns';
 import Numbers from './numbers';
 
+// mdx_pagination_handler_start
 export type PaginationHandler = (newOffset: number) => void;
+// mdx_pagination_handler_end
 
+// mdx_pagination_props_start
 export interface PaginationProps {
   currentOffset: number;
   handler: PaginationHandler;
@@ -17,6 +20,7 @@ export interface PaginationProps {
   cssVars?: CSSVars<typeof varNames>;
   cssModule?: Record<string, string>;
 }
+// mdx_pagination_props_end
 
 export type ClickHandlerEvent = 'next' | 'prev' | 'page';
 

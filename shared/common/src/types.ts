@@ -25,7 +25,8 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> &
 export type TextAreaProps = InputHTMLAttributes<HTMLTextAreaElement> &
   CommonFormProps;
 
-export type ServerResponse<
+// mdx_server_response_start
+export type BaseServerResponse<
   TFormValues extends Record<string, string | string[]> = Record<string, any>,
   Meta extends Record<string, any> = Record<string, any>,
 > = {
@@ -39,23 +40,22 @@ export type ServerResponse<
     // pass any failing formValues
     // as key=name of field, value=message or array of messages to print
   } & Partial<TFormValues>;
-} & Meta; // TODO: should Meta be forced optional?
-
-// & {
-//   [Prop in keyof Meta]?: Meta[Prop];
-// };
+} & Meta;
+// mdx_server_response_end
+// TODO: should Meta be forced optional?
 
 export type FormValues<T extends ZodTypeAny, K = z.infer<T>> = {
   // [Prop in keyof K]: K[Prop] | K[Prop][];
   [Prop in keyof K]: K[Prop];
 };
 
+// mdx_base_form_start
 export type BaseFormProps = {
   handler: <T extends ZodTypeAny>(
     values: FormValues<T>,
-  ) => Promise<ServerResponse<FormValues<T>>>;
+  ) => Promise<BaseServerResponse<FormValues<T>>>;
   onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
-    resp: ServerResponse<FormValues<T>, Meta>,
+    resp: BaseServerResponse<FormValues<T>, Meta>,
   ) => void;
   headerText?: string;
   header?: React.FC<DefaultHeaderProps> | false | null;
@@ -77,3 +77,4 @@ export type BaseFormProps = {
   darkMode?: boolean;
   cssModule?: Record<string, string>;
 };
+// mdx_base_form_end

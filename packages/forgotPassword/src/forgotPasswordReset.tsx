@@ -24,13 +24,14 @@ import { defaultForgotPasswordResetSchema } from './defaults/schema';
 import { defaultForgotPasswordResetFields } from './defaults/fields';
 import { FormValuesReset } from './types';
 
+// mdx_fpreset_props_start
 export type ForgotPasswordResetProps = Omit<BaseFormProps, 'header'> & {
   header?: React.FC<DefaultForgotPasswordHeaderProps> | false | null;
-  signupUrl?: string;
   childrenPosition?: 'top' | 'bottom';
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
 };
+// mdx_fpreset_props_end
 
 const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
 

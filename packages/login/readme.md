@@ -27,7 +27,7 @@ Customizable React login component that validates against a default or custom Zo
 npm install @unleashit/login
 ```
 
-**Peer dependencies:** react, react-hook-form and zod.
+**Peer dependencies:** react, react-hook-form, @hookform/resolvers and zod.
 
 ### Example
 
