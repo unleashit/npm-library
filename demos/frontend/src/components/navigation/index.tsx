@@ -56,6 +56,7 @@ const NavigationDemo = () => (
       isAuth={false}
       template="dark-buttons"
       direction="vert"
+      classes={['narrow']}
     />
     <p>"none" template with auth sidecar</p>
     <Navigation links={links} isAuth={false} template="none" />
