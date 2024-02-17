@@ -11,14 +11,14 @@ const config: Config = {
   url: 'https://unleashit.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/npm-library',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'unleashit', // Usually your GitHub org/user name.
-  projectName: 'npm-library.github.io', // Usually your repo name.
+  projectName: 'npm-library', // Usually your repo name.
   deploymentBranch: 'gh-pages',
-  // trailingSlash: true,
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
