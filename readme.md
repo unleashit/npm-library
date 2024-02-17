@@ -1,8 +1,8 @@
-## NPM and UI Component Library
+## NPM and React Component Library
 
 [![NPM](https://img.shields.io/npm/l/@unleashit/navigation.svg)](https://github.com/unleashit/npm-library/blob/master/LICENSE)
 
-NX and PNPM workspaces monorepo of React UI components. Written with Typescript and individually installable with npm.
+Collection of React components written with Typescript and individually installable with npm.
 
 ### Documentation
 
@@ -12,32 +12,46 @@ https://unleashit.github.io/npm-library
 
 https://npm-library-demo.vercel.app
 
-### React Components
+### FORMS
 
-FORMS
+Not just dumb components, these offer out of the box functionality to handle both client and server validations, custom fields, success messages and more. Aside from React, required peer dependencies are `react-hook-form`, `@hookform/resolvers` and `zod`.
 
-- [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable, responsive login component with server support that validates against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
-- [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable, responsive signup component with server support that validates against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
-- [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable, responsive set of forgot password components with server support that validate against a default or custom Zod schema. Peer deps: `react-hook-form` and `zod`.
-- [Quick Form](https://github.com/unleashit/npm-library/tree/master/packages/quickForm) - form generator that can quickly produce simple React forms with validation and server support. By default, it is a Contact form. Peer deps: `react-hook-form` and `zod`.
+**Authentication Suite**
 
-UI WIDGETS
+- [Login](https://github.com/unleashit/npm-library/tree/master/packages/login) - customizable, responsive login component with server support that validates against a default or custom Zod schema.
+- [Sign-up/registration](https://github.com/unleashit/npm-library/tree/master/packages/signup) - customizable, responsive signup component with server support that validates against a default or custom Zod schema.
+- [Forgot password](https://github.com/unleashit/npm-library/tree/master/packages/forgotPassword) - customizable, responsive set of forgot password components with server support that validate against a default or custom Zod schema.
+
+**Simple custom forms builder**
+
+- [Quick Form](https://github.com/unleashit/npm-library/tree/master/packages/quickForm) - form generator that can quickly produce simple React forms with validation and server support. By default, it is a Contact form.
+
+### UI WIDGETS
 
 - [Navigation](https://github.com/unleashit/npm-library/tree/master/packages/navigation) - customizable, responsive navigation component. Supports auth states and comes with an optional sidecar component for login/logout/signup.
 - [Pagination](https://github.com/unleashit/npm-library/tree/master/packages/pagination) - sexy and responsive pagination component for React.
 - [Modal](https://github.com/unleashit/npm-library/tree/master/packages/modal) - customizable, responsive, portal free modal component. Optional animation state support when adding/removing from DOM.
 
-OTHER
+### OTHER
 
 - [Recursive Data Lister](https://github.com/unleashit/npm-library/tree/master/packages/recursiveDataLister) - component that recursively pretty prints nested lists or objects with various options for html markup and styling.
 - [Async Handler](https://github.com/unleashit/npm-library/tree/master/packages/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks.
 - [demo app](https://github.com/unleashit/npm-library/tree/master/demos/frontend) is available for previewing the components that can be run in parallel with a [demo backend](https://github.com/unleashit/npm-library/tree/master/demos/backend) to demonstrate server functionality.
 
-[//]: # '### How to Use'
-[//]: #
-[//]: # '- Install the individual components via npm. See each component.'
-[//]: #
-[//]: # '- To run the demo app (including backend): `pnpm dev`'
+### Common Features
+
+- Customizable with uniform APIs
+- Default CSS with CSS module support that can override internal classes.
+- `cssVars` prop can override any CSS vars without touching CSS.
+- Light/Dark Modes.
+- Forms support custom fields
+- Common package greatly reduces individual package sizes.
+
+### How to Use
+
+- Install the individual components via npm. See each component.
+- To develop (also runs a component demo in the background): `pnpm dev`
+
 [//]: #
 [//]: # '### CSS Custom Properties'
 [//]: #

@@ -8,11 +8,22 @@ class Home extends React.Component {
       <>
         <h2>NPM Library Demo</h2>
 
+        <h3>Documentation</h3>
+        <p>
+          {/* eslint-disable-next-line react/jsx-no-target-blank */}
+          <a href="https://unleashit.github.io/npm-library" target="_blank">
+            https://unleashit.github.io/npm-library
+          </a>
+        </p>
+
         <h3>Forms</h3>
         <p>
           The form components have a mock backend just for demonstration
           purposes. You can view the form states, try sample users to get server
           feedback, etc.
+        </p>
+        <p className={css.subhead}>
+          <strong>Authentication Suite</strong>
         </p>
         <p>
           <strong>
@@ -44,6 +55,9 @@ class Home extends React.Component {
           (includes forgot password reset) - customizable, responsive set of
           forgot password components with server support that validate against a
           default or custom Zod schema. Peer deps: react-hook-form and zod.
+        </p>
+        <p className={css.subhead}>
+          <strong>Simple custom forms builder</strong>
         </p>
         <p>
           <strong>
