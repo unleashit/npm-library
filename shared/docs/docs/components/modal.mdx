@@ -1,0 +1,95 @@
+---
+title: Modal
+description: Customizable React modal component
+---
+import MDX_CSS from "../../partials/_css.mdx";
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
+
+Customizable React modal component. Optional animation support when adding/removing from DOM.
+
+![modal component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/modal/modal.png)
+
+### Features
+- Lightweight modal component.
+- Animation support: optionally adds animation classes when adding/removing from DOM.
+- Custom header and/or footer.
+- Portal free. Detects the highest z-index to place modal above other elements without having to insert markup at the root.
+- Default CSS with light/dark mode available
+- CSS module support can override internal styles with a custom module.
+
+### Demo
+https://npm-library-demo.vercel.app/modal
+
+### Install
+
+```bash npm2yarn
+npm install @unleashit/modal
+```
+
+### Example
+
+```javascript
+const ModalDemo = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  return (
+    <>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam numquam
+        praesentium quisquam repudiandae impedit architecto sapiente consequatur
+        voluptate vitae quis? Pariatur ad fuga fugiat, nostrum ipsa officia
+        eveniet debitis ipsum assumenda labore maiores aspernatur soluta
+        mollitia fugit itaque.
+      </p>
+      <button onClick={toggleModal} type="button">
+        open sesame!
+      </button>
+
+      <Modal
+        size="medium"
+        isOpen={modalOpen}
+        onClose={toggleModal}
+        header="Important Message"
+        footer={() => <footer>Important! Please Read!</footer>}
+        overlayColor="rgba(0,0,0,.8)"
+      >
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+          numquam praesentium quisquam repudiandae impedit architecto sapiente
+          consequatur voluptate vitae quis? Pariatur ad fuga fugiat.
+        </p>
+        <div>
+          <button type="button" onClick={toggleModal}>
+            OK
+          </button>
+        </div>
+      </Modal>
+    </>
+  );
+};
+
+export default ModalDemo;
+```
+
+### CSS
+<MDX_CSS name={frontMatter.title} />
+
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### Dark mode
+<MDX_DarkMode />
+
+### API
+
+**`ModalProps`**
+
+Props for the modal component. `isOpen` is the only required prop although the modal will be empty unless at least `children`, `header` and/or `footer` are provided.
+
+```typescript file=./packages/modal/src/modal.tsx start=mdx_modal_props_start end=mdx_modal_props_end
+```

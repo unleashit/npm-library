@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'NPM Library',
-  tagline: 'Collection of higher level React components',
+  tagline: 'Collection of React components',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -38,6 +38,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          sidebarCollapsed: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -47,13 +48,14 @@ const config: Config = {
             [require('remark-code-snippets'), { baseDir: '../..' }],
           ],
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/unleashit/npm-library/tree/master/shared/docs/',
-        },
+        blog: false,
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/unleashit/npm-library/tree/master/shared/docs/',
+        // },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -63,7 +65,10 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    // image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'dark',
+    },
     navbar: {
       title: 'NPM Library',
       // logo: {
@@ -89,7 +94,7 @@ const config: Config = {
         //   position: 'right',
         // },
         {
-          href: 'https://github.com/unleashit/npm-library/tree/master/shared/docs',
+          href: 'https://github.com/unleashit/npm-library',
           label: 'GitHub',
           position: 'right',
         },
@@ -102,38 +107,26 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: 'Components',
+              to: '/category/components',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Github',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/unleashit/npm-library',
+            },
+          ],
+        },
+        {
+          title: 'Demo',
+          items: [
+            {
+              label: 'Demo',
+              href: 'https://npm-library-demo.vercel.app',
             },
           ],
         },

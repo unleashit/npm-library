@@ -1,0 +1,154 @@
+---
+title: Quick Form
+description: Customizable React forgot password component
+---
+import MDX_CustomFields from "../../partials/_custom-fields.mdx";
+import MDX_CSS from "../../partials/_css.mdx";
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
+
+Quick Form is a form builder that lets you crank out simple forms fast. It's a wrapper for React Hook Form that handles much of the manual setup while still providing enough customization for typical needs. It produces the form based on a configuration, handles both client and server\* validation and comes with basic styling.
+
+\* When no config or schema are provided, Quick Form defaults as a standard contact form.
+
+![quick form](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/quick-form/quick-form.png)
+
+### Features
+
+- Simple form builder. Contact form by default.
+- Custom fields: input, checkbox, textarea and select (more will be added)
+- Validation with Zod schemas
+- Handles server validation errors (response must be expected type)
+- Shows a success component on success and/or fires your onSuccess() function
+- Toast support
+- Error handling
+- Custom header and footer
+- Shows a default or custom loader
+- Basic CSS provided in both namespaced BEM and CSS module formats
+- Unique CSS module support: can provide your own css module styles to internal components without having to write global CSS.
+
+### Demo
+https://npm-library-demo.vercel.app/quick-form
+
+### Install
+
+```bash npm2yarn
+npm install @unleashit/quick-form
+```
+
+**Peer dependencies:** react, react-hook-form, @hookform/resolvers and zod.
+
+### Basic Example with contact form
+
+```typescript jsx
+import QuickForm, {
+  type FormValues,
+  type ServerResponse,
+} from '@unleashit/quick-form';
+
+// Assuming you have a bundler that handles css imports and you want to use the provided CSS
+// Alternatively, you can import the CSS Module version (see next example)
+import '@unleashit/quick-form/dist/quick-form.css';
+
+function ContactUs() {
+  const quickFormHandler = async (
+    values: FormValues,
+  ): Promise<ServerResponse> => {
+    // should return an object with at least a success property of boolean
+    return fetch('https://example.com/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }).then((resp) => resp.json());
+  };
+
+  return <QuickForm handler={quickFormHandler} showPhone />;
+}
+```
+
+By default, the form is a standard contact form with `name`, `email` and `message` fields. Adding a `showPhone` prop will add a phone field.
+
+The only required prop is `handler`, which is a function that is called with the form values when the user submits the form. The handler should at a minimum return a promise with a success property of boolean. If there are serverside validation errors, an `errors` property can be returned as an object with keys as the field names and values as the message to display. `errors.root` is special. When set, it will either display prominently above the form or in a toast if a toast function is provided.
+
+By default, if the form submits and received a successful response from the server, a default success component will display for several seconds before returning to a reset version of the form. There are various ways to customize or override the behavior:
+
+- Providing a custom `successMessage` component overrides the default.
+- Setting `successMessageTimeout` to false will prevent the transition back to the empty form.
+- By supplying an `onSuccess` function, you can redirect or do anything you like.
+
+### With some features
+
+```typescript jsx
+import defaultStyles from '@unleashit/quick-form/dist/quick-form.module.css';
+
+// optional, but with this technique you can selectively override the default
+// css module classes with your own without having to resort to global style.
+// See main readme of the repo for more detail.
+import customStyles from './styles/quick-form-overrides.module.scss';
+const combinedStyles = { ...defaultStyles, ...customStyles };
+
+function ContactUs() {
+  const Header = () => {
+    return <h2>Contact Us</h2>;
+  };
+
+  const onSuccess = (resp: ServerResponse) => {
+    console.log('Success. Server responded with:', resp);
+    window.location.href = '/thank-you';
+  };
+
+  // called when a `root` error is returned from the server,
+  // or when contactHandler catches, for example a network error
+  const toastErrorHandler = (msg: string) => myToast.error(msg);
+
+  return (
+    <QuickForm
+      handler={contactHandler}
+      onSuccess={onSuccess}
+      // prevent default transition back to blank form since onSuccess includes a redirect
+      successMessageTimeout={false}
+      header={header}
+      cssModule={combinedStyles}
+      toast={toastErrorHandler}
+      // optional override to promise rejection message
+      failMsg="Something went wrong. Are you online?"
+    />
+  );
+}
+```
+
+### Custom Fields
+<MDX_CustomFields />
+
+### CSS
+<MDX_CSS name={frontMatter.title} />
+
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### Dark mode
+<MDX_DarkMode />
+
+### API
+
+**`QuickFormProps`** (extends `BaseFormProps`)
+
+Props for the QuickForm component. QuickFormProps extends BaseFormProps. The only required prop is `handler`.
+
+```typescript file=./packages/quickForm/src/quickForm.tsx start=mdx_quickForm_props_start end=mdx_quickForm_props_end
+```
+
+```typescript file=./shared/common/src/types.ts start=mdx_base_form_start end=mdx_base_form_end
+```
+
+**`ServerResponse`**
+
+`handler` function's promise should resolve a `ServerResponse`.
+
+```typescript file=./packages/quickForm/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```
+
+```typescript file=./shared/common/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```

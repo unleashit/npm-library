@@ -1,0 +1,13 @@
+---
+title: Dark Mode
+slug: /dark-mode
+sidebar_position: 5
+---
+
+All components except **recursive-data-lister** and **async-handler support** dark mode. When using the provided CSS, you just have to set the boolean `darkMode` prop. Setting the prop toggles an attribute on each component's container called `data-theme`.
+
+Note that `prefers-color-scheme` is not queried, so it is up to you to manually set it. This is to give you the flexibility to integrate it with for example a light/dark switch or display the theme of your preference.
+
+:::info
+When using the provided CSS, CSS custom properties each have light and dark mode versions. Don't forget to style both when overriding.
+:::

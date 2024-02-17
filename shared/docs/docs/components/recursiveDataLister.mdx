@@ -1,0 +1,110 @@
+---
+title: Recursive Data Lister
+description: React component that recursively pretty prints nested lists or objects with various options for html markup and styling.
+---
+import MDX_CSS from "../../partials/_css.mdx";
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
+
+React component that recursively pretty prints nested lists or objects with various options for html markup and styling.
+
+![recursive data lister component](https://github.com/unleashit/npm-library/raw/master/packages/recursiveDataLister/recursive-data-lister.png)
+
+### Features
+
+- Quickly display simple or complex nested lists and objects as html.
+- Choice of html (ul, ol, div, etc.).
+- Display as a single list or separate lists per first level parent.
+- For arrays of objects, the option to choose a property to use its value as the heading (replace the numerical index).
+- Handles dates. Either provide a formatter function, or by default will be displayed as strings. Also attempts to find and handle dates in string values.
+- Basic default CSS available with easy customization through cssVars prop.
+
+### Demo
+https://npm-library-demo.vercel.app/recursive-data-lister
+
+### Install
+
+```bash npm2yarn
+npm install @unleashit/recursive-data-lister
+```
+
+### Example
+
+```javascript
+import React from 'react';
+import RecursiveDataLister from '@unleashit/recursive-data-lister';
+
+const users = [
+  {
+    id: 1,
+    name: 'joe',
+    booksRead: [
+      {
+        title: 'The Castle',
+        author: 'Franz Kafka',
+      },
+      {
+        title: 'Waynes World 2',
+        author: 'Mike Meyers IV',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'judy',
+    booksRead: [
+      {
+        title: 'The Overcoat',
+        author: 'Nikolai Gogol',
+        editions: ['first: 1842', 'second: 1844'],
+      },
+    ],
+  },
+];
+
+const RecursiveDataListerDemo = () => (
+  <RecursiveDataLister
+    data={users}
+    multiList={true} // For top level array only: show first level children as separate lists. False is default (outputs as a single top level html list)
+    tag="ul" // parent html tag. ul is default, you can also choose ol or div
+    arrayBranchProp="title" // if set, this will use the property as node labels for arrays of objects (instead of the index). Careful with this, it only works with one property!
+    removeRepeatedProp={true} // false is default. If arrayBranchProp is set, this will remove the prop from the object so it isn't repeated
+  />
+);
+
+export default RecursiveDataListerDemo;
+```
+
+### CSS
+<MDX_CSS name={frontMatter.title} />
+
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### API
+
+**`RecursiveDataListerProps`**
+
+Props for Recursive Data Lister.
+
+```typescript file=./packages/recursiveDataLister/src/recursiveDataLister.tsx start=mdx_recursive_dl_props_start end=mdx_recursive_dl_props_end
+```
+
+**`DateFormat`**
+
+Function to format date objects. Should return a string or number of the formatted date. Note: the component attempts to find and transform stringified dates into date objects. These will then also be passed to this function if available.
+
+```typescript file=./packages/recursiveDataLister/src/utils/index.ts start=mdx_recursive_dl_date_start end=mdx_recursive_dl_date_end
+```
+<br />
+
+| Name               | Type            | Description                                                                                    | default                   |
+| ------------------ | --------------- | ---------------------------------------------------------------------------------------------- | ------------------------- |
+| data               | object or array | object to display                                                                              | required                  |
+| multilist          | boolean         | For array only: show first level children as separate parents                                  | false                     |
+| tag                | string          | Parent HTML tag for a choice of ordered/unordered list or plain divs                           | ul                        |
+| arrayBranchProp    | string          | if set, it will use the property as branch labels for arrays of objects (instead of the index) | null                      |
+| removeRepeatedProp | boolean         | If arrayBranchProp is set, this will remove the prop from the array so it isn't repeated       | false                     |
+| dateFormat         | function        | Callback to process Date objects or strings, receives the Date or Date like string             | (elem) => elem.toString() |
+| cssVars            | object          | optional object to override css custom properties                                              | undefined                 |
+| cssModule          | object          | CSS Module object that optionally replaces default. Class names need to match expected names.  | undefined                 |

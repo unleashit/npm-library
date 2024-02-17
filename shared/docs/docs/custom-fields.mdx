@@ -1,0 +1,73 @@
+---
+title: Custom Fields
+slug: /custom-fields
+sidebar_position: 3
+---
+
+It's possible to replace the default fields with custom fields by adding `customFields` and `customSchema` props. On submission and after passing validation, the handler will be called with the field values.
+
+`customFields` is an array of field objects where `element` is the type of field. Currently input, select, checkbox and textarea fields are supported.
+
+```typescript jsx
+interface CustomField {
+  element: 'input' | 'select' | 'textarea';
+  type: string; // html `type` attribute
+  name: string; // html `name` attribute
+  label?: string; // label to display in an html <label>
+  focus?: boolean; // sets the focus to this element (only the first is used)
+  options?: Array<[string, string, OptionHTMLAttributes<any>?]>; // select options: [title, value, {attribute: value}]
+  attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
+}
+```
+
+Note that supplying a `customFields` object completely replaces the defaults, so don't forget to add all needed fields. `customSchema` should be a Zod schema with matching name attributes.
+
+```typescript jsx
+<Signup
+  handler={signupHandler}
+  successMessage={() => <div>Welcome! You have successfully registered.</div>}
+  customFields={[
+    {
+      element: 'input',
+      type: 'text',
+      name: 'email',
+      label: 'Email',
+      focus: true, // sets the form focus
+    },
+    {
+      element: 'input',
+      type: 'password',
+      name: 'password',
+      label: 'Password',
+    },
+    {
+      element: 'input',
+      type: 'password',
+      name: 'passwordConfirm',
+      label: 'Type password again',
+    },
+    {
+      element: 'select',
+      name: 'color',
+      label: 'Choose a color',
+      options: [
+        ['', '- select -'],
+        ['red', 'red'],
+        ['green', 'green'],
+        ['blue', 'blue'],
+        ['yellow', 'yellow'],
+      ],
+    },
+    {
+      element: 'input',
+      type: 'checkbox',
+      name: 'newsletterOptIn',
+      label: 'Subscribe to our newsletter?',
+      attrs: {
+        defaultChecked: true,
+      },
+    },
+  ]}
+  customSchema={schema}
+/>
+```

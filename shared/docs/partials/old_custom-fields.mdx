@@ -1,0 +1,64 @@
+import CodeBlock from '@theme/CodeBlock';
+import { utils } from '@unleashit/common';
+
+It's possible to replace the default fields with custom fields by adding `customFields` and `customSchema` props. On submission and after passing validation, the handler will be called with the field values.
+
+`customFields` is an array of field objects where `element` is the type of field. Currently input, select, checkbox and textarea fields are supported.
+
+```tsx
+interface CustomField {
+  element: 'input' | 'select' | 'textarea';
+  type: string; // html `type` attribute
+  name: string; // html `name` attribute
+  label?: string; // label to display in an html <label>
+  focus?: boolean; // sets the focus to this element (only the first is used)
+  // select options: [title, value, {attribute: value}]
+  options?: Array<[string, string, OptionHTMLAttributes<any>?]>;
+  attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
+}
+```
+
+<CodeBlock language="tsx">
+  {`<${utils.reactComponentCase(props.name)}
+  handler={handler}
+  successMessage={() => <div>You are logged in.</div>}
+  forgotPasswordLink={'/reset-password'}
+  forgotPasswordLinkText="Need to reset your password?"
+  customFields={[
+    {
+      element: 'input',
+      type: 'text',
+      name: 'username',
+      label: 'Username',
+      focus: true, // sets the form focus
+    },
+    {
+      element: 'input',
+      type: 'password',
+      name: 'password',
+      label: 'Password',
+    },
+    {
+      element: 'input',
+      type: 'checkbox',
+      name: 'persistLogin',
+      label: 'Remember me?',
+    },
+  ]}
+  customSchema={schema}
+/>`}
+</CodeBlock>
+
+:::warning Take Note
+A `customFields` object doesn't extend the defaults. It completely replaces them, so don't forget to add all needed fields.
+:::
+
+```js title="schema.ts"
+const schema = z.object({
+  username: z.string().nonempty().email(),
+  password: z.string().nonempty(),
+  persistLogin: z.boolean().default(true),
+});
+```
+
+`customSchema` should be a Zod schema where the property names match the html name attributes defined in the custom fields object.

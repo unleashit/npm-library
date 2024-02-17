@@ -2,16 +2,14 @@
 title: Login
 description: Customizable React login component
 ---
-import CodeBlock from '@theme/CodeBlock';
 import MDX_CustomFields from "../../partials/_custom-fields.mdx";
 import MDX_CSS from "../../partials/_css.mdx";
-
-![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
 
 Customizable React login component that validates against a default or custom Zod schema.
 
-### Demo
-https://npm-library-demo.vercel.app/login
+![login component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/login/login.png)
 
 ### Features
 
@@ -26,13 +24,16 @@ https://npm-library-demo.vercel.app/login
 - Client router support for links
 - Toast support
 
+### Demo
+https://npm-library-demo.vercel.app/login
+
 ### Install
 
 ```bash npm2yarn
 npm install @unleashit/login
 ```
 
-**Peer dependencies:** react, react-hook-form and zod.
+**Peer dependencies:** react, react-hook-form, @hookform/resolvers and zod.
 
 ### Example
 
@@ -89,49 +90,39 @@ import {
 ```
 
 ### Custom Fields
-<MDX_CustomFields name={frontMatter.title} />
+<MDX_CustomFields />
 
 ### CSS
 <MDX_CSS name={frontMatter.title} />
 
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### Dark mode
+<MDX_DarkMode />
+
 ### API
 
-```typescript
-type BaseFormProps = {
-  handler: <T extends ZodTypeAny>(
-    values: FormValues<T>,
-  ) => Promise<ServerResponse<FormValues<T>>>;
-  onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
-    resp: ServerResponse<FormValues<T>, Meta>,
-  ) => void;
-  title?: string;
-  header?: React.FC<DefaultHeaderProps> | false | null;
-  footer?: React.FC<any>;
-  loader?: React.FC<DefaultLoaderProps>;
-  customFields?: CustomField[];
-  customSchema?: z.AnyZodObject | z.ZodEffects<any>;
-  // optionally send root server error message and/or
-  // handler exceptions to toast
-  toast?: (msg: string) => void;
-  // override default failure message to show user
-  failMsg?: string;
-  // Show a success component or message
-  successMessage?: React.FC<any> | string | false | null;
-  linkComponent?: React.ComponentType<any>;
-  linkComponentHrefAttr?: string;
-  cssModule?: Record<string, string>;
-};
+**`LoginProps`** (extends `BaseFormProps`)
 
-type LoginProps = Omit<BaseFormProps, 'header'> & {
-  header?: React.FC<DefaultLoginHeaderProps> | false | null;
-  signupUrl?: string;
-  orLine?: boolean;
-  childrenPosition?: 'top' | 'bottom';
-  forgotPasswordLink?: string | false | null;
-  forgotPasswordLinkText?: string;
-  children?: React.ReactNode;
-};
+Props for the Login component. LoginFormProps extends BaseFormProps. The only required prop is `handler`.
+
+```typescript file=./packages/login/src/login.tsx start=mdx_login_props_start end=mdx_login_props_end
 ```
+
+```typescript file=./shared/common/src/types.ts start=mdx_base_form_start end=mdx_base_form_end
+```
+
+**`ServerResponse`**
+
+`handler` function's promise should resolve a `ServerResponse`.
+
+```typescript file=./packages/login/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```
+
+```typescript file=./shared/common/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```
+
 
 [//]: # '| Name               | Type                                            | Description                                                                                                                     | default                        |'
 [//]: # '| ------------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |'

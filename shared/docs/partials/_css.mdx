@@ -1,5 +1,7 @@
 import { utils } from '@unleashit/common';
 
-Basic namespaced (BEM) css can be imported: <code>import '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.css'</code>. Alternatively, if you use CSS Modules you can <code>import css from '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.module.css'</code> and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names.
+By default, all components come with basic css styling in two formats: standard (BEM namespaced) and a CSS Module friendly version.
 
-Please see CSS in the main readme of the repo for more info.
+To use the standard version, import it like: <code>import '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.css'</code>. Or if you are using CSS Modules you can <code>import css from '@unleashit/{utils.camelToKebab(props.name)}/dist/{utils.camelToKebab(props.name)}.module.css'</code> and provide to the `cssModule` prop and/or use your own custom module targeting the internal class names.
+
+See [styling-and-theming](/styling-and-theming) for more info.

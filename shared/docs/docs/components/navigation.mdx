@@ -1,0 +1,183 @@
+---
+title: Navigation
+description: Customizable React navigation component
+---
+import MDX_CustomFields from "../../partials/_custom-fields.mdx";
+import MDX_CSS from "../../partials/_css.mdx";
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
+
+Customizable navigation component for React. Comes with optional sidecar component for login/logout/signup.
+
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-horz.png)
+
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-horz-alt.png)
+
+![navigation component screenshot](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/navigation/navigation-vert.png)
+
+### Features
+
+- Lightweight UI component. Send it a list of links and options, and it will render the html.
+- Horizontal or Vertical display.
+- Can independently control display state of each link.
+- Optional login/logout/signup sidecar can be positioned independently from main links.
+- Accepts custom attributes per link.
+- Several CSS themes to choose, or make your own.
+- CSS module support can override internal styles with a custom module.
+
+### Demo
+https://npm-library-demo.vercel.app/navigation
+
+### Install
+
+```bash npm2yarn
+npm install @unleashit/navigation
+```
+
+### Example without auth links
+
+```tsx
+const links: NavigationLink[] = [
+  {
+    title: 'Home',
+    href: '/home',
+  },
+  {
+    title: 'Products',
+    href: '/products',
+  },
+  {
+    title: 'About',
+    href: '/about-us',
+  },
+  {
+    title: 'Partner Site',
+    href: 'https://example.com',
+    attrs: {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+  },
+];
+
+const NavigationDemo = () => <Navigation links={links} />;
+
+export default NavigationDemo;
+```
+
+### Authenticated Links
+
+You can manually manage the display state for each link with by adding a display property. Setting a display property will always override any managed link state the component does.
+
+```tsx
+const links: NavigationLink[] = [
+  {
+    title: 'Members Only',
+    href: '/members',
+    display: isLoggedIn && isMember, // boolean
+  },
+];
+```
+
+### Login/Logout/Signup Sidecar
+
+If you include an `isAuth` and/or `authLinks` prop, a sub-component with appear with authentication and signup links as appropriate. Use `isAuth` if you have a simple prototype with standard login/logout/signup behavior. `authLinks` is a customized version. Lastly if you prefer, you can integrate your auth buttons directly into the primary links using the display property to individually show/hide.
+
+If `isAuth` is included and set to `false`, both **login** and **signup** will show up. If true, **logout** instead.
+
+If you need to customize the titles, urls or anything about the auth links (you probably do), an `authLinks` prop is required. `authLinks` should be an object with `login`, `logout` and `signup` properties each containing a `NavigationLink` object (see `NavigationLink` below).
+
+```tsx
+interface AuthLinkTypes {
+  login?: NavigationLink;
+  logout?: NavigationLink;
+  signup?: NavigationLink;
+}
+
+const authLinks: AuthLinkTypes = {
+  login: {
+    title: 'Sign In',
+    href: '/login',
+  },
+  logout: {
+    title: 'Logout',
+    href: '/logout',
+  },
+  signup: {
+    title: 'Register',
+    href: '/signup',
+    icon: '/images/login-icon.svg',
+    iconPosition: 'right', // left is default
+  },
+};
+
+<Navigation
+  links={links}
+  authLinks={authLinks}
+  isAuth={false}
+  template="light-buttons"
+/>;
+```
+
+Note: If you add `authlinks`, including `isAuth` is optional. Including it is a simple way to control display state, but you can also choose to manage individually per link if you prefer:
+
+```tsx
+const authLinks: AuthLinkTypes = {
+  login: {
+    display: !isLoggedIn,
+    // you can leave off any props if you like the defaults
+  },
+  logout: {
+    display: isLoggedIn,
+  },
+  signup: {
+    display: false, // never display signup
+  },
+};
+```
+
+### Default Themes
+
+If you include the default CSS, you can choose from a few basic themes by setting the `template` prop:
+
+- `clean`: clean style. This is the default
+- `light-buttons`: light buttons style
+- `dark-buttons`: dark buttons style
+- `plain`: no style (same as not adding the CSS but it adds a class called `plain`)
+
+You can also set the direction to be `horizontal` or `vertical` with the `direction` prop. The themes are designed to work in either direction.
+
+Lastly, you can optionally add an icon to any link by setting the `icon` and `iconPosition` props. Depending on the icon dimensions, you may or may not have to tweak the CSS to get the right results.
+
+### CSS
+<MDX_CSS name={frontMatter.title} />
+
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### Dark mode
+<MDX_DarkMode />
+
+### API
+
+**`NavigationProps`**
+
+Props for the Navigation component.
+
+```typescript file=./packages/navigation/src/navigation.tsx start=mdx_navigation_props_start end=mdx_navigation_props_end
+```
+
+**`NavigationLink`**
+
+Individual navigation links.
+
+```typescript file=./packages/navigation/src/types.ts start=mdx_navigation_link_start end=mdx_navigation_link_end
+```
+
+**`AuthLinkTypes`**
+
+AuthLinks are an object with `login`, `logout` and/or `signup` keys. Each value is a `NavigationLink`. The display titles can be changed by setting the `title` in each `NavigationLink`.
+
+```typescript file=./packages/navigation/src/types.ts start=mdx_navigation_authlink_start end=mdx_navigation_authlink_end
+```
+

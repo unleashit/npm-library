@@ -1,0 +1,36 @@
+---
+title: NPM Library
+slug: /
+sidebar_position: 1
+---
+
+Collection of React UI components written with Typescript and individually installable with npm.
+
+:::note Demo
+https://npm-library-demo.vercel.app
+:::
+
+### Forms
+
+Not just dumb components, these offer out of the box functionality to handle both client and server validations, custom fields, success messages and more. Aside from React, required peer dependencies are `react-hook-form`, `@hookform/resolvers` and `zod`.
+
+**Authentication Suite**
+
+- [Login](/components/login) - customizable, responsive login component with server support that validates against a default or custom Zod schema.
+- [Sign-up/registration](/components/signup) - customizable, responsive signup component with server support that validates against a default or custom Zod schema.
+- [Forgot password](/components/forgotPassword) - customizable, responsive set of forgot password components with server support that validate against a default or custom Zod schema.
+
+**Simple custom form builder**
+
+- [Quick Form](/components/quickForm) - form generator that can quickly produce simple React forms with validation and server support. By default, it can serve as a Contact form.
+
+### UI WIDGETS
+
+- [Navigation](/components/navigation) - customizable, responsive navigation component. Supports auth states and comes with an optional sidecar component for login/logout/signup.
+- [Pagination](/components/pagination) - sexy and responsive pagination component for React.
+- [Modal](/components/modal) - customizable, responsive, portal free modal component. Optional animation state support when adding/removing from DOM.
+
+### OTHER
+
+- [Recursive Data Lister](/components/recursiveDataLister) - component that recursively pretty prints nested lists or objects with various options for html markup and styling.
+- [Async Handler](/components/asyncHandler) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks.

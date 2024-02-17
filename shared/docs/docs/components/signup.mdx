@@ -1,0 +1,121 @@
+---
+title: Signup
+description: Customizable React signup component
+---
+import MDX_CustomFields from "../../partials/_custom-fields.mdx";
+import MDX_CSS from "../../partials/_css.mdx";
+import MDX_CSSVars from "../../partials/_css-vars.mdx";
+import MDX_DarkMode from "../../partials/_dark-mode.mdx"
+
+Customizable React signup component that validates against a default or custom Zod schema.
+
+![signup component](https://raw.githubusercontent.com/unleashit/npm-library/master/packages/signup/signup.png)
+
+### Features
+
+- Displays and handles client and serverside errors
+- Custom fields and schema
+- Show a success component and/or provide an onSuccess function to redirect, set state, etc.
+- Show social logins either above or below email signup with optional separator
+- Custom header/footer
+- Loader (default or custom)
+- Show a link to login
+- Client router support for links
+- Toast support
+
+### Demo
+https://npm-library-demo.vercel.app/signup
+
+### Install
+
+```bash npm2yarn
+npm install @unleashit/signup
+```
+
+**Peer dependencies:** react, react-hook-form, @hookform/resolvers and zod.
+
+### Example
+
+```typescript jsx
+import Signup, { FormValues, ServerResponse } from '@unleashit/signup';
+import { useNavigate } from 'react-router-dom';
+
+function SignupDemo() {
+  const navigate = useNavigate();
+
+  const signupHandler = async (values: FormValues): Promise<ServerResponse> => {
+    // server should return a ServerResponse
+    // success property of true indicates all validations pass
+    // errors named after field names will display with fields
+    // error with property of "root" will display at the top or sent to toast
+    return await fetch('https://api.example.com/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }).then((resp) => resp.json());
+  };
+
+  const onSuccess = (resp: ServerResponse) => {
+    // Redirect or set auth state, etc.
+    // resp has full server response from signupHandler()
+    navigate('/');
+  };
+
+  return (
+    <Signup handler={signupHandler} onSuccess={onSuccess} />
+  );
+}
+```
+
+### Social Sign up
+
+Adding social sign up buttons is easy. Simply include them as children and they will display (by default) under the main login with a nice separator.
+
+```typescript jsx
+import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
+
+<Signup handler={/* ... */}>
+  <TwitterLoginButton onClick={() => alert('Hello')}>
+    Sign up with Twitter
+  </TwitterLoginButton>
+  <GithubLoginButton onClick={() => alert('Hello')}>
+    Sign up with Github
+  </GithubLoginButton>
+</Signup>
+```
+
+### Custom Fields
+<MDX_CustomFields />
+
+### CSS
+<MDX_CSS name={frontMatter.title} />
+
+### CSS Custom Properties
+<MDX_CSSVars />
+
+### Dark mode
+<MDX_DarkMode />
+
+### API
+
+**`SignupProps`** (extends `BaseFormProps`)
+
+Props for the Signup component. SignupFormProps extends BaseFormProps. The only required prop is `handler`.
+
+```typescript file=./packages/signup/src/signup.tsx start=mdx_signup_props_start end=mdx_signup_props_end
+```
+
+```typescript file=./shared/common/src/types.ts start=mdx_base_form_start end=mdx_base_form_end
+```
+
+**`ServerResponse`**
+
+`handler` function's promise should resolve a `ServerResponse`.
+
+```typescript file=./packages/signup/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```
+
+```typescript file=./shared/common/src/types.ts start=mdx_server_response_start end=mdx_server_response_end
+```
