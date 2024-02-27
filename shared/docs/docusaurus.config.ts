@@ -144,7 +144,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: '0d49710c82b27ef87766a2522f80b927',
 
-      indexName: 'NPM_LIBRARY_INDEX',
+      indexName: 'npm-library',
 
       // Optional: see doc section below
       contextualSearch: true,
