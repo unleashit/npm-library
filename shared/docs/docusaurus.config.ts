@@ -159,10 +159,7 @@ const config: Config = {
       // },
 
       // Optional: Algolia search parameters
-      searchParameters: {
-        startUrls: ['https://unleashit.github.io/npm-library/'],
-        sitemaps: ['https://unleashit.github.io/npm-library/sitemap.xml'],
-      },
+      searchParameters: {},
 
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
