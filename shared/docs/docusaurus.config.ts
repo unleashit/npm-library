@@ -11,7 +11,7 @@ const config: Config = {
   url: 'https://unleashit.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/npm-library',
+  baseUrl: '/npm-library/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -159,7 +159,10 @@ const config: Config = {
       // },
 
       // Optional: Algolia search parameters
-      searchParameters: {},
+      searchParameters: {
+        startUrls: ['https://unleashit.github.io/npm-library/'],
+        sitemaps: ['https://unleashit.github.io/npm-library/sitemap.xml'],
+      },
 
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
