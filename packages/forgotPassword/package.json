@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/forgot-password",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Responsive forgot password and reset components for React with custom fields.",
   "main": "src/index.ts",
   "types": "src/index.d.ts",

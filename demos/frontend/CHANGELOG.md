@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.2.4...@unleashit/demo-frontend@1.2.5) (2024-03-01)
+
+**Note:** Version bump only for package @unleashit/demo-frontend
+
 ## [1.2.4](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.2.3...@unleashit/demo-frontend@1.2.4) (2024-02-17)
 
 **Note:** Version bump only for package @unleashit/demo-frontend

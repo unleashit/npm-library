@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.5](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.3.4...@unleashit/navigation@1.3.5) (2024-03-01)
+
+### Bug Fixes
+
+* **all:** dark mode improvements ([a419e4a](https://github.com/unleashit/npm-library/commit/a419e4a56d0ef6a5d40985d06660f32d002018c0))
+
 ## [1.3.4](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.3.3...@unleashit/navigation@1.3.4) (2024-02-17)
 
 **Note:** Version bump only for package @unleashit/navigation

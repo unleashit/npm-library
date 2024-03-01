@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.3.1...@unleashit/quick-form@1.3.2) (2024-03-01)
+
+**Note:** Version bump only for package @unleashit/quick-form
+
 ## [1.3.1](https://github.com/unleashit/npm-library/compare/@unleashit/quick-form@1.3.0...@unleashit/quick-form@1.3.1) (2024-02-17)
 
 ### Bug Fixes

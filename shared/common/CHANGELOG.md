@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.6.1...@unleashit/common@1.6.2) (2024-03-01)
+
+### Bug Fixes
+
+* **all:** dark mode improvements ([a419e4a](https://github.com/unleashit/npm-library/commit/a419e4a56d0ef6a5d40985d06660f32d002018c0))
+
 ## [1.6.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.6.0...@unleashit/common@1.6.1) (2024-02-17)
 
 ### Bug Fixes
