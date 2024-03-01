@@ -4,6 +4,8 @@ $lightColor: #f1efef;
 $darkColor: #555555;
 
 .container {
+  --unl-text-light: #{$white};
+  --unl-text-dark: #{$black};
   --unl-light: #{$lightColor};
   --unl-light-darker-5: #{darken($lightColor, 5%)};
   --unl-light-darker-10: #{darken($lightColor, 10%)};
@@ -12,8 +14,6 @@ $darkColor: #555555;
   --unl-dark-lighter-5: #{lighten($darkColor, 5%)};
   --unl-dark-lighter-10: #{lighten($darkColor, 10%)};
   --unl-dark-lighter-15: #{lighten($darkColor, 15%)};
-  --unl-text-light: #{$white};
-  --unl-text-dark: #{$black};
 }
 
 .container:not(.none) {
@@ -85,6 +85,11 @@ $darkColor: #555555;
       text-align: left;
     }
   }
+  &[data-theme='dark'] {
+    .link {
+      color: var(--unl-text-light);
+    }
+  }
 }
 
 /*
@@ -128,6 +133,15 @@ $darkColor: #555555;
       border-radius: 0;
       &:hover {
         background-color: var(--unl-light-darker-5);
+      }
+    }
+  }
+  &[data-theme='dark'] {
+    .link {
+    }
+    .authLinks {
+      .signupLink,
+      .logoutLink {
       }
     }
   }
@@ -193,6 +207,10 @@ $darkColor: #555555;
       border: none;
     }
 
+    .loginLink {
+      color: var(--unl-text-dark);
+    }
+
     .signupLink,
     .logoutLink {
       background-color: var(--unl-light);
@@ -219,6 +237,12 @@ $darkColor: #555555;
       border: none;
     }
   }
+
+  &[data-theme='dark'] {
+    .loginLink {
+      color: var(--unl-text-light);
+    }
+  }
 }
 
 /* icons */
@@ -235,6 +259,12 @@ $darkColor: #555555;
   max-width: 20px;
   max-height: 20px;
   vertical-align: bottom;
+}
+
+[data-theme='dark'].clean, .darkButtons {
+  .icon {
+    filter: invert(1);
+  }
 }
 
 @media screen and (max-width: $break-sm) {

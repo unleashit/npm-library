@@ -42,8 +42,6 @@ export const varNamesCommonForm = [
   'formPadding',
   'formLightModeText',
   'formDarkModeText',
-  'formLightModeBackground',
-  'formDarkModeBackground',
   'formLightModeLinkColor',
   'formDarkModeLinkColor',
   'formLightModeFieldBackground',

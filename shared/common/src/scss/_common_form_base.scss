@@ -4,8 +4,6 @@
   --unl-form-padding: 0;
   --unl-form-light-mode-text: #{$black};
   --unl-form-dark-mode-text: #{$white};
-  --unl-form-light-mode-background: transparent;
-  --unl-form-dark-mode-background: #{$black};
   --unl-form-light-mode-link-color: inherit;
   --unl-form-dark-mode-link-color: inherit;
   --unl-form-light-mode-field-background: #{$white};
@@ -25,13 +23,12 @@
   --unl-success-justify-content: center;
   --unl-success-align-items: center;
   --unl-success-font-size: inherit;
+  width: 100%;
   padding: var(--unl-form-padding);
-  background-color: var(--unl-form-light-mode-background);
   a:link, a:visited, a:hover, a:active {
     color: var(--unl-form-light-mode-link-color);
   }
   &[data-theme='dark'] {
-    background-color: var(--unl-form-dark-mode-background);
     color: var(--unl-form-dark-mode-text);
   }
 }
