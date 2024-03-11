@@ -16,6 +16,17 @@ import {
 import { closeIcon } from './images/icons';
 
 // mdx_modal_props_start
+export type OverlayColor =
+  /** Configure both light/dark mode colors */
+  | {
+      light: string;
+      dark: string;
+    }
+  /** One overlay color regardless of light/dark mode */
+  | string
+  /** Transparent overlay */
+  | false;
+
 export interface ModalProps {
   isOpen: boolean;
   size?:
@@ -24,13 +35,13 @@ export interface ModalProps {
     | 'large'
     | 'full'
     | `${number}${(typeof cssUnits)[number]}`;
-  onClose?: () => void;
+  onClose?: (e?: React.MouseEvent) => void;
   closeOnOverlayClick?: boolean;
   animationSupport?: boolean;
   animationCloseTimeout?: number;
   header?: React.FC<any> | string;
   footer?: React.FC<any> | string;
-  overlayColor?: string | false | null;
+  overlayColor?: OverlayColor;
   closeBtn?: boolean;
   darkMode?: boolean;
   cssVars?: CSSVars<typeof varNames>;
@@ -45,7 +56,8 @@ const cssUnits = ['px', '%', 'em', 'rem', 'vw', 'vh', 'vmin', 'vmax'] as const;
 
 const varNames = [
   'modalPadding',
-  'overlayColor',
+  'lightModeOverlayColor',
+  'darkModeOverlayColor',
   'lightModeTextColor',
   'darkModeTextColor',
   'lightModeBackgroundColor',
@@ -77,7 +89,7 @@ export const Modal = ({
   animationCloseTimeout = 300,
   header: Header,
   footer: Footer,
-  overlayColor = 'rgba(0,0,0,.8)',
+  overlayColor,
   darkMode = false,
   cssVars,
   cssModule = {},
@@ -148,6 +160,22 @@ export const Modal = ({
     [size],
   );
 
+  // Get the styles for overlay colors
+  const overlayColorStyle = useMemo(() => {
+    if (typeof overlayColor === 'object' && 'light' in overlayColor)
+      return {
+        '--unl-light-mode-overlay-color': overlayColor.light,
+        '--unl-dark-mode-overlay-color': overlayColor.dark,
+      };
+
+    if (typeof overlayColor === 'string')
+      return {
+        '--unl-light-mode-overlay-color': overlayColor,
+        '--unl-dark-mode-overlay-color': overlayColor,
+      };
+    return false;
+  }, [overlayColor]);
+
   return !isHidden ? (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
@@ -156,7 +184,7 @@ export const Modal = ({
       data-theme={darkMode ? 'dark' : 'light'}
       className={clsName('overlay')}
       style={{
-        backgroundColor: !overlayColor ? 'transparent' : overlayColor,
+        ...(overlayColor && overlayColorStyle),
         zIndex: modalZindex,
         ...mapCSSVarsToStyles<typeof varNames>({
           cssVars,

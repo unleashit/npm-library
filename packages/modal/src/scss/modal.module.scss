@@ -2,7 +2,8 @@
 
 .overlay {
   --unl-modal-padding: 16px;
-  --unl-overlay-color: transparent;
+  --unl-light-mode-overlay-color: rgba(0, 0, 0, .8);
+  --unl-dark-mode-overlay-color: rgba(255, 255, 255, .8);
   --unl-light-mode-text-color: #{$black};
   --unl-dark-mode-text-color: #{$white};
   --unl-light-mode-background-color: #{$white};
@@ -30,8 +31,13 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-color: var(--unl-overlay-color);
+  background-color: var(--unl-light-mode-overlay-color);
+  &[data-theme='dark'] {
+    background-color: var(--unl-dark-mode-overlay-color);
+  }
 }
+
+
 
 .child {
   width: 100%;
@@ -81,6 +87,12 @@
   cursor: pointer;
   outline: none;
 }
+[data-theme='dark']  {
+  .closeBtn {
+    filter: invert(1);
+  }
+}
+
 .header {
   background-color: var(--unl-light-mode-header-color);
   color: var(--unl-light-mode-text-color);
