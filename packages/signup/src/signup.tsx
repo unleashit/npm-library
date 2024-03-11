@@ -12,6 +12,7 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   varNamesCommonForm,
+  constants,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -24,8 +25,8 @@ import defaultSignupSchema from './defaults/schema';
 import defaultSignupFields from './defaults/fields';
 
 // mdx_signup_props_start
-export type SignupProps = Omit<BaseFormProps, 'header'> & {
-  header?: React.FC<DefaultSignupHeaderProps> | false | null;
+export type SignupProps = BaseFormProps & {
+  header?: React.ComponentType<DefaultSignupHeaderProps> | false | null;
   // link to login page, when using default login header
   loginUrl?: string;
   // show a separator line between email and social logins (children required)
@@ -51,6 +52,7 @@ export const Signup = ({
   headerText = 'Signup',
   header: Header = DefaultSignupHeader,
   loader: Loader = DefaultLoader,
+  buttonText = 'Signup',
   orLine = true,
   childrenPosition = 'bottom',
   loginUrl = '/login',
@@ -59,10 +61,11 @@ export const Signup = ({
   customFields = defaultSignupFields,
   customSchema: schema = defaultSignupSchema,
   toast,
-  failMsg,
+  failMsg = constants.baseFailMsg,
   successMessage = false,
   darkMode = false,
   cssVars,
+  isFocused = true,
   cssModule = {},
   children,
 }: SignupProps) => {
@@ -81,7 +84,7 @@ export const Signup = ({
   });
 
   // set focus on the first field with a focus prop, if any
-  useSetFocus(customFields, setFocus);
+  useSetFocus(customFields, setFocus, isFocused);
 
   // Submit handler
   const onSubmit = useMemo(
@@ -175,7 +178,7 @@ export const Signup = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Signup
+                  {buttonText}
                 </button>
               </>
             )}
@@ -205,7 +208,7 @@ export const Signup = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Signup
+                  {buttonText}
                 </button>
               </>
             )}

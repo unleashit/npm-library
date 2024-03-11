@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { ComponentType } from 'react';
 import { ClsName, DefaultHeader } from '@unleashit/common';
 
 export interface DefaultLoginHeaderProps {
   title: string;
   signupUrl: string;
-  linkComponent: React.ComponentType<any>;
+  linkComponent: ComponentType<any>;
   linkComponentHrefAttr: string;
   clsName: ClsName;
 }

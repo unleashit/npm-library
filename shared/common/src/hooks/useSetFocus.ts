@@ -3,15 +3,18 @@ import { UseFormSetFocus } from 'react-hook-form';
 import { ZodTypeAny } from 'zod';
 import { CustomField, FormValues } from '@unleashit/common';
 
-// set focus on the first (if any) field with a focus prop
+/**
+ * Set focus on the first (if any) field with a focus prop
+ */
 export function useSetFocus(
   customFields: CustomField[],
   setFocus: UseFormSetFocus<FormValues<ZodTypeAny, any>>,
+  isFocused: boolean,
 ) {
   React.useEffect(() => {
     const focus = customFields.find((f) => f.focus);
-    if (focus) {
+    if (isFocused && focus) {
       setFocus(focus.name);
     }
-  }, [customFields, setFocus]);
+  }, [customFields, setFocus, isFocused]);
 }

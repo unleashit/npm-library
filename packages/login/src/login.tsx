@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, ComponentType } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ZodTypeAny } from 'zod';
@@ -15,6 +15,7 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   varNamesCommonForm,
+  constants,
 } from '@unleashit/common';
 import { FormValues } from './types';
 import defaultLoginSchema from './defaults/schema';
@@ -25,14 +26,22 @@ import {
 } from './defaults/components';
 
 // mdx_login_props_start
-export type LoginProps = Omit<BaseFormProps, 'header'> & {
-  header?: React.FC<DefaultLoginHeaderProps> | false | null;
+export type LoginProps = BaseFormProps & {
+  /** Custom header component */
+  header?: ComponentType<DefaultLoginHeaderProps> | false | null;
+  /** Route or URL for link to signup component */
   signupUrl?: string;
+  /** Add a seperator between email and social logins */
   orLine?: boolean;
-  childrenPosition?: 'top' | 'bottom';
-  forgotPasswordLink?: string | false | null;
-  forgotPasswordLinkText?: string;
+  /** Route or URL for link to forgot password component */
+  forgotPasswordUrl?: string | false | null;
+  /** Text for forgot password link */
+  forgotPasswordUrlText?: string;
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
+  /** Position of children */
+  childrenPosition?: 'top' | 'bottom';
+  /** Social logins or other content to display */
   children?: React.ReactNode;
 };
 // mdx_login_props_end
@@ -52,16 +61,18 @@ export const Login = ({
   signupUrl = '/signup',
   header: Header = DefaultLoginHeader,
   loader: Loader = DefaultLoader,
-  forgotPasswordLink = '/forgot-password',
-  forgotPasswordLinkText = 'Forgot your password?',
+  buttonText = 'Login',
+  forgotPasswordUrl = '/forgot-password',
+  forgotPasswordUrlText = 'Forgot your password?',
   orLine = true,
   childrenPosition = 'bottom',
   linkComponent: LinkComponent = DefaultLinkComponent,
   linkComponentHrefAttr = 'href',
+  isFocused = true,
   customFields = defaultLoginFields,
   customSchema: schema = defaultLoginSchema,
   toast,
-  failMsg,
+  failMsg = constants.baseFailMsg,
   successMessage = false,
   darkMode = false,
   cssVars,
@@ -83,9 +94,9 @@ export const Login = ({
   });
 
   // set focus on the first (if any) field with a focus prop
-  useSetFocus(customFields, setFocus);
+  useSetFocus(customFields, setFocus, isFocused);
 
-  // Submit handler
+  /** Submit handler */
   const onSubmit = useMemo(
     () =>
       formHandler({
@@ -173,14 +184,14 @@ export const Login = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Login
+                  {buttonText}
                 </button>
-                {forgotPasswordLink ? (
+                {forgotPasswordUrl ? (
                   <div className={clsName('forgotPasswordLink')}>
                     <LinkComponent
-                      {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
+                      {...{ [linkComponentHrefAttr]: forgotPasswordUrl }}
                     >
-                      {forgotPasswordLinkText}
+                      {forgotPasswordUrlText}
                     </LinkComponent>
                   </div>
                 ) : null}
@@ -213,14 +224,14 @@ export const Login = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Login
+                  {buttonText}
                 </button>
-                {forgotPasswordLink ? (
+                {forgotPasswordUrl ? (
                   <div className={clsName('forgotPasswordLink')}>
                     <LinkComponent
-                      {...{ [linkComponentHrefAttr]: forgotPasswordLink }}
+                      {...{ [linkComponentHrefAttr]: forgotPasswordUrl }}
                     >
-                      {forgotPasswordLinkText}
+                      {forgotPasswordUrlText}
                     </LinkComponent>
                   </div>
                 ) : null}

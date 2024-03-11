@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import { ClsName } from '../../types';
 
 export type BaseSuccessMessageProps = {
@@ -10,7 +10,7 @@ type DefaultSuccessMessageProps = BaseSuccessMessageProps & {
 };
 
 export type ShowSuccessProps = BaseSuccessMessageProps & {
-  successMessage: React.FC<any> | string;
+  successMessage: ComponentType<any> | string;
 };
 
 export const DefaultSuccessMessage = ({

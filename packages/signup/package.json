@@ -6,6 +6,7 @@
   "types": "src/index.d.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./dist/*.css": "./dist/*.css",
     "./dist/*.module.css": "./src/scss/*.module.scss"
   },
   "publishConfig": {

@@ -16,6 +16,8 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   varNamesCommonForm,
+  DefaultHeaderProps,
+  constants,
 } from '@unleashit/common';
 import {
   defaultContactSchema,
@@ -31,10 +33,14 @@ export type QuickFormProps = Omit<
   BaseFormProps,
   'linkComponent' | 'linkComponentHrefAttr'
 > & {
-  // show phone field (ignored when using custom fields)
+  /** show phone field (ignored when using custom fields) */
   showPhone?: boolean;
-  // show success msg for x ms, then toggle back to blank form
-  // 0 or false to disable toggle and leave message
+  /** Custom header component */
+  header?: React.ComponentType<DefaultHeaderProps> | null;
+  /**
+   * Show success message for x ms, then toggle back to blank form.
+   * Use 0 or false to disable the toggle and leave message
+   */
   successMessageTimeout?: number | false | null;
   cssVars?: CSSVars<typeof varNames>;
 };
@@ -51,6 +57,7 @@ function QuickForm({
   header: Header = DefaultHeader,
   footer: Footer,
   loader: Loader = DefaultLoader,
+  buttonText = 'Send Message',
   successMessage = 'Thanks for your message!',
   successMessageTimeout = 5000,
   showPhone = false,
@@ -61,8 +68,9 @@ function QuickForm({
     ? defaultContactSchemaWithPhone
     : defaultContactSchema,
   toast,
-  failMsg,
+  failMsg = constants.baseFailMsg,
   darkMode = false,
+  isFocused = true,
   cssVars,
   cssModule = {},
 }: QuickFormProps) {
@@ -82,7 +90,7 @@ function QuickForm({
   });
 
   // set focus on the first (if any) field with a focus prop
-  useSetFocus(customFields, setFocus);
+  useSetFocus(customFields, setFocus, isFocused);
 
   // Display/hide the success message
   const [showSuccessMsg] = useShowSuccessTimer({
@@ -166,7 +174,7 @@ function QuickForm({
               disabled={isSubmitting}
               className={clsName('button')}
             >
-              Send
+              {buttonText}
             </button>
           </form>
           {!!Footer && <Footer />}

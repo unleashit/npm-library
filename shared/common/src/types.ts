@@ -1,9 +1,8 @@
-import React from 'react';
+import { ComponentType } from 'react';
 import { z, ZodTypeAny } from 'zod';
 import type { InputHTMLAttributes, SelectHTMLAttributes } from 'react';
 import type { GlobalError, UseFormRegisterReturn } from 'react-hook-form';
 import { CustomField } from './components/forms/CustomFields';
-import { DefaultHeaderProps } from './components/defaults/header';
 import { DefaultLoaderProps } from './components/defaults/loader';
 
 export type ClsName = (camelCaseClassName: string) => string;
@@ -53,6 +52,7 @@ export type FormValues<T extends ZodTypeAny, K = z.infer<T>> = {
 export type BaseFormProps = {
   handler: <T extends ZodTypeAny>(
     values: FormValues<T>,
+    event?: Event,
   ) => Promise<BaseServerResponse<FormValues<T>>>;
   onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
     resp: BaseServerResponse<FormValues<T>, Meta>,
@@ -72,8 +72,12 @@ export type BaseFormProps = {
   successMessage?: React.FC<any> | string | false | null;
   linkComponent?: React.ComponentType<any>;
   linkComponentHrefAttr?: string;
-  // setting auto or undefined will honor prefers-color-scheme
-  // light or dark will force light or dark mode
+  /** Should the first field in the form be focused on page load */
+  isFocused?: boolean;
+  /**
+   * setting auto or undefined will honor prefers-color-scheme
+   * light or dark will force light or dark mode
+   */
   darkMode?: boolean;
   cssModule?: Record<string, string>;
 };

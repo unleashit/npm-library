@@ -14,6 +14,7 @@ import {
   varNamesCommonForm,
   CSSVars,
   mapCSSVarsToStyles,
+  constants,
 } from '@unleashit/common';
 import {
   DefaultForgotPasswordResetHeader,
@@ -25,8 +26,8 @@ import { defaultForgotPasswordResetFields } from './defaults/fields';
 import { FormValuesReset } from './types';
 
 // mdx_fpreset_props_start
-export type ForgotPasswordResetProps = Omit<BaseFormProps, 'header'> & {
-  header?: React.FC<DefaultForgotPasswordHeaderProps> | false | null;
+export type ForgotPasswordResetProps = BaseFormProps & {
+  header?: React.ComponentType<DefaultForgotPasswordHeaderProps> | false | null;
   childrenPosition?: 'top' | 'bottom';
   cssVars?: CSSVars<typeof varNames>;
   children?: React.ReactNode;
@@ -43,14 +44,16 @@ export const ForgotPasswordReset = ({
   headerText = 'Reset Password',
   header: Header = DefaultForgotPasswordResetHeader,
   loader: Loader = DefaultLoader,
+  buttonText = 'Update Password',
   childrenPosition = 'bottom',
   customFields = defaultForgotPasswordResetFields,
   customSchema: schema = defaultForgotPasswordResetSchema,
   toast,
-  failMsg,
+  failMsg = constants.baseFailMsg,
   successMessage = DefaultForgotPasswordResetSuccessMessage,
   darkMode = false,
   cssVars,
+  isFocused = true,
   cssModule = {},
   children,
 }: ForgotPasswordResetProps) => {
@@ -68,7 +71,7 @@ export const ForgotPasswordReset = ({
   });
 
   // set focus on the first (if any) field with a focus prop
-  useSetFocus(customFields, setFocus);
+  useSetFocus(customFields, setFocus, isFocused);
 
   // Submit handler
   const onSubmit = useMemo(
@@ -150,7 +153,7 @@ export const ForgotPasswordReset = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Next
+                  {buttonText}
                 </button>
               </>
             )}
@@ -168,7 +171,7 @@ export const ForgotPasswordReset = ({
                 />
 
                 <button type="submit" className={clsName('button')}>
-                  Next
+                  {buttonText}
                 </button>
               </>
             )}

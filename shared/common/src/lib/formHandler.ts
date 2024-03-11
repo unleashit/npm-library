@@ -86,9 +86,12 @@ export function formHandler({
       console.error(err);
       // TODO: should actual error ever be displayed to user?
       const errorToDisplay: string =
-        typeof (err as any).message === 'string'
-          ? (err as any).message
-          : failMsg;
+        // eslint-disable-next-line no-nested-ternary
+        failMsg && failMsg !== constants.baseFailMsg
+          ? failMsg
+          : typeof (err as any).message === 'string'
+            ? (err as any).message
+            : failMsg;
       toast && toast(errorToDisplay);
       // must be set even when user supplies toast
       // to force invalid RHF state

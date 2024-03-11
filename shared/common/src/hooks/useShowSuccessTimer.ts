@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, ComponentType } from 'react';
 import { BaseSuccessMessageProps } from '../components/defaults/successMessage';
 
 export const useShowSuccessTimer = ({
@@ -8,7 +8,11 @@ export const useShowSuccessTimer = ({
   reset,
 }: {
   isSubmitSuccessful: boolean;
-  successMessage: React.FC<BaseSuccessMessageProps> | string | false | null;
+  successMessage:
+    | ComponentType<BaseSuccessMessageProps>
+    | string
+    | false
+    | null;
   successMessageTimeout?: number | false | null;
   reset: () => void;
 }) => {
