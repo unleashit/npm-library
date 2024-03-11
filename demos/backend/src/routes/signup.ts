@@ -21,6 +21,10 @@ const demoUsers = [
     email: 'test2@test2.com',
     password: '12345678',
   },
+  {
+    email: 'existing@user.com',
+    password: '12345678',
+  },
 ];
 
 function validations({ email, password, passwordConfirm }: PostBody) {
@@ -43,7 +47,8 @@ function validations({ email, password, passwordConfirm }: PostBody) {
   }
 
   if (demoUsers.find((u) => u.email === email)) {
-    errors.root = 'That email is already associated with an account';
+    errors.root = 'This email is already associated with an account';
+    errors.email = 'Please login instead or choose a different email';
   }
 
   return errors;
