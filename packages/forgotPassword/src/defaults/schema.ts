@@ -5,7 +5,8 @@ export const defaultForgotPasswordSchema = z.object({
     .string({ required_error: 'Please enter your email' })
     .nonempty({ message: 'Please enter your email' })
     .email({ message: 'Please enter a valid email' })
-    .max(50, { message: 'Email is too long' }),
+    .max(50, { message: 'Email is too long' })
+    .default(''),
 });
 
 const passwordReg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -20,7 +21,8 @@ export const defaultForgotPasswordResetSchema = z
         'Password must have at least 8 characters and contain at least 1 letter and 1 number',
       )
       .min(8)
-      .max(56),
+      .max(56)
+      .default(''),
     newPasswordConfirm: z
       .string({ required_error: 'Please enter the password again' })
       .nonempty({ message: 'Please enter the password again' })
@@ -29,7 +31,8 @@ export const defaultForgotPasswordResetSchema = z
         'Password must have at least 8 characters and contain at least 1 letter and 1 number',
       )
       .min(8)
-      .max(56),
+      .max(56)
+      .default(''),
   })
   .refine((data) => data.newPassword === data.newPasswordConfirm, {
     message: 'Passwords must match',

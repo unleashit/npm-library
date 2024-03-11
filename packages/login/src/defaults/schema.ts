@@ -5,12 +5,14 @@ const schema = z.object({
     .string({ required_error: 'Please enter your email' })
     .nonempty({ message: 'Please enter your email' })
     .email({ message: 'Please enter a valid email' })
-    .max(50, { message: 'Email is too long' }),
+    .max(50, { message: 'Email is too long' })
+    .default(''),
   password: z
     .string({ required_error: 'Please enter a password' })
     .nonempty({ message: 'Please enter a password' })
     .min(8)
-    .max(56),
+    .max(56)
+    .default(''),
 });
 
 export default schema;
