@@ -7,11 +7,13 @@ export const Select = ({
   register,
   error,
   componentName,
+  label,
   clsName,
   ...attrs
 }: SelectProps) => (
   <FieldGroup
     componentName={componentName}
+    label={label}
     fieldName={register.name}
     error={error}
     clsName={clsName}
