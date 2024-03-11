@@ -29,15 +29,18 @@ export type BaseServerResponse<
   TFormValues extends Record<string, string | string[]> = Record<string, any>,
   Meta extends Record<string, any> = Record<string, any>,
 > = {
-  // success key informs client whether server validation passed or failed
+  /* success key informs client whether server validation passed or failed */
   success: boolean;
-  // errors only display if success=false
+  /* errors only display if success=false */
   errors?: {
-    // Optional error msg to print in header
-    // or send to toast when server validation fails
+    /* Optional error msg to print in header
+     * or send to toast when server validation fails
+     */
     root?: string | string[];
-    // pass any failing formValues
-    // as key=name of field, value=message or array of messages to print
+    /*
+     * pass any failing formValues
+     * as key=name of field, value=message or array of messages to print
+     */
   } & Partial<TFormValues>;
 } & Meta;
 // mdx_server_response_end
@@ -50,27 +53,39 @@ export type FormValues<T extends ZodTypeAny, K = z.infer<T>> = {
 
 // mdx_base_form_start
 export type BaseFormProps = {
+  /** Handler to submit form. Receives form values and returns Promise with ServerResponse */
   handler: <T extends ZodTypeAny>(
     values: FormValues<T>,
     event?: Event,
   ) => Promise<BaseServerResponse<FormValues<T>>>;
+  /** Handler that fires upon successful server validation */
   onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
     resp: BaseServerResponse<FormValues<T>, Meta>,
   ) => void;
+  /** Header text for default header */
   headerText?: string;
-  header?: React.FC<DefaultHeaderProps> | false | null;
-  footer?: React.FC<any>;
-  loader?: React.FC<DefaultLoaderProps>;
+  /** Custom footer component */
+  footer?: ComponentType<any>;
+  /** Custom loader component */
+  loader?: ComponentType<DefaultLoaderProps>;
+  /** Label for form submit button */
+  buttonText?: string;
+  /** Custom fields to override default fields */
   customFields?: CustomField[];
+  /** Custom schema to override default schema */
   customSchema?: z.AnyZodObject | z.ZodEffects<any>;
-  // optionally send root server error message and/or
-  // handler exceptions to toast
+  /**
+   * optionally send root server error message and/or
+   * handler exceptions to toast
+   */
   toast?: (msg: string) => void;
-  // override default failure message to show user
+  /** override the default catch error shown to user */
   failMsg?: string;
-  // override or remove the default success message
-  successMessage?: React.FC<any> | string | false | null;
-  linkComponent?: React.ComponentType<any>;
+  /** override or remove the default success message */
+  successMessage?: ComponentType<any> | string | false | null;
+  /** Link component for client side routing */
+  linkComponent?: ComponentType<any>;
+  /** Link component's href attribute */
   linkComponentHrefAttr?: string;
   /** Should the first field in the form be focused on page load */
   isFocused?: boolean;
@@ -79,6 +94,7 @@ export type BaseFormProps = {
    * light or dark will force light or dark mode
    */
   darkMode?: boolean;
+  /** CSS module to target internal styles */
   cssModule?: Record<string, string>;
 };
 // mdx_base_form_end
