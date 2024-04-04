@@ -22,16 +22,16 @@ const Numbers = ({
   const pages = Math.ceil(total / perPage);
   const currentPage = Math.floor(currentOffset / perPage) + 1;
 
-  let maxPages;
+  let maxPages: number;
   if (containerWidth <= 1000) {
-    const [_, breakPointPages]: any = [
+    const breakPoint = [
       [340, 2],
       [380, 3],
       [650, 4],
       [850, 8],
       [1000, 10],
-    ].find((group) => containerWidth < group[0]);
-    maxPages = breakPointPages;
+    ].find((group) => containerWidth <= group[0]);
+    maxPages = breakPoint ? breakPoint[1] : 1;
   } else {
     maxPages = Math.ceil(containerWidth / 80);
   }
