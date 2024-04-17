@@ -1,11 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, ComponentType, ReactNode } from 'react';
 import { ZodTypeAny } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
   BaseFormProps,
   CustomFields,
-  DefaultLinkComponent,
   DefaultLoader,
   formHandler,
   ShowSuccess,
@@ -16,10 +15,10 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   constants,
+  ClsName,
 } from '@unleashit/common';
 import {
   DefaultForgotPasswordHeader,
-  DefaultForgotPasswordHeaderProps,
   DefaultForgotPasswordSuccessMessage,
 } from './defaults/components';
 import { defaultForgotPasswordSchema } from './defaults/schema';
@@ -28,16 +27,26 @@ import { FormValues } from './types';
 
 // mdx_fp_props_start
 export type ForgotPasswordProps = BaseFormProps & {
-  header?: React.ComponentType<DefaultForgotPasswordHeaderProps> | false | null;
-  childrenPosition?: 'top' | 'bottom';
-  loginUrl?: string | false | null;
-  loginUrlText?: string;
+  /**
+   * Override the login link inside the default header
+   * Note: if you provide a header prop, the login link will not appear
+   */
+  loginLink?: ComponentType | ReactNode;
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
-  children?: React.ReactNode;
+  /** Position of children */
+  childrenPosition?: 'top' | 'bottom';
+  /** Other content to display */
+  children?: ReactNode;
 };
 // mdx_fp_props_end
 
-const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
+const {
+  genClassNames,
+  getDefaultsFromZodObject,
+  clearOnError,
+  normalizeComponentProp,
+} = utils;
 
 const varNames = [...varNamesCommonForm] as const;
 
@@ -54,10 +63,7 @@ export const ForgotPassword = ({
   toast,
   failMsg = constants.baseFailMsg,
   successMessage = DefaultForgotPasswordSuccessMessage,
-  loginUrl = '/login',
-  loginUrlText = 'Login instead',
-  linkComponent: LinkComponent = DefaultLinkComponent,
-  linkComponentHrefAttr = 'href',
+  loginLink = <a href="/login">Back to login</a>,
   isFocused = true,
   darkMode = false,
   cssVars,
@@ -136,7 +142,17 @@ export const ForgotPassword = ({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {Header && <Header title={headerText} clsName={clsName} />}
+          {Header
+            ? normalizeComponentProp<{
+                title: string;
+                loginLink: ForgotPasswordProps['loginLink'];
+                clsName: ClsName;
+              }>(Header, {
+                title: headerText,
+                loginLink,
+                clsName,
+              })
+            : null}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}
@@ -162,11 +178,9 @@ export const ForgotPassword = ({
                 <button type="submit" className={clsName('button')}>
                   {buttonText}
                 </button>
-                {loginUrl ? (
+                {loginLink ? (
                   <div className={clsName('forgotPasswordLink')}>
-                    <LinkComponent {...{ [linkComponentHrefAttr]: loginUrl }}>
-                      {loginUrlText}
-                    </LinkComponent>
+                    {normalizeComponentProp(loginLink)}
                   </div>
                 ) : null}
               </>
@@ -187,11 +201,9 @@ export const ForgotPassword = ({
                 <button type="submit" className={clsName('button')}>
                   {buttonText}
                 </button>
-                {loginUrl ? (
+                {loginLink ? (
                   <div className={clsName('forgotPasswordLink')}>
-                    <LinkComponent {...{ [linkComponentHrefAttr]: loginUrl }}>
-                      {loginUrlText}
-                    </LinkComponent>
+                    {normalizeComponentProp(loginLink)}
                   </div>
                 ) : null}
               </>

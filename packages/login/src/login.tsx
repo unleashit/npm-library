@@ -1,10 +1,9 @@
-import React, { useMemo, ComponentType } from 'react';
+import React, { useMemo, ComponentType, ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ZodTypeAny } from 'zod';
 import {
   DefaultLoader,
-  DefaultLinkComponent,
   CustomFields,
   BaseFormProps,
   formHandler,
@@ -20,23 +19,25 @@ import {
 import { FormValues } from './types';
 import defaultLoginSchema from './defaults/schema';
 import defaultLoginFields from './defaults/fields';
-import {
-  DefaultLoginHeader,
-  DefaultLoginHeaderProps,
-} from './defaults/components';
+import { DefaultLoginHeader } from './defaults/components';
 
 // mdx_login_props_start
 export type LoginProps = BaseFormProps & {
-  /** Custom header component */
-  header?: ComponentType<DefaultLoginHeaderProps> | false | null;
-  /** Route or URL for link to signup component */
-  signupUrl?: string;
-  /** Add a seperator between email and social logins */
+  /**
+   * Override the signup link inside the default header
+   * Note: if you provide a header prop, the signup link will not appear
+   */
+  signupLink?: ComponentType | ReactNode;
+  /**
+   * Override default link to the forgot password route
+   * or false to disable
+   */
+  forgotPasswordLink?: ComponentType | ReactNode | false;
+  /**
+   * Add a separator between email and
+   * social logins  (children required)
+   */
   orLine?: boolean;
-  /** Route or URL for link to forgot password component */
-  forgotPasswordUrl?: string | false | null;
-  /** Text for forgot password link */
-  forgotPasswordUrlText?: string;
   /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
   /** Position of children */
@@ -46,7 +47,12 @@ export type LoginProps = BaseFormProps & {
 };
 // mdx_login_props_end
 
-const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
+const {
+  genClassNames,
+  getDefaultsFromZodObject,
+  clearOnError,
+  normalizeComponentProp,
+} = utils;
 
 const varNames = [
   ...varNamesCommonForm,
@@ -58,16 +64,13 @@ export const Login = ({
   handler,
   onSuccess,
   headerText = 'Login',
-  signupUrl = '/signup',
   header: Header = DefaultLoginHeader,
   loader: Loader = DefaultLoader,
+  signupLink = <a href="/signup">Sign up</a>,
+  forgotPasswordLink = <a href="/forgot-password">Forgot your password?</a>,
   buttonText = 'Login',
-  forgotPasswordUrl = '/forgot-password',
-  forgotPasswordUrlText = 'Forgot your password?',
   orLine = true,
   childrenPosition = 'bottom',
-  linkComponent: LinkComponent = DefaultLinkComponent,
-  linkComponentHrefAttr = 'href',
   isFocused = true,
   customFields = defaultLoginFields,
   customSchema: schema = defaultLoginSchema,
@@ -152,15 +155,13 @@ export const Login = ({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {Header && (
-            <Header
-              title={headerText}
-              signupUrl={signupUrl}
-              linkComponent={LinkComponent}
-              linkComponentHrefAttr={linkComponentHrefAttr}
-              clsName={clsName}
-            />
-          )}
+          {Header
+            ? normalizeComponentProp(Header, {
+                headerText,
+                signupLink,
+                clsName,
+              })
+            : null}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}
@@ -186,13 +187,9 @@ export const Login = ({
                 <button type="submit" className={clsName('button')}>
                   {buttonText}
                 </button>
-                {forgotPasswordUrl ? (
+                {forgotPasswordLink ? (
                   <div className={clsName('forgotPasswordLink')}>
-                    <LinkComponent
-                      {...{ [linkComponentHrefAttr]: forgotPasswordUrl }}
-                    >
-                      {forgotPasswordUrlText}
-                    </LinkComponent>
+                    {normalizeComponentProp(forgotPasswordLink)}
                   </div>
                 ) : null}
               </>
@@ -226,13 +223,9 @@ export const Login = ({
                 <button type="submit" className={clsName('button')}>
                   {buttonText}
                 </button>
-                {forgotPasswordUrl ? (
+                {forgotPasswordLink ? (
                   <div className={clsName('forgotPasswordLink')}>
-                    <LinkComponent
-                      {...{ [linkComponentHrefAttr]: forgotPasswordUrl }}
-                    >
-                      {forgotPasswordUrlText}
-                    </LinkComponent>
+                    {normalizeComponentProp(forgotPasswordLink)}
                   </div>
                 ) : null}
               </>

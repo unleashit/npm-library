@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ClsName, DefaultHeader } from '@unleashit/common';
 
 export interface DefaultForgotPasswordHeaderProps {

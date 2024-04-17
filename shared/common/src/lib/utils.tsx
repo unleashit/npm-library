@@ -50,19 +50,21 @@ export const genClassNames = (
   },
 });
 
-export const returnComponentFormat = (
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  C: React.ReactNode | Function,
-  attrs: Record<string, unknown>,
-): any => {
+export const normalizeComponentProp = <T extends Record<string, unknown>>(
+  C: React.ReactNode | React.ComponentType,
+  props?: T,
+) => {
   if (React.isValidElement(C)) {
+    if (props && Object.keys(props).length) {
+      return React.cloneElement(C, props);
+    }
     return C;
   }
   if (typeof C === 'function') {
-    return <C {...attrs} />;
+    return <C {...props} />;
   }
-  throw new Error(
-    'Not a valid component. Please supply a component or valid React element.',
+  throw new TypeError(
+    'Prop received that is not a valid React component type or node',
   );
 };
 

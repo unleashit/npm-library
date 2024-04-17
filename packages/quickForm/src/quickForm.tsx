@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, ComponentType, ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ZodTypeAny } from 'zod';
@@ -16,7 +16,6 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   varNamesCommonForm,
-  DefaultHeaderProps,
   constants,
 } from '@unleashit/common';
 import {
@@ -29,24 +28,27 @@ import {
 } from './defaults/defaultFields';
 
 // mdx_quickForm_props_start
-export type QuickFormProps = Omit<
-  BaseFormProps,
-  'linkComponent' | 'linkComponentHrefAttr'
-> & {
+export type QuickFormProps = BaseFormProps & {
   /** show phone field (ignored when using custom fields) */
   showPhone?: boolean;
-  /** Custom header component */
-  header?: React.ComponentType<DefaultHeaderProps> | null;
+  /** Custom footer component */
+  footer?: ComponentType | ReactNode;
   /**
    * Show success message for x ms, then toggle back to blank form.
-   * Use 0 or false to disable the toggle and leave message
+   * Use 0 or false to disable the toggle and keep message
    */
   successMessageTimeout?: number | false | null;
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
 };
 // mdx_quickForm_props_end
 
-const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
+const {
+  genClassNames,
+  getDefaultsFromZodObject,
+  clearOnError,
+  normalizeComponentProp,
+} = utils;
 
 const varNames = [...varNamesCommonForm] as const;
 
@@ -149,7 +151,12 @@ function QuickForm({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {!!Header && <Header title={headerText} clsName={clsName} />}
+          {Header
+            ? normalizeComponentProp(Header, {
+                title: headerText,
+                clsName,
+              })
+            : null}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}
@@ -177,7 +184,7 @@ function QuickForm({
               {buttonText}
             </button>
           </form>
-          {!!Footer && <Footer />}
+          {!!Footer && normalizeComponentProp(Footer)}
         </>
       )}
     </div>

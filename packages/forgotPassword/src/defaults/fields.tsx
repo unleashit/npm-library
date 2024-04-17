@@ -15,7 +15,7 @@ export const defaultForgotPasswordResetFields: CustomField[] = [
     element: 'input',
     type: 'password',
     name: 'newPassword',
-    label: 'New Password',
+    label: 'New password',
     focus: true,
     clearOnServerError: true,
   },

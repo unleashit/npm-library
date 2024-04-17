@@ -15,10 +15,10 @@ import {
   CSSVars,
   mapCSSVarsToStyles,
   constants,
+  ClsName,
 } from '@unleashit/common';
 import {
   DefaultForgotPasswordResetHeader,
-  DefaultForgotPasswordHeaderProps,
   DefaultForgotPasswordResetSuccessMessage,
 } from './defaults/components';
 import { defaultForgotPasswordResetSchema } from './defaults/schema';
@@ -27,14 +27,21 @@ import { FormValuesReset } from './types';
 
 // mdx_fpreset_props_start
 export type ForgotPasswordResetProps = BaseFormProps & {
-  header?: React.ComponentType<DefaultForgotPasswordHeaderProps> | false | null;
-  childrenPosition?: 'top' | 'bottom';
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
+  /** Position of children */
+  childrenPosition?: 'top' | 'bottom';
+  /** Other content to display */
   children?: React.ReactNode;
 };
 // mdx_fpreset_props_end
 
-const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
+const {
+  genClassNames,
+  getDefaultsFromZodObject,
+  clearOnError,
+  normalizeComponentProp,
+} = utils;
 
 const varNames = [...varNamesCommonForm] as const;
 
@@ -129,7 +136,15 @@ export const ForgotPasswordReset = ({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {Header && <Header title={headerText} clsName={clsName} />}
+          {Header
+            ? normalizeComponentProp<{
+                title: string;
+                clsName: ClsName;
+              }>(Header, {
+                title: headerText,
+                clsName,
+              })
+            : null}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}

@@ -1,7 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, ComponentType, ReactNode } from 'react';
 import {
   CustomFields,
-  DefaultLinkComponent,
   BaseFormProps,
   DefaultLoader,
   formHandler,
@@ -16,29 +15,38 @@ import {
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  DefaultSignupHeaderProps,
-  DefaultSignupHeader,
-} from './defaults/components';
+import { DefaultSignupHeader } from './defaults/components';
 import { FormValues } from './types';
 import defaultSignupSchema from './defaults/schema';
 import defaultSignupFields from './defaults/fields';
 
 // mdx_signup_props_start
 export type SignupProps = BaseFormProps & {
-  header?: React.ComponentType<DefaultSignupHeaderProps> | false | null;
-  // link to login page, when using default login header
-  loginUrl?: string;
-  // show a separator line between email and social logins (children required)
+  /**
+   * Override the login link inside the default header
+   * Note: if you provide a header prop, the login link will not appear
+   */
+  loginLink?: ComponentType | ReactNode;
+  /**
+   * Add a separator between email and
+   * social logins  (children required)
+   */
   orLine?: boolean;
-  // position of social logins relative to email login
-  childrenPosition?: 'top' | 'bottom';
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
-  children?: React.ReactNode;
+  /** Position of children */
+  children?: ReactNode;
+  /** Social logins or other content to display */
+  childrenPosition?: 'top' | 'bottom';
 };
 // mdx_signup_props_end
 
-const { genClassNames, getDefaultsFromZodObject, clearOnError } = utils;
+const {
+  genClassNames,
+  getDefaultsFromZodObject,
+  clearOnError,
+  normalizeComponentProp,
+} = utils;
 
 const varNames = [
   ...varNamesCommonForm,
@@ -55,9 +63,7 @@ export const Signup = ({
   buttonText = 'Signup',
   orLine = true,
   childrenPosition = 'bottom',
-  loginUrl = '/login',
-  linkComponent: LinkComponent = DefaultLinkComponent,
-  linkComponentHrefAttr = 'href',
+  loginLink = <a href="/login">Login</a>,
   customFields = defaultSignupFields,
   customSchema: schema = defaultSignupSchema,
   toast,
@@ -146,15 +152,13 @@ export const Signup = ({
         <ShowSuccess successMessage={successMessage} clsName={clsName} />
       ) : (
         <>
-          {Header && (
-            <Header
-              title={headerText}
-              loginUrl={loginUrl}
-              linkComponent={LinkComponent}
-              linkComponentHrefAttr={linkComponentHrefAttr}
-              clsName={clsName}
-            />
-          )}
+          {Header
+            ? normalizeComponentProp(Header, {
+                headerText,
+                loginLink,
+                clsName,
+              })
+            : null}
           {errors.root && !toast && (
             <div className={clsName('serverAuthError')}>
               {errors.root.message}

@@ -1,27 +1,20 @@
-import { DefaultHeader, ClsName } from '@unleashit/common';
-import * as React from 'react';
+import React, { ComponentType, ReactNode } from 'react';
+import { DefaultHeader, ClsName, utils } from '@unleashit/common';
 
 export interface DefaultSignupHeaderProps {
   title: string;
-  loginUrl: string;
-  linkComponent: React.ComponentType<any>;
-  linkComponentHrefAttr: string;
+  loginLink: ComponentType | ReactNode;
   clsName: ClsName;
 }
 
+const { normalizeComponentProp } = utils;
+
 export const DefaultSignupHeader = ({
   title = 'Signup',
-  loginUrl,
-  linkComponent: LinkComponent,
-  linkComponentHrefAttr = 'href',
+  loginLink,
   clsName,
 }: DefaultSignupHeaderProps) => (
   <DefaultHeader title={title} clsName={clsName}>
-    <p>
-      Already have an account?{' '}
-      <LinkComponent {...{ [linkComponentHrefAttr]: loginUrl }}>
-        Login
-      </LinkComponent>
-    </p>
+    <p>Already have an account? {normalizeComponentProp(loginLink)}</p>
   </DefaultHeader>
 );
