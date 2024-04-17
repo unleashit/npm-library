@@ -59,7 +59,8 @@
     "react": "16.x || 17.x || 18.x"
   },
   "dependencies": {
-    "@unleashit/common": "workspace:*"
+    "@unleashit/common": "workspace:*",
+    "date-fns": "^3.6.0"
   },
   "devDependencies": {
     "@unleashit/configs": "workspace:*"

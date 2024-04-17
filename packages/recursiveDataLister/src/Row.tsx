@@ -3,8 +3,7 @@ import * as React from 'react';
 import {
   DateFormat,
   getChildTag,
-  handleDate,
-  isDate,
+  handleDateOrPrimitive,
   isObjectNotArray,
   isObjectNotDate,
   isPrimitive,
@@ -17,6 +16,7 @@ interface RowProps {
   branchProp: string | null;
   removeRepeatedProp: boolean;
   clsName: ClsName;
+  handleISOStringDates: boolean;
   dateFormat: DateFormat;
 }
 const Row: React.FC<RowProps> = ({
@@ -26,6 +26,7 @@ const Row: React.FC<RowProps> = ({
   branchProp,
   removeRepeatedProp,
   clsName,
+  handleISOStringDates,
   dateFormat,
 }): React.ReactElement => {
   const Child = getChildTag(Parent);
@@ -39,7 +40,7 @@ const Row: React.FC<RowProps> = ({
           <span className={clsName('value')}>{row}</span>
         </Child>
       ) : (
-        Object.keys(row).map((field): React.ReactElement | null => {
+        Object.keys(row).map((field): React.ReactNode => {
           if (isObjectNotDate(row[field])) {
             return (
               <Child
@@ -69,6 +70,7 @@ const Row: React.FC<RowProps> = ({
                   clsName={clsName}
                   branchProp={branchProp}
                   removeRepeatedProp={removeRepeatedProp}
+                  handleISOStringDates={handleISOStringDates}
                   dateFormat={dateFormat}
                   nested
                 />
@@ -84,9 +86,11 @@ const Row: React.FC<RowProps> = ({
                 <span className={clsName('label')}>{field}: </span>
               )}
               <span className={clsName('value')}>
-                {isDate(row[field])
-                  ? handleDate(row[field], dateFormat)
-                  : row[field]}
+                {handleDateOrPrimitive(
+                  row[field],
+                  dateFormat,
+                  handleISOStringDates,
+                )}
               </span>
             </Child>
           );
