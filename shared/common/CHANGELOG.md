@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.6.2...@unleashit/common@2.0.0) (2024-04-18)
+
+### Bug Fixes
+
+* **all:** various fixes to bringing the library up to 2.0 ([64b9123](https://github.com/unleashit/npm-library/commit/64b912323c198df3c6278e40d486bd9ef0bc00ed))
+* **forms:** custom select fields now display label ([ff68854](https://github.com/unleashit/npm-library/commit/ff688545d1c6ae067f38d7ae0ecedcf5d2284f48))
+
+### Features
+
+* **forms:** add some props to forms, normalize link related prop names ([f8324bf](https://github.com/unleashit/npm-library/commit/f8324bff8a0b76e7f000dfa9b78cd39aebfcca1d))
+
 ## [1.6.2](https://github.com/unleashit/npm-library/compare/@unleashit/common@1.6.1...@unleashit/common@1.6.2) (2024-03-01)
 
 ### Bug Fixes

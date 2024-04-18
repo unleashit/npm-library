@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/modal@1.2.4...@unleashit/modal@2.0.0) (2024-04-18)
+
+### Bug Fixes
+
+* **all:** various fixes to bringing the library up to 2.0 ([64b9123](https://github.com/unleashit/npm-library/commit/64b912323c198df3c6278e40d486bd9ef0bc00ed))
+
+### Features
+
+* **modal:** allow light and dark colors in overlayColor prop ([9f1c2d1](https://github.com/unleashit/npm-library/commit/9f1c2d1da9fdf7352c097c2e65e12665930ce3ec))
+
 ## [1.2.4](https://github.com/unleashit/npm-library/compare/@unleashit/modal@1.2.3...@unleashit/modal@1.2.4) (2024-03-01)
 
 ### Bug Fixes

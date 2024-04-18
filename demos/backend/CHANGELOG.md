@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.3.2...@unleashit/demo-backend@2.0.0) (2024-04-18)
+
+### Bug Fixes
+
+* **demo:** improve errors on signup route ([8c3ec9d](https://github.com/unleashit/npm-library/commit/8c3ec9d6df2c88fece3e1659fa857ce9219656ce))
+
 ## [2.3.2](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.3.1...@unleashit/demo-backend@2.3.2) (2024-03-01)
 
 **Note:** Version bump only for package @unleashit/demo-backend

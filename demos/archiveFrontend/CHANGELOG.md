@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2024-04-18)
+
+### Bug Fixes
+
+* **all:** various fixes to bringing the library up to 2.0 ([64b9123](https://github.com/unleashit/npm-library/commit/64b912323c198df3c6278e40d486bd9ef0bc00ed))
+
 ## [1.2.5](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@1.2.4...@unleashit/demo-frontend@1.2.5) (2024-03-01)
 
 **Note:** Version bump only for package @unleashit/demo-frontend

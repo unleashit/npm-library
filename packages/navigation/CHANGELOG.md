@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.3.5...@unleashit/navigation@2.0.0) (2024-04-18)
+
+### Bug Fixes
+
+* **all:** various fixes to bringing the library up to 2.0 ([64b9123](https://github.com/unleashit/npm-library/commit/64b912323c198df3c6278e40d486bd9ef0bc00ed))
+
 ## [1.3.5](https://github.com/unleashit/npm-library/compare/@unleashit/navigation@1.3.4...@unleashit/navigation@1.3.5) (2024-03-01)
 
 ### Bug Fixes

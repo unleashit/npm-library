@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/quick-form",
-  "version": "1.3.2",
+  "version": "2.0.0",
   "description": "Quick and responsive simple forms for React",
   "main": "src/index.ts",
   "types": "src/index.d.ts",

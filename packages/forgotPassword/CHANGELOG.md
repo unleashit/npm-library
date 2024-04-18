@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@1.4.2...@unleashit/forgot-password@2.0.0) (2024-04-18)
+
+### Bug Fixes
+
+* **forms:** add default values to zod schemas ([be7b833](https://github.com/unleashit/npm-library/commit/be7b833e7ff64e66b7da0efe71dbd3a7b8013887))
+
+### Features
+
+* **forms:** add some props to forms, normalize link related prop names ([f8324bf](https://github.com/unleashit/npm-library/commit/f8324bff8a0b76e7f000dfa9b78cd39aebfcca1d))
+
 ## [1.4.2](https://github.com/unleashit/npm-library/compare/@unleashit/forgot-password@1.4.1...@unleashit/forgot-password@1.4.2) (2024-03-01)
 
 **Note:** Version bump only for package @unleashit/forgot-password

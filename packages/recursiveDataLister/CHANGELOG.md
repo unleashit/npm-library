@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@1.2.4...@unleashit/recursive-data-lister@2.0.0) (2024-04-18)
+
+### Features
+
+* **recursiveDataLister:** add ISO date string detection and improve date handling ([4f6dc43](https://github.com/unleashit/npm-library/commit/4f6dc43629b1ed05f7fdb232e245680eb7b006ba))
+
 ## [1.2.4](https://github.com/unleashit/npm-library/compare/@unleashit/recursive-data-lister@1.2.3...@unleashit/recursive-data-lister@1.2.4) (2024-03-01)
 
 **Note:** Version bump only for package @unleashit/recursive-data-lister
