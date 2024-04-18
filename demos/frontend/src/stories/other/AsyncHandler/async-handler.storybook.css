@@ -1,0 +1,11 @@
+.unl-async-handler__loader {
+  text-align: center;
+}
+
+[data-theme='storybook-dark'] .unl-async-handler__loader,
+[data-theme='storybook-dark'] .unl-async-handler__nothing-found,
+[data-theme='storybook-dark'] .unl-async-handler__error-message
+{
+  color: #fff;
+}
+

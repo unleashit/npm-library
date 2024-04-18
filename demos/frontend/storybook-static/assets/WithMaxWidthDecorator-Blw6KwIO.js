@@ -1,0 +1,1 @@
+import{j as t}from"./jsx-runtime-CKrituN3.js";const r=o=>t.jsx("div",{className:"max-width-container",children:t.jsx(o,{})});r.__docgenInfo={description:"Smaller max-width layout for stories",methods:[],displayName:"WithMaxWidthDecorator"};export{r as W};

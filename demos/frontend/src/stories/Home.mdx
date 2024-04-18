@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Home" />
+
+# NPM Library Demo
+
+Collection of React UI components written with Typescript and individually installable with npm.
+
+## Documentation
+<a href="https://unleashit.github.io/npm-library" target="_blank">https://unleashit.github.io/npm-library</a>
+
+## React Components
+
+All Forms and UI components have light and dark modes which can be previewed with the light/dark mode toggle above.
+
+### Forms
+
+Not just dumb components, these offer out of the box functionality to handle both client and server validations, custom fields, success messages and more. Aside from React, required peer dependencies are `react-hook-form`, `@hookform/resolvers` and `zod`.
+
+**Authentication Suite**
+
+- [Login](/story/forms-login--basic) - customizable, responsive login component with server support that validates against a default or custom Zod schema.
+- [Sign-up / registration](/story/forms-signup--basic) - customizable, responsive signup component with server support that validates against a default or custom Zod schema.
+- [Forgot password](/story/forms-forgot-password--basic) and [Forgot password Reset](/story/forms-forgot-password-reset--basic)- customizable, responsive set of forgot password components with server support that validate against a default or custom Zod schema.
+
+**Simple custom forms builder**
+
+- [Quick Form](/story/forms-quick-form--contact) - form generator that can quickly produce simple React forms with validation and server support. By default, it can serve as a Contact form.
+
+### UI Widgets
+
+- [Modal](/story/ui-widgets-modal--header-and-footer) - customizable, responsive, portal free modal component. Optional animation state support when adding/removing from DOM.
+- [Pagination](/story/ui-widgets-pagination--start) - sexy and responsive pagination component for React.
+- [Navigation](/story/ui-widgets-navigation--dark-buttons-logged-out) - customizable, responsive navigation component. Supports auth states and comes with an optional sidecar component for login/logout/signup.
+
+### Other
+
+- [Recursive Data Lister](/story/other-recursive-data-lister--complex-clean) - component that recursively pretty prints nested lists or objects with various options for html markup and styling.
+- [Async Handler](/story/other-async-handler--basic) - HOC that takes an async function and returns views for loading, no-data and error states. It accepts an optional method to check a cache before the async function is run. **Note:** this package has been deprecated and will be archived in the near future. [React Query](https://github.com/TanStack/query) is a more feature rich implementation based on React hooks.

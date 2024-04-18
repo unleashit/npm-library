@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { validator, ValidationErrors } from '../helpers';
+import { validator, ValidationErrors, isValidEmail } from '../helpers';
 
 type PostBody = {
   email?: string;
@@ -20,13 +20,18 @@ function validations({ email, password }: PostBody) {
 
   if (!email) {
     errors.email = 'Email is required';
+  } else if (!isValidEmail(email)) {
+    errors.email = 'Email must be valid';
   }
 
   if (!password) {
     errors.password = 'Password is required';
   }
 
-  if (email !== demoUser.email || password !== demoUser.password) {
+  if (
+    Object.keys(errors).length === 0 &&
+    (email !== demoUser.email || password !== demoUser.password)
+  ) {
     errors.root = 'Invalid credentials';
   }
 

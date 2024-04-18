@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ValidationErrors, validator } from '../helpers';
+import { isValidEmail, ValidationErrors, validator } from '../helpers';
 
 export interface SignupResponse {
   success: boolean;
@@ -32,6 +32,8 @@ function validations({ email, password, passwordConfirm }: PostBody) {
 
   if (!email) {
     errors.email = 'Email is required';
+  } else if (!isValidEmail(email)) {
+    errors.email = 'Email must be valid';
   }
 
   if (!password) {

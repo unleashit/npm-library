@@ -1,4 +1,4 @@
-import { ValidationErrors } from '../../helpers';
+import { isValidEmail, ValidationErrors } from '../../helpers';
 
 export type ResetRequestPostBody = {
   email?: string;
@@ -16,17 +16,9 @@ export const validateResetRequest = ({ email }: ResetRequestPostBody) => {
 
   if (!email) {
     errors.email = 'Email is required';
-  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+  } else if (!isValidEmail(email)) {
     errors.email = 'Email must be valid';
   }
-
-  // const user = {
-  //   email: 'test@test.com',
-  // };
-
-  // else if (email !== user.email) {
-  //   errors.root = 'A user with that email was not found';
-  // }
 
   return errors;
 };

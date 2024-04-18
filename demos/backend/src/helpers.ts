@@ -17,3 +17,6 @@ export const validator = <
   const errors = validations(body);
   return { errors, valid: Object.keys(errors).length === 0 };
 };
+
+export const isValidEmail = (email: string) =>
+  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);

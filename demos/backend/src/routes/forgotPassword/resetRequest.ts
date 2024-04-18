@@ -10,13 +10,14 @@ export const resetRequest = (req: Request, res: Response) => {
   );
 
   if (!valid) {
-    res.status(401).json({
+    res.status(400).json({
       success: false,
       errors,
     });
     return;
   }
 
+  // Fake non-user
   if (req.body.email === 'non@user.com') {
     res.status(401).json({
       success: false,
@@ -28,10 +29,20 @@ export const resetRequest = (req: Request, res: Response) => {
     return;
   }
 
+  // Don't actually send an email to the fake address used by the automated demo
+  if (req.body.email === 'example@example.com') {
+    res.json({
+      success: valid,
+      errors,
+    });
+    return;
+  }
+
   const userId = '1';
   const token = '1234567890';
   const baseUrl = process.env.BASE_URL;
   const url = `${baseUrl}/forgot-password/${userId}/${token}`;
+  // const url = `${baseUrl}/?path=/story/forgot-password--basic&userId=${userId}&token=${token}`;
   const opts = {
     to: req.body.email,
     subject: 'Reset your password: NPM library demo',
