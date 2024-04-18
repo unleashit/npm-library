@@ -1,8 +1,5 @@
-import { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, fireEvent } from '@storybook/test';
 import { action } from '@storybook/addon-actions';
-import LinkTo from '@storybook/addon-links/react';
 import Pagination from '@unleashit/pagination';
 import '@unleashit/navigation/dist/navigation.css';
 import { loadBlogData } from './api.ts';
@@ -11,10 +8,7 @@ import '@unleashit/pagination/dist/pagination.css';
 import './pagination.stories.css';
 import { WithUseArgsDecorator } from '../../../lib/decorators/WithUseArgsDecorator.tsx';
 import { WithDarkModeStoryDecorator } from '../../../lib/decorators/WithDarkModeStoryDecorator.tsx';
-import { WithSetAsDarkModeDecorator } from '../../../lib/decorators/WithSetAsDarkModeDecorator.tsx';
-import { makeNotes, makeFeaturedNotes } from '../../../lib/Notes.tsx';
-
-// const perPage = 3;
+import { makeFeaturedNotes, makeNotes } from '../../../lib/Notes.tsx';
 
 const meta = {
   title: 'UI Widgets/Pagination',
@@ -39,48 +33,6 @@ const meta = {
         min: 0,
       },
     },
-    // header: {
-    //   table: {
-    //     type: { summary: 'ComponentType | ReactNode | false' },
-    //     defaultValue: { summary: 'Default Header' },
-    //   },
-    // },
-    // successMessage: {
-    //   control: 'null',
-    //   table: {
-    //     type: { summary: 'ComponentType | string | false' },
-    //   },
-    // },
-    // signupLink: {
-    //   control: 'null',
-    //   table: {
-    //     type: { summary: 'ComponentType | ReactNode | false' },
-    //   },
-    // },
-    // forgotPasswordLink: {
-    //   control: 'null',
-    //   table: {
-    //     type: { summary: 'ComponentType | ReactNode | false' },
-    //   },
-    // },
-    // loader: {
-    //   table: {
-    //     defaultValue: { summary: 'Default Spinner' },
-    //   },
-    // },
-    // customFields: {
-    //   table: {
-    //     defaultValue: { summary: 'Default Fields' },
-    //   },
-    // },
-    // customSchema: {
-    //   table: {
-    //     type: { summary: 'AnyZodSchema' },
-    //     defaultValue: {
-    //       summary: 'Default Zod Schema',
-    //     },
-    //   },
-    // },
   },
   args: {
     perPage: 2,
@@ -168,7 +120,10 @@ type Story = StoryObj<typeof meta>;
 export const Start: Story = {
   args: {},
   parameters: {
-    // notes: [meta.parameters.notes, makeNotes('fwfewf')],
+    notes: [
+      meta.parameters.notes,
+      makeNotes('Example view of the start of a long set of pages.'),
+    ],
   },
 };
 
@@ -177,7 +132,10 @@ export const Mid: Story = {
     currentOffset: 248,
   },
   parameters: {
-    // notes: [meta.parameters.notes, makeNotes(['la la la'])],
+    notes: [
+      meta.parameters.notes,
+      makeNotes(['Example view of the middle of a long set of pages.']),
+    ],
   },
 };
 
@@ -186,7 +144,10 @@ export const End: Story = {
     currentOffset: 498,
   },
   parameters: {
-    // notes: [meta.parameters.notes, makeNotes('fwfewf')],
+    notes: [
+      meta.parameters.notes,
+      makeNotes('Example view of the end of a long set of pages.'),
+    ],
   },
 };
 
@@ -195,6 +156,6 @@ export const DarkTheme: Story = {
     darkMode: true,
   },
   parameters: {
-    // notes: [meta.parameters.notes, makeNotes('fwfewf')],
+    notes: [meta.parameters.notes, makeNotes('Alternate / dark theme.')],
   },
 };
