@@ -1,4 +1,4 @@
-import { ComponentType } from 'react';
+import { ComponentType, ReactNode } from 'react';
 import { z, ZodTypeAny } from 'zod';
 import type { InputHTMLAttributes, SelectHTMLAttributes } from 'react';
 import type { GlobalError, UseFormRegisterReturn } from 'react-hook-form';
@@ -62,10 +62,13 @@ export type BaseFormProps = {
   onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
     resp: BaseServerResponse<FormValues<T>, Meta>,
   ) => void;
+  /**
+   * Custom header component or
+   * false to disable the default header
+   */
+  header?: ComponentType<any> | ReactNode | false;
   /** Header text for default header */
   headerText?: string;
-  /** Custom footer component */
-  footer?: ComponentType<any>;
   /** Custom loader component */
   loader?: ComponentType<DefaultLoaderProps>;
   /** Label for form submit button */
@@ -75,23 +78,19 @@ export type BaseFormProps = {
   /** Custom schema to override default schema */
   customSchema?: z.AnyZodObject | z.ZodEffects<any>;
   /**
-   * optionally send root server error message and/or
+   * Optionally send root server error message and/or
    * handler exceptions to toast
    */
   toast?: (msg: string) => void;
-  /** override the default catch error shown to user */
+  /** Override the default catch error shown to user */
   failMsg?: string;
-  /** override or remove the default success message */
-  successMessage?: ComponentType<any> | string | false | null;
-  /** Link component for client side routing */
-  linkComponent?: ComponentType<any>;
-  /** Link component's href attribute */
-  linkComponentHrefAttr?: string;
-  /** Should the first field in the form be focused on page load */
+  /** Override or remove the default success message */
+  successMessage?: ComponentType<any> | string | false;
+  /** Disable/override initial form focus if set */
   isFocused?: boolean;
   /**
-   * setting auto or undefined will honor prefers-color-scheme
-   * light or dark will force light or dark mode
+   * Boolean to toggle component's data-theme attribute
+   * between light and dark mode
    */
   darkMode?: boolean;
   /** CSS module to target internal styles */

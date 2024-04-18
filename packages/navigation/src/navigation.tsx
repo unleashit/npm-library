@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentType } from 'react';
 import {
   DefaultLinkComponent,
   utils,
@@ -13,16 +13,40 @@ import { AuthLinkTypes, NavigationLink } from './types';
 
 // mdx_navigation_props_start
 export interface NavigationProps {
+  /** Object with links configuration */
   links: NavigationLink[];
-  linkComponent?: React.ComponentType<any>;
+  /**
+   * Optional client router component.
+   * When supplied, links will be constructed with it.
+   * By default, links will be HTML anchor tags.
+   */
+  linkComponent?: ComponentType<any>;
+  /**
+   * Designate a non-standard href prop if the Router
+   * uses one. Example: React Router Link uses "to"
+   */
   linkComponentHrefAttr?: string;
+  /** Vertical or horizontal links */
   direction?: 'horizontal' | 'vertical' | 'horz' | 'vert';
-  template?: 'clean' | 'dark-buttons' | 'light-buttons' | 'none';
+  /** Choice of template */
+  template?: 'clean' | 'light-buttons' | 'dark-buttons' | 'none';
+  /** Optional CSS classes to add to Navigation container */
   classes?: string[];
+  /**
+   * Show the auth sidecar. When set to true, a logged in state
+   * false logged out. Omit or set undefined to not display
+   */
   isAuth?: boolean;
+  /** Customize the auth sidecar */
   authLinks?: AuthLinkTypes;
+  /**
+   * Boolean to toggle component's data-theme attribute
+   * between light and dark mode
+   */
   darkMode?: boolean;
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
+  /** CSS module to target internal styles */
   cssModule?: Record<string, string>;
 }
 // mdx_navigation_props_end

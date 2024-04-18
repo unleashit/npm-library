@@ -93,7 +93,10 @@ $darkmode-page-active: $ltgray;
   &:last-child {
     margin-right: 0;
   }
-  &--active,
+  &--active {
+    background-color: var(--unl-light-mode-page-number-background-active);
+    color: var(--unl-dark-mode-text);
+  }
   &:global(.active) {
     background-color: var(--unl-light-mode-page-number-background-active);
     color: var(--unl-dark-mode-text);
@@ -107,7 +110,10 @@ $darkmode-page-active: $ltgray;
 [data-theme='dark'] .number {
   background-color: var(--unl-dark-mode-page-number-background);
   color: var(--unl-dark-mode-text);
-  &--active,
+  &--active {
+    background-color: var(--unl-dark-mode-page-number-background-active);
+    color: var(--unl-light-mode-text);
+  }
   &:global(.active) {
     background-color: var(--unl-dark-mode-page-number-background-active);
     color: var(--unl-light-mode-text);

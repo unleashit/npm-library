@@ -28,24 +28,44 @@ export type OverlayColor =
   | false;
 
 export interface ModalProps {
+  /** Modal state */
   isOpen: boolean;
+  /** Size of the modal, either as a preset or a custom CSS size */
   size?:
     | 'small'
     | 'medium'
     | 'large'
     | 'full'
     | `${number}${(typeof cssUnits)[number]}`;
+  /** Handler to close the modal. Use to set the modal state */
   onClose?: (e?: React.MouseEvent) => void;
+  /** CLose modal on overlay click */
   closeOnOverlayClick?: boolean;
+  /**
+   * When the modal opens/closes, add animation classes and
+   * preserve the modal in the DOM for the length of a timeout
+   */
   animationSupport?: boolean;
+  /** Time in milliseconds to keep the modal in the DOM and animation classes active */
   animationCloseTimeout?: number;
+  /** Custom header component */
   header?: React.FC<any> | string;
+  /** Custom footer component */
   footer?: React.FC<any> | string;
+  /** Color of the overlay */
   overlayColor?: OverlayColor;
+  /** Add a close button to the header */
   closeBtn?: boolean;
+  /**
+   * Boolean to toggle component's data-theme attribute
+   * between light and dark mode
+   */
   darkMode?: boolean;
+  /** CSS custom property overrides */
   cssVars?: CSSVars<typeof varNames>;
+  /** CSS module to target internal styles */
   cssModule?: Record<string, string>;
+  /** The main content of the modal */
   children?: React.ReactNode;
 }
 // mdx_modal_props_end

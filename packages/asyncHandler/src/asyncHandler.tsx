@@ -14,11 +14,17 @@ type DefaultErrorComponent = (
   props: DefaultErrorComponentProps,
 ) => React.ReactElement;
 export interface AsyncHandlerProps {
-  request: () => Promise<any>;
-  cache: () => Record<string, unknown> | any[] | false | null;
+  /** Async function that returns a promise or an array of promises */
+  request: () => Promise<any> | Promise<any>[];
+  /** Optional cache function will be called before making the request */
+  cache: () => Record<string, any> | any[] | false | null;
+  /** Replace the default loader component */
   loaderComponent: DefaultComponent | React.ReactElement;
+  /** Replace the default no results component */
   noResultsComponent: DefaultComponent | React.ReactElement;
+  /** Replace the default error component */
   errorComponent: DefaultErrorComponent | React.ReactElement;
+  /** CSS module to target internal styles */
   cssModule?: { [key: string]: string };
 }
 interface State {
@@ -27,10 +33,10 @@ interface State {
   error?: any;
 }
 
-const { returnComponentFormat } = utils;
+const { normalizeComponentProp } = utils;
 
 export default class AsyncHandler extends React.Component<
-  AsyncHandlerProps & { children: (props: any) => any },
+  AsyncHandlerProps & { children: (props: any) => React.ReactNode },
   State
 > {
   state: State = { data: null, loading: true, error: null };
@@ -77,13 +83,16 @@ export default class AsyncHandler extends React.Component<
     } = this.props;
 
     if (error) {
-      return returnComponentFormat(ErrorComponent, { cssModule: theme, error });
+      return normalizeComponentProp(ErrorComponent, {
+        cssModule: theme,
+        error,
+      });
     }
     if (loading) {
-      return returnComponentFormat(LoaderComponent, { cssModule: theme });
+      return normalizeComponentProp(LoaderComponent, { cssModule: theme });
     }
     if (isEmpty(data)) {
-      return returnComponentFormat(NoResultsComponent, { cssModule: theme });
+      return normalizeComponentProp(NoResultsComponent, { cssModule: theme });
     }
     return children(data);
   }

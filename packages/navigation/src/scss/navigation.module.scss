@@ -130,7 +130,6 @@ $darkColor: #555555;
     .signupLink,
     .logoutLink {
       background-color: var(--unl-light);
-      border-radius: 0;
       &:hover {
         background-color: var(--unl-light-darker-5);
       }
@@ -184,7 +183,6 @@ $darkColor: #555555;
     .signupLink,
     .logoutLink {
       background-color: var(--unl-dark);
-      border-radius: 0;
       color: var(--unl-text-light);
       &:hover {
         background-color: var(--unl-dark-lighter-10);
@@ -198,7 +196,8 @@ $darkColor: #555555;
   .authLinks {
     display: flex;
     align-items: center;
-    margin: 0 0 0 60px;
+    /*margin: 0 0 0 60px;*/
+    margin-left: auto;
     padding: 0;
 
     .link {
@@ -214,7 +213,6 @@ $darkColor: #555555;
     .signupLink,
     .logoutLink {
       background-color: var(--unl-light);
-      border-radius: 5px;
 
       &:hover {
         background-color: var(--unl-light-darker-5);
@@ -267,7 +265,7 @@ $darkColor: #555555;
   }
 }
 
-@media screen and (max-width: $break-sm) {
+/*@media screen and (max-width: $break-sm) {
   .container:not(.none) {
     flex-direction: column;
     .navList {
@@ -280,4 +278,4 @@ $darkColor: #555555;
       align-items: normal;
     }
   }
-}
+}*/

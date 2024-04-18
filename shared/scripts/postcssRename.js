@@ -52,13 +52,17 @@ try {
 const camelToKebab = (str) =>
   str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 
-const strategy = (selector) => `${prefix}${name}__${camelToKebab(selector)}`;
+const strategy = (selector) => `${camelToKebab(selector)}`;
+
+// transform :global(.selector) to .selector
+// return convertedCase.replace(/:global\((.+)\)/gm, ' $1');
 
 async function main() {
   return await postcss([
     renamer({
       strategy,
       ids: true,
+      prefix: `${prefix}${name}__`,
     }),
   ]).process(cssFile, { from: undefined });
 }

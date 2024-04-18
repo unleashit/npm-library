@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import { stringToKebab } from './utils';
 
 export type CSSVars<TVarNames extends readonly string[]> = {
-  [name in TVarNames[number]]?: CSSProperties['color'];
+  [name in TVarNames[number]]?: CSSProperties[keyof CSSProperties];
 };
 
 type MapColorsToStyles<TVarNames extends readonly string[]> = {
@@ -24,9 +24,7 @@ export const mapCSSVarsToStyles = <VarNames extends readonly string[]>({
     if (name in cssVars) {
       const kebabCaseKey = `--unl-${stringToKebab(name)}`;
 
-      styles[kebabCaseKey] = (
-        cssVars as Record<string, CSSProperties['color']>
-      )[name];
+      styles[kebabCaseKey] = (cssVars as Record<string, string>)[name];
     }
   });
 

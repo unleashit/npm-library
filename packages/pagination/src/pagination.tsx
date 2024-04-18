@@ -45,8 +45,8 @@ const Pagination = ({
   perPage = 10,
   prevLabel = 'prev',
   nextLabel = 'next',
-  currentOffset,
-  total,
+  currentOffset = 0,
+  total = 0,
   handler,
   darkMode = false,
   cssVars,
@@ -121,6 +121,18 @@ const Pagination = ({
     [cssModule],
   );
 
+  if (perPage < 1) {
+    throw new Error('Pagination `perPage` prop should not be less than 1');
+  }
+
+  if (currentOffset < 0) {
+    throw new Error('Pagination `offset` prop should not be less than 0');
+  }
+
+  if (total < 0) {
+    throw new Error('Pagination `total` prop should not be less than 0');
+  }
+
   return total > perPage ? (
     <div
       className={clsName('container')}
@@ -160,5 +172,5 @@ const Pagination = ({
   ) : null;
 };
 
-Pagination.displayName = 'Pagination';
+Pagination.displayName = 'pagination';
 export default Pagination;
