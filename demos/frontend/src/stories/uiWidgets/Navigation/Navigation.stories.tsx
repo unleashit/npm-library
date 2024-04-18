@@ -62,16 +62,16 @@ const meta = {
     notes: makeFeaturedNotes([
       <>
         Navigation links are configured as a javascript object via the{' '}
-        <strong>links</strong> prop.
+        <code>links</code> prop.
       </>,
       <>
         The optional auth sidecar can be customized with an{' '}
-        <strong>authLinks</strong> prop. Or for quick prototypes, you may simply
-        provide a boolean value via the <strong>isAuth</strong> prop.
+        <code>authLinks</code> prop. Or for quick prototypes, you may simply
+        provide a boolean value via the <code>isAuth</code> prop.
       </>,
       <>
-        If both <strong>isAuth</strong> and <strong>authLinks</strong> are
-        absent, the auth sidecar won't appear.
+        If both <code>isAuth</code> and <code>authLinks</code> are absent, the
+        auth sidecar won't appear.
       </>,
     ]),
   },
@@ -99,7 +99,7 @@ export const CleanTemplate: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>clean</strong> (default) template, no auth sidecar
+          <b>clean</b> (default) template, no auth sidecar
         </>,
       ),
     ],
@@ -115,7 +115,7 @@ export const LightButtonsTemplate: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>light-buttons</strong> template, no auth sidecar
+          <b>light-buttons</b> template, no auth sidecar
         </>,
       ),
     ],
@@ -131,7 +131,7 @@ export const DarkButtonsTemplate: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>dark-buttons</strong> template, no auth sidecar
+          <b>dark-buttons</b> template, no auth sidecar
         </>,
       ),
     ],
@@ -148,7 +148,7 @@ export const CleanLoggedOut: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>clean</strong> template with auth sidecar (logged out)
+          <b>clean</b> template with auth sidecar (logged out)
         </>,
       ),
     ],
@@ -165,7 +165,7 @@ export const CleanLoggedIn: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>clean</strong> template with auth sidecar (logged in)
+          <b>clean</b> template with auth sidecar (logged in)
         </>,
       ),
     ],
@@ -183,7 +183,7 @@ export const LightButtonsLoggedOut: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>light-buttons</strong> template with auth sidecar (logged out)
+          <b>light-buttons</b> template with auth sidecar (logged out)
         </>,
       ),
     ],
@@ -201,7 +201,7 @@ export const LightButtonsLoggedIn: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>light-buttons</strong> template with auth sidecar (logged in)
+          <b>light-buttons</b> template with auth sidecar (logged in)
         </>,
       ),
     ],
@@ -219,7 +219,7 @@ export const DarkButtonsLoggedOut: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>dark-buttons</strong> template with auth sidecar (logged out)
+          <b>dark-buttons</b> template with auth sidecar (logged out)
         </>,
       ),
     ],
@@ -237,7 +237,7 @@ export const DarkButtonsLoggedIn: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>dark-buttons</strong> template with auth sidecar (logged in)
+          <b>dark-buttons</b> template with auth sidecar (logged in)
         </>,
       ),
     ],
@@ -256,9 +256,8 @@ export const LightButtonsVertical: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>light-buttons</strong> template with{' '}
-          <strong>direction</strong> prop set to <strong>vertical</strong> and{' '}
-          <strong>isAuth</strong> set to true
+          <b>light-buttons</b> template with <b>direction</b> prop set to{' '}
+          <b>vertical</b> and <b>isAuth</b> set to true
         </>,
       ),
     ],
@@ -277,9 +276,8 @@ export const DarkButtonsVertical: Story = {
       meta.parameters.notes,
       ...makeNotes(
         <>
-          <strong>dark-buttons</strong> template with <strong>direction</strong>{' '}
-          prop set to <strong>vertical</strong> and <strong>isAuth</strong> set
-          to true
+          <b>dark-buttons</b> template with <b>direction</b> prop set to{' '}
+          <b>vertical</b> and <b>isAuth</b> set to true
         </>,
       ),
     ],

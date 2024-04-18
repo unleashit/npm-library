@@ -162,13 +162,17 @@ export const CustomFields: Story = {
       ...makeNotes(
         [
           <>
-            <span>customFields prop:</span>
+            <span>
+              <code>customFields</code> prop:
+            </span>
             <pre>
               <code>{JSON.stringify(forgotPasswordFields, null, 2)}</code>
             </pre>
           </>,
           <>
-            <span>customSchema prop:</span>
+            <span>
+              <code>customSchema</code> prop:
+            </span>
             <pre>
               <code>{`z.object({
   email: z

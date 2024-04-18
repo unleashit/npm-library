@@ -147,13 +147,17 @@ export const Survey: Story = {
       ...makeNotes(
         [
           <>
-            <span>customFields prop:</span>
+            <span>
+              <code>customFields</code> prop:
+            </span>
             <pre>
               <code>{JSON.stringify(qfSurveyFields, null, 2)}</code>
             </pre>
           </>,
           <>
-            <span>customSchema prop:</span>
+            <span>
+              <code>customSchema</code> prop:
+            </span>
             <pre>
               <code>{`z.object({
   first_name: z.string().max(50, { message: 'Name is too long' }).default(''),
@@ -197,13 +201,17 @@ export const SubmitRecipe: Story = {
       ...makeNotes(
         [
           <>
-            <span>customFields prop:</span>
+            <span>
+              <code>customFields</code> prop:
+            </span>
             <pre>
               <code>{JSON.stringify(qfRecipeFields, null, 2)}</code>
             </pre>
           </>,
           <>
-            <span>customSchema prop:</span>
+            <span>
+              <code>customSchema</code> prop:
+            </span>
             <pre>
               <code>{`z.object({
   title: z
@@ -308,7 +316,11 @@ export const Catch: Story = {
     notes: [
       ...meta.parameters.notes,
       ...makeNotes(
-        'If you prefer not to show the system message to the user if the handler catches, you can customize it with a failMsg prop.',
+        <>
+          If you prefer not to show the system message to the user if the
+          handler catches, you can customize it with a <code>failMsg</code>{' '}
+          prop.
+        </>,
       ),
     ],
   },

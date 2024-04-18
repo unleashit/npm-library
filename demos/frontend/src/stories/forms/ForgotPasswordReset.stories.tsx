@@ -102,7 +102,12 @@ const meta = {
     notes: [
       formComponentNotes,
       ...makeNotes(
-        "In this example, in the handler function, the user Id and token are taken from url and posted to the server for verification. If the either the id or token don't match, or the user input is wrong it will fail.",
+        <>
+          In this example, in the <code>handler</code> function, the user Id and
+          token are taken from url and posted to the server for verification. If
+          the either the id or token don't match, or the user input is wrong it
+          will fail.
+        </>,
       ),
     ],
   },
@@ -188,13 +193,17 @@ export const CustomFields: Story = {
       ...makeNotes(
         [
           <>
-            <span>customFields prop:</span>
+            <span>
+              <code>customFields</code> prop:
+            </span>
             <pre>
               <code>{JSON.stringify(forgotPasswordResetFields, null, 2)}</code>
             </pre>
           </>,
           <>
-            <span>customSchema prop:</span>
+            <span>
+              <code>customSchema</code> prop:
+            </span>
             <pre>
               <code>{`z.object({
   token: z
