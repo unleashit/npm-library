@@ -13,6 +13,7 @@ import '../src/assets/manager.css';
 
 addons.setConfig({
   theme: npmLibraryTheme,
+  panelPosition: 'right',
   sidebar: {},
 });
 
