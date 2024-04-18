@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/docs@2.0.0...@unleashit/docs@2.0.1) (2024-04-18)
+
+**Note:** Version bump only for package @unleashit/docs
+
 # [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/docs@0.0.7...@unleashit/docs@2.0.0) (2024-04-18)
 
 **Note:** Version bump only for package @unleashit/docs

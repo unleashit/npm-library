@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/signup@2.0.0...@unleashit/signup@2.0.1) (2024-04-18)
+
+**Note:** Version bump only for package @unleashit/signup
+
 # [2.0.0](https://github.com/unleashit/npm-library/compare/@unleashit/signup@1.4.2...@unleashit/signup@2.0.0) (2024-04-18)
 
 ### Bug Fixes
