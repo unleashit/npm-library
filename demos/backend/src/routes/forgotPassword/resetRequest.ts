@@ -38,11 +38,10 @@ export const resetRequest = (req: Request, res: Response) => {
     return;
   }
 
-  const userId = '1';
+  const userid = '1';
   const token = '1234567890';
   const baseUrl = process.env.BASE_URL;
-  const url = `${baseUrl}/forgot-password/${userId}/${token}`;
-  // const url = `${baseUrl}/?path=/story/forgot-password--basic&userId=${userId}&token=${token}`;
+  const url = `${baseUrl}/?path=/story/forms-forgot-password-reset--basic&userId=${userid}&token=${token}`;
   const opts = {
     to: req.body.email,
     subject: 'Reset your password: NPM library demo',
