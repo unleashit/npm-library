@@ -87,6 +87,8 @@
 .textarea,
 .select {
   background-color: var(--unl-form-light-mode-field-background);
+  font-family: inherit;
+  font-size: inherit;
   &:focus-visible {
     border: none;
     outline: 2px solid var(--unl-form-light-mode-border-color);

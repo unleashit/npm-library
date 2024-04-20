@@ -1,22 +1,40 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 :root {
-  font-family: "Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:
+    'Nunito Sans',
+    -apple-system,
+    '.SFNSText-Regular',
+    'San Francisco',
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
-h1, h2, h3, h4, h5, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin-top: 0;
 }
 
 /* Preview Layout */
 
-#storybook-root:not([hidden=true]) {
+#storybook-root:not([hidden='true']) {
   min-height: 100%;
   overflow: auto;
   display: flex;
@@ -39,7 +57,8 @@ h1, h2, h3, h4, h5, p {
 
 /* Dark mode */
 
-[data-theme='storybook-dark'], [data-theme='storybook-dark'] .docs-story {
+[data-theme='storybook-dark'],
+[data-theme='storybook-dark'] .docs-story {
   background-color: #222;
 }
 
