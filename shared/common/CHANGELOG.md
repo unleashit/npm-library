@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/unleashit/npm-library/compare/@unleashit/common@2.0.1...@unleashit/common@2.0.2) (2024-04-20)
+
+### Bug Fixes
+
+* **demos:** input select and text area inherit font style ([a68498b](https://github.com/unleashit/npm-library/commit/a68498b26035678f7cfb07cc6877d1e1f50ebebc))
+
 ## [2.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/common@2.0.0...@unleashit/common@2.0.1) (2024-04-18)
 
 **Note:** Version bump only for package @unleashit/common

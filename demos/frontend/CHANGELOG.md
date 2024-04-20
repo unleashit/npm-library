@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@2.0.1...@unleashit/demo-frontend@2.0.2) (2024-04-20)
+
+### Bug Fixes
+
+* **demos:** input select and text area inherit font style ([a68498b](https://github.com/unleashit/npm-library/commit/a68498b26035678f7cfb07cc6877d1e1f50ebebc))
+
+### Reverts
+
+* Revert "fix(demo): move the panel default from the bottom to the right of screen" ([0eef88c](https://github.com/unleashit/npm-library/commit/0eef88ce73c02d71d6ff92ce70c6675aed564192))
+
 ## [2.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@2.0.0...@unleashit/demo-frontend@2.0.1) (2024-04-18)
 
 ### Bug Fixes

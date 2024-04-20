@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.0.1...@unleashit/demo-backend@2.0.2) (2024-04-20)
+
+### Bug Fixes
+
+* **demo:** fix forgot password reset url in notifications ([d448dd3](https://github.com/unleashit/npm-library/commit/d448dd302cc2efb208489797ad4da2211d1150c7))
+* **demo:** troubleshoot and fix random 504 errors from vercel ([1fa1d3e](https://github.com/unleashit/npm-library/commit/1fa1d3e25f574d72bf87ba0bb4eacaf3b12c33aa))
+
 ## [2.0.1](https://github.com/unleashit/npm-library/compare/@unleashit/demo-backend@2.0.0...@unleashit/demo-backend@2.0.1) (2024-04-18)
 
 **Note:** Version bump only for package @unleashit/demo-backend
