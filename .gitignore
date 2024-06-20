@@ -13,4 +13,5 @@ lerna-debug.log
 TODO.md
 .vercel
 .nx
+migrations.json
 
