@@ -1,6 +1,6 @@
 {
   "name": "@unleashit/common",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Shared library for @unleashit components. Not directly useful.",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
