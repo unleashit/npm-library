@@ -195,10 +195,7 @@
   "simple": {
     "id": 1,
     "name": "Joe",
-    "emails": [
-      "joe@shmoe.com",
-      "joeshmoe@gmail.com"
-    ],
+    "emails": ["joe@shmoe.com", "joeshmoe@gmail.com"],
     "posts": [
       {
         "id": 1,
@@ -206,7 +203,6 @@
         "created": "2020-05-11T22:02:24.714Z"
       },
       {
-
         "id": 2,
         "title": "Example post 2",
         "created": "2022-09-30T13:12:18.714Z"
