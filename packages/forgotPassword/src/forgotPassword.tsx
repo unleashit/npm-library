@@ -1,5 +1,5 @@
 import React, { useMemo, ComponentType, ReactNode } from 'react';
-import { ZodTypeAny } from 'zod';
+import { z, ZodTypeAny } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -79,7 +79,7 @@ export const ForgotPassword = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<ZodTypeAny>>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver<z.infer<typeof schema>>(schema),
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });
 

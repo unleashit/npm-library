@@ -14,6 +14,7 @@ import {
   constants,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultSignupHeader } from './defaults/components';
 import { FormValues } from './types';
@@ -84,7 +85,7 @@ export const Signup = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<typeof schema>>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver<z.infer<typeof schema>>(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });

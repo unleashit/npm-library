@@ -1,7 +1,7 @@
 import React, { useMemo, ComponentType, ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ZodTypeAny } from 'zod';
+import { z, ZodTypeAny } from 'zod';
 import {
   DefaultLoader,
   CustomFields,
@@ -91,7 +91,7 @@ export const Login = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<ZodTypeAny>>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver<z.infer<typeof schema>>(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
   });

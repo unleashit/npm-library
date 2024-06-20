@@ -69,7 +69,7 @@ export const normalizeComponentProp = <T extends Record<string, unknown>>(
 };
 
 export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
-  schema: z.AnyZodObject | z.ZodEffects<any>,
+  schema: unknown,
 ): z.infer<T> {
   // Check if it's a ZodEffect
   if (schema instanceof z.ZodEffects) {
@@ -97,10 +97,9 @@ export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
   }
 
   return Object.fromEntries(
-    Object.entries(schema.shape as z.ZodRawShape).map(([key, value]) => [
-      key,
-      getDefaultValue(value),
-    ]),
+    Object.entries((schema as z.AnyZodObject).shape as z.ZodRawShape).map(
+      ([key, value]) => [key, getDefaultValue(value)],
+    ),
   );
 }
 
