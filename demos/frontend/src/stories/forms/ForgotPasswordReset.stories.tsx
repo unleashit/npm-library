@@ -48,7 +48,7 @@ const meta = {
       },
     },
     successMessage: {
-      control: 'null',
+      control: { disable: true },
       table: {
         type: { summary: 'ComponentType | string | false' },
         defaultValue: {
@@ -57,7 +57,7 @@ const meta = {
       },
     },
     // loginLink: {
-    //   control: 'null',
+    //   control: { disable: true },
     //   table: {
     //     type: { summary: 'ComponentType | ReactNode | false' },
     //   },

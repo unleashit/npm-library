@@ -33,7 +33,7 @@ const meta = {
       },
     },
     successMessage: {
-      control: 'null',
+      control: { disable: true },
       table: {
         type: { summary: 'ComponentType | string | false' },
       },

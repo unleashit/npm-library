@@ -41,6 +41,8 @@ const meta = {
   argTypes: {
     linkComponent: {
       table: {
+        // @ts-expect-error - despite TS error, 'null' currently
+        // works and seems to be only way to explicitly display a '-'
         defaultValue: null,
       },
     },

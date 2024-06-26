@@ -52,13 +52,13 @@ const meta = {
       },
     },
     successMessage: {
-      control: 'null',
+      control: { disable: true },
       table: {
         type: { summary: 'ComponentType | string | false' },
       },
     },
     loginLink: {
-      control: 'null',
+      control: { disable: true },
       table: {
         type: { summary: 'ComponentType | ReactNode | false' },
       },
