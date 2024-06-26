@@ -27,7 +27,7 @@
     "docs": "nx run @unleashit/docs:dev",
     "docs:build": "nx run @unleashit/docs:build",
     "test": "nx run-many --target=test --all",
-    "test:types": "pnpm --filter=!@unleashit/demo-* -r exec tsc --noEmit",
+    "test:types": "pnpm -r exec tsc --noEmit",
     "test:lint": "eslint '{packages,shared}/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "test:format": "prettier -c '{packages,shared}/**/src/**/*.{ts,tsx,js,jsx,json}'",
     "lint": "eslint --fix '{demos,packages,shared}/**/src/**/*.{ts,tsx,js,jsx,json}'",
