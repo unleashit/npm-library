@@ -76,7 +76,9 @@ export type BaseFormProps = {
   /** Custom fields to override default fields */
   customFields?: CustomField[];
   /** Custom schema to override default schema */
-  customSchema?: z.ZodType<any, any, any>;
+  customSchema?:
+    | z.ZodObject<any, any, any, any, any>
+    | z.ZodEffects<any, any, any>;
   /**
    * Optionally send root server error message and/or
    * handler exceptions to toast
