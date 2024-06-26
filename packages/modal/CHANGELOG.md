@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/unleashit/npm-library/compare/@unleashit/modal@2.0.3...@unleashit/modal@2.0.4) (2024-06-26)
+
+**Note:** Version bump only for package @unleashit/modal
+
 ## [2.0.3](https://github.com/unleashit/npm-library/compare/@unleashit/modal@2.0.2...@unleashit/modal@2.0.3) (2024-06-20)
 
 **Note:** Version bump only for package @unleashit/modal
