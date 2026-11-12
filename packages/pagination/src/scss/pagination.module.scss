@@ -1,4 +1,4 @@
-@import 'common_vars';
+@use 'common_vars' as *;
 
 $lightmode-background: transparent;
 $lightmode-page: $navy;

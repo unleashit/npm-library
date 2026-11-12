@@ -1,6 +1,6 @@
-@import 'common_vars';
-@import 'common_form_base';
-@import 'common_loaders';
+@use 'common_vars' as *;
+@use 'common_form_base' as *;
+@use 'common_loaders' as *;
 
 .container {
   --unl-orline-color: #{$form-border-color};

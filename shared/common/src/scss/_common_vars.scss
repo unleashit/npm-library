@@ -1,11 +1,13 @@
+@use 'sass:color';
+
 $white: #ffffff;
 $black: #000000;
 $gray: #e8e8e8;
-$gray-darker-8: darken($gray, 4%);
-$gray-darker-30: darken($gray, 30%);
+$gray-darker-8: color.adjust($gray, $lightness: -4%);
+$gray-darker-30: color.adjust($gray, $lightness: -30%);
 $dkgray: #777777;
-$dkgray-darker-8: darken($dkgray, 4%);
-$dkgray-darker-30: darken($dkgray, 30%);
+$dkgray-darker-8: color.adjust($dkgray, $lightness: -4%);
+$dkgray-darker-30: color.adjust($dkgray, $lightness: -30%);
 $red: #e34646;
 //$red: #e63333;
 //$red: #e74444;

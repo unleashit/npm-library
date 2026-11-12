@@ -1,4 +1,5 @@
-@import 'common_vars';
+@use 'sass:color';
+@use 'common_vars' as *;
 
 $lightColor: #f1efef;
 $darkColor: #555555;
@@ -7,13 +8,13 @@ $darkColor: #555555;
   --unl-text-light: #{$white};
   --unl-text-dark: #{$black};
   --unl-light: #{$lightColor};
-  --unl-light-darker-5: #{darken($lightColor, 5%)};
-  --unl-light-darker-10: #{darken($lightColor, 10%)};
-  --unl-light-darker-15: #{darken($lightColor, 15%)};
+  --unl-light-darker-5: #{color.adjust($lightColor, $lightness: -5%)};
+  --unl-light-darker-10: #{color.adjust($lightColor, $lightness: -10%)};
+  --unl-light-darker-15: #{color.adjust($lightColor, $lightness: -15%)};
   --unl-dark: #{$darkColor};
-  --unl-dark-lighter-5: #{lighten($darkColor, 5%)};
-  --unl-dark-lighter-10: #{lighten($darkColor, 10%)};
-  --unl-dark-lighter-15: #{lighten($darkColor, 15%)};
+  --unl-dark-lighter-5: #{color.adjust($darkColor, $lightness: 5%)};
+  --unl-dark-lighter-10: #{color.adjust($darkColor, $lightness: 10%)};
+  --unl-dark-lighter-15: #{color.adjust($darkColor, $lightness: 15%)};
 }
 
 .container:not(.none) {
