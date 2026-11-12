@@ -6,13 +6,14 @@ export const jestConfig = {
     '<rootDir>/../../shared/configs/testConfig/jestSetupReact.ts',
   ],
   // url: 'http://localhost/',
+  // TS 6 stopped auto-including `@types/*`, so ts-jest compiles specs with the
+  // project's test tsconfig, which opts into jest + jest-dom global types.
   transform: {
-    '\\.tsx?$': 'ts-jest',
+    '\\.tsx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.test.json' }],
     '\\.jsx?$': 'babel-jest',
   },
   // testMatch: null,
   testRegex: '(\\.|/)(test|spec)\\.(jsx?|tsx?)$',
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   //  collectCoverageFrom: ['<rootDir>/src/**/*.test.{ts,tsx,js,jsx}'],
   transformIgnorePatterns: ['<rootDir>/(config|dist|node_modules)/'],
   // setupFiles: [`${__dirname}/../../../node_modules/regenerator-runtime/runtime`],

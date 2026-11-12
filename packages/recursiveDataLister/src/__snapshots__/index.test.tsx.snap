@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<RecursiveDataLister /> renders an object as a nested list of labels and values 1`] = `
+<div
+  class="unl-recursiveDataLister__container"
+>
+  <ul
+    class="unl-recursiveDataLister__top-level-parent"
+  >
+    <li
+      class="unl-recursiveDataLister__child-item"
+    >
+      <span
+        class="unl-recursiveDataLister__label"
+      >
+        name
+        : 
+      </span>
+      <span
+        class="unl-recursiveDataLister__value"
+      >
+        Joe
+      </span>
+    </li>
+    <li
+      class="unl-recursiveDataLister__child-item"
+    >
+      <span
+        class="unl-recursiveDataLister__label"
+      >
+        age
+        : 
+      </span>
+      <span
+        class="unl-recursiveDataLister__value"
+      >
+        30
+      </span>
+    </li>
+    <li
+      class="unl-recursiveDataLister__child-item unl-recursiveDataLister__branch unl-recursiveDataLister__object-branch"
+    >
+      <span
+        class="unl-recursiveDataLister__branch-label"
+      >
+        address
+      </span>
+      <ul
+        class="unl-recursiveDataLister__parent"
+      >
+        <li
+          class="unl-recursiveDataLister__child-item"
+        >
+          <span
+            class="unl-recursiveDataLister__label"
+          >
+            city
+            : 
+          </span>
+          <span
+            class="unl-recursiveDataLister__value"
+          >
+            Metairie
+          </span>
+        </li>
+        <li
+          class="unl-recursiveDataLister__child-item"
+        >
+          <span
+            class="unl-recursiveDataLister__label"
+          >
+            state
+            : 
+          </span>
+          <span
+            class="unl-recursiveDataLister__value"
+          >
+            LA
+          </span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+`;

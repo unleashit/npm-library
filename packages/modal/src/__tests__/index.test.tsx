@@ -1,215 +1,250 @@
-import { mount, shallow } from 'enzyme';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 
-import Modal from '../modal';
+import Modal, { ModalProps } from '../modal';
 
-interface BaseProps {
-  isOpen: boolean;
-  onClose: any;
-}
+type TestProps = Partial<ModalProps> & Record<string, any>;
 
-const baseProps = (): BaseProps => ({
+const modalContent = <div>Test text for modal.</div>;
+
+const baseProps = () => ({
   onClose: jest.fn(),
   isOpen: true,
 });
 
-const modalContent = <div>Test text for modal.</div>;
-
+/**
+ * React Testing Library renders the full tree into a real DOM, so these tests
+ * assert against the class names and handlers the component emits rather than
+ * Enzyme's shallow wrapper API.
+ */
 describe('<Modal />', () => {
-  let wrapper: any;
-  let props: BaseProps & { [key: string]: any };
+  let props: TestProps;
+  let utils: ReturnType<typeof render>;
+
+  /** mount a modal, unmounting the previous one so DOM queries stay unambiguous */
+  const mountModal = (next: TestProps = props) => {
+    utils?.unmount();
+    utils = render(<Modal {...(next as ModalProps)}>{modalContent}</Modal>);
+    return utils;
+  };
+
+  /** re-render the same tree (used for open/close state transitions) */
+  const setProps = (next: TestProps) => {
+    utils.rerender(<Modal {...(next as ModalProps)}>{modalContent}</Modal>);
+  };
+
+  const query = (selector: string) => document.querySelector(selector);
+  const get = (selector: string) => document.querySelector(selector) as Element;
 
   beforeEach(() => {
     props = baseProps();
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    mountModal(props);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it('renders when isOpen property is true', () => {
     // default for isOpen is false
     // but should find since it's set to true in test props
-    expect(wrapper.find('.unl-modal__overlay')).toHaveLength(1);
-    expect(wrapper).toMatchSnapshot();
+    expect(query('.unl-modal__overlay')).toBeInTheDocument();
+    expect(utils.container.firstChild).toMatchSnapshot();
 
     // won't render when isOpen is omitted or set to false
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    delete props.isOpen;
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    expect(wrapper.find('.unl-modal__overlay')).toHaveLength(0);
+    mountModal({ onClose: props.onClose });
+    expect(query('.unl-modal__overlay')).not.toBeInTheDocument();
   });
 
   it('renders its children', () => {
-    const children = wrapper.find('.unl-modal__body').children();
-    expect(children.matchesElement(modalContent)).toEqual(true);
+    expect(query('.unl-modal__body')).toHaveTextContent('Test text for modal.');
   });
 
   it('renders the correct size class according to size prop', () => {
     // default (no size prop provided) is medium
-    expect(wrapper.find('.unl-modal__child--medium')).toHaveLength(1);
-    expect(wrapper.find('.unl-modal__child--large')).toHaveLength(0);
+    expect(query('.unl-modal__child--medium')).toBeInTheDocument();
+    expect(query('.unl-modal__child--large')).not.toBeInTheDocument();
 
-    props = { ...baseProps(), size: 'large' };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
+    mountModal({ ...baseProps(), size: 'large' });
 
-    expect(wrapper.find('.unl-modal__child--large')).toHaveLength(1);
-    expect(wrapper.find('.unl-modal__child--medium')).toHaveLength(0);
+    expect(query('.unl-modal__child--large')).toBeInTheDocument();
+    expect(query('.unl-modal__child--medium')).not.toBeInTheDocument();
   });
 
-  it('displays custom header component when provided', async () => {
-    props = { ...baseProps(), header: () => <div>Test Header</div> };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    const header = wrapper.find('header').dive();
+  it('accepts a custom size expressed as a css unit', () => {
+    mountModal({ ...baseProps(), size: '37.5rem' });
 
-    expect(header.text()).toEqual('Test Header');
+    expect((get('.unl-modal__child') as HTMLElement).style.maxWidth).toEqual(
+      '37.5rem',
+    );
   });
 
-  it('displays default header component when string is provided', async () => {
-    props = { ...baseProps(), header: 'Test Header' };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    const header = wrapper.find('ModalHeader').dive();
+  it('displays custom header component when provided', () => {
+    mountModal({ ...baseProps(), header: () => <div>Test Header</div> });
 
-    expect(header.find('h3').text()).toEqual('Test Header');
+    expect(query('.unl-modal__header')).toHaveTextContent('Test Header');
   });
 
-  it('displays custom footer component when provided', async () => {
-    props = { ...baseProps(), footer: () => <div>Test Footer</div> };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    const footer = wrapper.find('footer').dive();
+  it('displays header string when provided', () => {
+    mountModal({ ...baseProps(), header: 'Test Header' });
 
-    expect(footer.text()).toEqual('Test Footer');
+    expect(query('.unl-modal__header')).toHaveTextContent('Test Header');
   });
 
-  it('displays default footer component when string is provided', async () => {
-    props = { ...baseProps(), footer: 'Test Footer' };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    const footer = wrapper.find('ModalFooter').dive();
+  it('displays custom footer component when provided', () => {
+    mountModal({ ...baseProps(), footer: () => <div>Test Footer</div> });
 
-    expect(footer.text()).toEqual('Test Footer');
+    expect(query('.unl-modal__footer')).toHaveTextContent('Test Footer');
   });
 
-  it('executes the onClose prop when closed', async () => {
-    const closeBtn = wrapper.find('.unl-modal__close-btn');
-    closeBtn.simulate('click');
+  it('displays footer string when provided', () => {
+    mountModal({ ...baseProps(), footer: 'Test Footer' });
+
+    expect(query('.unl-modal__footer')).toHaveTextContent('Test Footer');
+  });
+
+  it('executes the onClose prop when closed', () => {
+    fireEvent.click(get('.unl-modal__close-btn'));
     expect(props.onClose).toHaveBeenCalledTimes(1);
 
-    // when leaving out onClose(), noop is called
-    wrapper = shallow(<Modal isOpen>{modalContent}</Modal>);
-    const closeBtn2 = wrapper.find('.unl-modal__close-btn');
-    closeBtn2.simulate('click');
+    // when leaving out onClose(), the default noop keeps clicks from throwing
+    mountModal({ isOpen: true });
+    fireEvent.click(get('.unl-modal__close-btn'));
     expect(props.onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('executes the onClose prop when overlay is clicked', async () => {
-    const overlay = wrapper.find('.unl-modal__overlay');
-    const modalBody = wrapper.find('.unl-modal__body');
-    const eventProps = {
-      stopPropagation: () => undefined,
-      target: {
-        getAttribute: () => 'data-modal',
-      },
-    };
-    overlay.simulate('click', eventProps);
-    modalBody.simulate('click', eventProps); // this shouldn't call it
+  it('executes the onClose prop when overlay is clicked', () => {
+    fireEvent.click(get('.unl-modal__overlay'));
     // only clicking on the close btn or overlay should trigger onClose()
     expect(props.onClose).toHaveBeenCalledTimes(1);
 
+    fireEvent.click(get('.unl-modal__body'));
+    expect(props.onClose).toHaveBeenCalledTimes(1);
+
     // if closeOverlayClick prop is false, don't execute onClose()
-    props = { ...baseProps(), closeOnOverlayClick: false };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    wrapper.find('.unl-modal__overlay').simulate('click', eventProps);
-    expect(props.onClose).toHaveBeenCalledTimes(0);
+    const onClose = jest.fn();
+    mountModal({ ...baseProps(), onClose, closeOnOverlayClick: false });
+    fireEvent.click(get('.unl-modal__overlay'));
+    expect(onClose).not.toHaveBeenCalled();
   });
 
-  it.skip('executes the onClose prop when escape key is pressed', async () => {
-    const mockListener = (type: string, callback: any) =>
-      type === 'keyup' && callback({ key: 'Escape' });
-    jest.spyOn(document, 'addEventListener').mockImplementation(mockListener);
-
-    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
+  it('executes the onClose prop when escape key is pressed', () => {
+    fireEvent.keyUp(document, { key: 'Escape' });
 
     expect(props.onClose).toHaveBeenCalledTimes(1);
   });
 
-  it('adds overlay color when provided', async () => {
-    props = { ...baseProps(), overlayColor: 'red' };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    const overlay = wrapper.find('.unl-modal__overlay');
+  it('ignores other keys', () => {
+    fireEvent.keyUp(document, { key: 'Enter' });
 
-    expect(overlay.prop('style').backgroundColor).toEqual('red');
+    expect(props.onClose).not.toHaveBeenCalled();
   });
 
-  it('show/hide the close button', async () => {
+  it('adds overlay color when provided', () => {
+    mountModal({ ...baseProps(), overlayColor: 'red' });
+    const overlay = get('.unl-modal__overlay') as HTMLElement;
+
+    expect(
+      overlay.style.getPropertyValue('--unl-light-mode-overlay-color'),
+    ).toEqual('red');
+    expect(
+      overlay.style.getPropertyValue('--unl-dark-mode-overlay-color'),
+    ).toEqual('red');
+  });
+
+  it('adds separate light/dark overlay colors when provided as an object', () => {
+    mountModal({
+      ...baseProps(),
+      overlayColor: { light: 'red', dark: 'blue' },
+    });
+    const overlay = get('.unl-modal__overlay') as HTMLElement;
+
+    expect(
+      overlay.style.getPropertyValue('--unl-light-mode-overlay-color'),
+    ).toEqual('red');
+    expect(
+      overlay.style.getPropertyValue('--unl-dark-mode-overlay-color'),
+    ).toEqual('blue');
+  });
+
+  it('toggles the data-theme attribute with darkMode', () => {
+    expect(get('.unl-modal__overlay')).toHaveAttribute('data-theme', 'light');
+
+    mountModal({ ...baseProps(), darkMode: true });
+
+    expect(get('.unl-modal__overlay')).toHaveAttribute('data-theme', 'dark');
+  });
+
+  it('show/hide the close button', () => {
     // default is to show it
-    let closeBtn = wrapper.find('.unl-modal__close-btn');
-    expect(closeBtn).toHaveLength(1);
+    expect(query('.unl-modal__close-btn')).toBeInTheDocument();
 
     // hide it
-    props = { ...baseProps(), closeBtn: false };
-    wrapper = shallow(<Modal {...props}>{modalContent}</Modal>);
-    closeBtn = wrapper.find('.unl-modal__close-btn');
+    mountModal({ ...baseProps(), closeBtn: false });
 
-    expect(closeBtn).toHaveLength(0);
+    expect(query('.unl-modal__close-btn')).not.toBeInTheDocument();
   });
 
-  it('displays animation classes after timeouts', async () => {
+  it('displays animation classes after timeouts', () => {
     jest.useFakeTimers();
-    const inClass = wrapper.find('.unl-modal__child--in');
+    mountModal({ ...baseProps() });
 
-    expect(inClass).toHaveLength(1);
-    // act(() => {
-    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
-    // });
+    expect(query('.unl-modal__child')).toBeInTheDocument();
+    expect(query('.unl-modal__child--in')).toBeInTheDocument();
 
-    // act(() => {
-    wrapper.setProps({ isOpen: false });
-    // });
-    expect(wrapper.find('.unl-modal__child')).toHaveLength(1);
-    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(1);
+    setProps({ ...baseProps(), isOpen: false });
+    // the modal stays in the DOM until the close animation timeout elapses,
+    // but the "in" class is dropped immediately
+    expect(query('.unl-modal__child')).toBeInTheDocument();
+    expect(query('.unl-modal__child--in')).not.toBeInTheDocument();
 
     act(() => {
       jest.runAllTimers();
     });
-    wrapper.update();
 
-    expect(wrapper.find('.unl-modal__child')).toHaveLength(0);
-    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(0);
+    expect(query('.unl-modal__child')).not.toBeInTheDocument();
+    expect(query('.unl-modal__child--in')).not.toBeInTheDocument();
   });
 
-  it('with animationSupport set to false', async () => {
-    props = { ...baseProps(), animationSupport: false };
-    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
-    expect(wrapper.find('.unl-modal__child')).toHaveLength(1);
-    expect(wrapper.find('.unl-modal__child--in')).toHaveLength(0);
+  it('with animationSupport set to false', () => {
+    mountModal({ ...baseProps(), animationSupport: false });
+
+    expect(query('.unl-modal__child')).toBeInTheDocument();
+    expect(query('.unl-modal__child--in')).not.toBeInTheDocument();
 
     // should close synchronously, no timer mock needed
-    act(() => {
-      wrapper.setProps({ isOpen: false });
-    });
-    wrapper.update();
-    expect(wrapper.find('.unl-modal__child')).toHaveLength(0);
+    setProps({ ...baseProps(), animationSupport: false, isOpen: false });
+
+    expect(query('.unl-modal__child')).not.toBeInTheDocument();
   });
 
   it('clears timeouts on unmount', () => {
     jest.useFakeTimers();
-    jest.spyOn(window, 'clearTimeout');
-
-    wrapper = mount(<Modal {...props}>{modalContent}</Modal>);
-    act(() => {
-      jest.runAllTimers();
-    });
-    act(() => {
-      wrapper.setProps({ isOpen: false });
-    });
+    mountModal({ ...baseProps() });
+    const clearTimeoutSpy = jest.spyOn(window, 'clearTimeout');
 
     act(() => {
       jest.runAllTimers();
     });
-    wrapper.update();
+    setProps({ ...baseProps(), isOpen: false });
     act(() => {
-      wrapper.unmount();
+      jest.runAllTimers();
     });
-    wrapper.update();
-    expect(window.clearTimeout).toHaveBeenCalledWith(expect.any(Number));
+    utils.unmount();
+
+    expect(clearTimeoutSpy).toHaveBeenCalledWith(expect.any(Number));
+    clearTimeoutSpy.mockRestore();
+  });
+
+  it('toggles the body overflow style while open', () => {
+    expect(document.body.style.overflow).toEqual('hidden');
+
+    utils.unmount();
+
+    expect(document.body.style.overflow).not.toEqual('hidden');
+  });
+
+  it('exposes the close button to assistive tech', () => {
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 });

@@ -1,140 +1,206 @@
-import { mount, ReactWrapper } from 'enzyme';
+import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 
-// eslint-disable-next-line import/no-relative-packages
-import { changeVal, nextTick } from '@unleashit/configs';
-import { utils } from '@unleashit/common';
-import SignupContainer, { SignupProps } from '.';
+import SignupContainer from '.';
 
-const { getDefaultsFromZodObject } = utils;
+const errorMessages = () =>
+  Array.from(document.querySelectorAll('.unl-signup__error-message')).map(
+    (el) => el.textContent,
+  );
+
+const submitButton = () =>
+  document.querySelector('.unl-signup__button') as HTMLButtonElement;
 
 describe('<SignupContainer />', () => {
-  let wrapper: ReactWrapper;
-  let props: SignupProps;
+  let props: any;
 
   beforeEach(() => {
     props = {
-      handler: () => Promise.resolve({ success: true }),
-      onSuccess: () => jest.fn(),
+      handler: jest.fn().mockResolvedValue({ success: true }),
+      onSuccess: jest.fn(),
     };
-
-    wrapper = mount(<SignupContainer {...props} />);
   });
 
+  const fill = async (
+    values: Record<string, string>,
+    extraProps: Record<string, unknown> = {},
+  ) => {
+    const user = userEvent.setup();
+    render(<SignupContainer {...props} {...extraProps} />);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [label, value] of Object.entries(values)) {
+      // userEvent interactions have to be awaited one at a time
+      // eslint-disable-next-line no-await-in-loop
+      await user.type(screen.getByLabelText(label), value);
+    }
+    await user.click(submitButton());
+    return user;
+  };
+
   it('renders without crashing', () => {
-    expect(wrapper.find('.unl-signup__container')).toHaveLength(1);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<SignupContainer {...props} />);
+
+    expect(
+      document.querySelector('.unl-signup__container'),
+    ).toBeInTheDocument();
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders all three fields', () => {
+    render(<SignupContainer {...props} />);
+
+    expect(screen.getByLabelText('Email')).toBeInTheDocument();
+    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText('Password confirm')).toBeInTheDocument();
+  });
+
+  it('focuses the email field by default', async () => {
+    render(<SignupContainer {...props} />);
+
+    await waitFor(() => expect(screen.getByLabelText('Email')).toHaveFocus());
   });
 
   describe('validation', () => {
     it('fields can be updated and validated', async () => {
-      await act(async () => {
-        wrapper
-          .find('input[name="email"]')
-          .simulate('change', changeVal('email', 'test@test.com'));
-        wrapper
-          .find('input[name="password"]')
-          .simulate('change', changeVal('password', '12345678'));
-      });
-      wrapper.update();
-      expect(wrapper.find('input[name="email"]').props().value).toEqual(
-        'test@test.com',
-      );
-      const errors = wrapper.find('.errorMessage');
-      expect(errors).toHaveLength(0);
+      const user = userEvent.setup();
+      render(<SignupContainer {...props} />);
+
+      const email = screen.getByLabelText('Email');
+      await user.type(email, 'test@test.com');
+      await user.tab();
+
+      expect(email).toHaveValue('test@test.com');
+      expect(errorMessages()).toHaveLength(0);
     });
 
     it('displays correct email validation errors', async () => {
-      const emailInput = wrapper.find('input[name="email"]');
-      const passwordInput = wrapper.find('input[name="password"]');
-      const passwordConfirmInput = wrapper.find(
-        'input[name="passwordConfirm"]',
-      );
-      const form = wrapper.find('form');
+      const user = userEvent.setup();
+      render(<SignupContainer {...props} />);
 
       // email can't be empty
-      await act(async () => {
-        passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-        form.simulate('submit', { preventDefault: () => undefined });
-      });
-      wrapper.update();
-      let emailError = wrapper.find('.unl-signup__error-message').at(0);
-      expect(emailError.text()).toEqual('email is a required field');
+      await user.type(screen.getByLabelText('Password'), 'goodpassword');
+      await user.click(submitButton());
+      await waitFor(() =>
+        expect(errorMessages()).toContain('Please enter your email'),
+      );
 
       // email must be a valid email
-      await act(async () => {
-        emailInput.simulate('change', changeVal('email', 'bad email'));
-        passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-        passwordConfirmInput.simulate(
-          'change',
-          changeVal('password', 'goodpassword'),
-        );
-        await nextTick();
-        form.simulate('submit', { preventDefault: () => undefined });
-      });
-      wrapper.update();
-      emailError = wrapper.find('.unl-signup__error-message').at(0);
-      expect(emailError.text()).toEqual('email must be a valid email');
+      await user.clear(screen.getByLabelText('Email'));
+      await user.type(screen.getByLabelText('Email'), 'bad email');
+      await user.tab();
+
+      await waitFor(() =>
+        expect(errorMessages()).toContain('Please enter a valid email'),
+      );
     });
 
     it('displays correct password validation errors', async () => {
-      const emailInput = wrapper.find('input[name="email"]');
-      const passwordInput = wrapper.find('input[name="password"]');
-      const form = wrapper.find('form');
+      const user = userEvent.setup();
+      render(<SignupContainer {...props} />);
 
       // password field can't be empty
-      await act(async () => {
-        emailInput.simulate('change', changeVal('email', 'good@email.com'));
-        await nextTick();
-        form.simulate('submit', { preventDefault: () => undefined });
-      });
-      wrapper.update();
-      let passwordError = wrapper.find('.unl-signup__error-message').at(0);
-      expect(passwordError.text()).toEqual('password is a required field');
+      await user.type(screen.getByLabelText('Email'), 'good@email.com');
+      await user.click(submitButton());
+      await waitFor(() =>
+        expect(errorMessages()).toContain('Please enter a password'),
+      );
 
       // password must be at least 8 chars
-      await act(async () => {
-        emailInput.simulate('change', changeVal('email', 'good@email.com'));
-        passwordInput.simulate('change', changeVal('password', '123'));
-        await nextTick();
-        form.simulate('submit', { preventDefault: () => undefined });
-      });
-      wrapper.update();
-      passwordError = wrapper.find('.unl-signup__error-message').at(0);
-      expect(passwordError.text()).toEqual(
-        'password must be at least 8 characters',
+      await user.clear(screen.getByLabelText('Password'));
+      await user.type(screen.getByLabelText('Password'), '123');
+      await user.tab();
+
+      await waitFor(() =>
+        expect(errorMessages()).toContain(
+          'Password must be at least 8 characters',
+        ),
       );
+    });
+
+    it('requires the password to be confirmed', async () => {
+      const user = userEvent.setup();
+      render(<SignupContainer {...props} />);
+
+      await user.type(screen.getByLabelText('Email'), 'good@email.com');
+      await user.type(screen.getByLabelText('Password'), 'goodpassword');
+      await user.click(submitButton());
+
+      await waitFor(() =>
+        expect(errorMessages()).toContain('Please enter the password again'),
+      );
+      expect(props.handler).not.toHaveBeenCalled();
+    });
+
+    it('rejects mismatched passwords', async () => {
+      await fill({
+        Email: 'good@email.com',
+        Password: 'goodpassword',
+        'Password confirm': 'differentpassword',
+      });
+
+      await waitFor(() =>
+        expect(errorMessages()).toContain('Passwords must match'),
+      );
+      expect(props.handler).not.toHaveBeenCalled();
     });
   });
 
-  describe('helper functions', () => {
-    it('getDefaultsFromZodObject() returns the right object', () => {
-      const fields: any = [
-        {
-          element: 'input',
-          type: 'text',
-          name: 'email',
-          label: 'Email',
-          defaultValue: 'something',
-        },
-        {
-          element: 'input',
-          type: 'password',
-          name: 'password',
-          label: 'Password',
-        },
-      ];
-      /*
-       *  return shape of mapDefaultValues()
-       *   {
-       *     [name]: defaultValue || ''
-       *   }
-       * */
-      const { email, password } = getDefaultsFromZodObject(fields);
+  describe('submission', () => {
+    it('calls the handler with the form values and fires onSuccess', async () => {
+      await fill({
+        Email: 'good@email.com',
+        Password: 'goodpassword',
+        'Password confirm': 'goodpassword',
+      });
 
-      expect(email).toEqual('something');
-      expect(password).toEqual('');
+      await waitFor(() =>
+        expect(props.handler).toHaveBeenCalledWith({
+          email: 'good@email.com',
+          password: 'goodpassword',
+          passwordConfirm: 'goodpassword',
+        }),
+      );
+      await waitFor(() => expect(props.onSuccess).toHaveBeenCalled());
+    });
+
+    it('renders server errors returned by the handler', async () => {
+      props.handler.mockResolvedValue({
+        success: false,
+        errors: { root: 'Email already in use' },
+      });
+
+      await fill({
+        Email: 'good@email.com',
+        Password: 'goodpassword',
+        'Password confirm': 'goodpassword',
+      });
+
+      await waitFor(() =>
+        expect(
+          document.querySelector('.unl-signup__server-auth-error'),
+        ).toHaveTextContent('Email already in use'),
+      );
+    });
+
+    it('shows the success message after a successful submit', async () => {
+      props.handler.mockResolvedValue({ success: true });
+
+      await fill(
+        {
+          Email: 'good@email.com',
+          Password: 'goodpassword',
+          'Password confirm': 'goodpassword',
+        },
+        { successMessage: 'Account created' },
+      );
+
+      await waitFor(() =>
+        expect(
+          document.querySelector('.unl-signup__success'),
+        ).toHaveTextContent('Account created'),
+      );
     });
   });
 });

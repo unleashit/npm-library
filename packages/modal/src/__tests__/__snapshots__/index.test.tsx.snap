@@ -1,26 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Modal /> renders when isOpen property is true 1`] = `
 <div
-  className="unl-modal__overlay"
+  class="unl-modal__overlay"
   data-modal="true"
-  onClick={[Function]}
-  style={
-    {
-      "backgroundColor": "rgba(0,0,0,.8)",
-      "zIndex": "auto",
-    }
-  }
+  data-theme="light"
+  style="z-index: auto;"
 >
   <div
-    className="unl-modal__child unl-modal__child--medium unl-modal__child--in"
+    class="unl-modal__child unl-modal__child--medium unl-modal__child--in"
   >
     <div
-      className="unl-modal__close"
+      class="unl-modal__close"
     >
       <button
-        className="unl-modal__close-btn"
-        onClick={[MockFunction]}
+        class="unl-modal__close-btn"
         type="button"
       >
         <svg
@@ -41,7 +35,7 @@ exports[`<Modal /> renders when isOpen property is true 1`] = `
       </button>
     </div>
     <div
-      className="unl-modal__body"
+      class="unl-modal__body"
     >
       <div>
         Test text for modal.

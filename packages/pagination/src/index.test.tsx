@@ -1,59 +1,102 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable-next-line import/no-extraneous-dependencies */
-import { shallow } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import * as React from 'react';
 
 import Pagination from './pagination';
 
-// declare const shallow: any;
+/**
+ * Pagination measures its container to decide how many page buttons fit.
+ * jsdom reports no layout, so `getComputedStyle` is stubbed the way the old
+ * Enzyme suite stubbed `setContainerWidth`.
+ */
+const mockContainerWidth = (width: number) =>
+  jest.spyOn(window, 'getComputedStyle').mockImplementation(
+    () =>
+      ({
+        getPropertyValue: (prop: string) =>
+          prop === 'width' ? `${width}px` : '0px',
+      }) as unknown as CSSStyleDeclaration,
+  );
 
 describe('<Pagination />', () => {
-  let wrapper: any;
-  let props: any = {};
+  let props: any;
+  let utils: ReturnType<typeof render>;
 
-  jest
-    .spyOn(Pagination.prototype, 'setContainerWidth')
-    .mockImplementation(function setContainerWidth(this: { setState: any }) {
-      this.setState({ containerWidth: 1200 });
-    });
+  const setup = (next: any = props) => {
+    utils?.unmount();
+    utils = render(<Pagination {...next} />);
+    return utils;
+  };
+
+  const numbers = () => document.querySelectorAll('.unl-pagination__number');
 
   beforeEach(() => {
+    mockContainerWidth(1200);
     props = {
       currentOffset: 0,
       perPage: 10,
-      paginationHandler: jest.fn(),
+      handler: jest.fn(),
       total: 50,
     };
 
-    wrapper = shallow(<Pagination {...props} />);
+    setup();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it('renders without crashing', () => {
-    expect(wrapper.find('.unl-pagination__container')).toHaveLength(1);
-    const { containerWidth } = wrapper.state();
-    expect(containerWidth).toEqual(1200);
-    expect(wrapper).toMatchSnapshot();
+    expect(
+      document.querySelector('.unl-pagination__container'),
+    ).toBeInTheDocument();
+    expect(utils.container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders nothing when total fits on one page', () => {
+    setup({ ...props, total: 10 });
+
+    expect(
+      document.querySelector('.unl-pagination__container'),
+    ).not.toBeInTheDocument();
   });
 
   it('renders next button correctly', () => {
-    expect(wrapper.find('.unl-pagination__inner').text()).toContain('next');
-    expect(wrapper.find('.unl-pagination__inner').text()).not.toContain('prev');
+    const inner = document.querySelector(
+      '.unl-pagination__inner',
+    ) as HTMLElement;
+
+    expect(inner.textContent).toContain('next');
+    expect(inner.textContent).not.toContain('prev');
   });
 
   it('renders prev button correctly', () => {
-    props.currentOffset = 50;
-    wrapper = shallow(<Pagination {...props} />);
+    setup({ ...props, currentOffset: 50 });
+    const inner = document.querySelector(
+      '.unl-pagination__inner',
+    ) as HTMLElement;
 
-    expect(wrapper.find('.unl-pagination__inner').text()).toContain('prev');
-    expect(wrapper.find('.unl-pagination__inner').text()).not.toContain('next');
+    expect(inner.textContent).toContain('prev');
+    expect(inner.textContent).not.toContain('next');
   });
 
   it('renders both prev and next btns correctly', () => {
-    props.currentOffset = 25;
-    wrapper = shallow(<Pagination {...props} />);
+    setup({ ...props, currentOffset: 25 });
+    const inner = document.querySelector(
+      '.unl-pagination__inner',
+    ) as HTMLElement;
 
-    expect(wrapper.find('.unl-pagination__inner').text()).toContain('prev');
-    expect(wrapper.find('.unl-pagination__inner').text()).toContain('next');
+    expect(inner.textContent).toContain('prev');
+    expect(inner.textContent).toContain('next');
+  });
+
+  it('renders custom prev/next labels', () => {
+    setup({ ...props, prevLabel: 'previous', nextLabel: 'following' });
+    const inner = document.querySelector(
+      '.unl-pagination__inner',
+    ) as HTMLElement;
+
+    expect(inner.textContent).toContain('following');
+    expect(inner.textContent).not.toContain('next ');
   });
 
   it('renders the right amount of pages', () => {
@@ -68,37 +111,71 @@ describe('<Pagination />', () => {
     ];
 
     tests.forEach(({ perPage, total, ex }) => {
-      props.perPage = perPage;
-      props.total = total;
-      wrapper = shallow(<Pagination {...props} />);
+      setup({ ...props, perPage, total });
 
-      expect(
-        wrapper.find('.unl-pagination__inner > .unl-pagination__number'),
-      ).toHaveLength(ex);
+      expect(numbers()).toHaveLength(ex);
     });
+  });
+
+  it('marks the current page number as active', () => {
+    setup({ ...props, currentOffset: 20, perPage: 10 });
+
+    const active = document.querySelector('.unl-pagination__number--active');
+
+    expect(active).toHaveTextContent('3');
+  });
+
+  it('collapses long ranges with ellipsis when the container is narrow', () => {
+    mockContainerWidth(340);
+    setup({ ...props, total: 200 });
+
+    // a 340px container only fits 2 page buttons, so the range collapses to
+    // the first pages plus an ellipsis and the last page
+    expect(document.querySelectorAll('.unl-pagination__ellipsis')).toHaveLength(
+      1,
+    );
+    expect(numbers()).toHaveLength(3);
+    expect(numbers()[0]).toHaveTextContent('1');
+    expect(numbers()[numbers().length - 1]).toHaveTextContent('20');
   });
 
   describe('click events', () => {
     it('#next btn calls the pagination handler with the right offset', () => {
-      let nextBtn = wrapper.find('.unl-pagination__next');
-      nextBtn.simulate('click');
-      expect(props.paginationHandler).toHaveBeenLastCalledWith(10);
+      fireEvent.click(
+        document.querySelector('.unl-pagination__next') as Element,
+      );
+      expect(props.handler).toHaveBeenLastCalledWith(10);
 
-      props.currentOffset = 20;
-      props.perPage = 5;
-      wrapper = shallow(<Pagination {...props} />);
-      nextBtn = wrapper.find('.unl-pagination__next');
-      nextBtn.simulate('click');
-      expect(props.paginationHandler).toHaveBeenLastCalledWith(25);
+      setup({ ...props, currentOffset: 20, perPage: 5 });
+      fireEvent.click(
+        document.querySelector('.unl-pagination__next') as Element,
+      );
+      expect(props.handler).toHaveBeenLastCalledWith(25);
+    });
+
+    it('hides the next btn on the last page', () => {
+      const handler = jest.fn();
+      setup({ ...props, currentOffset: 30, handler });
+
+      fireEvent.click(
+        document.querySelector('.unl-pagination__next') as Element,
+      );
+      expect(handler).toHaveBeenLastCalledWith(40);
+
+      setup({ ...props, currentOffset: 40, handler });
+      // no next button rendered at the end of the list
+      expect(
+        document.querySelector('.unl-pagination__next'),
+      ).not.toBeInTheDocument();
     });
 
     it('#prev btn calls the pagination handler with the right offset', () => {
-      props.currentOffset = 30;
-      props.perPage = 10;
-      wrapper = shallow(<Pagination {...props} />);
-      const prevBtn = wrapper.find('.unl-pagination__prev');
-      prevBtn.simulate('click');
-      expect(props.paginationHandler).toHaveBeenLastCalledWith(20);
+      setup({ ...props, currentOffset: 30, perPage: 10 });
+
+      fireEvent.click(
+        document.querySelector('.unl-pagination__prev') as Element,
+      );
+      expect(props.handler).toHaveBeenLastCalledWith(20);
     });
 
     it('#page number btns call the pagination handler with the right offset', () => {
@@ -114,23 +191,50 @@ describe('<Pagination />', () => {
       ];
 
       tests.forEach(({ currentOffset, perPage, pageClicked, ex }) => {
-        props = { ...props, currentOffset, perPage, pageClicked };
-        props.paginationHandler.mockClear();
+        const handler = jest.fn();
+        setup({ ...props, currentOffset, perPage, handler });
 
-        wrapper = shallow(<Pagination {...props} />);
-        const firstPageBtn = wrapper
-          .find('.unl-pagination__number')
-          .at(pageClicked - 1);
+        fireEvent.click(numbers()[pageClicked - 1]);
 
-        firstPageBtn.simulate('click');
-
-        if (pageClicked - 1 === currentOffset / perPage) {
+        if (pageClicked - 1 === Math.floor(currentOffset / perPage)) {
           // not called when clicking on current page
-          expect(props.paginationHandler).not.toHaveBeenCalled();
+          expect(handler).not.toHaveBeenCalled();
         } else {
-          expect(props.paginationHandler).toHaveBeenLastCalledWith(ex);
+          expect(handler).toHaveBeenLastCalledWith(ex);
         }
       });
+    });
+  });
+
+  describe('invalid props', () => {
+    const expectRenderError = (badProps: any, message: string) => {
+      // React logs caught errors; keep the console quiet for these cases
+      const errorSpy = jest
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
+      expect(() => setup(badProps)).toThrow(message);
+      errorSpy.mockRestore();
+    };
+
+    it('throws when perPage is less than 1', () => {
+      expectRenderError(
+        { ...props, perPage: 0 },
+        '`perPage` prop should not be less than 1',
+      );
+    });
+
+    it('throws when currentOffset is negative', () => {
+      expectRenderError(
+        { ...props, currentOffset: -1 },
+        '`offset` prop should not be less than 0',
+      );
+    });
+
+    it('throws when total is negative', () => {
+      expectRenderError(
+        { ...props, total: -1 },
+        '`total` prop should not be less than 0',
+      );
     });
   });
 });

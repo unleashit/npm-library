@@ -1,185 +1,238 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { mount, shallow, ShallowWrapper } from 'enzyme';
+import { render, screen, waitFor } from '@testing-library/react';
 import * as React from 'react';
 
 import AsyncHandler, { withAsyncHandler } from '..';
 
-// const nextTick = () => {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve();
-//     }, 0);
-//   });
-// };
-//
-// const changeVal = (name, value) => {
-//   return {
-//     persist: () => undefined, // Formik calls e.persist() internally
-//     target: {
-//       name,
-//       value,
-//     },
-//   };
-//
-describe.skip('<AsyncHandler />', () => {
-  let wrapper: ShallowWrapper;
+const colors = ['red', 'green', 'blue'];
 
-  describe.skip('Render Prop', () => {
-    beforeEach(async () => {
-      const props = {
-        request: () =>
-          new Promise((res) => {
-            res(['red', 'green', 'blue', 'yellow', 'orange', 'black', 'white']);
-          }),
-      };
-      wrapper = await shallow(
-        <AsyncHandler {...props}>
-          {(data) => <div className="test-class">{data.join(', ')}</div>}
-        </AsyncHandler>,
-      );
-    });
+describe('<AsyncHandler />', () => {
+  it('renders the loader until the request resolves, then the render prop', async () => {
+    let resolveRequest: (value: string[]) => void = () => undefined;
+    const request = jest.fn(
+      () =>
+        new Promise<string[]>((resolve) => {
+          resolveRequest = resolve;
+        }),
+    );
 
-    it('renders without crashing', () => {
-      expect(wrapper.find('.test-class')).toHaveLength(1);
-      expect(wrapper).toMatchSnapshot();
-    });
+    render(
+      <AsyncHandler request={request}>
+        {(data: string[]) => (
+          <div className="test-class">{(data as string[]).join(', ')}</div>
+        )}
+      </AsyncHandler>,
+    );
 
-    // it('renders without crashing', () => {
-    //   expect(wrapper.find('.test-class')).toHaveLength(1);
-    //   expect(wrapper).toMatchSnapshot();
-    // });
+    expect(
+      document.querySelector('.unl-async-handler__loader'),
+    ).toBeInTheDocument();
+
+    resolveRequest(colors);
+
+    await waitFor(() =>
+      expect(document.querySelector('.test-class')).toHaveTextContent(
+        'red, green, blue',
+      ),
+    );
+    expect(request).toHaveBeenCalledTimes(1);
   });
 
-  describe.skip('HOC', () => {
-    beforeEach(async () => {
-      // wrapper = await shallow(
-      //   <AsyncHandler {...props}>
-      //     {data => <div className="test-class">{data.join(', ')}</div>}
-      //   </AsyncHandler>,
-      // );
-      //
+  it('shows the no results component for empty data', async () => {
+    render(
+      <AsyncHandler request={() => Promise.resolve([])}>
+        {() => <div />}
+      </AsyncHandler>,
+    );
 
-      interface User {
-        id: number;
-        name: string;
-        age: number;
-      }
+    await waitFor(() =>
+      expect(
+        document.querySelector('.unl-async-handler__nothing-found'),
+      ).toHaveTextContent('Nothing found.'),
+    );
+  });
 
-      const users: User[] = [
-        {
-          id: 1,
-          name: 'joe',
-          age: 30,
-        },
-        {
-          id: 2,
-          name: 'judy',
-          age: 27,
-        },
-      ];
+  it('shows the default error component when the request rejects', async () => {
+    const errorSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined);
 
-      // let userCache = null;
+    render(
+      <AsyncHandler request={() => Promise.reject(new Error('request failed'))}>
+        {() => <div />}
+      </AsyncHandler>,
+    );
 
-      const UserList = ({ data }: { data: User[] }) => (
-        <ul className="user-list">
-          {data.map((item) => (
-            <li key={item.id}>
-              {item.name} is {item.age} years old.
-            </li>
-          ))}
-        </ul>
-      );
+    await waitFor(() =>
+      expect(
+        document.querySelector('.unl-async-handler__error-message'),
+      ).toHaveTextContent('Sorry, we have encountered a problem.'),
+    );
+    expect(
+      document.querySelector('.unl-async-handler__error-message'),
+    ).toHaveTextContent('request failed');
 
-      const WrappedHandler = await withAsyncHandler({
-        request: () =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              // userCache = { users, cacheDate: new Date() };
-              resolve(users);
-            }, 200);
-          }),
-        // cache: () => {
-        //   return userCache && new Date() - userCache.cacheDate <= 5 * 1000
-        //     ? userCache.users
-        //     : null;
-        // },
-        loaderComponent: () => <div>Stay tuned!</div>,
-        noResultsComponent: () => <div>No user's found.</div>,
-        errorComponent: ({ error }) => (
-          <div>Oops, there was a problem: {JSON.stringify(error)}</div>
-        ),
-      })(UserList);
-      (wrapper as any) = await mount(<WrappedHandler />);
-    });
+    errorSpy.mockRestore();
+  });
 
-    it('renders without crashing', () => {
-      console.log(wrapper.debug());
-      expect(wrapper.find('.user-list')).toHaveLength(1);
-      // expect(wrapper).toMatchSnapshot();
-    });
+  // the component fetches in componentDidMount, so each case mounts its own tree
+  it('accepts a custom loader component', () => {
+    render(
+      <AsyncHandler
+        request={() => new Promise(() => {})}
+        loaderComponent={() => <div>Stay tuned!</div>}
+      >
+        {() => <div />}
+      </AsyncHandler>,
+    );
+
+    expect(screen.getByText('Stay tuned!')).toBeInTheDocument();
+  });
+
+  it('accepts a custom no results component', async () => {
+    render(
+      <AsyncHandler
+        request={() => Promise.resolve(null)}
+        noResultsComponent={() => <div>No user's found.</div>}
+      >
+        {() => <div />}
+      </AsyncHandler>,
+    );
+
+    await waitFor(() =>
+      expect(screen.getByText("No user's found.")).toBeInTheDocument(),
+    );
+  });
+
+  it('accepts a custom error component', async () => {
+    const errorSpy = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined);
+
+    render(
+      <AsyncHandler
+        request={() => Promise.reject(new Error('kaboom'))}
+        errorComponent={({ error }: { error?: Error }) => (
+          <div>Oops, there was a problem: {error?.message}</div>
+        )}
+      >
+        {() => <div />}
+      </AsyncHandler>,
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.getByText('Oops, there was a problem: kaboom'),
+      ).toBeInTheDocument(),
+    );
+    errorSpy.mockRestore();
+  });
+
+  it('uses cached data and skips the request', async () => {
+    const request = jest.fn(() => Promise.resolve(colors));
+
+    render(
+      <AsyncHandler request={request} cache={() => ['cached']}>
+        {(data: string[]) => (
+          <div className="test-class">{data.join(', ')}</div>
+        )}
+      </AsyncHandler>,
+    );
+
+    await waitFor(() =>
+      expect(document.querySelector('.test-class')).toHaveTextContent('cached'),
+    );
+    expect(request).not.toHaveBeenCalled();
+  });
+
+  it('falls back to the request when the cache is empty', async () => {
+    const request = jest.fn(() => Promise.resolve(colors));
+
+    render(
+      <AsyncHandler request={request} cache={() => false}>
+        {(data: string[]) => (
+          <div className="test-class">{data.join(', ')}</div>
+        )}
+      </AsyncHandler>,
+    );
+
+    await waitFor(() => expect(request).toHaveBeenCalledTimes(1));
+    await waitFor(() =>
+      expect(document.querySelector('.test-class')).toHaveTextContent(
+        'red, green, blue',
+      ),
+    );
   });
 });
-//
-//   describe('validation', () => {
-//     it('fields can be updated and validated', () => {
-//       wrapper
-//         .find('input[name="email"]')
-//         .simulate('change', changeVal('email', 'test@test.com'));
-//       wrapper
-//         .find('input[name="password"]')
-//         .simulate('change', changeVal('password', '12345678'));
-//
-//       expect(wrapper.find('input[name="email"]').props().value).toEqual('test@test.com');
-//       const errors = wrapper.find('.errorMessage');
-//       expect(errors).toHaveLength(0);
-//     });
-//
-//     it('displays correct email validation errors', async () => {
-//       const emailInput = wrapper.find('input[name="email"]');
-//       const passwordInput = wrapper.find('input[name="password"]');
-//       const form = wrapper.find('form');
-//
-//       // email can't be empty
-//       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => undefined });
-//       await nextTick();
-//       wrapper.update();
-//       let emailError = wrapper.find('.errorMessage').at(0);
-//       expect(emailError.text()).toEqual('email is a required field');
-//
-//       // email must be a valid email
-//       emailInput.simulate('change', changeVal('email', 'bademail'));
-//       passwordInput.simulate('change', changeVal('password', 'goodpassword'));
-//       form.simulate('submit', { preventDefault: () => undefined });
-//       await nextTick();
-//       wrapper.update();
-//       emailError = wrapper.find('.errorMessage').at(0);
-//       expect(emailError.text()).toEqual('email must be a valid email');
-//     });
-//
-//     it('displays correct password validation errors', async () => {
-//       const emailInput = wrapper.find('input[name="email"]');
-//       const passwordInput = wrapper.find('input[name="password"]');
-//       const form = wrapper.find('form');
-//
-//       // password field can't be empty
-//       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       form.simulate('submit', { preventDefault: () => undefined });
-//       await nextTick();
-//       wrapper.update();
-//       let passwordError = wrapper.find('.errorMessage').at(0);
-//       expect(passwordError.text()).toEqual('password is a required field');
-//
-//       // password must be at least 8 chars
-//       emailInput.simulate('change', changeVal('email', 'good@email.com'));
-//       passwordInput.simulate('change', changeVal('password', '123'));
-//       form.simulate('submit', { preventDefault: () => undefined });
-//       await nextTick();
-//       wrapper.update();
-//       passwordError = wrapper.find('.errorMessage').at(0);
-//       expect(passwordError.text()).toEqual('password must be at least 8 characters');
-//     });
-//   });
-// });
 
-// };
+describe('withAsyncHandler', () => {
+  interface User {
+    id: number;
+    name: string;
+    age: number;
+  }
+
+  const users: User[] = [
+    { id: 1, name: 'joe', age: 30 },
+    { id: 2, name: 'judy', age: 27 },
+  ];
+
+  const UserList = ({ data }: { data: User[] }) => (
+    <ul className="user-list">
+      {data.map((item) => (
+        <li key={item.id}>
+          {item.name} is {item.age} years old.
+        </li>
+      ))}
+    </ul>
+  );
+
+  it('wraps a component and passes the resolved data', async () => {
+    const WrappedHandler = withAsyncHandler({
+      request: () =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve(users), 20);
+        }),
+      loaderComponent: () => <div>Stay tuned!</div>,
+      noResultsComponent: () => <div>No user's found.</div>,
+      errorComponent: ({ error }: { error?: Error }) => (
+        <div>Oops, there was a problem: {error?.message}</div>
+      ),
+    })(UserList);
+
+    render(<WrappedHandler />);
+
+    expect(screen.getByText('Stay tuned!')).toBeInTheDocument();
+
+    await waitFor(() =>
+      expect(document.querySelector('.user-list')).toHaveTextContent(
+        'joe is 30 years old.',
+      ),
+    );
+    expect(document.querySelectorAll('.user-list li')).toHaveLength(2);
+  });
+
+  it('forwards extra props to the wrapped component', async () => {
+    const ListWithTitle = ({
+      data,
+      title,
+    }: {
+      data: User[];
+      title?: string;
+    }) => (
+      <div>
+        <h3>{title}</h3>
+        <UserList data={data} />
+      </div>
+    );
+
+    const Wrapped = withAsyncHandler({
+      request: () => Promise.resolve(users),
+    })(ListWithTitle);
+
+    render(<Wrapped title="Team" />);
+
+    await waitFor(() =>
+      expect(screen.getByRole('heading')).toHaveTextContent('Team'),
+    );
+  });
+});

@@ -1,407 +1,83 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<SignupContainer /> renders without crashing 1`] = `
-<WithFormik(Signup)
-  onSuccess={[Function]}
-  signupHandler={[Function]}
+<div
+  class="unl-signup__container"
+  data-theme="light"
 >
-  <Formik
-    handleSubmit={[Function]}
-    initialValues={
-      {
-        "email": "",
-        "password": "",
-        "passwordConfirm": "",
-        "serverAuth": "",
-      }
-    }
-    onSubmit={[Function]}
-    onSuccess={[Function]}
-    signupHandler={[Function]}
-    validationSchema={[Function]}
+  <div
+    class="unl-signup__header"
   >
-    <Signup
-      dirty={false}
-      errors={{}}
-      getFieldHelpers={[Function]}
-      getFieldMeta={[Function]}
-      getFieldProps={[Function]}
-      handleBlur={[Function]}
-      handleChange={[Function]}
-      handleReset={[Function]}
-      handleSubmit={[Function]}
-      initialErrors={{}}
-      initialTouched={{}}
-      initialValues={
-        {
-          "email": "",
-          "password": "",
-          "passwordConfirm": "",
-          "serverAuth": "",
-        }
-      }
-      isSubmitting={false}
-      isValid={true}
-      isValidating={false}
-      onSuccess={[Function]}
-      registerField={[Function]}
-      resetForm={[Function]}
-      setErrors={[Function]}
-      setFieldError={[Function]}
-      setFieldTouched={[Function]}
-      setFieldValue={[Function]}
-      setFormikState={[Function]}
-      setStatus={[Function]}
-      setSubmitting={[Function]}
-      setTouched={[Function]}
-      setValues={[Function]}
-      signupHandler={[Function]}
-      submitCount={0}
-      submitForm={[Function]}
-      touched={{}}
-      unregisterField={[Function]}
-      validateField={[Function]}
-      validateForm={[Function]}
-      validateOnBlur={true}
-      validateOnChange={true}
-      validateOnMount={false}
-      values={
-        {
-          "email": "",
-          "password": "",
-          "passwordConfirm": "",
-          "serverAuth": "",
-        }
-      }
-    >
-      <div
-        className="unl-signup__container"
+    <h2>
+      Signup
+    </h2>
+    <p>
+      Already have an account? 
+      <a
+        href="/login"
       >
-        <SignupHeader
-          linkComponent={[Function]}
-          linkComponentHrefAttr="href"
-          loginUrl="/login"
-          theme={{}}
-        >
-          <div
-            className="unl-signup__header"
-          >
-            <h2>
-              Sign Up
-            </h2>
-            <p>
-              Already have an account?
-               
-              <DefaultLinkComponent
-                href="/login"
-              >
-                <a
-                  href="/login"
-                >
-                  Login
-                </a>
-              </DefaultLinkComponent>
-            </p>
-          </div>
-        </SignupHeader>
-        <Form
-          className="unl-signup__form"
-        >
-          <form
-            action="#"
-            className="unl-signup__form"
-            onReset={[Function]}
-            onSubmit={[Function]}
-          >
-            <Field
-              component={[Function]}
-              componentName="signup"
-              cssModule={{}}
-              name="email"
-              type="text"
-            >
-              <CustomInput
-                componentName="signup"
-                cssModule={{}}
-                field={
-                  {
-                    "name": "email",
-                    "onBlur": [Function],
-                    "onChange": [Function],
-                    "value": "",
-                  }
-                }
-                form={
-                  {
-                    "dirty": false,
-                    "errors": {},
-                    "getFieldHelpers": [Function],
-                    "getFieldMeta": [Function],
-                    "getFieldProps": [Function],
-                    "handleBlur": [Function],
-                    "handleChange": [Function],
-                    "handleReset": [Function],
-                    "handleSubmit": [Function],
-                    "initialErrors": {},
-                    "initialStatus": undefined,
-                    "initialTouched": {},
-                    "initialValues": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                    "isSubmitting": false,
-                    "isValid": true,
-                    "isValidating": false,
-                    "registerField": [Function],
-                    "resetForm": [Function],
-                    "setErrors": [Function],
-                    "setFieldError": [Function],
-                    "setFieldTouched": [Function],
-                    "setFieldValue": [Function],
-                    "setFormikState": [Function],
-                    "setStatus": [Function],
-                    "setSubmitting": [Function],
-                    "setTouched": [Function],
-                    "setValues": [Function],
-                    "status": undefined,
-                    "submitCount": 0,
-                    "submitForm": [Function],
-                    "touched": {},
-                    "unregisterField": [Function],
-                    "validateField": [Function],
-                    "validateForm": [Function],
-                    "validateOnBlur": true,
-                    "validateOnChange": true,
-                    "validateOnMount": false,
-                    "values": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                  }
-                }
-                type="text"
-              >
-                <div
-                  className="unl-signup__form-group"
-                >
-                  <label
-                    className="unl-signup__label"
-                    htmlFor="signup-form-email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    className="unl-signup__input "
-                    id="signup-form-email"
-                    name="email"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    type="text"
-                    value=""
-                  />
-                </div>
-              </CustomInput>
-            </Field>
-            <Field
-              component={[Function]}
-              componentName="signup"
-              cssModule={{}}
-              name="password"
-              type="password"
-            >
-              <CustomInput
-                componentName="signup"
-                cssModule={{}}
-                field={
-                  {
-                    "name": "password",
-                    "onBlur": [Function],
-                    "onChange": [Function],
-                    "value": "",
-                  }
-                }
-                form={
-                  {
-                    "dirty": false,
-                    "errors": {},
-                    "getFieldHelpers": [Function],
-                    "getFieldMeta": [Function],
-                    "getFieldProps": [Function],
-                    "handleBlur": [Function],
-                    "handleChange": [Function],
-                    "handleReset": [Function],
-                    "handleSubmit": [Function],
-                    "initialErrors": {},
-                    "initialStatus": undefined,
-                    "initialTouched": {},
-                    "initialValues": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                    "isSubmitting": false,
-                    "isValid": true,
-                    "isValidating": false,
-                    "registerField": [Function],
-                    "resetForm": [Function],
-                    "setErrors": [Function],
-                    "setFieldError": [Function],
-                    "setFieldTouched": [Function],
-                    "setFieldValue": [Function],
-                    "setFormikState": [Function],
-                    "setStatus": [Function],
-                    "setSubmitting": [Function],
-                    "setTouched": [Function],
-                    "setValues": [Function],
-                    "status": undefined,
-                    "submitCount": 0,
-                    "submitForm": [Function],
-                    "touched": {},
-                    "unregisterField": [Function],
-                    "validateField": [Function],
-                    "validateForm": [Function],
-                    "validateOnBlur": true,
-                    "validateOnChange": true,
-                    "validateOnMount": false,
-                    "values": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                  }
-                }
-                type="password"
-              >
-                <div
-                  className="unl-signup__form-group"
-                >
-                  <label
-                    className="unl-signup__label"
-                    htmlFor="signup-form-password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    className="unl-signup__input "
-                    id="signup-form-password"
-                    name="password"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    type="password"
-                    value=""
-                  />
-                </div>
-              </CustomInput>
-            </Field>
-            <Field
-              component={[Function]}
-              componentName="signup"
-              cssModule={{}}
-              name="passwordConfirm"
-              type="password"
-            >
-              <CustomInput
-                componentName="signup"
-                cssModule={{}}
-                field={
-                  {
-                    "name": "passwordConfirm",
-                    "onBlur": [Function],
-                    "onChange": [Function],
-                    "value": "",
-                  }
-                }
-                form={
-                  {
-                    "dirty": false,
-                    "errors": {},
-                    "getFieldHelpers": [Function],
-                    "getFieldMeta": [Function],
-                    "getFieldProps": [Function],
-                    "handleBlur": [Function],
-                    "handleChange": [Function],
-                    "handleReset": [Function],
-                    "handleSubmit": [Function],
-                    "initialErrors": {},
-                    "initialStatus": undefined,
-                    "initialTouched": {},
-                    "initialValues": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                    "isSubmitting": false,
-                    "isValid": true,
-                    "isValidating": false,
-                    "registerField": [Function],
-                    "resetForm": [Function],
-                    "setErrors": [Function],
-                    "setFieldError": [Function],
-                    "setFieldTouched": [Function],
-                    "setFieldValue": [Function],
-                    "setFormikState": [Function],
-                    "setStatus": [Function],
-                    "setSubmitting": [Function],
-                    "setTouched": [Function],
-                    "setValues": [Function],
-                    "status": undefined,
-                    "submitCount": 0,
-                    "submitForm": [Function],
-                    "touched": {},
-                    "unregisterField": [Function],
-                    "validateField": [Function],
-                    "validateForm": [Function],
-                    "validateOnBlur": true,
-                    "validateOnChange": true,
-                    "validateOnMount": false,
-                    "values": {
-                      "email": "",
-                      "password": "",
-                      "passwordConfirm": "",
-                      "serverAuth": "",
-                    },
-                  }
-                }
-                type="password"
-              >
-                <div
-                  className="unl-signup__form-group"
-                >
-                  <label
-                    className="unl-signup__label"
-                    htmlFor="signup-form-passwordConfirm"
-                  >
-                    Password Confirm
-                  </label>
-                  <input
-                    className="unl-signup__input "
-                    id="signup-form-passwordConfirm"
-                    name="passwordConfirm"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    type="password"
-                    value=""
-                  />
-                </div>
-              </CustomInput>
-            </Field>
-            <button
-              className="unl-signup__button"
-              type="submit"
-            >
-              Sign Up
-            </button>
-          </form>
-        </Form>
-      </div>
-    </Signup>
-  </Formik>
-</WithFormik(Signup)>
+        Login
+      </a>
+    </p>
+  </div>
+  <form
+    class="unl-signup__form"
+    style="display: block;"
+  >
+    <div
+      class="unl-signup__field-group"
+    >
+      <label
+        class="unl-signup__label"
+        for="signup-form-email"
+      >
+        Email
+      </label>
+      <input
+        class="unl-signup__input "
+        id="signup-form-email"
+        name="email"
+        type="text"
+      />
+    </div>
+    <div
+      class="unl-signup__field-group"
+    >
+      <label
+        class="unl-signup__label"
+        for="signup-form-password"
+      >
+        Password
+      </label>
+      <input
+        class="unl-signup__input "
+        id="signup-form-password"
+        name="password"
+        type="password"
+      />
+    </div>
+    <div
+      class="unl-signup__field-group"
+    >
+      <label
+        class="unl-signup__label"
+        for="signup-form-passwordConfirm"
+      >
+        Password confirm
+      </label>
+      <input
+        class="unl-signup__input "
+        id="signup-form-passwordConfirm"
+        name="passwordConfirm"
+        type="password"
+      />
+    </div>
+    <button
+      class="unl-signup__button"
+      type="submit"
+    >
+      Signup
+    </button>
+  </form>
+</div>
 `;

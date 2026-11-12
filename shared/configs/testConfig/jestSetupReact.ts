@@ -1,25 +1,26 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const React = require('react');
-const Enzyme = require('enzyme');
-const Adapter = require('@cfaester/enzyme-adapter-react-18').default;
+/**
+ * Jest setup for every browser (jsdom) test project.
+ *
+ * Enzyme had no React 19 adapter, so the suites use React Testing Library:
+ * tests query the rendered DOM instead of the component tree, which means
+ * there is no adapter to configure and no snapshot serializer to register.
+ */
+import '@testing-library/jest-dom';
+import { cleanup } from '@testing-library/react';
+import React from 'react';
 
 // jasmine.DEFAULT_TIMEOUT_INTERVAL = 30000;
 
-// React 16 Enzyme adapter
-Enzyme.configure({ adapter: new Adapter() });
+// React stays available globally for the older `.js` test files
+(globalThis as any).React = React;
 
-// Make Enzyme functions and React available in all test files without importing
-(global as any).React = React;
-(global as any).shallow = Enzyme.shallow;
-(global as any).render = Enzyme.render;
-(global as any).mount = Enzyme.mount;
+// RTL appends to document.body, so unmount between tests to avoid leakage
+afterEach(() => {
+  cleanup();
+});
 
 // global mocks
 // check for window since Jest environment is node in certain tests
 if (typeof window !== 'undefined') {
-  window.alert = jest.fn((msg) => console.log(msg));
+  window.alert = jest.fn((msg: unknown) => console.log(msg));
 }
-
-// if (typeof global !== 'undefined') {
-//   global.alert = jest.fn((msg) => console.log(msg));
-// }

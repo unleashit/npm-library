@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<QuickForm /> renders the contact fields 1`] = `
+<div
+  class="unl-quickForm__container"
+  data-theme="light"
+>
+  <div
+    class="unl-quickForm__header"
+  >
+    <h2>
+      Contact Us
+    </h2>
+  </div>
+  <form
+    class="unl-quickForm__form"
+    style="display: block;"
+  >
+    <div
+      class="unl-quickForm__field-group"
+    >
+      <label
+        class="unl-quickForm__label"
+        for="quickForm-form-name"
+      >
+        Name
+      </label>
+      <input
+        class="unl-quickForm__input "
+        id="quickForm-form-name"
+        name="name"
+        type="text"
+      />
+    </div>
+    <div
+      class="unl-quickForm__field-group"
+    >
+      <label
+        class="unl-quickForm__label"
+        for="quickForm-form-email"
+      >
+        Email
+      </label>
+      <input
+        class="unl-quickForm__input "
+        id="quickForm-form-email"
+        name="email"
+        type="email"
+      />
+    </div>
+    <div
+      class="unl-quickForm__field-group"
+    >
+      <label
+        class="unl-quickForm__label"
+        for="quickForm-form-message"
+      >
+        Message
+      </label>
+      <textarea
+        class="unl-quickForm__textarea "
+        id="quickForm-form-message"
+        name="message"
+      />
+    </div>
+    <button
+      class="unl-quickForm__button"
+      type="submit"
+    >
+      Send Message
+    </button>
+  </form>
+</div>
+`;

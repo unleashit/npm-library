@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<LoginContainer /> renders without crashing 1`] = `
+<div
+  class="unl-login__container"
+  data-theme="light"
+>
+  <div
+    class="unl-login__header"
+  >
+    <h2>
+      Login
+    </h2>
+    <p>
+      Don't have an account yet? 
+      <a
+        href="/signup"
+      >
+        Sign up
+      </a>
+    </p>
+  </div>
+  <form
+    class="unl-login__form"
+    style="display: block;"
+  >
+    <div
+      class="unl-login__field-group"
+    >
+      <label
+        class="unl-login__label"
+        for="login-form-email"
+      >
+        Email
+      </label>
+      <input
+        class="unl-login__input "
+        id="login-form-email"
+        name="email"
+        type="text"
+      />
+    </div>
+    <div
+      class="unl-login__field-group"
+    >
+      <label
+        class="unl-login__label"
+        for="login-form-password"
+      >
+        Password
+      </label>
+      <input
+        class="unl-login__input "
+        id="login-form-password"
+        name="password"
+        type="password"
+      />
+    </div>
+    <button
+      class="unl-login__button"
+      type="submit"
+    >
+      Login
+    </button>
+    <div
+      class="unl-login__forgot-password-link"
+    >
+      <a
+        href="/forgot-password"
+      >
+        Forgot your password?
+      </a>
+    </div>
+  </form>
+</div>
+`;

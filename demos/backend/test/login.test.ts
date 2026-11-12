@@ -11,10 +11,10 @@ describe('login', () => {
         401,
         {
           success: false,
+          // a root error is only added when the credentials are well formed
           errors: {
             email: 'Email is required',
             password: 'Password is required',
-            root: 'Invalid credentials',
           },
         },
         done,

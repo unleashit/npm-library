@@ -29,7 +29,7 @@ describe('signup', () => {
       );
   });
 
-  it.skip('handles account already exists', (done) => {
+  it('handles account already exists', (done) => {
     request(app)
       .post('/signup')
       .set('Accept', 'application/json')
@@ -40,7 +40,8 @@ describe('signup', () => {
         {
           success: false,
           errors: {
-            root: 'Invalid credentials',
+            root: 'This email is already associated with an account',
+            email: 'Please login instead or choose a different email',
           },
         },
         done,

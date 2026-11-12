@@ -1,45 +1,63 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`<Navigation /> renders without crashing 1`] = `
-<ContextProvider
-  value={
-    {
-      "cssModule": {},
-      "linkComponent": [Function],
-      "linkComponentHrefAttr": "href",
-    }
-  }
+<nav
+  class="unl-navigation__container unl-navigation__clean"
+  data-theme="light"
 >
-  <nav
-    className="unl-navigation__container unl-navigation__container--clean"
+  <ul
+    class="unl-navigation__nav-list"
   >
-    <NavLinks
-      cssModule={{}}
-      links={
-        [
-          {
-            "href": "/home",
-            "title": "Home",
-          },
-          {
-            "href": "/products",
-            "title": "Products",
-          },
-          {
-            "href": "/services",
-            "title": "Services",
-          },
-          {
-            "attrs": {
-              "rel": "noopener noreferrer",
-              "target": "_blank",
-            },
-            "href": "/about",
-            "title": "About",
-          },
-        ]
-      }
-    />
-  </nav>
-</ContextProvider>
+    <li
+      class="unl-navigation__link-item  "
+    >
+      <a
+        class="unl-navigation__link"
+        href="/home"
+      >
+        <span>
+          Home
+        </span>
+      </a>
+    </li>
+    <li
+      class="unl-navigation__link-item  "
+    >
+      <a
+        class="unl-navigation__link"
+        href="/products"
+      >
+        <span>
+          Products
+        </span>
+      </a>
+    </li>
+    <li
+      class="unl-navigation__link-item  "
+    >
+      <a
+        class="unl-navigation__link"
+        href="/services"
+      >
+        <span>
+          Services
+        </span>
+      </a>
+    </li>
+    <li
+      class="unl-navigation__link-item  "
+    >
+      <a
+        class="unl-navigation__link"
+        href="/about"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span>
+          About
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
 `;

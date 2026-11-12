@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`<ForgotPasswordContainer /> renders without crashing 1`] = `
+<div
+  class="unl-forgotPassword__container"
+  data-theme="light"
+>
+  <div
+    class="unl-forgotPassword__header"
+  >
+    <h2>
+      Forgot Password
+    </h2>
+    <p>
+      Enter the email address for your account. We'll send an email with a link to reset your password.
+    </p>
+  </div>
+  <form
+    class="unl-forgotPassword__form"
+    style="display: block;"
+  >
+    <div
+      class="unl-forgotPassword__field-group"
+    >
+      <label
+        class="unl-forgotPassword__label"
+        for="forgotPassword-form-email"
+      >
+        Email
+      </label>
+      <input
+        class="unl-forgotPassword__input "
+        id="forgotPassword-form-email"
+        name="email"
+        type="text"
+      />
+    </div>
+    <button
+      class="unl-forgotPassword__button"
+      type="submit"
+    >
+      Next
+    </button>
+    <div
+      class="unl-forgotPassword__forgot-password-link"
+    >
+      <a
+        href="/login"
+      >
+        Back to login
+      </a>
+    </div>
+  </form>
+</div>
+`;
