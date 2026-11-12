@@ -2,6 +2,13 @@
   "name": "@unleashit/docs",
   "version": "2.0.4",
   "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": ["{projectRoot}/build"]
+      }
+    }
+  },
   "scripts": {
     "docusaurus": "docusaurus",
     "dev": "docusaurus start --port 3900",
