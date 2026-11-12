@@ -1,4 +1,4 @@
-import { Decorator } from '@storybook/react';
+import { Decorator } from '@storybook/react-vite';
 
 /** Smaller max-width layout for stories */
 export const WithMaxWidthDecorator: Decorator = (Story) => {

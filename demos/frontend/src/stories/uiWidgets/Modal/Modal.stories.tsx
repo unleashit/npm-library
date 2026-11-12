@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Modal from '@unleashit/modal';
 import { makeFeaturedNotes, makeNotes } from '../../../lib/Notes.tsx';
 import '@unleashit/modal/dist/modal.css';

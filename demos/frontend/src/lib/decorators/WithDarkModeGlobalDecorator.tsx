@@ -1,5 +1,5 @@
 import { useEffect, useRef, ComponentType } from 'react';
-import { StoryContext } from '@storybook/react';
+import { StoryContext } from '@storybook/react-vite';
 
 /*
  * Global decorator applied in .storybook/preview.ts

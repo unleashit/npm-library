@@ -1,25 +1,22 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { join, dirname } from 'path';
 
 /**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
+ * Storybook 10 dropped `addon-essentials`, `addon-actions` and
+ * `addon-interactions`: docs is a standalone addon while actions/interactions
+ * ship with the manager (import them from `storybook/actions`).
+ *
+ * Absolute path resolution (only needed for Yarn PnP) is unnecessary under pnpm.
  */
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   staticDirs: ['../public'],
   addons: [
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-actions'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-a11y'),
+    '@storybook/addon-docs',
+    '@storybook/addon-links',
+    '@storybook/addon-a11y',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
   docs: {

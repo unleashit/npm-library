@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { makeFeaturedNotes, makeNotes } from '../../../lib/Notes.tsx';
 import RecursiveDataLister from '@unleashit/recursive-data-lister';
 import dummyData from './dummyData.json';

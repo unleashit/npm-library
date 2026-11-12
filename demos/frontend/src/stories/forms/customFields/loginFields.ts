@@ -47,7 +47,7 @@ const loginSchema = z.object({
     .email({ message: 'Please enter a valid email' })
     .max(50, { message: 'Email is too long' }),
   password: z
-    .string({ required_error: 'Please enter a password' })
+    .string({ error: 'Please enter a password' })
     .min(1, { message: 'Please enter a password' })
     .min(8)
     .max(56),

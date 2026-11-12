@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { StoryContext } from '@storybook/react';
-import { useArgs, useGlobals } from '@storybook/preview-api';
+import { useArgs, useGlobals } from 'storybook/preview-api';
 
 /**
  * Keeps darkMode controls and the global scheme param in sync
@@ -9,7 +9,6 @@ export const useUpdateDarkMode = ({
   viewMode,
   globals: { scheme },
   args: { darkMode },
-  // eslint-disable-next-line
 }: StoryContext<any>) => {
   const [, updateArgs, resetArgs] = useArgs();
   const [, updateGlobals] = useGlobals();

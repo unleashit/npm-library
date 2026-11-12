@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 export const makeNotes = (
   notes: ReactNode | ReactNode[] | string | string[],

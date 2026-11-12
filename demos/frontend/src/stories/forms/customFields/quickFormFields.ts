@@ -62,7 +62,7 @@ export const qfSurveySchema = z.object({
   first_name: z.string().max(50, { message: 'Name is too long' }).default(''),
   last_name: z.string().max(50, { message: 'Name is too long' }).default(''),
   email: z
-    .string({ required_error: 'Please enter your email' })
+    .string({ error: 'Please enter your email' })
     .nonempty({ message: 'Please enter your email' })
     .email({ message: 'Please enter a valid email' })
     .max(50, { message: 'Email is too long' })

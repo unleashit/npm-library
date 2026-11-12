@@ -1,14 +1,14 @@
 import npmLibraryTheme from '../src/lib/npmLibraryTheme';
 import React from 'react';
-import { AddonPanel, Badge, Spaced } from '@storybook/components';
-import { STORY_CHANGED } from '@storybook/core-events';
+import { AddonPanel, Badge, Spaced } from 'storybook/internal/components';
+import { STORY_CHANGED } from 'storybook/internal/core-events';
 import {
   addons,
   types,
   useParameter,
   useAddonState,
   useChannel,
-} from '@storybook/manager-api';
+} from 'storybook/manager-api';
 import '../src/assets/manager.css';
 
 addons.setConfig({

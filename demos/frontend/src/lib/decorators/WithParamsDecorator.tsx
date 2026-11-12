@@ -1,11 +1,11 @@
 import { useLayoutEffect, useState } from 'react';
-import { StoryContext, StoryFn } from '@storybook/react';
+import type { Decorator } from '@storybook/react-vite';
 
 /**
  * Decorator checks for a parameter named `query` and if found
  * updates the query string of the main url with its key/value pairs
  */
-export const WithParamsDecorator = (Story: StoryFn, context: StoryContext) => {
+export const WithParamsDecorator: Decorator = (Story, context) => {
   const [, forceRerender] = useState({});
   const query = context?.parameters?.query;
 
@@ -34,5 +34,5 @@ export const WithParamsDecorator = (Story: StoryFn, context: StoryContext) => {
     };
   }, [query]);
 
-  return <Story {...context} />;
+  return <Story />;
 };

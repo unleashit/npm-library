@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Navigation, { NavigationLink } from '@unleashit/navigation';
 import { useUpdateDarkMode } from '../../../lib/hooks/useUpdateDarkMode.ts';
 import '@unleashit/navigation/dist/navigation.css';

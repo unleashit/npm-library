@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, fireEvent } from '@storybook/test';
-import { action } from '@storybook/addon-actions';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { userEvent, within, fireEvent } from 'storybook/test';
+import { action } from 'storybook/actions';
 import LinkTo from '@storybook/addon-links/react';
 import Login, { FormValues, ServerResponse } from '@unleashit/login';
 import { Modal } from '@unleashit/modal';
@@ -194,7 +194,7 @@ export const CustomFields: Story = {
     .email({ message: 'Please enter a valid email' })
     .max(50, { message: 'Email is too long' }),
   password: z
-    .string({ required_error: 'Please enter a password' })
+    .string({ error: 'Please enter a password' })
     .min(1, { message: 'Please enter a password' })
     .min(8)
     .max(56),

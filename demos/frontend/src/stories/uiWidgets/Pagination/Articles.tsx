@@ -19,7 +19,6 @@ function Row({ row: { title, content, author } }: { row: RowProps }) {
   );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Articles({ data }: { data: any[] }) {
   return (
     <ul className="pagination-demo__list">

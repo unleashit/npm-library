@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import { fireEvent, userEvent, within } from '@storybook/test';
-import { action } from '@storybook/addon-actions';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { fireEvent, userEvent, within } from 'storybook/test';
+import { action } from 'storybook/actions';
 import QuickForm, {
   FormValues,
   ServerResponse,
@@ -163,7 +163,7 @@ export const Survey: Story = {
   first_name: z.string().max(50, { message: 'Name is too long' }).default(''),
   last_name: z.string().max(50, { message: 'Name is too long' }).default(''),
   email: z
-    .string({ required_error: 'Please enter your email' })
+    .string({ error: 'Please enter your email' })
     .nonempty({ message: 'Please enter your email' })
     .email({ message: 'Please enter a valid email' })
     .max(50, { message: 'Email is too long' })

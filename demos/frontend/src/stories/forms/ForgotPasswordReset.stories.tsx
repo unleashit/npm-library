@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { fireEvent, userEvent, within } from '@storybook/test';
-import { action } from '@storybook/addon-actions';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { fireEvent, userEvent, within } from 'storybook/test';
+import { action } from 'storybook/actions';
 import {
   ForgotPasswordReset,
   FormValuesReset,
@@ -207,17 +207,17 @@ export const CustomFields: Story = {
             <pre>
               <code>{`z.object({
   token: z
-    .string({ required_error: 'Please enter the token from the email we sent' })
+    .string({ error: 'Please enter the token from the email we sent' })
     .nonempty({ message: 'Please enter the token from the email we sent' })
     .max(50, { message: 'Token is too long' })
     .default(''),
   newPassword: z
-    .string({ required_error: 'New Password is required' })
+    .string({ error: 'New Password is required' })
     .nonempty({ message: 'New Password is required' })
     .max(56)
     .default(''),
   newPasswordConfirm: z
-    .string({ required_error: 'Password confirmation is required' })
+    .string({ error: 'Password confirmation is required' })
     .nonempty({ message: 'Password confirmation is required' })
     .max(56)
     .default(''),
