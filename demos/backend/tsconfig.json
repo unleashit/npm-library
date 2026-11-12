@@ -10,6 +10,10 @@
     "strict": true,
     "skipLibCheck": true,
     "moduleResolution": "node",
+    // node10 resolution is deprecated in TS 6; see root tsconfig note
+    "ignoreDeprecations": "6.0",
+    // TS 6 no longer auto-includes node_modules/@types
+    "types": ["node", "jest"],
     "declaration": true,
     "strictFunctionTypes": true,
     "noUnusedLocals": false,
@@ -17,8 +21,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "."
+    "allowSyntheticDefaultImports": true
   },
   "include": ["api", "src", "test"]
 }

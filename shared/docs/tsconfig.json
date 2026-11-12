@@ -2,6 +2,8 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    // `baseUrl` comes from @docusaurus/tsconfig; it is deprecated in TS 6
+    "ignoreDeprecations": "6.0"
   }
 }

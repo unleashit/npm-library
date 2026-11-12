@@ -1,4 +1,12 @@
 {
   "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // TS 6 no longer auto-includes node_modules/@types
+    "types": ["node", "jest"],
+    // this package is consumed as raw TS (main: index.ts) and Jest/Node load it
+    // as ESM, so imports must carry the .ts extension
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
   "include": ["."]
 }

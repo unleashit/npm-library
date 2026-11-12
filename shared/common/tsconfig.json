@@ -5,6 +5,8 @@
   ],
   "compilerOptions": {
     "jsx": "react",
+    // TS 6 no longer auto-includes node_modules/@types
+    "types": ["jest"],
     "outDir": "dist/commonjs"
   }
 }

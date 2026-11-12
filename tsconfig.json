@@ -14,7 +14,11 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    // TS 6: `baseUrl` is deprecated. `paths` resolves relative to this file without it.
+    // `moduleResolution: node` (node10) is still required by ts-jest/tsup (they rewrite
+    // `module` to commonjs, which forbids `bundler`). Silence the deprecation until the
+    // TS 7 move, which typescript-eslint (<6.1.0) and ts-jest (<7) currently block.
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@unleashit/configs": ["./shared/configs"],
       "@unleashit/common": ["./shared/common/src"],
