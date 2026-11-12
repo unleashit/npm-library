@@ -13,8 +13,7 @@ export type DefaultContactSchemaWithPhone =
   typeof defaultContactSchemaWithPhone;
 
 type DefaultContactSchemas =
-  | DefaultContactSchema
-  | DefaultContactSchemaWithPhone;
+  DefaultContactSchema | DefaultContactSchemaWithPhone;
 
 export type FormValues<T extends z.ZodTypeAny = DefaultContactSchemas> =
   FormValuesBase<T>;

@@ -14,7 +14,6 @@ import {
   constants,
 } from '@unleashit/common';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { DefaultSignupHeader } from './defaults/components';
 import { FormValues } from './types';
@@ -85,9 +84,18 @@ export const Signup = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<typeof schema>>({
-    resolver: zodResolver<z.infer<typeof schema>>(schema),
+    resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
+  });
+
+  // The wrapper keeps the success message working: react-hook-form clears
+  // `isSubmitSuccessful` when a submit handler resets the form.
+  const [showSuccessMsg, handleSubmitSuccess] = useShowSuccessTimer({
+    isSubmitSuccessful,
+    successMessage,
+    reset,
+    onSuccess,
   });
 
   // set focus on the first field with a focus prop, if any
@@ -99,7 +107,7 @@ export const Signup = ({
       formHandler({
         schema,
         handler,
-        onSuccess,
+        onSuccess: handleSubmitSuccess,
         toast,
         failMsg,
         setValue,
@@ -110,7 +118,7 @@ export const Signup = ({
     [
       schema,
       handler,
-      onSuccess,
+      handleSubmitSuccess,
       toast,
       failMsg,
       setValue,
@@ -124,13 +132,6 @@ export const Signup = ({
     () => genClassNames(Signup.displayName, cssModule),
     [cssModule],
   );
-
-  // Set up success message if configured
-  const [showSuccessMsg] = useShowSuccessTimer({
-    isSubmitSuccessful,
-    successMessage,
-    reset,
-  });
 
   if (!!successMessage && showSuccessMsg) {
     return <ShowSuccess successMessage={successMessage} clsName={clsName} />;

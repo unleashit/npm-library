@@ -5,6 +5,14 @@ import type { GlobalError, UseFormRegisterReturn } from 'react-hook-form';
 import { CustomField } from './components/forms/CustomFields';
 import { DefaultLoaderProps } from './components/defaults/loader';
 
+/**
+ * Schema accepted by the form components and handed to `@hookform/resolvers`.
+ *
+ * resolvers v7 requires the schema input to extend `FieldValues`, which a bare
+ * `z.ZodType` (input `unknown`) does not satisfy.
+ */
+export type FormSchema = z.ZodType<Record<string, any>, Record<string, any>>;
+
 export type ClsName = (camelCaseClassName: string) => string;
 
 type CommonFormProps = {
@@ -26,7 +34,7 @@ export type TextAreaProps = InputHTMLAttributes<HTMLTextAreaElement> &
 
 // mdx_server_response_start
 export type BaseServerResponse<
-  TFormValues extends Record<string, string | string[]> = Record<string, any>,
+  TFormValues extends Record<string, any> = Record<string, any>,
   Meta extends Record<string, any> = Record<string, any>,
 > = {
   /* success key informs client whether server validation passed or failed */
@@ -46,21 +54,38 @@ export type BaseServerResponse<
 // mdx_server_response_end
 // TODO: should Meta be forced optional?
 
-export type FormValues<T extends ZodTypeAny, K = z.infer<T>> = {
-  // [Prop in keyof K]: K[Prop] | K[Prop][];
-  [Prop in keyof K]: K[Prop];
-};
+/**
+ * Object form of a schema's inferred values.
+ *
+ * When `T` is still generic (or otherwise not statically known, e.g. `z.ZodType`)
+ * `z.infer<T>` resolves to `unknown` and a mapped type over `unknown` collapses to
+ * `{}` — which then rejects perfectly valid field names. Fall back to an open record
+ * in that case so the erased-generic call sites keep working.
+ */
+export type FormValues<T extends ZodTypeAny, K = z.infer<T>> = [K] extends [
+  Record<string, any>,
+]
+  ? {
+      // [Prop in keyof K]: K[Prop] | K[Prop][];
+      [Prop in keyof K]: K[Prop];
+    }
+  : Record<string, any>;
 
 // mdx_base_form_start
 export type BaseFormProps = {
-  /** Handler to submit form. Receives form values and returns Promise with ServerResponse */
-  handler: <T extends ZodTypeAny>(
-    values: FormValues<T>,
-    event?: Event,
-  ) => Promise<BaseServerResponse<FormValues<T>>>;
+  /**
+   * Handler to submit form. Receives form values and returns Promise with ServerResponse
+   *
+   * `values` is deliberately loose: the schema is supplied by the consumer through
+   * `customSchema`, so the component cannot narrow it. A `Record<string, any>` would
+   * not satisfy contravariance for handlers that declare required fields, hence `any`
+   * (this matches the pre-v4 behaviour, where the schema generic was erased).
+   */
+
+  handler: (values: any, event?: Event) => Promise<BaseServerResponse>;
   /** Handler that fires upon successful server validation */
-  onSuccess?: <T extends ZodTypeAny, Meta extends Record<string, any>>(
-    resp: BaseServerResponse<FormValues<T>, Meta>,
+  onSuccess?: <Meta extends Record<string, any>>(
+    resp: BaseServerResponse<Record<string, any>, Meta>,
   ) => void;
   /**
    * Custom header component or
@@ -76,9 +101,7 @@ export type BaseFormProps = {
   /** Custom fields to override default fields */
   customFields?: CustomField[];
   /** Custom schema to override default schema */
-  customSchema?:
-    | z.ZodObject<any, any, any, any, any>
-    | z.ZodEffects<any, any, any>;
+  customSchema?: FormSchema;
   /**
    * Optionally send root server error message and/or
    * handler exceptions to toast

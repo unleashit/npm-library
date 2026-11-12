@@ -68,23 +68,68 @@ export const normalizeComponentProp = <T extends Record<string, unknown>>(
   );
 };
 
+/*
+ * The peer range allows zod 3 or 4, and the two majors differ in how wrappers,
+ * effects and defaults are represented. Everything below is written against the
+ * parts both share so a consumer on either major gets the same defaults.
+ */
+
+type AnySchema = any;
+
+/** `instanceof` against a class that may not exist on the installed zod major. */
+const isInstanceOf = (schema: AnySchema, Ctor: unknown): boolean =>
+  typeof Ctor === 'function' && schema instanceof (Ctor as any);
+
+/** zod 3 stores the default as a thunk on `_def.defaultValue`; zod 4 stores the value. */
+const readDefaultValue = (schema: AnySchema): unknown => {
+  const stored = schema?._def?.defaultValue;
+  return typeof stored === 'function' ? stored() : stored;
+};
+
+/** Inner schema of a wrapper: optional, nullable, default, catch, effects, pipe, preprocess. */
+const innerSchema = (schema: AnySchema): AnySchema | undefined => {
+  if (!schema || typeof schema !== 'object') return undefined;
+  try {
+    // zod 4 wrappers (ZodOptional, ZodNullable, ZodDefault, ZodCatch, ZodPrefault ...)
+    if (typeof schema.unwrap === 'function') return schema.unwrap();
+    // zod 3 wrappers and ZodEffects
+    if (typeof schema.innerType === 'function') return schema.innerType();
+  } catch {
+    /* unwrappable — fall through to the _def lookups */
+  }
+  // zod 4 ZodPipe / ZodPreprocess keep the wrapped schema on `_def.out`
+  return schema._def?.innerType ?? schema._def?.out ?? schema._def?.schema;
+};
+
+/**
+ * Peel off refinements, transforms, preprocessors and optionality until an object
+ * schema is reached. zod 4's `.refine()` returns the object itself, so refinements
+ * need no special handling there.
+ */
+const toObjectSchema = (schema: AnySchema): AnySchema | undefined => {
+  let current = schema;
+  const seen = new Set<AnySchema>();
+  while (current && !isInstanceOf(current, z.ZodObject) && !seen.has(current)) {
+    seen.add(current);
+    current = innerSchema(current);
+  }
+  return current;
+};
+
 export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
   schema: unknown,
 ): z.infer<T> {
-  // Check if it's a ZodEffect
-  if (schema instanceof z.ZodEffects) {
-    // Check if it's a recursive ZodEffect
-    if (schema.innerType() instanceof z.ZodEffects)
-      return getDefaultsFromZodObject(schema.innerType());
-    // return schema inner shape as a fresh zodObject
-    return getDefaultsFromZodObject(
-      z.ZodObject.create(schema.innerType().shape),
-    );
-  }
+  const objectSchema = toObjectSchema(schema);
+  if (!(objectSchema instanceof z.ZodObject)) return {} as z.infer<T>;
 
   // eslint-disable-next-line no-shadow
-  function getDefaultValue(schema: z.ZodTypeAny): unknown {
-    if (schema instanceof z.ZodDefault) return schema._def.defaultValue();
+  function getDefaultValue(schema: AnySchema): unknown {
+    if (
+      schema instanceof z.ZodDefault ||
+      isInstanceOf(schema, (z as AnySchema).ZodPrefault)
+    ) {
+      return readDefaultValue(schema);
+    }
     // return an empty array if it is
     if (schema instanceof z.ZodArray) return [];
     // return an empty string if it is
@@ -92,15 +137,15 @@ export function getDefaultsFromZodObject<T extends z.ZodTypeAny>(
     // return an content of object recursivly
     if (schema instanceof z.ZodObject) return getDefaultsFromZodObject(schema);
 
-    if (!('innerType' in schema._def)) return undefined;
-    return getDefaultValue(schema._def.innerType);
+    const nested = innerSchema(schema);
+    return nested === undefined ? undefined : getDefaultValue(nested);
   }
 
   return Object.fromEntries(
-    Object.entries((schema as z.AnyZodObject).shape as z.ZodRawShape).map(
+    Object.entries(objectSchema.shape as Record<string, AnySchema>).map(
       ([key, value]) => [key, getDefaultValue(value)],
     ),
-  );
+  ) as z.infer<T>;
 }
 
 export function clearOnError(fields: CustomField[]) {

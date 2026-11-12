@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 export const checkToken = (req: Request, res: Response) => {
-  const { token } = req.body;
+  const { token } = req.body ?? {};
 
   const validated = token === '1234567890';
 

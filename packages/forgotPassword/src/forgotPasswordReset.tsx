@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { z, ZodTypeAny } from 'zod';
+import { ZodTypeAny } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -73,8 +73,17 @@ export const ForgotPasswordReset = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValuesReset<ZodTypeAny>>({
-    resolver: zodResolver<z.infer<typeof schema>>(schema),
+    resolver: zodResolver(schema),
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
+  });
+
+  // The wrapper keeps the success message working: react-hook-form clears
+  // `isSubmitSuccessful` when a submit handler resets the form.
+  const [showSuccessMsg, handleSubmitSuccess] = useShowSuccessTimer({
+    isSubmitSuccessful,
+    successMessage,
+    reset,
+    onSuccess,
   });
 
   // set focus on the first (if any) field with a focus prop
@@ -86,7 +95,7 @@ export const ForgotPasswordReset = ({
       formHandler({
         schema,
         handler,
-        onSuccess,
+        onSuccess: handleSubmitSuccess,
         toast,
         failMsg,
         setValue,
@@ -97,7 +106,7 @@ export const ForgotPasswordReset = ({
     [
       schema,
       handler,
-      onSuccess,
+      handleSubmitSuccess,
       toast,
       failMsg,
       setValue,
@@ -111,13 +120,6 @@ export const ForgotPasswordReset = ({
     () => genClassNames(ForgotPasswordReset.displayName, cssModule),
     [cssModule],
   );
-
-  // Set up success message if configured
-  const [showSuccessMsg] = useShowSuccessTimer({
-    isSubmitSuccessful,
-    successMessage,
-    reset,
-  });
 
   if (isSubmitting) {
     return <Loader clsName={clsName} />;

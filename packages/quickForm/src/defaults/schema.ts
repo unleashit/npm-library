@@ -2,18 +2,18 @@ import { z } from 'zod';
 
 const base = {
   name: z
-    .string({ required_error: 'Please enter your name' })
+    .string({ error: 'Please enter your name' })
     .max(50, { message: 'Name is too long' })
     .nonempty({ message: 'Please enter your name' })
     .default(''),
   email: z
-    .string({ required_error: 'Please enter your email' })
+    .string({ error: 'Please enter your email' })
     .nonempty({ message: 'Please enter your email' })
     .email({ message: 'Please enter a valid email' })
     .max(50, { message: 'Email is too long' })
     .default(''),
   message: z
-    .string({ required_error: 'Please enter a message' })
+    .string({ error: 'Please enter a message' })
     .max(3000, { message: 'Message is too long' })
     .nonempty({ message: 'Please enter a message' })
     .refine((val) => val.trim().split(' ').length > 5, {

@@ -1,6 +1,6 @@
-export * from './testConfig/jest.config';
-export * from './testConfig/utils';
-export * from './tsup/tsup.config';
+export * from './testConfig/jest.config.ts';
+export * from './testConfig/utils.ts';
+export * from './tsup/tsup.config.ts';
 
 // const { defineConfig } = require('tsup');
 //

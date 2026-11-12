@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { parseISO } from 'date-fns/parseISO';
 
 export const getChildTag = (tag: string): keyof JSX.IntrinsicElements => {
@@ -15,9 +16,11 @@ export const isObjectNotArray = (
   elem: Record<string, unknown> | any[],
 ): boolean => typeof elem === 'object' && !Array.isArray(elem);
 
+// `Number.isNaN` never coerces, so it must be given the timestamp:
+// passing a Date always returned false, which let invalid dates through
 export const isDate = (elem: unknown): elem is Date =>
   Object.prototype.toString.call(elem) === '[object Date]' &&
-  !Number.isNaN(elem);
+  !Number.isNaN((elem as Date).getTime());
 
 export const isObjectNotDate = (
   elem: Record<string, unknown> | any[],

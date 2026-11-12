@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { JSX } from 'react';
 import { CSSVars, mapCSSVarsToStyles, utils } from '@unleashit/common';
 import Row from './Row';
 import { DateFormat, isObjectNotArray } from './utils';
@@ -106,8 +107,8 @@ const RecursiveDataLister = ({
       })}
     >
       {multiList
-        ? data.map(
-            (row: unknown[]): React.ReactElement => renderRow<unknown[]>(row),
+        ? data.map((row: unknown[]): React.ReactElement =>
+            renderRow<unknown[]>(row),
           )
         : renderRow<unknown[] | Record<string, unknown>>(data)}
     </div>

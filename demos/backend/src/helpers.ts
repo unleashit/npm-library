@@ -12,9 +12,11 @@ export const validator = <
   T extends Record<string, unknown> = Record<string, unknown>,
 >(
   validations: (body: T) => ValidationErrors<T>,
-  body: T,
+  // Express 5 leaves `req.body` undefined when no body parser matched the
+  // request (a POST with no body no longer yields `{}`)
+  body?: T,
 ) => {
-  const errors = validations(body);
+  const errors = validations(body ?? ({} as T));
   return { errors, valid: Object.keys(errors).length === 0 };
 };
 

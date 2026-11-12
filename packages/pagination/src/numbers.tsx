@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import type { JSX } from 'react';
 import { Ellipsis } from './Icons';
 import { ClickHandlerEvent } from './pagination';
 

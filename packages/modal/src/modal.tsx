@@ -117,7 +117,7 @@ export const Modal = ({
 }: ModalProps) => {
   const [isHidden, setIsHidden] = useState(!isOpen);
   const [isAnimated, setIsAnimated] = useState(isOpen);
-  const timeoutRef = useRef<number>();
+  const timeoutRef = useRef<number | undefined>(undefined);
 
   // allow time for animation after modal is opened/closed
   useLayoutEffect(() => {

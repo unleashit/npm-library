@@ -1,7 +1,7 @@
 import React, { useMemo, ComponentType, ReactNode } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z, ZodTypeAny } from 'zod';
+import { ZodTypeAny } from 'zod';
 import {
   DefaultLoader,
   CustomFields,
@@ -91,9 +91,18 @@ export const Login = ({
     setFocus,
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormValues<ZodTypeAny>>({
-    resolver: zodResolver<z.infer<typeof schema>>(schema),
+    resolver: zodResolver(schema),
     mode: 'onBlur',
     defaultValues: getDefaultsFromZodObject<typeof schema>(schema),
+  });
+
+  // The wrapper keeps the success message working: react-hook-form clears
+  // `isSubmitSuccessful` when a submit handler resets the form.
+  const [showSuccessMsg, handleSubmitSuccess] = useShowSuccessTimer({
+    isSubmitSuccessful,
+    successMessage,
+    reset,
+    onSuccess,
   });
 
   // set focus on the first (if any) field with a focus prop
@@ -105,7 +114,7 @@ export const Login = ({
       formHandler({
         schema,
         handler,
-        onSuccess,
+        onSuccess: handleSubmitSuccess,
         toast,
         failMsg,
         setValue,
@@ -116,7 +125,7 @@ export const Login = ({
     [
       schema,
       handler,
-      onSuccess,
+      handleSubmitSuccess,
       toast,
       failMsg,
       setValue,
@@ -130,13 +139,6 @@ export const Login = ({
     () => genClassNames(Login.displayName, cssModule),
     [cssModule],
   );
-
-  // Set up success message if configured
-  const [showSuccessMsg] = useShowSuccessTimer({
-    isSubmitSuccessful,
-    successMessage,
-    reset,
-  });
 
   if (isSubmitting) {
     return <Loader clsName={clsName} />;

@@ -7,7 +7,7 @@ import signup from './routes/signup';
 import quickForm from './routes/quickForm';
 import forgotPasswordRoutes from './routes/forgotPassword';
 
-require('dotenv').config();
+require('dotenv').config({ quiet: true });
 
 const app: Application = express();
 

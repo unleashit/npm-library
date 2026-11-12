@@ -4,7 +4,7 @@ import {
   UseFormReset,
   UseFormSetValue,
 } from 'react-hook-form';
-import { z, ZodTypeAny, AnyZodObject, ZodEffects } from 'zod';
+import { z, ZodTypeAny } from 'zod';
 import { BaseFormProps, FormValues } from '../types';
 import * as constants from './constants';
 
@@ -13,16 +13,13 @@ export type OnSubmitArgs = Pick<
   'handler' | 'onSuccess' | 'toast' | 'failMsg'
 > & {
   schema: NonNullable<BaseFormProps['customSchema']>;
-  setValue: UseFormSetValue<
-    FormValues<AnyZodObject | ZodEffects<any, any, any>, any>
-  >;
+  setValue: UseFormSetValue<FormValues<z.ZodType, any>>;
   setError: UseFormSetError<FormValues<z.ZodTypeAny, any>>;
   reset: UseFormReset<FormValues<ZodTypeAny, any>>;
   clearOnError?: string[];
 };
 
 export function formHandler({
-  schema,
   handler,
   onSuccess,
   toast,
@@ -32,9 +29,11 @@ export function formHandler({
   reset,
   clearOnError,
 }: OnSubmitArgs) {
-  const onSubmit: SubmitHandler<FormValues<typeof schema>> = async (values) => {
+  const onSubmit: SubmitHandler<FormValues<OnSubmitArgs['schema']>> = async (
+    values,
+  ) => {
     try {
-      const resp = await handler<typeof schema>(values);
+      const resp = await handler(values);
       if (resp.success) {
         reset();
         onSuccess && onSuccess(resp);

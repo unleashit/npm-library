@@ -1,5 +1,6 @@
 import { ClsName } from '@unleashit/common';
 import * as React from 'react';
+import type { JSX } from 'react';
 import {
   DateFormat,
   getChildTag,

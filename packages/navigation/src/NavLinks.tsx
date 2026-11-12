@@ -10,11 +10,9 @@ type NavLinksProps = {
 
 const NavLinks = ({ links, clsName }: NavLinksProps) => (
   <ul className={clsName('navList')}>
-    {links.map(
-      (link): React.ReactNode => (
-        <NavLink {...link} key={link.title} />
-      ),
-    )}
+    {links.map((link): React.ReactNode => (
+      <NavLink {...link} key={link.title} />
+    ))}
   </ul>
 );
 

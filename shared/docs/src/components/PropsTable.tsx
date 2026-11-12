@@ -10,22 +10,26 @@ const CellType = ({
   children: React.ReactNode;
 }) => React.createElement(col === 0 ? 'th' : 'td', null, children);
 
-function PropsTable({ props }) {
+type PropRows = string[][];
+
+function PropsTable({ props }: { props: PropRows }) {
   return (
     <table>
       <caption>Props</caption>
       <thead>
         <tr>
           {tableHeader.map((title) => (
-            <th>{title}</th>
+            <th key={title}>{title}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {props.map((row) => (
-          <tr>
+        {props.map((row, rowIndex) => (
+          <tr key={rowIndex}>
             {row.map((cell, i) => (
-              <CellType col={i}>{cell}</CellType>
+              <CellType key={i} col={i}>
+                {cell}
+              </CellType>
             ))}
           </tr>
         ))}

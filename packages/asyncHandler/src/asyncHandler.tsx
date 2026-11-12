@@ -109,13 +109,16 @@ interface HOCProps {
   cssModule?: AsyncHandlerProps['cssModule'];
 }
 
+/**
+ * The wrapper is a component, and React 19 types no longer accept a bare `Function`
+ * as a JSX element type, so it is declared as `React.ComponentType`.
+ */
 export const withAsyncHandler =
   (config: HOCProps) =>
   (
-    Component: React.FC<{ data: any }>,
-    // eslint-disable-next-line @typescript-eslint/ban-types
-  ): Function =>
-  (...rest: any): React.ReactNode => (
+    Component: React.ComponentType<{ data: any }>,
+  ): React.ComponentType<Record<string, any>> =>
+  (rest: Record<string, any>): React.ReactNode => (
     <AsyncHandler {...config}>
       {(data): React.ReactNode => <Component data={data} {...rest} />}
     </AsyncHandler>
