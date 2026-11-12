@@ -37,7 +37,7 @@
     "clean": "pnpm clean:build && pnpm clean:nm",
     "clean:build": "pnpm -r exec rm -rf dist build",
     "clean:nm": "rm -rf node_modules && pnpm -r exec rm -rf node_modules",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.4",
