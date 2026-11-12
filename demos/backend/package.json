@@ -13,20 +13,20 @@
     "test:types": "tsc --noEmit"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "morgan": "^1.10.0",
-    "nodemailer": "^6.9.14"
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "morgan": "^1.12.1",
+    "nodemailer": "^10.5.0"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/morgan": "^1.9.9",
-    "@types/nodemailer": "^6.4.15",
-    "@types/supertest": "^6.0.2",
-    "nodemon": "^3.1.3",
-    "supertest": "^7.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
+    "@types/morgan": "^1.9.10",
+    "@types/supertest": "^7.2.1",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.2",
     "ts-node": "^10.9.2"
   }
 }

@@ -34,9 +34,9 @@
     "build": "NODE_ENV=production tsup --tsconfig tsconfig.lib.json && pnpm sass:build",
     "dev": "concurrently 'NODE_ENV=development tsup --watch' 'pnpm sass'",
     "sass": "pnpm sass:build && pnpm sass:watch",
-    "sass:build": "node-sass -r src/scss -o dist --source-map true --include-path '../../shared/common/src/scss' && pnpm sass:postbuild",
+    "sass:build": "sass --load-path=../../shared/common/src/scss src/scss:dist && pnpm sass:postbuild",
     "sass:postbuild": "../../shared/scripts/postcssRename.js --name navigation ./dist/navigation.module.css",
-    "sass:watch": "node-sass -wr src/scss -o dist --source-map true --include-path '../../shared/common/src/scss'",
+    "sass:watch": "sass --watch --load-path=../../shared/common/src/scss src/scss:dist",
     "test": "NODE_ENV=test jest"
   },
   "license": "MIT",
@@ -58,7 +58,7 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
-    "react": "16.x || 17.x || 18.x"
+    "react": "18.x || 19.x"
   },
   "dependencies": {
     "@unleashit/common": "workspace:*"

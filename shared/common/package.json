@@ -40,16 +40,17 @@
     "url": "https://github.com/unleashit/npm-library/issues"
   },
   "peerDependencies": {
-    "@hookform/resolvers": "3.x",
-    "react": "16.x || 17.x || 18.x",
+    "@hookform/resolvers": "3.x || 5.x || 7.x",
+    "react": "18.x || 19.x",
     "react-hook-form": "7.x",
-    "zod": "3.x"
+    "zod": "3.x || 4.x"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@unleashit/configs": "workspace:*"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.18.1"
   },
   "module": "dist/index.mjs"
 }

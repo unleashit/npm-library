@@ -1,4 +1,12 @@
 packages:
-  - 'shared/*'
-  - 'packages/*'
-  - 'demos/*'
+  - shared/*
+  - packages/*
+  - demos/*
+
+# pnpm 10 blocks lifecycle scripts unless explicitly allowed.
+# esbuild/nx/core-js-pure ship prebuilt platform binaries via optionalDependencies
+# and only need their postinstall to place the binary.
+onlyBuiltDependencies:
+  - core-js-pure
+  - esbuild
+  - nx
