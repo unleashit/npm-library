@@ -41,6 +41,15 @@ export default [
     },
   },
 
+  // Storybook config files register addons as side effects, so they are not
+  // fast-refresh friendly by design
+  {
+    files: ['.storybook/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 0,
+    },
+  },
+
   // must stay last: it disables rules-of-hooks for `*.stories.*` (Storybook render
   // functions legitimately call hooks) and adds story-specific linting
   ...(storybook.configs['flat/recommended'] ?? []),

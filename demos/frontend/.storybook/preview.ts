@@ -1,6 +1,5 @@
 import type { Preview } from '@storybook/react';
 import '../src/global.css';
-// @ts-ignore
 import WithDarkModeGlobalDecorator from '../src/lib/decorators/WithDarkModeGlobalDecorator';
 
 const preview: Preview = {

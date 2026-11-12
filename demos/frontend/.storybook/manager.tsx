@@ -56,27 +56,30 @@ function Title() {
   );
 }
 
+function NotesPanel({ active }: { active?: boolean }) {
+  const parameters = useParameter<React.ReactNode>(PARAM_KEY, DEFAULT_NOTE);
+
+  React.useMemo(() => {
+    if (parameters !== DEFAULT_NOTE) {
+      const count = Array.isArray(parameters) ? parameters.length : 1;
+      addons.getChannel().emit(EVENT_ID, { paramCount: count });
+    }
+  }, [parameters]);
+
+  return (
+    /* @ts-expect-error - storybook jsx config issue */
+    <AddonPanel active={active || false}>
+      {/* @ts-expect-error - storybook jsx config issue */}
+      <div className="notes-panel">{parameters}</div>
+    </AddonPanel>
+  );
+}
+
 addons.register(ADDON_ID, () => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
     title: Title,
     paramKey: PARAM_KEY,
-    render: ({ active }) => {
-      const parameters = useParameter<React.ReactNode>(PARAM_KEY, DEFAULT_NOTE);
-      React.useMemo(() => {
-        if (parameters !== DEFAULT_NOTE) {
-          const count = Array.isArray(parameters) ? parameters.length : 1;
-          addons.getChannel().emit(EVENT_ID, { paramCount: count });
-        }
-      }, [parameters]);
-
-      return (
-        /* @ts-expect-error - storybook jsx config issue */
-        <AddonPanel active={active || false}>
-          {/* @ts-expect-error - storybook jsx config issue */}
-          <div className="notes-panel">{parameters}</div>
-        </AddonPanel>
-      );
-    },
+    render: ({ active }) => <NotesPanel active={active} />,
   });
 });
