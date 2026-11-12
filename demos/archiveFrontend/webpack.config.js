@@ -16,13 +16,16 @@ const Dotenv = require('dotenv-webpack');
 //     .map((found) => path.join(__dirname, `../../packages/${found.name}/src`));
 // }
 
-const commonSASSpath = '../../shared/common/src/scss';
+// sass-loader resolves relative include paths against the importing file, so
+// the shared partials have to be referenced absolutely
+const commonSASSpath = path.resolve(__dirname, '../../shared/common/src/scss');
 
 const sassLoader = () => ({
   loader: 'sass-loader',
   options: {
     sassOptions: {
-      includePaths: [commonSASSpath],
+      // dart-sass calls these `loadPaths` (`includePaths` was node-sass)
+      loadPaths: [commonSASSpath],
     },
   },
 });
@@ -78,7 +81,12 @@ module.exports = (_env, { mode }) => {
               presets: [
                 '@babel/preset-env',
                 '@babel/preset-react',
-                '@babel/preset-typescript',
+                [
+                  '@babel/preset-typescript',
+                  // babel 8 only strips `import type`, which leaves type-only
+                  // imports in the output for webpack to complain about
+                  { onlyRemoveTypeImports: false },
+                ],
               ],
             },
           },
@@ -103,6 +111,9 @@ module.exports = (_env, { mode }) => {
                 sourceMap: true,
                 modules: {
                   mode: 'local',
+                  // css-loader v7 emits named exports by default, but every
+                  // consumer here imports the class map as the default export
+                  namedExport: false,
                   localIdentName: devMode
                     ? '[local]--[hash:base64:5]'
                     : '[hash:base64]',
