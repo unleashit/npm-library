@@ -23,6 +23,7 @@ export interface CustomFieldsProps<TSchema extends ZodTypeAny = ZodTypeAny> {
   clsName: ClsName;
 }
 
+// mdx_custom_field_start
 export interface CustomField {
   /** Html element type for the field */
   element: 'input' | 'select' | 'textarea';
@@ -50,6 +51,7 @@ export interface CustomField {
   /** Any other html attributes to apply to the field */
   attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
 }
+// mdx_custom_field_end
 
 type FieldProps = {
   register: UseFormRegisterReturn<any>;

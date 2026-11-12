@@ -76,12 +76,8 @@ export type BaseFormProps = {
   /**
    * Handler to submit form. Receives form values and returns Promise with ServerResponse
    *
-   * `values` is deliberately loose: the schema is supplied by the consumer through
-   * `customSchema`, so the component cannot narrow it. A `Record<string, any>` would
-   * not satisfy contravariance for handlers that declare required fields, hence `any`
-   * (this matches the pre-v4 behaviour, where the schema generic was erased).
+   * `values` stays loose because `customSchema` comes from the consumer.
    */
-
   handler: (values: any, event?: Event) => Promise<BaseServerResponse>;
   /** Handler that fires upon successful server validation */
   onSuccess?: <Meta extends Record<string, any>>(

@@ -8,16 +8,7 @@ It's possible to replace the default fields with custom fields by adding `custom
 
 `customFields` is an array of field objects where `element` is the type of field. Currently input, select, checkbox and textarea fields are supported.
 
-```typescript jsx
-interface CustomField {
-  element: 'input' | 'select' | 'textarea';
-  type: string; // html `type` attribute
-  name: string; // html `name` attribute
-  label?: string; // label to display in an html <label>
-  focus?: boolean; // sets the focus to this element (only the first is used)
-  options?: Array<[string, string, OptionHTMLAttributes<any>?]>; // select options: [title, value, {attribute: value}]
-  attrs?: InputHTMLAttributes<any> & SelectHTMLAttributes<any>;
-}
+```typescript file=./shared/common/src/components/forms/CustomFields.tsx start=mdx_custom_field_start end=mdx_custom_field_end
 ```
 
 Note that supplying a `customFields` object completely replaces the defaults, so don't forget to add all needed fields. `customSchema` should be a Zod schema with matching name attributes.
