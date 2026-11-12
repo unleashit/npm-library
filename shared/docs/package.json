@@ -5,14 +5,19 @@
   "nx": {
     "targets": {
       "build": {
-        "outputs": ["{projectRoot}/build"]
+        "outputs": ["{projectRoot}/build"],
+        "inputs": [
+          "production",
+          "^production",
+          "{workspaceRoot}/packages/**/*.{ts,tsx}"
+        ]
       }
     }
   },
   "scripts": {
     "docusaurus": "docusaurus",
     "dev": "docusaurus start --port 3900",
-    "build": "docusaurus build",
+    "build": "docusaurus clear && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "GIT_USER=unleashit USE_SSH=true docusaurus deploy",
     "clear": "docusaurus clear",

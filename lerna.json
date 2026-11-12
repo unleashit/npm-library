@@ -12,7 +12,7 @@
       "conventionalCommits": true,
       "skipBumpOnlyReleases": true,
       "createRelease": "github",
-      "syncWorkspaceLock": true,
+      "syncWorkspaceLock": true
     }
   },
   "useWorkspaces": true
