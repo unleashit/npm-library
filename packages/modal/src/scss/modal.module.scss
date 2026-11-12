@@ -1,4 +1,4 @@
-@import 'common_vars';
+@use 'common_vars' as *;
 
 .overlay {
   --unl-modal-padding: 16px;
@@ -57,7 +57,7 @@
   }
   &--large {
     max-width: var(--unl-large-width);
-    @media screen and (max-width: var(--unl-break-sm)) {
+    @media screen and (max-width: $break-sm) {
       max-width: 100%;
       width: 100%;
     }

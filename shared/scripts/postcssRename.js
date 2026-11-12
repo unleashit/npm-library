@@ -54,8 +54,9 @@ const camelToKebab = (str) =>
 
 const strategy = (selector) => `${camelToKebab(selector)}`;
 
-// transform :global(.selector) to .selector
-// return convertedCase.replace(/:global\((.+)\)/gm, ' $1');
+// transform :global(.selector) to .selector; the plain css output is consumed
+// without a CSS modules loader, which rejects the :global() pseudo class
+const stripGlobal = (css) => css.replace(/:global\(([^)]+)\)/g, '$1');
 
 async function main() {
   return await postcss([
@@ -68,5 +69,5 @@ async function main() {
 }
 
 main().then((o) => {
-  fs.writeFileSync(newPath, o.css);
+  fs.writeFileSync(newPath, stripGlobal(o.css));
 });
