@@ -36,5 +36,6 @@
     "dev": {
       "dependsOn": ["^build"]
     }
-  }
+  },
+  "analytics": false
 }
