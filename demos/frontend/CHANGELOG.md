@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/unleashit/npm-library/compare/%40unleashit%2Fdemo-frontend%402.0.4...%40unleashit%2Fdemo-frontend%402.1.0) (2026-11-13)
+
+### Bug Fixes
+
+* **demo-frontend:** lint clean storybook config ([2ccdf08](https://github.com/unleashit/npm-library/commit/2ccdf08a5e85a08f6ee879bdc2caab131c41f2d7))
+
+### Features
+
+* **demo-frontend:** upgrade storybook to v10 ([a0a606a](https://github.com/unleashit/npm-library/commit/a0a606a04093339aae655aa3d67f1c5ead1ee84c))
+
 ## [2.0.4](https://github.com/unleashit/npm-library/compare/@unleashit/demo-frontend@2.0.3...@unleashit/demo-frontend@2.0.4) (2024-06-26)
 
 **Note:** Version bump only for package @unleashit/demo-frontend

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/unleashit/npm-library/compare/%40unleashit%2Fdocs%402.0.4...%40unleashit%2Fdocs%402.0.5) (2026-11-13)
+
+### Bug Fixes
+
+* adapt source to zod 4, react 19, and express 5 ([08fe4d0](https://github.com/unleashit/npm-library/commit/08fe4d0965c793bcc4d775ab696627bcb2b9888e))
+* **docs:** move onBrokenMarkdownLinks to markdown.hooks ([974b5ea](https://github.com/unleashit/npm-library/commit/974b5ea2c5f1dfb3f928708175d3141fbbb34d3f))
+* **docs:** rebuild when snippet sources change ([e9ede88](https://github.com/unleashit/npm-library/commit/e9ede88aeaf4d8ed00e4c4bb1475d8fcbfc9792b))
+
 ## [2.0.4](https://github.com/unleashit/npm-library/compare/@unleashit/docs@2.0.3...@unleashit/docs@2.0.4) (2024-06-26)
 
 **Note:** Version bump only for package @unleashit/docs

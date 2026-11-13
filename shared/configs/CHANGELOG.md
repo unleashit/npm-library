@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/unleashit/npm-library/compare/%40unleashit%2Fconfigs%402.0.2...%40unleashit%2Fconfigs%402.0.3) (2026-11-13)
+
+### Bug Fixes
+
+* adapt source to zod 4, react 19, and express 5 ([08fe4d0](https://github.com/unleashit/npm-library/commit/08fe4d0965c793bcc4d775ab696627bcb2b9888e))
+
 ## [2.0.2](https://github.com/unleashit/npm-library/compare/@unleashit/configs@2.0.1...@unleashit/configs@2.0.2) (2024-06-20)
 
 **Note:** Version bump only for package @unleashit/configs

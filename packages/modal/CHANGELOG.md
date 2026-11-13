@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/unleashit/npm-library/compare/%40unleashit%2Fmodal%402.0.4...%40unleashit%2Fmodal%402.0.5) (2026-11-13)
+
+### Bug Fixes
+
+* adapt source to zod 4, react 19, and express 5 ([08fe4d0](https://github.com/unleashit/npm-library/commit/08fe4d0965c793bcc4d775ab696627bcb2b9888e))
+* **css:** emit valid selectors and media queries ([107f1ce](https://github.com/unleashit/npm-library/commit/107f1ce18a4a278638c523ff673840470b604bd6))
+
 ## [2.0.4](https://github.com/unleashit/npm-library/compare/@unleashit/modal@2.0.3...@unleashit/modal@2.0.4) (2024-06-26)
 
 **Note:** Version bump only for package @unleashit/modal

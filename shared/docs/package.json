@@ -1,11 +1,13 @@
 {
   "name": "@unleashit/docs",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "private": true,
   "nx": {
     "targets": {
       "build": {
-        "outputs": ["{projectRoot}/build"],
+        "outputs": [
+          "{projectRoot}/build"
+        ],
         "inputs": [
           "production",
           "^production",
